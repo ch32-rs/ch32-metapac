@@ -2439,6 +2439,10 @@ pub(crate) static INTERRUPTS: &[Interrupt] = &[
         number: 85,
     },
     Interrupt {
+        name: "DVP",
+        number: 86,
+    },
+    Interrupt {
         name: "USART6",
         number: 87,
     },

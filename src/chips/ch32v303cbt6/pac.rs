@@ -138,6 +138,8 @@ pub enum Interrupt {
     USBHS_WKUP = 84,
     #[doc = "85 - USBHS"]
     USBHS = 85,
+    #[doc = "86 - DVP"]
+    DVP = 86,
     #[doc = "87 - USART6"]
     USART6 = 87,
     #[doc = "88 - USART7"]
@@ -251,6 +253,7 @@ mod _vectors {
         fn OTG_FS();
         fn USBHS_WKUP();
         fn USBHS();
+        fn DVP();
         fn USART6();
         fn USART7();
         fn USART8();
@@ -382,7 +385,7 @@ mod _vectors {
             _handler: USBHS_WKUP,
         },
         Vector { _handler: USBHS },
-        Vector { _reserved: 0 },
+        Vector { _handler: DVP },
         Vector { _handler: USART6 },
         Vector { _handler: USART7 },
         Vector { _handler: USART8 },

@@ -67,6 +67,7 @@ PROVIDE(CAN2_SCE = DefaultHandler);
 PROVIDE(OTG_FS = DefaultHandler);
 PROVIDE(USBHS_WKUP = DefaultHandler);
 PROVIDE(USBHS = DefaultHandler);
+PROVIDE(DVP = DefaultHandler);
 PROVIDE(USART6 = DefaultHandler);
 PROVIDE(USART7 = DefaultHandler);
 PROVIDE(USART8 = DefaultHandler);
