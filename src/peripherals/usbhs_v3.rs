@@ -283,7 +283,7 @@ impl Usbh {
     #[doc = "USB host transmit buffer start address"]
     #[inline(always)]
     pub const fn tx_dma(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x28usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x64usize) as _) }
     }
     #[doc = "USB host receive maximum length packet register"]
     #[inline(always)]

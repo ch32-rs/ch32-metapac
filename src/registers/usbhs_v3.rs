@@ -795,7 +795,7 @@ pub(crate) static REGISTERS: IR = IR {
                         "USB host transmit buffer start address",
                     ),
                     array: None,
-                    byte_offset: 0x28,
+                    byte_offset: 0x64,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
