@@ -1083,6 +1083,14 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: Some("Mco"),
                 },
                 Field {
+                    name: "ethpre",
+                    description: Some("Ethernet clock source prescaler control."),
+                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 28 }),
+                    bit_size: 1,
+                    array: None,
+                    enumm: Some("Ethpre"),
+                },
+                Field {
                     name: "adc_clk_adj",
                     description: Some("ADC clock ADJ."),
                     bit_offset: BitOffset::Regular(RegularBitOffset { offset: 31 }),
@@ -1638,6 +1646,23 @@ pub(crate) static REGISTERS: IR = IR {
                     name: "DIV8",
                     description: Some("PCLK2 divided by 8."),
                     value: 3,
+                },
+            ],
+        },
+        Enum {
+            name: "Ethpre",
+            description: Some("Ethernet clock source prescaler control"),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "DIV1",
+                    description: Some("Divided by 1"),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "DIV2",
+                    description: Some("Divided by 2"),
+                    value: 1,
                 },
             ],
         },

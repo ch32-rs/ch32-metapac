@@ -307,6 +307,7 @@ pub const DMA1: dma::Dma = unsafe { dma::Dma::from_ptr(0x4002_0000usize as _) };
 pub const RCC: rcc::Rcc = unsafe { rcc::Rcc::from_ptr(0x4002_1000usize as _) };
 pub const FLASH: flash::Flash = unsafe { flash::Flash::from_ptr(0x4002_2000usize as _) };
 pub const EXTEND: extend::Extend = unsafe { extend::Extend::from_ptr(0x4002_3800usize as _) };
+pub const ETH: eth::Eth = unsafe { eth::Eth::from_ptr(0x4002_8000usize as _) };
 pub const USBFS: usb::Usb = unsafe { usb::Usb::from_ptr(0x5000_0000usize as _) };
 pub const PFIC: pfic::Pfic = unsafe { pfic::Pfic::from_ptr(0xe000_e000usize as _) };
 pub const SYSTICK: systick::Systick = unsafe { systick::Systick::from_ptr(0xe000_f000usize as _) };
@@ -324,6 +325,8 @@ pub mod afio;
 pub mod can;
 #[path = "../../peripherals/dma_v1.rs"]
 pub mod dma;
+#[path = "../../peripherals/eth_10m.rs"]
+pub mod eth;
 #[path = "../../peripherals/extend_v3.rs"]
 pub mod extend;
 #[path = "../../peripherals/exti_common.rs"]
