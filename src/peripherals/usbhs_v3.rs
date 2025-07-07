@@ -1346,14 +1346,14 @@ pub mod regs {
     impl UhRxCtrl {
         #[doc = "host control of the accept response to IN transactions."]
         #[inline(always)]
-        pub const fn r_res(&self) -> u8 {
+        pub const fn r_res(&self) -> super::vals::HostRxResponse {
             let val = (self.0 >> 0usize) & 0x03;
-            val as u8
+            super::vals::HostRxResponse::from_bits(val as u8)
         }
         #[doc = "host control of the accept response to IN transactions."]
         #[inline(always)]
-        pub fn set_r_res(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u8) & 0x03) << 0usize);
+        pub fn set_r_res(&mut self, val: super::vals::HostRxResponse) {
+            self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u8) & 0x03) << 0usize);
         }
         #[doc = "H_R_RES_NO"]
         #[inline(always)]
@@ -1368,14 +1368,14 @@ pub mod regs {
         }
         #[doc = "host synchronous trigger bit for the accept to prepare."]
         #[inline(always)]
-        pub const fn r_tog(&self) -> u8 {
+        pub const fn r_tog(&self) -> super::vals::Tog {
             let val = (self.0 >> 3usize) & 0x03;
-            val as u8
+            super::vals::Tog::from_bits(val as u8)
         }
         #[doc = "host synchronous trigger bit for the accept to prepare."]
         #[inline(always)]
-        pub fn set_r_tog(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 3usize)) | (((val as u8) & 0x03) << 3usize);
+        pub fn set_r_tog(&mut self, val: super::vals::Tog) {
+            self.0 = (self.0 & !(0x03 << 3usize)) | (((val.to_bits() as u8) & 0x03) << 3usize);
         }
         #[doc = "host synchronization trigger bit auto toggle enable."]
         #[inline(always)]
@@ -1436,14 +1436,14 @@ pub mod regs {
     impl UhTxCtrl {
         #[doc = "USB host transmitter response control bits to SETUP/OUT transactions"]
         #[inline(always)]
-        pub const fn t_res(&self) -> u8 {
+        pub const fn t_res(&self) -> super::vals::HostTxResponse {
             let val = (self.0 >> 0usize) & 0x03;
-            val as u8
+            super::vals::HostTxResponse::from_bits(val as u8)
         }
         #[doc = "USB host transmitter response control bits to SETUP/OUT transactions"]
         #[inline(always)]
-        pub fn set_t_res(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u8) & 0x03) << 0usize);
+        pub fn set_t_res(&mut self, val: super::vals::HostTxResponse) {
+            self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u8) & 0x03) << 0usize);
         }
         #[doc = "expect a response after sending data successfully."]
         #[inline(always)]
@@ -1458,14 +1458,14 @@ pub mod regs {
         }
         #[doc = "sync trigger bit prepared by USB host transmitter (handling SETUP/OUT transactions)"]
         #[inline(always)]
-        pub const fn t_tog(&self) -> u8 {
+        pub const fn t_tog(&self) -> super::vals::Tog {
             let val = (self.0 >> 3usize) & 0x03;
-            val as u8
+            super::vals::Tog::from_bits(val as u8)
         }
         #[doc = "sync trigger bit prepared by USB host transmitter (handling SETUP/OUT transactions)"]
         #[inline(always)]
-        pub fn set_t_tog(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 3usize)) | (((val as u8) & 0x03) << 3usize);
+        pub fn set_t_tog(&mut self, val: super::vals::Tog) {
+            self.0 = (self.0 & !(0x03 << 3usize)) | (((val.to_bits() as u8) & 0x03) << 3usize);
         }
         #[doc = "host synchronization trigger bit auto toggle enable."]
         #[inline(always)]
@@ -1627,6 +1627,71 @@ pub mod vals {
     }
     #[repr(u8)]
     #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum HostRxResponse {
+        #[doc = "Respond with ACK"]
+        ACK = 0x0,
+        _RESERVED_1 = 0x01,
+        _RESERVED_2 = 0x02,
+        _RESERVED_3 = 0x03,
+    }
+    impl HostRxResponse {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> HostRxResponse {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for HostRxResponse {
+        #[inline(always)]
+        fn from(val: u8) -> HostRxResponse {
+            HostRxResponse::from_bits(val)
+        }
+    }
+    impl From<HostRxResponse> for u8 {
+        #[inline(always)]
+        fn from(val: HostRxResponse) -> u8 {
+            HostRxResponse::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum HostTxResponse {
+        #[doc = "Expect ACK"]
+        ACK = 0x0,
+        #[doc = "Expect NYET"]
+        NYET = 0x01,
+        #[doc = "Expect NAK(Busy)"]
+        NAK = 0x02,
+        #[doc = "Expect STALL(Error)"]
+        STALL = 0x03,
+    }
+    impl HostTxResponse {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> HostTxResponse {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for HostTxResponse {
+        #[inline(always)]
+        fn from(val: u8) -> HostTxResponse {
+            HostTxResponse::from_bits(val)
+        }
+    }
+    impl From<HostTxResponse> for u8 {
+        #[inline(always)]
+        fn from(val: HostTxResponse) -> u8 {
+            HostTxResponse::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
     pub enum SpeedType {
         #[doc = "USB Full Speed (12Mbps)"]
         FULLSPEED = 0x0,
@@ -1656,6 +1721,36 @@ pub mod vals {
         #[inline(always)]
         fn from(val: SpeedType) -> u8 {
             SpeedType::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Tog {
+        DATA0 = 0x0,
+        DATA1 = 0x01,
+        DATA2 = 0x02,
+        MDATA = 0x03,
+    }
+    impl Tog {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Tog {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Tog {
+        #[inline(always)]
+        fn from(val: u8) -> Tog {
+            Tog::from_bits(val)
+        }
+    }
+    impl From<Tog> for u8 {
+        #[inline(always)]
+        fn from(val: Tog) -> u8 {
+            Tog::to_bits(val)
         }
     }
     #[repr(u8)]

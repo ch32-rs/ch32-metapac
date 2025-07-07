@@ -2160,7 +2160,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "HostRxResponse",
+                    ),
                 },
                 Field {
                     name: "r_res_no",
@@ -2188,7 +2190,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "Tog",
+                    ),
                 },
                 Field {
                     name: "r_auto_tog",
@@ -2264,7 +2268,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "HostTxResponse",
+                    ),
                 },
                 Field {
                     name: "t_res_no",
@@ -2292,7 +2298,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "Tog",
+                    ),
                 },
                 Field {
                     name: "t_auto_tog",
@@ -2438,6 +2446,55 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         Enum {
+            name: "HostRxResponse",
+            description: None,
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "ACK",
+                    description: Some(
+                        "Respond with ACK",
+                    ),
+                    value: 0,
+                },
+            ],
+        },
+        Enum {
+            name: "HostTxResponse",
+            description: None,
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "ACK",
+                    description: Some(
+                        "Expect ACK",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "NYET",
+                    description: Some(
+                        "Expect NYET",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "NAK",
+                    description: Some(
+                        "Expect NAK(Busy)",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "STALL",
+                    description: Some(
+                        "Expect STALL(Error)",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+        Enum {
             name: "SpeedType",
             description: None,
             bit_size: 2,
@@ -2462,6 +2519,33 @@ pub(crate) static REGISTERS: IR = IR {
                         "USB Low Speed (1.5Mbps)",
                     ),
                     value: 2,
+                },
+            ],
+        },
+        Enum {
+            name: "Tog",
+            description: None,
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "DATA0",
+                    description: None,
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "DATA1",
+                    description: None,
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "DATA2",
+                    description: None,
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "MDATA",
+                    description: None,
+                    value: 3,
                 },
             ],
         },
