@@ -2038,53 +2038,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             interrupt: "AWU",
         }],
     },
-    Peripheral {
-        name: "USBPD",
-        address: 0x40027000,
-        registers: Some(PeripheralRegisters {
-            kind: "usbpd",
-            version: "x0",
-            block: "USBPD",
-            ir: &usbpd::REGISTERS,
-        }),
-        rcc: Some(PeripheralRcc {
-            bus_clock: "HCLK",
-            kernel_clock: Clock("HCLK"),
-            enable: Some(PeripheralRccRegister {
-                register: "AHBPCENR",
-                field: "USBPD",
-            }),
-            reset: Some(PeripheralRccRegister {
-                register: "AHBRSTR",
-                field: "USBPDRST",
-            }),
-            stop_mode: StopMode::Stop1,
-        }),
-        remap: None,
-        pins: &[
-            PeripheralPin {
-                pin: "PC14",
-                signal: "CC1",
-                remap: None,
-            },
-            PeripheralPin {
-                pin: "PC15",
-                signal: "CC2",
-                remap: None,
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[
-            PeripheralInterrupt {
-                signal: "GLOBAL",
-                interrupt: "USBPD",
-            },
-            PeripheralInterrupt {
-                signal: "WKUP",
-                interrupt: "USBPD_WKUP",
-            },
-        ],
-    },
 ];
 pub(crate) static INTERRUPTS: &[Interrupt] = &[
     Interrupt {
@@ -2330,5 +2283,3 @@ pub mod timer;
 pub mod usart;
 #[path = "../registers/usb_x0fs.rs"]
 pub mod usb;
-#[path = "../registers/usbpd_x0.rs"]
-pub mod usbpd;

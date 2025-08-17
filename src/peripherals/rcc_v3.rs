@@ -1380,6 +1380,17 @@ pub mod regs {
         pub fn set_mco(&mut self, val: super::vals::Mco) {
             self.0 = (self.0 & !(0x0f << 24usize)) | (((val.to_bits() as u32) & 0x0f) << 24usize);
         }
+        #[doc = "Ethernet clock source prescaler control."]
+        #[inline(always)]
+        pub const fn ethpre(&self) -> super::vals::Ethpre {
+            let val = (self.0 >> 28usize) & 0x01;
+            super::vals::Ethpre::from_bits(val as u8)
+        }
+        #[doc = "Ethernet clock source prescaler control."]
+        #[inline(always)]
+        pub fn set_ethpre(&mut self, val: super::vals::Ethpre) {
+            self.0 = (self.0 & !(0x01 << 28usize)) | (((val.to_bits() as u32) & 0x01) << 28usize);
+        }
         #[doc = "ADC clock ADJ."]
         #[inline(always)]
         pub const fn adc_clk_adj(&self) -> bool {
@@ -2152,6 +2163,37 @@ pub mod vals {
         #[inline(always)]
         fn from(val: Adcpre) -> u8 {
             Adcpre::to_bits(val)
+        }
+    }
+    #[doc = "Ethernet clock source prescaler control"]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Ethpre {
+        #[doc = "Divided by 1"]
+        DIV1 = 0x0,
+        #[doc = "Divided by 2"]
+        DIV2 = 0x01,
+    }
+    impl Ethpre {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Ethpre {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Ethpre {
+        #[inline(always)]
+        fn from(val: u8) -> Ethpre {
+            Ethpre::from_bits(val)
+        }
+    }
+    impl From<Ethpre> for u8 {
+        #[inline(always)]
+        fn from(val: Ethpre) -> u8 {
+            Ethpre::to_bits(val)
         }
     }
     #[doc = "AHB prescaler."]
