@@ -29,6 +29,7 @@ PROVIDE(USART4 = DefaultHandler);
 PROVIDE(DMA1_CHANNEL8 = DefaultHandler);
 PROVIDE(USBFS = DefaultHandler);
 PROVIDE(USBFS_WKUP = DefaultHandler);
+PROVIDE(PIOC = DefaultHandler);
 PROVIDE(USBPD = DefaultHandler);
 PROVIDE(USBPD_WKUP = DefaultHandler);
 PROVIDE(TIM2_CC = DefaultHandler);

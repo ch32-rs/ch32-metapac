@@ -62,6 +62,8 @@ pub enum Interrupt {
     USBFS = 45,
     #[doc = "46 - USBFS_WKUP"]
     USBFS_WKUP = 46,
+    #[doc = "47 - PIOC"]
+    PIOC = 47,
     #[doc = "49 - USBPD"]
     USBPD = 49,
     #[doc = "50 - USBPD_WKUP"]
@@ -115,6 +117,7 @@ mod _vectors {
         fn DMA1_CHANNEL8();
         fn USBFS();
         fn USBFS_WKUP();
+        fn PIOC();
         fn USBPD();
         fn USBPD_WKUP();
         fn TIM2_CC();
@@ -182,7 +185,7 @@ mod _vectors {
         Vector {
             _handler: USBFS_WKUP,
         },
-        Vector { _reserved: 0 },
+        Vector { _handler: PIOC },
         Vector { _reserved: 0 },
         Vector { _handler: USBPD },
         Vector {
