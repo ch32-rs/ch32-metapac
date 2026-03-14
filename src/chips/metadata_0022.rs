@@ -3780,112 +3780,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             },
         ],
     },
-    Peripheral {
-        name: "DVP",
-        address: 0x50050000,
-        registers: Some(PeripheralRegisters {
-            kind: "dvp",
-            version: "v3",
-            block: "DVP",
-            ir: &dvp::REGISTERS,
-        }),
-        rcc: Some(PeripheralRcc {
-            bus_clock: "HCLK",
-            kernel_clock: Clock("HCLK"),
-            enable: Some(PeripheralRccRegister {
-                register: "AHBPCENR",
-                field: "DVP_EN",
-            }),
-            reset: Some(PeripheralRccRegister {
-                register: "AHBRSTR",
-                field: "DVPRST",
-            }),
-            stop_mode: StopMode::Stop1,
-        }),
-        remap: None,
-        pins: &[
-            PeripheralPin {
-                pin: "PA4",
-                signal: "HSYNC",
-                remap: None,
-            },
-            PeripheralPin {
-                pin: "PA5",
-                signal: "VSYNC",
-                remap: None,
-            },
-            PeripheralPin {
-                pin: "PA6",
-                signal: "PCLK",
-                remap: None,
-            },
-            PeripheralPin {
-                pin: "PA9",
-                signal: "D0",
-                remap: None,
-            },
-            PeripheralPin {
-                pin: "PA10",
-                signal: "D1",
-                remap: None,
-            },
-            PeripheralPin {
-                pin: "PC8",
-                signal: "D2",
-                remap: None,
-            },
-            PeripheralPin {
-                pin: "PC9",
-                signal: "D3",
-                remap: None,
-            },
-            PeripheralPin {
-                pin: "PC11",
-                signal: "D4",
-                remap: None,
-            },
-            PeripheralPin {
-                pin: "PB6",
-                signal: "D5",
-                remap: None,
-            },
-            PeripheralPin {
-                pin: "PB8",
-                signal: "D6",
-                remap: None,
-            },
-            PeripheralPin {
-                pin: "PB9",
-                signal: "D7",
-                remap: None,
-            },
-            PeripheralPin {
-                pin: "PC10",
-                signal: "D8",
-                remap: None,
-            },
-            PeripheralPin {
-                pin: "PC12",
-                signal: "D9",
-                remap: None,
-            },
-            PeripheralPin {
-                pin: "PD6",
-                signal: "D10",
-                remap: None,
-            },
-            PeripheralPin {
-                pin: "PD2",
-                signal: "D11",
-                remap: None,
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "DVP",
-        }],
-    },
 ];
 pub(crate) static INTERRUPTS: &[Interrupt] = &[
     Interrupt {
@@ -4375,8 +4269,6 @@ pub mod can;
 pub mod dac;
 #[path = "../registers/dma_v1.rs"]
 pub mod dma;
-#[path = "../registers/dvp_v3.rs"]
-pub mod dvp;
 #[path = "../registers/extend_v3.rs"]
 pub mod extend;
 #[path = "../registers/exti_common.rs"]

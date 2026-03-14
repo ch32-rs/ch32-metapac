@@ -151,9 +151,9 @@ pub use Interrupt as interrupt;
 pub fn GPIO(n: usize) -> gpio::Gpio {
     unsafe { gpio::Gpio::from_ptr((1073809408 + 1024 * n) as _) }
 }
-#[path = "../../peripherals/adc_v0.rs"]
+#[path = "../../peripherals/adc_v003.rs"]
 pub mod adc;
-#[path = "../../peripherals/afio_v0.rs"]
+#[path = "../../peripherals/afio_v003.rs"]
 pub mod afio;
 #[path = "../../peripherals/dma_v1.rs"]
 pub mod dma;
@@ -169,7 +169,7 @@ pub mod gpio;
 pub mod i2c;
 #[path = "../../peripherals/pfic_rv2.rs"]
 pub mod pfic;
-#[path = "../../peripherals/rcc_v0.rs"]
+#[path = "../../peripherals/rcc_v003.rs"]
 pub mod rcc;
 #[path = "../../peripherals/spi_v0.rs"]
 pub mod spi;

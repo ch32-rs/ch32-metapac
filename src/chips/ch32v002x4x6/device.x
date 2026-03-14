@@ -21,3 +21,5 @@ PROVIDE(TIM1_UP = DefaultHandler);
 PROVIDE(TIM1_TRG_COM = DefaultHandler);
 PROVIDE(TIM1_CC = DefaultHandler);
 PROVIDE(TIM2 = DefaultHandler);
+PROVIDE(USART2 = DefaultHandler);
+PROVIDE(OPCM = DefaultHandler);

@@ -46,6 +46,10 @@ pub enum Interrupt {
     TIM1_CC = 37,
     #[doc = "38 - TIM2"]
     TIM2 = 38,
+    #[doc = "39 - USART2"]
+    USART2 = 39,
+    #[doc = "40 - OPCM"]
+    OPCM = 40,
 }
 unsafe impl crate::InterruptNumber for Interrupt {
     #[inline(always)]
@@ -79,6 +83,8 @@ mod _vectors {
         fn TIM1_TRG_COM();
         fn TIM1_CC();
         fn TIM2();
+        fn USART2();
+        fn OPCM();
     }
     pub union Vector {
         _handler: unsafe extern "C" fn(),
@@ -86,7 +92,7 @@ mod _vectors {
     }
     #[link_section = ".vector_table.external_interrupts"]
     #[no_mangle]
-    pub static __EXTERNAL_INTERRUPTS: [Vector; 23] = [
+    pub static __EXTERNAL_INTERRUPTS: [Vector; 25] = [
         Vector { _handler: WWDG },
         Vector { _handler: PVD },
         Vector { _handler: FLASH },
@@ -126,16 +132,20 @@ mod _vectors {
         },
         Vector { _handler: TIM1_CC },
         Vector { _handler: TIM2 },
+        Vector { _handler: USART2 },
+        Vector { _handler: OPCM },
     ];
 }
 pub const TIM2: timer::Gptm = unsafe { timer::Gptm::from_ptr(0x4000_0000usize as _) };
+pub const USART2: usart::Usart = unsafe { usart::Usart::from_ptr(0x4000_4400usize as _) };
 pub const I2C1: i2c::I2c = unsafe { i2c::I2c::from_ptr(0x4000_5400usize as _) };
 pub const AFIO: afio::Afio = unsafe { afio::Afio::from_ptr(0x4001_0000usize as _) };
 pub const EXTI: exti::Exti = unsafe { exti::Exti::from_ptr(0x4001_0400usize as _) };
 pub const GPIOA: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0x4001_0800usize as _) };
+pub const GPIOB: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0x4001_0c00usize as _) };
 pub const GPIOC: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0x4001_1000usize as _) };
 pub const GPIOD: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0x4001_1400usize as _) };
-pub const ADC1: adc::Adc = unsafe { adc::Adc::from_ptr(0x4001_2400usize as _) };
+pub const ADC: adc::Adc = unsafe { adc::Adc::from_ptr(0x4001_2400usize as _) };
 pub const TIM1: timer::Adtm = unsafe { timer::Adtm::from_ptr(0x4001_2c00usize as _) };
 pub const SPI1: spi::Spi = unsafe { spi::Spi::from_ptr(0x4001_3000usize as _) };
 pub const USART1: usart::Usart = unsafe { usart::Usart::from_ptr(0x4001_3800usize as _) };
@@ -151,9 +161,9 @@ pub use Interrupt as interrupt;
 pub fn GPIO(n: usize) -> gpio::Gpio {
     unsafe { gpio::Gpio::from_ptr((1073809408 + 1024 * n) as _) }
 }
-#[path = "../../peripherals/adc_v0.rs"]
+#[path = "../../peripherals/adc_v00x.rs"]
 pub mod adc;
-#[path = "../../peripherals/afio_v0.rs"]
+#[path = "../../peripherals/afio_v00x.rs"]
 pub mod afio;
 #[path = "../../peripherals/dma_v1.rs"]
 pub mod dma;
@@ -169,7 +179,7 @@ pub mod gpio;
 pub mod i2c;
 #[path = "../../peripherals/pfic_rv2.rs"]
 pub mod pfic;
-#[path = "../../peripherals/rcc_v0.rs"]
+#[path = "../../peripherals/rcc_v00x.rs"]
 pub mod rcc;
 #[path = "../../peripherals/spi_v0.rs"]
 pub mod spi;

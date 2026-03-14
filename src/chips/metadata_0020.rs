@@ -3208,54 +3208,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
     },
     Peripheral {
-        name: "OTG_FS",
-        address: 0x50000000,
-        registers: Some(PeripheralRegisters {
-            kind: "otg",
-            version: "v2",
-            block: "USB",
-            ir: &otg::REGISTERS,
-        }),
-        rcc: Some(PeripheralRcc {
-            bus_clock: "HCLK",
-            kernel_clock: Clock("HCLK"),
-            enable: Some(PeripheralRccRegister {
-                register: "AHBPCENR",
-                field: "OTG_EN",
-            }),
-            reset: None,
-            stop_mode: StopMode::Stop1,
-        }),
-        remap: None,
-        pins: &[
-            PeripheralPin {
-                pin: "PA11",
-                signal: "DM",
-                remap: None,
-            },
-            PeripheralPin {
-                pin: "PA12",
-                signal: "DP",
-                remap: None,
-            },
-            PeripheralPin {
-                pin: "PA9",
-                signal: "VBUS",
-                remap: None,
-            },
-            PeripheralPin {
-                pin: "PA10",
-                signal: "ID",
-                remap: None,
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "OTG_FS",
-        }],
-    },
-    Peripheral {
         name: "DAC1",
         address: 0x40007400,
         registers: Some(PeripheralRegisters {
@@ -4047,8 +3999,6 @@ pub mod flash;
 pub mod gpio;
 #[path = "../registers/i2c_v3.rs"]
 pub mod i2c;
-#[path = "../registers/otg_v2.rs"]
-pub mod otg;
 #[path = "../registers/pfic_rv4.rs"]
 pub mod pfic;
 #[path = "../registers/rcc_v3_d8c.rs"]
