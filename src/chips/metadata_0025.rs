@@ -2039,6 +2039,126 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }],
     },
     Peripheral {
+        name: "I2C1",
+        address: 0x40005400,
+        registers: Some(PeripheralRegisters {
+            kind: "i2c",
+            version: "v0",
+            block: "I2C",
+            ir: &i2c::REGISTERS,
+        }),
+        rcc: Some(PeripheralRcc {
+            bus_clock: "PCLK1",
+            kernel_clock: Clock("PCLK1"),
+            enable: Some(PeripheralRccRegister {
+                register: "APB1PCENR",
+                field: "I2C1EN",
+            }),
+            reset: Some(PeripheralRccRegister {
+                register: "APB1PRSTR",
+                field: "I2C1RST",
+            }),
+            stop_mode: StopMode::Stop1,
+        }),
+        remap: Some(PeripheralRemapRegister {
+            register: "PCFR1",
+            field: "I2C1_RM",
+        }),
+        pins: &[
+            PeripheralPin {
+                pin: "PB5",
+                signal: "SMBA",
+                remap: None,
+            },
+            PeripheralPin {
+                pin: "PA10",
+                signal: "SCL",
+                remap: Some(0),
+            },
+            PeripheralPin {
+                pin: "PA11",
+                signal: "SDA",
+                remap: Some(0),
+            },
+            PeripheralPin {
+                pin: "PA13",
+                signal: "SCL",
+                remap: Some(1),
+            },
+            PeripheralPin {
+                pin: "PA14",
+                signal: "SDA",
+                remap: Some(1),
+            },
+            PeripheralPin {
+                pin: "PC16",
+                signal: "SCL",
+                remap: Some(2),
+            },
+            PeripheralPin {
+                pin: "PC17",
+                signal: "SDA",
+                remap: Some(2),
+            },
+            PeripheralPin {
+                pin: "PC19",
+                signal: "SCL",
+                remap: Some(3),
+            },
+            PeripheralPin {
+                pin: "PC18",
+                signal: "SDA",
+                remap: Some(3),
+            },
+            PeripheralPin {
+                pin: "PC17",
+                signal: "SCL",
+                remap: Some(4),
+            },
+            PeripheralPin {
+                pin: "PC16",
+                signal: "SDA",
+                remap: Some(4),
+            },
+            PeripheralPin {
+                pin: "PC18",
+                signal: "SCL",
+                remap: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC19",
+                signal: "SDA",
+                remap: Some(5),
+            },
+        ],
+        dma_channels: &[
+            PeripheralDmaChannel {
+                signal: "RX",
+                channel: Some("DMA1_CH7"),
+                dmamux: None,
+                dma: None,
+                request: None,
+            },
+            PeripheralDmaChannel {
+                signal: "TX",
+                channel: Some("DMA1_CH6"),
+                dmamux: None,
+                dma: None,
+                request: None,
+            },
+        ],
+        interrupts: &[
+            PeripheralInterrupt {
+                signal: "ER",
+                interrupt: "I2C1_ER",
+            },
+            PeripheralInterrupt {
+                signal: "EV",
+                interrupt: "I2C1_EV",
+            },
+        ],
+    },
+    Peripheral {
         name: "USBPD",
         address: 0x40027000,
         registers: Some(PeripheralRegisters {
@@ -2312,6 +2432,8 @@ pub mod exti;
 pub mod flash;
 #[path = "../registers/gpio_x0.rs"]
 pub mod gpio;
+#[path = "../registers/i2c_v0.rs"]
+pub mod i2c;
 #[path = "../registers/opa_x0.rs"]
 pub mod opa;
 #[path = "../registers/pfic_rv4.rs"]
