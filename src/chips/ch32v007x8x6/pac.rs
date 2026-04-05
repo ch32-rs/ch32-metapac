@@ -171,7 +171,7 @@ pub mod dma;
 pub mod extend;
 #[path = "../../peripherals/exti_common.rs"]
 pub mod exti;
-#[path = "../../peripherals/flash_v0.rs"]
+#[path = "../../peripherals/flash_v00x.rs"]
 pub mod flash;
 #[path = "../../peripherals/gpio_v0.rs"]
 pub mod gpio;
