@@ -1406,47 +1406,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             interrupt: "ADC",
         }],
     },
-    Peripheral {
-        name: "OPA",
-        address: 0x40023800,
-        registers: Some(PeripheralRegisters {
-            kind: "extend",
-            version: "v0",
-            block: "EXTEND",
-            ir: &extend::REGISTERS,
-        }),
-        rcc: None,
-        remap: None,
-        pins: &[
-            PeripheralPin {
-                pin: "PA1",
-                signal: "NEG",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PA2",
-                signal: "POS",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PD0",
-                signal: "NEG",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PD7",
-                signal: "POS",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PD4",
-                signal: "OUT",
-                remap: None,
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[],
-    },
 ];
 pub(crate) static INTERRUPTS: &[Interrupt] = &[
     Interrupt {
@@ -1607,8 +1566,6 @@ pub mod adc;
 pub mod afio;
 #[path = "../registers/dma_v1.rs"]
 pub mod dma;
-#[path = "../registers/extend_v0.rs"]
-pub mod extend;
 #[path = "../registers/exti_common.rs"]
 pub mod exti;
 #[path = "../registers/flash_v00x.rs"]

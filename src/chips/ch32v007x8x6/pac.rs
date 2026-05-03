@@ -152,7 +152,7 @@ pub const USART1: usart::Usart = unsafe { usart::Usart::from_ptr(0x4001_3800usiz
 pub const DMA1: dma::Dma = unsafe { dma::Dma::from_ptr(0x4002_0000usize as _) };
 pub const RCC: rcc::Rcc = unsafe { rcc::Rcc::from_ptr(0x4002_1000usize as _) };
 pub const FLASH: flash::Flash = unsafe { flash::Flash::from_ptr(0x4002_2000usize as _) };
-pub const OPA: extend::Extend = unsafe { extend::Extend::from_ptr(0x4002_3800usize as _) };
+pub const OPA: opa::Opa = unsafe { opa::Opa::from_ptr(0x4002_4000usize as _) };
 pub const PFIC: pfic::Pfic = unsafe { pfic::Pfic::from_ptr(0xe000_e000usize as _) };
 pub const SYSTICK: systick::Systick = unsafe { systick::Systick::from_ptr(0xe000_f000usize as _) };
 #[cfg(feature = "rt")]
@@ -167,8 +167,6 @@ pub mod adc;
 pub mod afio;
 #[path = "../../peripherals/dma_v1.rs"]
 pub mod dma;
-#[path = "../../peripherals/extend_v0.rs"]
-pub mod extend;
 #[path = "../../peripherals/exti_common.rs"]
 pub mod exti;
 #[path = "../../peripherals/flash_v00x.rs"]
@@ -177,6 +175,8 @@ pub mod flash;
 pub mod gpio;
 #[path = "../../peripherals/i2c_v0.rs"]
 pub mod i2c;
+#[path = "../../peripherals/opa_v00x.rs"]
+pub mod opa;
 #[path = "../../peripherals/pfic_rv2.rs"]
 pub mod pfic;
 #[path = "../../peripherals/rcc_v00x.rs"]
