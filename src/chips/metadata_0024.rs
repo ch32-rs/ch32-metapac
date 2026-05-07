@@ -3781,6 +3781,139 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
     },
     Peripheral {
+        name: "ETH",
+        address: 0x40028000,
+        registers: Some(PeripheralRegisters {
+            kind: "emac",
+            version: "v1",
+            block: "ETH",
+            ir: &emac::REGISTERS,
+        }),
+        rcc: Some(PeripheralRcc {
+            bus_clock: "PCLK1",
+            kernel_clock: Clock("HCLK"),
+            enable: Some(PeripheralRccRegister {
+                register: "AHBPCENR",
+                field: "ETHMACEN",
+            }),
+            reset: None,
+            stop_mode: StopMode::Stop1,
+        }),
+        remap: None,
+        pins: &[
+            PeripheralPin {
+                pin: "PC6",
+                signal: "ETH_RXP",
+                remap: None,
+            },
+            PeripheralPin {
+                pin: "PC7",
+                signal: "ETH_RXN",
+                remap: None,
+            },
+            PeripheralPin {
+                pin: "PC8",
+                signal: "ETH_TXP",
+                remap: None,
+            },
+            PeripheralPin {
+                pin: "PC9",
+                signal: "ETH_TXN",
+                remap: None,
+            },
+            PeripheralPin {
+                pin: "PA1",
+                signal: "RMII_REF_CLK",
+                remap: Some(0),
+            },
+            PeripheralPin {
+                pin: "PA2",
+                signal: "MDIO",
+                remap: Some(0),
+            },
+            PeripheralPin {
+                pin: "PA7",
+                signal: "RMII_CRS_DV",
+                remap: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC1",
+                signal: "MDC",
+                remap: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC4",
+                signal: "RMII_RXD0",
+                remap: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC5",
+                signal: "RMII_RXD1",
+                remap: Some(0),
+            },
+            PeripheralPin {
+                pin: "PB11",
+                signal: "RMII_TX_EN",
+                remap: Some(0),
+            },
+            PeripheralPin {
+                pin: "PB12",
+                signal: "RMII_TXD0",
+                remap: Some(0),
+            },
+            PeripheralPin {
+                pin: "PB13",
+                signal: "RMII_TXD1",
+                remap: Some(0),
+            },
+            PeripheralPin {
+                pin: "PA0",
+                signal: "MII_CRS",
+                remap: Some(0),
+            },
+            PeripheralPin {
+                pin: "PA3",
+                signal: "MII_COL",
+                remap: Some(0),
+            },
+            PeripheralPin {
+                pin: "PB10",
+                signal: "MII_RX_ER",
+                remap: Some(0),
+            },
+            PeripheralPin {
+                pin: "PC3",
+                signal: "MII_TX_CLK",
+                remap: Some(0),
+            },
+            PeripheralPin {
+                pin: "PB8",
+                signal: "MII_TXD3",
+                remap: Some(0),
+            },
+            PeripheralPin {
+                pin: "PA1",
+                signal: "MII_RX_CLK",
+                remap: Some(0),
+            },
+            PeripheralPin {
+                pin: "PB1",
+                signal: "MII_RXD3",
+                remap: Some(0),
+            },
+            PeripheralPin {
+                pin: "PB0",
+                signal: "MII_RXD2",
+                remap: Some(0),
+            },
+        ],
+        dma_channels: &[],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "ETH",
+        }],
+    },
+    Peripheral {
         name: "DVP",
         address: 0x50050000,
         registers: Some(PeripheralRegisters {
@@ -4377,6 +4510,8 @@ pub mod dac;
 pub mod dma;
 #[path = "../registers/dvp_v3.rs"]
 pub mod dvp;
+#[path = "../registers/emac_v1.rs"]
+pub mod emac;
 #[path = "../registers/extend_v3.rs"]
 pub mod extend;
 #[path = "../registers/exti_common.rs"]

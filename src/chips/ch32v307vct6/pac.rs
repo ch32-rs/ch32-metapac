@@ -468,6 +468,7 @@ pub const FLASH: flash::Flash = unsafe { flash::Flash::from_ptr(0x4002_2000usize
 pub const USBHS: usbhs::Usb = unsafe { usbhs::Usb::from_ptr(0x4002_3400usize as _) };
 pub const EXTEND: extend::Extend = unsafe { extend::Extend::from_ptr(0x4002_3800usize as _) };
 pub const RNG: rng::Rng = unsafe { rng::Rng::from_ptr(0x4002_3c00usize as _) };
+pub const ETH: emac::Eth = unsafe { emac::Eth::from_ptr(0x4002_8000usize as _) };
 pub const OTG_FS: otg::Usb = unsafe { otg::Usb::from_ptr(0x5000_0000usize as _) };
 pub const DVP: dvp::Dvp = unsafe { dvp::Dvp::from_ptr(0x5005_0000usize as _) };
 pub const PFIC: pfic::Pfic = unsafe { pfic::Pfic::from_ptr(0xe000_e000usize as _) };
@@ -490,6 +491,8 @@ pub mod dac;
 pub mod dma;
 #[path = "../../peripherals/dvp_v3.rs"]
 pub mod dvp;
+#[path = "../../peripherals/emac_v1.rs"]
+pub mod emac;
 #[path = "../../peripherals/extend_v3.rs"]
 pub mod extend;
 #[path = "../../peripherals/exti_common.rs"]
