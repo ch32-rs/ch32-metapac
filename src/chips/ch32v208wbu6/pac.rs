@@ -311,6 +311,11 @@ pub const DMA1: dma::Dma = unsafe { dma::Dma::from_ptr(0x4002_0000usize as _) };
 pub const RCC: rcc::Rcc = unsafe { rcc::Rcc::from_ptr(0x4002_1000usize as _) };
 pub const FLASH: flash::Flash = unsafe { flash::Flash::from_ptr(0x4002_2000usize as _) };
 pub const EXTEND: extend::Extend = unsafe { extend::Extend::from_ptr(0x4002_3800usize as _) };
+pub const BLE_BB: blebb::BleBb = unsafe { blebb::BleBb::from_ptr(0x4002_4100usize as _) };
+pub const BLE_LLE: blelle::BleLle = unsafe { blelle::BleLle::from_ptr(0x4002_4200usize as _) };
+pub const BLE_AES: bleaes::BleAes = unsafe { bleaes::BleAes::from_ptr(0x4002_4300usize as _) };
+pub const BLE_RFEND: blerfend::BleRfend =
+    unsafe { blerfend::BleRfend::from_ptr(0x4002_5000usize as _) };
 pub const ETH: eth::Eth = unsafe { eth::Eth::from_ptr(0x4002_8000usize as _) };
 pub const USBFS: usb::Usb = unsafe { usb::Usb::from_ptr(0x5000_0000usize as _) };
 pub const PFIC: pfic::Pfic = unsafe { pfic::Pfic::from_ptr(0xe000_e000usize as _) };
@@ -325,6 +330,14 @@ pub fn GPIO(n: usize) -> gpio::Gpio {
 pub mod adc;
 #[path = "../../peripherals/afio_v3.rs"]
 pub mod afio;
+#[path = "../../peripherals/bleaes_v208.rs"]
+pub mod bleaes;
+#[path = "../../peripherals/blebb_v208.rs"]
+pub mod blebb;
+#[path = "../../peripherals/blelle_v208.rs"]
+pub mod blelle;
+#[path = "../../peripherals/blerfend_v208.rs"]
+pub mod blerfend;
 #[path = "../../peripherals/can_v3.rs"]
 pub mod can;
 #[path = "../../peripherals/dma_v1.rs"]
