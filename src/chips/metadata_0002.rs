@@ -1584,7 +1584,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 remap: Some(2),
             },
             PeripheralPin {
-                pin: "PC2",
+                pin: "PB3",
                 signal: "CH2",
                 remap: Some(2),
             },
@@ -1776,6 +1776,105 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             },
         ],
     },
+    Peripheral {
+        name: "OPA",
+        address: 0x40024000,
+        registers: Some(PeripheralRegisters {
+            kind: "opa",
+            version: "v00x",
+            block: "OPA",
+            ir: &opa::REGISTERS,
+        }),
+        rcc: None,
+        remap: None,
+        pins: &[
+            PeripheralPin {
+                pin: "PA2",
+                signal: "CHP0",
+                remap: None,
+            },
+            PeripheralPin {
+                pin: "PD7",
+                signal: "CHP1",
+                remap: None,
+            },
+            PeripheralPin {
+                pin: "PD3",
+                signal: "CHP2",
+                remap: None,
+            },
+            PeripheralPin {
+                pin: "PD1",
+                signal: "CHP3",
+                remap: None,
+            },
+            PeripheralPin {
+                pin: "PA1",
+                signal: "CHN0",
+                remap: None,
+            },
+            PeripheralPin {
+                pin: "PD0",
+                signal: "CHN1",
+                remap: None,
+            },
+            PeripheralPin {
+                pin: "PA4",
+                signal: "CHN2",
+                remap: None,
+            },
+            PeripheralPin {
+                pin: "PD4",
+                signal: "OUT0",
+                remap: None,
+            },
+            PeripheralPin {
+                pin: "PA5",
+                signal: "OUT1",
+                remap: None,
+            },
+            PeripheralPin {
+                pin: "PC5",
+                signal: "CMP1_CHP0",
+                remap: None,
+            },
+            PeripheralPin {
+                pin: "PB3",
+                signal: "CMP1_CHP1",
+                remap: None,
+            },
+            PeripheralPin {
+                pin: "PD2",
+                signal: "CMP1_CHP2",
+                remap: None,
+            },
+            PeripheralPin {
+                pin: "PC2",
+                signal: "CMP1_CHN0",
+                remap: None,
+            },
+            PeripheralPin {
+                pin: "PD5",
+                signal: "CMP1_CHN1",
+                remap: None,
+            },
+            PeripheralPin {
+                pin: "PA6",
+                signal: "CMP1_CHN2",
+                remap: None,
+            },
+            PeripheralPin {
+                pin: "PC0",
+                signal: "CMP1_OUT",
+                remap: None,
+            },
+        ],
+        dma_channels: &[],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "OPCM",
+        }],
+    },
 ];
 pub(crate) static INTERRUPTS: &[Interrupt] = &[
     Interrupt {
@@ -1944,6 +2043,8 @@ pub mod flash;
 pub mod gpio;
 #[path = "../registers/i2c_v0.rs"]
 pub mod i2c;
+#[path = "../registers/opa_v00x.rs"]
+pub mod opa;
 #[path = "../registers/pfic_rv2.rs"]
 pub mod pfic;
 #[path = "../registers/rcc_v00x.rs"]

@@ -1,18 +1,18 @@
-include!("../metadata_0004.rs");
+include!("../metadata_0002.rs");
 use crate::metadata::PeripheralRccKernelClock::{Clock, Mux};
 pub static METADATA: Metadata = Metadata {
-    name: "CH32V003A4M6",
-    family: "QingKe RISC-V-based, general-purpose MCU",
+    name: "CH32M007",
+    family: "Low price, motor control MCU",
     line: "General-purpose",
     memory: &[
         MemoryRegion {
             name: "BANK_1",
             kind: MemoryRegionKind::Flash,
             address: 0x0,
-            size: 16384,
+            size: 63488,
             settings: Some(FlashSettings {
                 erase_size: 1024,
-                write_size: 256,
+                write_size: 64,
                 erase_value: 255,
             }),
         },
@@ -20,7 +20,7 @@ pub static METADATA: Metadata = Metadata {
             name: "SRAM",
             kind: MemoryRegionKind::Ram,
             address: 0x20000000,
-            size: 2048,
+            size: 8192,
             settings: None,
         },
     ],
