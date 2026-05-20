@@ -1613,25 +1613,22 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
     },
     Peripheral {
-        name: "USBD",
-        address: 0x40005c00,
+        name: "USBFS",
+        address: 0x50000000,
         registers: Some(PeripheralRegisters {
-            kind: "usbd",
-            version: "v2",
+            kind: "usb",
+            version: "v2fs",
             block: "USB",
-            ir: &usbd::REGISTERS,
+            ir: &usb::REGISTERS,
         }),
         rcc: Some(PeripheralRcc {
-            bus_clock: "PCLK1",
-            kernel_clock: Clock("PCLK1"),
+            bus_clock: "HCLK",
+            kernel_clock: Clock("HCLK"),
             enable: Some(PeripheralRccRegister {
-                register: "APB1PCENR",
-                field: "USBDEN",
+                register: "AHBPCENR",
+                field: "OTG_EN",
             }),
-            reset: Some(PeripheralRccRegister {
-                register: "APB1PRSTR",
-                field: "USBDRST",
-            }),
+            reset: None,
             stop_mode: StopMode::Stop1,
         }),
         remap: None,
@@ -1648,35 +1645,10 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             },
         ],
         dma_channels: &[],
-        interrupts: &[
-            PeripheralInterrupt {
-                signal: "HP",
-                interrupt: "USB_HP_CAN1_TX",
-            },
-            PeripheralInterrupt {
-                signal: "LP",
-                interrupt: "USB_LP_CAN1_RX0",
-            },
-            PeripheralInterrupt {
-                signal: "WKUP",
-                interrupt: "USB_WKUP",
-            },
-        ],
-    },
-    Peripheral {
-        name: "USBRAM",
-        address: 0x40006000,
-        registers: Some(PeripheralRegisters {
-            kind: "usbram",
-            version: "16x1_512",
-            block: "USBRAM",
-            ir: &usbram::REGISTERS,
-        }),
-        rcc: None,
-        remap: None,
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "OTG_FS",
+        }],
     },
 ];
 pub(crate) static INTERRUPTS: &[Interrupt] = &[
@@ -1961,7 +1933,5 @@ pub mod systick;
 pub mod timer;
 #[path = "../registers/usart_common.rs"]
 pub mod usart;
-#[path = "../registers/usbd_v2.rs"]
-pub mod usbd;
-#[path = "../registers/usbram_16x1_512.rs"]
-pub mod usbram;
+#[path = "../registers/usb_v2fs.rs"]
+pub mod usb;

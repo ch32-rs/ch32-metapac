@@ -137,8 +137,12 @@ mod _vectors {
     ];
 }
 pub const TIM2: timer::Gptm = unsafe { timer::Gptm::from_ptr(0x4000_0000usize as _) };
+pub const TIM3: sltm::Sltm = unsafe { sltm::Sltm::from_ptr(0x4000_0800usize as _) };
+pub const WWDG: wwdg::Wwdg = unsafe { wwdg::Wwdg::from_ptr(0x4000_2c00usize as _) };
+pub const IWDG: iwdg::Iwdg = unsafe { iwdg::Iwdg::from_ptr(0x4000_3000usize as _) };
 pub const USART2: usart::Usart = unsafe { usart::Usart::from_ptr(0x4000_4400usize as _) };
 pub const I2C1: i2c::I2c = unsafe { i2c::I2c::from_ptr(0x4000_5400usize as _) };
+pub const PWR: pwr::Pwr = unsafe { pwr::Pwr::from_ptr(0x4000_7000usize as _) };
 pub const AFIO: afio::Afio = unsafe { afio::Afio::from_ptr(0x4001_0000usize as _) };
 pub const EXTI: exti::Exti = unsafe { exti::Exti::from_ptr(0x4001_0400usize as _) };
 pub const GPIOA: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0x4001_0800usize as _) };
@@ -146,12 +150,14 @@ pub const GPIOB: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0x4001_0c00usize as 
 pub const GPIOC: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0x4001_1000usize as _) };
 pub const GPIOD: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0x4001_1400usize as _) };
 pub const ADC: adc::Adc = unsafe { adc::Adc::from_ptr(0x4001_2400usize as _) };
+pub const TKEY: tkey::Tkey = unsafe { tkey::Tkey::from_ptr(0x4001_2400usize as _) };
 pub const TIM1: timer::Adtm = unsafe { timer::Adtm::from_ptr(0x4001_2c00usize as _) };
 pub const SPI1: spi::Spi = unsafe { spi::Spi::from_ptr(0x4001_3000usize as _) };
 pub const USART1: usart::Usart = unsafe { usart::Usart::from_ptr(0x4001_3800usize as _) };
 pub const DMA1: dma::Dma = unsafe { dma::Dma::from_ptr(0x4002_0000usize as _) };
 pub const RCC: rcc::Rcc = unsafe { rcc::Rcc::from_ptr(0x4002_1000usize as _) };
 pub const FLASH: flash::Flash = unsafe { flash::Flash::from_ptr(0x4002_2000usize as _) };
+pub const EXTEN: exten::Exten = unsafe { exten::Exten::from_ptr(0x4002_3800usize as _) };
 pub const OPA: opa::Opa = unsafe { opa::Opa::from_ptr(0x4002_4000usize as _) };
 pub const PFIC: pfic::Pfic = unsafe { pfic::Pfic::from_ptr(0xe000_e000usize as _) };
 pub const SYSTICK: systick::Systick = unsafe { systick::Systick::from_ptr(0xe000_f000usize as _) };
@@ -167,6 +173,8 @@ pub mod adc;
 pub mod afio;
 #[path = "../../peripherals/dma_v1.rs"]
 pub mod dma;
+#[path = "../../peripherals/exten_v00x.rs"]
+pub mod exten;
 #[path = "../../peripherals/exti_common.rs"]
 pub mod exti;
 #[path = "../../peripherals/flash_v00x.rs"]
@@ -175,20 +183,30 @@ pub mod flash;
 pub mod gpio;
 #[path = "../../peripherals/i2c_v0.rs"]
 pub mod i2c;
+#[path = "../../peripherals/iwdg_v00x.rs"]
+pub mod iwdg;
 #[path = "../../peripherals/opa_v00x.rs"]
 pub mod opa;
 #[path = "../../peripherals/pfic_rv2.rs"]
 pub mod pfic;
+#[path = "../../peripherals/pwr_v00x.rs"]
+pub mod pwr;
 #[path = "../../peripherals/rcc_v00x.rs"]
 pub mod rcc;
+#[path = "../../peripherals/sltm_v00x.rs"]
+pub mod sltm;
 #[path = "../../peripherals/spi_v0.rs"]
 pub mod spi;
 #[path = "../../peripherals/systick_rv2.rs"]
 pub mod systick;
 #[path = "../../peripherals/timer_v3.rs"]
 pub mod timer;
+#[path = "../../peripherals/tkey_v00x.rs"]
+pub mod tkey;
 #[path = "../../peripherals/usart_common.rs"]
 pub mod usart;
+#[path = "../../peripherals/wwdg_v00x.rs"]
+pub mod wwdg;
 pub const CORE_INDEX: usize = 0;
 pub const FLASH_BASE: usize = 0;
 pub const FLASH_SIZE: usize = 63488;

@@ -2158,72 +2158,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         dma_channels: &[],
         interrupts: &[],
     },
-    Peripheral {
-        name: "BLE_BB",
-        address: 0x40024100,
-        registers: Some(PeripheralRegisters {
-            kind: "blebb",
-            version: "v208",
-            block: "BLE_BB",
-            ir: &blebb::REGISTERS,
-        }),
-        rcc: None,
-        remap: None,
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "BB",
-        }],
-    },
-    Peripheral {
-        name: "BLE_LLE",
-        address: 0x40024200,
-        registers: Some(PeripheralRegisters {
-            kind: "blelle",
-            version: "v208",
-            block: "BLE_LLE",
-            ir: &blelle::REGISTERS,
-        }),
-        rcc: None,
-        remap: None,
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "LLE",
-        }],
-    },
-    Peripheral {
-        name: "BLE_RFEND",
-        address: 0x40025000,
-        registers: Some(PeripheralRegisters {
-            kind: "blerfend",
-            version: "v208",
-            block: "BLE_RFEND",
-            ir: &blerfend::REGISTERS,
-        }),
-        rcc: None,
-        remap: None,
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[],
-    },
-    Peripheral {
-        name: "BLE_AES",
-        address: 0x40024300,
-        registers: Some(PeripheralRegisters {
-            kind: "bleaes",
-            version: "v208",
-            block: "BLE_AES",
-            ir: &bleaes::REGISTERS,
-        }),
-        rcc: None,
-        remap: None,
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[],
-    },
 ];
 pub(crate) static INTERRUPTS: &[Interrupt] = &[
     Interrupt {
@@ -2509,14 +2443,6 @@ pub(crate) static DMA_CHANNELS: &[DmaChannel] = &[
 pub mod adc;
 #[path = "../registers/afio_v3.rs"]
 pub mod afio;
-#[path = "../registers/bleaes_v208.rs"]
-pub mod bleaes;
-#[path = "../registers/blebb_v208.rs"]
-pub mod blebb;
-#[path = "../registers/blelle_v208.rs"]
-pub mod blelle;
-#[path = "../registers/blerfend_v208.rs"]
-pub mod blerfend;
 #[path = "../registers/can_v3.rs"]
 pub mod can;
 #[path = "../registers/dma_v1.rs"]
