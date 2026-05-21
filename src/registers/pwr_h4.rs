@@ -1,0 +1,115 @@
+use crate::metadata::ir::*;
+pub(crate) static REGISTERS: IR = IR {
+    blocks: &[Block {
+        name: "Pwr",
+        extends: None,
+        description: Some("Power control."),
+        items: &[
+            BlockItem {
+                name: "ctlr",
+                description: Some("Power control register (PWR_CTRL)."),
+                array: None,
+                byte_offset: 0x0,
+                inner: BlockItemInner::Register(Register {
+                    access: Access::ReadWrite,
+                    bit_size: 32,
+                    fieldset: Some("Ctlr"),
+                }),
+            },
+            BlockItem {
+                name: "csr",
+                description: Some("Power control register (PWR_CSR)."),
+                array: None,
+                byte_offset: 0x4,
+                inner: BlockItemInner::Register(Register {
+                    access: Access::ReadWrite,
+                    bit_size: 32,
+                    fieldset: Some("Csr"),
+                }),
+            },
+        ],
+    }],
+    fieldsets: &[
+        FieldSet {
+            name: "Csr",
+            extends: None,
+            description: Some("Power control register (PWR_CSR)."),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "pvdo",
+                    description: Some("PVD Output."),
+                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 0 }),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "vio18_sr",
+                    description: Some("VIO18 power supply initial status indicator."),
+                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 8 }),
+                    bit_size: 2,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "Ctlr",
+            extends: None,
+            description: Some("Power control register (PWR_CTRL)."),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "lpds",
+                    description: Some("Low Power Deep Sleep."),
+                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 0 }),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "pvde",
+                    description: Some("Power Voltage Detector Enable."),
+                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 4 }),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "pls",
+                    description: Some("PVD Level Selection."),
+                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 5 }),
+                    bit_size: 3,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "dbp",
+                    description: Some("Disable Backup Domain write protection."),
+                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 8 }),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "vio_sw_cr",
+                    description: Some("VIO18 power regulation mode selection."),
+                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 9 }),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "vsel_vio18",
+                    description: Some("VIO18 power supply adjustment position."),
+                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 10 }),
+                    bit_size: 3,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+    ],
+    enums: &[],
+};

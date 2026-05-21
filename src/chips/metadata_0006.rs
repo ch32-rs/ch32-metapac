@@ -1867,7 +1867,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 af: None,
             },
             PeripheralPin {
-                pin: "PC2",
+                pin: "PB3",
                 signal: "CH2",
                 remap: Some(2),
                 af: None,
@@ -2192,6 +2192,48 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             PeripheralPin {
                 pin: "PA5",
                 signal: "OUT1",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC5",
+                signal: "CMP1_CHP0",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB3",
+                signal: "CMP1_CHP1",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PD2",
+                signal: "CMP1_CHP2",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC2",
+                signal: "CMP1_CHN0",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PD5",
+                signal: "CMP1_CHN1",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA6",
+                signal: "CMP1_CHN2",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC0",
+                signal: "CMP1_OUT",
                 remap: None,
                 af: None,
             },
