@@ -4492,46 +4492,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
     },
     Peripheral {
-        name: "USBSS",
-        address: 0x40034000,
-        registers: Some(PeripheralRegisters {
-            kind: "usbss",
-            version: "h4",
-            block: "USBSS",
-            ir: &usbss::REGISTERS,
-        }),
-        rcc: Some(PeripheralRcc {
-            bus_clock: "HCLK",
-            kernel_clock: Clock("HCLK"),
-            enable: Some(PeripheralRccRegister {
-                register: "HBPCENR",
-                field: "USBSSEN",
-            }),
-            reset: Some(PeripheralRccRegister {
-                register: "HBRSTR",
-                field: "USBSSRST",
-            }),
-            stop_mode: StopMode::Stop1,
-        }),
-        remap: None,
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[
-            PeripheralInterrupt {
-                signal: "GLOBAL",
-                interrupt: "USBSS",
-            },
-            PeripheralInterrupt {
-                signal: "LINK",
-                interrupt: "USBSS_LINK",
-            },
-            PeripheralInterrupt {
-                signal: "WAKEUP",
-                interrupt: "USBSSWAKEUP",
-            },
-        ],
-    },
-    Peripheral {
         name: "USBPD",
         address: 0x40024400,
         registers: Some(PeripheralRegisters {
@@ -5114,7 +5074,5 @@ pub mod usbfs;
 pub mod usbhs;
 #[path = "../registers/usbpd_h4.rs"]
 pub mod usbpd;
-#[path = "../registers/usbss_h4.rs"]
-pub mod usbss;
 #[path = "../registers/wwdg_common.rs"]
 pub mod wwdg;

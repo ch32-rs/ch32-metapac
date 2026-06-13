@@ -267,6 +267,12 @@ pub mod usb;
 #[path = "../../peripherals/usbpd_x0.rs"]
 pub mod usbpd;
 pub const CORE_INDEX: usize = 0;
+#[deprecated(note = "use ch32_metapac::MEMORY_LAYOUT instead")]
 pub const FLASH_BASE: usize = 0;
+#[deprecated(note = "use ch32_metapac::MEMORY_LAYOUT instead")]
 pub const FLASH_SIZE: usize = 63488;
+#[deprecated(note = "use ch32_metapac::MEMORY_LAYOUT instead")]
 pub const WRITE_SIZE: usize = 256;
+pub const MEMORY_LAYOUT: crate::mem_layout::MemoryLayout = crate::mem_layout::MemoryLayout {
+    regions: crate::memory_select::MEMORY,
+};

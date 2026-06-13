@@ -1,0 +1,6 @@
+USR_1 0x08000000 294912 rwx flash
+SYS_1 0x1fff8000 28672 rwx flash
+VND 0x1ffff700 256 r-- flash
+RAM 0x20000000 32768 rwx ram
+OPT 0x1ffff800 128 rw- flash
+USR_2 0x08048000 196608 rwx flash

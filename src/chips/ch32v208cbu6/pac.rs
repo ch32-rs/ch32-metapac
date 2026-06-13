@@ -359,6 +359,12 @@ pub mod usbd;
 #[path = "../../peripherals/usbram_16x1_512.rs"]
 pub mod usbram;
 pub const CORE_INDEX: usize = 0;
+#[deprecated(note = "use ch32_metapac::MEMORY_LAYOUT instead")]
 pub const FLASH_BASE: usize = 0;
-pub const FLASH_SIZE: usize = 131072;
+#[deprecated(note = "use ch32_metapac::MEMORY_LAYOUT instead")]
+pub const FLASH_SIZE: usize = 491520;
+#[deprecated(note = "use ch32_metapac::MEMORY_LAYOUT instead")]
 pub const WRITE_SIZE: usize = 256;
+pub const MEMORY_LAYOUT: crate::mem_layout::MemoryLayout = crate::mem_layout::MemoryLayout {
+    regions: crate::memory_select::MEMORY,
+};

@@ -208,6 +208,12 @@ pub mod usart;
 #[path = "../../peripherals/wwdg_v00x.rs"]
 pub mod wwdg;
 pub const CORE_INDEX: usize = 0;
+#[deprecated(note = "use ch32_metapac::MEMORY_LAYOUT instead")]
 pub const FLASH_BASE: usize = 0;
+#[deprecated(note = "use ch32_metapac::MEMORY_LAYOUT instead")]
 pub const FLASH_SIZE: usize = 63488;
-pub const WRITE_SIZE: usize = 64;
+#[deprecated(note = "use ch32_metapac::MEMORY_LAYOUT instead")]
+pub const WRITE_SIZE: usize = 256;
+pub const MEMORY_LAYOUT: crate::mem_layout::MemoryLayout = crate::mem_layout::MemoryLayout {
+    regions: crate::memory_select::MEMORY,
+};

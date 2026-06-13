@@ -397,95 +397,95 @@ pub mod regs {
             Obkeyr(0)
         }
     }
-    #[doc = "Option byte register."]
+    #[doc = "Option byte register — read-only mirror of the Option Bytes loaded from flash at reset."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Obr(pub u32);
     impl Obr {
-        #[doc = "Option byte error."]
+        #[doc = "Option byte integrity error — a value/complement pair did not match when loading."]
         #[inline(always)]
         pub const fn oberr(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "Option byte error."]
+        #[doc = "Option byte integrity error — a value/complement pair did not match when loading."]
         #[inline(always)]
         pub fn set_oberr(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "Read protection."]
+        #[doc = "Read protection is currently active."]
         #[inline(always)]
         pub const fn rdprt(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
             val != 0
         }
-        #[doc = "Read protection."]
+        #[doc = "Read protection is currently active."]
         #[inline(always)]
         pub fn set_rdprt(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
-        #[doc = "IWDG_SW."]
+        #[doc = "Independent watchdog start mode currently in effect."]
         #[inline(always)]
-        pub const fn iwdg_sw(&self) -> bool {
+        pub const fn iwdg_sw(&self) -> super::vals::IwdgMode {
             let val = (self.0 >> 2usize) & 0x01;
-            val != 0
+            super::vals::IwdgMode::from_bits(val as u8)
         }
-        #[doc = "IWDG_SW."]
+        #[doc = "Independent watchdog start mode currently in effect."]
         #[inline(always)]
-        pub fn set_iwdg_sw(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
+        pub fn set_iwdg_sw(&mut self, val: super::vals::IwdgMode) {
+            self.0 = (self.0 & !(0x01 << 2usize)) | (((val.to_bits() as u32) & 0x01) << 2usize);
         }
-        #[doc = "STOP_RST."]
+        #[doc = "Stop-mode reset behavior currently in effect."]
         #[inline(always)]
-        pub const fn stop_rst(&self) -> bool {
+        pub const fn stop_rst(&self) -> super::vals::PowerModeReset {
             let val = (self.0 >> 3usize) & 0x01;
-            val != 0
+            super::vals::PowerModeReset::from_bits(val as u8)
         }
-        #[doc = "STOP_RST."]
+        #[doc = "Stop-mode reset behavior currently in effect."]
         #[inline(always)]
-        pub fn set_stop_rst(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
+        pub fn set_stop_rst(&mut self, val: super::vals::PowerModeReset) {
+            self.0 = (self.0 & !(0x01 << 3usize)) | (((val.to_bits() as u32) & 0x01) << 3usize);
         }
-        #[doc = "STANDY_RST."]
+        #[doc = "Standby-mode reset behavior currently in effect."]
         #[inline(always)]
-        pub const fn standy_rst(&self) -> bool {
+        pub const fn standy_rst(&self) -> super::vals::PowerModeReset {
             let val = (self.0 >> 4usize) & 0x01;
-            val != 0
+            super::vals::PowerModeReset::from_bits(val as u8)
         }
-        #[doc = "STANDY_RST."]
+        #[doc = "Standby-mode reset behavior currently in effect."]
         #[inline(always)]
-        pub fn set_standy_rst(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
+        pub fn set_standy_rst(&mut self, val: super::vals::PowerModeReset) {
+            self.0 = (self.0 & !(0x01 << 4usize)) | (((val.to_bits() as u32) & 0x01) << 4usize);
         }
-        #[doc = "Config reset delay time."]
+        #[doc = "NRST pin mode currently in effect (mirror of OB.USER.RST_MODE)."]
         #[inline(always)]
-        pub const fn cfgrstt(&self) -> u8 {
+        pub const fn cfgrstt(&self) -> super::vals::RstPinMode {
             let val = (self.0 >> 5usize) & 0x03;
-            val as u8
+            super::vals::RstPinMode::from_bits(val as u8)
         }
-        #[doc = "Config reset delay time."]
+        #[doc = "NRST pin mode currently in effect (mirror of OB.USER.RST_MODE)."]
         #[inline(always)]
-        pub fn set_cfgrstt(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 5usize)) | (((val as u32) & 0x03) << 5usize);
+        pub fn set_cfgrstt(&mut self, val: super::vals::RstPinMode) {
+            self.0 = (self.0 & !(0x03 << 5usize)) | (((val.to_bits() as u32) & 0x03) << 5usize);
         }
-        #[doc = "DATA0."]
+        #[doc = "Free user data byte 0 (mirror of OB.DATA0)."]
         #[inline(always)]
         pub const fn data0(&self) -> u8 {
             let val = (self.0 >> 10usize) & 0xff;
             val as u8
         }
-        #[doc = "DATA0."]
+        #[doc = "Free user data byte 0 (mirror of OB.DATA0)."]
         #[inline(always)]
         pub fn set_data0(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 10usize)) | (((val as u32) & 0xff) << 10usize);
         }
-        #[doc = "DATA1."]
+        #[doc = "Free user data byte 1 (mirror of OB.DATA1)."]
         #[inline(always)]
         pub const fn data1(&self) -> u8 {
             let val = (self.0 >> 18usize) & 0xff;
             val as u8
         }
-        #[doc = "DATA1."]
+        #[doc = "Free user data byte 1 (mirror of OB.DATA1)."]
         #[inline(always)]
         pub fn set_data1(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 18usize)) | (((val as u32) & 0xff) << 18usize);
@@ -629,6 +629,103 @@ pub mod regs {
         #[inline(always)]
         fn default() -> Wpr {
             Wpr(0)
+        }
+    }
+}
+pub mod vals {
+    #[doc = "When the independent watchdog turns on after reset."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum IwdgMode {
+        #[doc = "Watchdog starts automatically at power-on."]
+        HARDWARE = 0x0,
+        #[doc = "Watchdog stays off until software enables it."]
+        SOFTWARE = 0x01,
+    }
+    impl IwdgMode {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> IwdgMode {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for IwdgMode {
+        #[inline(always)]
+        fn from(val: u8) -> IwdgMode {
+            IwdgMode::from_bits(val)
+        }
+    }
+    impl From<IwdgMode> for u8 {
+        #[inline(always)]
+        fn from(val: IwdgMode) -> u8 {
+            IwdgMode::to_bits(val)
+        }
+    }
+    #[doc = "Whether entering a low-power mode triggers a system reset."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum PowerModeReset {
+        #[doc = "Reset the chip on entering the mode."]
+        RESET = 0x0,
+        #[doc = "Keep running on entering the mode."]
+        NO_RESET = 0x01,
+    }
+    impl PowerModeReset {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> PowerModeReset {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for PowerModeReset {
+        #[inline(always)]
+        fn from(val: u8) -> PowerModeReset {
+            PowerModeReset::from_bits(val)
+        }
+    }
+    impl From<PowerModeReset> for u8 {
+        #[inline(always)]
+        fn from(val: PowerModeReset) -> u8 {
+            PowerModeReset::to_bits(val)
+        }
+    }
+    #[doc = "NRST pin behavior at power-on. Only the two encodings below are defined; other values are reserved."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum RstPinMode {
+        #[doc = "Enable the external reset pin in its NRST function."]
+        NRST = 0x0,
+        _RESERVED_1 = 0x01,
+        _RESERVED_2 = 0x02,
+        #[doc = "Disable NRST and use the pin as a general-purpose I/O (PA21/PC3/PB7 depending on package)."]
+        GPIO = 0x03,
+    }
+    impl RstPinMode {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> RstPinMode {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for RstPinMode {
+        #[inline(always)]
+        fn from(val: u8) -> RstPinMode {
+            RstPinMode::from_bits(val)
+        }
+    }
+    impl From<RstPinMode> for u8 {
+        #[inline(always)]
+        fn from(val: RstPinMode) -> u8 {
+            RstPinMode::to_bits(val)
         }
     }
 }

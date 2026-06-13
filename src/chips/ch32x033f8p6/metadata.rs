@@ -1,29 +1,46 @@
-include!("../metadata_0033.rs");
+include!("../metadata_0035.rs");
 use crate::metadata::PeripheralRccKernelClock::{Clock, Mux};
+#[path = "../../registers/esig_common.rs"]
+pub mod nv_esig;
+#[path = "../../registers/ob_x0.rs"]
+pub mod nv_ob;
+pub static NV_STRUCTS: &[NvStructBinding] = &[
+    NvStructBinding {
+        region: "OPT",
+        structs: &[NvStruct {
+            name: "OB",
+            offset: 0x0,
+            kind: "ob",
+            version: "x0",
+            block: "OB",
+            defaults: &[("NRDPR", 90), ("NUSER", 0), ("RDPR", 165), ("USER", 255)],
+            ir: &nv_ob::DESCRIPTOR,
+        }],
+    },
+    NvStructBinding {
+        region: "VND",
+        structs: &[NvStruct {
+            name: "ESIG",
+            offset: 0xe0,
+            kind: "esig",
+            version: "common",
+            block: "ESIG",
+            defaults: &[],
+            ir: &nv_esig::DESCRIPTOR,
+        }],
+    },
+];
 pub static METADATA: Metadata = Metadata {
     name: "CH32X033F8P6",
     family: "QingKe RISC-V-based, dedicated architecture or special IO",
     line: "Connectivity (USB)",
-    memory: &[
-        MemoryRegion {
-            name: "BANK_1",
-            kind: MemoryRegionKind::Flash,
-            address: 0x0,
-            size: 63488,
-            settings: Some(FlashSettings {
-                erase_size: 1024,
-                write_size: 256,
-                erase_value: 255,
-            }),
-        },
-        MemoryRegion {
-            name: "SRAM",
-            kind: MemoryRegionKind::Ram,
-            address: 0x20000000,
-            size: 20480,
-            settings: None,
-        },
-    ],
+    memory: crate::memory_select::MEMORY,
+    nv_structs: NV_STRUCTS,
+    memory_options: &[MemoryOption {
+        name: "default",
+        region_sizes: &[("RAM", 20480), ("USR_1", 63488)],
+    }],
+    default_memory_option: "default",
     peripherals: PERIPHERALS,
     // nvic_priority_bits: 0,
     interrupts: INTERRUPTS,

@@ -1,0 +1,7 @@
+OPT 0x1ffff800 256 rw- flash
+VND 0x1ffff700 256 r-- flash
+ITCM 0x200a0000 131072 rwx ram
+DTCM 0x200c0000 262144 rwx ram
+SRAM_SHARED 0x20100000 524288 rwx ram
+USR_1 0x08000000 983040 rwx flash
+SYS_1 0x1fff0000 57344 r-x flash

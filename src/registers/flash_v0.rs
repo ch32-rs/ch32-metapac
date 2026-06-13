@@ -1,287 +1,473 @@
 use crate::metadata::ir::*;
 pub(crate) static REGISTERS: IR = IR {
-    blocks: &[Block {
-        name: "Flash",
-        extends: None,
-        description: Some("FLASH."),
-        items: &[
-            BlockItem {
-                name: "actlr",
-                description: Some("Flash key register."),
-                array: None,
-                byte_offset: 0x0,
-                inner: BlockItemInner::Register(Register {
-                    access: Access::ReadWrite,
-                    bit_size: 32,
-                    fieldset: Some("Actlr"),
-                }),
-            },
-            BlockItem {
-                name: "keyr",
-                description: Some("Flash key register."),
-                array: None,
-                byte_offset: 0x4,
-                inner: BlockItemInner::Register(Register {
-                    access: Access::Write,
-                    bit_size: 32,
-                    fieldset: Some("Keyr"),
-                }),
-            },
-            BlockItem {
-                name: "obkeyr",
-                description: Some("Flash option key register."),
-                array: None,
-                byte_offset: 0x8,
-                inner: BlockItemInner::Register(Register {
-                    access: Access::Write,
-                    bit_size: 32,
-                    fieldset: Some("Obkeyr"),
-                }),
-            },
-            BlockItem {
-                name: "statr",
-                description: Some("Status register."),
-                array: None,
-                byte_offset: 0xc,
-                inner: BlockItemInner::Register(Register {
-                    access: Access::ReadWrite,
-                    bit_size: 32,
-                    fieldset: Some("Statr"),
-                }),
-            },
-            BlockItem {
-                name: "ctlr",
-                description: Some("Control register."),
-                array: None,
-                byte_offset: 0x10,
-                inner: BlockItemInner::Register(Register {
-                    access: Access::ReadWrite,
-                    bit_size: 32,
-                    fieldset: Some("Ctlr"),
-                }),
-            },
-            BlockItem {
-                name: "addr",
-                description: Some("Flash address register."),
-                array: None,
-                byte_offset: 0x14,
-                inner: BlockItemInner::Register(Register {
-                    access: Access::Write,
-                    bit_size: 32,
-                    fieldset: Some("Addr"),
-                }),
-            },
-            BlockItem {
-                name: "obr",
-                description: Some("Option byte register."),
-                array: None,
-                byte_offset: 0x1c,
-                inner: BlockItemInner::Register(Register {
-                    access: Access::Read,
-                    bit_size: 32,
-                    fieldset: Some("Obr"),
-                }),
-            },
-            BlockItem {
-                name: "wpr",
-                description: Some("Write protection register."),
-                array: None,
-                byte_offset: 0x20,
-                inner: BlockItemInner::Register(Register {
-                    access: Access::Read,
-                    bit_size: 32,
-                    fieldset: Some("Wpr"),
-                }),
-            },
-            BlockItem {
-                name: "modekeyr",
-                description: Some("Mode select register."),
-                array: None,
-                byte_offset: 0x24,
-                inner: BlockItemInner::Register(Register {
-                    access: Access::Write,
-                    bit_size: 32,
-                    fieldset: Some("Modekeyr"),
-                }),
-            },
-            BlockItem {
-                name: "boot_modekeyp",
-                description: Some("Boot mode key register."),
-                array: None,
-                byte_offset: 0x28,
-                inner: BlockItemInner::Register(Register {
-                    access: Access::Write,
-                    bit_size: 32,
-                    fieldset: Some("BootModekeyp"),
-                }),
-            },
-        ],
-    }],
+    blocks: &[
+        Block {
+            name: "Flash",
+            extends: None,
+            description: Some(
+                "FLASH.",
+            ),
+            items: &[
+                BlockItem {
+                    name: "actlr",
+                    description: Some(
+                        "Flash key register.",
+                    ),
+                    array: None,
+                    byte_offset: 0x0,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Actlr",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "keyr",
+                    description: Some(
+                        "Flash key register.",
+                    ),
+                    array: None,
+                    byte_offset: 0x4,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::Write,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Keyr",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "obkeyr",
+                    description: Some(
+                        "Flash option key register.",
+                    ),
+                    array: None,
+                    byte_offset: 0x8,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::Write,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Obkeyr",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "statr",
+                    description: Some(
+                        "Status register.",
+                    ),
+                    array: None,
+                    byte_offset: 0xc,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Statr",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "ctlr",
+                    description: Some(
+                        "Control register.",
+                    ),
+                    array: None,
+                    byte_offset: 0x10,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Ctlr",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "addr",
+                    description: Some(
+                        "Flash address register.",
+                    ),
+                    array: None,
+                    byte_offset: 0x14,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::Write,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Addr",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "obr",
+                    description: Some(
+                        "Option byte register.",
+                    ),
+                    array: None,
+                    byte_offset: 0x1c,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::Read,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Obr",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "wpr",
+                    description: Some(
+                        "Write protection register.",
+                    ),
+                    array: None,
+                    byte_offset: 0x20,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::Read,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Wpr",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "modekeyr",
+                    description: Some(
+                        "Mode select register.",
+                    ),
+                    array: None,
+                    byte_offset: 0x24,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::Write,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Modekeyr",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "boot_modekeyp",
+                    description: Some(
+                        "Boot mode key register.",
+                    ),
+                    array: None,
+                    byte_offset: 0x28,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::Write,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "BootModekeyp",
+                            ),
+                        },
+                    ),
+                },
+            ],
+        },
+    ],
     fieldsets: &[
         FieldSet {
             name: "Actlr",
             extends: None,
-            description: Some("Flash key register."),
+            description: Some(
+                "Flash key register.",
+            ),
             bit_size: 32,
-            fields: &[Field {
-                name: "latency",
-                description: Some("Number of FLASH wait states."),
-                bit_offset: BitOffset::Regular(RegularBitOffset { offset: 0 }),
-                bit_size: 2,
-                array: None,
-                enumm: None,
-            }],
+            fields: &[
+                Field {
+                    name: "latency",
+                    description: Some(
+                        "Number of FLASH wait states.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 2,
+                    array: None,
+                    enumm: None,
+                },
+            ],
         },
         FieldSet {
             name: "Addr",
             extends: None,
-            description: Some("Flash address register."),
+            description: Some(
+                "Flash address register.",
+            ),
             bit_size: 32,
-            fields: &[Field {
-                name: "addr",
-                description: Some("Flash Address."),
-                bit_offset: BitOffset::Regular(RegularBitOffset { offset: 0 }),
-                bit_size: 32,
-                array: None,
-                enumm: None,
-            }],
+            fields: &[
+                Field {
+                    name: "addr",
+                    description: Some(
+                        "Flash Address.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 32,
+                    array: None,
+                    enumm: None,
+                },
+            ],
         },
         FieldSet {
             name: "BootModekeyp",
             extends: None,
-            description: Some("Boot mode key register."),
+            description: Some(
+                "Boot mode key register.",
+            ),
             bit_size: 32,
-            fields: &[Field {
-                name: "modekeyr",
-                description: Some("Boot mode key."),
-                bit_offset: BitOffset::Regular(RegularBitOffset { offset: 0 }),
-                bit_size: 32,
-                array: None,
-                enumm: None,
-            }],
+            fields: &[
+                Field {
+                    name: "modekeyr",
+                    description: Some(
+                        "Boot mode key.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 32,
+                    array: None,
+                    enumm: None,
+                },
+            ],
         },
         FieldSet {
             name: "Ctlr",
             extends: None,
-            description: Some("Control register."),
+            description: Some(
+                "Control register.",
+            ),
             bit_size: 32,
             fields: &[
                 Field {
                     name: "pg",
-                    description: Some("Programming."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 0 }),
+                    description: Some(
+                        "Programming.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
                     bit_size: 1,
                     array: None,
                     enumm: None,
                 },
                 Field {
                     name: "per",
-                    description: Some("Page Erase."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 1 }),
+                    description: Some(
+                        "Page Erase.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 1,
+                        },
+                    ),
                     bit_size: 1,
                     array: None,
                     enumm: None,
                 },
                 Field {
                     name: "mer",
-                    description: Some("Mass Erase."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 2 }),
+                    description: Some(
+                        "Mass Erase.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 2,
+                        },
+                    ),
                     bit_size: 1,
                     array: None,
                     enumm: None,
                 },
                 Field {
                     name: "obpg",
-                    description: Some("Option byte programming."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 4 }),
+                    description: Some(
+                        "Option byte programming.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 4,
+                        },
+                    ),
                     bit_size: 1,
                     array: None,
                     enumm: None,
                 },
                 Field {
                     name: "ober",
-                    description: Some("Option byte erase."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 5 }),
+                    description: Some(
+                        "Option byte erase.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 5,
+                        },
+                    ),
                     bit_size: 1,
                     array: None,
                     enumm: None,
                 },
                 Field {
                     name: "strt",
-                    description: Some("Start."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 6 }),
+                    description: Some(
+                        "Start.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 6,
+                        },
+                    ),
                     bit_size: 1,
                     array: None,
                     enumm: None,
                 },
                 Field {
                     name: "lock",
-                    description: Some("Lock."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 7 }),
+                    description: Some(
+                        "Lock.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 7,
+                        },
+                    ),
                     bit_size: 1,
                     array: None,
                     enumm: None,
                 },
                 Field {
                     name: "obwre",
-                    description: Some("Option bytes write enable."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 9 }),
+                    description: Some(
+                        "Option bytes write enable.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 9,
+                        },
+                    ),
                     bit_size: 1,
                     array: None,
                     enumm: None,
                 },
                 Field {
                     name: "errie",
-                    description: Some("Error interrupt enable."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 10 }),
+                    description: Some(
+                        "Error interrupt enable.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 10,
+                        },
+                    ),
                     bit_size: 1,
                     array: None,
                     enumm: None,
                 },
                 Field {
                     name: "eopie",
-                    description: Some("End of operation interrupt enable."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 12 }),
+                    description: Some(
+                        "End of operation interrupt enable.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 12,
+                        },
+                    ),
                     bit_size: 1,
                     array: None,
                     enumm: None,
                 },
                 Field {
                     name: "flock",
-                    description: Some("Fast programmable lock."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 15 }),
+                    description: Some(
+                        "Fast programmable lock.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 15,
+                        },
+                    ),
                     bit_size: 1,
                     array: None,
                     enumm: None,
                 },
                 Field {
                     name: "page_pg",
-                    description: Some("Fast programming."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 16 }),
+                    description: Some(
+                        "Fast programming.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 16,
+                        },
+                    ),
                     bit_size: 1,
                     array: None,
                     enumm: None,
                 },
                 Field {
                     name: "page_er",
-                    description: Some("Fast erase."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 17 }),
+                    description: Some(
+                        "Fast erase.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 17,
+                        },
+                    ),
                     bit_size: 1,
                     array: None,
                     enumm: None,
                 },
                 Field {
                     name: "bufload",
-                    description: Some("Buffer load."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 18 }),
+                    description: Some(
+                        "Buffer load.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 18,
+                        },
+                    ),
                     bit_size: 1,
                     array: None,
                     enumm: None,
                 },
                 Field {
                     name: "bufrst",
-                    description: Some("Buffer reset."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 19 }),
+                    description: Some(
+                        "Buffer reset.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 19,
+                        },
+                    ),
                     bit_size: 1,
                     array: None,
                     enumm: None,
@@ -291,111 +477,199 @@ pub(crate) static REGISTERS: IR = IR {
         FieldSet {
             name: "Keyr",
             extends: None,
-            description: Some("Flash key register."),
+            description: Some(
+                "Flash key register.",
+            ),
             bit_size: 32,
-            fields: &[Field {
-                name: "keyr",
-                description: Some("FPEC key."),
-                bit_offset: BitOffset::Regular(RegularBitOffset { offset: 0 }),
-                bit_size: 32,
-                array: None,
-                enumm: None,
-            }],
+            fields: &[
+                Field {
+                    name: "keyr",
+                    description: Some(
+                        "FPEC key.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 32,
+                    array: None,
+                    enumm: None,
+                },
+            ],
         },
         FieldSet {
             name: "Modekeyr",
             extends: None,
-            description: Some("Mode select register."),
+            description: Some(
+                "Mode select register.",
+            ),
             bit_size: 32,
-            fields: &[Field {
-                name: "modekeyr",
-                description: Some("Mode select."),
-                bit_offset: BitOffset::Regular(RegularBitOffset { offset: 0 }),
-                bit_size: 32,
-                array: None,
-                enumm: None,
-            }],
+            fields: &[
+                Field {
+                    name: "modekeyr",
+                    description: Some(
+                        "Mode select.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 32,
+                    array: None,
+                    enumm: None,
+                },
+            ],
         },
         FieldSet {
             name: "Obkeyr",
             extends: None,
-            description: Some("Flash option key register."),
+            description: Some(
+                "Flash option key register.",
+            ),
             bit_size: 32,
-            fields: &[Field {
-                name: "optkey",
-                description: Some("Option byte key."),
-                bit_offset: BitOffset::Regular(RegularBitOffset { offset: 0 }),
-                bit_size: 32,
-                array: None,
-                enumm: None,
-            }],
+            fields: &[
+                Field {
+                    name: "optkey",
+                    description: Some(
+                        "Option byte key.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 32,
+                    array: None,
+                    enumm: None,
+                },
+            ],
         },
         FieldSet {
             name: "Obr",
             extends: None,
-            description: Some("Option byte register."),
+            description: Some(
+                "Option byte register — read-only mirror of the Option Bytes loaded from flash at reset.",
+            ),
             bit_size: 32,
             fields: &[
                 Field {
                     name: "oberr",
-                    description: Some("Option byte error."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 0 }),
+                    description: Some(
+                        "Option byte integrity error — a value/complement pair did not match when loading.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
                     bit_size: 1,
                     array: None,
                     enumm: None,
                 },
                 Field {
                     name: "rdprt",
-                    description: Some("Read protection."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 1 }),
+                    description: Some(
+                        "Read protection is currently active.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 1,
+                        },
+                    ),
                     bit_size: 1,
                     array: None,
                     enumm: None,
                 },
                 Field {
                     name: "iwdg_sw",
-                    description: Some("IWDG_SW."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 2 }),
+                    description: Some(
+                        "Independent watchdog start mode currently in effect.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 2,
+                        },
+                    ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "stop_rst",
-                    description: Some("STOP_RST."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 3 }),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "IwdgMode",
+                    ),
                 },
                 Field {
                     name: "standy_rst",
-                    description: Some("STANDY_RST."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 4 }),
+                    description: Some(
+                        "Standby-mode reset behavior currently in effect.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 4,
+                        },
+                    ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "PowerModeReset",
+                    ),
                 },
                 Field {
-                    name: "cfg_rst_mode",
-                    description: Some("CFG_RST_MODE."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 5 }),
+                    name: "rst_mode",
+                    description: Some(
+                        "NRST pin mode currently in effect.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 5,
+                        },
+                    ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "RstPinMode",
+                    ),
+                },
+                Field {
+                    name: "statr_mode",
+                    description: Some(
+                        "Power-on boot source currently in effect — loaded from OB.USER.START_MODE; copied into STATR.MODE (bit 14) at reset.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 7,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: Some(
+                        "BootMode",
+                    ),
                 },
                 Field {
                     name: "data0",
-                    description: Some("DATA0."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 10 }),
+                    description: Some(
+                        "Free user data byte 0, mirrored from OB.DATA0.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 10,
+                        },
+                    ),
                     bit_size: 8,
                     array: None,
                     enumm: None,
                 },
                 Field {
                     name: "data1",
-                    description: Some("DATA1."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 18 }),
+                    description: Some(
+                        "Free user data byte 1, mirrored from OB.DATA1.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 18,
+                        },
+                    ),
                     bit_size: 8,
                     array: None,
                     enumm: None,
@@ -405,45 +679,77 @@ pub(crate) static REGISTERS: IR = IR {
         FieldSet {
             name: "Statr",
             extends: None,
-            description: Some("Status register."),
+            description: Some(
+                "Status register.",
+            ),
             bit_size: 32,
             fields: &[
                 Field {
                     name: "bsy",
-                    description: Some("Busy."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 0 }),
+                    description: Some(
+                        "Busy.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
                     bit_size: 1,
                     array: None,
                     enumm: None,
                 },
                 Field {
                     name: "wrprterr",
-                    description: Some("Write protection error."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 4 }),
+                    description: Some(
+                        "Write protection error.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 4,
+                        },
+                    ),
                     bit_size: 1,
                     array: None,
                     enumm: None,
                 },
                 Field {
                     name: "eop",
-                    description: Some("End of operation."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 5 }),
+                    description: Some(
+                        "End of operation.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 5,
+                        },
+                    ),
                     bit_size: 1,
                     array: None,
                     enumm: None,
                 },
                 Field {
                     name: "boot_mode",
-                    description: Some("BOOT mode."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 14 }),
+                    description: Some(
+                        "BOOT mode.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 14,
+                        },
+                    ),
                     bit_size: 1,
                     array: None,
                     enumm: None,
                 },
                 Field {
                     name: "boot_lock",
-                    description: Some("BOOT lock."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 15 }),
+                    description: Some(
+                        "BOOT lock.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 15,
+                        },
+                    ),
                     bit_size: 1,
                     array: None,
                     enumm: None,
@@ -453,17 +759,134 @@ pub(crate) static REGISTERS: IR = IR {
         FieldSet {
             name: "Wpr",
             extends: None,
-            description: Some("Write protection register."),
+            description: Some(
+                "Write protection register.",
+            ),
             bit_size: 32,
-            fields: &[Field {
-                name: "wrp",
-                description: Some("Write protect."),
-                bit_offset: BitOffset::Regular(RegularBitOffset { offset: 0 }),
-                bit_size: 32,
-                array: None,
-                enumm: None,
-            }],
+            fields: &[
+                Field {
+                    name: "wrp",
+                    description: Some(
+                        "Write protect.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 32,
+                    array: None,
+                    enumm: None,
+                },
+            ],
         },
     ],
-    enums: &[],
+    enums: &[
+        Enum {
+            name: "BootMode",
+            description: Some(
+                "Which flash region the chip boots from at power-on.",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "USER_FLASH",
+                    description: Some(
+                        "Boot from user application flash.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "SYSTEM_FLASH",
+                    description: Some(
+                        "Boot from the WCH ISP bootloader in system flash.",
+                    ),
+                    value: 1,
+                },
+            ],
+        },
+        Enum {
+            name: "IwdgMode",
+            description: Some(
+                "When the independent watchdog turns on after reset.",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "HARDWARE",
+                    description: Some(
+                        "Watchdog starts automatically at power-on.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "SOFTWARE",
+                    description: Some(
+                        "Watchdog stays off until software enables it.",
+                    ),
+                    value: 1,
+                },
+            ],
+        },
+        Enum {
+            name: "PowerModeReset",
+            description: Some(
+                "Whether entering a low-power mode triggers a system reset.",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "RESET",
+                    description: Some(
+                        "Reset the chip on entering the mode.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "NO_RESET",
+                    description: Some(
+                        "Keep running on entering the mode.",
+                    ),
+                    value: 1,
+                },
+            ],
+        },
+        Enum {
+            name: "RstPinMode",
+            description: Some(
+                "NRST pin behavior at power-on.",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "NRST_128US",
+                    description: Some(
+                        "Enable NRST with a 128us glitch-filter window at power-on.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "NRST_1MS",
+                    description: Some(
+                        "Enable NRST with a 1ms glitch-filter window at power-on.",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "NRST_12MS",
+                    description: Some(
+                        "Enable NRST with a 12ms glitch-filter window at power-on.",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "GPIO",
+                    description: Some(
+                        "Disable NRST and use PD7 as a general-purpose I/O.",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+    ],
 };

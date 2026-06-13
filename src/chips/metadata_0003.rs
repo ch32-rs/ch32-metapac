@@ -4225,6 +4225,67 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
     },
     Peripheral {
+        name: "USBFS",
+        address: 0x50000000,
+        registers: Some(PeripheralRegisters {
+            kind: "usbfs",
+            version: "h4",
+            block: "USB_OTG_FS",
+            ir: &usbfs::REGISTERS,
+        }),
+        rcc: Some(PeripheralRcc {
+            bus_clock: "HCLK",
+            kernel_clock: Clock("HCLK"),
+            enable: Some(PeripheralRccRegister {
+                register: "HBPCENR",
+                field: "OTGFSEN",
+            }),
+            reset: Some(PeripheralRccRegister {
+                register: "HBRSTR",
+                field: "OTGFSRST",
+            }),
+            stop_mode: StopMode::Stop1,
+        }),
+        remap: None,
+        pins: &[
+            PeripheralPin {
+                pin: "PA9",
+                signal: "VBUS",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA10",
+                signal: "ID",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA11",
+                signal: "DM",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA12",
+                signal: "DP",
+                remap: None,
+                af: None,
+            },
+        ],
+        dma_channels: &[],
+        interrupts: &[
+            PeripheralInterrupt {
+                signal: "GLOBAL",
+                interrupt: "USBFS",
+            },
+            PeripheralInterrupt {
+                signal: "WAKEUP",
+                interrupt: "USBFSWAKEUP",
+            },
+        ],
+    },
+    Peripheral {
         name: "USBSS",
         address: 0x40034000,
         registers: Some(PeripheralRegisters {
@@ -4261,6 +4322,55 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             PeripheralInterrupt {
                 signal: "WAKEUP",
                 interrupt: "USBSSWAKEUP",
+            },
+        ],
+    },
+    Peripheral {
+        name: "USBPD",
+        address: 0x40024400,
+        registers: Some(PeripheralRegisters {
+            kind: "usbpd",
+            version: "h4",
+            block: "USBPD",
+            ir: &usbpd::REGISTERS,
+        }),
+        rcc: Some(PeripheralRcc {
+            bus_clock: "HCLK",
+            kernel_clock: Clock("HCLK"),
+            enable: Some(PeripheralRccRegister {
+                register: "HBPCENR",
+                field: "USBPDEN",
+            }),
+            reset: Some(PeripheralRccRegister {
+                register: "HBRSTR",
+                field: "USBPDRST",
+            }),
+            stop_mode: StopMode::Stop1,
+        }),
+        remap: None,
+        pins: &[
+            PeripheralPin {
+                pin: "PB3",
+                signal: "CC1",
+                remap: None,
+                af: Some(4),
+            },
+            PeripheralPin {
+                pin: "PB4",
+                signal: "CC2",
+                remap: None,
+                af: Some(4),
+            },
+        ],
+        dma_channels: &[],
+        interrupts: &[
+            PeripheralInterrupt {
+                signal: "GLOBAL",
+                interrupt: "USBPD",
+            },
+            PeripheralInterrupt {
+                signal: "WAKEUP",
+                interrupt: "USBPDWAKEUP",
             },
         ],
     },
@@ -4792,8 +4902,12 @@ pub mod systick;
 pub mod timer;
 #[path = "../registers/usart_h4.rs"]
 pub mod usart;
+#[path = "../registers/usbfs_h4.rs"]
+pub mod usbfs;
 #[path = "../registers/usbhs_h4.rs"]
 pub mod usbhs;
+#[path = "../registers/usbpd_h4.rs"]
+pub mod usbpd;
 #[path = "../registers/usbss_h4.rs"]
 pub mod usbss;
 #[path = "../registers/wwdg_common.rs"]

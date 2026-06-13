@@ -180,6 +180,12 @@ pub mod timer;
 #[path = "../../peripherals/usart_common.rs"]
 pub mod usart;
 pub const CORE_INDEX: usize = 0;
+#[deprecated(note = "use ch32_metapac::MEMORY_LAYOUT instead")]
 pub const FLASH_BASE: usize = 0;
+#[deprecated(note = "use ch32_metapac::MEMORY_LAYOUT instead")]
 pub const FLASH_SIZE: usize = 16384;
+#[deprecated(note = "use ch32_metapac::MEMORY_LAYOUT instead")]
 pub const WRITE_SIZE: usize = 64;
+pub const MEMORY_LAYOUT: crate::mem_layout::MemoryLayout = crate::mem_layout::MemoryLayout {
+    regions: crate::memory_select::MEMORY,
+};

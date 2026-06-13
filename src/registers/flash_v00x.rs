@@ -550,14 +550,14 @@ pub(crate) static REGISTERS: IR = IR {
             name: "Obr",
             extends: None,
             description: Some(
-                "Option byte register.",
+                "Option byte register — read-only mirror of the Option Bytes loaded from flash at reset.",
             ),
             bit_size: 32,
             fields: &[
                 Field {
                     name: "oberr",
                     description: Some(
-                        "Option byte error.",
+                        "Option byte integrity error — a value/complement pair did not match when loading.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -571,7 +571,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "rdprt",
                     description: Some(
-                        "Read protection.",
+                        "Read protection is currently active.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -585,7 +585,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "iwdg_sw",
                     description: Some(
-                        "IWDG_SW.",
+                        "Independent watchdog start mode currently in effect.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -594,12 +594,14 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "IwdgMode",
+                    ),
                 },
                 Field {
                     name: "standy_rst",
                     description: Some(
-                        "STANDY_RST.",
+                        "Standby-mode reset behavior currently in effect.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -608,12 +610,14 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "PowerModeReset",
+                    ),
                 },
                 Field {
-                    name: "cfgrstt",
+                    name: "rst_mode",
                     description: Some(
-                        "Config reset delay time.",
+                        "NRST pin mode currently in effect.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -622,12 +626,14 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "RstPinMode",
+                    ),
                 },
                 Field {
                     name: "statr_mode",
                     description: Some(
-                        "Power-on startup mode: 1: Startup from BOOT area; 0: Startup from user area.",
+                        "Power-on boot source currently in effect — loaded from OB.USER.START_MODE; copied into STATR.MODE (bit 14) at reset.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -636,12 +642,14 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "BootMode",
+                    ),
                 },
                 Field {
                     name: "data0",
                     description: Some(
-                        "DATA0.",
+                        "Free user data byte 0, mirrored from OB.DATA0.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -655,7 +663,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "data1",
                     description: Some(
-                        "DATA1.",
+                        "Free user data byte 1, mirrored from OB.DATA1.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -829,5 +837,112 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
     ],
-    enums: &[],
+    enums: &[
+        Enum {
+            name: "BootMode",
+            description: Some(
+                "Which flash region the chip boots from at power-on.",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "USER_FLASH",
+                    description: Some(
+                        "Boot from user application flash.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "SYSTEM_FLASH",
+                    description: Some(
+                        "Boot from the WCH ISP bootloader in system flash.",
+                    ),
+                    value: 1,
+                },
+            ],
+        },
+        Enum {
+            name: "IwdgMode",
+            description: Some(
+                "When the independent watchdog turns on after reset.",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "HARDWARE",
+                    description: Some(
+                        "Watchdog starts automatically at power-on.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "SOFTWARE",
+                    description: Some(
+                        "Watchdog stays off until software enables it.",
+                    ),
+                    value: 1,
+                },
+            ],
+        },
+        Enum {
+            name: "PowerModeReset",
+            description: Some(
+                "Whether entering a low-power mode triggers a system reset.",
+            ),
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "RESET",
+                    description: Some(
+                        "Reset the chip on entering the mode.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "NO_RESET",
+                    description: Some(
+                        "Keep running on entering the mode.",
+                    ),
+                    value: 1,
+                },
+            ],
+        },
+        Enum {
+            name: "RstPinMode",
+            description: Some(
+                "NRST pin behavior at power-on.",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "NRST_128US",
+                    description: Some(
+                        "Enable NRST with a 128us glitch-filter window at power-on.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "NRST_1MS",
+                    description: Some(
+                        "Enable NRST with a 1ms glitch-filter window at power-on.",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "NRST_12MS",
+                    description: Some(
+                        "Enable NRST with a 12ms glitch-filter window at power-on.",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "GPIO",
+                    description: Some(
+                        "Disable NRST and use PD7 as a general-purpose I/O.",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+    ],
 };

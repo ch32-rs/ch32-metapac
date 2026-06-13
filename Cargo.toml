@@ -29,12 +29,17 @@ flavors = [
     { regex_feature = "ch32v3.*", target = "riscv32imacf-unknown-none-elf" },
     { regex_feature = "ch32x0.*", target = "riscv32imac-unknown-none-elf" },
     { regex_feature = "ch32l1.*", target = "riscv32imac-unknown-none-elf" },
+    { regex_feature = "ch32f1.*", target = "thumbv7m-none-eabi" },
 ]
 
 [dependencies]
-riscv = "0.12.0"
-# riscv-rt = { version = "0.12.2", optional = true }
 vcell = "0.1"
+
+[target.'cfg(target_arch = "riscv32")'.dependencies]
+riscv = "0.12.0"
+
+[target.'cfg(target_arch = "arm")'.dependencies]
+cortex-m = "0.7"
 
 [features]
 default = ["pac"]
@@ -52,6 +57,9 @@ rt = []
 memory-x = []
 
 # Chip-selection features
+ch32f103c6t6 = []
+ch32f103c8t6 = []
+ch32f103r8t6 = []
 ch32h415reu6-qingke-v3f = []
 ch32h415reu6-qingke-v5f = []
 ch32h416rdu6-qingke-v3f = []
@@ -121,3 +129,15 @@ ch32x035g8u6 = []
 ch32x035r8t6 = []
 ch641 = []
 ch643 = []
+
+memory-config-c128_r192 = []
+memory-config-c128_r64 = []
+memory-config-c144_r48 = []
+memory-config-c160_r32 = []
+memory-config-c192_r128 = []
+memory-config-c224_r96 = []
+memory-config-c256_r64 = []
+memory-config-c288_r32 = []
+
+memory-split-sys = ["memory-x"]
+memory-split-usr = ["memory-x"]
