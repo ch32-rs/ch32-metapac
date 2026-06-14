@@ -109,7 +109,7 @@ pub static MEMORY: &[MemoryRegion] = &[
         ],
         access: Some(Access {
             read: true,
-            write: false,
+            write: true,
             execute: true,
         }),
     },
