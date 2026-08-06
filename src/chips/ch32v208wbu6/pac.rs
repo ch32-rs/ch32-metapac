@@ -311,6 +311,7 @@ pub const DMA1: dma::Dma = unsafe { dma::Dma::from_ptr(0x4002_0000usize as _) };
 pub const RCC: rcc::Rcc = unsafe { rcc::Rcc::from_ptr(0x4002_1000usize as _) };
 pub const FLASH: flash::Flash = unsafe { flash::Flash::from_ptr(0x4002_2000usize as _) };
 pub const EXTEND: extend::Extend = unsafe { extend::Extend::from_ptr(0x4002_3800usize as _) };
+pub const OPA: opa::Opa = unsafe { opa::Opa::from_ptr(0x4002_3804usize as _) };
 pub const BLE_BB: blebb::BleBb = unsafe { blebb::BleBb::from_ptr(0x4002_4100usize as _) };
 pub const BLE_LLE: blelle::BleLle = unsafe { blelle::BleLle::from_ptr(0x4002_4200usize as _) };
 pub const BLE_AES: bleaes::BleAes = unsafe { bleaes::BleAes::from_ptr(0x4002_4300usize as _) };
@@ -354,6 +355,8 @@ pub mod flash;
 pub mod gpio;
 #[path = "../../peripherals/i2c_v3.rs"]
 pub mod i2c;
+#[path = "../../peripherals/opa_v3.rs"]
+pub mod opa;
 #[path = "../../peripherals/pfic_rv4.rs"]
 pub mod pfic;
 #[path = "../../peripherals/rcc_v3.rs"]

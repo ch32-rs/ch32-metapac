@@ -3844,6 +3844,166 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             },
         ],
     },
+    Peripheral {
+        name: "OPA",
+        address: 0x40023804,
+        registers: Some(PeripheralRegisters {
+            kind: "opa",
+            version: "v3",
+            block: "OPA",
+            ir: &opa::REGISTERS,
+        }),
+        rcc: None,
+        remap: None,
+        pins: &[
+            PeripheralPin {
+                pin: "PB15",
+                signal: "OPA1_CH0P",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB0",
+                signal: "OPA1_CH1P",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB11",
+                signal: "OPA1_CH0N",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA6",
+                signal: "OPA1_CH1N",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA3",
+                signal: "OPA1_OUT0",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PE15",
+                signal: "OPA1_OUT1",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB14",
+                signal: "OPA2_CH0P",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA7",
+                signal: "OPA2_CH1P",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB10",
+                signal: "OPA2_CH0N",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA5",
+                signal: "OPA2_CH1N",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA2",
+                signal: "OPA2_OUT0",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PE14",
+                signal: "OPA2_OUT1",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB13",
+                signal: "OPA3_CH0P",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC5",
+                signal: "OPA3_CH1P",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB2",
+                signal: "OPA3_CH0N",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC2",
+                signal: "OPA3_CH1N",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA1",
+                signal: "OPA3_OUT0",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PE7",
+                signal: "OPA3_OUT1",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB12",
+                signal: "OPA4_CH0P",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC4",
+                signal: "OPA4_CH1P",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB1",
+                signal: "OPA4_CH0N",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC3",
+                signal: "OPA4_CH1N",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA0",
+                signal: "OPA4_OUT0",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PE8",
+                signal: "OPA4_OUT1",
+                remap: None,
+                af: None,
+            },
+        ],
+        dma_channels: &[],
+        interrupts: &[],
+    },
 ];
 pub(crate) static INTERRUPTS: &[Interrupt] = &[
     Interrupt {
@@ -4343,6 +4503,8 @@ pub mod flash;
 pub mod gpio;
 #[path = "../registers/i2c_v3.rs"]
 pub mod i2c;
+#[path = "../registers/opa_v3.rs"]
+pub mod opa;
 #[path = "../registers/otg_v2.rs"]
 pub mod otg;
 #[path = "../registers/pfic_rv4.rs"]
