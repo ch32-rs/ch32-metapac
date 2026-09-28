@@ -359,7 +359,7 @@ pub(crate) static REGISTERS: IR = IR {
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
-                            bit_size: 16,
+                            bit_size: 32,
                             fieldset: None,
                         },
                     ),

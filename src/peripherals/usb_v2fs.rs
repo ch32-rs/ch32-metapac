@@ -133,7 +133,7 @@ impl Usbd {
     }
     #[doc = "endpoint DMA buffer address."]
     #[inline(always)]
-    pub const fn uep_dma(self, n: usize) -> crate::common::Reg<u16, crate::common::RW> {
+    pub const fn uep_dma(self, n: usize) -> crate::common::Reg<u32, crate::common::RW> {
         assert!(n < 8usize);
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize + n * 4usize) as _) }
     }

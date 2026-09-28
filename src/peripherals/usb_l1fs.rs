@@ -389,14 +389,14 @@ pub mod regs {
         }
         #[doc = "prepared data toggle flag of USB endpoint X transmittal (IN): 0=DATA0, 1=DATA1."]
         #[inline(always)]
-        pub const fn t_tog(&self) -> u8 {
-            let val = (self.0 >> 2usize) & 0x03;
-            val as u8
+        pub const fn t_tog(&self) -> bool {
+            let val = (self.0 >> 2usize) & 0x01;
+            val != 0
         }
         #[doc = "prepared data toggle flag of USB endpoint X transmittal (IN): 0=DATA0, 1=DATA1."]
         #[inline(always)]
-        pub fn set_t_tog(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 2usize)) | (((val as u16) & 0x03) << 2usize);
+        pub fn set_t_tog(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u16) & 0x01) << 2usize);
         }
         #[inline(always)]
         pub const fn t_auto_tog(&self) -> bool {
