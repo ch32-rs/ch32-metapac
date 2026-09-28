@@ -3374,6 +3374,30 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 remap: Some(0),
                 af: None,
             },
+            PeripheralPin {
+                pin: "PB12",
+                signal: "WS",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB13",
+                signal: "CK",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB15",
+                signal: "SD",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC6",
+                signal: "MCK",
+                remap: Some(0),
+                af: None,
+            },
         ],
         dma_channels: &[
             PeripheralDmaChannel {
@@ -3468,6 +3492,60 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             PeripheralPin {
                 pin: "PC12",
                 signal: "MOSI",
+                remap: Some(1),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA15",
+                signal: "WS",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB3",
+                signal: "CK",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB5",
+                signal: "SD",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA9",
+                signal: "SD",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC7",
+                signal: "MCK",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA8",
+                signal: "MCK",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA4",
+                signal: "WS",
+                remap: Some(1),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC10",
+                signal: "CK",
+                remap: Some(1),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC12",
+                signal: "SD",
                 remap: Some(1),
                 af: None,
             },
