@@ -934,27 +934,16 @@ pub mod regs {
         pub fn set_int_busy(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u8) & 0x01) << 3usize);
         }
-        #[doc = "USB device enable and internal pullup resistance enable."]
+        #[doc = "USB test mode selection in host mode."]
         #[inline(always)]
         pub const fn sys_ctrl(&self) -> u8 {
             let val = (self.0 >> 4usize) & 0x03;
             val as u8
         }
-        #[doc = "USB device enable and internal pullup resistance enable."]
+        #[doc = "USB test mode selection in host mode."]
         #[inline(always)]
         pub fn set_sys_ctrl(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 4usize)) | (((val as u8) & 0x03) << 4usize);
-        }
-        #[doc = "USB device internal pullup resistance enable."]
-        #[inline(always)]
-        pub const fn dev_pu_en(&self) -> bool {
-            let val = (self.0 >> 5usize) & 0x01;
-            val != 0
-        }
-        #[doc = "USB device internal pullup resistance enable."]
-        #[inline(always)]
-        pub fn set_dev_pu_en(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u8) & 0x01) << 5usize);
         }
         #[doc = "enable USB low speed: 0=12Mbps, 1=1.5Mbps."]
         #[inline(always)]

@@ -686,7 +686,16 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             },
         ],
         dma_channels: &[],
-        interrupts: &[],
+        interrupts: &[
+            PeripheralInterrupt {
+                signal: "GLOBAL",
+                interrupt: "USBHD",
+            },
+            PeripheralInterrupt {
+                signal: "WKUP",
+                interrupt: "USB_WKUP",
+            },
+        ],
     },
     Peripheral {
         name: "USART3",
@@ -1064,6 +1073,30 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             PeripheralPin {
                 pin: "PB15",
                 signal: "MOSI",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB12",
+                signal: "WS",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB13",
+                signal: "CK",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB15",
+                signal: "SD",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC6",
+                signal: "MCK",
                 remap: Some(0),
                 af: None,
             },

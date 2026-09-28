@@ -264,6 +264,8 @@ pub const TIM2: timer::Gptm = unsafe { timer::Gptm::from_ptr(0x4000_0000usize as
 pub const TIM3: timer::Gptm = unsafe { timer::Gptm::from_ptr(0x4000_0400usize as _) };
 pub const TIM4: timer::Gptm = unsafe { timer::Gptm::from_ptr(0x4000_0800usize as _) };
 pub const RTC: rtc::Rtc = unsafe { rtc::Rtc::from_ptr(0x4000_2800usize as _) };
+pub const WWDG: wwdg::Wwdg = unsafe { wwdg::Wwdg::from_ptr(0x4000_2c00usize as _) };
+pub const IWDG: iwdg::Iwdg = unsafe { iwdg::Iwdg::from_ptr(0x4000_3000usize as _) };
 pub const USART2: usart::Usart = unsafe { usart::Usart::from_ptr(0x4000_4400usize as _) };
 pub const I2C1: i2c::I2c = unsafe { i2c::I2c::from_ptr(0x4000_5400usize as _) };
 pub const AFIO: afio::Afio = unsafe { afio::Afio::from_ptr(0x4001_0000usize as _) };
@@ -280,6 +282,7 @@ pub const USART1: usart::Usart = unsafe { usart::Usart::from_ptr(0x4001_3800usiz
 pub const DMA1: dma::Dma = unsafe { dma::Dma::from_ptr(0x4002_0000usize as _) };
 pub const RCC: rcc::Rcc = unsafe { rcc::Rcc::from_ptr(0x4002_1000usize as _) };
 pub const FLASH: flash::Flash = unsafe { flash::Flash::from_ptr(0x4002_2000usize as _) };
+pub const CRC: crc::Crc = unsafe { crc::Crc::from_ptr(0x4002_3000usize as _) };
 pub const EXTEND: extend::Extend = unsafe { extend::Extend::from_ptr(0x4002_3800usize as _) };
 pub const OPA: opa::Opa = unsafe { opa::Opa::from_ptr(0x4002_3804usize as _) };
 pub const USBFS: usb::Usb = unsafe { usb::Usb::from_ptr(0x5000_0000usize as _) };
@@ -295,6 +298,8 @@ pub fn GPIO(n: usize) -> gpio::Gpio {
 pub mod adc;
 #[path = "../../peripherals/afio_v3.rs"]
 pub mod afio;
+#[path = "../../peripherals/crc_h4.rs"]
+pub mod crc;
 #[path = "../../peripherals/dma_v1.rs"]
 pub mod dma;
 #[path = "../../peripherals/extend_v3.rs"]
@@ -307,6 +312,8 @@ pub mod flash;
 pub mod gpio;
 #[path = "../../peripherals/i2c_v3.rs"]
 pub mod i2c;
+#[path = "../../peripherals/iwdg_v00x.rs"]
+pub mod iwdg;
 #[path = "../../peripherals/opa_v3.rs"]
 pub mod opa;
 #[path = "../../peripherals/pfic_rv4.rs"]
@@ -325,6 +332,8 @@ pub mod timer;
 pub mod usart;
 #[path = "../../peripherals/usb_v2fs.rs"]
 pub mod usb;
+#[path = "../../peripherals/wwdg_v00x.rs"]
+pub mod wwdg;
 pub const CORE_INDEX: usize = 0;
 #[deprecated(note = "use ch32_metapac::MEMORY_LAYOUT instead")]
 pub const FLASH_BASE: usize = 0;

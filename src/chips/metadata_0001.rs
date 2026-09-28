@@ -997,6 +997,30 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 remap: Some(0),
                 af: None,
             },
+            PeripheralPin {
+                pin: "PB12",
+                signal: "WS",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB13",
+                signal: "CK",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB15",
+                signal: "SD",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC6",
+                signal: "MCK",
+                remap: Some(0),
+                af: None,
+            },
         ],
         dma_channels: &[
             PeripheralDmaChannel {
