@@ -1439,8 +1439,8 @@ pub mod vals {
     pub enum EpTxResponse {
         #[doc = "Expect an ACK response."]
         ACK = 0x0,
-        #[doc = "No response expected."]
-        NONE = 0x01,
+        #[doc = "Expect a NYET response."]
+        NYET = 0x01,
         #[doc = "Expect a NAK or busy response."]
         NAK = 0x02,
         #[doc = "Expect a STALL or error response."]

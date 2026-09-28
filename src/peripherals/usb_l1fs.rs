@@ -378,14 +378,14 @@ pub mod regs {
     impl UepCtrl {
         #[doc = "bit mask of handshake response type for USB endpoint X transmittal (IN)."]
         #[inline(always)]
-        pub const fn mask_t_res(&self) -> u8 {
+        pub const fn mask_t_res(&self) -> super::vals::EpTxResponse {
             let val = (self.0 >> 0usize) & 0x03;
-            val as u8
+            super::vals::EpTxResponse::from_bits(val as u8)
         }
         #[doc = "bit mask of handshake response type for USB endpoint X transmittal (IN)."]
         #[inline(always)]
-        pub fn set_mask_t_res(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u16) & 0x03) << 0usize);
+        pub fn set_mask_t_res(&mut self, val: super::vals::EpTxResponse) {
+            self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u16) & 0x03) << 0usize);
         }
         #[doc = "prepared data toggle flag of USB endpoint X transmittal (IN): 0=DATA0, 1=DATA1."]
         #[inline(always)]
@@ -409,14 +409,14 @@ pub mod regs {
         }
         #[doc = "bit mask of handshake response type for USB endpoint X receiving (OUT)."]
         #[inline(always)]
-        pub const fn mask_r_res(&self) -> u8 {
+        pub const fn mask_r_res(&self) -> super::vals::EpRxResponse {
             let val = (self.0 >> 8usize) & 0x03;
-            val as u8
+            super::vals::EpRxResponse::from_bits(val as u8)
         }
         #[doc = "bit mask of handshake response type for USB endpoint X receiving (OUT)."]
         #[inline(always)]
-        pub fn set_mask_r_res(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u16) & 0x03) << 8usize);
+        pub fn set_mask_r_res(&mut self, val: super::vals::EpRxResponse) {
+            self.0 = (self.0 & !(0x03 << 8usize)) | (((val.to_bits() as u16) & 0x03) << 8usize);
         }
         #[doc = "expected data toggle flag of USB endpoint X receiving (OUT): 0=DATA0, 1=DATA1."]
         #[inline(always)]
@@ -1207,14 +1207,14 @@ pub mod regs {
         }
         #[doc = "RO, bit mask of current token PID code received for USB device mode."]
         #[inline(always)]
-        pub const fn mask_token(&self) -> u8 {
+        pub const fn mask_token(&self) -> super::vals::UsbToken {
             let val = (self.0 >> 4usize) & 0x03;
-            val as u8
+            super::vals::UsbToken::from_bits(val as u8)
         }
         #[doc = "RO, bit mask of current token PID code received for USB device mode."]
         #[inline(always)]
-        pub fn set_mask_token(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 4usize)) | (((val as u8) & 0x03) << 4usize);
+        pub fn set_mask_token(&mut self, val: super::vals::UsbToken) {
+            self.0 = (self.0 & !(0x03 << 4usize)) | (((val.to_bits() as u8) & 0x03) << 4usize);
         }
         #[doc = "RO, indicate current USB transfer toggle is OK."]
         #[inline(always)]
@@ -1366,6 +1366,110 @@ pub mod regs {
         #[inline(always)]
         fn default() -> UsbRxLen {
             UsbRxLen(0)
+        }
+    }
+}
+pub mod vals {
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum EpRxResponse {
+        #[doc = "Respond with ACK."]
+        ACK = 0x0,
+        #[doc = "Timeout or no response; used for non-control isochronous transfers."]
+        NONE = 0x01,
+        #[doc = "Respond with NAK or busy."]
+        NAK = 0x02,
+        #[doc = "Respond with STALL or error."]
+        STALL = 0x03,
+    }
+    impl EpRxResponse {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> EpRxResponse {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for EpRxResponse {
+        #[inline(always)]
+        fn from(val: u8) -> EpRxResponse {
+            EpRxResponse::from_bits(val)
+        }
+    }
+    impl From<EpRxResponse> for u8 {
+        #[inline(always)]
+        fn from(val: EpRxResponse) -> u8 {
+            EpRxResponse::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum EpTxResponse {
+        #[doc = "DATA0/DATA1 is ready and an ACK response is expected."]
+        ACK = 0x0,
+        #[doc = "No response is expected; used for non-control isochronous transfers."]
+        NONE = 0x01,
+        #[doc = "Respond with NAK or busy."]
+        NAK = 0x02,
+        #[doc = "Respond with STALL or error."]
+        STALL = 0x03,
+    }
+    impl EpTxResponse {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> EpTxResponse {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for EpTxResponse {
+        #[inline(always)]
+        fn from(val: u8) -> EpTxResponse {
+            EpTxResponse::from_bits(val)
+        }
+    }
+    impl From<EpTxResponse> for u8 {
+        #[inline(always)]
+        fn from(val: EpTxResponse) -> u8 {
+            EpTxResponse::to_bits(val)
+        }
+    }
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum UsbToken {
+        #[doc = "OUT packet."]
+        OUT = 0x0,
+        #[doc = "Reserved."]
+        RSVD = 0x01,
+        #[doc = "IN packet."]
+        IN = 0x02,
+        #[doc = "SETUP packet."]
+        SETUP = 0x03,
+    }
+    impl UsbToken {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> UsbToken {
+            unsafe { core::mem::transmute(val & 0x03) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for UsbToken {
+        #[inline(always)]
+        fn from(val: u8) -> UsbToken {
+            UsbToken::from_bits(val)
+        }
+    }
+    impl From<UsbToken> for u8 {
+        #[inline(always)]
+        fn from(val: UsbToken) -> u8 {
+            UsbToken::to_bits(val)
         }
     }
 }

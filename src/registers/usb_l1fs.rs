@@ -861,7 +861,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "EpTxResponse",
+                    ),
                 },
                 Field {
                     name: "t_tog",
@@ -901,7 +903,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "EpRxResponse",
+                    ),
                 },
                 Field {
                     name: "mask_r_tog",
@@ -1854,7 +1858,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "UsbToken",
+                    ),
                 },
                 Field {
                     name: "tog_ok",
@@ -2033,5 +2039,111 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
     ],
-    enums: &[],
+    enums: &[
+        Enum {
+            name: "EpRxResponse",
+            description: None,
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "ACK",
+                    description: Some(
+                        "Respond with ACK.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "NONE",
+                    description: Some(
+                        "Timeout or no response; used for non-control isochronous transfers.",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "NAK",
+                    description: Some(
+                        "Respond with NAK or busy.",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "STALL",
+                    description: Some(
+                        "Respond with STALL or error.",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+        Enum {
+            name: "EpTxResponse",
+            description: None,
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "ACK",
+                    description: Some(
+                        "DATA0/DATA1 is ready and an ACK response is expected.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "NONE",
+                    description: Some(
+                        "No response is expected; used for non-control isochronous transfers.",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "NAK",
+                    description: Some(
+                        "Respond with NAK or busy.",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "STALL",
+                    description: Some(
+                        "Respond with STALL or error.",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+        Enum {
+            name: "UsbToken",
+            description: None,
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "OUT",
+                    description: Some(
+                        "OUT packet.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "RSVD",
+                    description: Some(
+                        "Reserved.",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "IN",
+                    description: Some(
+                        "IN packet.",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "SETUP",
+                    description: Some(
+                        "SETUP packet.",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+    ],
 };

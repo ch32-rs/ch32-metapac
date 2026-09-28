@@ -2161,9 +2161,9 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 0,
                 },
                 EnumVariant {
-                    name: "NONE",
+                    name: "NYET",
                     description: Some(
-                        "No response expected.",
+                        "Expect a NYET response.",
                     ),
                     value: 1,
                 },
