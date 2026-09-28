@@ -1560,7 +1560,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "sys_ctrl",
                     description: Some(
-                        "USB device enable and internal pullup resistance enable.",
+                        "USB test mode selection in host mode.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -1568,20 +1568,6 @@ pub(crate) static REGISTERS: IR = IR {
                         },
                     ),
                     bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "dev_pu_en",
-                    description: Some(
-                        "USB device internal pullup resistance enable.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
                     array: None,
                     enumm: None,
                 },
@@ -2175,9 +2161,9 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 0,
                 },
                 EnumVariant {
-                    name: "NONE",
+                    name: "NYET",
                     description: Some(
-                        "No response expected.",
+                        "Expect a NYET response.",
                     ),
                     value: 1,
                 },
