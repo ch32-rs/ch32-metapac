@@ -332,6 +332,75 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         interrupts: &[],
     },
     Peripheral {
+        name: "WWDG",
+        address: 0x40002c00,
+        registers: Some(PeripheralRegisters {
+            kind: "wwdg",
+            version: "v00x",
+            block: "WWDG",
+            ir: &wwdg::REGISTERS,
+        }),
+        rcc: Some(PeripheralRcc {
+            bus_clock: "PCLK1",
+            kernel_clock: Clock("PCLK1"),
+            enable: Some(PeripheralRccRegister {
+                register: "APB1PCENR",
+                field: "WWDGEN",
+            }),
+            reset: Some(PeripheralRccRegister {
+                register: "APB1PRSTR",
+                field: "WWDGRST",
+            }),
+            stop_mode: StopMode::Stop1,
+        }),
+        remap: None,
+        pins: &[],
+        dma_channels: &[],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "WWDG",
+        }],
+    },
+    Peripheral {
+        name: "IWDG",
+        address: 0x40003000,
+        registers: Some(PeripheralRegisters {
+            kind: "iwdg",
+            version: "v00x",
+            block: "IWDG",
+            ir: &iwdg::REGISTERS,
+        }),
+        rcc: None,
+        remap: None,
+        pins: &[],
+        dma_channels: &[],
+        interrupts: &[],
+    },
+    Peripheral {
+        name: "CRC",
+        address: 0x40023000,
+        registers: Some(PeripheralRegisters {
+            kind: "crc",
+            version: "h4",
+            block: "CRC",
+            ir: &crc::REGISTERS,
+        }),
+        rcc: Some(PeripheralRcc {
+            bus_clock: "HCLK",
+            kernel_clock: Clock("HCLK"),
+            enable: Some(PeripheralRccRegister {
+                register: "AHBPCENR",
+                field: "CRCEN",
+            }),
+            reset: None,
+            stop_mode: StopMode::Stop1,
+        }),
+        remap: None,
+        pins: &[],
+        dma_channels: &[],
+        interrupts: &[],
+    },
+    Peripheral {
         name: "USART1",
         address: 0x40013800,
         registers: Some(PeripheralRegisters {
@@ -1905,6 +1974,30 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 remap: Some(0),
                 af: None,
             },
+            PeripheralPin {
+                pin: "PB12",
+                signal: "WS",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB13",
+                signal: "CK",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB15",
+                signal: "SD",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC6",
+                signal: "MCK",
+                remap: Some(0),
+                af: None,
+            },
         ],
         dma_channels: &[
             PeripheralDmaChannel {
@@ -2770,6 +2863,8 @@ pub mod adc;
 pub mod afio;
 #[path = "../registers/can_v3.rs"]
 pub mod can;
+#[path = "../registers/crc_h4.rs"]
+pub mod crc;
 #[path = "../registers/dma_v1.rs"]
 pub mod dma;
 #[path = "../registers/eth_10m.rs"]
@@ -2784,6 +2879,8 @@ pub mod flash;
 pub mod gpio;
 #[path = "../registers/i2c_v3.rs"]
 pub mod i2c;
+#[path = "../registers/iwdg_v00x.rs"]
+pub mod iwdg;
 #[path = "../registers/opa_v3.rs"]
 pub mod opa;
 #[path = "../registers/pfic_rv4.rs"]
@@ -2806,3 +2903,5 @@ pub mod usb;
 pub mod usbd;
 #[path = "../registers/usbram_16x1_512.rs"]
 pub mod usbram;
+#[path = "../registers/wwdg_v00x.rs"]
+pub mod wwdg;
