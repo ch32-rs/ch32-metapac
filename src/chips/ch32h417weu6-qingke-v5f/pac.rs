@@ -243,7 +243,7 @@ unsafe impl crate::InterruptNumber for Interrupt {
 }
 #[cfg(feature = "rt")]
 mod _vectors {
-    extern "C" {
+    unsafe extern "C" {
         fn IPC_CH0();
         fn IPC_CH1();
         fn IPC_CH2();
@@ -366,8 +366,8 @@ mod _vectors {
         _handler: unsafe extern "C" fn(),
         _reserved: u32,
     }
-    #[link_section = ".vector_table.external_interrupts"]
-    #[no_mangle]
+    #[unsafe(link_section = ".vector_table.external_interrupts")]
+    #[unsafe(no_mangle)]
     pub static __EXTERNAL_INTERRUPTS: [Vector; 133] = [
         Vector { _handler: IPC_CH0 },
         Vector { _handler: IPC_CH1 },
