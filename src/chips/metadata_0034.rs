@@ -5,7 +5,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         address: 0x40021000,
         registers: Some(PeripheralRegisters {
             kind: "rcc",
-            version: "v3_d8c",
+            version: "v3",
             block: "RCC",
             ir: &rcc::REGISTERS,
         }),
@@ -3823,107 +3823,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }],
     },
     Peripheral {
-        name: "USBHS",
-        address: 0x40023400,
-        registers: Some(PeripheralRegisters {
-            kind: "usbhs",
-            version: "v3",
-            block: "USB",
-            ir: &usbhs::REGISTERS,
-        }),
-        rcc: Some(PeripheralRcc {
-            bus_clock: "HCLK",
-            kernel_clock: Clock("USBHSPLLCLK"),
-            enable: Some(PeripheralRccRegister {
-                register: "AHBPCENR",
-                field: "USBHSEN",
-            }),
-            reset: Some(PeripheralRccRegister {
-                register: "AHBRSTR",
-                field: "USBHSRST",
-            }),
-            stop_mode: StopMode::Stop1,
-        }),
-        remap: None,
-        pins: &[
-            PeripheralPin {
-                pin: "PB6",
-                signal: "DM",
-                remap: None,
-                af: None,
-            },
-            PeripheralPin {
-                pin: "PB7",
-                signal: "DP",
-                remap: None,
-                af: None,
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[
-            PeripheralInterrupt {
-                signal: "GLOBAL",
-                interrupt: "USBHS",
-            },
-            PeripheralInterrupt {
-                signal: "WAKEUP",
-                interrupt: "USBHS_WKUP",
-            },
-        ],
-    },
-    Peripheral {
-        name: "OTG_FS",
-        address: 0x50000000,
-        registers: Some(PeripheralRegisters {
-            kind: "otg",
-            version: "v2",
-            block: "USB",
-            ir: &otg::REGISTERS,
-        }),
-        rcc: Some(PeripheralRcc {
-            bus_clock: "HCLK",
-            kernel_clock: Clock("HCLK"),
-            enable: Some(PeripheralRccRegister {
-                register: "AHBPCENR",
-                field: "OTG_EN",
-            }),
-            reset: None,
-            stop_mode: StopMode::Stop1,
-        }),
-        remap: None,
-        pins: &[
-            PeripheralPin {
-                pin: "PA11",
-                signal: "DM",
-                remap: None,
-                af: None,
-            },
-            PeripheralPin {
-                pin: "PA12",
-                signal: "DP",
-                remap: None,
-                af: None,
-            },
-            PeripheralPin {
-                pin: "PA9",
-                signal: "VBUS",
-                remap: None,
-                af: None,
-            },
-            PeripheralPin {
-                pin: "PA10",
-                signal: "ID",
-                remap: None,
-                af: None,
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "OTG_FS",
-        }],
-    },
-    Peripheral {
         name: "DAC1",
         address: 0x40007400,
         registers: Some(PeripheralRegisters {
@@ -4085,6 +3984,46 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }],
     },
     Peripheral {
+        name: "USBFS",
+        address: 0x50000000,
+        registers: Some(PeripheralRegisters {
+            kind: "usb",
+            version: "v2fs",
+            block: "USB",
+            ir: &usb::REGISTERS,
+        }),
+        rcc: Some(PeripheralRcc {
+            bus_clock: "HCLK",
+            kernel_clock: Clock("HCLK"),
+            enable: Some(PeripheralRccRegister {
+                register: "AHBPCENR",
+                field: "OTG_EN",
+            }),
+            reset: None,
+            stop_mode: StopMode::Stop1,
+        }),
+        remap: None,
+        pins: &[
+            PeripheralPin {
+                pin: "PA11",
+                signal: "DM",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA12",
+                signal: "DP",
+                remap: None,
+                af: None,
+            },
+        ],
+        dma_channels: &[],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "OTG_FS",
+        }],
+    },
+    Peripheral {
         name: "CAN1",
         address: 0x40006400,
         registers: Some(PeripheralRegisters {
@@ -4165,78 +4104,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             PeripheralInterrupt {
                 signal: "SCE",
                 interrupt: "CAN1_SCE",
-            },
-        ],
-    },
-    Peripheral {
-        name: "CAN2",
-        address: 0x40006800,
-        registers: Some(PeripheralRegisters {
-            kind: "can",
-            version: "v3",
-            block: "CAN",
-            ir: &can::REGISTERS,
-        }),
-        rcc: Some(PeripheralRcc {
-            bus_clock: "PCLK1",
-            kernel_clock: Clock("PCLK1"),
-            enable: Some(PeripheralRccRegister {
-                register: "APB1PCENR",
-                field: "CAN2EN",
-            }),
-            reset: Some(PeripheralRccRegister {
-                register: "APB1PRSTR",
-                field: "CAN2RST",
-            }),
-            stop_mode: StopMode::Stop1,
-        }),
-        remap: Some(PeripheralRemapRegister {
-            register: "PCFR1",
-            field: "CAN2_RM",
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PB12",
-                signal: "RX",
-                remap: Some(0),
-                af: None,
-            },
-            PeripheralPin {
-                pin: "PB13",
-                signal: "TX",
-                remap: Some(0),
-                af: None,
-            },
-            PeripheralPin {
-                pin: "PB5",
-                signal: "RX",
-                remap: Some(1),
-                af: None,
-            },
-            PeripheralPin {
-                pin: "PB6",
-                signal: "TX",
-                remap: Some(1),
-                af: None,
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[
-            PeripheralInterrupt {
-                signal: "TX",
-                interrupt: "CAN2_TX",
-            },
-            PeripheralInterrupt {
-                signal: "RX0",
-                interrupt: "CAN2_RX0",
-            },
-            PeripheralInterrupt {
-                signal: "RX1",
-                interrupt: "CAN2_RX1",
-            },
-            PeripheralInterrupt {
-                signal: "SCE",
-                interrupt: "CAN2_SCE",
             },
         ],
     },
@@ -4905,11 +4772,9 @@ pub mod i2c;
 pub mod iwdg;
 #[path = "../registers/opa_v3.rs"]
 pub mod opa;
-#[path = "../registers/otg_v2.rs"]
-pub mod otg;
 #[path = "../registers/pfic_rv4.rs"]
 pub mod pfic;
-#[path = "../registers/rcc_v3_d8c.rs"]
+#[path = "../registers/rcc_v3.rs"]
 pub mod rcc;
 #[path = "../registers/rng_v3.rs"]
 pub mod rng;
@@ -4925,7 +4790,7 @@ pub mod systick;
 pub mod timer;
 #[path = "../registers/usart_common.rs"]
 pub mod usart;
-#[path = "../registers/usbhs_v3.rs"]
-pub mod usbhs;
+#[path = "../registers/usb_v2fs.rs"]
+pub mod usb;
 #[path = "../registers/wwdg_v00x.rs"]
 pub mod wwdg;
