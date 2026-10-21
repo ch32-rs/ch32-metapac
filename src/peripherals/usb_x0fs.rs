@@ -402,23 +402,38 @@ pub mod regs {
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct UepCtrl(pub u8);
     impl UepCtrl {
+        #[doc = "response to IN transactions."]
         #[inline(always)]
         pub const fn t_res(&self) -> super::vals::EpTxResponse {
             let val = (self.0 >> 0usize) & 0x03;
             super::vals::EpTxResponse::from_bits(val as u8)
         }
+        #[doc = "response to IN transactions."]
         #[inline(always)]
         pub fn set_t_res(&mut self, val: super::vals::EpTxResponse) {
             self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u8) & 0x03) << 0usize);
         }
+        #[doc = "response to OUT transactions."]
         #[inline(always)]
         pub const fn r_res(&self) -> super::vals::EpRxResponse {
             let val = (self.0 >> 2usize) & 0x03;
             super::vals::EpRxResponse::from_bits(val as u8)
         }
+        #[doc = "response to OUT transactions."]
         #[inline(always)]
         pub fn set_r_res(&mut self, val: super::vals::EpRxResponse) {
             self.0 = (self.0 & !(0x03 << 2usize)) | (((val.to_bits() as u8) & 0x03) << 2usize);
+        }
+        #[doc = "flip the data toggle after a successful transfer: 0=manual, 1=automatic."]
+        #[inline(always)]
+        pub const fn auto_tog(&self) -> bool {
+            let val = (self.0 >> 4usize) & 0x01;
+            val != 0
+        }
+        #[doc = "flip the data toggle after a successful transfer: 0=manual, 1=automatic."]
+        #[inline(always)]
+        pub fn set_auto_tog(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u8) & 0x01) << 4usize);
         }
         #[doc = "prepared data toggle flag of USB endpoint X transmittal (IN): 0=DATA0, 1=DATA1."]
         #[inline(always)]
@@ -1484,8 +1499,8 @@ pub mod vals {
     pub enum UsbToken {
         #[doc = "OUT packet."]
         OUT = 0x0,
-        #[doc = "Reserved."]
-        RSVD = 0x01,
+        #[doc = "SOF packet."]
+        SOF = 0x01,
         #[doc = "IN packet."]
         IN = 0x02,
         #[doc = "SETUP packet."]

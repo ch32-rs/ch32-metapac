@@ -38,7 +38,7 @@ pub static METADATA: Metadata = Metadata {
     nv_structs: NV_STRUCTS,
     memory_options: &[MemoryOption {
         name: "default",
-        region_sizes: &[("RAM", 20480), ("USR_1", 49152)],
+        region_sizes: &[("RAM", 20480), ("USR_1", 63488)],
     }],
     default_memory_option: "default",
     peripherals: PERIPHERALS,

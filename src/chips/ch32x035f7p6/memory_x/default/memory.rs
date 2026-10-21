@@ -6,7 +6,7 @@ pub static MEMORY: &[MemoryRegion] = &[
         kind: MemoryRegionKind::Flash,
         role: Application,
         address: 0x8000000,
-        size: 49152,
+        size: 63488,
         modes: &[Fast {
             page_size: 256,
             load_size: 4,

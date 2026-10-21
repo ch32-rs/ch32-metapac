@@ -919,7 +919,9 @@ pub(crate) static REGISTERS: IR = IR {
             fields: &[
                 Field {
                     name: "t_res",
-                    description: None,
+                    description: Some(
+                        "response to IN transactions.",
+                    ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
                             offset: 0,
@@ -933,7 +935,9 @@ pub(crate) static REGISTERS: IR = IR {
                 },
                 Field {
                     name: "r_res",
-                    description: None,
+                    description: Some(
+                        "response to OUT transactions.",
+                    ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
                             offset: 2,
@@ -944,6 +948,20 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: Some(
                         "EpRxResponse",
                     ),
+                },
+                Field {
+                    name: "auto_tog",
+                    description: Some(
+                        "flip the data toggle after a successful transfer: 0=manual, 1=automatic.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 4,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
                 },
                 Field {
                     name: "t_tog",
@@ -2210,9 +2228,9 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 0,
                 },
                 EnumVariant {
-                    name: "RSVD",
+                    name: "SOF",
                     description: Some(
-                        "Reserved.",
+                        "SOF packet.",
                     ),
                     value: 1,
                 },
