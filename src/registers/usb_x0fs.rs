@@ -1344,11 +1344,11 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "sof_en",
                     description: Some(
-                        "SOF packet en",
+                        "enable automatic SOF packet generation by the host.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
-                            offset: 2,
+                            offset: 6,
                         },
                     ),
                     bit_size: 1,
@@ -1358,11 +1358,11 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "pre_pid_en",
                     description: Some(
-                        "pre pid en",
+                        "enable low-speed PRE PID for devices behind a hub.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
-                            offset: 3,
+                            offset: 7,
                         },
                     ),
                     bit_size: 1,
@@ -1982,9 +1982,9 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "is_nak",
+                    name: "setup_act",
                     description: Some(
-                        "RO, indicate current USB transfer is NAK received for USB device mode.",
+                        "RO, indicates the current USB transfer is a completed SETUP transaction.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
