@@ -1,4 +1,4 @@
-include!("../metadata_0031.rs");
+include!("../metadata_0032.rs");
 use crate::metadata::PeripheralRccKernelClock::{Clock, Mux};
 #[path = "../../registers/esig_common.rs"]
 pub mod nv_esig;

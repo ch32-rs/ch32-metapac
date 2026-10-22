@@ -1637,50 +1637,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 af: None,
             },
         ],
-        dma_channels: &[
-            PeripheralDmaChannel {
-                signal: "CH1",
-                channel: Some("DMA1_CH7"),
-                dmamux: None,
-                dma: None,
-                request: None,
-            },
-            PeripheralDmaChannel {
-                signal: "CH2",
-                channel: Some("DMA1_CH1"),
-                dmamux: None,
-                dma: None,
-                request: None,
-            },
-            PeripheralDmaChannel {
-                signal: "CH3",
-                channel: Some("DMA1_CH3"),
-                dmamux: None,
-                dma: None,
-                request: None,
-            },
-            PeripheralDmaChannel {
-                signal: "CH4",
-                channel: Some("DMA1_CH6"),
-                dmamux: None,
-                dma: None,
-                request: None,
-            },
-            PeripheralDmaChannel {
-                signal: "TRIG",
-                channel: Some("DMA1_CH7"),
-                dmamux: None,
-                dma: None,
-                request: None,
-            },
-            PeripheralDmaChannel {
-                signal: "UP",
-                channel: Some("DMA1_CH8"),
-                dmamux: None,
-                dma: None,
-                request: None,
-            },
-        ],
+        dma_channels: &[],
         interrupts: &[
             PeripheralInterrupt {
                 signal: "UP",
@@ -2368,6 +2325,55 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
     },
     Peripheral {
+        name: "ETH",
+        address: 0x40028000,
+        registers: Some(PeripheralRegisters {
+            kind: "eth",
+            version: "10m",
+            block: "ETH",
+            ir: &eth::REGISTERS,
+        }),
+        rcc: Some(PeripheralRcc {
+            bus_clock: "PCLK1",
+            kernel_clock: Clock("HCLK"),
+            enable: Some(PeripheralRccRegister {
+                register: "AHBPCENR",
+                field: "ETHMACEN",
+            }),
+            reset: None,
+            stop_mode: StopMode::Stop1,
+        }),
+        remap: None,
+        pins: &[
+            PeripheralPin {
+                pin: "PC6",
+                signal: "ETH_RXP",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC7",
+                signal: "ETH_RXN",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC8",
+                signal: "ETH_TXP",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC9",
+                signal: "ETH_TXN",
+                remap: None,
+                af: None,
+            },
+        ],
+        dma_channels: &[],
+        interrupts: &[],
+    },
+    Peripheral {
         name: "OPA",
         address: 0x40023804,
         registers: Some(PeripheralRegisters {
@@ -2818,6 +2824,8 @@ pub mod can;
 pub mod crc;
 #[path = "../registers/dma_v1.rs"]
 pub mod dma;
+#[path = "../registers/eth_10m.rs"]
+pub mod eth;
 #[path = "../registers/extend_v3.rs"]
 pub mod extend;
 #[path = "../registers/exti_common.rs"]

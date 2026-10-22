@@ -2088,48 +2088,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
     },
     Peripheral {
-        name: "TIM3",
-        address: 0x40000800,
-        registers: Some(PeripheralRegisters {
-            kind: "sltm",
-            version: "v00x",
-            block: "SLTM",
-            ir: &sltm::REGISTERS,
-        }),
-        rcc: Some(PeripheralRcc {
-            bus_clock: "HCLK",
-            kernel_clock: Clock("HCLK"),
-            enable: Some(PeripheralRccRegister {
-                register: "PB1PCENR",
-                field: "TIM3EN",
-            }),
-            reset: Some(PeripheralRccRegister {
-                register: "PB1PRSTR",
-                field: "TIM3RST",
-            }),
-            stop_mode: StopMode::Stop1,
-        }),
-        remap: None,
-        pins: &[],
-        dma_channels: &[
-            PeripheralDmaChannel {
-                signal: "CH3",
-                channel: Some("DMA1_CH1"),
-                dmamux: None,
-                dma: None,
-                request: None,
-            },
-            PeripheralDmaChannel {
-                signal: "CH4",
-                channel: Some("DMA1_CH4"),
-                dmamux: None,
-                dma: None,
-                request: None,
-            },
-        ],
-        interrupts: &[],
-    },
-    Peripheral {
         name: "OPA",
         address: 0x40024000,
         registers: Some(PeripheralRegisters {
@@ -2200,36 +2158,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         interrupts: &[PeripheralInterrupt {
             signal: "GLOBAL",
             interrupt: "OPCM",
-        }],
-    },
-    Peripheral {
-        name: "TKEY",
-        address: 0x40012400,
-        registers: Some(PeripheralRegisters {
-            kind: "tkey",
-            version: "v00x",
-            block: "TKEY",
-            ir: &tkey::REGISTERS,
-        }),
-        rcc: Some(PeripheralRcc {
-            bus_clock: "PCLK2",
-            kernel_clock: Clock("PCLK2"),
-            enable: Some(PeripheralRccRegister {
-                register: "PB2PCENR",
-                field: "ADCEN",
-            }),
-            reset: Some(PeripheralRccRegister {
-                register: "PB2PRSTR",
-                field: "ADCRST",
-            }),
-            stop_mode: StopMode::Stop1,
-        }),
-        remap: None,
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "ADC",
         }],
     },
 ];
@@ -2412,16 +2340,12 @@ pub mod pfic;
 pub mod pwr;
 #[path = "../registers/rcc_v00x.rs"]
 pub mod rcc;
-#[path = "../registers/sltm_v00x.rs"]
-pub mod sltm;
 #[path = "../registers/spi_v0.rs"]
 pub mod spi;
 #[path = "../registers/systick_rv2.rs"]
 pub mod systick;
 #[path = "../registers/timer_v3.rs"]
 pub mod timer;
-#[path = "../registers/tkey_v00x.rs"]
-pub mod tkey;
 #[path = "../registers/usart_common.rs"]
 pub mod usart;
 #[path = "../registers/wwdg_v00x.rs"]

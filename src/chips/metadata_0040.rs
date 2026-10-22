@@ -4400,6 +4400,281 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         dma_channels: &[],
         interrupts: &[],
     },
+    Peripheral {
+        name: "ETH",
+        address: 0x40028000,
+        registers: Some(PeripheralRegisters {
+            kind: "emac",
+            version: "v1",
+            block: "ETH",
+            ir: &emac::REGISTERS,
+        }),
+        rcc: Some(PeripheralRcc {
+            bus_clock: "PCLK1",
+            kernel_clock: Clock("HCLK"),
+            enable: Some(PeripheralRccRegister {
+                register: "AHBPCENR",
+                field: "ETHMACEN",
+            }),
+            reset: None,
+            stop_mode: StopMode::Stop1,
+        }),
+        remap: None,
+        pins: &[
+            PeripheralPin {
+                pin: "PC6",
+                signal: "ETH_RXP",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC7",
+                signal: "ETH_RXN",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC8",
+                signal: "ETH_TXP",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC9",
+                signal: "ETH_TXN",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA1",
+                signal: "RMII_REF_CLK",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA2",
+                signal: "MDIO",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA7",
+                signal: "RMII_CRS_DV",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC1",
+                signal: "MDC",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC4",
+                signal: "RMII_RXD0",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC5",
+                signal: "RMII_RXD1",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB11",
+                signal: "RMII_TX_EN",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB12",
+                signal: "RMII_TXD0",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB13",
+                signal: "RMII_TXD1",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA0",
+                signal: "MII_CRS",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA3",
+                signal: "MII_COL",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB10",
+                signal: "MII_RX_ER",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC3",
+                signal: "MII_TX_CLK",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB8",
+                signal: "MII_TXD3",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA1",
+                signal: "MII_RX_CLK",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB1",
+                signal: "MII_RXD3",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB0",
+                signal: "MII_RXD2",
+                remap: Some(0),
+                af: None,
+            },
+        ],
+        dma_channels: &[],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "ETH",
+        }],
+    },
+    Peripheral {
+        name: "DVP",
+        address: 0x50050000,
+        registers: Some(PeripheralRegisters {
+            kind: "dvp",
+            version: "v3",
+            block: "DVP",
+            ir: &dvp::REGISTERS,
+        }),
+        rcc: Some(PeripheralRcc {
+            bus_clock: "HCLK",
+            kernel_clock: Clock("HCLK"),
+            enable: Some(PeripheralRccRegister {
+                register: "AHBPCENR",
+                field: "DVP_EN",
+            }),
+            reset: Some(PeripheralRccRegister {
+                register: "AHBRSTR",
+                field: "DVPRST",
+            }),
+            stop_mode: StopMode::Stop1,
+        }),
+        remap: None,
+        pins: &[
+            PeripheralPin {
+                pin: "PA4",
+                signal: "HSYNC",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA5",
+                signal: "VSYNC",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA6",
+                signal: "PCLK",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA9",
+                signal: "D0",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA10",
+                signal: "D1",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC8",
+                signal: "D2",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC9",
+                signal: "D3",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC11",
+                signal: "D4",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB6",
+                signal: "D5",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB8",
+                signal: "D6",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB9",
+                signal: "D7",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC10",
+                signal: "D8",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC12",
+                signal: "D9",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PD6",
+                signal: "D10",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PD2",
+                signal: "D11",
+                remap: None,
+                af: None,
+            },
+        ],
+        dma_channels: &[],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "DVP",
+        }],
+    },
 ];
 pub(crate) static INTERRUPTS: &[Interrupt] = &[
     Interrupt {
@@ -4891,6 +5166,10 @@ pub mod crc;
 pub mod dac;
 #[path = "../registers/dma_v1.rs"]
 pub mod dma;
+#[path = "../registers/dvp_v3.rs"]
+pub mod dvp;
+#[path = "../registers/emac_v1.rs"]
+pub mod emac;
 #[path = "../registers/extend_v3.rs"]
 pub mod extend;
 #[path = "../registers/exti_common.rs"]
