@@ -1,10 +1,11 @@
+
 pub(crate) static PERIPHERALS: &[Peripheral] = &[
     Peripheral {
         name: "PFIC",
         address: 0xe000e000,
         registers: Some(PeripheralRegisters {
             kind: "pfic",
-            version: "rv4",
+            version: "rv2",
             block: "PFIC",
             ir: &pfic::REGISTERS,
         }),
@@ -19,7 +20,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         address: 0xe000f000,
         registers: Some(PeripheralRegisters {
             kind: "systick",
-            version: "rv4",
+            version: "rv2",
             block: "SYSTICK",
             ir: &systick::REGISTERS,
         }),
@@ -34,7 +35,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         address: 0x40022000,
         registers: Some(PeripheralRegisters {
             kind: "flash",
-            version: "x0",
+            version: "v0",
             block: "FLASH",
             ir: &flash::REGISTERS,
         }),
@@ -66,27 +67,39 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 signal: "EXTI8",
                 interrupt: "EXTI15_8",
             },
-            PeripheralInterrupt {
-                signal: "EXTI16",
-                interrupt: "EXTI25_16",
-            },
         ],
+    },
+    Peripheral {
+        name: "EXTEND",
+        address: 0x40023800,
+        registers: Some(PeripheralRegisters {
+            kind: "extend",
+            version: "ch641",
+            block: "EXTEND",
+            ir: &extend::REGISTERS,
+        }),
+        rcc: None,
+        remap: None,
+        pins: &[],
+        dma_channels: &[],
+        interrupts: &[],
     },
     Peripheral {
         name: "RCC",
         address: 0x40021000,
         registers: Some(PeripheralRegisters {
             kind: "rcc",
-            version: "x0",
+            version: "ch641",
             block: "RCC",
             ir: &rcc::REGISTERS,
         }),
         rcc: None,
         remap: None,
         pins: &[PeripheralPin {
-            pin: "PB9",
+            pin: "PB7",
             signal: "MCO",
             remap: None,
+            af: None,
         }],
         dma_channels: &[],
         interrupts: &[],
@@ -142,24 +155,47 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 signal: "CH7",
                 interrupt: "DMA1_CHANNEL7",
             },
-            PeripheralInterrupt {
-                signal: "CH8",
-                interrupt: "DMA1_CHANNEL8",
-            },
         ],
+    },
+    Peripheral {
+        name: "AFIO",
+        address: 0x40010000,
+        registers: Some(PeripheralRegisters {
+            kind: "afio",
+            version: "ch641",
+            block: "AFIO",
+            ir: &afio::REGISTERS,
+        }),
+        rcc: Some(PeripheralRcc {
+            bus_clock: "PCLK2",
+            kernel_clock: Clock("PCLK2"),
+            enable: Some(PeripheralRccRegister {
+                register: "APB2PCENR",
+                field: "AFIOEN",
+            }),
+            reset: Some(PeripheralRccRegister {
+                register: "APB2PRSTR",
+                field: "AFIORST",
+            }),
+            stop_mode: StopMode::Stop1,
+        }),
+        remap: None,
+        pins: &[],
+        dma_channels: &[],
+        interrupts: &[],
     },
     Peripheral {
         name: "GPIOA",
         address: 0x40010800,
         registers: Some(PeripheralRegisters {
             kind: "gpio",
-            version: "x0",
+            version: "v3",
             block: "GPIO",
             ir: &gpio::REGISTERS,
         }),
         rcc: Some(PeripheralRcc {
-            bus_clock: "HCLK",
-            kernel_clock: Clock("HCLK"),
+            bus_clock: "PCLK2",
+            kernel_clock: Clock("PCLK2"),
             enable: Some(PeripheralRccRegister {
                 register: "APB2PCENR",
                 field: "IOPAEN",
@@ -180,13 +216,13 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         address: 0x40010c00,
         registers: Some(PeripheralRegisters {
             kind: "gpio",
-            version: "x0",
+            version: "v3",
             block: "GPIO",
             ir: &gpio::REGISTERS,
         }),
         rcc: Some(PeripheralRcc {
-            bus_clock: "HCLK",
-            kernel_clock: Clock("HCLK"),
+            bus_clock: "PCLK2",
+            kernel_clock: Clock("PCLK2"),
             enable: Some(PeripheralRccRegister {
                 register: "APB2PCENR",
                 field: "IOPBEN",
@@ -203,58 +239,343 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         interrupts: &[],
     },
     Peripheral {
-        name: "GPIOC",
-        address: 0x40011000,
+        name: "TIM1",
+        address: 0x40012c00,
         registers: Some(PeripheralRegisters {
-            kind: "gpio",
-            version: "x0",
-            block: "GPIO",
-            ir: &gpio::REGISTERS,
+            kind: "timer",
+            version: "v3",
+            block: "ADTM",
+            ir: &timer::REGISTERS,
         }),
         rcc: Some(PeripheralRcc {
             bus_clock: "HCLK",
             kernel_clock: Clock("HCLK"),
             enable: Some(PeripheralRccRegister {
                 register: "APB2PCENR",
-                field: "IOPCEN",
+                field: "TIM1EN",
             }),
             reset: Some(PeripheralRccRegister {
                 register: "APB2PRSTR",
-                field: "IOPCRST",
+                field: "TIM1RST",
             }),
             stop_mode: StopMode::Stop1,
         }),
-        remap: None,
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[],
+        remap: Some(PeripheralRemapRegister {
+            register: "PCFR1",
+            field: "TIM1_RM",
+        }),
+        pins: &[
+            PeripheralPin {
+                pin: "PB9",
+                signal: "ETR",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB2",
+                signal: "CH1",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB3",
+                signal: "CH2",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB4",
+                signal: "CH3",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA15",
+                signal: "BKIN",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA2",
+                signal: "CH1N",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA3",
+                signal: "CH2N",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA4",
+                signal: "CH3N",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB9",
+                signal: "ETR",
+                remap: Some(1),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB2",
+                signal: "CH1",
+                remap: Some(1),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB3",
+                signal: "CH2",
+                remap: Some(1),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA2",
+                signal: "CH3",
+                remap: Some(1),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA15",
+                signal: "BKIN",
+                remap: Some(1),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB4",
+                signal: "CH1N",
+                remap: Some(1),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB5",
+                signal: "CH2N",
+                remap: Some(1),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA4",
+                signal: "CH3N",
+                remap: Some(1),
+                af: None,
+            },
+        ],
+        dma_channels: &[
+            PeripheralDmaChannel {
+                signal: "CH1",
+                channel: Some("DMA1_CH2"),
+                dmamux: None,
+                dma: None,
+                request: None,
+            },
+            PeripheralDmaChannel {
+                signal: "CH2",
+                channel: Some("DMA1_CH3"),
+                dmamux: None,
+                dma: None,
+                request: None,
+            },
+            PeripheralDmaChannel {
+                signal: "CH3",
+                channel: Some("DMA1_CH6"),
+                dmamux: None,
+                dma: None,
+                request: None,
+            },
+            PeripheralDmaChannel {
+                signal: "COM",
+                channel: Some("DMA1_CH4"),
+                dmamux: None,
+                dma: None,
+                request: None,
+            },
+            PeripheralDmaChannel {
+                signal: "TRIG",
+                channel: Some("DMA1_CH4"),
+                dmamux: None,
+                dma: None,
+                request: None,
+            },
+            PeripheralDmaChannel {
+                signal: "UP",
+                channel: Some("DMA1_CH5"),
+                dmamux: None,
+                dma: None,
+                request: None,
+            },
+        ],
+        interrupts: &[
+            PeripheralInterrupt {
+                signal: "UP",
+                interrupt: "TIM1_UP",
+            },
+            PeripheralInterrupt {
+                signal: "CC",
+                interrupt: "TIM1_CC",
+            },
+            PeripheralInterrupt {
+                signal: "COM",
+                interrupt: "TIM1_TRG_COM",
+            },
+            PeripheralInterrupt {
+                signal: "TRG",
+                interrupt: "TIM1_TRG_COM",
+            },
+            PeripheralInterrupt {
+                signal: "BRK",
+                interrupt: "TIM1_BRK",
+            },
+        ],
     },
     Peripheral {
-        name: "AFIO",
-        address: 0x40010000,
+        name: "TIM2",
+        address: 0x40000000,
         registers: Some(PeripheralRegisters {
-            kind: "afio",
-            version: "x0",
-            block: "AFIO",
-            ir: &afio::REGISTERS,
+            kind: "timer",
+            version: "v3",
+            block: "ADTM",
+            ir: &timer::REGISTERS,
         }),
         rcc: Some(PeripheralRcc {
             bus_clock: "HCLK",
             kernel_clock: Clock("HCLK"),
             enable: Some(PeripheralRccRegister {
-                register: "APB2PCENR",
-                field: "AFIOEN",
+                register: "APB1PCENR",
+                field: "TIM2EN",
             }),
             reset: Some(PeripheralRccRegister {
-                register: "APB2PRSTR",
-                field: "AFIORST",
+                register: "APB1PRSTR",
+                field: "TIM2RST",
             }),
             stop_mode: StopMode::Stop1,
         }),
-        remap: None,
-        pins: &[],
+        remap: Some(PeripheralRemapRegister {
+            register: "PCFR1",
+            field: "TIM2_RM",
+        }),
+        pins: &[
+            PeripheralPin {
+                pin: "PA5",
+                signal: "CH1",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA9",
+                signal: "CH2",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA7",
+                signal: "CH1N",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA8",
+                signal: "CH2N",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA5",
+                signal: "CH1",
+                remap: Some(1),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA4",
+                signal: "CH2",
+                remap: Some(1),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA7",
+                signal: "CH1N",
+                remap: Some(1),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA8",
+                signal: "CH2N",
+                remap: Some(1),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA5",
+                signal: "CH1",
+                remap: Some(2),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA9",
+                signal: "CH2",
+                remap: Some(2),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB5",
+                signal: "CH1N",
+                remap: Some(2),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB4",
+                signal: "CH2N",
+                remap: Some(2),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA5",
+                signal: "CH1",
+                remap: Some(3),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA4",
+                signal: "CH2",
+                remap: Some(3),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB5",
+                signal: "CH1N",
+                remap: Some(3),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB4",
+                signal: "CH2N",
+                remap: Some(3),
+                af: None,
+            },
+        ],
         dma_channels: &[],
-        interrupts: &[],
+        interrupts: &[
+            PeripheralInterrupt {
+                signal: "UP",
+                interrupt: "TIM2",
+            },
+            PeripheralInterrupt {
+                signal: "CC",
+                interrupt: "TIM2",
+            },
+            PeripheralInterrupt {
+                signal: "TRG",
+                interrupt: "TIM2",
+            },
+            PeripheralInterrupt {
+                signal: "BRK",
+                interrupt: "TIM2",
+            },
+            PeripheralInterrupt {
+                signal: "COM",
+                interrupt: "TIM2",
+            },
+        ],
     },
     Peripheral {
         name: "USART1",
@@ -284,117 +605,137 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         pins: &[
             PeripheralPin {
-                pin: "PB11",
-                signal: "RX",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC16",
-                signal: "CTS",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PB10",
-                signal: "TX",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PB9",
-                signal: "CK",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC17",
-                signal: "RTS",
-                remap: Some(0),
-            },
-            PeripheralPin {
                 pin: "PA11",
+                signal: "TX",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA12",
                 signal: "RX",
-                remap: Some(1),
+                remap: Some(0),
+                af: None,
             },
             PeripheralPin {
-                pin: "PC16",
+                pin: "PA13",
                 signal: "CTS",
-                remap: Some(1),
+                remap: Some(0),
+                af: None,
             },
             PeripheralPin {
-                pin: "PA10",
+                pin: "PA14",
+                signal: "RTS",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB1",
                 signal: "TX",
                 remap: Some(1),
+                af: None,
             },
             PeripheralPin {
-                pin: "PB9",
-                signal: "CK",
+                pin: "PB0",
+                signal: "RX",
                 remap: Some(1),
+                af: None,
             },
             PeripheralPin {
-                pin: "PC17",
+                pin: "PA13",
+                signal: "CTS",
+                remap: Some(1),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA14",
                 signal: "RTS",
                 remap: Some(1),
+                af: None,
             },
             PeripheralPin {
-                pin: "PB11",
-                signal: "RX",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA9",
-                signal: "CTS",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB10",
+                pin: "PA0",
                 signal: "TX",
                 remap: Some(2),
+                af: None,
             },
             PeripheralPin {
-                pin: "PB5",
-                signal: "CK",
+                pin: "PA1",
+                signal: "RX",
                 remap: Some(2),
+                af: None,
             },
             PeripheralPin {
-                pin: "PA8",
+                pin: "PA13",
+                signal: "CTS",
+                remap: Some(2),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA14",
                 signal: "RTS",
                 remap: Some(2),
+                af: None,
             },
             PeripheralPin {
-                pin: "PB2",
+                pin: "PA1",
+                signal: "TX",
+                remap: Some(3),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA0",
                 signal: "RX",
                 remap: Some(3),
+                af: None,
             },
             PeripheralPin {
                 pin: "PA13",
                 signal: "CTS",
                 remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA7",
-                signal: "TX",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PB12",
-                signal: "CK",
-                remap: Some(3),
+                af: None,
             },
             PeripheralPin {
                 pin: "PA14",
                 signal: "RTS",
                 remap: Some(3),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA2",
+                signal: "TX",
+                remap: Some(4),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA3",
+                signal: "RX",
+                remap: Some(4),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA13",
+                signal: "CTS",
+                remap: Some(4),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA14",
+                signal: "RTS",
+                remap: Some(4),
+                af: None,
             },
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "TX",
-                channel: Some("DMA1_CH4"),
+                signal: "RX",
+                channel: Some("DMA1_CH5"),
                 dmamux: None,
                 dma: None,
                 request: None,
             },
             PeripheralDmaChannel {
-                signal: "RX",
-                channel: Some("DMA1_CH5"),
+                signal: "TX",
+                channel: Some("DMA1_CH4"),
                 dmamux: None,
                 dma: None,
                 request: None,
@@ -406,638 +747,108 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }],
     },
     Peripheral {
-        name: "USART2",
-        address: 0x40004400,
+        name: "I2C1",
+        address: 0x40005400,
         registers: Some(PeripheralRegisters {
-            kind: "usart",
-            version: "common",
-            block: "USART",
-            ir: &usart::REGISTERS,
+            kind: "i2c",
+            version: "v0",
+            block: "I2C",
+            ir: &i2c::REGISTERS,
         }),
         rcc: Some(PeripheralRcc {
             bus_clock: "HCLK",
             kernel_clock: Clock("HCLK"),
             enable: Some(PeripheralRccRegister {
                 register: "APB1PCENR",
-                field: "USART2EN",
+                field: "I2C1EN",
             }),
             reset: Some(PeripheralRccRegister {
                 register: "APB1PRSTR",
-                field: "USART2RST",
+                field: "I2C1RST",
             }),
             stop_mode: StopMode::Stop1,
         }),
         remap: Some(PeripheralRemapRegister {
             register: "PCFR1",
-            field: "USART2_RM",
+            field: "I2C1_RM",
         }),
         pins: &[
             PeripheralPin {
+                pin: "PA13",
+                signal: "SCL",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA14",
+                signal: "SDA",
+                remap: Some(0),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA2",
+                signal: "SCL",
+                remap: Some(1),
+                af: None,
+            },
+            PeripheralPin {
                 pin: "PA3",
-                signal: "RX",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PA0",
-                signal: "CTS",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PA2",
-                signal: "TX",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PA4",
-                signal: "CK",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PA1",
-                signal: "RTS",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PA19",
-                signal: "RX",
+                signal: "SDA",
                 remap: Some(1),
+                af: None,
             },
             PeripheralPin {
-                pin: "PA1",
-                signal: "CTS",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA20",
-                signal: "TX",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA23",
-                signal: "CK",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA2",
-                signal: "RTS",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA16",
-                signal: "RX",
+                pin: "PA11",
+                signal: "SCL",
                 remap: Some(2),
+                af: None,
             },
             PeripheralPin {
-                pin: "PA17",
-                signal: "CTS",
+                pin: "PA12",
+                signal: "SDA",
                 remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA15",
-                signal: "TX",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA22",
-                signal: "CK",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA21",
-                signal: "RTS",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PC1",
-                signal: "RX",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC2",
-                signal: "CTS",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC0",
-                signal: "TX",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PB20",
-                signal: "CK",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC3",
-                signal: "RTS",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA16",
-                signal: "RX",
-                remap: Some(4),
-            },
-            PeripheralPin {
-                pin: "PA17",
-                signal: "CTS",
-                remap: Some(4),
-            },
-            PeripheralPin {
-                pin: "PA15",
-                signal: "TX",
-                remap: Some(4),
-            },
-            PeripheralPin {
-                pin: "PA22",
-                signal: "CK",
-                remap: Some(4),
-            },
-            PeripheralPin {
-                pin: "PC3",
-                signal: "RTS",
-                remap: Some(4),
+                af: None,
             },
         ],
         dma_channels: &[
             PeripheralDmaChannel {
-                signal: "TX",
+                signal: "RX",
                 channel: Some("DMA1_CH7"),
                 dmamux: None,
                 dma: None,
                 request: None,
             },
             PeripheralDmaChannel {
-                signal: "RX",
+                signal: "TX",
                 channel: Some("DMA1_CH6"),
                 dmamux: None,
                 dma: None,
                 request: None,
             },
         ],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "USART2",
-        }],
-    },
-    Peripheral {
-        name: "USART3",
-        address: 0x40004800,
-        registers: Some(PeripheralRegisters {
-            kind: "usart",
-            version: "common",
-            block: "USART",
-            ir: &usart::REGISTERS,
-        }),
-        rcc: Some(PeripheralRcc {
-            bus_clock: "HCLK",
-            kernel_clock: Clock("HCLK"),
-            enable: Some(PeripheralRccRegister {
-                register: "APB1PCENR",
-                field: "USART3EN",
-            }),
-            reset: Some(PeripheralRccRegister {
-                register: "APB1PRSTR",
-                field: "USART3RST",
-            }),
-            stop_mode: StopMode::Stop1,
-        }),
-        remap: Some(PeripheralRemapRegister {
-            register: "PCFR1",
-            field: "USART3_RM",
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PB4",
-                signal: "RX",
-                remap: Some(0),
+        interrupts: &[
+            PeripheralInterrupt {
+                signal: "EV",
+                interrupt: "I2C1_EV",
             },
-            PeripheralPin {
-                pin: "PB6",
-                signal: "CTS",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PB3",
-                signal: "TX",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PB5",
-                signal: "CK",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PB7",
-                signal: "RTS",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC19",
-                signal: "RX",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PB6",
-                signal: "CTS",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PC18",
-                signal: "TX",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PB5",
-                signal: "CK",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PB7",
-                signal: "RTS",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PB14",
-                signal: "RX",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA3",
-                signal: "CTS",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA18",
-                signal: "TX",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB8",
-                signal: "CK",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA4",
-                signal: "RTS",
-                remap: Some(2),
+            PeripheralInterrupt {
+                signal: "ER",
+                interrupt: "I2C1_ER",
             },
         ],
-        dma_channels: &[
-            PeripheralDmaChannel {
-                signal: "TX",
-                channel: Some("DMA1_CH2"),
-                dmamux: None,
-                dma: None,
-                request: None,
-            },
-            PeripheralDmaChannel {
-                signal: "RX",
-                channel: Some("DMA1_CH3"),
-                dmamux: None,
-                dma: None,
-                request: None,
-            },
-        ],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "USART3",
-        }],
-    },
-    Peripheral {
-        name: "USART4",
-        address: 0x40004c00,
-        registers: Some(PeripheralRegisters {
-            kind: "usart",
-            version: "common",
-            block: "USART",
-            ir: &usart::REGISTERS,
-        }),
-        rcc: Some(PeripheralRcc {
-            bus_clock: "HCLK",
-            kernel_clock: Clock("HCLK"),
-            enable: Some(PeripheralRccRegister {
-                register: "APB1PCENR",
-                field: "USART4EN",
-            }),
-            reset: Some(PeripheralRccRegister {
-                register: "APB1PRSTR",
-                field: "USART4RST",
-            }),
-            stop_mode: StopMode::Stop1,
-        }),
-        remap: Some(PeripheralRemapRegister {
-            register: "PCFR1",
-            field: "USART4_RM",
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PB1",
-                signal: "RX",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PB15",
-                signal: "CTS",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PB0",
-                signal: "TX",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PB2",
-                signal: "CK",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PA8",
-                signal: "RTS",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PA9",
-                signal: "RX",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA7",
-                signal: "CTS",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA5",
-                signal: "TX",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA6",
-                signal: "CK",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PB21",
-                signal: "RTS",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PC17",
-                signal: "RX",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB15",
-                signal: "CTS",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PC16",
-                signal: "TX",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB2",
-                signal: "CK",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA8",
-                signal: "RTS",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA10",
-                signal: "RX",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA14",
-                signal: "CTS",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PB9",
-                signal: "TX",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PB8",
-                signal: "CK",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA13",
-                signal: "RTS",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC19",
-                signal: "RX",
-                remap: Some(4),
-            },
-            PeripheralPin {
-                pin: "PA5",
-                signal: "CTS",
-                remap: Some(4),
-            },
-            PeripheralPin {
-                pin: "PB13",
-                signal: "TX",
-                remap: Some(4),
-            },
-            PeripheralPin {
-                pin: "PA8",
-                signal: "CK",
-                remap: Some(4),
-            },
-            PeripheralPin {
-                pin: "PA6",
-                signal: "RTS",
-                remap: Some(4),
-            },
-            PeripheralPin {
-                pin: "PC16",
-                signal: "RX",
-                remap: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB15",
-                signal: "CTS",
-                remap: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC17",
-                signal: "TX",
-                remap: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB2",
-                signal: "CK",
-                remap: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA8",
-                signal: "RTS",
-                remap: Some(5),
-            },
-        ],
-        dma_channels: &[
-            PeripheralDmaChannel {
-                signal: "RX",
-                channel: Some("DMA1_CH8"),
-                dmamux: None,
-                dma: None,
-                request: None,
-            },
-            PeripheralDmaChannel {
-                signal: "TX",
-                channel: Some("DMA1_CH1"),
-                dmamux: None,
-                dma: None,
-                request: None,
-            },
-        ],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "USART4",
-        }],
-    },
-    Peripheral {
-        name: "SPI1",
-        address: 0x40013000,
-        registers: Some(PeripheralRegisters {
-            kind: "spi",
-            version: "v0",
-            block: "SPI",
-            ir: &spi::REGISTERS,
-        }),
-        rcc: Some(PeripheralRcc {
-            bus_clock: "HCLK",
-            kernel_clock: Clock("HCLK"),
-            enable: Some(PeripheralRccRegister {
-                register: "APB2PCENR",
-                field: "SPI1EN",
-            }),
-            reset: Some(PeripheralRccRegister {
-                register: "APB2PRSTR",
-                field: "SPI1RST",
-            }),
-            stop_mode: StopMode::Stop1,
-        }),
-        remap: Some(PeripheralRemapRegister {
-            register: "PCFR1",
-            field: "SPI1_RM",
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PA4",
-                signal: "NSS",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PA5",
-                signal: "SCK",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PA6",
-                signal: "MISO",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PA7",
-                signal: "MOSI",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PA8",
-                signal: "MISO",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA9",
-                signal: "MOSI",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA9",
-                signal: "MISO",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA10",
-                signal: "MOSI",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA12",
-                signal: "NSS",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB15",
-                signal: "SCK",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PB21",
-                signal: "NSS",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PC4",
-                signal: "NSS",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC5",
-                signal: "SCK",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC6",
-                signal: "MISO",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC7",
-                signal: "MOSI",
-                remap: Some(3),
-            },
-        ],
-        dma_channels: &[
-            PeripheralDmaChannel {
-                signal: "TX",
-                channel: Some("DMA1_CH3"),
-                dmamux: None,
-                dma: None,
-                request: None,
-            },
-            PeripheralDmaChannel {
-                signal: "RX",
-                channel: Some("DMA1_CH2"),
-                dmamux: None,
-                dma: None,
-                request: None,
-            },
-        ],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "SPI1",
-        }],
     },
     Peripheral {
         name: "ADC1",
         address: 0x40012400,
         registers: Some(PeripheralRegisters {
             kind: "adc",
-            version: "x0",
+            version: "ch641",
             block: "ADC",
             ir: &adc::REGISTERS,
         }),
         rcc: Some(PeripheralRcc {
-            bus_clock: "SYSCLK",
-            kernel_clock: Clock("SYSCLK"),
+            bus_clock: "PCLK2",
+            kernel_clock: Clock("PCLK2"),
             enable: Some(PeripheralRccRegister {
                 register: "APB2PCENR",
                 field: "ADC1EN",
@@ -1051,74 +862,100 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         remap: None,
         pins: &[
             PeripheralPin {
-                pin: "PA0",
+                pin: "PA6",
                 signal: "IN0",
                 remap: None,
-            },
-            PeripheralPin {
-                pin: "PA1",
-                signal: "IN1",
-                remap: None,
-            },
-            PeripheralPin {
-                pin: "PA2",
-                signal: "IN2",
-                remap: None,
-            },
-            PeripheralPin {
-                pin: "PA3",
-                signal: "IN3",
-                remap: None,
-            },
-            PeripheralPin {
-                pin: "PA4",
-                signal: "IN4",
-                remap: None,
-            },
-            PeripheralPin {
-                pin: "PA5",
-                signal: "IN5",
-                remap: None,
-            },
-            PeripheralPin {
-                pin: "PA6",
-                signal: "IN6",
-                remap: None,
+                af: None,
             },
             PeripheralPin {
                 pin: "PA7",
+                signal: "IN1",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA8",
+                signal: "IN2",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA10",
+                signal: "IN3",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA11",
+                signal: "IN4",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA12",
+                signal: "IN5",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA13",
+                signal: "IN6",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB7",
                 signal: "IN7",
                 remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB8",
+                signal: "IN9",
+                remap: None,
+                af: None,
             },
             PeripheralPin {
                 pin: "PB0",
-                signal: "IN8",
+                signal: "IN10",
                 remap: None,
+                af: None,
             },
             PeripheralPin {
                 pin: "PB1",
-                signal: "IN9",
-                remap: None,
-            },
-            PeripheralPin {
-                pin: "PC0",
-                signal: "IN10",
-                remap: None,
-            },
-            PeripheralPin {
-                pin: "PC1",
                 signal: "IN11",
                 remap: None,
+                af: None,
             },
             PeripheralPin {
-                pin: "PC2",
+                pin: "PA0",
                 signal: "IN12",
                 remap: None,
+                af: None,
             },
             PeripheralPin {
-                pin: "PC3",
+                pin: "PA1",
                 signal: "IN13",
                 remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB9",
+                signal: "IN14",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA15",
+                signal: "ETR",
+                remap: Some(1),
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA4",
+                signal: "ETR",
+                remap: Some(0),
+                af: None,
             },
         ],
         dma_channels: &[PeripheralDmaChannel {
@@ -1130,911 +967,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }],
         interrupts: &[PeripheralInterrupt {
             signal: "GLOBAL",
-            interrupt: "ADC1",
-        }],
-    },
-    Peripheral {
-        name: "TIM1",
-        address: 0x40012c00,
-        registers: Some(PeripheralRegisters {
-            kind: "timer",
-            version: "x0",
-            block: "ADTM",
-            ir: &timer::REGISTERS,
-        }),
-        rcc: Some(PeripheralRcc {
-            bus_clock: "HCLK",
-            kernel_clock: Clock("HCLK"),
-            enable: Some(PeripheralRccRegister {
-                register: "APB2PCENR",
-                field: "TIM1EN",
-            }),
-            reset: Some(PeripheralRccRegister {
-                register: "APB2PRSTR",
-                field: "TIM1RST",
-            }),
-            stop_mode: StopMode::Stop1,
-        }),
-        remap: Some(PeripheralRemapRegister {
-            register: "PCFR1",
-            field: "TIM1_RM",
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PB9",
-                signal: "CH1",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PB10",
-                signal: "CH2",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PB11",
-                signal: "CH3",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC16",
-                signal: "CH4",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PC17",
-                signal: "ETR",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PB5",
-                signal: "BKIN",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PB6",
-                signal: "CH1N",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PB7",
-                signal: "CH2N",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PB8",
-                signal: "CH3N",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PB9",
-                signal: "CH1",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PB10",
-                signal: "CH2",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PB11",
-                signal: "CH3",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PC16",
-                signal: "CH4",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PC17",
-                signal: "ETR",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA6",
-                signal: "BKIN",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA7",
-                signal: "CH1N",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PB0",
-                signal: "CH2N",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PB1",
-                signal: "CH3N",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PB9",
-                signal: "CH1",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB10",
-                signal: "CH2",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB11",
-                signal: "CH3",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB12",
-                signal: "CH4",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PC18",
-                signal: "ETR",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB5",
-                signal: "BKIN",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB6",
-                signal: "CH1N",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB7",
-                signal: "CH2N",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB8",
-                signal: "CH3N",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PC0",
-                signal: "CH1",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC1",
-                signal: "CH2",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC2",
-                signal: "CH3",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC3",
-                signal: "CH4",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC18",
-                signal: "ETR",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC4",
-                signal: "BKIN",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC5",
-                signal: "CH1N",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC6",
-                signal: "CH2N",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PC7",
-                signal: "CH3N",
-                remap: Some(3),
-            },
-        ],
-        dma_channels: &[
-            PeripheralDmaChannel {
-                signal: "CH2",
-                channel: Some("DMA1_CH3"),
-                dmamux: None,
-                dma: None,
-                request: None,
-            },
-            PeripheralDmaChannel {
-                signal: "TRIG",
-                channel: Some("DMA1_CH4"),
-                dmamux: None,
-                dma: None,
-                request: None,
-            },
-            PeripheralDmaChannel {
-                signal: "CH4",
-                channel: Some("DMA1_CH4"),
-                dmamux: None,
-                dma: None,
-                request: None,
-            },
-            PeripheralDmaChannel {
-                signal: "CH3",
-                channel: Some("DMA1_CH6"),
-                dmamux: None,
-                dma: None,
-                request: None,
-            },
-            PeripheralDmaChannel {
-                signal: "CH1",
-                channel: Some("DMA1_CH2"),
-                dmamux: None,
-                dma: None,
-                request: None,
-            },
-            PeripheralDmaChannel {
-                signal: "UP",
-                channel: Some("DMA1_CH5"),
-                dmamux: None,
-                dma: None,
-                request: None,
-            },
-            PeripheralDmaChannel {
-                signal: "COM",
-                channel: Some("DMA1_CH4"),
-                dmamux: None,
-                dma: None,
-                request: None,
-            },
-        ],
-        interrupts: &[
-            PeripheralInterrupt {
-                signal: "BRK",
-                interrupt: "TIM1_BRK",
-            },
-            PeripheralInterrupt {
-                signal: "UP",
-                interrupt: "TIM1_UP",
-            },
-            PeripheralInterrupt {
-                signal: "TRG",
-                interrupt: "TIM1_TRG_COM",
-            },
-            PeripheralInterrupt {
-                signal: "COM",
-                interrupt: "TIM1_TRG_COM",
-            },
-            PeripheralInterrupt {
-                signal: "CC",
-                interrupt: "TIM1_CC",
-            },
-        ],
-    },
-    Peripheral {
-        name: "TIM2",
-        address: 0x40000000,
-        registers: Some(PeripheralRegisters {
-            kind: "timer",
-            version: "x0",
-            block: "ADTM",
-            ir: &timer::REGISTERS,
-        }),
-        rcc: Some(PeripheralRcc {
-            bus_clock: "HCLK",
-            kernel_clock: Clock("HCLK"),
-            enable: Some(PeripheralRccRegister {
-                register: "APB1PCENR",
-                field: "TIM2EN",
-            }),
-            reset: Some(PeripheralRccRegister {
-                register: "APB1PRSTR",
-                field: "TIM2RST",
-            }),
-            stop_mode: StopMode::Stop1,
-        }),
-        remap: Some(PeripheralRemapRegister {
-            register: "PCFR1",
-            field: "TIM2_RM",
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PA0",
-                signal: "CH1",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PA1",
-                signal: "CH2",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PA2",
-                signal: "CH3",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PA3",
-                signal: "CH4",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PA19",
-                signal: "ETR",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PA20",
-                signal: "BKIN",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PA21",
-                signal: "CH1N",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PA22",
-                signal: "CH2N",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PA23",
-                signal: "CH3N",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PB21",
-                signal: "CH1",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PB15",
-                signal: "CH2",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA2",
-                signal: "CH3",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA3",
-                signal: "CH4",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA18",
-                signal: "ETR",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA9",
-                signal: "BKIN",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA12",
-                signal: "CH1N",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA13",
-                signal: "CH2N",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA14",
-                signal: "CH3N",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PA0",
-                signal: "CH1",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA1",
-                signal: "CH2",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB3",
-                signal: "CH3",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB4",
-                signal: "CH4",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA19",
-                signal: "ETR",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA20",
-                signal: "BKIN",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PC3",
-                signal: "CH1N",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA22",
-                signal: "CH2N",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA23",
-                signal: "CH3N",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PB21",
-                signal: "CH1",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PB15",
-                signal: "CH2",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PB3",
-                signal: "CH3",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PB4",
-                signal: "CH4",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA18",
-                signal: "ETR",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA9",
-                signal: "BKIN",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA12",
-                signal: "CH1N",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA13",
-                signal: "CH2N",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA14",
-                signal: "CH3N",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PB16",
-                signal: "CH1",
-                remap: Some(4),
-            },
-            PeripheralPin {
-                pin: "PB17",
-                signal: "CH2",
-                remap: Some(4),
-            },
-            PeripheralPin {
-                pin: "PB18",
-                signal: "CH3",
-                remap: Some(4),
-            },
-            PeripheralPin {
-                pin: "PB19",
-                signal: "CH4",
-                remap: Some(4),
-            },
-            PeripheralPin {
-                pin: "PC4",
-                signal: "ETR",
-                remap: Some(4),
-            },
-            PeripheralPin {
-                pin: "PC0",
-                signal: "BKIN",
-                remap: Some(4),
-            },
-            PeripheralPin {
-                pin: "PC1",
-                signal: "CH1N",
-                remap: Some(4),
-            },
-            PeripheralPin {
-                pin: "PC2",
-                signal: "CH2N",
-                remap: Some(4),
-            },
-            PeripheralPin {
-                pin: "PC3",
-                signal: "CH3N",
-                remap: Some(4),
-            },
-            PeripheralPin {
-                pin: "PC19",
-                signal: "CH1",
-                remap: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA12",
-                signal: "CH2",
-                remap: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA13",
-                signal: "CH3",
-                remap: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC0",
-                signal: "CH4",
-                remap: Some(5),
-            },
-            PeripheralPin {
-                pin: "PA2",
-                signal: "ETR",
-                remap: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB4",
-                signal: "BKIN",
-                remap: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC18",
-                signal: "CH1N",
-                remap: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB12",
-                signal: "CH2N",
-                remap: Some(5),
-            },
-            PeripheralPin {
-                pin: "PB3",
-                signal: "CH3N",
-                remap: Some(5),
-            },
-            PeripheralPin {
-                pin: "PC19",
-                signal: "CH1",
-                remap: Some(6),
-            },
-            PeripheralPin {
-                pin: "PC14",
-                signal: "CH2",
-                remap: Some(6),
-            },
-            PeripheralPin {
-                pin: "PC15",
-                signal: "CH3",
-                remap: Some(6),
-            },
-            PeripheralPin {
-                pin: "PC0",
-                signal: "CH4",
-                remap: Some(6),
-            },
-            PeripheralPin {
-                pin: "PA2",
-                signal: "ETR",
-                remap: Some(6),
-            },
-            PeripheralPin {
-                pin: "PB4",
-                signal: "BKIN",
-                remap: Some(6),
-            },
-            PeripheralPin {
-                pin: "PB11",
-                signal: "CH1N",
-                remap: Some(6),
-            },
-            PeripheralPin {
-                pin: "PB12",
-                signal: "CH2N",
-                remap: Some(6),
-            },
-            PeripheralPin {
-                pin: "PB3",
-                signal: "CH3N",
-                remap: Some(6),
-            },
-        ],
-        dma_channels: &[
-            PeripheralDmaChannel {
-                signal: "CH3",
-                channel: Some("DMA1_CH1"),
-                dmamux: None,
-                dma: None,
-                request: None,
-            },
-            PeripheralDmaChannel {
-                signal: "CH1",
-                channel: Some("DMA1_CH5"),
-                dmamux: None,
-                dma: None,
-                request: None,
-            },
-            PeripheralDmaChannel {
-                signal: "CH4",
-                channel: Some("DMA1_CH7"),
-                dmamux: None,
-                dma: None,
-                request: None,
-            },
-            PeripheralDmaChannel {
-                signal: "UP",
-                channel: Some("DMA1_CH2"),
-                dmamux: None,
-                dma: None,
-                request: None,
-            },
-            PeripheralDmaChannel {
-                signal: "TRIG",
-                channel: Some("DMA1_CH8"),
-                dmamux: None,
-                dma: None,
-                request: None,
-            },
-            PeripheralDmaChannel {
-                signal: "CH2",
-                channel: Some("DMA1_CH7"),
-                dmamux: None,
-                dma: None,
-                request: None,
-            },
-            PeripheralDmaChannel {
-                signal: "COM",
-                channel: Some("DMA1_CH8"),
-                dmamux: None,
-                dma: None,
-                request: None,
-            },
-        ],
-        interrupts: &[
-            PeripheralInterrupt {
-                signal: "BRK",
-                interrupt: "TIM2_BRK",
-            },
-            PeripheralInterrupt {
-                signal: "UP",
-                interrupt: "TIM2_UP",
-            },
-            PeripheralInterrupt {
-                signal: "TRG",
-                interrupt: "TIM2_TRG_COM",
-            },
-            PeripheralInterrupt {
-                signal: "COM",
-                interrupt: "TIM2_TRG_COM",
-            },
-            PeripheralInterrupt {
-                signal: "CC",
-                interrupt: "TIM2_CC",
-            },
-        ],
-    },
-    Peripheral {
-        name: "TIM3",
-        address: 0x40000400,
-        registers: Some(PeripheralRegisters {
-            kind: "timer",
-            version: "x0",
-            block: "GPTM",
-            ir: &timer::REGISTERS,
-        }),
-        rcc: Some(PeripheralRcc {
-            bus_clock: "HCLK",
-            kernel_clock: Clock("HCLK"),
-            enable: Some(PeripheralRccRegister {
-                register: "APB1PCENR",
-                field: "TIM3EN",
-            }),
-            reset: Some(PeripheralRccRegister {
-                register: "APB1PRSTR",
-                field: "TIM3RST",
-            }),
-            stop_mode: StopMode::Stop1,
-        }),
-        remap: Some(PeripheralRemapRegister {
-            register: "PCFR1",
-            field: "TIM3_RM",
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PA6",
-                signal: "CH1",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PA7",
-                signal: "CH2",
-                remap: Some(0),
-            },
-            PeripheralPin {
-                pin: "PB4",
-                signal: "CH1",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PB5",
-                signal: "CH2",
-                remap: Some(1),
-            },
-            PeripheralPin {
-                pin: "PC19",
-                signal: "CH1",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PC18",
-                signal: "CH2",
-                remap: Some(2),
-            },
-            PeripheralPin {
-                pin: "PA3",
-                signal: "CH1",
-                remap: Some(3),
-            },
-            PeripheralPin {
-                pin: "PA4",
-                signal: "CH2",
-                remap: Some(3),
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[
-            PeripheralInterrupt {
-                signal: "BRK",
-                interrupt: "TIM3",
-            },
-            PeripheralInterrupt {
-                signal: "UP",
-                interrupt: "TIM3",
-            },
-            PeripheralInterrupt {
-                signal: "TRG",
-                interrupt: "TIM3",
-            },
-            PeripheralInterrupt {
-                signal: "CC",
-                interrupt: "TIM3",
-            },
-        ],
-    },
-    Peripheral {
-        name: "OPA",
-        address: 0x40026000,
-        registers: Some(PeripheralRegisters {
-            kind: "opa",
-            version: "x0",
-            block: "OPA",
-            ir: &opa::REGISTERS,
-        }),
-        rcc: None,
-        remap: None,
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[],
-    },
-    Peripheral {
-        name: "PIOC",
-        address: 0x40026c00,
-        registers: Some(PeripheralRegisters {
-            kind: "pioc",
-            version: "x0",
-            block: "PIOC",
-            ir: &pioc::REGISTERS,
-        }),
-        rcc: None,
-        remap: Some(PeripheralRemapRegister {
-            register: "PCFR1",
-            field: "PIOC_RM",
-        }),
-        pins: &[
-            PeripheralPin {
-                pin: "PC18",
-                signal: "IO0",
-                remap: None,
-            },
-            PeripheralPin {
-                pin: "PC19",
-                signal: "IO1",
-                remap: None,
-            },
-            PeripheralPin {
-                pin: "PC7",
-                signal: "IO0",
-                remap: Some(1),
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "PIOC",
-        }],
-    },
-    Peripheral {
-        name: "USBFS",
-        address: 0x40023400,
-        registers: Some(PeripheralRegisters {
-            kind: "usb",
-            version: "x0fs",
-            block: "USB",
-            ir: &usb::REGISTERS,
-        }),
-        rcc: Some(PeripheralRcc {
-            bus_clock: "HCLK",
-            kernel_clock: Clock("HCLK"),
-            enable: Some(PeripheralRccRegister {
-                register: "AHBPCENR",
-                field: "USBFSEN",
-            }),
-            reset: Some(PeripheralRccRegister {
-                register: "AHBRSTR",
-                field: "USBFSRST",
-            }),
-            stop_mode: StopMode::Stop1,
-        }),
-        remap: None,
-        pins: &[
-            PeripheralPin {
-                pin: "PC16",
-                signal: "DM",
-                remap: None,
-            },
-            PeripheralPin {
-                pin: "PC17",
-                signal: "DP",
-                remap: None,
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[
-            PeripheralInterrupt {
-                signal: "GLOBAL",
-                interrupt: "USBFS",
-            },
-            PeripheralInterrupt {
-                signal: "WKUP",
-                interrupt: "USBFS_WKUP",
-            },
-        ],
-    },
-    Peripheral {
-        name: "AWU",
-        address: 0x40026400,
-        registers: Some(PeripheralRegisters {
-            kind: "awu",
-            version: "x0",
-            block: "AWU",
-            ir: &awu::REGISTERS,
-        }),
-        rcc: None,
-        remap: None,
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "AWU",
+            interrupt: "ADC",
         }],
     },
     Peripheral {
@@ -2042,7 +975,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         address: 0x40027000,
         registers: Some(PeripheralRegisters {
             kind: "usbpd",
-            version: "x0",
+            version: "ch641",
             block: "USBPD",
             ir: &usbpd::REGISTERS,
         }),
@@ -2051,25 +984,30 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             kernel_clock: Clock("HCLK"),
             enable: Some(PeripheralRccRegister {
                 register: "AHBPCENR",
-                field: "USBPD",
+                field: "USBPDEN",
             }),
-            reset: Some(PeripheralRccRegister {
-                register: "AHBRSTR",
-                field: "USBPDRST",
-            }),
+            reset: None,
             stop_mode: StopMode::Stop1,
         }),
         remap: None,
         pins: &[
             PeripheralPin {
-                pin: "PC14",
+                pin: "PB0",
                 signal: "CC1",
                 remap: None,
+                af: None,
             },
             PeripheralPin {
-                pin: "PC15",
+                pin: "PB1",
                 signal: "CC2",
                 remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB9",
+                signal: "CC3",
+                remap: None,
+                af: None,
             },
         ],
         dma_channels: &[],
@@ -2097,6 +1035,10 @@ pub(crate) static INTERRUPTS: &[Interrupt] = &[
     Interrupt {
         name: "FLASH",
         number: 18,
+    },
+    Interrupt {
+        name: "RCC",
+        number: 19,
     },
     Interrupt {
         name: "EXTI7_0",
@@ -2135,7 +1077,7 @@ pub(crate) static INTERRUPTS: &[Interrupt] = &[
         number: 28,
     },
     Interrupt {
-        name: "ADC1",
+        name: "ADC",
         number: 29,
     },
     Interrupt {
@@ -2151,7 +1093,7 @@ pub(crate) static INTERRUPTS: &[Interrupt] = &[
         number: 32,
     },
     Interrupt {
-        name: "SPI1",
+        name: "EXTI15_8",
         number: 33,
     },
     Interrupt {
@@ -2171,72 +1113,16 @@ pub(crate) static INTERRUPTS: &[Interrupt] = &[
         number: 37,
     },
     Interrupt {
-        name: "TIM2_UP",
+        name: "TIM2",
         number: 38,
     },
     Interrupt {
-        name: "USART2",
+        name: "USBPD",
         number: 39,
     },
     Interrupt {
-        name: "EXTI15_8",
-        number: 40,
-    },
-    Interrupt {
-        name: "EXTI25_16",
-        number: 41,
-    },
-    Interrupt {
-        name: "USART3",
-        number: 42,
-    },
-    Interrupt {
-        name: "USART4",
-        number: 43,
-    },
-    Interrupt {
-        name: "DMA1_CHANNEL8",
-        number: 44,
-    },
-    Interrupt {
-        name: "USBFS",
-        number: 45,
-    },
-    Interrupt {
-        name: "USBFS_WKUP",
-        number: 46,
-    },
-    Interrupt {
-        name: "PIOC",
-        number: 47,
-    },
-    Interrupt {
-        name: "OPA",
-        number: 48,
-    },
-    Interrupt {
-        name: "USBPD",
-        number: 49,
-    },
-    Interrupt {
         name: "USBPD_WKUP",
-        number: 50,
-    },
-    Interrupt {
-        name: "TIM2_CC",
-        number: 51,
-    },
-    Interrupt {
-        name: "TIM2_TRG_COM",
-        number: 52,
-    },
-    Interrupt {
-        name: "TIM2_BRK",
-        number: 53,
-    },
-    Interrupt {
-        name: "TIM3",
-        number: 54,
+        number: 40,
     },
 ];
 pub(crate) static DMA_CHANNELS: &[DmaChannel] = &[
@@ -2289,45 +1175,32 @@ pub(crate) static DMA_CHANNELS: &[DmaChannel] = &[
         dmamux: None,
         dmamux_channel: None,
     },
-    DmaChannel {
-        name: "DMA1_CH8",
-        dma: "DMA1",
-        channel: 7,
-        dmamux: None,
-        dmamux_channel: None,
-    },
 ];
-#[path = "../registers/adc_x0.rs"]
+#[path = "../registers/adc_ch641.rs"]
 pub mod adc;
-#[path = "../registers/afio_x0.rs"]
+#[path = "../registers/afio_ch641.rs"]
 pub mod afio;
-#[path = "../registers/awu_x0.rs"]
-pub mod awu;
 #[path = "../registers/dma_v1.rs"]
 pub mod dma;
+#[path = "../registers/extend_ch641.rs"]
+pub mod extend;
 #[path = "../registers/exti_common.rs"]
 pub mod exti;
-#[path = "../registers/flash_x0.rs"]
+#[path = "../registers/flash_v0.rs"]
 pub mod flash;
-#[path = "../registers/gpio_x0.rs"]
+#[path = "../registers/gpio_v3.rs"]
 pub mod gpio;
-#[path = "../registers/opa_x0.rs"]
-pub mod opa;
-#[path = "../registers/pfic_rv4.rs"]
+#[path = "../registers/i2c_v0.rs"]
+pub mod i2c;
+#[path = "../registers/pfic_rv2.rs"]
 pub mod pfic;
-#[path = "../registers/pioc_x0.rs"]
-pub mod pioc;
-#[path = "../registers/rcc_x0.rs"]
+#[path = "../registers/rcc_ch641.rs"]
 pub mod rcc;
-#[path = "../registers/spi_v0.rs"]
-pub mod spi;
-#[path = "../registers/systick_rv4.rs"]
+#[path = "../registers/systick_rv2.rs"]
 pub mod systick;
-#[path = "../registers/timer_x0.rs"]
+#[path = "../registers/timer_v3.rs"]
 pub mod timer;
 #[path = "../registers/usart_common.rs"]
 pub mod usart;
-#[path = "../registers/usb_x0fs.rs"]
-pub mod usb;
-#[path = "../registers/usbpd_x0.rs"]
+#[path = "../registers/usbpd_ch641.rs"]
 pub mod usbpd;

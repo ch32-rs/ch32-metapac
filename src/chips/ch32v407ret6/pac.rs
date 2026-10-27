@@ -1,0 +1,562 @@
+#[derive(Copy, Clone, Debug, PartialEq, Eq)]
+pub enum Interrupt {
+    #[doc = "16 - WWDG"]
+    WWDG = 16,
+    #[doc = "17 - PVD"]
+    PVD = 17,
+    #[doc = "18 - TAMPER"]
+    TAMPER = 18,
+    #[doc = "19 - RTC"]
+    RTC = 19,
+    #[doc = "20 - FLASH"]
+    FLASH = 20,
+    #[doc = "21 - RCC"]
+    RCC = 21,
+    #[doc = "22 - EXTI0"]
+    EXTI0 = 22,
+    #[doc = "23 - EXTI1"]
+    EXTI1 = 23,
+    #[doc = "24 - EXTI2"]
+    EXTI2 = 24,
+    #[doc = "25 - EXTI3"]
+    EXTI3 = 25,
+    #[doc = "26 - EXTI4"]
+    EXTI4 = 26,
+    #[doc = "27 - DMA1_CHANNEL1"]
+    DMA1_CHANNEL1 = 27,
+    #[doc = "28 - DMA1_CHANNEL2"]
+    DMA1_CHANNEL2 = 28,
+    #[doc = "29 - DMA1_CHANNEL3"]
+    DMA1_CHANNEL3 = 29,
+    #[doc = "30 - DMA1_CHANNEL4"]
+    DMA1_CHANNEL4 = 30,
+    #[doc = "31 - DMA1_CHANNEL5"]
+    DMA1_CHANNEL5 = 31,
+    #[doc = "32 - DMA1_CHANNEL6"]
+    DMA1_CHANNEL6 = 32,
+    #[doc = "33 - DMA1_CHANNEL7"]
+    DMA1_CHANNEL7 = 33,
+    #[doc = "34 - ADC1_2"]
+    ADC1_2 = 34,
+    #[doc = "35 - CAN1_TX"]
+    CAN1_TX = 35,
+    #[doc = "36 - CAN1_RX0"]
+    CAN1_RX0 = 36,
+    #[doc = "37 - CAN1_RX1"]
+    CAN1_RX1 = 37,
+    #[doc = "38 - CAN1_SCE"]
+    CAN1_SCE = 38,
+    #[doc = "39 - EXTI9_5"]
+    EXTI9_5 = 39,
+    #[doc = "40 - TIM1_BRK"]
+    TIM1_BRK = 40,
+    #[doc = "41 - TIM1_UP"]
+    TIM1_UP = 41,
+    #[doc = "42 - TIM1_TRG_COM"]
+    TIM1_TRG_COM = 42,
+    #[doc = "43 - TIM1_CC"]
+    TIM1_CC = 43,
+    #[doc = "44 - TIM2"]
+    TIM2 = 44,
+    #[doc = "45 - TIM3"]
+    TIM3 = 45,
+    #[doc = "46 - TIM4"]
+    TIM4 = 46,
+    #[doc = "47 - I2C_EV"]
+    I2C_EV = 47,
+    #[doc = "48 - I2C_ER"]
+    I2C_ER = 48,
+    #[doc = "49 - I3C_EV"]
+    I3C_EV = 49,
+    #[doc = "50 - I3C_ER"]
+    I3C_ER = 50,
+    #[doc = "51 - SPI1"]
+    SPI1 = 51,
+    #[doc = "52 - SPI2"]
+    SPI2 = 52,
+    #[doc = "53 - USART1"]
+    USART1 = 53,
+    #[doc = "54 - USART2"]
+    USART2 = 54,
+    #[doc = "55 - USART3"]
+    USART3 = 55,
+    #[doc = "56 - EXTI15_10"]
+    EXTI15_10 = 56,
+    #[doc = "57 - RTCALARM"]
+    RTCALARM = 57,
+    #[doc = "58 - USBHS1WAKEUP"]
+    USBHS1WAKEUP = 58,
+    #[doc = "59 - TIM8_BRK"]
+    TIM8_BRK = 59,
+    #[doc = "60 - TIM8_UP"]
+    TIM8_UP = 60,
+    #[doc = "61 - TIM8_TRG_COM"]
+    TIM8_TRG_COM = 61,
+    #[doc = "62 - TIM8_CC"]
+    TIM8_CC = 62,
+    #[doc = "63 - RNG"]
+    RNG = 63,
+    #[doc = "65 - SDIO"]
+    SDIO = 65,
+    #[doc = "66 - TIM5"]
+    TIM5 = 66,
+    #[doc = "67 - SPI3"]
+    SPI3 = 67,
+    #[doc = "68 - USART4"]
+    USART4 = 68,
+    #[doc = "69 - USART5"]
+    USART5 = 69,
+    #[doc = "70 - TIM6"]
+    TIM6 = 70,
+    #[doc = "71 - TIM7"]
+    TIM7 = 71,
+    #[doc = "72 - DMA2_CHANNEL1"]
+    DMA2_CHANNEL1 = 72,
+    #[doc = "73 - DMA2_CHANNEL2"]
+    DMA2_CHANNEL2 = 73,
+    #[doc = "74 - DMA2_CHANNEL3"]
+    DMA2_CHANNEL3 = 74,
+    #[doc = "75 - DMA2_CHANNEL4"]
+    DMA2_CHANNEL4 = 75,
+    #[doc = "76 - DMA2_CHANNEL5"]
+    DMA2_CHANNEL5 = 76,
+    #[doc = "77 - ETH"]
+    ETH = 77,
+    #[doc = "78 - ETH_WKUP"]
+    ETH_WKUP = 78,
+    #[doc = "79 - LTDC"]
+    LTDC = 79,
+    #[doc = "80 - PSRAM"]
+    PSRAM = 80,
+    #[doc = "81 - USART9"]
+    USART9 = 81,
+    #[doc = "82 - USART10"]
+    USART10 = 82,
+    #[doc = "83 - USBHS1"]
+    USBHS1 = 83,
+    #[doc = "84 - USBHS2WAKEUP"]
+    USBHS2WAKEUP = 84,
+    #[doc = "85 - USBHS2"]
+    USBHS2 = 85,
+    #[doc = "86 - DVP"]
+    DVP = 86,
+    #[doc = "87 - USART6"]
+    USART6 = 87,
+    #[doc = "88 - USART7"]
+    USART7 = 88,
+    #[doc = "89 - USART8"]
+    USART8 = 89,
+    #[doc = "90 - DMA1_CHANNEL8"]
+    DMA1_CHANNEL8 = 90,
+    #[doc = "91 - DMA1_CHANNEL9"]
+    DMA1_CHANNEL9 = 91,
+    #[doc = "92 - DMA1_CHANNEL10"]
+    DMA1_CHANNEL10 = 92,
+    #[doc = "93 - DMA1_CHANNEL11"]
+    DMA1_CHANNEL11 = 93,
+    #[doc = "94 - DMA1_CHANNEL12"]
+    DMA1_CHANNEL12 = 94,
+    #[doc = "95 - DMA1_CHANNEL13"]
+    DMA1_CHANNEL13 = 95,
+    #[doc = "96 - I3CWAKEUP"]
+    I3CWAKEUP = 96,
+    #[doc = "97 - ARGB"]
+    ARGB = 97,
+    #[doc = "98 - DMA2_CHANNEL6"]
+    DMA2_CHANNEL6 = 98,
+    #[doc = "99 - DMA2_CHANNEL7"]
+    DMA2_CHANNEL7 = 99,
+    #[doc = "100 - DMA2_CHANNEL8"]
+    DMA2_CHANNEL8 = 100,
+    #[doc = "101 - DMA2_CHANNEL9"]
+    DMA2_CHANNEL9 = 101,
+    #[doc = "102 - DMA2_CHANNEL10"]
+    DMA2_CHANNEL10 = 102,
+    #[doc = "103 - DMA2_CHANNEL11"]
+    DMA2_CHANNEL11 = 103,
+}
+unsafe impl crate::InterruptNumber for Interrupt {
+    #[inline(always)]
+    fn number(self) -> u16 {
+        self as u16
+    }
+}
+#[cfg(feature = "rt")]
+mod _vectors {
+    unsafe extern "C" {
+        fn WWDG();
+        fn PVD();
+        fn TAMPER();
+        fn RTC();
+        fn FLASH();
+        fn RCC();
+        fn EXTI0();
+        fn EXTI1();
+        fn EXTI2();
+        fn EXTI3();
+        fn EXTI4();
+        fn DMA1_CHANNEL1();
+        fn DMA1_CHANNEL2();
+        fn DMA1_CHANNEL3();
+        fn DMA1_CHANNEL4();
+        fn DMA1_CHANNEL5();
+        fn DMA1_CHANNEL6();
+        fn DMA1_CHANNEL7();
+        fn ADC1_2();
+        fn CAN1_TX();
+        fn CAN1_RX0();
+        fn CAN1_RX1();
+        fn CAN1_SCE();
+        fn EXTI9_5();
+        fn TIM1_BRK();
+        fn TIM1_UP();
+        fn TIM1_TRG_COM();
+        fn TIM1_CC();
+        fn TIM2();
+        fn TIM3();
+        fn TIM4();
+        fn I2C_EV();
+        fn I2C_ER();
+        fn I3C_EV();
+        fn I3C_ER();
+        fn SPI1();
+        fn SPI2();
+        fn USART1();
+        fn USART2();
+        fn USART3();
+        fn EXTI15_10();
+        fn RTCALARM();
+        fn USBHS1WAKEUP();
+        fn TIM8_BRK();
+        fn TIM8_UP();
+        fn TIM8_TRG_COM();
+        fn TIM8_CC();
+        fn RNG();
+        fn SDIO();
+        fn TIM5();
+        fn SPI3();
+        fn USART4();
+        fn USART5();
+        fn TIM6();
+        fn TIM7();
+        fn DMA2_CHANNEL1();
+        fn DMA2_CHANNEL2();
+        fn DMA2_CHANNEL3();
+        fn DMA2_CHANNEL4();
+        fn DMA2_CHANNEL5();
+        fn ETH();
+        fn ETH_WKUP();
+        fn LTDC();
+        fn PSRAM();
+        fn USART9();
+        fn USART10();
+        fn USBHS1();
+        fn USBHS2WAKEUP();
+        fn USBHS2();
+        fn DVP();
+        fn USART6();
+        fn USART7();
+        fn USART8();
+        fn DMA1_CHANNEL8();
+        fn DMA1_CHANNEL9();
+        fn DMA1_CHANNEL10();
+        fn DMA1_CHANNEL11();
+        fn DMA1_CHANNEL12();
+        fn DMA1_CHANNEL13();
+        fn I3CWAKEUP();
+        fn ARGB();
+        fn DMA2_CHANNEL6();
+        fn DMA2_CHANNEL7();
+        fn DMA2_CHANNEL8();
+        fn DMA2_CHANNEL9();
+        fn DMA2_CHANNEL10();
+        fn DMA2_CHANNEL11();
+    }
+    pub union Vector {
+        _handler: unsafe extern "C" fn(),
+        _reserved: u32,
+    }
+    #[unsafe(link_section = ".vector_table.external_interrupts")]
+    #[unsafe(no_mangle)]
+    pub static __EXTERNAL_INTERRUPTS: [Vector; 88] = [
+        Vector { _handler: WWDG },
+        Vector { _handler: PVD },
+        Vector { _handler: TAMPER },
+        Vector { _handler: RTC },
+        Vector { _handler: FLASH },
+        Vector { _handler: RCC },
+        Vector { _handler: EXTI0 },
+        Vector { _handler: EXTI1 },
+        Vector { _handler: EXTI2 },
+        Vector { _handler: EXTI3 },
+        Vector { _handler: EXTI4 },
+        Vector {
+            _handler: DMA1_CHANNEL1,
+        },
+        Vector {
+            _handler: DMA1_CHANNEL2,
+        },
+        Vector {
+            _handler: DMA1_CHANNEL3,
+        },
+        Vector {
+            _handler: DMA1_CHANNEL4,
+        },
+        Vector {
+            _handler: DMA1_CHANNEL5,
+        },
+        Vector {
+            _handler: DMA1_CHANNEL6,
+        },
+        Vector {
+            _handler: DMA1_CHANNEL7,
+        },
+        Vector { _handler: ADC1_2 },
+        Vector { _handler: CAN1_TX },
+        Vector { _handler: CAN1_RX0 },
+        Vector { _handler: CAN1_RX1 },
+        Vector { _handler: CAN1_SCE },
+        Vector { _handler: EXTI9_5 },
+        Vector { _handler: TIM1_BRK },
+        Vector { _handler: TIM1_UP },
+        Vector {
+            _handler: TIM1_TRG_COM,
+        },
+        Vector { _handler: TIM1_CC },
+        Vector { _handler: TIM2 },
+        Vector { _handler: TIM3 },
+        Vector { _handler: TIM4 },
+        Vector { _handler: I2C_EV },
+        Vector { _handler: I2C_ER },
+        Vector { _handler: I3C_EV },
+        Vector { _handler: I3C_ER },
+        Vector { _handler: SPI1 },
+        Vector { _handler: SPI2 },
+        Vector { _handler: USART1 },
+        Vector { _handler: USART2 },
+        Vector { _handler: USART3 },
+        Vector {
+            _handler: EXTI15_10,
+        },
+        Vector { _handler: RTCALARM },
+        Vector {
+            _handler: USBHS1WAKEUP,
+        },
+        Vector { _handler: TIM8_BRK },
+        Vector { _handler: TIM8_UP },
+        Vector {
+            _handler: TIM8_TRG_COM,
+        },
+        Vector { _handler: TIM8_CC },
+        Vector { _handler: RNG },
+        Vector { _reserved: 0 },
+        Vector { _handler: SDIO },
+        Vector { _handler: TIM5 },
+        Vector { _handler: SPI3 },
+        Vector { _handler: USART4 },
+        Vector { _handler: USART5 },
+        Vector { _handler: TIM6 },
+        Vector { _handler: TIM7 },
+        Vector {
+            _handler: DMA2_CHANNEL1,
+        },
+        Vector {
+            _handler: DMA2_CHANNEL2,
+        },
+        Vector {
+            _handler: DMA2_CHANNEL3,
+        },
+        Vector {
+            _handler: DMA2_CHANNEL4,
+        },
+        Vector {
+            _handler: DMA2_CHANNEL5,
+        },
+        Vector { _handler: ETH },
+        Vector { _handler: ETH_WKUP },
+        Vector { _handler: LTDC },
+        Vector { _handler: PSRAM },
+        Vector { _handler: USART9 },
+        Vector { _handler: USART10 },
+        Vector { _handler: USBHS1 },
+        Vector {
+            _handler: USBHS2WAKEUP,
+        },
+        Vector { _handler: USBHS2 },
+        Vector { _handler: DVP },
+        Vector { _handler: USART6 },
+        Vector { _handler: USART7 },
+        Vector { _handler: USART8 },
+        Vector {
+            _handler: DMA1_CHANNEL8,
+        },
+        Vector {
+            _handler: DMA1_CHANNEL9,
+        },
+        Vector {
+            _handler: DMA1_CHANNEL10,
+        },
+        Vector {
+            _handler: DMA1_CHANNEL11,
+        },
+        Vector {
+            _handler: DMA1_CHANNEL12,
+        },
+        Vector {
+            _handler: DMA1_CHANNEL13,
+        },
+        Vector {
+            _handler: I3CWAKEUP,
+        },
+        Vector { _handler: ARGB },
+        Vector {
+            _handler: DMA2_CHANNEL6,
+        },
+        Vector {
+            _handler: DMA2_CHANNEL7,
+        },
+        Vector {
+            _handler: DMA2_CHANNEL8,
+        },
+        Vector {
+            _handler: DMA2_CHANNEL9,
+        },
+        Vector {
+            _handler: DMA2_CHANNEL10,
+        },
+        Vector {
+            _handler: DMA2_CHANNEL11,
+        },
+    ];
+}
+pub const TIM2: timer::Gptm = unsafe { timer::Gptm::from_ptr(0x4000_0000usize as _) };
+pub const TIM3: timer::Gptm = unsafe { timer::Gptm::from_ptr(0x4000_0400usize as _) };
+pub const TIM4: timer::Gptm = unsafe { timer::Gptm::from_ptr(0x4000_0800usize as _) };
+pub const TIM5: timer::Gptm = unsafe { timer::Gptm::from_ptr(0x4000_0c00usize as _) };
+pub const TIM6: timer::Bctm = unsafe { timer::Bctm::from_ptr(0x4000_1000usize as _) };
+pub const TIM7: timer::Bctm = unsafe { timer::Bctm::from_ptr(0x4000_1400usize as _) };
+pub const USART6: usart::Usart = unsafe { usart::Usart::from_ptr(0x4000_1800usize as _) };
+pub const USART7: usart::Usart = unsafe { usart::Usart::from_ptr(0x4000_1c00usize as _) };
+pub const USART8: usart::Usart = unsafe { usart::Usart::from_ptr(0x4000_2000usize as _) };
+pub const RTC: rtc::Rtc = unsafe { rtc::Rtc::from_ptr(0x4000_2800usize as _) };
+pub const WWDG: wwdg::Wwdg = unsafe { wwdg::Wwdg::from_ptr(0x4000_2c00usize as _) };
+pub const IWDG: iwdg::Iwdg = unsafe { iwdg::Iwdg::from_ptr(0x4000_3000usize as _) };
+pub const SPI2: spi::Spi = unsafe { spi::Spi::from_ptr(0x4000_3800usize as _) };
+pub const SPI3: spi::Spi = unsafe { spi::Spi::from_ptr(0x4000_3c00usize as _) };
+pub const USART2: usart::Usart = unsafe { usart::Usart::from_ptr(0x4000_4400usize as _) };
+pub const USART3: usart::Usart = unsafe { usart::Usart::from_ptr(0x4000_4800usize as _) };
+pub const USART4: usart::Usart = unsafe { usart::Usart::from_ptr(0x4000_4c00usize as _) };
+pub const USART5: usart::Usart = unsafe { usart::Usart::from_ptr(0x4000_5000usize as _) };
+pub const I2C: i2c::I2c = unsafe { i2c::I2c::from_ptr(0x4000_5400usize as _) };
+pub const CAN1: can::Can = unsafe { can::Can::from_ptr(0x4000_6400usize as _) };
+pub const BKP: bkp::Bkp = unsafe { bkp::Bkp::from_ptr(0x4000_6c00usize as _) };
+pub const PWR: pwr::Pwr = unsafe { pwr::Pwr::from_ptr(0x4000_7000usize as _) };
+pub const DAC1: dac::Dac = unsafe { dac::Dac::from_ptr(0x4000_7400usize as _) };
+pub const USART9: usart::Usart = unsafe { usart::Usart::from_ptr(0x4000_7800usize as _) };
+pub const USART10: usart::Usart = unsafe { usart::Usart::from_ptr(0x4000_7c00usize as _) };
+pub const AFIO: afio::Afio = unsafe { afio::Afio::from_ptr(0x4001_0000usize as _) };
+pub const EXTI: exti::Exti = unsafe { exti::Exti::from_ptr(0x4001_0400usize as _) };
+pub const GPIOA: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0x4001_0800usize as _) };
+pub const GPIOB: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0x4001_0c00usize as _) };
+pub const GPIOC: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0x4001_1000usize as _) };
+pub const GPIOD: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0x4001_1400usize as _) };
+pub const GPIOE: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0x4001_1800usize as _) };
+pub const ADC1: adc::Adc = unsafe { adc::Adc::from_ptr(0x4001_2400usize as _) };
+pub const ADC2: adc::Adc = unsafe { adc::Adc::from_ptr(0x4001_2800usize as _) };
+pub const TIM1: timer::Adtm = unsafe { timer::Adtm::from_ptr(0x4001_2c00usize as _) };
+pub const SPI1: spi::Spi = unsafe { spi::Spi::from_ptr(0x4001_3000usize as _) };
+pub const TIM8: timer::Adtm = unsafe { timer::Adtm::from_ptr(0x4001_3400usize as _) };
+pub const USART1: usart::Usart = unsafe { usart::Usart::from_ptr(0x4001_3800usize as _) };
+pub const SDIO: sdio::Sdio = unsafe { sdio::Sdio::from_ptr(0x4001_8000usize as _) };
+pub const DMA1: dma::Dma = unsafe { dma::Dma::from_ptr(0x4002_0000usize as _) };
+pub const DMA2: dma::Dma2 = unsafe { dma::Dma2::from_ptr(0x4002_0400usize as _) };
+pub const RCC: rcc::Rcc = unsafe { rcc::Rcc::from_ptr(0x4002_1000usize as _) };
+pub const FLASH: flash::Flash = unsafe { flash::Flash::from_ptr(0x4002_2000usize as _) };
+pub const CRC: crc::Crc = unsafe { crc::Crc::from_ptr(0x4002_3000usize as _) };
+pub const EXTEND: extend::Extend = unsafe { extend::Extend::from_ptr(0x4002_3800usize as _) };
+pub const OPA: extend::Opa = unsafe { extend::Opa::from_ptr(0x4002_3804usize as _) };
+pub const RNG: rng::Rng = unsafe { rng::Rng::from_ptr(0x4002_3c00usize as _) };
+pub const USBHS1: usbhs::Usb = unsafe { usbhs::Usb::from_ptr(0x4002_4000usize as _) };
+pub const LTDC: ltdc::Ltdc = unsafe { ltdc::Ltdc::from_ptr(0x4002_4800usize as _) };
+pub const I3C: i3c::I3c = unsafe { i3c::I3c::from_ptr(0x4002_4c00usize as _) };
+pub const ARGB: argb::Argb = unsafe { argb::Argb::from_ptr(0x4002_5000usize as _) };
+pub const ETH: emac::Eth = unsafe { emac::Eth::from_ptr(0x4002_8000usize as _) };
+pub const DVP: dvp::Dvp = unsafe { dvp::Dvp::from_ptr(0x5005_0000usize as _) };
+pub const PFIC: pfic::Pfic = unsafe { pfic::Pfic::from_ptr(0xe000_e000usize as _) };
+pub const SYSTICK: systick::Systick = unsafe { systick::Systick::from_ptr(0xe000_f000usize as _) };
+#[cfg(feature = "rt")]
+#[cfg(feature = "rt")]
+pub use Interrupt as interrupt;
+pub fn GPIO(n: usize) -> gpio::Gpio {
+    unsafe { gpio::Gpio::from_ptr((1073809408 + 1024 * n) as _) }
+}
+#[path = "../../peripherals/adc_v4x7.rs"]
+pub mod adc;
+#[path = "../../peripherals/afio_v4x7.rs"]
+pub mod afio;
+#[path = "../../peripherals/argb_v4x7.rs"]
+pub mod argb;
+#[path = "../../peripherals/bkp_v4x7.rs"]
+pub mod bkp;
+#[path = "../../peripherals/can_v4x7.rs"]
+pub mod can;
+#[path = "../../peripherals/crc_h4.rs"]
+pub mod crc;
+#[path = "../../peripherals/dac_h4.rs"]
+pub mod dac;
+#[path = "../../peripherals/dma_v4x7.rs"]
+pub mod dma;
+#[path = "../../peripherals/dvp_v3.rs"]
+pub mod dvp;
+#[path = "../../peripherals/emac_v4x7.rs"]
+pub mod emac;
+#[path = "../../peripherals/extend_v4x7.rs"]
+pub mod extend;
+#[path = "../../peripherals/exti_v4x7.rs"]
+pub mod exti;
+#[path = "../../peripherals/flash_v4x7.rs"]
+pub mod flash;
+#[path = "../../peripherals/gpio_v3.rs"]
+pub mod gpio;
+#[path = "../../peripherals/i2c_v3.rs"]
+pub mod i2c;
+#[path = "../../peripherals/i3c_v4x7.rs"]
+pub mod i3c;
+#[path = "../../peripherals/iwdg_v00x.rs"]
+pub mod iwdg;
+#[path = "../../peripherals/ltdc_v4x7.rs"]
+pub mod ltdc;
+#[path = "../../peripherals/pfic_v4x7.rs"]
+pub mod pfic;
+#[path = "../../peripherals/pwr_v4x7.rs"]
+pub mod pwr;
+#[path = "../../peripherals/rcc_v4x7.rs"]
+pub mod rcc;
+#[path = "../../peripherals/rng_v3.rs"]
+pub mod rng;
+#[path = "../../peripherals/rtc_common.rs"]
+pub mod rtc;
+#[path = "../../peripherals/sdio_v4x7.rs"]
+pub mod sdio;
+#[path = "../../peripherals/spi_v4x7.rs"]
+pub mod spi;
+#[path = "../../peripherals/systick_v4x7.rs"]
+pub mod systick;
+#[path = "../../peripherals/timer_v4x7.rs"]
+pub mod timer;
+#[path = "../../peripherals/usart_v4x7.rs"]
+pub mod usart;
+#[path = "../../peripherals/usbhs_v4x7.rs"]
+pub mod usbhs;
+#[path = "../../peripherals/wwdg_common.rs"]
+pub mod wwdg;
+pub const CORE_INDEX: usize = 0;
+#[deprecated(note = "use ch32_metapac::MEMORY_LAYOUT instead")]
+pub const FLASH_BASE: usize = 0;
+#[deprecated(note = "use ch32_metapac::MEMORY_LAYOUT instead")]
+pub const FLASH_SIZE: usize = 1015808;
+#[deprecated(note = "use ch32_metapac::MEMORY_LAYOUT instead")]
+pub const WRITE_SIZE: usize = 256;
+pub const MEMORY_LAYOUT: crate::mem_layout::MemoryLayout = crate::mem_layout::MemoryLayout {
+    regions: crate::memory_select::MEMORY,
+};
