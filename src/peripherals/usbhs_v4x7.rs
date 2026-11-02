@@ -722,13 +722,13 @@ pub mod regs {
         #[doc = "The start address of the endpoint 0 buffer."]
         #[inline(always)]
         pub const fn uep0_dma(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0x00ff_ffff;
+            let val = (self.0 >> 0usize) & 0xffff_ffff;
             val as u32
         }
         #[doc = "The start address of the endpoint 0 buffer."]
         #[inline(always)]
         pub fn set_uep0_dma(&mut self, val: u32) {
-            self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
+            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
     impl Default for Uep0Dma {
@@ -1083,13 +1083,13 @@ pub mod regs {
         #[doc = "endpoint receives the start address register of the buffer."]
         #[inline(always)]
         pub const fn uep1_rx_dma(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0x00ff_ffff;
+            let val = (self.0 >> 0usize) & 0xffff_ffff;
             val as u32
         }
         #[doc = "endpoint receives the start address register of the buffer."]
         #[inline(always)]
         pub fn set_uep1_rx_dma(&mut self, val: u32) {
-            self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
+            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
     impl Default for Uep1RxDma {
@@ -1208,13 +1208,13 @@ pub mod regs {
         #[doc = "endpoint sends the start address register of the buffer."]
         #[inline(always)]
         pub const fn uep1_tx_dma(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0x00ff_ffff;
+            let val = (self.0 >> 0usize) & 0xffff_ffff;
             val as u32
         }
         #[doc = "endpoint sends the start address register of the buffer."]
         #[inline(always)]
         pub fn set_uep1_tx_dma(&mut self, val: u32) {
-            self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
+            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
     impl Default for Uep1TxDma {
@@ -1355,13 +1355,13 @@ pub mod regs {
         #[doc = "endpoint receives the start address register of the buffer."]
         #[inline(always)]
         pub const fn uep2_rx_dma(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0x00ff_ffff;
+            let val = (self.0 >> 0usize) & 0xffff_ffff;
             val as u32
         }
         #[doc = "endpoint receives the start address register of the buffer."]
         #[inline(always)]
         pub fn set_uep2_rx_dma(&mut self, val: u32) {
-            self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
+            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
     impl Default for Uep2RxDma {
@@ -1480,13 +1480,13 @@ pub mod regs {
         #[doc = "endpoint sends the start address register of the buffer."]
         #[inline(always)]
         pub const fn uep2_tx_dma(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0x00ff_ffff;
+            let val = (self.0 >> 0usize) & 0xffff_ffff;
             val as u32
         }
         #[doc = "endpoint sends the start address register of the buffer."]
         #[inline(always)]
         pub fn set_uep2_tx_dma(&mut self, val: u32) {
-            self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
+            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
     impl Default for Uep2TxDma {
@@ -1627,13 +1627,13 @@ pub mod regs {
         #[doc = "endpoint receives the start address register of the buffer."]
         #[inline(always)]
         pub const fn uep3_rx_dma(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0x00ff_ffff;
+            let val = (self.0 >> 0usize) & 0xffff_ffff;
             val as u32
         }
         #[doc = "endpoint receives the start address register of the buffer."]
         #[inline(always)]
         pub fn set_uep3_rx_dma(&mut self, val: u32) {
-            self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
+            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
     impl Default for Uep3RxDma {
@@ -1752,13 +1752,13 @@ pub mod regs {
         #[doc = "endpoint sends the start address register of the buffer."]
         #[inline(always)]
         pub const fn uep3_tx_dma(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0x00ff_ffff;
+            let val = (self.0 >> 0usize) & 0xffff_ffff;
             val as u32
         }
         #[doc = "endpoint sends the start address register of the buffer."]
         #[inline(always)]
         pub fn set_uep3_tx_dma(&mut self, val: u32) {
-            self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
+            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
     impl Default for Uep3TxDma {
@@ -1899,13 +1899,13 @@ pub mod regs {
         #[doc = "endpoint receives the start address register of the buffer."]
         #[inline(always)]
         pub const fn uep4_rx_dma(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0x00ff_ffff;
+            let val = (self.0 >> 0usize) & 0xffff_ffff;
             val as u32
         }
         #[doc = "endpoint receives the start address register of the buffer."]
         #[inline(always)]
         pub fn set_uep4_rx_dma(&mut self, val: u32) {
-            self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
+            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
     impl Default for Uep4RxDma {
@@ -2024,13 +2024,13 @@ pub mod regs {
         #[doc = "endpoint sends the start address register of the buffer."]
         #[inline(always)]
         pub const fn uep4_tx_dma(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0x00ff_ffff;
+            let val = (self.0 >> 0usize) & 0xffff_ffff;
             val as u32
         }
         #[doc = "endpoint sends the start address register of the buffer."]
         #[inline(always)]
         pub fn set_uep4_tx_dma(&mut self, val: u32) {
-            self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
+            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
     impl Default for Uep4TxDma {
@@ -2171,13 +2171,13 @@ pub mod regs {
         #[doc = "endpoint receives the start address register of the buffer."]
         #[inline(always)]
         pub const fn uep5_rx_dma(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0x00ff_ffff;
+            let val = (self.0 >> 0usize) & 0xffff_ffff;
             val as u32
         }
         #[doc = "endpoint receives the start address register of the buffer."]
         #[inline(always)]
         pub fn set_uep5_rx_dma(&mut self, val: u32) {
-            self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
+            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
     impl Default for Uep5RxDma {
@@ -2296,13 +2296,13 @@ pub mod regs {
         #[doc = "endpoint sends the start address register of the buffer."]
         #[inline(always)]
         pub const fn uep5_tx_dma(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0x00ff_ffff;
+            let val = (self.0 >> 0usize) & 0xffff_ffff;
             val as u32
         }
         #[doc = "endpoint sends the start address register of the buffer."]
         #[inline(always)]
         pub fn set_uep5_tx_dma(&mut self, val: u32) {
-            self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
+            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
     impl Default for Uep5TxDma {
@@ -2443,13 +2443,13 @@ pub mod regs {
         #[doc = "endpoint receives the start address register of the buffer."]
         #[inline(always)]
         pub const fn uep6_rx_dma(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0x00ff_ffff;
+            let val = (self.0 >> 0usize) & 0xffff_ffff;
             val as u32
         }
         #[doc = "endpoint receives the start address register of the buffer."]
         #[inline(always)]
         pub fn set_uep6_rx_dma(&mut self, val: u32) {
-            self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
+            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
     impl Default for Uep6RxDma {
@@ -2568,13 +2568,13 @@ pub mod regs {
         #[doc = "endpoint sends the start address register of the buffer."]
         #[inline(always)]
         pub const fn uep6_tx_dma(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0x00ff_ffff;
+            let val = (self.0 >> 0usize) & 0xffff_ffff;
             val as u32
         }
         #[doc = "endpoint sends the start address register of the buffer."]
         #[inline(always)]
         pub fn set_uep6_tx_dma(&mut self, val: u32) {
-            self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
+            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
     impl Default for Uep6TxDma {
@@ -2715,13 +2715,13 @@ pub mod regs {
         #[doc = "endpoint receives the start address register of the buffer."]
         #[inline(always)]
         pub const fn uep7_rx_dma(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0x00ff_ffff;
+            let val = (self.0 >> 0usize) & 0xffff_ffff;
             val as u32
         }
         #[doc = "endpoint receives the start address register of the buffer."]
         #[inline(always)]
         pub fn set_uep7_rx_dma(&mut self, val: u32) {
-            self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
+            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
     impl Default for Uep7RxDma {
@@ -2840,13 +2840,13 @@ pub mod regs {
         #[doc = "endpoint sends the start address register of the buffer."]
         #[inline(always)]
         pub const fn uep7_tx_dma(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0x00ff_ffff;
+            let val = (self.0 >> 0usize) & 0xffff_ffff;
             val as u32
         }
         #[doc = "endpoint sends the start address register of the buffer."]
         #[inline(always)]
         pub fn set_uep7_tx_dma(&mut self, val: u32) {
-            self.0 = (self.0 & !(0x00ff_ffff << 0usize)) | (((val as u32) & 0x00ff_ffff) << 0usize);
+            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
     impl Default for Uep7TxDma {

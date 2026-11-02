@@ -452,6 +452,13 @@ pub(crate) static REGISTERS: IR = IR {
                     description: Some("32-bit size."),
                     value: 2,
                 },
+                EnumVariant {
+                    name: "BITS64",
+                    description: Some(
+                        "64-bit size. Non-zero-wait regions require a supported chip revision.",
+                    ),
+                    value: 3,
+                },
             ],
         },
     ],

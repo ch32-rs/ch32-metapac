@@ -639,7 +639,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "tmode",
                     description: Some(
-                        "Target mode enable.",
+                        "Preload control and transmit FIFOs before starting a controller frame.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -761,7 +761,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "mend",
                     description: Some(
-                        "Last message of the frame, terminated by a stop rather than a repeated start.",
+                        "Last message of the frame, terminated by a stop rather than a repeated start. Must be set for legacy I2C messages (MTYPE=4).",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -827,7 +827,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "mend",
                     description: Some(
-                        "Last message of the frame, terminated by a stop rather than a repeated start.",
+                        "Last message of the frame, terminated by a stop rather than a repeated start. Must be set for legacy I2C messages (MTYPE=4).",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -1081,7 +1081,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "txlastf",
                     description: Some(
-                        "Transmit FIFO last byte transmitted.",
+                        "Last byte or word of the message must still be written to the transmit FIFO.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -1095,7 +1095,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "rxlastf",
                     description: Some(
-                        "Receive FIFO last byte received.",
+                        "Last byte or word of the message must still be read from the receive FIFO.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -1518,7 +1518,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "perr",
                     description: Some(
-                        "Parity error.",
+                        "Protocol error.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -1612,7 +1612,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "xdcnt",
                     description: Some(
-                        "Transferred byte count of the current or last frame.",
+                        "Transferred byte count of the last message, or number of assigned targets during ENTDAA.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -1626,7 +1626,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "abt",
                     description: Some(
-                        "Frame transfer aborted.",
+                        "Target ended a private read message before the requested byte count.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -1654,7 +1654,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "mid",
                     description: Some(
-                        "Master or manufacturer identifier.",
+                        "Message index within the frame, starting at zero.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {

@@ -18,7 +18,7 @@ pub(crate) static REGISTERS: IR = IR {
             },
             BlockItem {
                 name: "ctlr1",
-                description: Some("control register 1/TKEY_V_CTLR."),
+                description: Some("control register 1."),
                 array: None,
                 byte_offset: 0x4,
                 inner: BlockItemInner::Register(Register {
@@ -50,14 +50,14 @@ pub(crate) static REGISTERS: IR = IR {
                 }),
             },
             BlockItem {
-                name: "samptr2_charge2",
+                name: "samptr2",
                 description: Some("sample time register 2."),
                 array: None,
                 byte_offset: 0x10,
                 inner: BlockItemInner::Register(Register {
                     access: Access::ReadWrite,
                     bit_size: 32,
-                    fieldset: Some("Samptr2Charge2"),
+                    fieldset: Some("Samptr2"),
                 }),
             },
             BlockItem {
@@ -172,9 +172,7 @@ pub(crate) static REGISTERS: IR = IR {
             },
             BlockItem {
                 name: "idatar1",
-                description: Some(
-                    "injected data register x_Charge data offset for injected channel x.",
-                ),
+                description: Some("injected data register 1."),
                 array: None,
                 byte_offset: 0x3c,
                 inner: BlockItemInner::Register(Register {
@@ -396,7 +394,7 @@ pub(crate) static REGISTERS: IR = IR {
         FieldSet {
             name: "Ctlr1",
             extends: None,
-            description: Some("control register 1/TKEY_V_CTLR."),
+            description: Some("control register 1."),
             bit_size: 32,
             fields: &[
                 Field {
@@ -638,24 +636,14 @@ pub(crate) static REGISTERS: IR = IR {
             extends: None,
             description: Some("Injected data register 1."),
             bit_size: 32,
-            fields: &[
-                Field {
-                    name: "idata0_7",
-                    description: Some("Injected data, bits 0-7."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 0 }),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "idata8_15",
-                    description: Some("Injected data, bits 8-15."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 8 }),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-            ],
+            fields: &[Field {
+                name: "jdata",
+                description: Some("Injected data."),
+                bit_offset: BitOffset::Regular(RegularBitOffset { offset: 0 }),
+                bit_size: 16,
+                array: None,
+                enumm: None,
+            }],
         },
         FieldSet {
             name: "Idatar2",
@@ -810,18 +798,10 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 32,
             fields: &[
                 Field {
-                    name: "data0_7",
+                    name: "data",
                     description: Some("Regular data."),
                     bit_offset: BitOffset::Regular(RegularBitOffset { offset: 0 }),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "data8_15",
-                    description: Some("Regular data."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 8 }),
-                    bit_size: 8,
+                    bit_size: 16,
                     array: None,
                     enumm: None,
                 },
@@ -1068,7 +1048,7 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
-            name: "Samptr2Charge2",
+            name: "Samptr2",
             extends: None,
             description: Some("sample time register 2."),
             bit_size: 32,

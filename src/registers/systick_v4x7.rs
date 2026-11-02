@@ -5,7 +5,7 @@ pub(crate) static REGISTERS: IR = IR {
             name: "Systick",
             extends: None,
             description: Some(
-                "CH32V407/CH32V467 system counter with 32-bit and 64-bit access views.",
+                "CH32V407/CH32V467 32-bit system counter.",
             ),
             items: &[
                 BlockItem {
@@ -43,21 +43,6 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
-                    name: "cnt",
-                    description: Some(
-                        "64-bit system counter view (project register extension).",
-                    ),
-                    array: None,
-                    byte_offset: 0x8,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 64,
-                            fieldset: None,
-                        },
-                    ),
-                },
-                BlockItem {
                     name: "cntl",
                     description: Some(
                         "32-bit system counter value (STK_CNTL).",
@@ -73,57 +58,12 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
-                    name: "cnth",
-                    description: Some(
-                        "System counter high word (project register extension).",
-                    ),
-                    array: None,
-                    byte_offset: 0xc,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: None,
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "cmp",
-                    description: Some(
-                        "64-bit compare value view (project register extension).",
-                    ),
-                    array: None,
-                    byte_offset: 0x10,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 64,
-                            fieldset: None,
-                        },
-                    ),
-                },
-                BlockItem {
                     name: "cmpl",
                     description: Some(
                         "32-bit compare value (STK_CMPLR).",
                     ),
                     array: None,
                     byte_offset: 0x10,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: None,
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "cmph",
-                    description: Some(
-                        "Compare value high word (project register extension).",
-                    ),
-                    array: None,
-                    byte_offset: 0x14,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,

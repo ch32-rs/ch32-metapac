@@ -510,8 +510,8 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "usnhs_pllrdy",
-                    description: Some("USNHS PLL clock ready flag."),
+                    name: "usbhs_pllrdy",
+                    description: Some("USBHS PLL clock ready flag."),
                     bit_offset: BitOffset::Regular(RegularBitOffset { offset: 21 }),
                     bit_size: 1,
                     array: None,

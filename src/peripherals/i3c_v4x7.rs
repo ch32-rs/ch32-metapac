@@ -338,13 +338,13 @@ pub mod regs {
         pub fn set_txthres(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
         }
-        #[doc = "Target mode enable."]
+        #[doc = "Preload control and transmit FIFOs before starting a controller frame."]
         #[inline(always)]
         pub const fn tmode(&self) -> bool {
             let val = (self.0 >> 19usize) & 0x01;
             val != 0
         }
-        #[doc = "Target mode enable."]
+        #[doc = "Preload control and transmit FIFOs before starting a controller frame."]
         #[inline(always)]
         pub fn set_tmode(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
@@ -438,13 +438,13 @@ pub mod regs {
         pub fn set_mtype(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 27usize)) | (((val as u32) & 0x0f) << 27usize);
         }
-        #[doc = "Last message of the frame, terminated by a stop rather than a repeated start."]
+        #[doc = "Last message of the frame, terminated by a stop rather than a repeated start. Must be set for legacy I2C messages (MTYPE=4)."]
         #[inline(always)]
         pub const fn mend(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
             val != 0
         }
-        #[doc = "Last message of the frame, terminated by a stop rather than a repeated start."]
+        #[doc = "Last message of the frame, terminated by a stop rather than a repeated start. Must be set for legacy I2C messages (MTYPE=4)."]
         #[inline(always)]
         pub fn set_mend(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
@@ -494,13 +494,13 @@ pub mod regs {
         pub fn set_mtype(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 27usize)) | (((val as u32) & 0x0f) << 27usize);
         }
-        #[doc = "Last message of the frame, terminated by a stop rather than a repeated start."]
+        #[doc = "Last message of the frame, terminated by a stop rather than a repeated start. Must be set for legacy I2C messages (MTYPE=4)."]
         #[inline(always)]
         pub const fn mend(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
             val != 0
         }
-        #[doc = "Last message of the frame, terminated by a stop rather than a repeated start."]
+        #[doc = "Last message of the frame, terminated by a stop rather than a repeated start. Must be set for legacy I2C messages (MTYPE=4)."]
         #[inline(always)]
         pub fn set_mend(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
@@ -706,24 +706,24 @@ pub mod regs {
         pub fn set_rxfnef(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
-        #[doc = "Transmit FIFO last byte transmitted."]
+        #[doc = "Last byte or word of the message must still be written to the transmit FIFO."]
         #[inline(always)]
         pub const fn txlastf(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
             val != 0
         }
-        #[doc = "Transmit FIFO last byte transmitted."]
+        #[doc = "Last byte or word of the message must still be written to the transmit FIFO."]
         #[inline(always)]
         pub fn set_txlastf(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
         }
-        #[doc = "Receive FIFO last byte received."]
+        #[doc = "Last byte or word of the message must still be read from the receive FIFO."]
         #[inline(always)]
         pub const fn rxlastf(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
             val != 0
         }
-        #[doc = "Receive FIFO last byte received."]
+        #[doc = "Last byte or word of the message must still be read from the receive FIFO."]
         #[inline(always)]
         pub fn set_rxlastf(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
@@ -1081,13 +1081,13 @@ pub mod regs {
         pub fn set_coderr(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
         }
-        #[doc = "Parity error."]
+        #[doc = "Protocol error."]
         #[inline(always)]
         pub const fn perr(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
             val != 0
         }
-        #[doc = "Parity error."]
+        #[doc = "Protocol error."]
         #[inline(always)]
         pub fn set_perr(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
@@ -1159,24 +1159,24 @@ pub mod regs {
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Statr(pub u32);
     impl Statr {
-        #[doc = "Transferred byte count of the current or last frame."]
+        #[doc = "Transferred byte count of the last message, or number of assigned targets during ENTDAA."]
         #[inline(always)]
         pub const fn xdcnt(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0xffff;
             val as u16
         }
-        #[doc = "Transferred byte count of the current or last frame."]
+        #[doc = "Transferred byte count of the last message, or number of assigned targets during ENTDAA."]
         #[inline(always)]
         pub fn set_xdcnt(&mut self, val: u16) {
             self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
         }
-        #[doc = "Frame transfer aborted."]
+        #[doc = "Target ended a private read message before the requested byte count."]
         #[inline(always)]
         pub const fn abt(&self) -> bool {
             let val = (self.0 >> 17usize) & 0x01;
             val != 0
         }
-        #[doc = "Frame transfer aborted."]
+        #[doc = "Target ended a private read message before the requested byte count."]
         #[inline(always)]
         pub fn set_abt(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
@@ -1192,13 +1192,13 @@ pub mod regs {
         pub fn set_dir(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
         }
-        #[doc = "Master or manufacturer identifier."]
+        #[doc = "Message index within the frame, starting at zero."]
         #[inline(always)]
         pub const fn mid(&self) -> u8 {
             let val = (self.0 >> 24usize) & 0xff;
             val as u8
         }
-        #[doc = "Master or manufacturer identifier."]
+        #[doc = "Message index within the frame, starting at zero."]
         #[inline(always)]
         pub fn set_mid(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 24usize)) | (((val as u32) & 0xff) << 24usize);

@@ -579,15 +579,15 @@ pub mod regs {
         pub fn set_usbhs_pllon(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
         }
-        #[doc = "USNHS PLL clock ready flag."]
+        #[doc = "USBHS PLL clock ready flag."]
         #[inline(always)]
-        pub const fn usnhs_pllrdy(&self) -> bool {
+        pub const fn usbhs_pllrdy(&self) -> bool {
             let val = (self.0 >> 21usize) & 0x01;
             val != 0
         }
-        #[doc = "USNHS PLL clock ready flag."]
+        #[doc = "USBHS PLL clock ready flag."]
         #[inline(always)]
-        pub fn set_usnhs_pllrdy(&mut self, val: bool) {
+        pub fn set_usbhs_pllrdy(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
         }
         #[doc = "ETH PLL enable."]

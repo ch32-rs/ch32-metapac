@@ -1131,7 +1131,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             },
             PeripheralDmaChannel {
                 signal: "TX",
-                channel: Some("DMA2_CH5"),
+                channel: Some("DMA2_CH4"),
                 dmamux: None,
                 dma: None,
                 request: None,
@@ -3836,7 +3836,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         address: 0x40007400,
         registers: Some(PeripheralRegisters {
             kind: "dac",
-            version: "h4",
+            version: "v3",
             block: "DAC",
             ir: &dac::REGISTERS,
         }),
@@ -5172,7 +5172,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }),
         rcc: Some(PeripheralRcc {
             bus_clock: "HCLK",
-            kernel_clock: Clock("HCLK"),
+            kernel_clock: Clock("RNG"),
             enable: Some(PeripheralRccRegister {
                 register: "HBPCENR",
                 field: "TRNGEN",
@@ -5913,7 +5913,7 @@ pub mod bkp;
 pub mod can;
 #[path = "../registers/crc_h4.rs"]
 pub mod crc;
-#[path = "../registers/dac_h4.rs"]
+#[path = "../registers/dac_v3.rs"]
 pub mod dac;
 #[path = "../registers/dma_v4x7.rs"]
 pub mod dma;

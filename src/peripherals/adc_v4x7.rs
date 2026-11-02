@@ -24,7 +24,7 @@ impl Adc {
     pub const fn statr(self) -> crate::common::Reg<regs::Statr, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
     }
-    #[doc = "control register 1/TKEY_V_CTLR."]
+    #[doc = "control register 1."]
     #[inline(always)]
     pub const fn ctlr1(self) -> crate::common::Reg<regs::Ctlr1, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
@@ -41,9 +41,7 @@ impl Adc {
     }
     #[doc = "sample time register 2."]
     #[inline(always)]
-    pub const fn samptr2_charge2(
-        self,
-    ) -> crate::common::Reg<regs::Samptr2Charge2, crate::common::RW> {
+    pub const fn samptr2(self) -> crate::common::Reg<regs::Samptr2, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize) as _) }
     }
     #[doc = "injected channel data offset register x."]
@@ -96,7 +94,7 @@ impl Adc {
     pub const fn isqr(self) -> crate::common::Reg<regs::Isqr, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x38usize) as _) }
     }
-    #[doc = "injected data register x_Charge data offset for injected channel x."]
+    #[doc = "injected data register 1."]
     #[inline(always)]
     pub const fn idatar1(self) -> crate::common::Reg<regs::Idatar1, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x3cusize) as _) }
@@ -338,7 +336,7 @@ pub mod regs {
             Aux(0)
         }
     }
-    #[doc = "control register 1/TKEY_V_CTLR."]
+    #[doc = "control register 1."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ctlr1(pub u32);
@@ -675,27 +673,16 @@ pub mod regs {
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Idatar1(pub u32);
     impl Idatar1 {
-        #[doc = "Injected data, bits 0-7."]
+        #[doc = "Injected data."]
         #[inline(always)]
-        pub const fn idata0_7(&self) -> u8 {
-            let val = (self.0 >> 0usize) & 0xff;
-            val as u8
+        pub const fn jdata(&self) -> u16 {
+            let val = (self.0 >> 0usize) & 0xffff;
+            val as u16
         }
-        #[doc = "Injected data, bits 0-7."]
+        #[doc = "Injected data."]
         #[inline(always)]
-        pub fn set_idata0_7(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
-        }
-        #[doc = "Injected data, bits 8-15."]
-        #[inline(always)]
-        pub const fn idata8_15(&self) -> u8 {
-            let val = (self.0 >> 8usize) & 0xff;
-            val as u8
-        }
-        #[doc = "Injected data, bits 8-15."]
-        #[inline(always)]
-        pub fn set_idata8_15(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
+        pub fn set_jdata(&mut self, val: u16) {
+            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
         }
     }
     impl Default for Idatar1 {
@@ -939,25 +926,14 @@ pub mod regs {
     impl Rdatar {
         #[doc = "Regular data."]
         #[inline(always)]
-        pub const fn data0_7(&self) -> u8 {
-            let val = (self.0 >> 0usize) & 0xff;
-            val as u8
+        pub const fn data(&self) -> u16 {
+            let val = (self.0 >> 0usize) & 0xffff;
+            val as u16
         }
         #[doc = "Regular data."]
         #[inline(always)]
-        pub fn set_data0_7(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
-        }
-        #[doc = "Regular data."]
-        #[inline(always)]
-        pub const fn data8_15(&self) -> u8 {
-            let val = (self.0 >> 8usize) & 0xff;
-            val as u8
-        }
-        #[doc = "Regular data."]
-        #[inline(always)]
-        pub fn set_data8_15(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
+        pub fn set_data(&mut self, val: u16) {
+            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
         }
         #[doc = "converter data."]
         #[inline(always)]
@@ -1303,8 +1279,8 @@ pub mod regs {
     #[doc = "sample time register 2."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Samptr2Charge2(pub u32);
-    impl Samptr2Charge2 {
+    pub struct Samptr2(pub u32);
+    impl Samptr2 {
         #[doc = "Channel 0 sample time selection."]
         #[inline(always)]
         pub const fn smp0(&self) -> u8 {
@@ -1416,10 +1392,10 @@ pub mod regs {
             self.0 = (self.0 & !(0x07 << 27usize)) | (((val as u32) & 0x07) << 27usize);
         }
     }
-    impl Default for Samptr2Charge2 {
+    impl Default for Samptr2 {
         #[inline(always)]
-        fn default() -> Samptr2Charge2 {
-            Samptr2Charge2(0)
+        fn default() -> Samptr2 {
+            Samptr2(0)
         }
     }
     #[doc = "status register."]

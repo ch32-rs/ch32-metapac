@@ -985,20 +985,6 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "da",
-                    description: Some(
-                        "DMA arbitration",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 1,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
                     name: "dsl",
                     description: Some(
                         "Descriptor skip length",
@@ -1009,104 +995,6 @@ pub(crate) static REGISTERS: IR = IR {
                         },
                     ),
                     bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "pbl",
-                    description: Some(
-                        "Programmable burst length",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 8,
-                        },
-                    ),
-                    bit_size: 6,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "rtpr",
-                    description: Some(
-                        "Rx Tx priority ratio",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 14,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "fb",
-                    description: Some(
-                        "Fixed burst",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 16,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "rdp",
-                    description: Some(
-                        "Rx DMA PBL",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 17,
-                        },
-                    ),
-                    bit_size: 6,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "usp",
-                    description: Some(
-                        "Use separate PBL",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 23,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "fpm",
-                    description: Some(
-                        "4xPBL mode",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 24,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "aab",
-                    description: Some(
-                        "Address-aligned beats",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 25,
-                        },
-                    ),
-                    bit_size: 1,
                     array: None,
                     enumm: None,
                 },
@@ -1371,13 +1259,13 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "fbeie",
+                    name: "phylink_ier",
                     description: Some(
-                        "Fatal bus error interrupt enable",
+                        "Integrated PHY interrupt enable.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
-                            offset: 13,
+                            offset: 11,
                         },
                     ),
                     bit_size: 1,
@@ -1420,20 +1308,6 @@ pub(crate) static REGISTERS: IR = IR {
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
                             offset: 16,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "iple",
-                    description: Some(
-                        "10M PHY link status change interrupt enable",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 31,
                         },
                     ),
                     bit_size: 1,
@@ -1531,34 +1405,6 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "osf",
-                    description: Some(
-                        "Operate on second frame",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "rtc",
-                    description: Some(
-                        "Receive threshold control",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
                     name: "fugf",
                     description: Some(
                         "Forward undersized good frames",
@@ -1601,20 +1447,6 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "ttc",
-                    description: Some(
-                        "Transmit threshold control",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 14,
-                        },
-                    ),
-                    bit_size: 3,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
                     name: "ftf",
                     description: Some(
                         "Flush transmit FIFO",
@@ -1636,34 +1468,6 @@ pub(crate) static REGISTERS: IR = IR {
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
                             offset: 21,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "dfrf",
-                    description: Some(
-                        "Disable flushing of received frames",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 24,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "rsf",
-                    description: Some(
-                        "Receive store and forward",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 25,
                         },
                     ),
                     bit_size: 1,
@@ -1897,13 +1701,13 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "fbes",
+                    name: "phylink_sr",
                     description: Some(
-                        "Fatal bus error status",
+                        "Integrated PHY interrupt status, write one to clear.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
-                            offset: 13,
+                            offset: 11,
                         },
                     ),
                     bit_size: 1,
@@ -2030,20 +1834,6 @@ pub(crate) static REGISTERS: IR = IR {
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
                             offset: 29,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ipls",
-                    description: Some(
-                        "10M PHY physical layer status (write 1 to clear)",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 31,
                         },
                     ),
                     bit_size: 1,
@@ -2483,6 +2273,20 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
+                    name: "rd",
+                    description: Some(
+                        "Retry disable.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 9,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
                     name: "ipco",
                     description: Some(
                         "IPv4 checksum offload.",
@@ -2504,20 +2308,6 @@ pub(crate) static REGISTERS: IR = IR {
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
                             offset: 11,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "lm",
-                    description: Some(
-                        "Loopback mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 12,
                         },
                     ),
                     bit_size: 1,
@@ -3702,7 +3492,7 @@ pub(crate) static REGISTERS: IR = IR {
             name: "PhyCr",
             extends: None,
             description: Some(
-                "PHY configure register.",
+                "PHY configure register; all bits read as zero (RM section 29.2.1.20). Write complete control values, do not use read-modify-write.",
             ),
             bit_size: 32,
             fields: &[

@@ -317,17 +317,6 @@ pub mod regs {
         pub fn set_sr(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "DMA arbitration"]
-        #[inline(always)]
-        pub const fn da(&self) -> bool {
-            let val = (self.0 >> 1usize) & 0x01;
-            val != 0
-        }
-        #[doc = "DMA arbitration"]
-        #[inline(always)]
-        pub fn set_da(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
-        }
         #[doc = "Descriptor skip length"]
         #[inline(always)]
         pub const fn dsl(&self) -> u8 {
@@ -338,83 +327,6 @@ pub mod regs {
         #[inline(always)]
         pub fn set_dsl(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 2usize)) | (((val as u32) & 0x1f) << 2usize);
-        }
-        #[doc = "Programmable burst length"]
-        #[inline(always)]
-        pub const fn pbl(&self) -> u8 {
-            let val = (self.0 >> 8usize) & 0x3f;
-            val as u8
-        }
-        #[doc = "Programmable burst length"]
-        #[inline(always)]
-        pub fn set_pbl(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x3f << 8usize)) | (((val as u32) & 0x3f) << 8usize);
-        }
-        #[doc = "Rx Tx priority ratio"]
-        #[inline(always)]
-        pub const fn rtpr(&self) -> u8 {
-            let val = (self.0 >> 14usize) & 0x03;
-            val as u8
-        }
-        #[doc = "Rx Tx priority ratio"]
-        #[inline(always)]
-        pub fn set_rtpr(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 14usize)) | (((val as u32) & 0x03) << 14usize);
-        }
-        #[doc = "Fixed burst"]
-        #[inline(always)]
-        pub const fn fb(&self) -> bool {
-            let val = (self.0 >> 16usize) & 0x01;
-            val != 0
-        }
-        #[doc = "Fixed burst"]
-        #[inline(always)]
-        pub fn set_fb(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
-        }
-        #[doc = "Rx DMA PBL"]
-        #[inline(always)]
-        pub const fn rdp(&self) -> u8 {
-            let val = (self.0 >> 17usize) & 0x3f;
-            val as u8
-        }
-        #[doc = "Rx DMA PBL"]
-        #[inline(always)]
-        pub fn set_rdp(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x3f << 17usize)) | (((val as u32) & 0x3f) << 17usize);
-        }
-        #[doc = "Use separate PBL"]
-        #[inline(always)]
-        pub const fn usp(&self) -> bool {
-            let val = (self.0 >> 23usize) & 0x01;
-            val != 0
-        }
-        #[doc = "Use separate PBL"]
-        #[inline(always)]
-        pub fn set_usp(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
-        }
-        #[doc = "4xPBL mode"]
-        #[inline(always)]
-        pub const fn fpm(&self) -> bool {
-            let val = (self.0 >> 24usize) & 0x01;
-            val != 0
-        }
-        #[doc = "4xPBL mode"]
-        #[inline(always)]
-        pub fn set_fpm(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 24usize)) | (((val as u32) & 0x01) << 24usize);
-        }
-        #[doc = "Address-aligned beats"]
-        #[inline(always)]
-        pub const fn aab(&self) -> bool {
-            let val = (self.0 >> 25usize) & 0x01;
-            val != 0
-        }
-        #[doc = "Address-aligned beats"]
-        #[inline(always)]
-        pub fn set_aab(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 25usize)) | (((val as u32) & 0x01) << 25usize);
         }
     }
     impl Default for Dmabmr {
@@ -641,16 +553,16 @@ pub mod regs {
         pub fn set_etie(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
         }
-        #[doc = "Fatal bus error interrupt enable"]
+        #[doc = "Integrated PHY interrupt enable."]
         #[inline(always)]
-        pub const fn fbeie(&self) -> bool {
-            let val = (self.0 >> 13usize) & 0x01;
+        pub const fn phylink_ier(&self) -> bool {
+            let val = (self.0 >> 11usize) & 0x01;
             val != 0
         }
-        #[doc = "Fatal bus error interrupt enable"]
+        #[doc = "Integrated PHY interrupt enable."]
         #[inline(always)]
-        pub fn set_fbeie(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
+        pub fn set_phylink_ier(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
         }
         #[doc = "Early receive interrupt enable"]
         #[inline(always)]
@@ -684,17 +596,6 @@ pub mod regs {
         #[inline(always)]
         pub fn set_nise(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
-        }
-        #[doc = "10M PHY link status change interrupt enable"]
-        #[inline(always)]
-        pub const fn iple(&self) -> bool {
-            let val = (self.0 >> 31usize) & 0x01;
-            val != 0
-        }
-        #[doc = "10M PHY link status change interrupt enable"]
-        #[inline(always)]
-        pub fn set_iple(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
     impl Default for Dmaier {
@@ -775,28 +676,6 @@ pub mod regs {
         pub fn set_sr(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
-        #[doc = "Operate on second frame"]
-        #[inline(always)]
-        pub const fn osf(&self) -> bool {
-            let val = (self.0 >> 2usize) & 0x01;
-            val != 0
-        }
-        #[doc = "Operate on second frame"]
-        #[inline(always)]
-        pub fn set_osf(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
-        }
-        #[doc = "Receive threshold control"]
-        #[inline(always)]
-        pub const fn rtc(&self) -> u8 {
-            let val = (self.0 >> 3usize) & 0x03;
-            val as u8
-        }
-        #[doc = "Receive threshold control"]
-        #[inline(always)]
-        pub fn set_rtc(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 3usize)) | (((val as u32) & 0x03) << 3usize);
-        }
         #[doc = "Forward undersized good frames"]
         #[inline(always)]
         pub const fn fugf(&self) -> bool {
@@ -830,17 +709,6 @@ pub mod regs {
         pub fn set_st(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
         }
-        #[doc = "Transmit threshold control"]
-        #[inline(always)]
-        pub const fn ttc(&self) -> u8 {
-            let val = (self.0 >> 14usize) & 0x07;
-            val as u8
-        }
-        #[doc = "Transmit threshold control"]
-        #[inline(always)]
-        pub fn set_ttc(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x07 << 14usize)) | (((val as u32) & 0x07) << 14usize);
-        }
         #[doc = "Flush transmit FIFO"]
         #[inline(always)]
         pub const fn ftf(&self) -> bool {
@@ -862,28 +730,6 @@ pub mod regs {
         #[inline(always)]
         pub fn set_tsf(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
-        }
-        #[doc = "Disable flushing of received frames"]
-        #[inline(always)]
-        pub const fn dfrf(&self) -> bool {
-            let val = (self.0 >> 24usize) & 0x01;
-            val != 0
-        }
-        #[doc = "Disable flushing of received frames"]
-        #[inline(always)]
-        pub fn set_dfrf(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 24usize)) | (((val as u32) & 0x01) << 24usize);
-        }
-        #[doc = "Receive store and forward"]
-        #[inline(always)]
-        pub const fn rsf(&self) -> bool {
-            let val = (self.0 >> 25usize) & 0x01;
-            val != 0
-        }
-        #[doc = "Receive store and forward"]
-        #[inline(always)]
-        pub fn set_rsf(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 25usize)) | (((val as u32) & 0x01) << 25usize);
         }
         #[doc = "Dropping of TCP/IP checksum error frames disable"]
         #[inline(always)]
@@ -1075,16 +921,16 @@ pub mod regs {
         pub fn set_ets(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
         }
-        #[doc = "Fatal bus error status"]
+        #[doc = "Integrated PHY interrupt status, write one to clear."]
         #[inline(always)]
-        pub const fn fbes(&self) -> bool {
-            let val = (self.0 >> 13usize) & 0x01;
+        pub const fn phylink_sr(&self) -> bool {
+            let val = (self.0 >> 11usize) & 0x01;
             val != 0
         }
-        #[doc = "Fatal bus error status"]
+        #[doc = "Integrated PHY interrupt status, write one to clear."]
         #[inline(always)]
-        pub fn set_fbes(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
+        pub fn set_phylink_sr(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
         }
         #[doc = "Early receive status"]
         #[inline(always)]
@@ -1184,17 +1030,6 @@ pub mod regs {
         #[inline(always)]
         pub fn set_tsts(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 29usize)) | (((val as u32) & 0x01) << 29usize);
-        }
-        #[doc = "10M PHY physical layer status (write 1 to clear)"]
-        #[inline(always)]
-        pub const fn ipls(&self) -> bool {
-            let val = (self.0 >> 31usize) & 0x01;
-            val != 0
-        }
-        #[doc = "10M PHY physical layer status (write 1 to clear)"]
-        #[inline(always)]
-        pub fn set_ipls(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
     impl Default for Dmasr {
@@ -1581,6 +1416,17 @@ pub mod regs {
         pub fn set_apcs(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
+        #[doc = "Retry disable."]
+        #[inline(always)]
+        pub const fn rd(&self) -> bool {
+            let val = (self.0 >> 9usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Retry disable."]
+        #[inline(always)]
+        pub fn set_rd(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
+        }
         #[doc = "IPv4 checksum offload."]
         #[inline(always)]
         pub const fn ipco(&self) -> bool {
@@ -1602,17 +1448,6 @@ pub mod regs {
         #[inline(always)]
         pub fn set_dm(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
-        }
-        #[doc = "Loopback mode."]
-        #[inline(always)]
-        pub const fn lm(&self) -> bool {
-            let val = (self.0 >> 12usize) & 0x01;
-            val != 0
-        }
-        #[doc = "Loopback mode."]
-        #[inline(always)]
-        pub fn set_lm(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
         }
         #[doc = "Fast Ethernet speed."]
         #[inline(always)]
@@ -2633,7 +2468,7 @@ pub mod regs {
             Mmctir(0)
         }
     }
-    #[doc = "PHY configure register."]
+    #[doc = "PHY configure register; all bits read as zero (RM section 29.2.1.20). Write complete control values, do not use read-modify-write."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PhyCr(pub u32);

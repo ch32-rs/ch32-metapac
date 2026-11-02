@@ -502,7 +502,7 @@ pub mod bkp;
 pub mod can;
 #[path = "../../peripherals/crc_h4.rs"]
 pub mod crc;
-#[path = "../../peripherals/dac_h4.rs"]
+#[path = "../../peripherals/dac_v3.rs"]
 pub mod dac;
 #[path = "../../peripherals/dma_v4x7.rs"]
 pub mod dma;

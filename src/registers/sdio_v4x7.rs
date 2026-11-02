@@ -786,7 +786,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "slv_ck_phase",
                     description: Some(
-                        "Data output clock phase in slave mode.",
+                        "Data output clock phase in slave mode; in host mode, setting this bit preserves the FIFO when DTEN is cleared.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {

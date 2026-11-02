@@ -525,7 +525,8 @@ pub mod vals {
         BITS16 = 0x01,
         #[doc = "32-bit size."]
         BITS32 = 0x02,
-        _RESERVED_3 = 0x03,
+        #[doc = "64-bit size. Non-zero-wait regions require a supported chip revision."]
+        BITS64 = 0x03,
     }
     impl Size {
         #[inline(always)]

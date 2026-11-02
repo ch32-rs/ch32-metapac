@@ -508,13 +508,13 @@ pub mod regs {
         pub fn set_slv_force_err(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 25usize)) | (((val as u32) & 0x01) << 25usize);
         }
-        #[doc = "Data output clock phase in slave mode."]
+        #[doc = "Data output clock phase in slave mode; in host mode, setting this bit preserves the FIFO when DTEN is cleared."]
         #[inline(always)]
         pub const fn slv_ck_phase(&self) -> bool {
             let val = (self.0 >> 26usize) & 0x01;
             val != 0
         }
-        #[doc = "Data output clock phase in slave mode."]
+        #[doc = "Data output clock phase in slave mode; in host mode, setting this bit preserves the FIFO when DTEN is cleared."]
         #[inline(always)]
         pub fn set_slv_ck_phase(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 26usize)) | (((val as u32) & 0x01) << 26usize);

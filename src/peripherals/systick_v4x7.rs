@@ -3,7 +3,7 @@
 #![allow(clippy::unnecessary_cast)]
 #![allow(clippy::erasing_op)]
 
-#[doc = "CH32V407/CH32V467 system counter with 32-bit and 64-bit access views."]
+#[doc = "CH32V407/CH32V467 32-bit system counter."]
 #[derive(Copy, Clone, Eq, PartialEq)]
 pub struct Systick {
     ptr: *mut u8,
@@ -29,35 +29,15 @@ impl Systick {
     pub const fn sr(self) -> crate::common::Reg<regs::Sr, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
     }
-    #[doc = "64-bit system counter view (project register extension)."]
-    #[inline(always)]
-    pub const fn cnt(self) -> crate::common::Reg<u64, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
-    }
     #[doc = "32-bit system counter value (STK_CNTL)."]
     #[inline(always)]
     pub const fn cntl(self) -> crate::common::Reg<u32, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
     }
-    #[doc = "System counter high word (project register extension)."]
-    #[inline(always)]
-    pub const fn cnth(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
-    }
-    #[doc = "64-bit compare value view (project register extension)."]
-    #[inline(always)]
-    pub const fn cmp(self) -> crate::common::Reg<u64, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize) as _) }
-    }
     #[doc = "32-bit compare value (STK_CMPLR)."]
     #[inline(always)]
     pub const fn cmpl(self) -> crate::common::Reg<u32, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize) as _) }
-    }
-    #[doc = "Compare value high word (project register extension)."]
-    #[inline(always)]
-    pub const fn cmph(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x14usize) as _) }
     }
 }
 pub mod regs {
