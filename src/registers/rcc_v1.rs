@@ -739,7 +739,7 @@ pub(crate) static REGISTERS: IR = IR {
                     bit_offset: BitOffset::Regular(RegularBitOffset { offset: 24 }),
                     bit_size: 3,
                     array: None,
-                    enumm: None,
+                    enumm: Some("Mco"),
                 },
             ],
         },
@@ -1133,6 +1133,38 @@ pub(crate) static REGISTERS: IR = IR {
                     name: "DIV512",
                     description: Some("SYSCLK divided by 512."),
                     value: 15,
+                },
+            ],
+        },
+        Enum {
+            name: "Mco",
+            description: Some("Microcontroller clock output."),
+            bit_size: 3,
+            variants: &[
+                EnumVariant {
+                    name: "NO_CLK",
+                    description: Some("No clock."),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "SYSCLK",
+                    description: Some("SYSCLK selected."),
+                    value: 4,
+                },
+                EnumVariant {
+                    name: "HSI",
+                    description: Some("HSI selected."),
+                    value: 5,
+                },
+                EnumVariant {
+                    name: "HSE",
+                    description: Some("HSE selected."),
+                    value: 6,
+                },
+                EnumVariant {
+                    name: "PLL_DIV2",
+                    description: Some("PLL clock divided by 2."),
+                    value: 7,
                 },
             ],
         },

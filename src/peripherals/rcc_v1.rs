@@ -915,14 +915,14 @@ pub mod regs {
         }
         #[doc = "Microcontroller clock output."]
         #[inline(always)]
-        pub const fn mco(&self) -> u8 {
+        pub const fn mco(&self) -> super::vals::Mco {
             let val = (self.0 >> 24usize) & 0x07;
-            val as u8
+            super::vals::Mco::from_bits(val as u8)
         }
         #[doc = "Microcontroller clock output."]
         #[inline(always)]
-        pub fn set_mco(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x07 << 24usize)) | (((val as u32) & 0x07) << 24usize);
+        pub fn set_mco(&mut self, val: super::vals::Mco) {
+            self.0 = (self.0 & !(0x07 << 24usize)) | (((val.to_bits() as u32) & 0x07) << 24usize);
         }
     }
     impl Default for Cfgr0 {
@@ -1448,6 +1448,46 @@ pub mod vals {
         #[inline(always)]
         fn from(val: Hpre) -> u8 {
             Hpre::to_bits(val)
+        }
+    }
+    #[doc = "Microcontroller clock output."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Mco {
+        #[doc = "No clock."]
+        NO_CLK = 0x0,
+        _RESERVED_1 = 0x01,
+        _RESERVED_2 = 0x02,
+        _RESERVED_3 = 0x03,
+        #[doc = "SYSCLK selected."]
+        SYSCLK = 0x04,
+        #[doc = "HSI selected."]
+        HSI = 0x05,
+        #[doc = "HSE selected."]
+        HSE = 0x06,
+        #[doc = "PLL clock divided by 2."]
+        PLL_DIV2 = 0x07,
+    }
+    impl Mco {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Mco {
+            unsafe { core::mem::transmute(val & 0x07) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Mco {
+        #[inline(always)]
+        fn from(val: u8) -> Mco {
+            Mco::from_bits(val)
+        }
+    }
+    impl From<Mco> for u8 {
+        #[inline(always)]
+        fn from(val: Mco) -> u8 {
+            Mco::to_bits(val)
         }
     }
     #[doc = "PLLMUL configuration. max 72MHz"]

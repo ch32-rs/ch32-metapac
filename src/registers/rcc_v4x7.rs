@@ -283,7 +283,7 @@ pub(crate) static REGISTERS: IR = IR {
                     bit_offset: BitOffset::Regular(RegularBitOffset { offset: 24 }),
                     bit_size: 4,
                     array: None,
-                    enumm: None,
+                    enumm: Some("Mco"),
                 },
                 Field {
                     name: "adcsrc",
@@ -1536,5 +1536,46 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
     ],
-    enums: &[],
+    enums: &[Enum {
+        name: "Mco",
+        description: Some("Microcontroller clock output."),
+        bit_size: 4,
+        variants: &[
+            EnumVariant {
+                name: "NO_CLK",
+                description: Some("No clock."),
+                value: 0,
+            },
+            EnumVariant {
+                name: "SYSCLK",
+                description: Some("SYSCLK selected."),
+                value: 4,
+            },
+            EnumVariant {
+                name: "HSI",
+                description: Some("HSI selected."),
+                value: 5,
+            },
+            EnumVariant {
+                name: "HSE",
+                description: Some("HSE selected."),
+                value: 6,
+            },
+            EnumVariant {
+                name: "UTMI",
+                description: Some("UTMI clock selected."),
+                value: 7,
+            },
+            EnumVariant {
+                name: "ETH_PLL_DIV8",
+                description: Some("ETH_PLL clock divided by 8."),
+                value: 8,
+            },
+            EnumVariant {
+                name: "XT1",
+                description: Some("XT1 selected."),
+                value: 10,
+            },
+        ],
+    }],
 };

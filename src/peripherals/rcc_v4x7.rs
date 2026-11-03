@@ -259,14 +259,14 @@ pub mod regs {
         }
         #[doc = "Microcontroller clock output."]
         #[inline(always)]
-        pub const fn mco(&self) -> u8 {
+        pub const fn mco(&self) -> super::vals::Mco {
             let val = (self.0 >> 24usize) & 0x0f;
-            val as u8
+            super::vals::Mco::from_bits(val as u8)
         }
         #[doc = "Microcontroller clock output."]
         #[inline(always)]
-        pub fn set_mco(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x0f << 24usize)) | (((val as u32) & 0x0f) << 24usize);
+        pub fn set_mco(&mut self, val: super::vals::Mco) {
+            self.0 = (self.0 & !(0x0f << 24usize)) | (((val.to_bits() as u32) & 0x0f) << 24usize);
         }
         #[doc = "ADC input clock source selection."]
         #[inline(always)]
@@ -2000,6 +2000,58 @@ pub mod regs {
         #[inline(always)]
         fn default() -> Rstsckr {
             Rstsckr(0)
+        }
+    }
+}
+pub mod vals {
+    #[doc = "Microcontroller clock output."]
+    #[repr(u8)]
+    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum Mco {
+        #[doc = "No clock."]
+        NO_CLK = 0x0,
+        _RESERVED_1 = 0x01,
+        _RESERVED_2 = 0x02,
+        _RESERVED_3 = 0x03,
+        #[doc = "SYSCLK selected."]
+        SYSCLK = 0x04,
+        #[doc = "HSI selected."]
+        HSI = 0x05,
+        #[doc = "HSE selected."]
+        HSE = 0x06,
+        #[doc = "UTMI clock selected."]
+        UTMI = 0x07,
+        #[doc = "ETH_PLL clock divided by 8."]
+        ETH_PLL_DIV8 = 0x08,
+        _RESERVED_9 = 0x09,
+        #[doc = "XT1 selected."]
+        XT1 = 0x0a,
+        _RESERVED_b = 0x0b,
+        _RESERVED_c = 0x0c,
+        _RESERVED_d = 0x0d,
+        _RESERVED_e = 0x0e,
+        _RESERVED_f = 0x0f,
+    }
+    impl Mco {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> Mco {
+            unsafe { core::mem::transmute(val & 0x0f) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for Mco {
+        #[inline(always)]
+        fn from(val: u8) -> Mco {
+            Mco::from_bits(val)
+        }
+    }
+    impl From<Mco> for u8 {
+        #[inline(always)]
+        fn from(val: Mco) -> u8 {
+            Mco::to_bits(val)
         }
     }
 }
