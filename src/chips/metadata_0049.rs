@@ -2271,6 +2271,51 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }],
     },
     Peripheral {
+        name: "WWDG",
+        address: 0x40002c00,
+        registers: Some(PeripheralRegisters {
+            kind: "wwdg",
+            version: "v00x",
+            block: "WWDG",
+            ir: &wwdg::REGISTERS,
+        }),
+        rcc: Some(PeripheralRcc {
+            bus_clock: "HCLK",
+            kernel_clock: Clock("HCLK"),
+            enable: Some(PeripheralRccRegister {
+                register: "APB1PCENR",
+                field: "WWDGEN",
+            }),
+            reset: Some(PeripheralRccRegister {
+                register: "APB1PRSTR",
+                field: "WWDGRST",
+            }),
+            stop_mode: StopMode::Stop1,
+        }),
+        remap: None,
+        pins: &[],
+        dma_channels: &[],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "WWDG",
+        }],
+    },
+    Peripheral {
+        name: "IWDG",
+        address: 0x40003000,
+        registers: Some(PeripheralRegisters {
+            kind: "iwdg",
+            version: "v00x",
+            block: "IWDG",
+            ir: &iwdg::REGISTERS,
+        }),
+        rcc: None,
+        remap: None,
+        pins: &[],
+        dma_channels: &[],
+        interrupts: &[],
+    },
+    Peripheral {
         name: "I2C1",
         address: 0x40005400,
         registers: Some(PeripheralRegisters {
@@ -2681,6 +2726,8 @@ pub mod flash;
 pub mod gpio;
 #[path = "../registers/i2c_v0.rs"]
 pub mod i2c;
+#[path = "../registers/iwdg_v00x.rs"]
+pub mod iwdg;
 #[path = "../registers/opa_x0.rs"]
 pub mod opa;
 #[path = "../registers/pfic_rv4.rs"]
@@ -2701,3 +2748,5 @@ pub mod usart;
 pub mod usb;
 #[path = "../registers/usbpd_x0.rs"]
 pub mod usbpd;
+#[path = "../registers/wwdg_v00x.rs"]
+pub mod wwdg;
