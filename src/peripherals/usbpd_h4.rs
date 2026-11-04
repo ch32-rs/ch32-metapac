@@ -61,12 +61,12 @@ impl Usbpd {
     }
     #[doc = "CC1 port control register."]
     #[inline(always)]
-    pub const fn port_cc1(self) -> crate::common::Reg<regs::PortCc1, crate::common::RW> {
+    pub const fn port_cc1(self) -> crate::common::Reg<regs::PortCc, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
     }
     #[doc = "CC2 port control register."]
     #[inline(always)]
-    pub const fn port_cc2(self) -> crate::common::Reg<regs::PortCc2, crate::common::RW> {
+    pub const fn port_cc2(self) -> crate::common::Reg<regs::PortCc, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0eusize) as _) }
     }
     #[doc = "PD buffer start address register."]
@@ -446,138 +446,71 @@ pub mod regs {
             Dma(0)
         }
     }
-    #[doc = "CC1 port control register."]
+    #[doc = "CCn port control register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct PortCc1(pub u16);
-    impl PortCc1 {
-        #[doc = "PA_CC1_AI value."]
+    pub struct PortCc(pub u16);
+    impl PortCc {
+        #[doc = "CCn port comparator analog input."]
         #[inline(always)]
-        pub const fn pa_cc1_ai(&self) -> bool {
+        pub const fn pa_cc_ai(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "PA_CC1_AI value."]
+        #[doc = "CCn port comparator analog input."]
         #[inline(always)]
-        pub fn set_pa_cc1_ai(&mut self, val: bool) {
+        pub fn set_pa_cc_ai(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u16) & 0x01) << 0usize);
         }
-        #[doc = "port pull-down resistor enable."]
+        #[doc = "CCn port pull-down resistor enable."]
         #[inline(always)]
-        pub const fn cc1_pd(&self) -> bool {
+        pub const fn cc_pd(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
             val != 0
         }
-        #[doc = "port pull-down resistor enable."]
+        #[doc = "CCn port pull-down resistor enable."]
         #[inline(always)]
-        pub fn set_cc1_pd(&mut self, val: bool) {
+        pub fn set_cc_pd(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u16) & 0x01) << 1usize);
         }
-        #[doc = "CC1_PU value."]
+        #[doc = "CCn port pull-up current."]
         #[inline(always)]
-        pub const fn cc1_pu(&self) -> u8 {
+        pub const fn cc_pu(&self) -> u8 {
             let val = (self.0 >> 2usize) & 0x03;
             val as u8
         }
-        #[doc = "CC1_PU value."]
+        #[doc = "CCn port pull-up current."]
         #[inline(always)]
-        pub fn set_cc1_pu(&mut self, val: u8) {
+        pub fn set_cc_pu(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 2usize)) | (((val as u16) & 0x03) << 2usize);
         }
-        #[doc = "CC1_LVE value."]
+        #[doc = "CCn port output of the low voltage."]
         #[inline(always)]
-        pub const fn cc1_lve(&self) -> bool {
+        pub const fn cc_lve(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
             val != 0
         }
-        #[doc = "CC1_LVE value."]
+        #[doc = "CCn port output of the low voltage."]
         #[inline(always)]
-        pub fn set_cc1_lve(&mut self, val: bool) {
+        pub fn set_cc_lve(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u16) & 0x01) << 4usize);
         }
-        #[doc = "CC1_CE value."]
+        #[doc = "CCn voltage comparator enable and reference voltage."]
         #[inline(always)]
-        pub const fn cc1_ce(&self) -> u8 {
+        pub const fn cc_ce(&self) -> u8 {
             let val = (self.0 >> 5usize) & 0x07;
             val as u8
         }
-        #[doc = "CC1_CE value."]
+        #[doc = "CCn voltage comparator enable and reference voltage."]
         #[inline(always)]
-        pub fn set_cc1_ce(&mut self, val: u8) {
+        pub fn set_cc_ce(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 5usize)) | (((val as u16) & 0x07) << 5usize);
         }
     }
-    impl Default for PortCc1 {
+    impl Default for PortCc {
         #[inline(always)]
-        fn default() -> PortCc1 {
-            PortCc1(0)
-        }
-    }
-    #[doc = "CC2 port control register."]
-    #[repr(transparent)]
-    #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct PortCc2(pub u16);
-    impl PortCc2 {
-        #[doc = "PA_CC2_AI value."]
-        #[inline(always)]
-        pub const fn pa_cc2_ai(&self) -> bool {
-            let val = (self.0 >> 0usize) & 0x01;
-            val != 0
-        }
-        #[doc = "PA_CC2_AI value."]
-        #[inline(always)]
-        pub fn set_pa_cc2_ai(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u16) & 0x01) << 0usize);
-        }
-        #[doc = "port pull-down resistor enable."]
-        #[inline(always)]
-        pub const fn cc2_pd(&self) -> bool {
-            let val = (self.0 >> 1usize) & 0x01;
-            val != 0
-        }
-        #[doc = "port pull-down resistor enable."]
-        #[inline(always)]
-        pub fn set_cc2_pd(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u16) & 0x01) << 1usize);
-        }
-        #[doc = "CC2_PU value."]
-        #[inline(always)]
-        pub const fn cc2_pu(&self) -> u8 {
-            let val = (self.0 >> 2usize) & 0x03;
-            val as u8
-        }
-        #[doc = "CC2_PU value."]
-        #[inline(always)]
-        pub fn set_cc2_pu(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 2usize)) | (((val as u16) & 0x03) << 2usize);
-        }
-        #[doc = "CC2_LVE value."]
-        #[inline(always)]
-        pub const fn cc2_lve(&self) -> bool {
-            let val = (self.0 >> 4usize) & 0x01;
-            val != 0
-        }
-        #[doc = "CC2_LVE value."]
-        #[inline(always)]
-        pub fn set_cc2_lve(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u16) & 0x01) << 4usize);
-        }
-        #[doc = "CC2_CE value."]
-        #[inline(always)]
-        pub const fn cc2_ce(&self) -> u8 {
-            let val = (self.0 >> 5usize) & 0x07;
-            val as u8
-        }
-        #[doc = "CC2_CE value."]
-        #[inline(always)]
-        pub fn set_cc2_ce(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x07 << 5usize)) | (((val as u16) & 0x07) << 5usize);
-        }
-    }
-    impl Default for PortCc2 {
-        #[inline(always)]
-        fn default() -> PortCc2 {
-            PortCc2(0)
+        fn default() -> PortCc {
+            PortCc(0)
         }
     }
     #[doc = "PD interrupt flag register."]

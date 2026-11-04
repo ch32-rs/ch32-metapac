@@ -345,6 +345,16 @@ impl UsbssDevice {
     pub const fn uep0_rx_ctrl(self) -> crate::common::Reg<regs::Uep0RxCtrl, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x88usize) as _) }
     }
+    #[doc = "DMA start address for Endpoint 0 sending."]
+    #[inline(always)]
+    pub const fn u3ep0_tx_dma(self) -> crate::common::Reg<regs::U3ep0TxDma, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x8cusize) as _) }
+    }
+    #[doc = "DMA start address for Endpoint 0 receiving."]
+    #[inline(always)]
+    pub const fn u3ep0_rx_dma(self) -> crate::common::Reg<regs::U3ep0RxDma, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x90usize) as _) }
+    }
     #[doc = "DEV_NOTIF-TP Data 0 Register."]
     #[inline(always)]
     pub const fn tp_rx_data0(self) -> crate::common::Reg<regs::TpRxData0, crate::common::RW> {
@@ -1464,16 +1474,12 @@ impl UsbssHost {
     }
     #[doc = "Send buffer address registers."]
     #[inline(always)]
-    pub const fn uh_tx_dma_u3ep0_tx_dma(
-        self,
-    ) -> crate::common::Reg<regs::UhTxDmaU3ep0TxDma, crate::common::RW> {
+    pub const fn uh_tx_dma(self) -> crate::common::Reg<regs::UhTxDma, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x8cusize) as _) }
     }
     #[doc = "Receive buffer address registers."]
     #[inline(always)]
-    pub const fn uh_rx_dma_u3ep0_rx_dma(
-        self,
-    ) -> crate::common::Reg<regs::UhRxDmaU3ep0RxDma, crate::common::RW> {
+    pub const fn uh_rx_dma(self) -> crate::common::Reg<regs::UhRxDma, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x90usize) as _) }
     }
     #[doc = "Host Transmit Address Offset Register."]
@@ -3473,26 +3479,48 @@ Position 1, indicating that the supported device supports USB3.2 Gen1 (5Gbps)."]
         pub fn set_uif_transfer(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
-        #[doc = "Host Mode: Receive ERDY-TP Complete Interrupt Flag;. Device Mode: Receive SETUP Transaction Completion Interrupt Flag."]
+        #[doc = "Receive SETUP Transaction Completion Interrupt Flag."]
         #[inline(always)]
-        pub const fn uhif_erdy__udif_setup(&self) -> bool {
+        pub const fn udif_setup(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
             val != 0
         }
-        #[doc = "Host Mode: Receive ERDY-TP Complete Interrupt Flag;. Device Mode: Receive SETUP Transaction Completion Interrupt Flag."]
+        #[doc = "Receive SETUP Transaction Completion Interrupt Flag."]
         #[inline(always)]
-        pub fn set_uhif_erdy__udif_setup(&mut self, val: bool) {
+        pub fn set_udif_setup(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
-        #[doc = "Host Mode: Receive DEV_NOTIF-TP Complete Interrupt Flag;. Device Mode: Receive STATUS Transaction Completion Interrupt Flag."]
+        #[doc = "Receive ERDY-TP Complete Interrupt Flag."]
         #[inline(always)]
-        pub const fn uhif_notif__udif_status(&self) -> bool {
+        pub const fn uhif_erdy(&self) -> bool {
+            let val = (self.0 >> 1usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Receive ERDY-TP Complete Interrupt Flag."]
+        #[inline(always)]
+        pub fn set_uhif_erdy(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
+        }
+        #[doc = "Receive STATUS Transaction Completion Interrupt Flag."]
+        #[inline(always)]
+        pub const fn udif_status(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
             val != 0
         }
-        #[doc = "Host Mode: Receive DEV_NOTIF-TP Complete Interrupt Flag;. Device Mode: Receive STATUS Transaction Completion Interrupt Flag."]
+        #[doc = "Receive STATUS Transaction Completion Interrupt Flag."]
         #[inline(always)]
-        pub fn set_uhif_notif__udif_status(&mut self, val: bool) {
+        pub fn set_udif_status(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
+        }
+        #[doc = "Receive DEV_NOTIF-TP Complete Interrupt Flag."]
+        #[inline(always)]
+        pub const fn uhif_notif(&self) -> bool {
+            let val = (self.0 >> 2usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Receive DEV_NOTIF-TP Complete Interrupt Flag."]
+        #[inline(always)]
+        pub fn set_uhif_notif(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
         #[doc = "Receive PING-TP Complete Interrupt Flag."]
@@ -3668,6 +3696,52 @@ Position 1, indicating that the supported device supports USB3.2 Gen1 (5Gbps)."]
         #[inline(always)]
         fn default() -> TpRxData2 {
             TpRxData2(0)
+        }
+    }
+    #[doc = "DMA start address for endpoint 0 receiving."]
+    #[repr(transparent)]
+    #[derive(Copy, Clone, Eq, PartialEq)]
+    pub struct U3ep0RxDma(pub u32);
+    impl U3ep0RxDma {
+        #[doc = "The start address of the endpoint 0 receiving buffer."]
+        #[inline(always)]
+        pub const fn u3ep0_rx_dma(&self) -> u32 {
+            let val = (self.0 >> 0usize) & 0xffff_ffff;
+            val as u32
+        }
+        #[doc = "The start address of the endpoint 0 receiving buffer."]
+        #[inline(always)]
+        pub fn set_u3ep0_rx_dma(&mut self, val: u32) {
+            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
+        }
+    }
+    impl Default for U3ep0RxDma {
+        #[inline(always)]
+        fn default() -> U3ep0RxDma {
+            U3ep0RxDma(0)
+        }
+    }
+    #[doc = "DMA start address for endpoint 0 sending."]
+    #[repr(transparent)]
+    #[derive(Copy, Clone, Eq, PartialEq)]
+    pub struct U3ep0TxDma(pub u32);
+    impl U3ep0TxDma {
+        #[doc = "The start address of the endpoint 0 sending buffer."]
+        #[inline(always)]
+        pub const fn u3ep0_tx_dma(&self) -> u32 {
+            let val = (self.0 >> 0usize) & 0xffff_ffff;
+            val as u32
+        }
+        #[doc = "The start address of the endpoint 0 sending buffer."]
+        #[inline(always)]
+        pub fn set_u3ep0_tx_dma(&mut self, val: u32) {
+            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
+        }
+    }
+    impl Default for U3ep0TxDma {
+        #[inline(always)]
+        fn default() -> U3ep0TxDma {
+            U3ep0TxDma(0)
         }
     }
     #[doc = "Endpoint 0 receives control registers."]
@@ -10825,6 +10899,29 @@ Position 1, indicating that the supported device supports USB3.2 Gen1 (5Gbps)."]
             UhRxCtrl(0)
         }
     }
+    #[doc = "Receive buffer address registers."]
+    #[repr(transparent)]
+    #[derive(Copy, Clone, Eq, PartialEq)]
+    pub struct UhRxDma(pub u32);
+    impl UhRxDma {
+        #[doc = "The start address of the host receiving buffer."]
+        #[inline(always)]
+        pub const fn uh_rx_dma(&self) -> u32 {
+            let val = (self.0 >> 0usize) & 0xffff_ffff;
+            val as u32
+        }
+        #[doc = "The start address of the host receiving buffer."]
+        #[inline(always)]
+        pub fn set_uh_rx_dma(&mut self, val: u32) {
+            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
+        }
+    }
+    impl Default for UhRxDma {
+        #[inline(always)]
+        fn default() -> UhRxDma {
+            UhRxDma(0)
+        }
+    }
     #[doc = "Host Receive Address Offset Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
@@ -10846,29 +10943,6 @@ Position 1, indicating that the supported device supports USB3.2 Gen1 (5Gbps)."]
         #[inline(always)]
         fn default() -> UhRxDmaOfs {
             UhRxDmaOfs(0)
-        }
-    }
-    #[doc = "Receive buffer address registers."]
-    #[repr(transparent)]
-    #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct UhRxDmaU3ep0RxDma(pub u32);
-    impl UhRxDmaU3ep0RxDma {
-        #[doc = "Host Mode:The start address of the host receiving buffer.. Device Mode:Endpoint 0 receives the start of the buffer."]
-        #[inline(always)]
-        pub const fn u3ep0_rx_dma(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0xffff_ffff;
-            val as u32
-        }
-        #[doc = "Host Mode:The start address of the host receiving buffer.. Device Mode:Endpoint 0 receives the start of the buffer."]
-        #[inline(always)]
-        pub fn set_u3ep0_rx_dma(&mut self, val: u32) {
-            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-        }
-    }
-    impl Default for UhRxDmaU3ep0RxDma {
-        #[inline(always)]
-        fn default() -> UhRxDmaU3ep0RxDma {
-            UhRxDmaU3ep0RxDma(0)
         }
     }
     #[doc = "Host Transmit Control Registers."]
@@ -10982,6 +11056,29 @@ Position 1, indicating that the supported device supports USB3.2 Gen1 (5Gbps)."]
             UhTxCtrl(0)
         }
     }
+    #[doc = "Send buffer address registers."]
+    #[repr(transparent)]
+    #[derive(Copy, Clone, Eq, PartialEq)]
+    pub struct UhTxDma(pub u32);
+    impl UhTxDma {
+        #[doc = "The start address of the host sending buffer."]
+        #[inline(always)]
+        pub const fn uh_tx_dma(&self) -> u32 {
+            let val = (self.0 >> 0usize) & 0xffff_ffff;
+            val as u32
+        }
+        #[doc = "The start address of the host sending buffer."]
+        #[inline(always)]
+        pub fn set_uh_tx_dma(&mut self, val: u32) {
+            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
+        }
+    }
+    impl Default for UhTxDma {
+        #[inline(always)]
+        fn default() -> UhTxDma {
+            UhTxDma(0)
+        }
+    }
     #[doc = "Host Transmit Address Offset Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
@@ -11003,29 +11100,6 @@ Position 1, indicating that the supported device supports USB3.2 Gen1 (5Gbps)."]
         #[inline(always)]
         fn default() -> UhTxDmaOfs {
             UhTxDmaOfs(0)
-        }
-    }
-    #[doc = "Send buffer address registers."]
-    #[repr(transparent)]
-    #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct UhTxDmaU3ep0TxDma(pub u32);
-    impl UhTxDmaU3ep0TxDma {
-        #[doc = "Host Mode:The start address of the host sending buffer.. Device Mode:Endpoint 0 sends the start of the buffer."]
-        #[inline(always)]
-        pub const fn u3ep0_tx_dma(&self) -> u32 {
-            let val = (self.0 >> 0usize) & 0xffff_ffff;
-            val as u32
-        }
-        #[doc = "Host Mode:The start address of the host sending buffer.. Device Mode:Endpoint 0 sends the start of the buffer."]
-        #[inline(always)]
-        pub fn set_u3ep0_tx_dma(&mut self, val: u32) {
-            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
-        }
-    }
-    impl Default for UhTxDmaU3ep0TxDma {
-        #[inline(always)]
-        fn default() -> UhTxDmaU3ep0TxDma {
-            UhTxDmaU3ep0TxDma(0)
         }
     }
     #[doc = "USBSS Control Register."]
@@ -11143,26 +11217,48 @@ Position 1, indicating that the supported device supports USB3.2 Gen1 (5Gbps)."]
         pub fn set_uie_transfer(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
         }
-        #[doc = "Device Mode: Receive SETUP Transaction Completion Interrupt Enabled;. Host mode:Receive SETUP Transaction Completion Interrupt Enabled."]
+        #[doc = "Receive SETUP Transaction Completion Interrupt Enabled."]
         #[inline(always)]
-        pub const fn udie_setup__uhie_erdy(&self) -> bool {
+        pub const fn udie_setup(&self) -> bool {
             let val = (self.0 >> 17usize) & 0x01;
             val != 0
         }
-        #[doc = "Device Mode: Receive SETUP Transaction Completion Interrupt Enabled;. Host mode:Receive SETUP Transaction Completion Interrupt Enabled."]
+        #[doc = "Receive SETUP Transaction Completion Interrupt Enabled."]
         #[inline(always)]
-        pub fn set_udie_setup__uhie_erdy(&mut self, val: bool) {
+        pub fn set_udie_setup(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
         }
-        #[doc = "Device mode: Receiving STATUS transaction completion interrupt enabled;. Host mode: Interrupt enabled for receiving DEV_NOTIF-TP."]
+        #[doc = "Receive ERDY-TP Complete Interrupt Enabled."]
         #[inline(always)]
-        pub const fn udie_status__uhie_notif(&self) -> bool {
+        pub const fn uhie_erdy(&self) -> bool {
+            let val = (self.0 >> 17usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Receive ERDY-TP Complete Interrupt Enabled."]
+        #[inline(always)]
+        pub fn set_uhie_erdy(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
+        }
+        #[doc = "Receiving STATUS transaction completion interrupt enabled."]
+        #[inline(always)]
+        pub const fn udie_status(&self) -> bool {
             let val = (self.0 >> 18usize) & 0x01;
             val != 0
         }
-        #[doc = "Device mode: Receiving STATUS transaction completion interrupt enabled;. Host mode: Interrupt enabled for receiving DEV_NOTIF-TP."]
+        #[doc = "Receiving STATUS transaction completion interrupt enabled."]
         #[inline(always)]
-        pub fn set_udie_status__uhie_notif(&mut self, val: bool) {
+        pub fn set_udie_status(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
+        }
+        #[doc = "Interrupt enabled for receiving DEV_NOTIF-TP."]
+        #[inline(always)]
+        pub const fn uhie_notif(&self) -> bool {
+            let val = (self.0 >> 18usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Interrupt enabled for receiving DEV_NOTIF-TP."]
+        #[inline(always)]
+        pub fn set_uhie_notif(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
         }
         #[doc = "Interrupt Enabled for Receiving PING-TP."]

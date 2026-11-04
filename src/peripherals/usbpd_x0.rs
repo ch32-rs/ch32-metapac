@@ -59,11 +59,15 @@ impl Usbpd {
     pub const fn bmc_byte_cnt(self) -> crate::common::Reg<regs::BmcByteCnt, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0ausize) as _) }
     }
-    #[doc = "CC port control register."]
+    #[doc = "CC1 port control register."]
     #[inline(always)]
-    pub const fn port_cc(self, n: usize) -> crate::common::Reg<regs::PortCc, crate::common::RW> {
-        assert!(n < 4usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize + n * 1usize) as _) }
+    pub const fn port_cc1(self) -> crate::common::Reg<regs::PortCc, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
+    }
+    #[doc = "CC2 port control register."]
+    #[inline(always)]
+    pub const fn port_cc2(self) -> crate::common::Reg<regs::PortCc, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0eusize) as _) }
     }
     #[doc = "PD buffer start address register."]
     #[inline(always)]
@@ -352,51 +356,51 @@ pub mod regs {
             Control(0)
         }
     }
-    #[doc = "CC1 port control register."]
+    #[doc = "CCn port control register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PortCc(pub u16);
     impl PortCc {
-        #[doc = "CC port comparator analog input."]
+        #[doc = "CCn port comparator analog input."]
         #[inline(always)]
         pub const fn pa_cc_ai(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
-        #[doc = "CC port comparator analog input."]
+        #[doc = "CCn port comparator analog input."]
         #[inline(always)]
         pub fn set_pa_cc_ai(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u16) & 0x01) << 0usize);
         }
-        #[doc = "CC port pull-up current."]
+        #[doc = "CCn port pull-up current."]
         #[inline(always)]
         pub const fn cc_pu(&self) -> super::vals::PortCcPu {
             let val = (self.0 >> 2usize) & 0x03;
             super::vals::PortCcPu::from_bits(val as u8)
         }
-        #[doc = "CC port pull-up current."]
+        #[doc = "CCn port pull-up current."]
         #[inline(always)]
         pub fn set_cc_pu(&mut self, val: super::vals::PortCcPu) {
             self.0 = (self.0 & !(0x03 << 2usize)) | (((val.to_bits() as u16) & 0x03) << 2usize);
         }
-        #[doc = "CC port level 0 voltage."]
+        #[doc = "CCn port level 0 voltage."]
         #[inline(always)]
         pub const fn cc_lve(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
             val != 0
         }
-        #[doc = "CC port level 0 voltage."]
+        #[doc = "CCn port level 0 voltage."]
         #[inline(always)]
         pub fn set_cc_lve(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u16) & 0x01) << 4usize);
         }
-        #[doc = "CC port comparator enable."]
+        #[doc = "CCn port comparator enable."]
         #[inline(always)]
         pub const fn cc_ce(&self) -> super::vals::PortCcCe {
             let val = (self.0 >> 5usize) & 0x07;
             super::vals::PortCcCe::from_bits(val as u8)
         }
-        #[doc = "CC port comparator enable."]
+        #[doc = "CCn port comparator enable."]
         #[inline(always)]
         pub fn set_cc_ce(&mut self, val: super::vals::PortCcCe) {
             self.0 = (self.0 & !(0x07 << 5usize)) | (((val.to_bits() as u16) & 0x07) << 5usize);

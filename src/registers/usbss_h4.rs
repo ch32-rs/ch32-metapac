@@ -921,6 +921,40 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
+                    name: "u3ep0_tx_dma",
+                    description: Some(
+                        "DMA start address for Endpoint 0 sending.",
+                    ),
+                    array: None,
+                    byte_offset: 0x8c,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "U3ep0TxDma",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "u3ep0_rx_dma",
+                    description: Some(
+                        "DMA start address for Endpoint 0 receiving.",
+                    ),
+                    array: None,
+                    byte_offset: 0x90,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "U3ep0RxDma",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
                     name: "tp_rx_data0",
                     description: Some(
                         "DEV_NOTIF-TP Data 0 Register.",
@@ -4026,7 +4060,7 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
-                    name: "uh_tx_dma_u3ep0_tx_dma",
+                    name: "uh_tx_dma",
                     description: Some(
                         "Send buffer address registers.",
                     ),
@@ -4037,13 +4071,13 @@ pub(crate) static REGISTERS: IR = IR {
                             access: Access::ReadWrite,
                             bit_size: 32,
                             fieldset: Some(
-                                "UhTxDmaU3ep0TxDma",
+                                "UhTxDma",
                             ),
                         },
                     ),
                 },
                 BlockItem {
-                    name: "uh_rx_dma_u3ep0_rx_dma",
+                    name: "uh_rx_dma",
                     description: Some(
                         "Receive buffer address registers.",
                     ),
@@ -4054,7 +4088,7 @@ pub(crate) static REGISTERS: IR = IR {
                             access: Access::ReadWrite,
                             bit_size: 32,
                             fieldset: Some(
-                                "UhRxDmaU3ep0RxDma",
+                                "UhRxDma",
                             ),
                         },
                     ),
@@ -6561,9 +6595,9 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "uhif_erdy__udif_setup",
+                    name: "udif_setup",
                     description: Some(
-                        "Host Mode: Receive ERDY-TP Complete Interrupt Flag;. Device Mode: Receive SETUP Transaction Completion Interrupt Flag.",
+                        "Receive SETUP Transaction Completion Interrupt Flag.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -6575,9 +6609,37 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "uhif_notif__udif_status",
+                    name: "uhif_erdy",
                     description: Some(
-                        "Host Mode: Receive DEV_NOTIF-TP Complete Interrupt Flag;. Device Mode: Receive STATUS Transaction Completion Interrupt Flag.",
+                        "Receive ERDY-TP Complete Interrupt Flag.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 1,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "udif_status",
+                    description: Some(
+                        "Receive STATUS Transaction Completion Interrupt Flag.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 2,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "uhif_notif",
+                    description: Some(
+                        "Receive DEV_NOTIF-TP Complete Interrupt Flag.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -6776,6 +6838,54 @@ pub(crate) static REGISTERS: IR = IR {
                     name: "usb3_notif_data2",
                     description: Some(
                         "After the DEV_NOTIF-TP is received, the HP data is stored in this register.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 32,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "U3ep0RxDma",
+            extends: None,
+            description: Some(
+                "DMA start address for endpoint 0 receiving.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "u3ep0_rx_dma",
+                    description: Some(
+                        "The start address of the endpoint 0 receiving buffer.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 32,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "U3ep0TxDma",
+            extends: None,
+            description: Some(
+                "DMA start address for endpoint 0 sending.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "u3ep0_tx_dma",
+                    description: Some(
+                        "The start address of the endpoint 0 sending buffer.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -15057,17 +15167,17 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
-            name: "UhRxDmaOfs",
+            name: "UhRxDma",
             extends: None,
             description: Some(
-                "Host Receive Address Offset Register.",
+                "Receive buffer address registers.",
             ),
             bit_size: 32,
             fields: &[
                 Field {
-                    name: "uh_rx_dma_ofs",
+                    name: "uh_rx_dma",
                     description: Some(
-                        "After the host receives it, the DMA's address is offset by a large amount.",
+                        "The start address of the host receiving buffer.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -15081,17 +15191,17 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
-            name: "UhRxDmaU3ep0RxDma",
+            name: "UhRxDmaOfs",
             extends: None,
             description: Some(
-                "Receive buffer address registers.",
+                "Host Receive Address Offset Register.",
             ),
             bit_size: 32,
             fields: &[
                 Field {
-                    name: "u3ep0_rx_dma",
+                    name: "uh_rx_dma_ofs",
                     description: Some(
-                        "Host Mode:The start address of the host receiving buffer.. Device Mode:Endpoint 0 receives the start of the buffer.",
+                        "After the host receives it, the DMA's address is offset by a large amount.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -15241,17 +15351,17 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
-            name: "UhTxDmaOfs",
+            name: "UhTxDma",
             extends: None,
             description: Some(
-                "Host Transmit Address Offset Register.",
+                "Send buffer address registers.",
             ),
             bit_size: 32,
             fields: &[
                 Field {
-                    name: "uh_tx_dma_ofs",
+                    name: "uh_tx_dma",
                     description: Some(
-                        "After the host sends the DMA, the size of the DMA address offset.",
+                        "The start address of the host sending buffer.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -15265,17 +15375,17 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
-            name: "UhTxDmaU3ep0TxDma",
+            name: "UhTxDmaOfs",
             extends: None,
             description: Some(
-                "Send buffer address registers.",
+                "Host Transmit Address Offset Register.",
             ),
             bit_size: 32,
             fields: &[
                 Field {
-                    name: "u3ep0_tx_dma",
+                    name: "uh_tx_dma_ofs",
                     description: Some(
-                        "Host Mode:The start address of the host sending buffer.. Device Mode:Endpoint 0 sends the start of the buffer.",
+                        "After the host sends the DMA, the size of the DMA address offset.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -15437,9 +15547,9 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "udie_setup__uhie_erdy",
+                    name: "udie_setup",
                     description: Some(
-                        "Device Mode: Receive SETUP Transaction Completion Interrupt Enabled;. Host mode:Receive SETUP Transaction Completion Interrupt Enabled.",
+                        "Receive SETUP Transaction Completion Interrupt Enabled.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -15451,9 +15561,37 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "udie_status__uhie_notif",
+                    name: "uhie_erdy",
                     description: Some(
-                        "Device mode: Receiving STATUS transaction completion interrupt enabled;. Host mode: Interrupt enabled for receiving DEV_NOTIF-TP.",
+                        "Receive ERDY-TP Complete Interrupt Enabled.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 17,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "udie_status",
+                    description: Some(
+                        "Receiving STATUS transaction completion interrupt enabled.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 18,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "uhie_notif",
+                    description: Some(
+                        "Interrupt enabled for receiving DEV_NOTIF-TP.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {

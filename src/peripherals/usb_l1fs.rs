@@ -135,15 +135,15 @@ impl Usbd {
     #[inline(always)]
     pub const fn uep_dma(self, n: usize) -> crate::common::Reg<regs::UepDma, crate::common::RW> {
         assert!(n < 8usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x20usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize + n * 4usize) as _) }
     }
-    #[doc = "endpoint transmit length."]
+    #[doc = "endpoint transmit length. Low half of R32_USB_EPn_CTRL."]
     #[inline(always)]
     pub const fn uep_t_len(self, n: usize) -> crate::common::Reg<regs::UepTLen, crate::common::RW> {
         assert!(n < 8usize);
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x30usize + n * 4usize) as _) }
     }
-    #[doc = "endpoint control."]
+    #[doc = "endpoint control. High half of R32_USB_EPn_CTRL."]
     #[inline(always)]
     pub const fn uep_ctrl(self, n: usize) -> crate::common::Reg<regs::UepCtrl, crate::common::RW> {
         assert!(n < 8usize);
@@ -234,7 +234,7 @@ impl Usbh {
     #[doc = "USB host receiving control."]
     #[inline(always)]
     pub const fn rx_ctrl(self) -> crate::common::Reg<regs::UhRxCtrl, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x3ausize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x3busize) as _) }
     }
     #[doc = "USB host transmittal length."]
     #[inline(always)]
@@ -528,29 +528,29 @@ pub mod regs {
     #[doc = "endpoint transmit length."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct UepTLen(pub u32);
+    pub struct UepTLen(pub u16);
     impl UepTLen {
-        #[doc = "transmit length of USB endpoint X. The length varies with the endpoint type."]
+        #[doc = "transmit length of USB endpoint X. 7 bits for endpoints 0-2 and 4-7, 10 bits for endpoint 3."]
         #[inline(always)]
         pub const fn tx_len(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0x03ff;
             val as u16
         }
-        #[doc = "transmit length of USB endpoint X. The length varies with the endpoint type."]
+        #[doc = "transmit length of USB endpoint X. 7 bits for endpoints 0-2 and 4-7, 10 bits for endpoint 3."]
         #[inline(always)]
         pub fn set_tx_len(&mut self, val: u16) {
-            self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u32) & 0x03ff) << 0usize);
+            self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u16) & 0x03ff) << 0usize);
         }
-        #[doc = "USB host PID\\[3\\]"]
+        #[doc = "USB host PID\\[3\\], endpoint 2 only."]
         #[inline(always)]
         pub const fn host_pid3(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
             val != 0
         }
-        #[doc = "USB host PID\\[3\\]"]
+        #[doc = "USB host PID\\[3\\], endpoint 2 only."]
         #[inline(always)]
         pub fn set_host_pid3(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
+            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u16) & 0x01) << 7usize);
         }
     }
     impl Default for UepTLen {

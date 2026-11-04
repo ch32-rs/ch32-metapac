@@ -131,24 +131,24 @@ pub mod regs {
         }
         #[doc = "ADC 1 External trigger injected conversion remapping."]
         #[inline(always)]
-        pub const fn adc1_etrginj__rm(&self) -> bool {
+        pub const fn adc1_etrginj_rm(&self) -> bool {
             let val = (self.0 >> 17usize) & 0x01;
             val != 0
         }
         #[doc = "ADC 1 External trigger injected conversion remapping."]
         #[inline(always)]
-        pub fn set_adc1_etrginj__rm(&mut self, val: bool) {
+        pub fn set_adc1_etrginj_rm(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
         }
         #[doc = "ADC 1 external trigger regular conversion remapping."]
         #[inline(always)]
-        pub const fn adc1_etrgreg__rm(&self) -> bool {
+        pub const fn adc1_etrgreg_rm(&self) -> bool {
             let val = (self.0 >> 18usize) & 0x01;
             val != 0
         }
         #[doc = "ADC 1 external trigger regular conversion remapping."]
         #[inline(always)]
-        pub fn set_adc1_etrgreg__rm(&mut self, val: bool) {
+        pub fn set_adc1_etrgreg_rm(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
         }
         #[doc = "USART1 remapping."]

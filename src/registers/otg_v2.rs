@@ -706,7 +706,7 @@ pub(crate) static REGISTERS: IR = IR {
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
-                            bit_size: 8,
+                            bit_size: 16,
                             fieldset: Some(
                                 "UhSetup",
                             ),
@@ -736,7 +736,7 @@ pub(crate) static REGISTERS: IR = IR {
                         "USB host receiving control.",
                     ),
                     array: None,
-                    byte_offset: 0x3a,
+                    byte_offset: 0x3b,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
@@ -744,6 +744,21 @@ pub(crate) static REGISTERS: IR = IR {
                             fieldset: Some(
                                 "UhRxCtrl",
                             ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "tx_len",
+                    description: Some(
+                        "USB host transmittal length.",
+                    ),
+                    array: None,
+                    byte_offset: 0x3c,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 16,
+                            fieldset: None,
                         },
                     ),
                 },
@@ -1504,7 +1519,7 @@ pub(crate) static REGISTERS: IR = IR {
             description: Some(
                 "USB host setup.",
             ),
-            bit_size: 8,
+            bit_size: 16,
             fields: &[
                 Field {
                     name: "sof_en",
@@ -1527,7 +1542,7 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
-                            offset: 3,
+                            offset: 10,
                         },
                     ),
                     bit_size: 1,

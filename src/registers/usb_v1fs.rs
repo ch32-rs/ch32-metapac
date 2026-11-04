@@ -1153,7 +1153,7 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
-                            offset: 2,
+                            offset: 6,
                         },
                     ),
                     bit_size: 1,
@@ -1167,7 +1167,7 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
-                            offset: 3,
+                            offset: 7,
                         },
                     ),
                     bit_size: 1,

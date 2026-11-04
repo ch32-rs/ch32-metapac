@@ -972,7 +972,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
     },
     Peripheral {
         name: "USBPD",
-        address: 0x40027000,
+        address: 0x40024000,
         registers: Some(PeripheralRegisters {
             kind: "usbpd",
             version: "ch641",

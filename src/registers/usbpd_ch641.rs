@@ -143,19 +143,46 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
-                    name: "port_cc",
+                    name: "port_cc1",
                     description: Some(
-                        "CC port control register.",
+                        "CC1 port control register.",
                     ),
-                    array: Some(
-                        Array::Regular(
-                            RegularArray {
-                                len: 4,
-                                stride: 1,
-                            },
-                        ),
-                    ),
+                    array: None,
                     byte_offset: 0xc,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 8,
+                            fieldset: Some(
+                                "PortCc",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "port_cc2",
+                    description: Some(
+                        "CC2 port control register.",
+                    ),
+                    array: None,
+                    byte_offset: 0xe,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 8,
+                            fieldset: Some(
+                                "PortCc",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "port_cc3",
+                    description: Some(
+                        "CC3 port control register.",
+                    ),
+                    array: None,
+                    byte_offset: 0xf,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
@@ -535,14 +562,14 @@ pub(crate) static REGISTERS: IR = IR {
             name: "PortCc",
             extends: None,
             description: Some(
-                "CC port control register.",
+                "CCn port control register.",
             ),
             bit_size: 8,
             fields: &[
                 Field {
                     name: "pa_cc_ai",
                     description: Some(
-                        "CC1 output of the voltage comparator.",
+                        "CCn output of the voltage comparator.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -556,7 +583,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "cc_pd",
                     description: Some(
-                        "CC1 port pull-down resistor enable.",
+                        "CCn port pull-down resistor enable.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -570,7 +597,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "cc_pu",
                     description: Some(
-                        "CC1 port pull-up current selection.",
+                        "CCn port pull-up current selection.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -586,7 +613,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "cc_lve",
                     description: Some(
-                        "CC1 port output of the low voltage.",
+                        "CCn port output of the low voltage.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -600,7 +627,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "cc_ce",
                     description: Some(
-                        "CC1 voltage comparator enable and voltage comparator reference voltage. (CC_CE and CC_CVS)",
+                        "CCn voltage comparator enable and voltage comparator reference voltage. (CC_CE and CC_CVS)",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {

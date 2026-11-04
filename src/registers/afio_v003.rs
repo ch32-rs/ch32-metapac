@@ -99,7 +99,7 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "adc1_etrginj__rm",
+                    name: "adc1_etrginj_rm",
                     description: Some("ADC 1 External trigger injected conversion remapping."),
                     bit_offset: BitOffset::Regular(RegularBitOffset { offset: 17 }),
                     bit_size: 1,
@@ -107,7 +107,7 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "adc1_etrgreg__rm",
+                    name: "adc1_etrgreg_rm",
                     description: Some("ADC 1 external trigger regular conversion remapping."),
                     bit_offset: BitOffset::Regular(RegularBitOffset { offset: 18 }),
                     bit_size: 1,

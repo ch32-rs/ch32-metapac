@@ -355,7 +355,7 @@ pub(crate) static REGISTERS: IR = IR {
                             },
                         ),
                     ),
-                    byte_offset: 0x20,
+                    byte_offset: 0x10,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
@@ -369,7 +369,7 @@ pub(crate) static REGISTERS: IR = IR {
                 BlockItem {
                     name: "uep_t_len",
                     description: Some(
-                        "endpoint transmit length.",
+                        "endpoint transmit length. Low half of R32_USB_EPn_CTRL.",
                     ),
                     array: Some(
                         Array::Regular(
@@ -383,7 +383,7 @@ pub(crate) static REGISTERS: IR = IR {
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
-                            bit_size: 32,
+                            bit_size: 16,
                             fieldset: Some(
                                 "UepTLen",
                             ),
@@ -393,7 +393,7 @@ pub(crate) static REGISTERS: IR = IR {
                 BlockItem {
                     name: "uep_ctrl",
                     description: Some(
-                        "endpoint control.",
+                        "endpoint control. High half of R32_USB_EPn_CTRL.",
                     ),
                     array: Some(
                         Array::Regular(
@@ -618,7 +618,7 @@ pub(crate) static REGISTERS: IR = IR {
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
-                            bit_size: 8,
+                            bit_size: 16,
                             fieldset: Some(
                                 "UhSetup",
                             ),
@@ -648,7 +648,7 @@ pub(crate) static REGISTERS: IR = IR {
                         "USB host receiving control.",
                     ),
                     array: None,
-                    byte_offset: 0x3a,
+                    byte_offset: 0x3b,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
@@ -1038,12 +1038,12 @@ pub(crate) static REGISTERS: IR = IR {
             description: Some(
                 "endpoint transmit length.",
             ),
-            bit_size: 32,
+            bit_size: 16,
             fields: &[
                 Field {
                     name: "tx_len",
                     description: Some(
-                        "transmit length of USB endpoint X. The length varies with the endpoint type.",
+                        "transmit length of USB endpoint X. 7 bits for endpoints 0-2 and 4-7, 10 bits for endpoint 3.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -1057,7 +1057,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "host_pid3",
                     description: Some(
-                        "USB host PID[3]",
+                        "USB host PID[3], endpoint 2 only.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {

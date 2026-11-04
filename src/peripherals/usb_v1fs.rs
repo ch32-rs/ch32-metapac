@@ -626,24 +626,24 @@ pub mod regs {
         #[doc = "SOF packet en"]
         #[inline(always)]
         pub const fn sof_en(&self) -> bool {
-            let val = (self.0 >> 2usize) & 0x01;
+            let val = (self.0 >> 6usize) & 0x01;
             val != 0
         }
         #[doc = "SOF packet en"]
         #[inline(always)]
         pub fn set_sof_en(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u8) & 0x01) << 2usize);
+            self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u8) & 0x01) << 6usize);
         }
         #[doc = "pre pid en"]
         #[inline(always)]
         pub const fn pre_pid_en(&self) -> bool {
-            let val = (self.0 >> 3usize) & 0x01;
+            let val = (self.0 >> 7usize) & 0x01;
             val != 0
         }
         #[doc = "pre pid en"]
         #[inline(always)]
         pub fn set_pre_pid_en(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u8) & 0x01) << 3usize);
+            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u8) & 0x01) << 7usize);
         }
     }
     impl Default for UhSetup {

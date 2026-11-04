@@ -246,7 +246,12 @@ impl Usbh {
     #[doc = "USB host receiving control."]
     #[inline(always)]
     pub const fn rx_ctrl(self) -> crate::common::Reg<regs::UhRxCtrl, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x3ausize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x3busize) as _) }
+    }
+    #[doc = "USB host transmittal length."]
+    #[inline(always)]
+    pub const fn tx_len(self) -> crate::common::Reg<u16, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x3cusize) as _) }
     }
     #[doc = "USB host transmittal control."]
     #[inline(always)]
@@ -653,7 +658,7 @@ pub mod regs {
     #[doc = "USB host setup."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct UhSetup(pub u8);
+    pub struct UhSetup(pub u16);
     impl UhSetup {
         #[doc = "SOF packet en"]
         #[inline(always)]
@@ -664,18 +669,18 @@ pub mod regs {
         #[doc = "SOF packet en"]
         #[inline(always)]
         pub fn set_sof_en(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u8) & 0x01) << 2usize);
+            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u16) & 0x01) << 2usize);
         }
         #[doc = "pre pid en"]
         #[inline(always)]
         pub const fn pre_pid_en(&self) -> bool {
-            let val = (self.0 >> 3usize) & 0x01;
+            let val = (self.0 >> 10usize) & 0x01;
             val != 0
         }
         #[doc = "pre pid en"]
         #[inline(always)]
         pub fn set_pre_pid_en(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u8) & 0x01) << 3usize);
+            self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u16) & 0x01) << 10usize);
         }
     }
     impl Default for UhSetup {

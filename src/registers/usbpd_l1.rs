@@ -94,13 +94,24 @@ pub(crate) static REGISTERS: IR = IR {
                 }),
             },
             BlockItem {
-                name: "port_cc",
-                description: Some("CC port control register."),
-                array: Some(Array::Regular(RegularArray { len: 4, stride: 1 })),
+                name: "port_cc1",
+                description: Some("CC1 port control register."),
+                array: None,
                 byte_offset: 0xc,
                 inner: BlockItemInner::Register(Register {
                     access: Access::ReadWrite,
-                    bit_size: 8,
+                    bit_size: 16,
+                    fieldset: Some("PortCc"),
+                }),
+            },
+            BlockItem {
+                name: "port_cc2",
+                description: Some("CC2 port control register."),
+                array: None,
+                byte_offset: 0xe,
+                inner: BlockItemInner::Register(Register {
+                    access: Access::ReadWrite,
+                    bit_size: 16,
                     fieldset: Some("PortCc"),
                 }),
             },
@@ -323,12 +334,12 @@ pub(crate) static REGISTERS: IR = IR {
         FieldSet {
             name: "PortCc",
             extends: None,
-            description: Some("CC1 port control register."),
-            bit_size: 8,
+            description: Some("CCn port control register."),
+            bit_size: 16,
             fields: &[
                 Field {
                     name: "pa_cc_ai",
-                    description: Some("CC port comparator analog input."),
+                    description: Some("CCn port comparator analog input."),
                     bit_offset: BitOffset::Regular(RegularBitOffset { offset: 0 }),
                     bit_size: 1,
                     array: None,
@@ -336,7 +347,7 @@ pub(crate) static REGISTERS: IR = IR {
                 },
                 Field {
                     name: "cc_pd",
-                    description: Some("CC port pull-down current."),
+                    description: Some("CCn port pull-down current."),
                     bit_offset: BitOffset::Regular(RegularBitOffset { offset: 1 }),
                     bit_size: 1,
                     array: None,
@@ -344,7 +355,7 @@ pub(crate) static REGISTERS: IR = IR {
                 },
                 Field {
                     name: "cc_pu",
-                    description: Some("CC port pull-up current."),
+                    description: Some("CCn port pull-up current."),
                     bit_offset: BitOffset::Regular(RegularBitOffset { offset: 2 }),
                     bit_size: 2,
                     array: None,
@@ -352,7 +363,7 @@ pub(crate) static REGISTERS: IR = IR {
                 },
                 Field {
                     name: "cc_lve",
-                    description: Some("CC port level 0 voltage."),
+                    description: Some("CCn port level 0 voltage."),
                     bit_offset: BitOffset::Regular(RegularBitOffset { offset: 4 }),
                     bit_size: 1,
                     array: None,
@@ -360,7 +371,7 @@ pub(crate) static REGISTERS: IR = IR {
                 },
                 Field {
                     name: "cc_ce",
-                    description: Some("CC port comparator enable."),
+                    description: Some("CCn port comparator enable."),
                     bit_offset: BitOffset::Regular(RegularBitOffset { offset: 5 }),
                     bit_size: 3,
                     array: None,
