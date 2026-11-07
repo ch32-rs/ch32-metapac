@@ -5,15 +5,22 @@ pub(crate) static REGISTERS: IR = IR {
             name: "Systick",
             extends: None,
             description: Some(
-                "Systick registers for V3F + V5F dual-core (currently CH32H417). Two independent 32-bit up/down counters with per-counter core ID (CID) routing for interrupts.",
+                "Systick registers for the CH32H4 dual-core SysTick. Two independent 32-bit counters, indexed by hart, and one status register shared by both.",
             ),
             items: &[
                 BlockItem {
-                    name: "ctlr_0",
+                    name: "ctlr",
                     description: Some(
-                        "System count control register for counter 0.",
+                        "System count control register.",
                     ),
-                    array: None,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 2,
+                                stride: 128,
+                            },
+                        ),
+                    ),
                     byte_offset: 0x0,
                     inner: BlockItemInner::Register(
                         Register {
@@ -26,9 +33,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
-                    name: "isr",
+                    name: "sr",
                     description: Some(
-                        "System counter interrupt status register (shared by both counters).",
+                        "System counter interrupt status register. Shared by both counters.",
                     ),
                     array: None,
                     byte_offset: 0x4,
@@ -37,93 +44,52 @@ pub(crate) static REGISTERS: IR = IR {
                             access: Access::ReadWrite,
                             bit_size: 32,
                             fieldset: Some(
-                                "Isr",
+                                "Sr",
                             ),
                         },
                     ),
                 },
                 BlockItem {
-                    name: "cnt_0",
+                    name: "cnt",
                     description: Some(
-                        "System counter 0 count register.",
+                        "System counter count register.",
                     ),
-                    array: None,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 2,
+                                stride: 128,
+                            },
+                        ),
+                    ),
                     byte_offset: 0x8,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
-                            fieldset: Some(
-                                "Cnt",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
                 BlockItem {
-                    name: "cmp_0",
+                    name: "cmp",
                     description: Some(
-                        "System counter 0 compare register.",
+                        "System count compare register.",
                     ),
-                    array: None,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 2,
+                                stride: 128,
+                            },
+                        ),
+                    ),
                     byte_offset: 0x10,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
-                            fieldset: Some(
-                                "Cmp",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "ctlr_1",
-                    description: Some(
-                        "System count control register for counter 1.",
-                    ),
-                    array: None,
-                    byte_offset: 0x80,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Ctlr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "cnt_1",
-                    description: Some(
-                        "System counter 1 count register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x88,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Cnt",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "cmp_1",
-                    description: Some(
-                        "System counter 1 compare register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x90,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Cmp",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
@@ -131,54 +97,6 @@ pub(crate) static REGISTERS: IR = IR {
         },
     ],
     fieldsets: &[
-        FieldSet {
-            name: "Cmp",
-            extends: None,
-            description: Some(
-                "System count compare register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "cmp",
-                    description: Some(
-                        "32-bit compare value (used as reload value when counting down).",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Cnt",
-            extends: None,
-            description: Some(
-                "System counter register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "cnt",
-                    description: Some(
-                        "32-bit Systick counter value.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
         FieldSet {
             name: "Ctlr",
             extends: None,
@@ -188,7 +106,7 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 32,
             fields: &[
                 Field {
-                    name: "en",
+                    name: "ste",
                     description: Some(
                         "Counter enable.",
                     ),
@@ -202,7 +120,7 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "ie",
+                    name: "stie",
                     description: Some(
                         "Counter interrupt enable.",
                     ),
@@ -216,9 +134,9 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "no_rtc",
+                    name: "stclk",
                     description: Some(
-                        "Counter clock source selection.",
+                        "Counter clock source. Both counters are clocked from the V3F HCLK domain.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -232,9 +150,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 Field {
-                    name: "auto_reload",
+                    name: "stre",
                     description: Some(
-                        "Auto reload enable.",
+                        "Auto reload enable. Leave clear for a free-running counter.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -246,7 +164,7 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "down_mode",
+                    name: "mode",
                     description: Some(
                         "Count mode.",
                     ),
@@ -264,7 +182,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "cid",
                     description: Some(
-                        "Core ID for routing the counter interrupt to a specific hart. Auto-updated when EN is set to the operating hart's core ID.",
+                        "Hart the counter interrupt is routed to. Updated to the operating hart when STE is set.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -278,7 +196,7 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
-            name: "Isr",
+            name: "Sr",
             extends: None,
             description: Some(
                 "System counter interrupt status register (shared).",
@@ -286,9 +204,9 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 32,
             fields: &[
                 Field {
-                    name: "isr0",
+                    name: "cntif0",
                     description: Some(
-                        "Systick0 interrupt flag.",
+                        "Counter 0 compare flag.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -300,9 +218,9 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "isr1",
+                    name: "cntif1",
                     description: Some(
-                        "Systick1 interrupt flag.",
+                        "Counter 1 compare flag.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -346,14 +264,14 @@ pub(crate) static REGISTERS: IR = IR {
                 EnumVariant {
                     name: "HCLK_DIV8",
                     description: Some(
-                        "HCLK/8.",
+                        "V3F HCLK/8.",
                     ),
                     value: 0,
                 },
                 EnumVariant {
                     name: "HCLK",
                     description: Some(
-                        "HCLK.",
+                        "V3F HCLK.",
                     ),
                     value: 1,
                 },

@@ -622,7 +622,7 @@ pub mod esig;
 pub mod exti;
 #[path = "../../peripherals/flash_h4.rs"]
 pub mod flash;
-#[path = "../../peripherals/gpio_v3.rs"]
+#[path = "../../peripherals/gpio_h4.rs"]
 pub mod gpio;
 #[path = "../../peripherals/hsadc_h4.rs"]
 pub mod hsadc;
@@ -644,7 +644,7 @@ pub mod pfic;
 pub mod pwr;
 #[path = "../../peripherals/rcc_h4.rs"]
 pub mod rcc;
-#[path = "../../peripherals/rng_h4.rs"]
+#[path = "../../peripherals/rng_v3.rs"]
 pub mod rng;
 #[path = "../../peripherals/rtc_common.rs"]
 pub mod rtc;
