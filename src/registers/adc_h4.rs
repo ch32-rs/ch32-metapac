@@ -700,15 +700,11 @@ pub(crate) static REGISTERS: IR = IR {
         FieldSet {
             name: "Idatar1",
             extends: None,
-            description: Some(
-                "injected data register x_Charge data offset for injected channel x.",
-            ),
+            description: Some("injected data register x."),
             bit_size: 32,
             fields: &[Field {
-                name: "idata_tkcgoffset",
-                description: Some(
-                    "Injected data_Touch key charge data offset for injected channel x.",
-                ),
+                name: "jdata",
+                description: Some("Injected data."),
                 bit_offset: BitOffset::Regular(RegularBitOffset { offset: 0 }),
                 bit_size: 16,
                 array: None,
@@ -868,18 +864,10 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 32,
             fields: &[
                 Field {
-                    name: "data0_7",
+                    name: "data",
                     description: Some("Regular data."),
                     bit_offset: BitOffset::Regular(RegularBitOffset { offset: 0 }),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "data8_15",
-                    description: Some("Regular data."),
-                    bit_offset: BitOffset::Regular(RegularBitOffset { offset: 8 }),
-                    bit_size: 8,
+                    bit_size: 16,
                     array: None,
                     enumm: None,
                 },

@@ -756,20 +756,20 @@ pub mod regs {
             Ctlr2(0)
         }
     }
-    #[doc = "injected data register x_Charge data offset for injected channel x."]
+    #[doc = "injected data register x."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Idatar1(pub u32);
     impl Idatar1 {
-        #[doc = "Injected data_Touch key charge data offset for injected channel x."]
+        #[doc = "Injected data."]
         #[inline(always)]
-        pub const fn idata_tkcgoffset(&self) -> u16 {
+        pub const fn jdata(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0xffff;
             val as u16
         }
-        #[doc = "Injected data_Touch key charge data offset for injected channel x."]
+        #[doc = "Injected data."]
         #[inline(always)]
-        pub fn set_idata_tkcgoffset(&mut self, val: u16) {
+        pub fn set_jdata(&mut self, val: u16) {
             self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
         }
     }
@@ -1014,25 +1014,14 @@ pub mod regs {
     impl Rdatar {
         #[doc = "Regular data."]
         #[inline(always)]
-        pub const fn data0_7(&self) -> u8 {
-            let val = (self.0 >> 0usize) & 0xff;
-            val as u8
+        pub const fn data(&self) -> u16 {
+            let val = (self.0 >> 0usize) & 0xffff;
+            val as u16
         }
         #[doc = "Regular data."]
         #[inline(always)]
-        pub fn set_data0_7(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
-        }
-        #[doc = "Regular data."]
-        #[inline(always)]
-        pub const fn data8_15(&self) -> u8 {
-            let val = (self.0 >> 8usize) & 0xff;
-            val as u8
-        }
-        #[doc = "Regular data."]
-        #[inline(always)]
-        pub fn set_data8_15(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
+        pub fn set_data(&mut self, val: u16) {
+            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
         }
         #[doc = "converter data."]
         #[inline(always)]
