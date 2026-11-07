@@ -94,9 +94,14 @@ impl Adc {
     pub const fn isqr(self) -> crate::common::Reg<regs::Isqr, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x38usize) as _) }
     }
-    #[doc = "injected data register x_Charge data offset for injected channel x."]
+    #[doc = "injected data register 1, read view of the touch-key charge time."]
     #[inline(always)]
     pub const fn idatar1(self) -> crate::common::Reg<regs::Idatar1, crate::common::R> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x3cusize) as _) }
+    }
+    #[doc = "touch-key charge time, write view of IDATAR1."]
+    #[inline(always)]
+    pub const fn tkey_chgoffset(self) -> crate::common::Reg<regs::TkeyChgoffset, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x3cusize) as _) }
     }
     #[doc = "injected data register x."]
@@ -117,6 +122,11 @@ impl Adc {
     #[doc = "regular data register."]
     #[inline(always)]
     pub const fn rdatar(self) -> crate::common::Reg<regs::Rdatar, crate::common::R> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x4cusize) as _) }
+    }
+    #[doc = "touch-key discharge time and start, write view of RDATAR."]
+    #[inline(always)]
+    pub const fn tkey_act_dcg(self) -> crate::common::Reg<regs::TkeyActDcg, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x4cusize) as _) }
     }
     #[doc = "ADC time register."]
@@ -756,20 +766,20 @@ pub mod regs {
             Ctlr2(0)
         }
     }
-    #[doc = "injected data register x_Charge data offset for injected channel x."]
+    #[doc = "injected data register 1."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Idatar1(pub u32);
     impl Idatar1 {
-        #[doc = "Injected data_Touch key charge data offset for injected channel x."]
+        #[doc = "Injected data."]
         #[inline(always)]
-        pub const fn idata_tkcgoffset(&self) -> u16 {
+        pub const fn jdata(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0xffff;
             val as u16
         }
-        #[doc = "Injected data_Touch key charge data offset for injected channel x."]
+        #[doc = "Injected data."]
         #[inline(always)]
-        pub fn set_idata_tkcgoffset(&mut self, val: u16) {
+        pub fn set_jdata(&mut self, val: u16) {
             self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
         }
     }
@@ -1014,25 +1024,14 @@ pub mod regs {
     impl Rdatar {
         #[doc = "Regular data."]
         #[inline(always)]
-        pub const fn data0_7(&self) -> u8 {
-            let val = (self.0 >> 0usize) & 0xff;
-            val as u8
+        pub const fn data(&self) -> u16 {
+            let val = (self.0 >> 0usize) & 0xffff;
+            val as u16
         }
         #[doc = "Regular data."]
         #[inline(always)]
-        pub fn set_data0_7(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
-        }
-        #[doc = "Regular data."]
-        #[inline(always)]
-        pub const fn data8_15(&self) -> u8 {
-            let val = (self.0 >> 8usize) & 0xff;
-            val as u8
-        }
-        #[doc = "Regular data."]
-        #[inline(always)]
-        pub fn set_data8_15(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
+        pub fn set_data(&mut self, val: u16) {
+            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
         }
         #[doc = "converter data."]
         #[inline(always)]
@@ -1573,6 +1572,52 @@ pub mod regs {
         #[inline(always)]
         fn default() -> Statr {
             Statr(0)
+        }
+    }
+    #[doc = "touch-key discharge time and start."]
+    #[repr(transparent)]
+    #[derive(Copy, Clone, Eq, PartialEq)]
+    pub struct TkeyActDcg(pub u32);
+    impl TkeyActDcg {
+        #[doc = "Discharge time; writing this field starts one TKEY channel conversion."]
+        #[inline(always)]
+        pub const fn tkact_dcg(&self) -> u16 {
+            let val = (self.0 >> 0usize) & 0xffff;
+            val as u16
+        }
+        #[doc = "Discharge time; writing this field starts one TKEY channel conversion."]
+        #[inline(always)]
+        pub fn set_tkact_dcg(&mut self, val: u16) {
+            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
+        }
+    }
+    impl Default for TkeyActDcg {
+        #[inline(always)]
+        fn default() -> TkeyActDcg {
+            TkeyActDcg(0)
+        }
+    }
+    #[doc = "touch-key charge time."]
+    #[repr(transparent)]
+    #[derive(Copy, Clone, Eq, PartialEq)]
+    pub struct TkeyChgoffset(pub u32);
+    impl TkeyChgoffset {
+        #[doc = "Total charge time TCHG = TKCGOFFSET."]
+        #[inline(always)]
+        pub const fn tkcgoffset(&self) -> u16 {
+            let val = (self.0 >> 0usize) & 0xffff;
+            val as u16
+        }
+        #[doc = "Total charge time TCHG = TKCGOFFSET."]
+        #[inline(always)]
+        pub fn set_tkcgoffset(&mut self, val: u16) {
+            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
+        }
+    }
+    impl Default for TkeyChgoffset {
+        #[inline(always)]
+        fn default() -> TkeyChgoffset {
+            TkeyChgoffset(0)
         }
     }
     #[doc = "watchdog higher threshold register."]

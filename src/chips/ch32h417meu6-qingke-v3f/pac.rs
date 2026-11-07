@@ -589,6 +589,7 @@ pub const CRC: crc::Crc = unsafe { crc::Crc::from_ptr(0x4002_3000usize as _) };
 pub const USBFS: usbfs::Usbfs = unsafe { usbfs::Usbfs::from_ptr(0x4002_3400usize as _) };
 pub const RNG: rng::Rng = unsafe { rng::Rng::from_ptr(0x4002_3c00usize as _) };
 pub const USBPD: usbpd::Usbpd = unsafe { usbpd::Usbpd::from_ptr(0x4002_4400usize as _) };
+pub const ETH: emac::Eth = unsafe { emac::Eth::from_ptr(0x4002_8000usize as _) };
 pub const USBHS: usbhs::Usbhs = unsafe { usbhs::Usbhs::from_ptr(0x4003_0000usize as _) };
 pub const USBSS: usbss::Usbss = unsafe { usbss::Usbss::from_ptr(0x4003_4000usize as _) };
 pub const HSEM: hsem::Hsem = unsafe { hsem::Hsem::from_ptr(0xe000_c000usize as _) };
@@ -617,6 +618,8 @@ pub mod dfsdm;
 pub mod dma;
 #[path = "../../peripherals/dmamux_h4.rs"]
 pub mod dmamux;
+#[path = "../../peripherals/emac_h4.rs"]
+pub mod emac;
 #[path = "../../peripherals/esig_h4.rs"]
 pub mod esig;
 #[path = "../../peripherals/exti_common.rs"]
