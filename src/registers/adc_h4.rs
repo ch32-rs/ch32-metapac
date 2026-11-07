@@ -173,7 +173,7 @@ pub(crate) static REGISTERS: IR = IR {
             BlockItem {
                 name: "idatar1",
                 description: Some(
-                    "injected data register x_Charge data offset for injected channel x.",
+                    "injected data register 1, read view of the touch-key charge time.",
                 ),
                 array: None,
                 byte_offset: 0x3c,
@@ -181,6 +181,17 @@ pub(crate) static REGISTERS: IR = IR {
                     access: Access::Read,
                     bit_size: 32,
                     fieldset: Some("Idatar1"),
+                }),
+            },
+            BlockItem {
+                name: "tkey_chgoffset",
+                description: Some("touch-key charge time, write view of IDATAR1."),
+                array: None,
+                byte_offset: 0x3c,
+                inner: BlockItemInner::Register(Register {
+                    access: Access::Write,
+                    bit_size: 32,
+                    fieldset: Some("TkeyChgoffset"),
                 }),
             },
             BlockItem {
@@ -225,6 +236,17 @@ pub(crate) static REGISTERS: IR = IR {
                     access: Access::Read,
                     bit_size: 32,
                     fieldset: Some("Rdatar"),
+                }),
+            },
+            BlockItem {
+                name: "tkey_act_dcg",
+                description: Some("touch-key discharge time and start, write view of RDATAR."),
+                array: None,
+                byte_offset: 0x4c,
+                inner: BlockItemInner::Register(Register {
+                    access: Access::Write,
+                    bit_size: 32,
+                    fieldset: Some("TkeyActDcg"),
                 }),
             },
             BlockItem {
@@ -700,7 +722,7 @@ pub(crate) static REGISTERS: IR = IR {
         FieldSet {
             name: "Idatar1",
             extends: None,
-            description: Some("injected data register x."),
+            description: Some("injected data register 1."),
             bit_size: 32,
             fields: &[Field {
                 name: "jdata",
@@ -1256,6 +1278,36 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
             ],
+        },
+        FieldSet {
+            name: "TkeyActDcg",
+            extends: None,
+            description: Some("touch-key discharge time and start."),
+            bit_size: 32,
+            fields: &[Field {
+                name: "tkact_dcg",
+                description: Some(
+                    "Discharge time; writing this field starts one TKEY channel conversion.",
+                ),
+                bit_offset: BitOffset::Regular(RegularBitOffset { offset: 0 }),
+                bit_size: 16,
+                array: None,
+                enumm: None,
+            }],
+        },
+        FieldSet {
+            name: "TkeyChgoffset",
+            extends: None,
+            description: Some("touch-key charge time."),
+            bit_size: 32,
+            fields: &[Field {
+                name: "tkcgoffset",
+                description: Some("Total charge time TCHG = TKCGOFFSET."),
+                bit_offset: BitOffset::Regular(RegularBitOffset { offset: 0 }),
+                bit_size: 16,
+                array: None,
+                enumm: None,
+            }],
         },
         FieldSet {
             name: "Wdhtr",
