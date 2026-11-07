@@ -580,6 +580,7 @@ pub const TIM11: timer::Gptm32 = unsafe { timer::Gptm32::from_ptr(0x4001_5400usi
 pub const DFSDM: dfsdm::Dfsdm = unsafe { dfsdm::Dfsdm::from_ptr(0x4001_7000usize as _) };
 pub const HSADC: hsadc::Hsadc = unsafe { hsadc::Hsadc::from_ptr(0x4001_7400usize as _) };
 pub const OPA: opa::Opa = unsafe { opa::Opa::from_ptr(0x4001_7800usize as _) };
+pub const SDIO: sdio::Sdio = unsafe { sdio::Sdio::from_ptr(0x4001_8000usize as _) };
 pub const DMA1: dma::Dma = unsafe { dma::Dma::from_ptr(0x4002_0000usize as _) };
 pub const DMA2: dma::Dma = unsafe { dma::Dma::from_ptr(0x4002_0400usize as _) };
 pub const DMAMUX: dmamux::Dmamux = unsafe { dmamux::Dmamux::from_ptr(0x4002_0800usize as _) };
@@ -623,7 +624,7 @@ pub mod esig;
 pub mod exti;
 #[path = "../../peripherals/flash_h4.rs"]
 pub mod flash;
-#[path = "../../peripherals/gpio_v3.rs"]
+#[path = "../../peripherals/gpio_h4.rs"]
 pub mod gpio;
 #[path = "../../peripherals/hsadc_h4.rs"]
 pub mod hsadc;
@@ -649,6 +650,8 @@ pub mod rcc;
 pub mod rng;
 #[path = "../../peripherals/rtc_common.rs"]
 pub mod rtc;
+#[path = "../../peripherals/sdio_v4x7.rs"]
+pub mod sdio;
 #[path = "../../peripherals/spi_h4.rs"]
 pub mod spi;
 #[path = "../../peripherals/systick_v3f_v5f.rs"]
