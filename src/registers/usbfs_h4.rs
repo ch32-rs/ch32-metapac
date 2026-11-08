@@ -373,11 +373,18 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
-                    name: "uep0_dma",
+                    name: "uep_dma",
                     description: Some(
-                        "endpoint 0 DMA buffer address.",
+                        "endpoint DMA buffer address.",
                     ),
-                    array: None,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 8,
+                                stride: 4,
+                            },
+                        ),
+                    ),
                     byte_offset: 0x10,
                     inner: BlockItemInner::Register(
                         Register {
@@ -388,498 +395,73 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
-                    name: "uep1_dma",
+                    name: "uep_t_len",
                     description: Some(
-                        "endpoint 1 DMA buffer address.",
+                        "endpoint transmittal length. Endpoint 3 uses 10 bits; the other endpoints ignore the upper bits.",
                     ),
-                    array: None,
-                    byte_offset: 0x14,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: None,
-                        },
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 8,
+                                stride: 4,
+                            },
+                        ),
                     ),
-                },
-                BlockItem {
-                    name: "uep2_dma",
-                    description: Some(
-                        "endpoint 2 DMA buffer address.",
-                    ),
-                    array: None,
-                    byte_offset: 0x18,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: None,
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_dma",
-                    description: Some(
-                        "endpoint 3 DMA buffer address.",
-                    ),
-                    array: None,
-                    byte_offset: 0x1c,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: None,
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_dma",
-                    description: Some(
-                        "endpoint 4 DMA buffer address.",
-                    ),
-                    array: None,
-                    byte_offset: 0x20,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: None,
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_dma",
-                    description: Some(
-                        "endpoint 5 DMA buffer address.",
-                    ),
-                    array: None,
-                    byte_offset: 0x24,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: None,
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_dma",
-                    description: Some(
-                        "endpoint 6 DMA buffer address.",
-                    ),
-                    array: None,
-                    byte_offset: 0x28,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: None,
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_dma",
-                    description: Some(
-                        "endpoint 7 DMA buffer address.",
-                    ),
-                    array: None,
-                    byte_offset: 0x2c,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: None,
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep0_t_len",
-                    description: Some(
-                        "endpoint 0 transmittal length.",
-                    ),
-                    array: None,
                     byte_offset: 0x30,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: None,
+                            bit_size: 16,
+                            fieldset: Some(
+                                "UepTLen",
+                            ),
                         },
                     ),
                 },
                 BlockItem {
-                    name: "uep0_t_ctrl",
+                    name: "uep_tx_ctrl",
                     description: Some(
-                        "endpoint 0 control.",
+                        "endpoint control.",
                     ),
-                    array: None,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 8,
+                                stride: 4,
+                            },
+                        ),
+                    ),
                     byte_offset: 0x32,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 8,
                             fieldset: Some(
-                                "Uep0TCtrl",
+                                "UepTxCtrl",
                             ),
                         },
                     ),
                 },
                 BlockItem {
-                    name: "uep0_r_ctrl",
+                    name: "uep_rx_ctrl",
                     description: Some(
-                        "endpoint 0 control.",
+                        "endpoint control.",
                     ),
-                    array: None,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 8,
+                                stride: 4,
+                            },
+                        ),
+                    ),
                     byte_offset: 0x33,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 8,
                             fieldset: Some(
-                                "Uep0RCtrl",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep1_t_len",
-                    description: Some(
-                        "endpoint 1 transmittal length.",
-                    ),
-                    array: None,
-                    byte_offset: 0x34,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: None,
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep1_t_ctrl",
-                    description: Some(
-                        "endpoint 1 control.",
-                    ),
-                    array: None,
-                    byte_offset: 0x36,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep1TCtrl",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep1_r_ctrl",
-                    description: Some(
-                        "endpoint 1 control.",
-                    ),
-                    array: None,
-                    byte_offset: 0x37,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep1RCtrl",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_t_len",
-                    description: Some(
-                        "endpoint 2 transmittal length.",
-                    ),
-                    array: None,
-                    byte_offset: 0x38,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: None,
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_t_ctrl",
-                    description: Some(
-                        "endpoint 2 control.",
-                    ),
-                    array: None,
-                    byte_offset: 0x3a,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep2TCtrl",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_r_ctrl",
-                    description: Some(
-                        "endpoint 2 control.",
-                    ),
-                    array: None,
-                    byte_offset: 0x3b,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep2RCtrl",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_t_len",
-                    description: Some(
-                        "endpoint 3 transmittal length.",
-                    ),
-                    array: None,
-                    byte_offset: 0x3c,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: None,
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_t_ctrl",
-                    description: Some(
-                        "endpoint 3 control.",
-                    ),
-                    array: None,
-                    byte_offset: 0x3e,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep3TCtrl",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_r_ctrl",
-                    description: Some(
-                        "endpoint 3 control.",
-                    ),
-                    array: None,
-                    byte_offset: 0x3f,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep3RCtrl",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_t_len",
-                    description: Some(
-                        "endpoint 4 transmittal length.",
-                    ),
-                    array: None,
-                    byte_offset: 0x40,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: None,
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_t_ctrl",
-                    description: Some(
-                        "endpoint 4 control.",
-                    ),
-                    array: None,
-                    byte_offset: 0x42,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep4TCtrl",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_r_ctrl",
-                    description: Some(
-                        "endpoint 4 control.",
-                    ),
-                    array: None,
-                    byte_offset: 0x43,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep4RCtrl",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_t_len",
-                    description: Some(
-                        "endpoint 5 transmittal length.",
-                    ),
-                    array: None,
-                    byte_offset: 0x44,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: None,
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_t_ctrl",
-                    description: Some(
-                        "endpoint 5 control.",
-                    ),
-                    array: None,
-                    byte_offset: 0x46,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep5TCtrl",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_r_ctrl",
-                    description: Some(
-                        "endpoint 5 control.",
-                    ),
-                    array: None,
-                    byte_offset: 0x47,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep5RCtrl",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_t_len",
-                    description: Some(
-                        "endpoint 6 transmittal length.",
-                    ),
-                    array: None,
-                    byte_offset: 0x48,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: None,
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_t_ctrl",
-                    description: Some(
-                        "endpoint 6 control.",
-                    ),
-                    array: None,
-                    byte_offset: 0x4a,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep6TCtrl",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_r_ctrl",
-                    description: Some(
-                        "endpoint 6 control.",
-                    ),
-                    array: None,
-                    byte_offset: 0x4b,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep6RCtrl",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_t_len",
-                    description: Some(
-                        "endpoint 7 transmittal length.",
-                    ),
-                    array: None,
-                    byte_offset: 0x4c,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: None,
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_t_ctrl",
-                    description: Some(
-                        "endpoint 7 control.",
-                    ),
-                    array: None,
-                    byte_offset: 0x4e,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep7TCtrl",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_r_ctrl",
-                    description: Some(
-                        "endpoint 7 control.",
-                    ),
-                    array: None,
-                    byte_offset: 0x4f,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep7RCtrl",
+                                "UepRxCtrl",
                             ),
                         },
                     ),
@@ -1326,214 +908,6 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
-            name: "Uep0RCtrl",
-            extends: None,
-            description: Some(
-                "endpoint 0 control.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "mask_uep_r_res",
-                    description: Some(
-                        "bit mask of handshake response type for USB endpoint X receiving (OUT).",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_tog",
-                    description: Some(
-                        "expected data toggle flag of USB endpoint X receiving (OUT): 0=DATA0, 1=DATA1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_auto_tog",
-                    description: Some(
-                        "enable automatic toggle after successful transfer completion on endpoint 1/2/3: 0=manual toggle, 1=automatic toggle.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep0TCtrl",
-            extends: None,
-            description: Some(
-                "endpoint 0 control.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "mask_uep_t_res",
-                    description: Some(
-                        "bit mask of handshake response type for USB endpoint X transmittal (IN).",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_t_tog",
-                    description: Some(
-                        "prepared data toggle flag of USB endpoint X transmittal (IN): 0=DATA0, 1=DATA1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_auto_tog",
-                    description: Some(
-                        "enable automatic toggle after successful transfer completion on endpoint 1/2/3: 0=manual toggle, 1=automatic toggle.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1RCtrl",
-            extends: None,
-            description: Some(
-                "endpoint 1 control.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "mask_uep_r_res",
-                    description: Some(
-                        "bit mask of handshake response type for USB endpoint X receiving (OUT).",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_tog",
-                    description: Some(
-                        "expected data toggle flag of USB endpoint X receiving (OUT): 0=DATA0, 1=DATA1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_auto_tog",
-                    description: Some(
-                        "enable automatic toggle after successful transfer completion on endpoint 1/2/3: 0=manual toggle, 1=automatic toggle.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1TCtrl",
-            extends: None,
-            description: Some(
-                "endpoint 1 control.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "mask_uep_t_res",
-                    description: Some(
-                        "bit mask of handshake response type for USB endpoint X transmittal (IN).",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_t_tog",
-                    description: Some(
-                        "prepared data toggle flag of USB endpoint X transmittal (IN): 0=DATA0, 1=DATA1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_auto_tog",
-                    description: Some(
-                        "enable automatic toggle after successful transfer completion on endpoint 1/2/3: 0=manual toggle, 1=automatic toggle.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
             name: "Uep23Mod",
             extends: None,
             description: Some(
@@ -1619,214 +993,6 @@ pub(crate) static REGISTERS: IR = IR {
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
                             offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2RCtrl",
-            extends: None,
-            description: Some(
-                "endpoint 2 control.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "mask_uep_r_res",
-                    description: Some(
-                        "bit mask of handshake response type for USB endpoint X receiving (OUT).",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_tog",
-                    description: Some(
-                        "expected data toggle flag of USB endpoint X receiving (OUT): 0=DATA0, 1=DATA1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_auto_tog",
-                    description: Some(
-                        "enable automatic toggle after successful transfer completion on endpoint 1/2/3: 0=manual toggle, 1=automatic toggle.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2TCtrl",
-            extends: None,
-            description: Some(
-                "endpoint 2 control.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "mask_uep_t_res",
-                    description: Some(
-                        "bit mask of handshake response type for USB endpoint X transmittal (IN).",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_t_tog",
-                    description: Some(
-                        "prepared data toggle flag of USB endpoint X transmittal (IN): 0=DATA0, 1=DATA1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_auto_tog",
-                    description: Some(
-                        "enable automatic toggle after successful transfer completion on endpoint 1/2/3: 0=manual toggle, 1=automatic toggle.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3RCtrl",
-            extends: None,
-            description: Some(
-                "endpoint 3 control.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "mask_uep_r_res",
-                    description: Some(
-                        "bit mask of handshake response type for USB endpoint X receiving (OUT).",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_tog",
-                    description: Some(
-                        "expected data toggle flag of USB endpoint X receiving (OUT): 0=DATA0, 1=DATA1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_auto_tog",
-                    description: Some(
-                        "enable automatic toggle after successful transfer completion on endpoint 1/2/3: 0=manual toggle, 1=automatic toggle.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3TCtrl",
-            extends: None,
-            description: Some(
-                "endpoint 3 control.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "mask_uep_t_res",
-                    description: Some(
-                        "bit mask of handshake response type for USB endpoint X transmittal (IN).",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_t_tog",
-                    description: Some(
-                        "prepared data toggle flag of USB endpoint X transmittal (IN): 0=DATA0, 1=DATA1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_auto_tog",
-                    description: Some(
-                        "enable automatic toggle after successful transfer completion on endpoint 1/2/3: 0=manual toggle, 1=automatic toggle.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
                         },
                     ),
                     bit_size: 1,
@@ -1930,110 +1096,6 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
-            name: "Uep4RCtrl",
-            extends: None,
-            description: Some(
-                "endpoint 4 control.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "mask_uep_r_res",
-                    description: Some(
-                        "bit mask of handshake response type for USB endpoint X receiving (OUT).",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_tog",
-                    description: Some(
-                        "expected data toggle flag of USB endpoint X receiving (OUT): 0=DATA0, 1=DATA1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_auto_tog",
-                    description: Some(
-                        "enable automatic toggle after successful transfer completion on endpoint 1/2/3: 0=manual toggle, 1=automatic toggle.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4TCtrl",
-            extends: None,
-            description: Some(
-                "endpoint 4 control.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "mask_uep_t_res",
-                    description: Some(
-                        "bit mask of handshake response type for USB endpoint X transmittal (IN).",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_t_tog",
-                    description: Some(
-                        "prepared data toggle flag of USB endpoint X transmittal (IN): 0=DATA0, 1=DATA1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_auto_tog",
-                    description: Some(
-                        "enable automatic toggle after successful transfer completion on endpoint 1/2/3: 0=manual toggle, 1=automatic toggle.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
             name: "Uep56Mod",
             extends: None,
             description: Some(
@@ -2128,214 +1190,6 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
-            name: "Uep5RCtrl",
-            extends: None,
-            description: Some(
-                "endpoint 5 control.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "mask_uep_r_res",
-                    description: Some(
-                        "bit mask of handshake response type for USB endpoint X receiving (OUT).",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_tog",
-                    description: Some(
-                        "expected data toggle flag of USB endpoint X receiving (OUT): 0=DATA0, 1=DATA1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_auto_tog",
-                    description: Some(
-                        "enable automatic toggle after successful transfer completion on endpoint 1/2/3: 0=manual toggle, 1=automatic toggle.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5TCtrl",
-            extends: None,
-            description: Some(
-                "endpoint 5 control.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "mask_uep_t_res",
-                    description: Some(
-                        "bit mask of handshake response type for USB endpoint X transmittal (IN).",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_t_tog",
-                    description: Some(
-                        "prepared data toggle flag of USB endpoint X transmittal (IN): 0=DATA0, 1=DATA1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_auto_tog",
-                    description: Some(
-                        "enable automatic toggle after successful transfer completion on endpoint 1/2/3: 0=manual toggle, 1=automatic toggle.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6RCtrl",
-            extends: None,
-            description: Some(
-                "endpoint 6 control.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "mask_uep_r_res",
-                    description: Some(
-                        "bit mask of handshake response type for USB endpoint X receiving (OUT).",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_tog",
-                    description: Some(
-                        "expected data toggle flag of USB endpoint X receiving (OUT): 0=DATA0, 1=DATA1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_auto_tog",
-                    description: Some(
-                        "enable automatic toggle after successful transfer completion on endpoint 1/2/3: 0=manual toggle, 1=automatic toggle.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6TCtrl",
-            extends: None,
-            description: Some(
-                "endpoint 6 control.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "mask_uep_t_res",
-                    description: Some(
-                        "bit mask of handshake response type for USB endpoint X transmittal (IN).",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_t_tog",
-                    description: Some(
-                        "prepared data toggle flag of USB endpoint X transmittal (IN): 0=DATA0, 1=DATA1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_auto_tog",
-                    description: Some(
-                        "enable automatic toggle after successful transfer completion on endpoint 1/2/3: 0=manual toggle, 1=automatic toggle.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
             name: "Uep7Mod",
             extends: None,
             description: Some(
@@ -2388,10 +1242,10 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
-            name: "Uep7RCtrl",
+            name: "UepRxCtrl",
             extends: None,
             description: Some(
-                "endpoint 7 control.",
+                "endpoint control.",
             ),
             bit_size: 8,
             fields: &[
@@ -2407,7 +1261,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "EpRxResponse",
+                    ),
                 },
                 Field {
                     name: "uep_r_tog",
@@ -2440,10 +1296,34 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
-            name: "Uep7TCtrl",
+            name: "UepTLen",
             extends: None,
             description: Some(
-                "endpoint 7 control.",
+                "endpoint transmittal length.",
+            ),
+            bit_size: 16,
+            fields: &[
+                Field {
+                    name: "uep_t_len",
+                    description: Some(
+                        "endpoint 3 transmittal length, 10 bits wide; endpoints 0-2 use the low 8 bits only.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 10,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "UepTxCtrl",
+            extends: None,
+            description: Some(
+                "endpoint control.",
             ),
             bit_size: 8,
             fields: &[
@@ -2459,7 +1339,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "EpTxResponse",
+                    ),
                 },
                 Field {
                     name: "uep_t_tog",
@@ -3297,7 +2179,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "UsbToken",
+                    ),
                 },
                 Field {
                     name: "uis_tog_ok",
@@ -3612,5 +2496,111 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
     ],
-    enums: &[],
+    enums: &[
+        Enum {
+            name: "EpRxResponse",
+            description: None,
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "ACK",
+                    description: Some(
+                        "Respond with ACK.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "NONE",
+                    description: Some(
+                        "Timeout / No Response, used for non-EP0 iso/sync transfer.",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "NAK",
+                    description: Some(
+                        "Respond with NAK or Busy.",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "STALL",
+                    description: Some(
+                        "Respond with STALL or Error.",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+        Enum {
+            name: "EpTxResponse",
+            description: None,
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "ACK",
+                    description: Some(
+                        "Respond with DATA0/DATA1 and expect ACK.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "NONE",
+                    description: Some(
+                        "Respond with DATA0/DATA1 and not expect ACK.",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "NAK",
+                    description: Some(
+                        "Respond with NAK or Busy.",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "STALL",
+                    description: Some(
+                        "Respond with STALL or Error.",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+        Enum {
+            name: "UsbToken",
+            description: None,
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "OUT",
+                    description: Some(
+                        "OUT packet.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "RSVD",
+                    description: Some(
+                        "Reserved.",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "IN",
+                    description: Some(
+                        "IN packet.",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "SETUP",
+                    description: Some(
+                        "SETUP packet.",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+    ],
 };

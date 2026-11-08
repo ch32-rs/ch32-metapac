@@ -137,9 +137,9 @@ impl Usbd {
         assert!(n < 8usize);
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize + n * 4usize) as _) }
     }
-    #[doc = "endpoint transmit length."]
+    #[doc = "endpoint transmit length. Endpoint 3 uses 10 bits; the other endpoints ignore the upper bits."]
     #[inline(always)]
-    pub const fn uep_t_len(self, n: usize) -> crate::common::Reg<u8, crate::common::RW> {
+    pub const fn uep_t_len(self, n: usize) -> crate::common::Reg<regs::UepTLen, crate::common::RW> {
         assert!(n < 8usize);
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x30usize + n * 4usize) as _) }
     }
@@ -483,6 +483,29 @@ pub mod regs {
         #[inline(always)]
         fn default() -> UepRxCtrl {
             UepRxCtrl(0)
+        }
+    }
+    #[doc = "endpoint transmit length."]
+    #[repr(transparent)]
+    #[derive(Copy, Clone, Eq, PartialEq)]
+    pub struct UepTLen(pub u16);
+    impl UepTLen {
+        #[doc = "endpoint 3 transmit length, 10 bits wide; endpoints 0-2 use the low 8 bits only."]
+        #[inline(always)]
+        pub const fn t_len(&self) -> u16 {
+            let val = (self.0 >> 0usize) & 0x03ff;
+            val as u16
+        }
+        #[doc = "endpoint 3 transmit length, 10 bits wide; endpoints 0-2 use the low 8 bits only."]
+        #[inline(always)]
+        pub fn set_t_len(&mut self, val: u16) {
+            self.0 = (self.0 & !(0x03ff << 0usize)) | (((val as u16) & 0x03ff) << 0usize);
+        }
+    }
+    impl Default for UepTLen {
+        #[inline(always)]
+        fn default() -> UepTLen {
+            UepTLen(0)
         }
     }
     #[doc = "endpoint control."]

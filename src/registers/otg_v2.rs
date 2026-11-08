@@ -401,7 +401,7 @@ pub(crate) static REGISTERS: IR = IR {
                 BlockItem {
                     name: "uep_t_len",
                     description: Some(
-                        "endpoint transmit length.",
+                        "endpoint transmit length. Endpoint 3 uses 10 bits; the other endpoints ignore the upper bits.",
                     ),
                     array: Some(
                         Array::Regular(
@@ -415,8 +415,10 @@ pub(crate) static REGISTERS: IR = IR {
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: None,
+                            bit_size: 16,
+                            fieldset: Some(
+                                "UepTLen",
+                            ),
                         },
                     ),
                 },
@@ -1308,6 +1310,30 @@ pub(crate) static REGISTERS: IR = IR {
                         },
                     ),
                     bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "UepTLen",
+            extends: None,
+            description: Some(
+                "endpoint transmit length.",
+            ),
+            bit_size: 16,
+            fields: &[
+                Field {
+                    name: "t_len",
+                    description: Some(
+                        "endpoint 3 transmit length, 10 bits wide; endpoints 0-2 use the low 8 bits only.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 10,
                     array: None,
                     enumm: None,
                 },
