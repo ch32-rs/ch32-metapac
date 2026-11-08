@@ -598,239 +598,49 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
-                    name: "uep1_rx_dma",
+                    name: "uep_rx_dma",
                     description: Some(
-                        "endpoint 1 receives the start address register of the buffer.",
+                        "endpoint 1-7 receive the start address register of the buffer.",
                     ),
-                    array: None,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 7,
+                                stride: 4,
+                            },
+                        ),
+                    ),
                     byte_offset: 0x24,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
                             fieldset: Some(
-                                "Uep1RxDma",
+                                "UepRxDma",
                             ),
                         },
                     ),
                 },
                 BlockItem {
-                    name: "uep2_rx_dma",
+                    name: "uep_tx_dma",
                     description: Some(
-                        "endpoint 2 receives the start address register of the buffer.",
+                        "endpoint 1-7 send the start address register of the buffer.",
                     ),
-                    array: None,
-                    byte_offset: 0x28,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep2RxDma",
-                            ),
-                        },
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 7,
+                                stride: 4,
+                            },
+                        ),
                     ),
-                },
-                BlockItem {
-                    name: "uep3_rx_dma",
-                    description: Some(
-                        "endpoint 3 receives the start address register of the buffer.",
-                    ),
-                    array: None,
-                    byte_offset: 0x2c,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep3RxDma",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_rx_dma",
-                    description: Some(
-                        "endpoint 4 receives the start address register of the buffer.",
-                    ),
-                    array: None,
-                    byte_offset: 0x30,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep4RxDma",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_rx_dma",
-                    description: Some(
-                        "endpoint 5 receives the start address register of the buffer.",
-                    ),
-                    array: None,
-                    byte_offset: 0x34,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep5RxDma",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_rx_dma",
-                    description: Some(
-                        "endpoint 6 receives the start address register of the buffer.",
-                    ),
-                    array: None,
-                    byte_offset: 0x38,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep6RxDma",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_rx_dma",
-                    description: Some(
-                        "endpoint 7 receives the start address register of the buffer.",
-                    ),
-                    array: None,
-                    byte_offset: 0x3c,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep7RxDma",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep1_tx_dma",
-                    description: Some(
-                        "endpoint 1 sends the start address register of the buffer.",
-                    ),
-                    array: None,
                     byte_offset: 0x40,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
                             fieldset: Some(
-                                "Uep1TxDma",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_tx_dma",
-                    description: Some(
-                        "endpoint 2 sends the start address register of the buffer.",
-                    ),
-                    array: None,
-                    byte_offset: 0x44,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep2TxDma",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_tx_dma",
-                    description: Some(
-                        "endpoint 3 sends the start address register of the buffer.",
-                    ),
-                    array: None,
-                    byte_offset: 0x48,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep3TxDma",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_tx_dma",
-                    description: Some(
-                        "endpoint 4 sends the start address register of the buffer.",
-                    ),
-                    array: None,
-                    byte_offset: 0x4c,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep4TxDma",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_tx_dma",
-                    description: Some(
-                        "endpoint 5 sends the start address register of the buffer.",
-                    ),
-                    array: None,
-                    byte_offset: 0x50,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep5TxDma",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_tx_dma",
-                    description: Some(
-                        "endpoint 6 sends the start address register of the buffer.",
-                    ),
-                    array: None,
-                    byte_offset: 0x54,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep6TxDma",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_tx_dma",
-                    description: Some(
-                        "endpoint 7 sends the start address register of the buffer.",
-                    ),
-                    array: None,
-                    byte_offset: 0x58,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep7TxDma",
+                                "UepTxDma",
                             ),
                         },
                     ),
@@ -853,120 +663,25 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
-                    name: "uep1_max_len",
+                    name: "uep_max_len",
                     description: Some(
-                        "endpoint 1 max length packet register.",
+                        "endpoint 1-7 max length packet register.",
                     ),
-                    array: None,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 7,
+                                stride: 4,
+                            },
+                        ),
+                    ),
                     byte_offset: 0x60,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
                             fieldset: Some(
-                                "Uep1MaxLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_max_len",
-                    description: Some(
-                        "endpoint 2 max length packet register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x64,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep2MaxLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_max_len",
-                    description: Some(
-                        "endpoint 3 max length packet register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x68,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep3MaxLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_max_len",
-                    description: Some(
-                        "endpoint 4 max length packet register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x6c,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep4MaxLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_max_len",
-                    description: Some(
-                        "endpoint 5 max length packet register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x70,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep5MaxLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_max_len",
-                    description: Some(
-                        "endpoint 6 max length packet register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x74,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep6MaxLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_max_len",
-                    description: Some(
-                        "endpoint 7 max length packet register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x78,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep7MaxLen",
+                                "UepMaxLen",
                             ),
                         },
                     ),
@@ -989,239 +704,49 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
-                    name: "uep1_rx_len",
+                    name: "uep_rx_len",
                     description: Some(
-                        "endpoint 1 receives the lenth register in a single pass.",
+                        "endpoint 1-7 receive the length register in a single pass.",
                     ),
-                    array: None,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 7,
+                                stride: 4,
+                            },
+                        ),
+                    ),
                     byte_offset: 0x80,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 16,
                             fieldset: Some(
-                                "Uep1RxLen",
+                                "UepRxLen",
                             ),
                         },
                     ),
                 },
                 BlockItem {
-                    name: "uep1_r_size",
+                    name: "uep_r_size",
                     description: Some(
-                        "the length register of the total received data at endpoint 1.",
+                        "the length register of the total received data at endpoints 1-7.",
                     ),
-                    array: None,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 7,
+                                stride: 4,
+                            },
+                        ),
+                    ),
                     byte_offset: 0x82,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 16,
                             fieldset: Some(
-                                "Uep1RSize",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_rx_len",
-                    description: Some(
-                        "endpoint 2 receives the lenth register in a single pass.",
-                    ),
-                    array: None,
-                    byte_offset: 0x84,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep2RxLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_r_size",
-                    description: Some(
-                        "the length register of the total received data at endpoint 2.",
-                    ),
-                    array: None,
-                    byte_offset: 0x86,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep2RSize",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_rx_len",
-                    description: Some(
-                        "endpoint 3 receives the lenth register in a single pass.",
-                    ),
-                    array: None,
-                    byte_offset: 0x88,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep3RxLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_r_size",
-                    description: Some(
-                        "the length register of the total received data at endpoint 3.",
-                    ),
-                    array: None,
-                    byte_offset: 0x8a,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep3RSize",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_rx_len",
-                    description: Some(
-                        "endpoint 4 receives the lenth register in a single pass.",
-                    ),
-                    array: None,
-                    byte_offset: 0x8c,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep4RxLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_r_size",
-                    description: Some(
-                        "the length register of the total received data at endpoint 4.",
-                    ),
-                    array: None,
-                    byte_offset: 0x8e,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep4RSize",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_rx_len",
-                    description: Some(
-                        "endpoint 5 receives the lenth register in a single pass.",
-                    ),
-                    array: None,
-                    byte_offset: 0x90,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep5RxLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_r_size",
-                    description: Some(
-                        "the length register of the total received data at endpoint 5.",
-                    ),
-                    array: None,
-                    byte_offset: 0x92,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep5RSize",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_rx_len",
-                    description: Some(
-                        "endpoint 6 receives the lenth register in a single pass.",
-                    ),
-                    array: None,
-                    byte_offset: 0x94,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep6RxLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_r_size",
-                    description: Some(
-                        "the length register of the total received data at endpoint 6.",
-                    ),
-                    array: None,
-                    byte_offset: 0x96,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep6RSize",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_rx_len",
-                    description: Some(
-                        "endpoint 7 receives the lenth register in a single pass.",
-                    ),
-                    array: None,
-                    byte_offset: 0x98,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep7RxLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_r_size",
-                    description: Some(
-                        "the length register of the total received data at endpoint 7.",
-                    ),
-                    array: None,
-                    byte_offset: 0x9a,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep7RSize",
+                                "UepRSize",
                             ),
                         },
                     ),
@@ -1278,358 +803,73 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
-                    name: "uep1_t_len",
+                    name: "uep_t_len",
                     description: Some(
-                        "endpoint 1 send the length register.",
+                        "endpoint 1-7 send the length register.",
                     ),
-                    array: None,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 7,
+                                stride: 4,
+                            },
+                        ),
+                    ),
                     byte_offset: 0xa0,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 16,
                             fieldset: Some(
-                                "Uep1TLen",
+                                "UepTLen",
                             ),
                         },
                     ),
                 },
                 BlockItem {
-                    name: "uep1_tx_ctrl",
+                    name: "uep_tx_ctrl",
                     description: Some(
-                        "endpoint 1 send control register.",
+                        "endpoint 1-7 send control register.",
                     ),
-                    array: None,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 7,
+                                stride: 4,
+                            },
+                        ),
+                    ),
                     byte_offset: 0xa2,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 8,
                             fieldset: Some(
-                                "Uep1TxCtrl",
+                                "UepTxCtrl",
                             ),
                         },
                     ),
                 },
                 BlockItem {
-                    name: "uep1_rx_ctrl",
+                    name: "uep_rx_ctrl",
                     description: Some(
-                        "endpoint 1 receive control.",
+                        "endpoint 1-7 receive control.",
                     ),
-                    array: None,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 7,
+                                stride: 4,
+                            },
+                        ),
+                    ),
                     byte_offset: 0xa3,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 8,
                             fieldset: Some(
-                                "Uep1RxCtrl",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_t_len",
-                    description: Some(
-                        "endpoint 2 send the length register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xa4,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep2TLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_tx_ctrl",
-                    description: Some(
-                        "endpoint 2 send control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xa6,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep2TxCtrl",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_rx_ctrl",
-                    description: Some(
-                        "endpoint 2 receive control.",
-                    ),
-                    array: None,
-                    byte_offset: 0xa7,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep2RxCtrl",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_t_len",
-                    description: Some(
-                        "endpoint 3 send the length register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xa8,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep3TLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_tx_ctrl",
-                    description: Some(
-                        "endpoint 3 send control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xaa,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep3TxCtrl",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_rx_ctrl",
-                    description: Some(
-                        "endpoint 3 receive control.",
-                    ),
-                    array: None,
-                    byte_offset: 0xab,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep3RxCtrl",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_t_len",
-                    description: Some(
-                        "endpoint 4 send the length register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xac,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep4TLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_tx_ctrl",
-                    description: Some(
-                        "endpoint 4 send control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xae,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep4TxCtrl",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_rx_ctrl",
-                    description: Some(
-                        "endpoint 4 receive control.",
-                    ),
-                    array: None,
-                    byte_offset: 0xaf,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep4RxCtrl",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_t_len",
-                    description: Some(
-                        "endpoint 5 send the length register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xb0,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep5TLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_tx_ctrl",
-                    description: Some(
-                        "endpoint 5 send control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xb2,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep5TxCtrl",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_rx_ctrl",
-                    description: Some(
-                        "endpoint 5 receive control.",
-                    ),
-                    array: None,
-                    byte_offset: 0xb3,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep5RxCtrl",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_t_len",
-                    description: Some(
-                        "endpoint 6 send the length register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xb4,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep6TLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_tx_ctrl",
-                    description: Some(
-                        "endpoint 6 send control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xb6,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep6TxCtrl",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_rx_ctrl",
-                    description: Some(
-                        "endpoint 6 receive control.",
-                    ),
-                    array: None,
-                    byte_offset: 0xb7,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep6RxCtrl",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_t_len",
-                    description: Some(
-                        "endpoint 7 send the length register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xb8,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep7TLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_tx_ctrl",
-                    description: Some(
-                        "endpoint 7 send control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xba,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep7TxCtrl",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_rx_ctrl",
-                    description: Some(
-                        "endpoint 7 receive control.",
-                    ),
-                    array: None,
-                    byte_offset: 0xbb,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep7RxCtrl",
+                                "UepRxCtrl",
                             ),
                         },
                     ),
@@ -1669,239 +909,49 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
-                    name: "uep1_rx_fifo",
+                    name: "uep_rx_fifo",
                     description: Some(
-                        "Receive FIFO address of usb endpoint 1.",
+                        "Receive FIFO address of usb endpoints 1-7.",
                     ),
-                    array: None,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 7,
+                                stride: 4,
+                            },
+                        ),
+                    ),
                     byte_offset: 0xc0,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
                             fieldset: Some(
-                                "Uep1RxFifo",
+                                "UepRxFifo",
                             ),
                         },
                     ),
                 },
                 BlockItem {
-                    name: "uep2_rx_fifo",
+                    name: "uep_tx_fifo",
                     description: Some(
-                        "Receive FIFO address of usb endpoint 2.",
+                        "The sending FIFO address of usb endpoints 1-7.",
                     ),
-                    array: None,
-                    byte_offset: 0xc4,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep2RxFifo",
-                            ),
-                        },
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 7,
+                                stride: 4,
+                            },
+                        ),
                     ),
-                },
-                BlockItem {
-                    name: "uep3_rx_fifo",
-                    description: Some(
-                        "Receive FIFO address of usb endpoint 3.",
-                    ),
-                    array: None,
-                    byte_offset: 0xc8,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep3RxFifo",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_rx_fifo",
-                    description: Some(
-                        "Receive FIFO address of usb endpoint 4.",
-                    ),
-                    array: None,
-                    byte_offset: 0xcc,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep4RxFifo",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_rx_fifo",
-                    description: Some(
-                        "Receive FIFO address of usb endpoint 5.",
-                    ),
-                    array: None,
-                    byte_offset: 0xd0,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep5RxFifo",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_rx_fifo",
-                    description: Some(
-                        "Receive FIFO address of usb endpoint 6.",
-                    ),
-                    array: None,
-                    byte_offset: 0xd4,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep6RxFifo",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_rx_fifo",
-                    description: Some(
-                        "Receive FIFO address of usb endpoint 7.",
-                    ),
-                    array: None,
-                    byte_offset: 0xd8,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep7RxFifo",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep1_tx_fifo",
-                    description: Some(
-                        "The sending FIFO address of usb endpoint 1.",
-                    ),
-                    array: None,
                     byte_offset: 0xdc,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
                             fieldset: Some(
-                                "Uep1TxFifo",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_tx_fifo",
-                    description: Some(
-                        "The sending FIFO address of usb endpoint 2.",
-                    ),
-                    array: None,
-                    byte_offset: 0xe0,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep2TxFifo",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_tx_fifo",
-                    description: Some(
-                        "The sending FIFO address of usb endpoint 3.",
-                    ),
-                    array: None,
-                    byte_offset: 0xe4,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep3TxFifo",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_tx_fifo",
-                    description: Some(
-                        "The sending FIFO address of usb endpoint 4.",
-                    ),
-                    array: None,
-                    byte_offset: 0xe8,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep4TxFifo",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_tx_fifo",
-                    description: Some(
-                        "The sending FIFO address of usb endpoint 5.",
-                    ),
-                    array: None,
-                    byte_offset: 0xec,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep5TxFifo",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_tx_fifo",
-                    description: Some(
-                        "The sending FIFO address of usb endpoint 6.",
-                    ),
-                    array: None,
-                    byte_offset: 0xf0,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep6TxFifo",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_tx_fifo",
-                    description: Some(
-                        "The sending FIFO address of usb endpoint 7.",
-                    ),
-                    array: None,
-                    byte_offset: 0xf4,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep7TxFifo",
+                                "UepTxFifo",
                             ),
                         },
                     ),
@@ -2541,7 +1591,7 @@ pub(crate) static REGISTERS: IR = IR {
                             offset: 0,
                         },
                     ),
-                    bit_size: 11,
+                    bit_size: 7,
                     array: None,
                     enumm: None,
                 },
@@ -2770,2666 +1820,6 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
-            name: "Uep1MaxLen",
-            extends: None,
-            description: Some(
-                "endpoint 1 max length packet register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep1_max_len",
-                    description: Some(
-                        "endpoint 1 max acceptable offset length.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 7,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1RSize",
-            extends: None,
-            description: Some(
-                "the length register of the total received data at endpoint 1.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "uep1_r_size",
-                    description: Some(
-                        "the length of the total received data at endpoint 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1RxCtrl",
-            extends: None,
-            description: Some(
-                "endpoint 1 receive control.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "uep_r_res_mask",
-                    description: Some(
-                        "endpoint 1 has control over the received response.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_tog_mask",
-                    description: Some(
-                        "the reception of endpoint 1 expects a synchronous trigger. bit.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_tog_match",
-                    description: Some(
-                        "received synchronization trigger bit matches the desired. synchronization trigger bit state.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_nak_tog",
-                    description: Some(
-                        "endpoint 1 for the received return NAK,packet type.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_nak_act",
-                    description: Some(
-                        "endpoint 1 receives the end of NAK flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_done",
-                    description: Some(
-                        "endpoint 1 receives the end flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1RxDma",
-            extends: None,
-            description: Some(
-                "endpoint 1 receives the start address register of the buffer.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep1_rx_dma",
-                    description: Some(
-                        "endpoint receives the start address register of the buffer.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 24,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1RxFifo",
-            extends: None,
-            description: Some(
-                "Receive FIFO address of usb endpoint 1.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep_rx_fifo_s",
-                    description: Some(
-                        "The FIFO start address of the receiving endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_rx_fifo_e",
-                    description: Some(
-                        "The end FIFO address of the receiving endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 16,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1RxLen",
-            extends: None,
-            description: Some(
-                "endpoint 1 receives the lenth register in a single pass.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "uep1_rx_len",
-                    description: Some(
-                        "the length of data received by endpoint 1 in a single pass.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1TLen",
-            extends: None,
-            description: Some(
-                "endpoint 1 send the length register.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "uep1_t_len",
-                    description: Some(
-                        "endpoint 1 send the length.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1TxCtrl",
-            extends: None,
-            description: Some(
-                "endpoint 1 send control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "uep_t_res_mask",
-                    description: Some(
-                        "endpoint 1 control of the send response to IN transactions.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_t_tog_mask",
-                    description: Some(
-                        "endpoint 1 synchronous trigger bit for the sender to. prepare.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_t_nak_act",
-                    description: Some(
-                        "endpoint 1 sends the end flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_t_done",
-                    description: Some(
-                        "endpoint 1 sends the end of NAK flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1TxDma",
-            extends: None,
-            description: Some(
-                "endpoint 1 sends the start address register of the buffer.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep1_tx_dma",
-                    description: Some(
-                        "endpoint sends the start address register of the buffer.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 24,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1TxFifo",
-            extends: None,
-            description: Some(
-                "The sending FIFO address of usb endpoint 1.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep_tx_fifo_s",
-                    description: Some(
-                        "The FIFO start address of the sending endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_tx_fifo_e",
-                    description: Some(
-                        "The end FIFO address of the sending endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 16,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2MaxLen",
-            extends: None,
-            description: Some(
-                "endpoint 2 max length packet register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep2_max_len",
-                    description: Some(
-                        "endpoint 2 max acceptable offset length.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 7,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2RSize",
-            extends: None,
-            description: Some(
-                "the length register of the total received data at endpoint 2.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "uep2_r_size",
-                    description: Some(
-                        "the length of the total received data at endpoint 2.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2RxCtrl",
-            extends: None,
-            description: Some(
-                "endpoint 2 receive control.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "uep_r_res_mask",
-                    description: Some(
-                        "endpoint 2 has control over the received response.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_tog_mask",
-                    description: Some(
-                        "the reception of endpoint 2 expects a synchronous trigger. bit.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_tog_match",
-                    description: Some(
-                        "received synchronization trigger bit matches the desired. synchronization trigger bit state.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_nak_tog",
-                    description: Some(
-                        "endpoint 2 for the received return NAK,packet type.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_nak_act",
-                    description: Some(
-                        "endpoint 2 receives the end of NAK flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_done",
-                    description: Some(
-                        "endpoint 2 receives the end flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2RxDma",
-            extends: None,
-            description: Some(
-                "endpoint 2 receives the start address register of the buffer.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep2_rx_dma",
-                    description: Some(
-                        "endpoint receives the start address register of the buffer.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 24,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2RxFifo",
-            extends: None,
-            description: Some(
-                "Receive FIFO address of usb endpoint 2.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep_rx_fifo_s",
-                    description: Some(
-                        "The FIFO start address of the receiving endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_rx_fifo_e",
-                    description: Some(
-                        "The end FIFO address of the receiving endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 16,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2RxLen",
-            extends: None,
-            description: Some(
-                "endpoint 2 receives the lenth register in a single pass.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "uep2_rx_len",
-                    description: Some(
-                        "the length of data received by endpoint 2 in a single pass.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2TLen",
-            extends: None,
-            description: Some(
-                "endpoint 2 send the length register.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "uep2_t_len",
-                    description: Some(
-                        "endpoint 2 send the length.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2TxCtrl",
-            extends: None,
-            description: Some(
-                "endpoint 2 send control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "uep_t_res_mask",
-                    description: Some(
-                        "endpoint 2 control of the send response to IN transactions.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_t_tog_mas",
-                    description: Some(
-                        "endpoint 2 synchronous trigger bit for the sender to. prepare.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_t_nak_act",
-                    description: Some(
-                        "endpoint 2 sends the end flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_t_done",
-                    description: Some(
-                        "endpoint 2 sends the end of NAK flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2TxDma",
-            extends: None,
-            description: Some(
-                "endpoint 2 sends the start address register of the buffer.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep2_tx_dma",
-                    description: Some(
-                        "endpoint sends the start address register of the buffer.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 24,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2TxFifo",
-            extends: None,
-            description: Some(
-                "The sending FIFO address of usb endpoint 2.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep_tx_fifo_s",
-                    description: Some(
-                        "The FIFO start address of the sending endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_tx_fifo_e",
-                    description: Some(
-                        "The end FIFO address of the sending endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 16,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3MaxLen",
-            extends: None,
-            description: Some(
-                "endpoint 3 max length packet register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep3_max_len",
-                    description: Some(
-                        "endpoint 3 max acceptable offset length.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 7,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3RSize",
-            extends: None,
-            description: Some(
-                "the length register of the total received data at endpoint 3.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "uep3_r_size",
-                    description: Some(
-                        "the length of the total received data at endpoint 3.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3RxCtrl",
-            extends: None,
-            description: Some(
-                "endpoint 3 receive control.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "uep_r_res_mask",
-                    description: Some(
-                        "endpoint 3 has control over the received response.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_tog_mask",
-                    description: Some(
-                        "the reception of endpoint 3 expects a synchronous trigger. bit.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_tog_match",
-                    description: Some(
-                        "received synchronization trigger bit matches the desired. synchronization trigger bit state.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_nak_tog",
-                    description: Some(
-                        "endpoint 3 for the received return NAK,packet type.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_nak_act",
-                    description: Some(
-                        "endpoint 3 receives the end of NAK flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_done",
-                    description: Some(
-                        "endpoint 3 receives the end flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3RxDma",
-            extends: None,
-            description: Some(
-                "endpoint 3 receives the start address register of the buffer.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep3_rx_dma",
-                    description: Some(
-                        "endpoint receives the start address register of the buffer.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 24,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3RxFifo",
-            extends: None,
-            description: Some(
-                "Receive FIFO address of usb endpoint 3.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep_rx_fifo_s",
-                    description: Some(
-                        "The FIFO start address of the receiving endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_rx_fifo_e",
-                    description: Some(
-                        "The end FIFO address of the receiving endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 16,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3RxLen",
-            extends: None,
-            description: Some(
-                "endpoint 3 receives the lenth register in a single pass.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "uep3_rx_len",
-                    description: Some(
-                        "the length of data received by endpoint 3 in a single pass.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3TLen",
-            extends: None,
-            description: Some(
-                "endpoint 3 send the length register.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "uep3_t_len",
-                    description: Some(
-                        "endpoint 3 send the length.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3TxCtrl",
-            extends: None,
-            description: Some(
-                "endpoint 3 send control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "uep_t_res_mask",
-                    description: Some(
-                        "endpoint 3 control of the send response to IN transactions.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_t_tog_mask",
-                    description: Some(
-                        "endpoint 3 synchronous trigger bit for the sender to. prepare.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_t_nak_act",
-                    description: Some(
-                        "endpoint 3 sends the end flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_t_done",
-                    description: Some(
-                        "endpoint 3 sends the end of NAK flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3TxDma",
-            extends: None,
-            description: Some(
-                "endpoint 3 sends the start address register of the buffer.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep3_tx_dma",
-                    description: Some(
-                        "endpoint sends the start address register of the buffer.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 24,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3TxFifo",
-            extends: None,
-            description: Some(
-                "The sending FIFO address of usb endpoint 3.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep_tx_fifo_s",
-                    description: Some(
-                        "The FIFO start address of the sending endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_tx_fifo_e",
-                    description: Some(
-                        "The end FIFO address of the sending endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 16,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4MaxLen",
-            extends: None,
-            description: Some(
-                "endpoint 4 max length packet register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep4_max_len",
-                    description: Some(
-                        "endpoint 4 max acceptable offset length.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 7,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4RSize",
-            extends: None,
-            description: Some(
-                "the length register of the total received data at endpoint 4.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "uep4_r_size",
-                    description: Some(
-                        "the length of the total received data at endpoint 4.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4RxCtrl",
-            extends: None,
-            description: Some(
-                "endpoint 4 receive control.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "uep_r_res_mask",
-                    description: Some(
-                        "endpoint 4 has control over the received response.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_tog_mask",
-                    description: Some(
-                        "the reception of endpoint 4 expects a synchronous trigger. bit.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_tog_match",
-                    description: Some(
-                        "received synchronization trigger bit matches the desired. synchronization trigger bit state.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_nak_tog",
-                    description: Some(
-                        "endpoint 4 for the received return NAK,packet type.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_nak_act",
-                    description: Some(
-                        "endpoint 4 receives the end of NAK flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_done",
-                    description: Some(
-                        "endpoint 4 receives the end flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4RxDma",
-            extends: None,
-            description: Some(
-                "endpoint 4 receives the start address register of the buffer.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep4_rx_dma",
-                    description: Some(
-                        "endpoint receives the start address register of the buffer.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 24,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4RxFifo",
-            extends: None,
-            description: Some(
-                "Receive FIFO address of usb endpoint 4.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep_rx_fifo_s",
-                    description: Some(
-                        "The FIFO start address of the receiving endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_rx_fifo_e",
-                    description: Some(
-                        "The end FIFO address of the receiving endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 16,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4RxLen",
-            extends: None,
-            description: Some(
-                "endpoint 4 receives the lenth register in a single pass.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "uep4_rx_len",
-                    description: Some(
-                        "the length of data received by endpoint 4 in a single pass.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4TLen",
-            extends: None,
-            description: Some(
-                "endpoint 4 send the length register.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "uep4_t_len",
-                    description: Some(
-                        "endpoint 4 send the length.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4TxCtrl",
-            extends: None,
-            description: Some(
-                "endpoint 4 send control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "uep_t_res_mask",
-                    description: Some(
-                        "endpoint 4 control of the send response to IN transactions.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_t_tog_mask",
-                    description: Some(
-                        "endpoint 4 synchronous trigger bit for the sender to. prepare.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_t_nak_act",
-                    description: Some(
-                        "endpoint 4 sends the end flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_t_done",
-                    description: Some(
-                        "endpoint 4 sends the end of NAK flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4TxDma",
-            extends: None,
-            description: Some(
-                "endpoint 4 sends the start address register of the buffer.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep4_tx_dma",
-                    description: Some(
-                        "endpoint sends the start address register of the buffer.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 24,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4TxFifo",
-            extends: None,
-            description: Some(
-                "The sending FIFO address of usb endpoint 4.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep_tx_fifo_s",
-                    description: Some(
-                        "The FIFO start address of the sending endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_tx_fifo_e",
-                    description: Some(
-                        "The end FIFO address of the sending endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 16,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5MaxLen",
-            extends: None,
-            description: Some(
-                "endpoint 5 max length packet register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep5_max_len",
-                    description: Some(
-                        "endpoint 5 max acceptable offset length.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 7,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5RSize",
-            extends: None,
-            description: Some(
-                "the length register of the total received data at endpoint 5.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "uep5_r_size",
-                    description: Some(
-                        "the length of the total received data at endpoint 5.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5RxCtrl",
-            extends: None,
-            description: Some(
-                "endpoint 5 receive control.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "uep_r_res_mask",
-                    description: Some(
-                        "endpoint 5 has control over the received response.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_tog_mask",
-                    description: Some(
-                        "the reception of endpoint 5 expects a synchronous trigger. bit.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_tog_match",
-                    description: Some(
-                        "received synchronization trigger bit matches the desired. synchronization trigger bit state.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_nak_tog",
-                    description: Some(
-                        "endpoint 5 for the received return NAK,packet type.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_nak_act",
-                    description: Some(
-                        "endpoint 5 receives the end of NAK flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_done",
-                    description: Some(
-                        "endpoint 5 receives the end flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5RxDma",
-            extends: None,
-            description: Some(
-                "endpoint 5 receives the start address register of the buffer.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep5_rx_dma",
-                    description: Some(
-                        "endpoint receives the start address register of the buffer.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 24,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5RxFifo",
-            extends: None,
-            description: Some(
-                "Receive FIFO address of usb endpoint 5.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep_rx_fifo_s",
-                    description: Some(
-                        "The FIFO start address of the receiving endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_rx_fifo_e",
-                    description: Some(
-                        "The end FIFO address of the receiving endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 16,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5RxLen",
-            extends: None,
-            description: Some(
-                "endpoint 5 receives the lenth register in a single pass.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "uep5_rx_len",
-                    description: Some(
-                        "the length of data received by endpoint 5 in a single pass.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5TLen",
-            extends: None,
-            description: Some(
-                "endpoint 5 send the length register.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "uep5_t_len",
-                    description: Some(
-                        "endpoint 5 send the length.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5TxCtrl",
-            extends: None,
-            description: Some(
-                "endpoint 5 send control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "uep_t_res_mask",
-                    description: Some(
-                        "endpoint 5 control of the send response to IN transactions.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_t_tog_mask",
-                    description: Some(
-                        "endpoint 5 synchronous trigger bit for the sender to. prepare.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_t_nak_act",
-                    description: Some(
-                        "endpoint 5 sends the end flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_t_done",
-                    description: Some(
-                        "endpoint 5 sends the end of NAK flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5TxDma",
-            extends: None,
-            description: Some(
-                "endpoint 5 sends the start address register of the buffer.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep5_tx_dma",
-                    description: Some(
-                        "endpoint sends the start address register of the buffer.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 24,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5TxFifo",
-            extends: None,
-            description: Some(
-                "The sending FIFO address of usb endpoint 5.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep_tx_fifo_s",
-                    description: Some(
-                        "The FIFO start address of the sending endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_tx_fifo_e",
-                    description: Some(
-                        "The end FIFO address of the sending endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 16,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6MaxLen",
-            extends: None,
-            description: Some(
-                "endpoint 6 max length packet register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep6_max_len",
-                    description: Some(
-                        "endpoint 6 max acceptable offset length.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 7,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6RSize",
-            extends: None,
-            description: Some(
-                "the length register of the total received data at endpoint 6.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "uep6_r_size",
-                    description: Some(
-                        "the length of the total received data at endpoint 6.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6RxCtrl",
-            extends: None,
-            description: Some(
-                "endpoint 6 receive control.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "uep_r_res_mask",
-                    description: Some(
-                        "endpoint 6 has control over the received response.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_tog_mask",
-                    description: Some(
-                        "the reception of endpoint 6 expects a synchronous trigger. bit.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_tog_match",
-                    description: Some(
-                        "received synchronization trigger bit matches the desired. synchronization trigger bit state.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_nak_tog",
-                    description: Some(
-                        "endpoint 6 for the received return NAK,packet type.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_nak_act",
-                    description: Some(
-                        "endpoint 6 receives the end of NAK flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_done",
-                    description: Some(
-                        "endpoint 6 receives the end flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6RxDma",
-            extends: None,
-            description: Some(
-                "endpoint 6 receives the start address register of the buffer.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep6_rx_dma",
-                    description: Some(
-                        "endpoint receives the start address register of the buffer.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 24,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6RxFifo",
-            extends: None,
-            description: Some(
-                "Receive FIFO address of usb endpoint 6.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep_rx_fifo_s",
-                    description: Some(
-                        "The FIFO start address of the receiving endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_rx_fifo_e",
-                    description: Some(
-                        "The end FIFO address of the receiving endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 16,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6RxLen",
-            extends: None,
-            description: Some(
-                "endpoint 6 receives the lenth register in a single pass.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "uep6_rx_len",
-                    description: Some(
-                        "the length of data received by endpoint 6 in a single pass.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6TLen",
-            extends: None,
-            description: Some(
-                "endpoint 6 send the length register.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "uep6_t_len",
-                    description: Some(
-                        "endpoint 6 send the length.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6TxCtrl",
-            extends: None,
-            description: Some(
-                "endpoint 6 send control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "uep_t_res_mask",
-                    description: Some(
-                        "endpoint 6 control of the send response to IN transactions.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_t_tog_mask",
-                    description: Some(
-                        "endpoint 6 synchronous trigger bit for the sender to. prepare.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_t_nak_act",
-                    description: Some(
-                        "endpoint 6 sends the end flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_t_done",
-                    description: Some(
-                        "endpoint 6 sends the end of NAK flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6TxDma",
-            extends: None,
-            description: Some(
-                "endpoint 6 sends the start address register of the buffer.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep6_tx_dma",
-                    description: Some(
-                        "endpoint sends the start address register of the buffer.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 24,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6TxFifo",
-            extends: None,
-            description: Some(
-                "The sending FIFO address of usb endpoint 6.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep_tx_fifo_s",
-                    description: Some(
-                        "The FIFO start address of the sending endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_tx_fifo_e",
-                    description: Some(
-                        "The end FIFO address of the sending endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 16,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7MaxLen",
-            extends: None,
-            description: Some(
-                "endpoint 7 max length packet register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep7_max_len",
-                    description: Some(
-                        "endpoint 7 max acceptable offset length.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 7,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7RSize",
-            extends: None,
-            description: Some(
-                "the length register of the total received data at endpoint 7.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "uep7_r_size",
-                    description: Some(
-                        "the length of the total received data at endpoint 7.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7RxCtrl",
-            extends: None,
-            description: Some(
-                "endpoint 7 receive control.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "uep_r_res_mask",
-                    description: Some(
-                        "endpoint 7 has control over the received response.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_tog_mask",
-                    description: Some(
-                        "the reception of endpoint 7 expects a synchronous trigger. bit.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_tog_match",
-                    description: Some(
-                        "received synchronization trigger bit matches the desired. synchronization trigger bit state.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_nak_tog",
-                    description: Some(
-                        "endpoint 7 for the received return NAK,packet type.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_nak_act",
-                    description: Some(
-                        "endpoint 7 receives the end of NAK flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_r_done",
-                    description: Some(
-                        "endpoint 7 receives the end flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7RxDma",
-            extends: None,
-            description: Some(
-                "endpoint 7 receives the start address register of the buffer.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep7_rx_dma",
-                    description: Some(
-                        "endpoint receives the start address register of the buffer.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 24,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7RxFifo",
-            extends: None,
-            description: Some(
-                "Receive FIFO address of usb endpoint 7.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep_rx_fifo_s",
-                    description: Some(
-                        "The FIFO start address of the receiving endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_rx_fifo_e",
-                    description: Some(
-                        "The end FIFO address of the receiving endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 16,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7RxLen",
-            extends: None,
-            description: Some(
-                "endpoint 7 receives the lenth register in a single pass.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "uep7_rx_len",
-                    description: Some(
-                        "the length of data received by endpoint 7 in a single pass.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7TLen",
-            extends: None,
-            description: Some(
-                "endpoint 7 send the length register.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "uep7_t_len",
-                    description: Some(
-                        "endpoint 7 send the length.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7TxCtrl",
-            extends: None,
-            description: Some(
-                "endpoint 7 send control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "uep_t_res_mask",
-                    description: Some(
-                        "endpoint 7 control of the send response to IN transactions.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_t_tog_mask",
-                    description: Some(
-                        "endpoint 7 synchronous trigger bit for the sender to. prepare.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_t_nak_act",
-                    description: Some(
-                        "endpoint 7 sends the end flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_t_done",
-                    description: Some(
-                        "endpoint 7 sends the end of NAK flag.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7TxDma",
-            extends: None,
-            description: Some(
-                "endpoint 7 sends the start address register of the buffer.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep7_tx_dma",
-                    description: Some(
-                        "endpoint sends the start address register of the buffer.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 24,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7TxFifo",
-            extends: None,
-            description: Some(
-                "The sending FIFO address of usb endpoint 7.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "uep_tx_fifo_s",
-                    description: Some(
-                        "The FIFO start address of the sending endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep_tx_fifo_e",
-                    description: Some(
-                        "The end FIFO address of the sending endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 16,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
             name: "UepAfMode",
             extends: None,
             description: Some(
@@ -5448,6 +1838,30 @@ pub(crate) static REGISTERS: IR = IR {
                         },
                     ),
                     bit_size: 7,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "UepMaxLen",
+            extends: None,
+            description: Some(
+                "endpoint 1-7 max length packet register.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "uep_max_len",
+                    description: Some(
+                        "endpoint 1-7 max acceptable offset length.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 11,
                     array: None,
                     enumm: None,
                 },
@@ -5540,6 +1954,30 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
+            name: "UepRSize",
+            extends: None,
+            description: Some(
+                "the length register of the total received data at endpoints 1-7.",
+            ),
+            bit_size: 16,
+            fields: &[
+                Field {
+                    name: "uep_r_size",
+                    description: Some(
+                        "the length of the total received data at endpoint 1.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 16,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
             name: "UepRTogAuto",
             extends: None,
             description: Some(
@@ -5564,6 +2002,124 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
+            name: "UepRxCtrl",
+            extends: None,
+            description: Some(
+                "endpoint 1-7 receive control.",
+            ),
+            bit_size: 8,
+            fields: &[
+                Field {
+                    name: "uep_r_res_mask",
+                    description: Some(
+                        "endpoint 1-7 has control over the received response.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 2,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "uep_r_tog_mask",
+                    description: Some(
+                        "the reception of endpoint 1-7 expects a synchronous trigger. bit.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 2,
+                        },
+                    ),
+                    bit_size: 2,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "uep_r_tog_match",
+                    description: Some(
+                        "received synchronization trigger bit matches the desired. synchronization trigger bit state.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 4,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "uep_r_nak_tog",
+                    description: Some(
+                        "endpoint 1-7 for the received return NAK,packet type.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 5,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "uep_r_nak_act",
+                    description: Some(
+                        "endpoint 1-7 receive the end of NAK flag.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 6,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "uep_r_done",
+                    description: Some(
+                        "endpoint 1-7 receive the end flag.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 7,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "UepRxDma",
+            extends: None,
+            description: Some(
+                "endpoint 1-7 receive the start address register of the buffer.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "uep_rx_dma",
+                    description: Some(
+                        "endpoint receives the start address register of the buffer.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 24,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
             name: "UepRxEn",
             extends: None,
             description: Some(
@@ -5575,6 +2131,68 @@ pub(crate) static REGISTERS: IR = IR {
                     name: "uep_rx_en",
                     description: Some(
                         "Endpoint 0 to 15 receive enable.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 16,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "UepRxFifo",
+            extends: None,
+            description: Some(
+                "Receive FIFO address of usb endpoints 1-7.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "uep_rx_fifo_s",
+                    description: Some(
+                        "The FIFO start address of the receiving endpoint.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 16,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "uep_rx_fifo_e",
+                    description: Some(
+                        "The end FIFO address of the receiving endpoint.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 16,
+                        },
+                    ),
+                    bit_size: 16,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "UepRxLen",
+            extends: None,
+            description: Some(
+                "endpoint 1-7 receive the length register in a single pass.",
+            ),
+            bit_size: 16,
+            fields: &[
+                Field {
+                    name: "uep_rx_len",
+                    description: Some(
+                        "the length of data received by endpoint 1-7 in a single pass.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -5674,6 +2292,30 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
+            name: "UepTLen",
+            extends: None,
+            description: Some(
+                "endpoint 1-7 send the length register.",
+            ),
+            bit_size: 16,
+            fields: &[
+                Field {
+                    name: "uep_t_len",
+                    description: Some(
+                        "endpoint 1-7 send the length.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 16,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
             name: "UepTTogAuto",
             extends: None,
             description: Some(
@@ -5698,6 +2340,96 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
+            name: "UepTxCtrl",
+            extends: None,
+            description: Some(
+                "endpoint 1-7 send control register.",
+            ),
+            bit_size: 8,
+            fields: &[
+                Field {
+                    name: "uep_t_res_mask",
+                    description: Some(
+                        "endpoint 1-7 control of the send response to IN transactions.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 2,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "uep_t_tog_mask",
+                    description: Some(
+                        "endpoint 1-7 synchronous trigger bit for the sender to. prepare.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 2,
+                        },
+                    ),
+                    bit_size: 2,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "uep_t_nak_act",
+                    description: Some(
+                        "endpoint 1-7 send the end flag.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 6,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "uep_t_done",
+                    description: Some(
+                        "endpoint 1-7 send the end of NAK flag.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 7,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "UepTxDma",
+            extends: None,
+            description: Some(
+                "endpoint 1-7 send the start address register of the buffer.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "uep_tx_dma",
+                    description: Some(
+                        "endpoint sends the start address register of the buffer.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 24,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
             name: "UepTxEn",
             extends: None,
             description: Some(
@@ -5713,6 +2445,44 @@ pub(crate) static REGISTERS: IR = IR {
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
                             offset: 0,
+                        },
+                    ),
+                    bit_size: 16,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "UepTxFifo",
+            extends: None,
+            description: Some(
+                "The sending FIFO address of usb endpoints 1-7.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "uep_tx_fifo_s",
+                    description: Some(
+                        "The FIFO start address of the sending endpoint.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 16,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "uep_tx_fifo_e",
+                    description: Some(
+                        "The end FIFO address of the sending endpoint.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 16,
                         },
                     ),
                     bit_size: 16,
