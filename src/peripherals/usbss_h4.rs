@@ -63,6 +63,13 @@ impl Usbss {
     ) -> crate::common::Reg<regs::LinkU1WkupFilter, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x28usize) as _) }
     }
+    #[doc = "U1 wake-up timer. The RM register table omits this register; the EVT device header exposes it and the device SDK writes 120."]
+    #[inline(always)]
+    pub const fn link_u1_wkup_tmr(
+        self,
+    ) -> crate::common::Reg<regs::LinkU1WkupTmr, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x2ausize) as _) }
+    }
     #[doc = "U2 wakes up the LFPS Duration Register."]
     #[inline(always)]
     pub const fn link_u2_wkup_filter(
@@ -76,6 +83,34 @@ impl Usbss {
         self,
     ) -> crate::common::Reg<regs::LinkU3WkupFilter, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x30usize) as _) }
+    }
+    #[doc = "U3 wake-up timer. The RM register table omits this register; the EVT device header exposes it."]
+    #[inline(always)]
+    pub const fn link_u3_wkup_tmr(
+        self,
+    ) -> crate::common::Reg<regs::LinkU3WkupTmr, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x32usize) as _) }
+    }
+    #[doc = "U1 exit configuration. The RM register table omits this register; the EVT device header exposes it and the device SDK sets bit 9 before link training."]
+    #[inline(always)]
+    pub const fn link_u1_exit_cfg(
+        self,
+    ) -> crate::common::Reg<regs::LinkU1ExitCfg, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x34usize) as _) }
+    }
+    #[doc = "U2 exit configuration. The RM register table omits this register and the EVT header gives no bit definitions."]
+    #[inline(always)]
+    pub const fn link_u2_exit_cfg(
+        self,
+    ) -> crate::common::Reg<regs::LinkU2ExitCfg, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x38usize) as _) }
+    }
+    #[doc = "U3 exit configuration. The RM register table omits this register and the EVT header gives no bit definitions."]
+    #[inline(always)]
+    pub const fn link_u3_exit_cfg(
+        self,
+    ) -> crate::common::Reg<regs::LinkU3ExitCfg, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x3cusize) as _) }
     }
     #[doc = "LINK Synchronous Delay Register."]
     #[inline(always)]
@@ -171,6 +206,16 @@ impl Usbss {
     pub const fn tp_rx_data2(self) -> crate::common::Reg<regs::TpRxData2, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xb0usize) as _) }
     }
+    #[doc = "Indirect PHY configuration command. The RM does not document this register; the device SDK writes `(1 << 23) | (addr << 16) | data`."]
+    #[inline(always)]
+    pub const fn phy_cfg_cr(self) -> crate::common::Reg<regs::PhyCfgCr, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x01f8usize) as _) }
+    }
+    #[doc = "Indirect PHY configuration data. The RM does not document this register; the device SDK reads the PHY response from it."]
+    #[inline(always)]
+    pub const fn phy_cfg_dat(self) -> crate::common::Reg<regs::PhyCfgDat, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x01fcusize) as _) }
+    }
 }
 #[doc = "USBSS in device mode. Endpoint configuration / TX / RX registers (UEP* family). Offsets overlap with USBSS_HOST host-mode registers; chiptool's overlap check is intra-block only so the two views coexist via the extends mechanism."]
 #[derive(Copy, Clone, Eq, PartialEq)]
@@ -232,6 +277,13 @@ impl UsbssDevice {
     ) -> crate::common::Reg<regs::LinkU1WkupFilter, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x28usize) as _) }
     }
+    #[doc = "U1 wake-up timer. The RM register table omits this register; the EVT device header exposes it and the device SDK writes 120."]
+    #[inline(always)]
+    pub const fn link_u1_wkup_tmr(
+        self,
+    ) -> crate::common::Reg<regs::LinkU1WkupTmr, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x2ausize) as _) }
+    }
     #[doc = "U2 wakes up the LFPS Duration Register."]
     #[inline(always)]
     pub const fn link_u2_wkup_filter(
@@ -245,6 +297,34 @@ impl UsbssDevice {
         self,
     ) -> crate::common::Reg<regs::LinkU3WkupFilter, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x30usize) as _) }
+    }
+    #[doc = "U3 wake-up timer. The RM register table omits this register; the EVT device header exposes it."]
+    #[inline(always)]
+    pub const fn link_u3_wkup_tmr(
+        self,
+    ) -> crate::common::Reg<regs::LinkU3WkupTmr, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x32usize) as _) }
+    }
+    #[doc = "U1 exit configuration. The RM register table omits this register; the EVT device header exposes it and the device SDK sets bit 9 before link training."]
+    #[inline(always)]
+    pub const fn link_u1_exit_cfg(
+        self,
+    ) -> crate::common::Reg<regs::LinkU1ExitCfg, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x34usize) as _) }
+    }
+    #[doc = "U2 exit configuration. The RM register table omits this register and the EVT header gives no bit definitions."]
+    #[inline(always)]
+    pub const fn link_u2_exit_cfg(
+        self,
+    ) -> crate::common::Reg<regs::LinkU2ExitCfg, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x38usize) as _) }
+    }
+    #[doc = "U3 exit configuration. The RM register table omits this register and the EVT header gives no bit definitions."]
+    #[inline(always)]
+    pub const fn link_u3_exit_cfg(
+        self,
+    ) -> crate::common::Reg<regs::LinkU3ExitCfg, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x3cusize) as _) }
     }
     #[doc = "LINK Synchronous Delay Register."]
     #[inline(always)]
@@ -354,6 +434,20 @@ impl UsbssDevice {
     #[inline(always)]
     pub const fn u3ep0_rx_dma(self) -> crate::common::Reg<regs::U3ep0RxDma, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x90usize) as _) }
+    }
+    #[doc = "Endpoint 0 transmit DMA offset. The RM register table omits this register; the EVT device header exposes it."]
+    #[inline(always)]
+    pub const fn uep0_tx_dma_ofs(
+        self,
+    ) -> crate::common::Reg<regs::Uep0TxDmaOfs, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x94usize) as _) }
+    }
+    #[doc = "Endpoint 0 receive DMA offset. The RM register table omits this register; the EVT device header exposes it."]
+    #[inline(always)]
+    pub const fn uep0_rx_dma_ofs(
+        self,
+    ) -> crate::common::Reg<regs::Uep0RxDmaOfs, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x98usize) as _) }
     }
     #[doc = "DEV_NOTIF-TP Data 0 Register."]
     #[inline(always)]
@@ -1308,6 +1402,16 @@ impl UsbssDevice {
     pub const fn uep7_rx_dma(self) -> crate::common::Reg<regs::Uep7RxDma, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x019cusize) as _) }
     }
+    #[doc = "Indirect PHY configuration command. The RM does not document this register; the device SDK writes `(1 << 23) | (addr << 16) | data`."]
+    #[inline(always)]
+    pub const fn phy_cfg_cr(self) -> crate::common::Reg<regs::PhyCfgCr, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x01f8usize) as _) }
+    }
+    #[doc = "Indirect PHY configuration data. The RM does not document this register; the device SDK reads the PHY response from it."]
+    #[inline(always)]
+    pub const fn phy_cfg_dat(self) -> crate::common::Reg<regs::PhyCfgDat, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x01fcusize) as _) }
+    }
 }
 #[doc = "USBSS in host mode. UH_* / HOST_* registers. Offsets overlap with USBSS_DEVICE."]
 #[derive(Copy, Clone, Eq, PartialEq)]
@@ -1369,6 +1473,13 @@ impl UsbssHost {
     ) -> crate::common::Reg<regs::LinkU1WkupFilter, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x28usize) as _) }
     }
+    #[doc = "U1 wake-up timer. The RM register table omits this register; the EVT device header exposes it and the device SDK writes 120."]
+    #[inline(always)]
+    pub const fn link_u1_wkup_tmr(
+        self,
+    ) -> crate::common::Reg<regs::LinkU1WkupTmr, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x2ausize) as _) }
+    }
     #[doc = "U2 wakes up the LFPS Duration Register."]
     #[inline(always)]
     pub const fn link_u2_wkup_filter(
@@ -1382,6 +1493,34 @@ impl UsbssHost {
         self,
     ) -> crate::common::Reg<regs::LinkU3WkupFilter, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x30usize) as _) }
+    }
+    #[doc = "U3 wake-up timer. The RM register table omits this register; the EVT device header exposes it."]
+    #[inline(always)]
+    pub const fn link_u3_wkup_tmr(
+        self,
+    ) -> crate::common::Reg<regs::LinkU3WkupTmr, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x32usize) as _) }
+    }
+    #[doc = "U1 exit configuration. The RM register table omits this register; the EVT device header exposes it and the device SDK sets bit 9 before link training."]
+    #[inline(always)]
+    pub const fn link_u1_exit_cfg(
+        self,
+    ) -> crate::common::Reg<regs::LinkU1ExitCfg, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x34usize) as _) }
+    }
+    #[doc = "U2 exit configuration. The RM register table omits this register and the EVT header gives no bit definitions."]
+    #[inline(always)]
+    pub const fn link_u2_exit_cfg(
+        self,
+    ) -> crate::common::Reg<regs::LinkU2ExitCfg, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x38usize) as _) }
+    }
+    #[doc = "U3 exit configuration. The RM register table omits this register and the EVT header gives no bit definitions."]
+    #[inline(always)]
+    pub const fn link_u3_exit_cfg(
+        self,
+    ) -> crate::common::Reg<regs::LinkU3ExitCfg, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x3cusize) as _) }
     }
     #[doc = "LINK Synchronous Delay Register."]
     #[inline(always)]
@@ -1530,6 +1669,16 @@ impl UsbssHost {
     #[inline(always)]
     pub const fn tp_rx_data2(self) -> crate::common::Reg<regs::TpRxData2, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xb0usize) as _) }
+    }
+    #[doc = "Indirect PHY configuration command. The RM does not document this register; the device SDK writes `(1 << 23) | (addr << 16) | data`."]
+    #[inline(always)]
+    pub const fn phy_cfg_cr(self) -> crate::common::Reg<regs::PhyCfgCr, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x01f8usize) as _) }
+    }
+    #[doc = "Indirect PHY configuration data. The RM does not document this register; the device SDK reads the PHY response from it."]
+    #[inline(always)]
+    pub const fn phy_cfg_dat(self) -> crate::common::Reg<regs::PhyCfgDat, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x01fcusize) as _) }
     }
 }
 pub mod regs {
@@ -3371,6 +3520,29 @@ Position 1, indicating that the supported device supports USB3.2 Gen1 (5Gbps)."]
             LinkStatus(0)
         }
     }
+    #[doc = "U1 exit configuration."]
+    #[repr(transparent)]
+    #[derive(Copy, Clone, Eq, PartialEq)]
+    pub struct LinkU1ExitCfg(pub u32);
+    impl LinkU1ExitCfg {
+        #[doc = "U1 exit time enable. The device SDK sets this bit before link training."]
+        #[inline(always)]
+        pub const fn u1_exit_time(&self) -> bool {
+            let val = (self.0 >> 9usize) & 0x01;
+            val != 0
+        }
+        #[doc = "U1 exit time enable. The device SDK sets this bit before link training."]
+        #[inline(always)]
+        pub fn set_u1_exit_time(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
+        }
+    }
+    impl Default for LinkU1ExitCfg {
+        #[inline(always)]
+        fn default() -> LinkU1ExitCfg {
+            LinkU1ExitCfg(0)
+        }
+    }
     #[doc = "U1 wakes up the LFPS Duration Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
@@ -3392,6 +3564,52 @@ Position 1, indicating that the supported device supports USB3.2 Gen1 (5Gbps)."]
         #[inline(always)]
         fn default() -> LinkU1WkupFilter {
             LinkU1WkupFilter(0)
+        }
+    }
+    #[doc = "U1 wake-up timer."]
+    #[repr(transparent)]
+    #[derive(Copy, Clone, Eq, PartialEq)]
+    pub struct LinkU1WkupTmr(pub u16);
+    impl LinkU1WkupTmr {
+        #[doc = "U1 wake-up timer value. The device SDK writes 120."]
+        #[inline(always)]
+        pub const fn u1_wkup_tmr(&self) -> u16 {
+            let val = (self.0 >> 0usize) & 0xffff;
+            val as u16
+        }
+        #[doc = "U1 wake-up timer value. The device SDK writes 120."]
+        #[inline(always)]
+        pub fn set_u1_wkup_tmr(&mut self, val: u16) {
+            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u16) & 0xffff) << 0usize);
+        }
+    }
+    impl Default for LinkU1WkupTmr {
+        #[inline(always)]
+        fn default() -> LinkU1WkupTmr {
+            LinkU1WkupTmr(0)
+        }
+    }
+    #[doc = "U2 exit configuration. The EVT header gives no bit definitions."]
+    #[repr(transparent)]
+    #[derive(Copy, Clone, Eq, PartialEq)]
+    pub struct LinkU2ExitCfg(pub u32);
+    impl LinkU2ExitCfg {
+        #[doc = "Undocumented configuration value."]
+        #[inline(always)]
+        pub const fn exit_cfg(&self) -> u32 {
+            let val = (self.0 >> 0usize) & 0xffff_ffff;
+            val as u32
+        }
+        #[doc = "Undocumented configuration value."]
+        #[inline(always)]
+        pub fn set_exit_cfg(&mut self, val: u32) {
+            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
+        }
+    }
+    impl Default for LinkU2ExitCfg {
+        #[inline(always)]
+        fn default() -> LinkU2ExitCfg {
+            LinkU2ExitCfg(0)
         }
     }
     #[doc = "LINK U2 Inactivity Timeout Counter Threshold Register."]
@@ -3440,6 +3658,29 @@ Position 1, indicating that the supported device supports USB3.2 Gen1 (5Gbps)."]
             LinkU2WkupFilter(0)
         }
     }
+    #[doc = "U3 exit configuration. The EVT header gives no bit definitions."]
+    #[repr(transparent)]
+    #[derive(Copy, Clone, Eq, PartialEq)]
+    pub struct LinkU3ExitCfg(pub u32);
+    impl LinkU3ExitCfg {
+        #[doc = "Undocumented configuration value."]
+        #[inline(always)]
+        pub const fn exit_cfg(&self) -> u32 {
+            let val = (self.0 >> 0usize) & 0xffff_ffff;
+            val as u32
+        }
+        #[doc = "Undocumented configuration value."]
+        #[inline(always)]
+        pub fn set_exit_cfg(&mut self, val: u32) {
+            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
+        }
+    }
+    impl Default for LinkU3ExitCfg {
+        #[inline(always)]
+        fn default() -> LinkU3ExitCfg {
+            LinkU3ExitCfg(0)
+        }
+    }
     #[doc = "U3 wakes up the LFPS validity duration register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
@@ -3461,6 +3702,97 @@ Position 1, indicating that the supported device supports USB3.2 Gen1 (5Gbps)."]
         #[inline(always)]
         fn default() -> LinkU3WkupFilter {
             LinkU3WkupFilter(0)
+        }
+    }
+    #[doc = "U3 wake-up timer."]
+    #[repr(transparent)]
+    #[derive(Copy, Clone, Eq, PartialEq)]
+    pub struct LinkU3WkupTmr(pub u16);
+    impl LinkU3WkupTmr {
+        #[doc = "U3 wake-up timer value."]
+        #[inline(always)]
+        pub const fn u3_wkup_tmr(&self) -> u16 {
+            let val = (self.0 >> 0usize) & 0xffff;
+            val as u16
+        }
+        #[doc = "U3 wake-up timer value."]
+        #[inline(always)]
+        pub fn set_u3_wkup_tmr(&mut self, val: u16) {
+            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u16) & 0xffff) << 0usize);
+        }
+    }
+    impl Default for LinkU3WkupTmr {
+        #[inline(always)]
+        fn default() -> LinkU3WkupTmr {
+            LinkU3WkupTmr(0)
+        }
+    }
+    #[doc = "Indirect PHY configuration command."]
+    #[repr(transparent)]
+    #[derive(Copy, Clone, Eq, PartialEq)]
+    pub struct PhyCfgCr(pub u32);
+    impl PhyCfgCr {
+        #[doc = "Data written to the addressed PHY register."]
+        #[inline(always)]
+        pub const fn phy_cfg_data(&self) -> u16 {
+            let val = (self.0 >> 0usize) & 0xffff;
+            val as u16
+        }
+        #[doc = "Data written to the addressed PHY register."]
+        #[inline(always)]
+        pub fn set_phy_cfg_data(&mut self, val: u16) {
+            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
+        }
+        #[doc = "PHY register address."]
+        #[inline(always)]
+        pub const fn phy_cfg_addr(&self) -> u8 {
+            let val = (self.0 >> 16usize) & 0x1f;
+            val as u8
+        }
+        #[doc = "PHY register address."]
+        #[inline(always)]
+        pub fn set_phy_cfg_addr(&mut self, val: u8) {
+            self.0 = (self.0 & !(0x1f << 16usize)) | (((val as u32) & 0x1f) << 16usize);
+        }
+        #[doc = "Command strobe. The device SDK always sets it together with the address and data."]
+        #[inline(always)]
+        pub const fn phy_cfg_write(&self) -> bool {
+            let val = (self.0 >> 23usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Command strobe. The device SDK always sets it together with the address and data."]
+        #[inline(always)]
+        pub fn set_phy_cfg_write(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
+        }
+    }
+    impl Default for PhyCfgCr {
+        #[inline(always)]
+        fn default() -> PhyCfgCr {
+            PhyCfgCr(0)
+        }
+    }
+    #[doc = "Indirect PHY configuration data."]
+    #[repr(transparent)]
+    #[derive(Copy, Clone, Eq, PartialEq)]
+    pub struct PhyCfgDat(pub u32);
+    impl PhyCfgDat {
+        #[doc = "Data read back from the PHY."]
+        #[inline(always)]
+        pub const fn phy_cfg_data(&self) -> u32 {
+            let val = (self.0 >> 0usize) & 0xffff_ffff;
+            val as u32
+        }
+        #[doc = "Data read back from the PHY."]
+        #[inline(always)]
+        pub fn set_phy_cfg_data(&mut self, val: u32) {
+            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
+        }
+    }
+    impl Default for PhyCfgDat {
+        #[inline(always)]
+        fn default() -> PhyCfgDat {
+            PhyCfgDat(0)
         }
     }
     #[doc = "USBSS Status Register."]
@@ -3822,6 +4154,29 @@ Position 1, indicating that the supported device supports USB3.2 Gen1 (5Gbps)."]
             Uep0RxCtrl(0)
         }
     }
+    #[doc = "Endpoint 0 receive DMA offset."]
+    #[repr(transparent)]
+    #[derive(Copy, Clone, Eq, PartialEq)]
+    pub struct Uep0RxDmaOfs(pub u32);
+    impl Uep0RxDmaOfs {
+        #[doc = "DMA offset value."]
+        #[inline(always)]
+        pub const fn dma_ofs(&self) -> u32 {
+            let val = (self.0 >> 0usize) & 0xffff_ffff;
+            val as u32
+        }
+        #[doc = "DMA offset value."]
+        #[inline(always)]
+        pub fn set_dma_ofs(&mut self, val: u32) {
+            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
+        }
+    }
+    impl Default for Uep0RxDmaOfs {
+        #[inline(always)]
+        fn default() -> Uep0RxDmaOfs {
+            Uep0RxDmaOfs(0)
+        }
+    }
     #[doc = "Endpoint 0 sends control registers."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
@@ -3909,6 +4264,29 @@ Position 1, indicating that the supported device supports USB3.2 Gen1 (5Gbps)."]
         #[inline(always)]
         fn default() -> Uep0TxCtrl {
             Uep0TxCtrl(0)
+        }
+    }
+    #[doc = "Endpoint 0 transmit DMA offset."]
+    #[repr(transparent)]
+    #[derive(Copy, Clone, Eq, PartialEq)]
+    pub struct Uep0TxDmaOfs(pub u32);
+    impl Uep0TxDmaOfs {
+        #[doc = "DMA offset value."]
+        #[inline(always)]
+        pub const fn dma_ofs(&self) -> u32 {
+            let val = (self.0 >> 0usize) & 0xffff_ffff;
+            val as u32
+        }
+        #[doc = "DMA offset value."]
+        #[inline(always)]
+        pub fn set_dma_ofs(&mut self, val: u32) {
+            self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
+        }
+    }
+    impl Default for Uep0TxDmaOfs {
+        #[inline(always)]
+        fn default() -> Uep0TxDmaOfs {
+            Uep0TxDmaOfs(0)
         }
     }
     #[doc = "Endpoint 1 Configuration Register."]
@@ -4554,7 +4932,7 @@ Position 1, indicating that the supported device supports USB3.2 Gen1 (5Gbps)."]
     #[doc = "Number of NUMPs expected to be sent by endpoint 1."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Uep1TxChainExpNump(pub u16);
+    pub struct Uep1TxChainExpNump(pub u8);
     impl Uep1TxChainExpNump {
         #[doc = "The number of DPP packets that can be sent by the currently completed CHAIN."]
         #[inline(always)]
@@ -4565,7 +4943,7 @@ Position 1, indicating that the supported device supports USB3.2 Gen1 (5Gbps)."]
         #[doc = "The number of DPP packets that can be sent by the currently completed CHAIN."]
         #[inline(always)]
         pub fn set_tx_chain_exp_nump(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u16) & 0xff) << 0usize);
+            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u8) & 0xff) << 0usize);
         }
     }
     impl Default for Uep1TxChainExpNump {
@@ -5533,7 +5911,7 @@ Position 1, indicating that the supported device supports USB3.2 Gen1 (5Gbps)."]
     #[doc = "Number of NUMPs expected to be sent by endpoint 2."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Uep2TxChainExpNump(pub u16);
+    pub struct Uep2TxChainExpNump(pub u8);
     impl Uep2TxChainExpNump {
         #[doc = "The number of DPP packets that can be sent by the currently completed CHAIN."]
         #[inline(always)]
@@ -5544,7 +5922,7 @@ Position 1, indicating that the supported device supports USB3.2 Gen1 (5Gbps)."]
         #[doc = "The number of DPP packets that can be sent by the currently completed CHAIN."]
         #[inline(always)]
         pub fn set_tx_chain_exp_nump(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u16) & 0xff) << 0usize);
+            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u8) & 0xff) << 0usize);
         }
     }
     impl Default for Uep2TxChainExpNump {
@@ -6512,7 +6890,7 @@ Position 1, indicating that the supported device supports USB3.2 Gen1 (5Gbps)."]
     #[doc = "Number of NUMPs expected to be sent by endpoint 3."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Uep3TxChainExpNump(pub u16);
+    pub struct Uep3TxChainExpNump(pub u8);
     impl Uep3TxChainExpNump {
         #[doc = "The number of DPP packets that can be sent by the currently completed CHAIN."]
         #[inline(always)]
@@ -6523,7 +6901,7 @@ Position 1, indicating that the supported device supports USB3.2 Gen1 (5Gbps)."]
         #[doc = "The number of DPP packets that can be sent by the currently completed CHAIN."]
         #[inline(always)]
         pub fn set_tx_chain_exp_nump(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u16) & 0xff) << 0usize);
+            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u8) & 0xff) << 0usize);
         }
     }
     impl Default for Uep3TxChainExpNump {
@@ -7491,7 +7869,7 @@ Position 1, indicating that the supported device supports USB3.2 Gen1 (5Gbps)."]
     #[doc = "Number of NUMPs expected to be sent by Endpoint 4."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Uep4TxChainExpNump(pub u16);
+    pub struct Uep4TxChainExpNump(pub u8);
     impl Uep4TxChainExpNump {
         #[doc = "The number of DPP packets that can be sent by the currently completed CHAIN."]
         #[inline(always)]
@@ -7502,7 +7880,7 @@ Position 1, indicating that the supported device supports USB3.2 Gen1 (5Gbps)."]
         #[doc = "The number of DPP packets that can be sent by the currently completed CHAIN."]
         #[inline(always)]
         pub fn set_tx_chain_exp_nump(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u16) & 0xff) << 0usize);
+            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u8) & 0xff) << 0usize);
         }
     }
     impl Default for Uep4TxChainExpNump {
@@ -8470,7 +8848,7 @@ Position 1, indicating that the supported device supports USB3.2 Gen1 (5Gbps)."]
     #[doc = "Number of NUMPs expected to be sent by Endpoint 5."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Uep5TxChainExpNump(pub u16);
+    pub struct Uep5TxChainExpNump(pub u8);
     impl Uep5TxChainExpNump {
         #[doc = "The number of DPP packets that can be sent by the currently completed CHAIN."]
         #[inline(always)]
@@ -8481,7 +8859,7 @@ Position 1, indicating that the supported device supports USB3.2 Gen1 (5Gbps)."]
         #[doc = "The number of DPP packets that can be sent by the currently completed CHAIN."]
         #[inline(always)]
         pub fn set_tx_chain_exp_nump(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u16) & 0xff) << 0usize);
+            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u8) & 0xff) << 0usize);
         }
     }
     impl Default for Uep5TxChainExpNump {
@@ -9449,7 +9827,7 @@ Position 1, indicating that the supported device supports USB3.2 Gen1 (5Gbps)."]
     #[doc = "Number of NUMPs expected to be sent by Endpoint 6."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Uep6TxChainExpNump(pub u16);
+    pub struct Uep6TxChainExpNump(pub u8);
     impl Uep6TxChainExpNump {
         #[doc = "The number of DPP packets that can be sent by the currently completed CHAIN."]
         #[inline(always)]
@@ -9460,7 +9838,7 @@ Position 1, indicating that the supported device supports USB3.2 Gen1 (5Gbps)."]
         #[doc = "The number of DPP packets that can be sent by the currently completed CHAIN."]
         #[inline(always)]
         pub fn set_tx_chain_exp_nump(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u16) & 0xff) << 0usize);
+            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u8) & 0xff) << 0usize);
         }
     }
     impl Default for Uep6TxChainExpNump {
@@ -10428,7 +10806,7 @@ Position 1, indicating that the supported device supports USB3.2 Gen1 (5Gbps)."]
     #[doc = "Number of NUMPs expected to be sent by Endpoint 7."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Uep7TxChainExpNump(pub u16);
+    pub struct Uep7TxChainExpNump(pub u8);
     impl Uep7TxChainExpNump {
         #[doc = "The number of DPP packets that can be sent by the currently completed CHAIN."]
         #[inline(always)]
@@ -10439,7 +10817,7 @@ Position 1, indicating that the supported device supports USB3.2 Gen1 (5Gbps)."]
         #[doc = "The number of DPP packets that can be sent by the currently completed CHAIN."]
         #[inline(always)]
         pub fn set_tx_chain_exp_nump(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u16) & 0xff) << 0usize);
+            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u8) & 0xff) << 0usize);
         }
     }
     impl Default for Uep7TxChainExpNump {

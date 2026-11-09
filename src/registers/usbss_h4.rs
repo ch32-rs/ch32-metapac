@@ -145,6 +145,23 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
+                    name: "link_u1_wkup_tmr",
+                    description: Some(
+                        "U1 wake-up timer. The RM register table omits this register; the EVT device header exposes it and the device SDK writes 120.",
+                    ),
+                    array: None,
+                    byte_offset: 0x2a,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 16,
+                            fieldset: Some(
+                                "LinkU1WkupTmr",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
                     name: "link_u2_wkup_filter",
                     description: Some(
                         "U2 wakes up the LFPS Duration Register.",
@@ -174,6 +191,74 @@ pub(crate) static REGISTERS: IR = IR {
                             bit_size: 8,
                             fieldset: Some(
                                 "LinkU3WkupFilter",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "link_u3_wkup_tmr",
+                    description: Some(
+                        "U3 wake-up timer. The RM register table omits this register; the EVT device header exposes it.",
+                    ),
+                    array: None,
+                    byte_offset: 0x32,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 16,
+                            fieldset: Some(
+                                "LinkU3WkupTmr",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "link_u1_exit_cfg",
+                    description: Some(
+                        "U1 exit configuration. The RM register table omits this register; the EVT device header exposes it and the device SDK sets bit 9 before link training.",
+                    ),
+                    array: None,
+                    byte_offset: 0x34,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "LinkU1ExitCfg",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "link_u2_exit_cfg",
+                    description: Some(
+                        "U2 exit configuration. The RM register table omits this register and the EVT header gives no bit definitions.",
+                    ),
+                    array: None,
+                    byte_offset: 0x38,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "LinkU2ExitCfg",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "link_u3_exit_cfg",
+                    description: Some(
+                        "U3 exit configuration. The RM register table omits this register and the EVT header gives no bit definitions.",
+                    ),
+                    array: None,
+                    byte_offset: 0x3c,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "LinkU3ExitCfg",
                             ),
                         },
                     ),
@@ -450,6 +535,40 @@ pub(crate) static REGISTERS: IR = IR {
                         },
                     ),
                 },
+                BlockItem {
+                    name: "phy_cfg_cr",
+                    description: Some(
+                        "Indirect PHY configuration command. The RM does not document this register; the device SDK writes `(1 << 23) | (addr << 16) | data`.",
+                    ),
+                    array: None,
+                    byte_offset: 0x1f8,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "PhyCfgCr",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "phy_cfg_dat",
+                    description: Some(
+                        "Indirect PHY configuration data. The RM does not document this register; the device SDK reads the PHY response from it.",
+                    ),
+                    array: None,
+                    byte_offset: 0x1fc,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "PhyCfgDat",
+                            ),
+                        },
+                    ),
+                },
             ],
         },
         Block {
@@ -598,6 +717,23 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
+                    name: "link_u1_wkup_tmr",
+                    description: Some(
+                        "U1 wake-up timer. The RM register table omits this register; the EVT device header exposes it and the device SDK writes 120.",
+                    ),
+                    array: None,
+                    byte_offset: 0x2a,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 16,
+                            fieldset: Some(
+                                "LinkU1WkupTmr",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
                     name: "link_u2_wkup_filter",
                     description: Some(
                         "U2 wakes up the LFPS Duration Register.",
@@ -627,6 +763,74 @@ pub(crate) static REGISTERS: IR = IR {
                             bit_size: 8,
                             fieldset: Some(
                                 "LinkU3WkupFilter",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "link_u3_wkup_tmr",
+                    description: Some(
+                        "U3 wake-up timer. The RM register table omits this register; the EVT device header exposes it.",
+                    ),
+                    array: None,
+                    byte_offset: 0x32,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 16,
+                            fieldset: Some(
+                                "LinkU3WkupTmr",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "link_u1_exit_cfg",
+                    description: Some(
+                        "U1 exit configuration. The RM register table omits this register; the EVT device header exposes it and the device SDK sets bit 9 before link training.",
+                    ),
+                    array: None,
+                    byte_offset: 0x34,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "LinkU1ExitCfg",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "link_u2_exit_cfg",
+                    description: Some(
+                        "U2 exit configuration. The RM register table omits this register and the EVT header gives no bit definitions.",
+                    ),
+                    array: None,
+                    byte_offset: 0x38,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "LinkU2ExitCfg",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "link_u3_exit_cfg",
+                    description: Some(
+                        "U3 exit configuration. The RM register table omits this register and the EVT header gives no bit definitions.",
+                    ),
+                    array: None,
+                    byte_offset: 0x3c,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "LinkU3ExitCfg",
                             ),
                         },
                     ),
@@ -955,6 +1159,40 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
+                    name: "uep0_tx_dma_ofs",
+                    description: Some(
+                        "Endpoint 0 transmit DMA offset. The RM register table omits this register; the EVT device header exposes it.",
+                    ),
+                    array: None,
+                    byte_offset: 0x94,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Uep0TxDmaOfs",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "uep0_rx_dma_ofs",
+                    description: Some(
+                        "Endpoint 0 receive DMA offset. The RM register table omits this register; the EVT device header exposes it.",
+                    ),
+                    array: None,
+                    byte_offset: 0x98,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "Uep0RxDmaOfs",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
                     name: "tp_rx_data0",
                     description: Some(
                         "DEV_NOTIF-TP Data 0 Register.",
@@ -1134,7 +1372,7 @@ pub(crate) static REGISTERS: IR = IR {
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
-                            bit_size: 16,
+                            bit_size: 8,
                             fieldset: Some(
                                 "Uep1TxChainExpNump",
                             ),
@@ -1508,7 +1746,7 @@ pub(crate) static REGISTERS: IR = IR {
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
-                            bit_size: 16,
+                            bit_size: 8,
                             fieldset: Some(
                                 "Uep2TxChainExpNump",
                             ),
@@ -1882,7 +2120,7 @@ pub(crate) static REGISTERS: IR = IR {
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
-                            bit_size: 16,
+                            bit_size: 8,
                             fieldset: Some(
                                 "Uep3TxChainExpNump",
                             ),
@@ -2256,7 +2494,7 @@ pub(crate) static REGISTERS: IR = IR {
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
-                            bit_size: 16,
+                            bit_size: 8,
                             fieldset: Some(
                                 "Uep4TxChainExpNump",
                             ),
@@ -2630,7 +2868,7 @@ pub(crate) static REGISTERS: IR = IR {
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
-                            bit_size: 16,
+                            bit_size: 8,
                             fieldset: Some(
                                 "Uep5TxChainExpNump",
                             ),
@@ -3004,7 +3242,7 @@ pub(crate) static REGISTERS: IR = IR {
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
-                            bit_size: 16,
+                            bit_size: 8,
                             fieldset: Some(
                                 "Uep6TxChainExpNump",
                             ),
@@ -3378,7 +3616,7 @@ pub(crate) static REGISTERS: IR = IR {
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
-                            bit_size: 16,
+                            bit_size: 8,
                             fieldset: Some(
                                 "Uep7TxChainExpNump",
                             ),
@@ -3623,6 +3861,40 @@ pub(crate) static REGISTERS: IR = IR {
                         },
                     ),
                 },
+                BlockItem {
+                    name: "phy_cfg_cr",
+                    description: Some(
+                        "Indirect PHY configuration command. The RM does not document this register; the device SDK writes `(1 << 23) | (addr << 16) | data`.",
+                    ),
+                    array: None,
+                    byte_offset: 0x1f8,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "PhyCfgCr",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "phy_cfg_dat",
+                    description: Some(
+                        "Indirect PHY configuration data. The RM does not document this register; the device SDK reads the PHY response from it.",
+                    ),
+                    array: None,
+                    byte_offset: 0x1fc,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "PhyCfgDat",
+                            ),
+                        },
+                    ),
+                },
             ],
         },
         Block {
@@ -3771,6 +4043,23 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
+                    name: "link_u1_wkup_tmr",
+                    description: Some(
+                        "U1 wake-up timer. The RM register table omits this register; the EVT device header exposes it and the device SDK writes 120.",
+                    ),
+                    array: None,
+                    byte_offset: 0x2a,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 16,
+                            fieldset: Some(
+                                "LinkU1WkupTmr",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
                     name: "link_u2_wkup_filter",
                     description: Some(
                         "U2 wakes up the LFPS Duration Register.",
@@ -3800,6 +4089,74 @@ pub(crate) static REGISTERS: IR = IR {
                             bit_size: 8,
                             fieldset: Some(
                                 "LinkU3WkupFilter",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "link_u3_wkup_tmr",
+                    description: Some(
+                        "U3 wake-up timer. The RM register table omits this register; the EVT device header exposes it.",
+                    ),
+                    array: None,
+                    byte_offset: 0x32,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 16,
+                            fieldset: Some(
+                                "LinkU3WkupTmr",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "link_u1_exit_cfg",
+                    description: Some(
+                        "U1 exit configuration. The RM register table omits this register; the EVT device header exposes it and the device SDK sets bit 9 before link training.",
+                    ),
+                    array: None,
+                    byte_offset: 0x34,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "LinkU1ExitCfg",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "link_u2_exit_cfg",
+                    description: Some(
+                        "U2 exit configuration. The RM register table omits this register and the EVT header gives no bit definitions.",
+                    ),
+                    array: None,
+                    byte_offset: 0x38,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "LinkU2ExitCfg",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "link_u3_exit_cfg",
+                    description: Some(
+                        "U3 exit configuration. The RM register table omits this register and the EVT header gives no bit definitions.",
+                    ),
+                    array: None,
+                    byte_offset: 0x3c,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "LinkU3ExitCfg",
                             ),
                         },
                     ),
@@ -4242,6 +4599,40 @@ pub(crate) static REGISTERS: IR = IR {
                             bit_size: 32,
                             fieldset: Some(
                                 "TpRxData2",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "phy_cfg_cr",
+                    description: Some(
+                        "Indirect PHY configuration command. The RM does not document this register; the device SDK writes `(1 << 23) | (addr << 16) | data`.",
+                    ),
+                    array: None,
+                    byte_offset: 0x1f8,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "PhyCfgCr",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "phy_cfg_dat",
+                    description: Some(
+                        "Indirect PHY configuration data. The RM does not document this register; the device SDK reads the PHY response from it.",
+                    ),
+                    array: None,
+                    byte_offset: 0x1fc,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: Some(
+                                "PhyCfgDat",
                             ),
                         },
                     ),
@@ -6477,6 +6868,30 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
+            name: "LinkU1ExitCfg",
+            extends: None,
+            description: Some(
+                "U1 exit configuration.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "u1_exit_time",
+                    description: Some(
+                        "U1 exit time enable. The device SDK sets this bit before link training.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 9,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
             name: "LinkU1WkupFilter",
             extends: None,
             description: Some(
@@ -6495,6 +6910,54 @@ pub(crate) static REGISTERS: IR = IR {
                         },
                     ),
                     bit_size: 8,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "LinkU1WkupTmr",
+            extends: None,
+            description: Some(
+                "U1 wake-up timer.",
+            ),
+            bit_size: 16,
+            fields: &[
+                Field {
+                    name: "u1_wkup_tmr",
+                    description: Some(
+                        "U1 wake-up timer value. The device SDK writes 120.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 16,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "LinkU2ExitCfg",
+            extends: None,
+            description: Some(
+                "U2 exit configuration. The EVT header gives no bit definitions.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "exit_cfg",
+                    description: Some(
+                        "Undocumented configuration value.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 32,
                     array: None,
                     enumm: None,
                 },
@@ -6549,6 +7012,30 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
+            name: "LinkU3ExitCfg",
+            extends: None,
+            description: Some(
+                "U3 exit configuration. The EVT header gives no bit definitions.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "exit_cfg",
+                    description: Some(
+                        "Undocumented configuration value.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 32,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
             name: "LinkU3WkupFilter",
             extends: None,
             description: Some(
@@ -6567,6 +7054,106 @@ pub(crate) static REGISTERS: IR = IR {
                         },
                     ),
                     bit_size: 8,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "LinkU3WkupTmr",
+            extends: None,
+            description: Some(
+                "U3 wake-up timer.",
+            ),
+            bit_size: 16,
+            fields: &[
+                Field {
+                    name: "u3_wkup_tmr",
+                    description: Some(
+                        "U3 wake-up timer value.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 16,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "PhyCfgCr",
+            extends: None,
+            description: Some(
+                "Indirect PHY configuration command.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "phy_cfg_data",
+                    description: Some(
+                        "Data written to the addressed PHY register.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 16,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "phy_cfg_addr",
+                    description: Some(
+                        "PHY register address.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 16,
+                        },
+                    ),
+                    bit_size: 5,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "phy_cfg_write",
+                    description: Some(
+                        "Command strobe. The device SDK always sets it together with the address and data.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 23,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "PhyCfgDat",
+            extends: None,
+            description: Some(
+                "Indirect PHY configuration data.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "phy_cfg_data",
+                    description: Some(
+                        "Data read back from the PHY.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 32,
                     array: None,
                     enumm: None,
                 },
@@ -6993,6 +7580,30 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
+            name: "Uep0RxDmaOfs",
+            extends: None,
+            description: Some(
+                "Endpoint 0 receive DMA offset.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "dma_ofs",
+                    description: Some(
+                        "DMA offset value.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 32,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
             name: "Uep0TxCtrl",
             extends: None,
             description: Some(
@@ -7095,6 +7706,30 @@ pub(crate) static REGISTERS: IR = IR {
                         },
                     ),
                     bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "Uep0TxDmaOfs",
+            extends: None,
+            description: Some(
+                "Endpoint 0 transmit DMA offset.",
+            ),
+            bit_size: 32,
+            fields: &[
+                Field {
+                    name: "dma_ofs",
+                    description: Some(
+                        "DMA offset value.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 32,
                     array: None,
                     enumm: None,
                 },
@@ -7852,7 +8487,7 @@ pub(crate) static REGISTERS: IR = IR {
             description: Some(
                 "Number of NUMPs expected to be sent by endpoint 1.",
             ),
-            bit_size: 16,
+            bit_size: 8,
             fields: &[
                 Field {
                     name: "tx_chain_exp_nump",
@@ -8982,7 +9617,7 @@ pub(crate) static REGISTERS: IR = IR {
             description: Some(
                 "Number of NUMPs expected to be sent by endpoint 2.",
             ),
-            bit_size: 16,
+            bit_size: 8,
             fields: &[
                 Field {
                     name: "tx_chain_exp_nump",
@@ -10112,7 +10747,7 @@ pub(crate) static REGISTERS: IR = IR {
             description: Some(
                 "Number of NUMPs expected to be sent by endpoint 3.",
             ),
-            bit_size: 16,
+            bit_size: 8,
             fields: &[
                 Field {
                     name: "tx_chain_exp_nump",
@@ -11242,7 +11877,7 @@ pub(crate) static REGISTERS: IR = IR {
             description: Some(
                 "Number of NUMPs expected to be sent by Endpoint 4.",
             ),
-            bit_size: 16,
+            bit_size: 8,
             fields: &[
                 Field {
                     name: "tx_chain_exp_nump",
@@ -12372,7 +13007,7 @@ pub(crate) static REGISTERS: IR = IR {
             description: Some(
                 "Number of NUMPs expected to be sent by Endpoint 5.",
             ),
-            bit_size: 16,
+            bit_size: 8,
             fields: &[
                 Field {
                     name: "tx_chain_exp_nump",
@@ -13502,7 +14137,7 @@ pub(crate) static REGISTERS: IR = IR {
             description: Some(
                 "Number of NUMPs expected to be sent by Endpoint 6.",
             ),
-            bit_size: 16,
+            bit_size: 8,
             fields: &[
                 Field {
                     name: "tx_chain_exp_nump",
@@ -14632,7 +15267,7 @@ pub(crate) static REGISTERS: IR = IR {
             description: Some(
                 "Number of NUMPs expected to be sent by Endpoint 7.",
             ),
-            bit_size: 16,
+            bit_size: 8,
             fields: &[
                 Field {
                     name: "tx_chain_exp_nump",
