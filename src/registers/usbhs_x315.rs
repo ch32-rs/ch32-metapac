@@ -1125,7 +1125,7 @@ pub(crate) static REGISTERS: IR = IR {
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
-                            bit_size: 16,
+                            bit_size: 8,
                             fieldset: Some(
                                 "UhPortChg",
                             ),
@@ -1783,10 +1783,10 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
-                            offset: 0,
+                            offset: 1,
                         },
                     ),
-                    bit_size: 8,
+                    bit_size: 7,
                     array: None,
                     enumm: None,
                 },
@@ -2121,10 +2121,10 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
-                            offset: 0,
+                            offset: 1,
                         },
                     ),
-                    bit_size: 8,
+                    bit_size: 7,
                     array: None,
                     enumm: None,
                 },
@@ -3196,7 +3196,7 @@ pub(crate) static REGISTERS: IR = IR {
             description: Some(
                 "USB host port state charge register.",
             ),
-            bit_size: 16,
+            bit_size: 8,
             fields: &[
                 Field {
                     name: "uhif_port_connect",

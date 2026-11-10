@@ -1042,13 +1042,13 @@ pub mod regs {
         #[must_use]
         #[inline(always)]
         pub const fn uep_r_tog_auto(&self) -> u8 {
-            let val = (self.0 >> 0usize) & 0xff;
+            let val = (self.0 >> 1usize) & 0x7f;
             val as u8
         }
         #[doc = "0 to 7 endpoint synchronization triggers bit auto-filp. enable."]
         #[inline(always)]
         pub const fn set_uep_r_tog_auto(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u16) & 0xff) << 0usize);
+            self.0 = (self.0 & !(0x7f << 1usize)) | (((val as u16) & 0x7f) << 1usize);
         }
     }
     impl Default for UepRTogAuto {
@@ -1453,13 +1453,13 @@ pub mod regs {
         #[must_use]
         #[inline(always)]
         pub const fn uep_t_tog_auto(&self) -> u8 {
-            let val = (self.0 >> 0usize) & 0xff;
+            let val = (self.0 >> 1usize) & 0x7f;
             val as u8
         }
         #[doc = "0 to 7 endpoint synchronization triggers bit auto-filp. enable."]
         #[inline(always)]
         pub const fn set_uep_t_tog_auto(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u16) & 0xff) << 0usize);
+            self.0 = (self.0 & !(0x7f << 1usize)) | (((val as u16) & 0x7f) << 1usize);
         }
     }
     impl Default for UepTTogAuto {
@@ -2593,7 +2593,7 @@ pub mod regs {
     #[doc = "USB host port state charge register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct UhPortChg(pub u16);
+    pub struct UhPortChg(pub u8);
     impl UhPortChg {
         #[doc = "port connection state charge."]
         #[must_use]
@@ -2605,7 +2605,7 @@ pub mod regs {
         #[doc = "port connection state charge."]
         #[inline(always)]
         pub const fn set_uhif_port_connect(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u16) & 0x01) << 0usize);
+            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u8) & 0x01) << 0usize);
         }
         #[doc = "port enable state charge."]
         #[must_use]
@@ -2617,7 +2617,7 @@ pub mod regs {
         #[doc = "port enable state charge."]
         #[inline(always)]
         pub const fn set_uhif_port_en(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u16) & 0x01) << 1usize);
+            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u8) & 0x01) << 1usize);
         }
         #[doc = "port pause state charge."]
         #[must_use]
@@ -2629,7 +2629,7 @@ pub mod regs {
         #[doc = "port pause state charge."]
         #[inline(always)]
         pub const fn set_uhif_port_susp(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u16) & 0x01) << 2usize);
+            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u8) & 0x01) << 2usize);
         }
         #[doc = "port reset state charge."]
         #[must_use]
@@ -2641,7 +2641,7 @@ pub mod regs {
         #[doc = "port reset state charge."]
         #[inline(always)]
         pub const fn set_uhif_port_reset(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u16) & 0x01) << 4usize);
+            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u8) & 0x01) << 4usize);
         }
         #[doc = "port sleep state charge."]
         #[must_use]
@@ -2653,7 +2653,7 @@ pub mod regs {
         #[doc = "port sleep state charge."]
         #[inline(always)]
         pub const fn set_uhif_port_slp(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u16) & 0x01) << 5usize);
+            self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u8) & 0x01) << 5usize);
         }
     }
     impl Default for UhPortChg {
@@ -4068,7 +4068,7 @@ pub mod regs {
     #[doc = "USB remote wake up register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct UsbWakeCtrl(pub u16);
+    pub struct UsbWakeCtrl(pub u8);
     impl UsbWakeCtrl {
         #[doc = "remote wake up."]
         #[must_use]
@@ -4080,7 +4080,7 @@ pub mod regs {
         #[doc = "remote wake up."]
         #[inline(always)]
         pub const fn set_ud_remote_wkup(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u16) & 0x01) << 0usize);
+            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u8) & 0x01) << 0usize);
         }
     }
     impl Default for UsbWakeCtrl {
