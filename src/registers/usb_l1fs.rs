@@ -2053,18 +2053,18 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 0,
                 },
                 EnumVariant {
-                    name: "NONE",
-                    description: Some(
-                        "Timeout or no response; used for non-control isochronous transfers.",
-                    ),
-                    value: 1,
-                },
-                EnumVariant {
                     name: "NAK",
                     description: Some(
                         "Respond with NAK or busy.",
                     ),
                     value: 2,
+                },
+                EnumVariant {
+                    name: "NONE",
+                    description: Some(
+                        "Timeout or no response; used for non-control isochronous transfers.",
+                    ),
+                    value: 1,
                 },
                 EnumVariant {
                     name: "STALL",
@@ -2088,18 +2088,18 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 0,
                 },
                 EnumVariant {
-                    name: "NONE",
-                    description: Some(
-                        "No response is expected; used for non-control isochronous transfers.",
-                    ),
-                    value: 1,
-                },
-                EnumVariant {
                     name: "NAK",
                     description: Some(
                         "Respond with NAK or busy.",
                     ),
                     value: 2,
+                },
+                EnumVariant {
+                    name: "NONE",
+                    description: Some(
+                        "No response is expected; used for non-control isochronous transfers.",
+                    ),
+                    value: 1,
                 },
                 EnumVariant {
                     name: "STALL",
@@ -2116,6 +2116,13 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
+                    name: "IN",
+                    description: Some(
+                        "IN packet.",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
                     name: "OUT",
                     description: Some(
                         "OUT packet.",
@@ -2128,13 +2135,6 @@ pub(crate) static REGISTERS: IR = IR {
                         "Reserved.",
                     ),
                     value: 1,
-                },
-                EnumVariant {
-                    name: "IN",
-                    description: Some(
-                        "IN packet.",
-                    ),
-                    value: 2,
                 },
                 EnumVariant {
                     name: "SETUP",

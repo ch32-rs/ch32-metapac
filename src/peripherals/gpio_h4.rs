@@ -22,42 +22,42 @@ impl Gpio {
     #[doc = "Port configuration register low (GPIOn_CFGLR)."]
     #[inline(always)]
     pub const fn cfglr(self) -> crate::common::Reg<regs::Cfglr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "Port configuration register high (GPIOn_CFGHR)."]
     #[inline(always)]
     pub const fn cfghr(self) -> crate::common::Reg<regs::Cfghr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "Port input data register (GPIOn_INDR)."]
     #[inline(always)]
     pub const fn indr(self) -> crate::common::Reg<regs::Indr, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
     #[doc = "Port output data register (GPIOn_OUTDR)."]
     #[inline(always)]
     pub const fn outdr(self) -> crate::common::Reg<regs::Outdr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
     }
     #[doc = "Port bit set/reset register (GPIOn_BSHR)."]
     #[inline(always)]
     pub const fn bshr(self) -> crate::common::Reg<regs::Bshr, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize) as _) }
     }
     #[doc = "Port bit reset register (GPIOn_BCR)."]
     #[inline(always)]
     pub const fn bcr(self) -> crate::common::Reg<regs::Bcr, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x14usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x14usize) as _) }
     }
     #[doc = "Port configuration lock register."]
     #[inline(always)]
     pub const fn lckr(self) -> crate::common::Reg<regs::Lckr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x18usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x18usize) as _) }
     }
     #[doc = "Port output speed register (GPIOn_SPEED)."]
     #[inline(always)]
     pub const fn speed(self) -> crate::common::Reg<regs::Speed, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x1cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1cusize) as _) }
     }
 }
 pub mod regs {
@@ -67,6 +67,7 @@ pub mod regs {
     pub struct Bcr(pub u32);
     impl Bcr {
         #[doc = "Reset bit 0."]
+        #[must_use]
         #[inline(always)]
         pub const fn br(&self, n: usize) -> bool {
             assert!(n < 16usize);
@@ -76,7 +77,7 @@ pub mod regs {
         }
         #[doc = "Reset bit 0."]
         #[inline(always)]
-        pub fn set_br(&mut self, n: usize, val: bool) {
+        pub const fn set_br(&mut self, n: usize, val: bool) {
             assert!(n < 16usize);
             let offs = 0usize + n * 1usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
@@ -88,12 +89,35 @@ pub mod regs {
             Bcr(0)
         }
     }
+    impl core::fmt::Debug for Bcr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Bcr")
+                .field("br[0]", &self.br(0usize))
+                .field("br[1]", &self.br(1usize))
+                .field("br[2]", &self.br(2usize))
+                .field("br[3]", &self.br(3usize))
+                .field("br[4]", &self.br(4usize))
+                .field("br[5]", &self.br(5usize))
+                .field("br[6]", &self.br(6usize))
+                .field("br[7]", &self.br(7usize))
+                .field("br[8]", &self.br(8usize))
+                .field("br[9]", &self.br(9usize))
+                .field("br[10]", &self.br(10usize))
+                .field("br[11]", &self.br(11usize))
+                .field("br[12]", &self.br(12usize))
+                .field("br[13]", &self.br(13usize))
+                .field("br[14]", &self.br(14usize))
+                .field("br[15]", &self.br(15usize))
+                .finish()
+        }
+    }
     #[doc = "Port bit set/reset register (GPIOn_BSHR)."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Bshr(pub u32);
     impl Bshr {
         #[doc = "Set bit 0."]
+        #[must_use]
         #[inline(always)]
         pub const fn bs(&self, n: usize) -> bool {
             assert!(n < 16usize);
@@ -103,12 +127,13 @@ pub mod regs {
         }
         #[doc = "Set bit 0."]
         #[inline(always)]
-        pub fn set_bs(&mut self, n: usize, val: bool) {
+        pub const fn set_bs(&mut self, n: usize, val: bool) {
             assert!(n < 16usize);
             let offs = 0usize + n * 1usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "Reset bit 0."]
+        #[must_use]
         #[inline(always)]
         pub const fn br(&self, n: usize) -> bool {
             assert!(n < 16usize);
@@ -118,7 +143,7 @@ pub mod regs {
         }
         #[doc = "Reset bit 0."]
         #[inline(always)]
-        pub fn set_br(&mut self, n: usize, val: bool) {
+        pub const fn set_br(&mut self, n: usize, val: bool) {
             assert!(n < 16usize);
             let offs = 16usize + n * 1usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
@@ -130,12 +155,51 @@ pub mod regs {
             Bshr(0)
         }
     }
+    impl core::fmt::Debug for Bshr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Bshr")
+                .field("bs[0]", &self.bs(0usize))
+                .field("bs[1]", &self.bs(1usize))
+                .field("bs[2]", &self.bs(2usize))
+                .field("bs[3]", &self.bs(3usize))
+                .field("bs[4]", &self.bs(4usize))
+                .field("bs[5]", &self.bs(5usize))
+                .field("bs[6]", &self.bs(6usize))
+                .field("bs[7]", &self.bs(7usize))
+                .field("bs[8]", &self.bs(8usize))
+                .field("bs[9]", &self.bs(9usize))
+                .field("bs[10]", &self.bs(10usize))
+                .field("bs[11]", &self.bs(11usize))
+                .field("bs[12]", &self.bs(12usize))
+                .field("bs[13]", &self.bs(13usize))
+                .field("bs[14]", &self.bs(14usize))
+                .field("bs[15]", &self.bs(15usize))
+                .field("br[0]", &self.br(0usize))
+                .field("br[1]", &self.br(1usize))
+                .field("br[2]", &self.br(2usize))
+                .field("br[3]", &self.br(3usize))
+                .field("br[4]", &self.br(4usize))
+                .field("br[5]", &self.br(5usize))
+                .field("br[6]", &self.br(6usize))
+                .field("br[7]", &self.br(7usize))
+                .field("br[8]", &self.br(8usize))
+                .field("br[9]", &self.br(9usize))
+                .field("br[10]", &self.br(10usize))
+                .field("br[11]", &self.br(11usize))
+                .field("br[12]", &self.br(12usize))
+                .field("br[13]", &self.br(13usize))
+                .field("br[14]", &self.br(14usize))
+                .field("br[15]", &self.br(15usize))
+                .finish()
+        }
+    }
     #[doc = "Port configuration register high (GPIOn_CFGHR)."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Cfghr(pub u32);
     impl Cfghr {
         #[doc = "Port n.8 mode bits."]
+        #[must_use]
         #[inline(always)]
         pub const fn mode(&self, n: usize) -> super::vals::Mode {
             assert!(n < 8usize);
@@ -145,12 +209,13 @@ pub mod regs {
         }
         #[doc = "Port n.8 mode bits."]
         #[inline(always)]
-        pub fn set_mode(&mut self, n: usize, val: super::vals::Mode) {
+        pub const fn set_mode(&mut self, n: usize, val: super::vals::Mode) {
             assert!(n < 8usize);
             let offs = 0usize + n * 4usize;
             self.0 = (self.0 & !(0x03 << offs)) | (((val.to_bits() as u32) & 0x03) << offs);
         }
         #[doc = "Port n.8 configuration bits."]
+        #[must_use]
         #[inline(always)]
         pub const fn cnf(&self, n: usize) -> super::vals::Cnf {
             assert!(n < 8usize);
@@ -160,7 +225,7 @@ pub mod regs {
         }
         #[doc = "Port n.8 configuration bits."]
         #[inline(always)]
-        pub fn set_cnf(&mut self, n: usize, val: super::vals::Cnf) {
+        pub const fn set_cnf(&mut self, n: usize, val: super::vals::Cnf) {
             assert!(n < 8usize);
             let offs = 2usize + n * 4usize;
             self.0 = (self.0 & !(0x03 << offs)) | (((val.to_bits() as u32) & 0x03) << offs);
@@ -172,12 +237,35 @@ pub mod regs {
             Cfghr(0)
         }
     }
+    impl core::fmt::Debug for Cfghr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Cfghr")
+                .field("mode[0]", &self.mode(0usize))
+                .field("mode[1]", &self.mode(1usize))
+                .field("mode[2]", &self.mode(2usize))
+                .field("mode[3]", &self.mode(3usize))
+                .field("mode[4]", &self.mode(4usize))
+                .field("mode[5]", &self.mode(5usize))
+                .field("mode[6]", &self.mode(6usize))
+                .field("mode[7]", &self.mode(7usize))
+                .field("cnf[0]", &self.cnf(0usize))
+                .field("cnf[1]", &self.cnf(1usize))
+                .field("cnf[2]", &self.cnf(2usize))
+                .field("cnf[3]", &self.cnf(3usize))
+                .field("cnf[4]", &self.cnf(4usize))
+                .field("cnf[5]", &self.cnf(5usize))
+                .field("cnf[6]", &self.cnf(6usize))
+                .field("cnf[7]", &self.cnf(7usize))
+                .finish()
+        }
+    }
     #[doc = "Port configuration register low (GPIOn_CFGLR)."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Cfglr(pub u32);
     impl Cfglr {
         #[doc = "Port n.0 mode bits."]
+        #[must_use]
         #[inline(always)]
         pub const fn mode(&self, n: usize) -> super::vals::Mode {
             assert!(n < 8usize);
@@ -187,12 +275,13 @@ pub mod regs {
         }
         #[doc = "Port n.0 mode bits."]
         #[inline(always)]
-        pub fn set_mode(&mut self, n: usize, val: super::vals::Mode) {
+        pub const fn set_mode(&mut self, n: usize, val: super::vals::Mode) {
             assert!(n < 8usize);
             let offs = 0usize + n * 4usize;
             self.0 = (self.0 & !(0x03 << offs)) | (((val.to_bits() as u32) & 0x03) << offs);
         }
         #[doc = "Port n.0 configuration bits."]
+        #[must_use]
         #[inline(always)]
         pub const fn cnf(&self, n: usize) -> super::vals::Cnf {
             assert!(n < 8usize);
@@ -202,7 +291,7 @@ pub mod regs {
         }
         #[doc = "Port n.0 configuration bits."]
         #[inline(always)]
-        pub fn set_cnf(&mut self, n: usize, val: super::vals::Cnf) {
+        pub const fn set_cnf(&mut self, n: usize, val: super::vals::Cnf) {
             assert!(n < 8usize);
             let offs = 2usize + n * 4usize;
             self.0 = (self.0 & !(0x03 << offs)) | (((val.to_bits() as u32) & 0x03) << offs);
@@ -214,12 +303,35 @@ pub mod regs {
             Cfglr(0)
         }
     }
+    impl core::fmt::Debug for Cfglr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Cfglr")
+                .field("mode[0]", &self.mode(0usize))
+                .field("mode[1]", &self.mode(1usize))
+                .field("mode[2]", &self.mode(2usize))
+                .field("mode[3]", &self.mode(3usize))
+                .field("mode[4]", &self.mode(4usize))
+                .field("mode[5]", &self.mode(5usize))
+                .field("mode[6]", &self.mode(6usize))
+                .field("mode[7]", &self.mode(7usize))
+                .field("cnf[0]", &self.cnf(0usize))
+                .field("cnf[1]", &self.cnf(1usize))
+                .field("cnf[2]", &self.cnf(2usize))
+                .field("cnf[3]", &self.cnf(3usize))
+                .field("cnf[4]", &self.cnf(4usize))
+                .field("cnf[5]", &self.cnf(5usize))
+                .field("cnf[6]", &self.cnf(6usize))
+                .field("cnf[7]", &self.cnf(7usize))
+                .finish()
+        }
+    }
     #[doc = "Port input data register (GPIOn_INDR)."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Indr(pub u32);
     impl Indr {
         #[doc = "Port input data."]
+        #[must_use]
         #[inline(always)]
         pub const fn idr(&self, n: usize) -> bool {
             assert!(n < 16usize);
@@ -229,7 +341,7 @@ pub mod regs {
         }
         #[doc = "Port input data."]
         #[inline(always)]
-        pub fn set_idr(&mut self, n: usize, val: bool) {
+        pub const fn set_idr(&mut self, n: usize, val: bool) {
             assert!(n < 16usize);
             let offs = 0usize + n * 1usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
@@ -241,12 +353,35 @@ pub mod regs {
             Indr(0)
         }
     }
+    impl core::fmt::Debug for Indr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Indr")
+                .field("idr[0]", &self.idr(0usize))
+                .field("idr[1]", &self.idr(1usize))
+                .field("idr[2]", &self.idr(2usize))
+                .field("idr[3]", &self.idr(3usize))
+                .field("idr[4]", &self.idr(4usize))
+                .field("idr[5]", &self.idr(5usize))
+                .field("idr[6]", &self.idr(6usize))
+                .field("idr[7]", &self.idr(7usize))
+                .field("idr[8]", &self.idr(8usize))
+                .field("idr[9]", &self.idr(9usize))
+                .field("idr[10]", &self.idr(10usize))
+                .field("idr[11]", &self.idr(11usize))
+                .field("idr[12]", &self.idr(12usize))
+                .field("idr[13]", &self.idr(13usize))
+                .field("idr[14]", &self.idr(14usize))
+                .field("idr[15]", &self.idr(15usize))
+                .finish()
+        }
+    }
     #[doc = "Port configuration lock register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Lckr(pub u32);
     impl Lckr {
         #[doc = "Port A Lock bit 0."]
+        #[must_use]
         #[inline(always)]
         pub const fn lck(&self, n: usize) -> bool {
             assert!(n < 16usize);
@@ -256,12 +391,13 @@ pub mod regs {
         }
         #[doc = "Port A Lock bit 0."]
         #[inline(always)]
-        pub fn set_lck(&mut self, n: usize, val: bool) {
+        pub const fn set_lck(&mut self, n: usize, val: bool) {
             assert!(n < 16usize);
             let offs = 0usize + n * 1usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "Lock key."]
+        #[must_use]
         #[inline(always)]
         pub const fn lckk(&self) -> bool {
             let val = (self.0 >> 16usize) & 0x01;
@@ -269,7 +405,7 @@ pub mod regs {
         }
         #[doc = "Lock key."]
         #[inline(always)]
-        pub fn set_lckk(&mut self, val: bool) {
+        pub const fn set_lckk(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
         }
     }
@@ -279,12 +415,36 @@ pub mod regs {
             Lckr(0)
         }
     }
+    impl core::fmt::Debug for Lckr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Lckr")
+                .field("lck[0]", &self.lck(0usize))
+                .field("lck[1]", &self.lck(1usize))
+                .field("lck[2]", &self.lck(2usize))
+                .field("lck[3]", &self.lck(3usize))
+                .field("lck[4]", &self.lck(4usize))
+                .field("lck[5]", &self.lck(5usize))
+                .field("lck[6]", &self.lck(6usize))
+                .field("lck[7]", &self.lck(7usize))
+                .field("lck[8]", &self.lck(8usize))
+                .field("lck[9]", &self.lck(9usize))
+                .field("lck[10]", &self.lck(10usize))
+                .field("lck[11]", &self.lck(11usize))
+                .field("lck[12]", &self.lck(12usize))
+                .field("lck[13]", &self.lck(13usize))
+                .field("lck[14]", &self.lck(14usize))
+                .field("lck[15]", &self.lck(15usize))
+                .field("lckk", &self.lckk())
+                .finish()
+        }
+    }
     #[doc = "Port output data register (GPIOn_OUTDR)."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Outdr(pub u32);
     impl Outdr {
         #[doc = "Port output data."]
+        #[must_use]
         #[inline(always)]
         pub const fn odr(&self, n: usize) -> bool {
             assert!(n < 16usize);
@@ -294,7 +454,7 @@ pub mod regs {
         }
         #[doc = "Port output data."]
         #[inline(always)]
-        pub fn set_odr(&mut self, n: usize, val: bool) {
+        pub const fn set_odr(&mut self, n: usize, val: bool) {
             assert!(n < 16usize);
             let offs = 0usize + n * 1usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
@@ -306,12 +466,35 @@ pub mod regs {
             Outdr(0)
         }
     }
+    impl core::fmt::Debug for Outdr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Outdr")
+                .field("odr[0]", &self.odr(0usize))
+                .field("odr[1]", &self.odr(1usize))
+                .field("odr[2]", &self.odr(2usize))
+                .field("odr[3]", &self.odr(3usize))
+                .field("odr[4]", &self.odr(4usize))
+                .field("odr[5]", &self.odr(5usize))
+                .field("odr[6]", &self.odr(6usize))
+                .field("odr[7]", &self.odr(7usize))
+                .field("odr[8]", &self.odr(8usize))
+                .field("odr[9]", &self.odr(9usize))
+                .field("odr[10]", &self.odr(10usize))
+                .field("odr[11]", &self.odr(11usize))
+                .field("odr[12]", &self.odr(12usize))
+                .field("odr[13]", &self.odr(13usize))
+                .field("odr[14]", &self.odr(14usize))
+                .field("odr[15]", &self.odr(15usize))
+                .finish()
+        }
+    }
     #[doc = "Port output speed register (GPIOn_SPEED)."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Speed(pub u32);
     impl Speed {
         #[doc = "Port n output speed bits."]
+        #[must_use]
         #[inline(always)]
         pub const fn speed(&self, n: usize) -> super::vals::Speed {
             assert!(n < 16usize);
@@ -321,7 +504,7 @@ pub mod regs {
         }
         #[doc = "Port n output speed bits."]
         #[inline(always)]
-        pub fn set_speed(&mut self, n: usize, val: super::vals::Speed) {
+        pub const fn set_speed(&mut self, n: usize, val: super::vals::Speed) {
             assert!(n < 16usize);
             let offs = 0usize + n * 2usize;
             self.0 = (self.0 & !(0x03 << offs)) | (((val.to_bits() as u32) & 0x03) << offs);
@@ -333,11 +516,33 @@ pub mod regs {
             Speed(0)
         }
     }
+    impl core::fmt::Debug for Speed {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Speed")
+                .field("speed[0]", &self.speed(0usize))
+                .field("speed[1]", &self.speed(1usize))
+                .field("speed[2]", &self.speed(2usize))
+                .field("speed[3]", &self.speed(3usize))
+                .field("speed[4]", &self.speed(4usize))
+                .field("speed[5]", &self.speed(5usize))
+                .field("speed[6]", &self.speed(6usize))
+                .field("speed[7]", &self.speed(7usize))
+                .field("speed[8]", &self.speed(8usize))
+                .field("speed[9]", &self.speed(9usize))
+                .field("speed[10]", &self.speed(10usize))
+                .field("speed[11]", &self.speed(11usize))
+                .field("speed[12]", &self.speed(12usize))
+                .field("speed[13]", &self.speed(13usize))
+                .field("speed[14]", &self.speed(14usize))
+                .field("speed[15]", &self.speed(15usize))
+                .finish()
+        }
+    }
 }
 pub mod vals {
     #[doc = "port x configuration selection, configure the corresponding port by these bits."]
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     pub enum Cnf {
         #[doc = "Analog input / push-pull output."]
         ANALOG_IN__PUSH_PULL_OUT = 0x0,
@@ -371,7 +576,7 @@ pub mod vals {
         }
     }
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     pub enum Mode {
         #[doc = "Input mode."]
         INPUT = 0x0,
@@ -406,7 +611,7 @@ pub mod vals {
     }
     #[doc = "Port output speed selection."]
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     pub enum Speed {
         #[doc = "10 MHz."]
         LOW = 0x0,

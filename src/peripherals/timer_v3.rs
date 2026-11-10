@@ -22,32 +22,32 @@ impl Adtm {
     #[doc = "control register 1."]
     #[inline(always)]
     pub const fn ctlr1(self) -> crate::common::Reg<regs::Ctlr1, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "control register 2."]
     #[inline(always)]
     pub const fn ctlr2(self) -> crate::common::Reg<regs::Ctlr2, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "slave mode control register."]
     #[inline(always)]
     pub const fn smcfgr(self) -> crate::common::Reg<regs::Smcfgr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
     #[doc = "DMA/Interrupt enable register."]
     #[inline(always)]
     pub const fn dmaintenr(self) -> crate::common::Reg<regs::Dmaintenr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
     }
     #[doc = "status register."]
     #[inline(always)]
     pub const fn intfr(self) -> crate::common::Reg<regs::Intfr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize) as _) }
     }
     #[doc = "event generation register."]
     #[inline(always)]
     pub const fn swevgr(self) -> crate::common::Reg<regs::Swevgr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x14usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x14usize) as _) }
     }
     #[doc = "capture/compare mode register 1 (input mode)."]
     #[inline(always)]
@@ -56,7 +56,7 @@ impl Adtm {
         n: usize,
     ) -> crate::common::Reg<regs::ChctlrInput, crate::common::RW> {
         assert!(n < 2usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x18usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x18usize + n * 4usize) as _) }
     }
     #[doc = "capture/compare mode register (output mode)."]
     #[inline(always)]
@@ -65,58 +65,58 @@ impl Adtm {
         n: usize,
     ) -> crate::common::Reg<regs::ChctlrOutput, crate::common::RW> {
         assert!(n < 2usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x18usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x18usize + n * 4usize) as _) }
     }
     #[doc = "capture/compare enable register."]
     #[inline(always)]
     pub const fn ccer(self) -> crate::common::Reg<regs::Ccer, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x20usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x20usize) as _) }
     }
     #[doc = "counter."]
     #[inline(always)]
     pub const fn cnt(self) -> crate::common::Reg<u16, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x24usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x24usize) as _) }
     }
     #[doc = "prescaler."]
     #[inline(always)]
     pub const fn psc(self) -> crate::common::Reg<u16, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x28usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x28usize) as _) }
     }
     #[doc = "auto-reload register."]
     #[inline(always)]
     pub const fn atrlr(self) -> crate::common::Reg<u16, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x2cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x2cusize) as _) }
     }
     #[doc = "repetition counter register."]
     #[inline(always)]
     pub const fn rptcr(self) -> crate::common::Reg<regs::Rptcr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x30usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x30usize) as _) }
     }
     #[doc = "capture/compare register 1."]
     #[inline(always)]
     pub const fn chcvr(self, n: usize) -> crate::common::Reg<u16, crate::common::RW> {
         assert!(n < 4usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x34usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x34usize + n * 4usize) as _) }
     }
     #[doc = "break and dead-time register."]
     #[inline(always)]
     pub const fn bdtr(self) -> crate::common::Reg<regs::Bdtr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x44usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x44usize) as _) }
     }
     #[doc = "DMA control register."]
     #[inline(always)]
     pub const fn dmacfgr(self) -> crate::common::Reg<regs::Dmacfgr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x48usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x48usize) as _) }
     }
     #[doc = "DMA address for full transfer."]
     #[inline(always)]
     pub const fn dmaadr(self) -> crate::common::Reg<regs::Dmaadr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x4cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x4cusize) as _) }
     }
     #[doc = "SPEC."]
     #[inline(always)]
     pub const fn spec(self) -> crate::common::Reg<regs::Spec, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x50usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x50usize) as _) }
     }
 }
 #[doc = "Basic timer."]
@@ -138,42 +138,42 @@ impl Bctm {
     #[doc = "control register 1."]
     #[inline(always)]
     pub const fn ctlr1(self) -> crate::common::Reg<regs::Ctlr1, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "control register 2."]
     #[inline(always)]
     pub const fn ctlr2(self) -> crate::common::Reg<regs::Ctlr2, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "DMA/Interrupt enable register."]
     #[inline(always)]
     pub const fn dmaintenr(self) -> crate::common::Reg<regs::Dmaintenr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
     }
     #[doc = "status register."]
     #[inline(always)]
     pub const fn intfr(self) -> crate::common::Reg<regs::Intfr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize) as _) }
     }
     #[doc = "event generation register."]
     #[inline(always)]
     pub const fn swevgr(self) -> crate::common::Reg<regs::Swevgr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x14usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x14usize) as _) }
     }
     #[doc = "counter."]
     #[inline(always)]
     pub const fn cnt(self) -> crate::common::Reg<u16, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x24usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x24usize) as _) }
     }
     #[doc = "prescaler."]
     #[inline(always)]
     pub const fn psc(self) -> crate::common::Reg<u16, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x28usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x28usize) as _) }
     }
     #[doc = "auto-reload register."]
     #[inline(always)]
     pub const fn atrlr(self) -> crate::common::Reg<u16, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x2cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x2cusize) as _) }
     }
 }
 #[doc = "General purpose timer, 16bit."]
@@ -195,32 +195,32 @@ impl Gptm {
     #[doc = "control register 1."]
     #[inline(always)]
     pub const fn ctlr1(self) -> crate::common::Reg<regs::Ctlr1, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "control register 2."]
     #[inline(always)]
     pub const fn ctlr2(self) -> crate::common::Reg<regs::Ctlr2, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "slave mode control register."]
     #[inline(always)]
     pub const fn smcfgr(self) -> crate::common::Reg<regs::Smcfgr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
     #[doc = "DMA/Interrupt enable register."]
     #[inline(always)]
     pub const fn dmaintenr(self) -> crate::common::Reg<regs::Dmaintenr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
     }
     #[doc = "status register."]
     #[inline(always)]
     pub const fn intfr(self) -> crate::common::Reg<regs::Intfr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize) as _) }
     }
     #[doc = "event generation register."]
     #[inline(always)]
     pub const fn swevgr(self) -> crate::common::Reg<regs::Swevgr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x14usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x14usize) as _) }
     }
     #[doc = "capture/compare mode register 1 (input mode)."]
     #[inline(always)]
@@ -229,7 +229,7 @@ impl Gptm {
         n: usize,
     ) -> crate::common::Reg<regs::ChctlrInput, crate::common::RW> {
         assert!(n < 2usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x18usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x18usize + n * 4usize) as _) }
     }
     #[doc = "capture/compare mode register 1 (output mode)."]
     #[inline(always)]
@@ -238,43 +238,43 @@ impl Gptm {
         n: usize,
     ) -> crate::common::Reg<regs::ChctlrOutput, crate::common::RW> {
         assert!(n < 2usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x18usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x18usize + n * 4usize) as _) }
     }
     #[doc = "capture/compare enable register."]
     #[inline(always)]
     pub const fn ccer(self) -> crate::common::Reg<regs::Ccer, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x20usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x20usize) as _) }
     }
     #[doc = "counter."]
     #[inline(always)]
     pub const fn cnt(self) -> crate::common::Reg<u16, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x24usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x24usize) as _) }
     }
     #[doc = "prescaler."]
     #[inline(always)]
     pub const fn psc(self) -> crate::common::Reg<u16, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x28usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x28usize) as _) }
     }
     #[doc = "auto-reload register."]
     #[inline(always)]
     pub const fn atrlr(self) -> crate::common::Reg<u16, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x2cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x2cusize) as _) }
     }
     #[doc = "capture/compare register 1."]
     #[inline(always)]
     pub const fn chcvr(self, n: usize) -> crate::common::Reg<u16, crate::common::RW> {
         assert!(n < 4usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x34usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x34usize + n * 4usize) as _) }
     }
     #[doc = "DMA control register."]
     #[inline(always)]
     pub const fn dmacfgr(self) -> crate::common::Reg<regs::Dmacfgr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x48usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x48usize) as _) }
     }
     #[doc = "DMA address for full transfer."]
     #[inline(always)]
     pub const fn dmaadr(self) -> crate::common::Reg<regs::Dmaadr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x4cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x4cusize) as _) }
     }
 }
 #[doc = "General purpose timer, 32bit."]
@@ -296,32 +296,32 @@ impl Gptm32 {
     #[doc = "control register 1."]
     #[inline(always)]
     pub const fn ctlr1(self) -> crate::common::Reg<regs::Ctlr1, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "control register 2."]
     #[inline(always)]
     pub const fn ctlr2(self) -> crate::common::Reg<regs::Ctlr2, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "slave mode control register."]
     #[inline(always)]
     pub const fn smcfgr(self) -> crate::common::Reg<regs::Smcfgr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
     #[doc = "DMA/Interrupt enable register."]
     #[inline(always)]
     pub const fn dmaintenr(self) -> crate::common::Reg<regs::Dmaintenr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
     }
     #[doc = "status register."]
     #[inline(always)]
     pub const fn intfr(self) -> crate::common::Reg<regs::Intfr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize) as _) }
     }
     #[doc = "event generation register."]
     #[inline(always)]
     pub const fn swevgr(self) -> crate::common::Reg<regs::Swevgr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x14usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x14usize) as _) }
     }
     #[doc = "capture/compare mode register 1 (input mode)."]
     #[inline(always)]
@@ -330,7 +330,7 @@ impl Gptm32 {
         n: usize,
     ) -> crate::common::Reg<regs::ChctlrInput, crate::common::RW> {
         assert!(n < 2usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x18usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x18usize + n * 4usize) as _) }
     }
     #[doc = "capture/compare mode register 1 (output mode)."]
     #[inline(always)]
@@ -339,43 +339,43 @@ impl Gptm32 {
         n: usize,
     ) -> crate::common::Reg<regs::ChctlrOutput, crate::common::RW> {
         assert!(n < 2usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x18usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x18usize + n * 4usize) as _) }
     }
     #[doc = "capture/compare enable register."]
     #[inline(always)]
     pub const fn ccer(self) -> crate::common::Reg<regs::Ccer, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x20usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x20usize) as _) }
     }
     #[doc = "counter, 32bit."]
     #[inline(always)]
     pub const fn cnt(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x24usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x24usize) as _) }
     }
     #[doc = "prescaler."]
     #[inline(always)]
     pub const fn psc(self) -> crate::common::Reg<u16, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x28usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x28usize) as _) }
     }
     #[doc = "auto-reload register, 32bit."]
     #[inline(always)]
     pub const fn atrlr(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x2cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x2cusize) as _) }
     }
     #[doc = "capture/compare register, 32bit."]
     #[inline(always)]
     pub const fn chcvr(self, n: usize) -> crate::common::Reg<u32, crate::common::RW> {
         assert!(n < 4usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x34usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x34usize + n * 4usize) as _) }
     }
     #[doc = "DMA control register."]
     #[inline(always)]
     pub const fn dmacfgr(self) -> crate::common::Reg<regs::Dmacfgr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x48usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x48usize) as _) }
     }
     #[doc = "DMA address for full transfer."]
     #[inline(always)]
     pub const fn dmaadr(self) -> crate::common::Reg<regs::Dmaadr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x4cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x4cusize) as _) }
     }
 }
 pub mod regs {
@@ -385,6 +385,7 @@ pub mod regs {
     pub struct Bdtr(pub u32);
     impl Bdtr {
         #[doc = "Dead-time generator setup."]
+        #[must_use]
         #[inline(always)]
         pub const fn dtg(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0xff;
@@ -392,10 +393,11 @@ pub mod regs {
         }
         #[doc = "Dead-time generator setup."]
         #[inline(always)]
-        pub fn set_dtg(&mut self, val: u8) {
+        pub const fn set_dtg(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
         }
         #[doc = "Lock configuration."]
+        #[must_use]
         #[inline(always)]
         pub const fn lock(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x03;
@@ -403,10 +405,11 @@ pub mod regs {
         }
         #[doc = "Lock configuration."]
         #[inline(always)]
-        pub fn set_lock(&mut self, val: u8) {
+        pub const fn set_lock(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u32) & 0x03) << 8usize);
         }
         #[doc = "Off-state selection for Idle mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn ossi(&self) -> bool {
             let val = (self.0 >> 10usize) & 0x01;
@@ -414,10 +417,11 @@ pub mod regs {
         }
         #[doc = "Off-state selection for Idle mode."]
         #[inline(always)]
-        pub fn set_ossi(&mut self, val: bool) {
+        pub const fn set_ossi(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
         }
         #[doc = "Off-state selection for Run mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn ossr(&self) -> bool {
             let val = (self.0 >> 11usize) & 0x01;
@@ -425,10 +429,11 @@ pub mod regs {
         }
         #[doc = "Off-state selection for Run mode."]
         #[inline(always)]
-        pub fn set_ossr(&mut self, val: bool) {
+        pub const fn set_ossr(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
         }
         #[doc = "Break enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn bke(&self) -> bool {
             let val = (self.0 >> 12usize) & 0x01;
@@ -436,10 +441,11 @@ pub mod regs {
         }
         #[doc = "Break enable."]
         #[inline(always)]
-        pub fn set_bke(&mut self, val: bool) {
+        pub const fn set_bke(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
         }
         #[doc = "Break polarity."]
+        #[must_use]
         #[inline(always)]
         pub const fn bkp(&self) -> bool {
             let val = (self.0 >> 13usize) & 0x01;
@@ -447,10 +453,11 @@ pub mod regs {
         }
         #[doc = "Break polarity."]
         #[inline(always)]
-        pub fn set_bkp(&mut self, val: bool) {
+        pub const fn set_bkp(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
         }
         #[doc = "Automatic output enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn aoe(&self) -> bool {
             let val = (self.0 >> 14usize) & 0x01;
@@ -458,10 +465,11 @@ pub mod regs {
         }
         #[doc = "Automatic output enable."]
         #[inline(always)]
-        pub fn set_aoe(&mut self, val: bool) {
+        pub const fn set_aoe(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
         }
         #[doc = "Main output enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn moe(&self) -> bool {
             let val = (self.0 >> 15usize) & 0x01;
@@ -469,7 +477,7 @@ pub mod regs {
         }
         #[doc = "Main output enable."]
         #[inline(always)]
-        pub fn set_moe(&mut self, val: bool) {
+        pub const fn set_moe(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
         }
     }
@@ -479,12 +487,27 @@ pub mod regs {
             Bdtr(0)
         }
     }
+    impl core::fmt::Debug for Bdtr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Bdtr")
+                .field("dtg", &self.dtg())
+                .field("lock", &self.lock())
+                .field("ossi", &self.ossi())
+                .field("ossr", &self.ossr())
+                .field("bke", &self.bke())
+                .field("bkp", &self.bkp())
+                .field("aoe", &self.aoe())
+                .field("moe", &self.moe())
+                .finish()
+        }
+    }
     #[doc = "capture/compare enable register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ccer(pub u32);
     impl Ccer {
         #[doc = "Capture/Compare 1 output enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn cce(&self, n: usize) -> bool {
             assert!(n < 4usize);
@@ -494,12 +517,13 @@ pub mod regs {
         }
         #[doc = "Capture/Compare 1 output enable."]
         #[inline(always)]
-        pub fn set_cce(&mut self, n: usize, val: bool) {
+        pub const fn set_cce(&mut self, n: usize, val: bool) {
             assert!(n < 4usize);
             let offs = 0usize + n * 4usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "Capture/Compare 1 output Polarity."]
+        #[must_use]
         #[inline(always)]
         pub const fn ccp(&self, n: usize) -> bool {
             assert!(n < 4usize);
@@ -509,12 +533,13 @@ pub mod regs {
         }
         #[doc = "Capture/Compare 1 output Polarity."]
         #[inline(always)]
-        pub fn set_ccp(&mut self, n: usize, val: bool) {
+        pub const fn set_ccp(&mut self, n: usize, val: bool) {
             assert!(n < 4usize);
             let offs = 1usize + n * 4usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "Capture/Compare 1 complementary output enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn ccne(&self, n: usize) -> bool {
             assert!(n < 3usize);
@@ -524,12 +549,13 @@ pub mod regs {
         }
         #[doc = "Capture/Compare 1 complementary output enable."]
         #[inline(always)]
-        pub fn set_ccne(&mut self, n: usize, val: bool) {
+        pub const fn set_ccne(&mut self, n: usize, val: bool) {
             assert!(n < 3usize);
             let offs = 2usize + n * 4usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "Capture/Compare 1 output Polarity."]
+        #[must_use]
         #[inline(always)]
         pub const fn ccnp(&self, n: usize) -> bool {
             assert!(n < 3usize);
@@ -539,7 +565,7 @@ pub mod regs {
         }
         #[doc = "Capture/Compare 1 output Polarity."]
         #[inline(always)]
-        pub fn set_ccnp(&mut self, n: usize, val: bool) {
+        pub const fn set_ccnp(&mut self, n: usize, val: bool) {
             assert!(n < 3usize);
             let offs = 3usize + n * 4usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
@@ -551,12 +577,33 @@ pub mod regs {
             Ccer(0)
         }
     }
+    impl core::fmt::Debug for Ccer {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ccer")
+                .field("cce[0]", &self.cce(0usize))
+                .field("cce[1]", &self.cce(1usize))
+                .field("cce[2]", &self.cce(2usize))
+                .field("cce[3]", &self.cce(3usize))
+                .field("ccp[0]", &self.ccp(0usize))
+                .field("ccp[1]", &self.ccp(1usize))
+                .field("ccp[2]", &self.ccp(2usize))
+                .field("ccp[3]", &self.ccp(3usize))
+                .field("ccne[0]", &self.ccne(0usize))
+                .field("ccne[1]", &self.ccne(1usize))
+                .field("ccne[2]", &self.ccne(2usize))
+                .field("ccnp[0]", &self.ccnp(0usize))
+                .field("ccnp[1]", &self.ccnp(1usize))
+                .field("ccnp[2]", &self.ccnp(2usize))
+                .finish()
+        }
+    }
     #[doc = "capture/compare mode register 1 (input mode)."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct ChctlrInput(pub u32);
     impl ChctlrInput {
         #[doc = "Capture/Compare 1 selection."]
+        #[must_use]
         #[inline(always)]
         pub const fn ccs(&self, n: usize) -> super::vals::CcmrInputCcs {
             assert!(n < 2usize);
@@ -566,12 +613,13 @@ pub mod regs {
         }
         #[doc = "Capture/Compare 1 selection."]
         #[inline(always)]
-        pub fn set_ccs(&mut self, n: usize, val: super::vals::CcmrInputCcs) {
+        pub const fn set_ccs(&mut self, n: usize, val: super::vals::CcmrInputCcs) {
             assert!(n < 2usize);
             let offs = 0usize + n * 8usize;
             self.0 = (self.0 & !(0x03 << offs)) | (((val.to_bits() as u32) & 0x03) << offs);
         }
         #[doc = "Input capture 1 prescaler."]
+        #[must_use]
         #[inline(always)]
         pub const fn icpsc(&self, n: usize) -> u8 {
             assert!(n < 2usize);
@@ -581,12 +629,13 @@ pub mod regs {
         }
         #[doc = "Input capture 1 prescaler."]
         #[inline(always)]
-        pub fn set_icpsc(&mut self, n: usize, val: u8) {
+        pub const fn set_icpsc(&mut self, n: usize, val: u8) {
             assert!(n < 2usize);
             let offs = 2usize + n * 8usize;
             self.0 = (self.0 & !(0x03 << offs)) | (((val as u32) & 0x03) << offs);
         }
         #[doc = "Input capture 1 filter."]
+        #[must_use]
         #[inline(always)]
         pub const fn icf(&self, n: usize) -> super::vals::FilterValue {
             assert!(n < 2usize);
@@ -596,7 +645,7 @@ pub mod regs {
         }
         #[doc = "Input capture 1 filter."]
         #[inline(always)]
-        pub fn set_icf(&mut self, n: usize, val: super::vals::FilterValue) {
+        pub const fn set_icf(&mut self, n: usize, val: super::vals::FilterValue) {
             assert!(n < 2usize);
             let offs = 4usize + n * 8usize;
             self.0 = (self.0 & !(0x0f << offs)) | (((val.to_bits() as u32) & 0x0f) << offs);
@@ -608,12 +657,25 @@ pub mod regs {
             ChctlrInput(0)
         }
     }
+    impl core::fmt::Debug for ChctlrInput {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("ChctlrInput")
+                .field("ccs[0]", &self.ccs(0usize))
+                .field("ccs[1]", &self.ccs(1usize))
+                .field("icpsc[0]", &self.icpsc(0usize))
+                .field("icpsc[1]", &self.icpsc(1usize))
+                .field("icf[0]", &self.icf(0usize))
+                .field("icf[1]", &self.icf(1usize))
+                .finish()
+        }
+    }
     #[doc = "capture/compare mode register (output mode)."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct ChctlrOutput(pub u32);
     impl ChctlrOutput {
         #[doc = "Capture/Compare 1 selection."]
+        #[must_use]
         #[inline(always)]
         pub const fn ccs(&self, n: usize) -> super::vals::CcmrOutputCcs {
             assert!(n < 2usize);
@@ -623,12 +685,13 @@ pub mod regs {
         }
         #[doc = "Capture/Compare 1 selection."]
         #[inline(always)]
-        pub fn set_ccs(&mut self, n: usize, val: super::vals::CcmrOutputCcs) {
+        pub const fn set_ccs(&mut self, n: usize, val: super::vals::CcmrOutputCcs) {
             assert!(n < 2usize);
             let offs = 0usize + n * 8usize;
             self.0 = (self.0 & !(0x03 << offs)) | (((val.to_bits() as u32) & 0x03) << offs);
         }
         #[doc = "Output Compare 1 fast enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn iocfe(&self, n: usize) -> bool {
             assert!(n < 2usize);
@@ -638,12 +701,13 @@ pub mod regs {
         }
         #[doc = "Output Compare 1 fast enable."]
         #[inline(always)]
-        pub fn set_iocfe(&mut self, n: usize, val: bool) {
+        pub const fn set_iocfe(&mut self, n: usize, val: bool) {
             assert!(n < 2usize);
             let offs = 2usize + n * 8usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "Output Compare 1 preload enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn ocpe(&self, n: usize) -> bool {
             assert!(n < 2usize);
@@ -653,12 +717,13 @@ pub mod regs {
         }
         #[doc = "Output Compare 1 preload enable."]
         #[inline(always)]
-        pub fn set_ocpe(&mut self, n: usize, val: bool) {
+        pub const fn set_ocpe(&mut self, n: usize, val: bool) {
             assert!(n < 2usize);
             let offs = 3usize + n * 8usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "Output Compare 1 mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn ocm(&self, n: usize) -> super::vals::Ocm {
             assert!(n < 2usize);
@@ -668,12 +733,13 @@ pub mod regs {
         }
         #[doc = "Output Compare 1 mode."]
         #[inline(always)]
-        pub fn set_ocm(&mut self, n: usize, val: super::vals::Ocm) {
+        pub const fn set_ocm(&mut self, n: usize, val: super::vals::Ocm) {
             assert!(n < 2usize);
             let offs = 4usize + n * 8usize;
             self.0 = (self.0 & !(0x07 << offs)) | (((val.to_bits() as u32) & 0x07) << offs);
         }
         #[doc = "Output Compare 1 clear enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn occe(&self, n: usize) -> bool {
             assert!(n < 2usize);
@@ -683,7 +749,7 @@ pub mod regs {
         }
         #[doc = "Output Compare 1 clear enable."]
         #[inline(always)]
-        pub fn set_occe(&mut self, n: usize, val: bool) {
+        pub const fn set_occe(&mut self, n: usize, val: bool) {
             assert!(n < 2usize);
             let offs = 7usize + n * 8usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
@@ -695,12 +761,29 @@ pub mod regs {
             ChctlrOutput(0)
         }
     }
+    impl core::fmt::Debug for ChctlrOutput {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("ChctlrOutput")
+                .field("ccs[0]", &self.ccs(0usize))
+                .field("ccs[1]", &self.ccs(1usize))
+                .field("iocfe[0]", &self.iocfe(0usize))
+                .field("iocfe[1]", &self.iocfe(1usize))
+                .field("ocpe[0]", &self.ocpe(0usize))
+                .field("ocpe[1]", &self.ocpe(1usize))
+                .field("ocm[0]", &self.ocm(0usize))
+                .field("ocm[1]", &self.ocm(1usize))
+                .field("occe[0]", &self.occe(0usize))
+                .field("occe[1]", &self.occe(1usize))
+                .finish()
+        }
+    }
     #[doc = "control register 1."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ctlr1(pub u32);
     impl Ctlr1 {
         #[doc = "Counter enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn cen(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -708,10 +791,11 @@ pub mod regs {
         }
         #[doc = "Counter enable."]
         #[inline(always)]
-        pub fn set_cen(&mut self, val: bool) {
+        pub const fn set_cen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "Update disable."]
+        #[must_use]
         #[inline(always)]
         pub const fn udis(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -719,10 +803,11 @@ pub mod regs {
         }
         #[doc = "Update disable."]
         #[inline(always)]
-        pub fn set_udis(&mut self, val: bool) {
+        pub const fn set_udis(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
         #[doc = "Update request source."]
+        #[must_use]
         #[inline(always)]
         pub const fn urs(&self) -> super::vals::Urs {
             let val = (self.0 >> 2usize) & 0x01;
@@ -730,10 +815,11 @@ pub mod regs {
         }
         #[doc = "Update request source."]
         #[inline(always)]
-        pub fn set_urs(&mut self, val: super::vals::Urs) {
+        pub const fn set_urs(&mut self, val: super::vals::Urs) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val.to_bits() as u32) & 0x01) << 2usize);
         }
         #[doc = "One-pulse mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn opm(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -741,10 +827,11 @@ pub mod regs {
         }
         #[doc = "One-pulse mode."]
         #[inline(always)]
-        pub fn set_opm(&mut self, val: bool) {
+        pub const fn set_opm(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
         }
         #[doc = "Direction."]
+        #[must_use]
         #[inline(always)]
         pub const fn dir(&self) -> super::vals::Dir {
             let val = (self.0 >> 4usize) & 0x01;
@@ -752,10 +839,11 @@ pub mod regs {
         }
         #[doc = "Direction."]
         #[inline(always)]
-        pub fn set_dir(&mut self, val: super::vals::Dir) {
+        pub const fn set_dir(&mut self, val: super::vals::Dir) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val.to_bits() as u32) & 0x01) << 4usize);
         }
         #[doc = "Center-aligned mode selection."]
+        #[must_use]
         #[inline(always)]
         pub const fn cms(&self) -> super::vals::Cms {
             let val = (self.0 >> 5usize) & 0x03;
@@ -763,10 +851,11 @@ pub mod regs {
         }
         #[doc = "Center-aligned mode selection."]
         #[inline(always)]
-        pub fn set_cms(&mut self, val: super::vals::Cms) {
+        pub const fn set_cms(&mut self, val: super::vals::Cms) {
             self.0 = (self.0 & !(0x03 << 5usize)) | (((val.to_bits() as u32) & 0x03) << 5usize);
         }
         #[doc = "Auto-reload preload enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn arpe(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -774,10 +863,11 @@ pub mod regs {
         }
         #[doc = "Auto-reload preload enable."]
         #[inline(always)]
-        pub fn set_arpe(&mut self, val: bool) {
+        pub const fn set_arpe(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
         #[doc = "Clock division."]
+        #[must_use]
         #[inline(always)]
         pub const fn ckd(&self) -> super::vals::Ckd {
             let val = (self.0 >> 8usize) & 0x03;
@@ -785,10 +875,11 @@ pub mod regs {
         }
         #[doc = "Clock division."]
         #[inline(always)]
-        pub fn set_ckd(&mut self, val: super::vals::Ckd) {
+        pub const fn set_ckd(&mut self, val: super::vals::Ckd) {
             self.0 = (self.0 & !(0x03 << 8usize)) | (((val.to_bits() as u32) & 0x03) << 8usize);
         }
         #[doc = "Timer capture value configuration enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn capov(&self) -> bool {
             let val = (self.0 >> 14usize) & 0x01;
@@ -796,10 +887,11 @@ pub mod regs {
         }
         #[doc = "Timer capture value configuration enable."]
         #[inline(always)]
-        pub fn set_capov(&mut self, val: bool) {
+        pub const fn set_capov(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
         }
         #[doc = "Timer capture level indication enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn caplvl(&self) -> bool {
             let val = (self.0 >> 15usize) & 0x01;
@@ -807,7 +899,7 @@ pub mod regs {
         }
         #[doc = "Timer capture level indication enable."]
         #[inline(always)]
-        pub fn set_caplvl(&mut self, val: bool) {
+        pub const fn set_caplvl(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
         }
     }
@@ -817,12 +909,29 @@ pub mod regs {
             Ctlr1(0)
         }
     }
+    impl core::fmt::Debug for Ctlr1 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ctlr1")
+                .field("cen", &self.cen())
+                .field("udis", &self.udis())
+                .field("urs", &self.urs())
+                .field("opm", &self.opm())
+                .field("dir", &self.dir())
+                .field("cms", &self.cms())
+                .field("arpe", &self.arpe())
+                .field("ckd", &self.ckd())
+                .field("capov", &self.capov())
+                .field("caplvl", &self.caplvl())
+                .finish()
+        }
+    }
     #[doc = "control register 2."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ctlr2(pub u32);
     impl Ctlr2 {
         #[doc = "Capture/compare preloaded control."]
+        #[must_use]
         #[inline(always)]
         pub const fn ccpc(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -830,10 +939,11 @@ pub mod regs {
         }
         #[doc = "Capture/compare preloaded control."]
         #[inline(always)]
-        pub fn set_ccpc(&mut self, val: bool) {
+        pub const fn set_ccpc(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "Capture/compare control update selection."]
+        #[must_use]
         #[inline(always)]
         pub const fn ccus(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -841,10 +951,11 @@ pub mod regs {
         }
         #[doc = "Capture/compare control update selection."]
         #[inline(always)]
-        pub fn set_ccus(&mut self, val: bool) {
+        pub const fn set_ccus(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
         #[doc = "Capture/compare DMA selection."]
+        #[must_use]
         #[inline(always)]
         pub const fn ccds(&self) -> super::vals::Ccds {
             let val = (self.0 >> 3usize) & 0x01;
@@ -852,10 +963,11 @@ pub mod regs {
         }
         #[doc = "Capture/compare DMA selection."]
         #[inline(always)]
-        pub fn set_ccds(&mut self, val: super::vals::Ccds) {
+        pub const fn set_ccds(&mut self, val: super::vals::Ccds) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val.to_bits() as u32) & 0x01) << 3usize);
         }
         #[doc = "Master mode selection."]
+        #[must_use]
         #[inline(always)]
         pub const fn mms(&self) -> super::vals::Mms {
             let val = (self.0 >> 4usize) & 0x07;
@@ -863,10 +975,11 @@ pub mod regs {
         }
         #[doc = "Master mode selection."]
         #[inline(always)]
-        pub fn set_mms(&mut self, val: super::vals::Mms) {
+        pub const fn set_mms(&mut self, val: super::vals::Mms) {
             self.0 = (self.0 & !(0x07 << 4usize)) | (((val.to_bits() as u32) & 0x07) << 4usize);
         }
         #[doc = "TI1 selection."]
+        #[must_use]
         #[inline(always)]
         pub const fn ti1s(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -874,10 +987,11 @@ pub mod regs {
         }
         #[doc = "TI1 selection."]
         #[inline(always)]
-        pub fn set_ti1s(&mut self, val: bool) {
+        pub const fn set_ti1s(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
         #[doc = "Output Idle state 1."]
+        #[must_use]
         #[inline(always)]
         pub const fn ois(&self, n: usize) -> bool {
             assert!(n < 4usize);
@@ -887,12 +1001,13 @@ pub mod regs {
         }
         #[doc = "Output Idle state 1."]
         #[inline(always)]
-        pub fn set_ois(&mut self, n: usize, val: bool) {
+        pub const fn set_ois(&mut self, n: usize, val: bool) {
             assert!(n < 4usize);
             let offs = 8usize + n * 2usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "Output Idle state 1."]
+        #[must_use]
         #[inline(always)]
         pub const fn oisn(&self, n: usize) -> bool {
             assert!(n < 3usize);
@@ -902,7 +1017,7 @@ pub mod regs {
         }
         #[doc = "Output Idle state 1."]
         #[inline(always)]
-        pub fn set_oisn(&mut self, n: usize, val: bool) {
+        pub const fn set_oisn(&mut self, n: usize, val: bool) {
             assert!(n < 3usize);
             let offs = 9usize + n * 2usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
@@ -914,12 +1029,31 @@ pub mod regs {
             Ctlr2(0)
         }
     }
+    impl core::fmt::Debug for Ctlr2 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ctlr2")
+                .field("ccpc", &self.ccpc())
+                .field("ccus", &self.ccus())
+                .field("ccds", &self.ccds())
+                .field("mms", &self.mms())
+                .field("ti1s", &self.ti1s())
+                .field("ois[0]", &self.ois(0usize))
+                .field("ois[1]", &self.ois(1usize))
+                .field("ois[2]", &self.ois(2usize))
+                .field("ois[3]", &self.ois(3usize))
+                .field("oisn[0]", &self.oisn(0usize))
+                .field("oisn[1]", &self.oisn(1usize))
+                .field("oisn[2]", &self.oisn(2usize))
+                .finish()
+        }
+    }
     #[doc = "DMA address for full transfer."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Dmaadr(pub u32);
     impl Dmaadr {
         #[doc = "DMA register for burst accesses."]
+        #[must_use]
         #[inline(always)]
         pub const fn dmaadr(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0xffff;
@@ -927,7 +1061,7 @@ pub mod regs {
         }
         #[doc = "DMA register for burst accesses."]
         #[inline(always)]
-        pub fn set_dmaadr(&mut self, val: u16) {
+        pub const fn set_dmaadr(&mut self, val: u16) {
             self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
         }
     }
@@ -937,12 +1071,20 @@ pub mod regs {
             Dmaadr(0)
         }
     }
+    impl core::fmt::Debug for Dmaadr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Dmaadr")
+                .field("dmaadr", &self.dmaadr())
+                .finish()
+        }
+    }
     #[doc = "DMA control register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Dmacfgr(pub u32);
     impl Dmacfgr {
         #[doc = "DMA base address."]
+        #[must_use]
         #[inline(always)]
         pub const fn dba(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x1f;
@@ -950,10 +1092,11 @@ pub mod regs {
         }
         #[doc = "DMA base address."]
         #[inline(always)]
-        pub fn set_dba(&mut self, val: u8) {
+        pub const fn set_dba(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 0usize)) | (((val as u32) & 0x1f) << 0usize);
         }
         #[doc = "DMA burst length."]
+        #[must_use]
         #[inline(always)]
         pub const fn dbl(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x1f;
@@ -961,7 +1104,7 @@ pub mod regs {
         }
         #[doc = "DMA burst length."]
         #[inline(always)]
-        pub fn set_dbl(&mut self, val: u8) {
+        pub const fn set_dbl(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 8usize)) | (((val as u32) & 0x1f) << 8usize);
         }
     }
@@ -971,12 +1114,21 @@ pub mod regs {
             Dmacfgr(0)
         }
     }
+    impl core::fmt::Debug for Dmacfgr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Dmacfgr")
+                .field("dba", &self.dba())
+                .field("dbl", &self.dbl())
+                .finish()
+        }
+    }
     #[doc = "DMA/Interrupt enable register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Dmaintenr(pub u32);
     impl Dmaintenr {
         #[doc = "Update interrupt enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn uie(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -984,10 +1136,11 @@ pub mod regs {
         }
         #[doc = "Update interrupt enable."]
         #[inline(always)]
-        pub fn set_uie(&mut self, val: bool) {
+        pub const fn set_uie(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "Capture/Compare 1 interrupt enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn ccie(&self, n: usize) -> bool {
             assert!(n < 4usize);
@@ -997,12 +1150,13 @@ pub mod regs {
         }
         #[doc = "Capture/Compare 1 interrupt enable."]
         #[inline(always)]
-        pub fn set_ccie(&mut self, n: usize, val: bool) {
+        pub const fn set_ccie(&mut self, n: usize, val: bool) {
             assert!(n < 4usize);
             let offs = 1usize + n * 1usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "COM interrupt enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn comie(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -1010,10 +1164,11 @@ pub mod regs {
         }
         #[doc = "COM interrupt enable."]
         #[inline(always)]
-        pub fn set_comie(&mut self, val: bool) {
+        pub const fn set_comie(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
         #[doc = "Trigger interrupt enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn tie(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
@@ -1021,10 +1176,11 @@ pub mod regs {
         }
         #[doc = "Trigger interrupt enable."]
         #[inline(always)]
-        pub fn set_tie(&mut self, val: bool) {
+        pub const fn set_tie(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
         }
         #[doc = "Break interrupt enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn bie(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -1032,10 +1188,11 @@ pub mod regs {
         }
         #[doc = "Break interrupt enable."]
         #[inline(always)]
-        pub fn set_bie(&mut self, val: bool) {
+        pub const fn set_bie(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
         #[doc = "Update DMA request enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn ude(&self) -> bool {
             let val = (self.0 >> 8usize) & 0x01;
@@ -1043,10 +1200,11 @@ pub mod regs {
         }
         #[doc = "Update DMA request enable."]
         #[inline(always)]
-        pub fn set_ude(&mut self, val: bool) {
+        pub const fn set_ude(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
         }
         #[doc = "Capture/Compare 1 DMA request enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn ccde(&self, n: usize) -> bool {
             assert!(n < 4usize);
@@ -1056,12 +1214,13 @@ pub mod regs {
         }
         #[doc = "Capture/Compare 1 DMA request enable."]
         #[inline(always)]
-        pub fn set_ccde(&mut self, n: usize, val: bool) {
+        pub const fn set_ccde(&mut self, n: usize, val: bool) {
             assert!(n < 4usize);
             let offs = 9usize + n * 1usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "COM DMA request enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn comde(&self) -> bool {
             let val = (self.0 >> 13usize) & 0x01;
@@ -1069,10 +1228,11 @@ pub mod regs {
         }
         #[doc = "COM DMA request enable."]
         #[inline(always)]
-        pub fn set_comde(&mut self, val: bool) {
+        pub const fn set_comde(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
         }
         #[doc = "Trigger DMA request enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn tde(&self) -> bool {
             let val = (self.0 >> 14usize) & 0x01;
@@ -1080,7 +1240,7 @@ pub mod regs {
         }
         #[doc = "Trigger DMA request enable."]
         #[inline(always)]
-        pub fn set_tde(&mut self, val: bool) {
+        pub const fn set_tde(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
         }
     }
@@ -1090,12 +1250,34 @@ pub mod regs {
             Dmaintenr(0)
         }
     }
+    impl core::fmt::Debug for Dmaintenr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Dmaintenr")
+                .field("uie", &self.uie())
+                .field("ccie[0]", &self.ccie(0usize))
+                .field("ccie[1]", &self.ccie(1usize))
+                .field("ccie[2]", &self.ccie(2usize))
+                .field("ccie[3]", &self.ccie(3usize))
+                .field("comie", &self.comie())
+                .field("tie", &self.tie())
+                .field("bie", &self.bie())
+                .field("ude", &self.ude())
+                .field("ccde[0]", &self.ccde(0usize))
+                .field("ccde[1]", &self.ccde(1usize))
+                .field("ccde[2]", &self.ccde(2usize))
+                .field("ccde[3]", &self.ccde(3usize))
+                .field("comde", &self.comde())
+                .field("tde", &self.tde())
+                .finish()
+        }
+    }
     #[doc = "status register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Intfr(pub u32);
     impl Intfr {
         #[doc = "Update interrupt flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn uif(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -1103,10 +1285,11 @@ pub mod regs {
         }
         #[doc = "Update interrupt flag."]
         #[inline(always)]
-        pub fn set_uif(&mut self, val: bool) {
+        pub const fn set_uif(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "Capture/compare 1 interrupt flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn ccif(&self, n: usize) -> bool {
             assert!(n < 4usize);
@@ -1116,12 +1299,13 @@ pub mod regs {
         }
         #[doc = "Capture/compare 1 interrupt flag."]
         #[inline(always)]
-        pub fn set_ccif(&mut self, n: usize, val: bool) {
+        pub const fn set_ccif(&mut self, n: usize, val: bool) {
             assert!(n < 4usize);
             let offs = 1usize + n * 1usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "COM interrupt flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn comif(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -1129,10 +1313,11 @@ pub mod regs {
         }
         #[doc = "COM interrupt flag."]
         #[inline(always)]
-        pub fn set_comif(&mut self, val: bool) {
+        pub const fn set_comif(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
         #[doc = "Trigger interrupt flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn tif(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
@@ -1140,10 +1325,11 @@ pub mod regs {
         }
         #[doc = "Trigger interrupt flag."]
         #[inline(always)]
-        pub fn set_tif(&mut self, val: bool) {
+        pub const fn set_tif(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
         }
         #[doc = "Break interrupt flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn bif(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -1151,10 +1337,11 @@ pub mod regs {
         }
         #[doc = "Break interrupt flag."]
         #[inline(always)]
-        pub fn set_bif(&mut self, val: bool) {
+        pub const fn set_bif(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
         #[doc = "Capture/Compare 1 overcapture flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn ccof(&self, n: usize) -> bool {
             assert!(n < 4usize);
@@ -1164,7 +1351,7 @@ pub mod regs {
         }
         #[doc = "Capture/Compare 1 overcapture flag."]
         #[inline(always)]
-        pub fn set_ccof(&mut self, n: usize, val: bool) {
+        pub const fn set_ccof(&mut self, n: usize, val: bool) {
             assert!(n < 4usize);
             let offs = 9usize + n * 1usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
@@ -1176,12 +1363,31 @@ pub mod regs {
             Intfr(0)
         }
     }
+    impl core::fmt::Debug for Intfr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Intfr")
+                .field("uif", &self.uif())
+                .field("ccif[0]", &self.ccif(0usize))
+                .field("ccif[1]", &self.ccif(1usize))
+                .field("ccif[2]", &self.ccif(2usize))
+                .field("ccif[3]", &self.ccif(3usize))
+                .field("comif", &self.comif())
+                .field("tif", &self.tif())
+                .field("bif", &self.bif())
+                .field("ccof[0]", &self.ccof(0usize))
+                .field("ccof[1]", &self.ccof(1usize))
+                .field("ccof[2]", &self.ccof(2usize))
+                .field("ccof[3]", &self.ccof(3usize))
+                .finish()
+        }
+    }
     #[doc = "repetition counter register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Rptcr(pub u32);
     impl Rptcr {
         #[doc = "Repetition counter value."]
+        #[must_use]
         #[inline(always)]
         pub const fn rptcr(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0xff;
@@ -1189,7 +1395,7 @@ pub mod regs {
         }
         #[doc = "Repetition counter value."]
         #[inline(always)]
-        pub fn set_rptcr(&mut self, val: u8) {
+        pub const fn set_rptcr(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
         }
     }
@@ -1199,12 +1405,20 @@ pub mod regs {
             Rptcr(0)
         }
     }
+    impl core::fmt::Debug for Rptcr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Rptcr")
+                .field("rptcr", &self.rptcr())
+                .finish()
+        }
+    }
     #[doc = "slave mode control register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Smcfgr(pub u32);
     impl Smcfgr {
         #[doc = "Slave mode selection."]
+        #[must_use]
         #[inline(always)]
         pub const fn sms(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x07;
@@ -1212,10 +1426,11 @@ pub mod regs {
         }
         #[doc = "Slave mode selection."]
         #[inline(always)]
-        pub fn set_sms(&mut self, val: u8) {
+        pub const fn set_sms(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u32) & 0x07) << 0usize);
         }
         #[doc = "Trigger selection."]
+        #[must_use]
         #[inline(always)]
         pub const fn ts(&self) -> u8 {
             let val = (self.0 >> 4usize) & 0x07;
@@ -1223,10 +1438,11 @@ pub mod regs {
         }
         #[doc = "Trigger selection."]
         #[inline(always)]
-        pub fn set_ts(&mut self, val: u8) {
+        pub const fn set_ts(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 4usize)) | (((val as u32) & 0x07) << 4usize);
         }
         #[doc = "Master/Slave mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn msm(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -1234,10 +1450,11 @@ pub mod regs {
         }
         #[doc = "Master/Slave mode."]
         #[inline(always)]
-        pub fn set_msm(&mut self, val: bool) {
+        pub const fn set_msm(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
         #[doc = "External trigger filter."]
+        #[must_use]
         #[inline(always)]
         pub const fn etf(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x0f;
@@ -1245,10 +1462,11 @@ pub mod regs {
         }
         #[doc = "External trigger filter."]
         #[inline(always)]
-        pub fn set_etf(&mut self, val: u8) {
+        pub const fn set_etf(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 8usize)) | (((val as u32) & 0x0f) << 8usize);
         }
         #[doc = "External trigger prescaler."]
+        #[must_use]
         #[inline(always)]
         pub const fn etps(&self) -> super::vals::Etps {
             let val = (self.0 >> 12usize) & 0x03;
@@ -1256,10 +1474,11 @@ pub mod regs {
         }
         #[doc = "External trigger prescaler."]
         #[inline(always)]
-        pub fn set_etps(&mut self, val: super::vals::Etps) {
+        pub const fn set_etps(&mut self, val: super::vals::Etps) {
             self.0 = (self.0 & !(0x03 << 12usize)) | (((val.to_bits() as u32) & 0x03) << 12usize);
         }
         #[doc = "External clock enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn ece(&self) -> bool {
             let val = (self.0 >> 14usize) & 0x01;
@@ -1267,10 +1486,11 @@ pub mod regs {
         }
         #[doc = "External clock enable."]
         #[inline(always)]
-        pub fn set_ece(&mut self, val: bool) {
+        pub const fn set_ece(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
         }
         #[doc = "External trigger polarity."]
+        #[must_use]
         #[inline(always)]
         pub const fn etp(&self) -> bool {
             let val = (self.0 >> 15usize) & 0x01;
@@ -1278,7 +1498,7 @@ pub mod regs {
         }
         #[doc = "External trigger polarity."]
         #[inline(always)]
-        pub fn set_etp(&mut self, val: bool) {
+        pub const fn set_etp(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
         }
     }
@@ -1288,12 +1508,26 @@ pub mod regs {
             Smcfgr(0)
         }
     }
+    impl core::fmt::Debug for Smcfgr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Smcfgr")
+                .field("sms", &self.sms())
+                .field("ts", &self.ts())
+                .field("msm", &self.msm())
+                .field("etf", &self.etf())
+                .field("etps", &self.etps())
+                .field("ece", &self.ece())
+                .field("etp", &self.etp())
+                .finish()
+        }
+    }
     #[doc = "SPEC."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Spec(pub u16);
     impl Spec {
         #[doc = "通道 1 和通道 2 交替使能功能使能位."]
+        #[must_use]
         #[inline(always)]
         pub const fn pwm_en(&self, n: usize) -> bool {
             assert!(n < 2usize);
@@ -1303,12 +1537,13 @@ pub mod regs {
         }
         #[doc = "通道 1 和通道 2 交替使能功能使能位."]
         #[inline(always)]
-        pub fn set_pwm_en(&mut self, n: usize, val: bool) {
+        pub const fn set_pwm_en(&mut self, n: usize, val: bool) {
             assert!(n < 2usize);
             let offs = 0usize + n * 1usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u16) & 0x01) << offs);
         }
         #[doc = "交替使能模式下，通道 1 无效电平配置."]
+        #[must_use]
         #[inline(always)]
         pub const fn pwm_oc(&self, n: usize) -> bool {
             assert!(n < 4usize);
@@ -1318,12 +1553,13 @@ pub mod regs {
         }
         #[doc = "交替使能模式下，通道 1 无效电平配置."]
         #[inline(always)]
-        pub fn set_pwm_oc(&mut self, n: usize, val: bool) {
+        pub const fn set_pwm_oc(&mut self, n: usize, val: bool) {
             assert!(n < 4usize);
             let offs = 4usize + n * 1usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u16) & 0x01) << offs);
         }
         #[doc = "TOGGLE."]
+        #[must_use]
         #[inline(always)]
         pub const fn toggle(&self) -> bool {
             let val = (self.0 >> 15usize) & 0x01;
@@ -1331,7 +1567,7 @@ pub mod regs {
         }
         #[doc = "TOGGLE."]
         #[inline(always)]
-        pub fn set_toggle(&mut self, val: bool) {
+        pub const fn set_toggle(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u16) & 0x01) << 15usize);
         }
     }
@@ -1341,12 +1577,26 @@ pub mod regs {
             Spec(0)
         }
     }
+    impl core::fmt::Debug for Spec {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Spec")
+                .field("pwm_en[0]", &self.pwm_en(0usize))
+                .field("pwm_en[1]", &self.pwm_en(1usize))
+                .field("pwm_oc[0]", &self.pwm_oc(0usize))
+                .field("pwm_oc[1]", &self.pwm_oc(1usize))
+                .field("pwm_oc[2]", &self.pwm_oc(2usize))
+                .field("pwm_oc[3]", &self.pwm_oc(3usize))
+                .field("toggle", &self.toggle())
+                .finish()
+        }
+    }
     #[doc = "event generation register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Swevgr(pub u32);
     impl Swevgr {
         #[doc = "Update generation."]
+        #[must_use]
         #[inline(always)]
         pub const fn ug(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -1354,10 +1604,11 @@ pub mod regs {
         }
         #[doc = "Update generation."]
         #[inline(always)]
-        pub fn set_ug(&mut self, val: bool) {
+        pub const fn set_ug(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "Capture/compare 1 generation."]
+        #[must_use]
         #[inline(always)]
         pub const fn ccg(&self, n: usize) -> bool {
             assert!(n < 4usize);
@@ -1367,12 +1618,13 @@ pub mod regs {
         }
         #[doc = "Capture/compare 1 generation."]
         #[inline(always)]
-        pub fn set_ccg(&mut self, n: usize, val: bool) {
+        pub const fn set_ccg(&mut self, n: usize, val: bool) {
             assert!(n < 4usize);
             let offs = 1usize + n * 1usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "Capture/Compare control update generation."]
+        #[must_use]
         #[inline(always)]
         pub const fn comg(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -1380,10 +1632,11 @@ pub mod regs {
         }
         #[doc = "Capture/Compare control update generation."]
         #[inline(always)]
-        pub fn set_comg(&mut self, val: bool) {
+        pub const fn set_comg(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
         #[doc = "Trigger generation."]
+        #[must_use]
         #[inline(always)]
         pub const fn tg(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
@@ -1391,10 +1644,11 @@ pub mod regs {
         }
         #[doc = "Trigger generation."]
         #[inline(always)]
-        pub fn set_tg(&mut self, val: bool) {
+        pub const fn set_tg(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
         }
         #[doc = "Break generation."]
+        #[must_use]
         #[inline(always)]
         pub const fn bg(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -1402,7 +1656,7 @@ pub mod regs {
         }
         #[doc = "Break generation."]
         #[inline(always)]
-        pub fn set_bg(&mut self, val: bool) {
+        pub const fn set_bg(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
     }
@@ -1412,10 +1666,24 @@ pub mod regs {
             Swevgr(0)
         }
     }
+    impl core::fmt::Debug for Swevgr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Swevgr")
+                .field("ug", &self.ug())
+                .field("ccg[0]", &self.ccg(0usize))
+                .field("ccg[1]", &self.ccg(1usize))
+                .field("ccg[2]", &self.ccg(2usize))
+                .field("ccg[3]", &self.ccg(3usize))
+                .field("comg", &self.comg())
+                .field("tg", &self.tg())
+                .field("bg", &self.bg())
+                .finish()
+        }
+    }
 }
 pub mod vals {
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     pub enum Ccds {
         #[doc = "CCx DMA request sent when CCx event occurs"]
         ONCOMPARE = 0x0,
@@ -1445,7 +1713,7 @@ pub mod vals {
         }
     }
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     pub enum CcmrInputCcs {
         _RESERVED_0 = 0x0,
         #[doc = "CCx channel is configured as input, normal mapping: ICx mapped to TIx"]
@@ -1478,7 +1746,7 @@ pub mod vals {
         }
     }
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     pub enum CcmrOutputCcs {
         #[doc = "CCx channel is configured as output"]
         OUTPUT = 0x0,
@@ -1510,7 +1778,7 @@ pub mod vals {
     }
     #[doc = "division ratio between the timer clock (CK_INT) frequency, the dead time and the sampling clock used by the dead time generator and the digital filter (ETR,TIx)"]
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     pub enum Ckd {
         #[doc = "Tdts=Tck_int"]
         DIV_1 = 0x0,
@@ -1543,7 +1811,7 @@ pub mod vals {
         }
     }
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     pub enum Cms {
         #[doc = "The counter counts up or down depending on the direction bit"]
         EDGEALIGNED = 0x0,
@@ -1577,7 +1845,7 @@ pub mod vals {
         }
     }
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     pub enum Dir {
         #[doc = "Counter used as upcounter"]
         UP = 0x0,
@@ -1608,7 +1876,7 @@ pub mod vals {
     }
     #[doc = "External trigger prescaler."]
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     pub enum Etps {
         #[doc = "ETRP frequency divided by 1"]
         DIV_1 = 0x0,
@@ -1642,7 +1910,7 @@ pub mod vals {
         }
     }
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     pub enum FilterValue {
         #[doc = "No filter, sampling is done at fDTS"]
         NOFILTER = 0x0,
@@ -1701,7 +1969,7 @@ pub mod vals {
     }
     #[doc = "Master mode selection."]
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     pub enum Mms {
         #[doc = "Reset"]
         RESET = 0x0,
@@ -1743,7 +2011,7 @@ pub mod vals {
         }
     }
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     pub enum Ocm {
         #[doc = "The comparison between the output compare register TIMx_CCRy and the counter TIMx_CNT has no effect on the outputs"]
         FROZEN = 0x0,
@@ -1785,7 +2053,7 @@ pub mod vals {
         }
     }
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     pub enum Urs {
         #[doc = "Any of counter overflow/underflow, setting UG, or update through slave mode, generates an update interrupt or DMA request"]
         ANYEVENT = 0x0,

@@ -548,19 +548,9 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 3,
             variants: &[
                 EnumVariant {
-                    name: "DIV_2",
-                    description: Some("fPCLK/2"),
-                    value: 0,
-                },
-                EnumVariant {
-                    name: "DIV_4",
-                    description: Some("fPCLK/4"),
-                    value: 1,
-                },
-                EnumVariant {
-                    name: "DIV_8",
-                    description: Some("fPCLK/8"),
-                    value: 2,
+                    name: "DIV_128",
+                    description: Some("fPCLK/128"),
+                    value: 6,
                 },
                 EnumVariant {
                     name: "DIV_16",
@@ -568,9 +558,24 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 3,
                 },
                 EnumVariant {
+                    name: "DIV_2",
+                    description: Some("fPCLK/2"),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "DIV_256",
+                    description: Some("fPCLK/256"),
+                    value: 7,
+                },
+                EnumVariant {
                     name: "DIV_32",
                     description: Some("fPCLK/32"),
                     value: 4,
+                },
+                EnumVariant {
+                    name: "DIV_4",
+                    description: Some("fPCLK/4"),
+                    value: 1,
                 },
                 EnumVariant {
                     name: "DIV_64",
@@ -578,14 +583,9 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 5,
                 },
                 EnumVariant {
-                    name: "DIV_128",
-                    description: Some("fPCLK/128"),
-                    value: 6,
-                },
-                EnumVariant {
-                    name: "DIV_256",
-                    description: Some("fPCLK/256"),
-                    value: 7,
+                    name: "DIV_8",
+                    description: Some("fPCLK/8"),
+                    value: 2,
                 },
             ],
         },
@@ -612,14 +612,9 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
-                    name: "SLAVETX",
-                    description: Some("Slave transmit."),
-                    value: 0,
-                },
-                EnumVariant {
-                    name: "SLAVERX",
-                    description: Some("Slave receive."),
-                    value: 1,
+                    name: "MASTERRX",
+                    description: Some("Master receive."),
+                    value: 3,
                 },
                 EnumVariant {
                     name: "MASTERTX",
@@ -627,9 +622,14 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 2,
                 },
                 EnumVariant {
-                    name: "MASTERRX",
-                    description: Some("Master receive."),
-                    value: 3,
+                    name: "SLAVERX",
+                    description: Some("Slave receive."),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "SLAVETX",
+                    description: Some("Slave transmit."),
+                    value: 0,
                 },
             ],
         },
@@ -661,9 +661,9 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
-                    name: "PHILIPS",
-                    description: Some("I2S Philips standard."),
-                    value: 0,
+                    name: "LSB",
+                    description: Some("LSB justified standard, right justified."),
+                    value: 2,
                 },
                 EnumVariant {
                     name: "MSB",
@@ -671,14 +671,14 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 1,
                 },
                 EnumVariant {
-                    name: "LSB",
-                    description: Some("LSB justified standard, right justified."),
-                    value: 2,
-                },
-                EnumVariant {
                     name: "PCM",
                     description: Some("PCM standard."),
                     value: 3,
+                },
+                EnumVariant {
+                    name: "PHILIPS",
+                    description: Some("I2S Philips standard."),
+                    value: 0,
                 },
             ],
         },

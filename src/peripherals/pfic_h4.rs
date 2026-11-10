@@ -22,608 +22,610 @@ impl Pfic {
     #[doc = "Interrupt Status Register."]
     #[inline(always)]
     pub const fn isr1(self) -> crate::common::Reg<regs::Isr1, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "Interrupt Status Register."]
     #[inline(always)]
     pub const fn isr2(self) -> crate::common::Reg<regs::Isr2, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "Interrupt Status Register."]
     #[inline(always)]
     pub const fn isr3(self) -> crate::common::Reg<regs::Isr3, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
     #[doc = "Interrupt Status Register."]
     #[inline(always)]
     pub const fn isr4(self) -> crate::common::Reg<regs::Isr4, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
     }
     #[doc = "Interrupt Status Register."]
     #[inline(always)]
     pub const fn isr5(self) -> crate::common::Reg<regs::Isr5, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize) as _) }
     }
     #[doc = "Interrupt Pending Register."]
     #[inline(always)]
     pub const fn ipr1(self) -> crate::common::Reg<regs::Ipr1, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x20usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x20usize) as _) }
     }
     #[doc = "Interrupt Pending Register."]
     #[inline(always)]
     pub const fn ipr2(self) -> crate::common::Reg<regs::Ipr2, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x24usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x24usize) as _) }
     }
     #[doc = "Interrupt Pending Register."]
     #[inline(always)]
     pub const fn ipr3(self) -> crate::common::Reg<regs::Ipr3, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x28usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x28usize) as _) }
     }
     #[doc = "Interrupt Pending Register."]
     #[inline(always)]
     pub const fn ipr4(self) -> crate::common::Reg<regs::Ipr4, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x2cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x2cusize) as _) }
     }
     #[doc = "Interrupt Pending Register."]
     #[inline(always)]
     pub const fn ipr5(self) -> crate::common::Reg<regs::Ipr5, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x30usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x30usize) as _) }
     }
     #[doc = "Interrupt Priority Register."]
     #[inline(always)]
     pub const fn ithresdr(self) -> crate::common::Reg<regs::Ithresdr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x40usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x40usize) as _) }
     }
     #[doc = "Interrupt configuration register."]
     #[inline(always)]
     pub const fn cfgr(self) -> crate::common::Reg<regs::Cfgr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x48usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x48usize) as _) }
     }
     #[doc = "Interrupt Global Register."]
     #[inline(always)]
     pub const fn gisr(self) -> crate::common::Reg<regs::Gisr, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x4cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x4cusize) as _) }
     }
     #[doc = "ID Config Register."]
     #[inline(always)]
     pub const fn vtfidr(self) -> crate::common::Reg<regs::Vtfidr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x50usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x50usize) as _) }
     }
     #[doc = "Interrupt 0 address Register."]
     #[inline(always)]
     pub const fn vtfaddrr0(self) -> crate::common::Reg<regs::Vtfaddrr0, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x60usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x60usize) as _) }
     }
     #[doc = "Interrupt 1 address Register."]
     #[inline(always)]
     pub const fn vtfaddrr1(self) -> crate::common::Reg<regs::Vtfaddrr1, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x64usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x64usize) as _) }
     }
     #[doc = "Interrupt 2 address Register."]
     #[inline(always)]
     pub const fn vtfaddrr2(self) -> crate::common::Reg<regs::Vtfaddrr2, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x68usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x68usize) as _) }
     }
     #[doc = "Interrupt 3 address Register."]
     #[inline(always)]
     pub const fn vtfaddrr3(self) -> crate::common::Reg<regs::Vtfaddrr3, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x6cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x6cusize) as _) }
     }
     #[doc = "Interrupt Setting Register."]
     #[inline(always)]
     pub const fn ienr1(self) -> crate::common::Reg<regs::Ienr1, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0100usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0100usize) as _) }
     }
     #[doc = "Interrupt Setting Register."]
     #[inline(always)]
     pub const fn ienr2(self) -> crate::common::Reg<regs::Ienr2, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0104usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0104usize) as _) }
     }
     #[doc = "Interrupt Setting Register."]
     #[inline(always)]
     pub const fn ienr3(self) -> crate::common::Reg<regs::Ienr3, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0108usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0108usize) as _) }
     }
     #[doc = "Interrupt Setting Register."]
     #[inline(always)]
     pub const fn ienr4(self) -> crate::common::Reg<regs::Ienr4, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x010cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x010cusize) as _) }
     }
     #[doc = "Interrupt Setting Register."]
     #[inline(always)]
     pub const fn ienr5(self) -> crate::common::Reg<regs::Ienr5, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0110usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0110usize) as _) }
     }
     #[doc = "Interrupt Clear Register."]
     #[inline(always)]
     pub const fn irer1(self) -> crate::common::Reg<regs::Irer1, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0180usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0180usize) as _) }
     }
     #[doc = "Interrupt Clear Register."]
     #[inline(always)]
     pub const fn irer2(self) -> crate::common::Reg<regs::Irer2, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0184usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0184usize) as _) }
     }
     #[doc = "Interrupt Clear Register."]
     #[inline(always)]
     pub const fn irer3(self) -> crate::common::Reg<regs::Irer3, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0188usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0188usize) as _) }
     }
     #[doc = "Interrupt Clear Register."]
     #[inline(always)]
     pub const fn irer4(self) -> crate::common::Reg<regs::Irer4, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x018cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x018cusize) as _) }
     }
     #[doc = "Interrupt Clear Register."]
     #[inline(always)]
     pub const fn irer5(self) -> crate::common::Reg<regs::Irer5, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0190usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0190usize) as _) }
     }
     #[doc = "Interrupt Pending Register."]
     #[inline(always)]
     pub const fn ipsr1(self) -> crate::common::Reg<regs::Ipsr1, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0200usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0200usize) as _) }
     }
     #[doc = "Interrupt Pending Register."]
     #[inline(always)]
     pub const fn ipsr2(self) -> crate::common::Reg<regs::Ipsr2, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0204usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0204usize) as _) }
     }
     #[doc = "Interrupt Pending Register."]
     #[inline(always)]
     pub const fn ipsr3(self) -> crate::common::Reg<regs::Ipsr3, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0208usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0208usize) as _) }
     }
     #[doc = "Interrupt Pending Register."]
     #[inline(always)]
     pub const fn ipsr4(self) -> crate::common::Reg<regs::Ipsr4, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x020cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x020cusize) as _) }
     }
     #[doc = "Interrupt Pending Register."]
     #[inline(always)]
     pub const fn ipsr5(self) -> crate::common::Reg<regs::Ipsr5, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0210usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0210usize) as _) }
     }
     #[doc = "Interrupt Pending Clear Register."]
     #[inline(always)]
     pub const fn iprr1(self) -> crate::common::Reg<regs::Iprr1, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0280usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0280usize) as _) }
     }
     #[doc = "Interrupt Pending Clear Register."]
     #[inline(always)]
     pub const fn iprr2(self) -> crate::common::Reg<regs::Iprr2, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0284usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0284usize) as _) }
     }
     #[doc = "Interrupt Pending Clear Register."]
     #[inline(always)]
     pub const fn iprr3(self) -> crate::common::Reg<regs::Iprr3, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0288usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0288usize) as _) }
     }
     #[doc = "Interrupt Pending Clear Register."]
     #[inline(always)]
     pub const fn iprr4(self) -> crate::common::Reg<regs::Iprr4, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x028cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x028cusize) as _) }
     }
     #[doc = "Interrupt Pending Clear Register."]
     #[inline(always)]
     pub const fn iprr5(self) -> crate::common::Reg<regs::Iprr5, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0290usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0290usize) as _) }
     }
     #[doc = "Interrupt ACTIVE Register."]
     #[inline(always)]
     pub const fn iactr1(self) -> crate::common::Reg<regs::Iactr1, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0300usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0300usize) as _) }
     }
     #[doc = "Interrupt ACTIVE Register."]
     #[inline(always)]
     pub const fn iactr2(self) -> crate::common::Reg<regs::Iactr2, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0304usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0304usize) as _) }
     }
     #[doc = "Interrupt ACTIVE Register."]
     #[inline(always)]
     pub const fn iactr3(self) -> crate::common::Reg<regs::Iactr3, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0308usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0308usize) as _) }
     }
     #[doc = "Interrupt ACTIVE Register."]
     #[inline(always)]
     pub const fn iactr4(self) -> crate::common::Reg<regs::Iactr4, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x030cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x030cusize) as _) }
     }
     #[doc = "Interrupt ACTIVE Register."]
     #[inline(always)]
     pub const fn iactr5(self) -> crate::common::Reg<regs::Iactr5, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0310usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0310usize) as _) }
     }
     #[doc = "Interrupt Priority Register."]
     #[inline(always)]
     pub const fn iprior(self, n: usize) -> crate::common::Reg<u32, crate::common::RW> {
         assert!(n < 64usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0400usize + n * 4usize) as _) }
+        unsafe {
+            crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0400usize + n * 4usize) as _)
+        }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr0(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0600usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0600usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr1(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0604usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0604usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr2(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0608usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0608usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr3(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x060cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x060cusize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr4(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0610usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0610usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr5(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0614usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0614usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr6(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0618usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0618usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr7(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x061cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x061cusize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr8(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0620usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0620usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr9(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0624usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0624usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr10(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0628usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0628usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr11(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x062cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x062cusize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr12(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0630usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0630usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr13(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0634usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0634usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr14(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0638usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0638usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr15(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x063cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x063cusize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr16(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0640usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0640usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr17(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0644usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0644usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr18(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0648usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0648usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr19(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x064cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x064cusize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr20(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0650usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0650usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr21(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0654usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0654usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr22(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0658usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0658usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr23(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x065cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x065cusize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr24(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0660usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0660usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr25(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0664usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0664usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr26(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0668usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0668usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr27(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x066cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x066cusize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr28(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0670usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0670usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr29(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0674usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0674usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr30(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0678usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0678usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr31(self) -> crate::common::Reg<u32, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x067cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x067cusize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr32(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0680usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0680usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr33(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0684usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0684usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr34(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0688usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0688usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr35(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x068cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x068cusize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr36(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0690usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0690usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr37(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0694usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0694usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr38(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0698usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0698usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr39(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x069cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x069cusize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr40(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x06a0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x06a0usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr41(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x06a4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x06a4usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr42(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x06a8usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x06a8usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr43(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x06acusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x06acusize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr44(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x06b0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x06b0usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr45(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x06b4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x06b4usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr46(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x06b8usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x06b8usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr47(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x06bcusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x06bcusize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr48(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x06c0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x06c0usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr49(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x06c4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x06c4usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr50(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x06c8usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x06c8usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr51(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x06ccusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x06ccusize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr52(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x06d0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x06d0usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr53(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x06d4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x06d4usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr54(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x06d8usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x06d8usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr55(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x06dcusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x06dcusize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr56(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x06e0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x06e0usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr57(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x06e4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x06e4usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr58(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x06e8usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x06e8usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr59(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x06ecusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x06ecusize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr60(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x06f0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x06f0usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr61(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x06f4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x06f4usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr62(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x06f8usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x06f8usize) as _) }
     }
     #[doc = "Interrupt Allocation Register."]
     #[inline(always)]
     pub const fn iallocr63(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x06fcusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x06fcusize) as _) }
     }
     #[doc = "interrupts authority register 1."]
     #[inline(always)]
     pub const fn iautr1(self) -> crate::common::Reg<regs::Iautr1, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0700usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0700usize) as _) }
     }
     #[doc = "interrupts authority register 2."]
     #[inline(always)]
     pub const fn iautr2(self) -> crate::common::Reg<regs::Iautr2, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0704usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0704usize) as _) }
     }
     #[doc = "interrupts authority register 3."]
     #[inline(always)]
     pub const fn iautr3(self) -> crate::common::Reg<regs::Iautr3, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0708usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0708usize) as _) }
     }
     #[doc = "interrupts authority register 4."]
     #[inline(always)]
     pub const fn iautr4(self) -> crate::common::Reg<regs::Iautr4, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x070cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x070cusize) as _) }
     }
     #[doc = "interrupts authority register 5."]
     #[inline(always)]
     pub const fn iautr5(self) -> crate::common::Reg<regs::Iautr5, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0710usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0710usize) as _) }
     }
     #[doc = "PFIC wake-up instruction pointer register 0."]
     #[inline(always)]
     pub const fn wakeip0(self) -> crate::common::Reg<regs::Wakeip0, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0720usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0720usize) as _) }
     }
     #[doc = "PFIC wake-up instruction pointer register 1."]
     #[inline(always)]
     pub const fn wakeip1(self) -> crate::common::Reg<regs::Wakeip1, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0724usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0724usize) as _) }
     }
     #[doc = "PFIC kernel status register 0."]
     #[inline(always)]
     pub const fn cstar0(self) -> crate::common::Reg<regs::Cstar0, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0780usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0780usize) as _) }
     }
     #[doc = "PFIC kernel status register 1."]
     #[inline(always)]
     pub const fn cstar1(self) -> crate::common::Reg<regs::Cstar1, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0784usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0784usize) as _) }
     }
     #[doc = "PFIC Event Enable Register."]
     #[inline(always)]
     pub const fn eenr(self) -> crate::common::Reg<regs::Eenr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0c80usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0c80usize) as _) }
     }
     #[doc = "PFIC Event Suspend Register."]
     #[inline(always)]
     pub const fn epr(self) -> crate::common::Reg<regs::Epr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0c84usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0c84usize) as _) }
     }
     #[doc = "PFIC Event Wake Register."]
     #[inline(always)]
     pub const fn ewupr(self) -> crate::common::Reg<regs::Ewupr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0c88usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0c88usize) as _) }
     }
     #[doc = "System Control Register."]
     #[inline(always)]
     pub const fn sctlr(self) -> crate::common::Reg<regs::Sctlr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0d10usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0d10usize) as _) }
     }
 }
 pub mod regs {
@@ -633,6 +635,7 @@ pub mod regs {
     pub struct Cfgr(pub u32);
     impl Cfgr {
         #[doc = "System reset register."]
+        #[must_use]
         #[inline(always)]
         pub const fn sysrst(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -640,10 +643,11 @@ pub mod regs {
         }
         #[doc = "System reset register."]
         #[inline(always)]
-        pub fn set_sysrst(&mut self, val: bool) {
+        pub const fn set_sysrst(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
         #[doc = "KEYCODE."]
+        #[must_use]
         #[inline(always)]
         pub const fn keycode(&self) -> u16 {
             let val = (self.0 >> 16usize) & 0xffff;
@@ -651,7 +655,7 @@ pub mod regs {
         }
         #[doc = "KEYCODE."]
         #[inline(always)]
-        pub fn set_keycode(&mut self, val: u16) {
+        pub const fn set_keycode(&mut self, val: u16) {
             self.0 = (self.0 & !(0xffff << 16usize)) | (((val as u32) & 0xffff) << 16usize);
         }
     }
@@ -661,12 +665,21 @@ pub mod regs {
             Cfgr(0)
         }
     }
+    impl core::fmt::Debug for Cfgr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Cfgr")
+                .field("sysrst", &self.sysrst())
+                .field("keycode", &self.keycode())
+                .finish()
+        }
+    }
     #[doc = "PFIC kernel status register 0."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Cstar0(pub u32);
     impl Cstar0 {
         #[doc = "The nested status register of kernel C0 interrupts is used to. query the nested state of kernel C0 interrupts. nest_sta bits from the INEST_CTLR register of the CSR register."]
+        #[must_use]
         #[inline(always)]
         pub const fn cpu_nest_sta_0(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0xff;
@@ -674,10 +687,11 @@ pub mod regs {
         }
         #[doc = "The nested status register of kernel C0 interrupts is used to. query the nested state of kernel C0 interrupts. nest_sta bits from the INEST_CTLR register of the CSR register."]
         #[inline(always)]
-        pub fn set_cpu_nest_sta_0(&mut self, val: u8) {
+        pub const fn set_cpu_nest_sta_0(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
         }
         #[doc = "Kernel C0 interrupt active flag register,. which is used to query whether kernel C0 is processing interrupts."]
+        #[must_use]
         #[inline(always)]
         pub const fn cpu_irq_active_0(&self) -> bool {
             let val = (self.0 >> 8usize) & 0x01;
@@ -685,10 +699,11 @@ pub mod regs {
         }
         #[doc = "Kernel C0 interrupt active flag register,. which is used to query whether kernel C0 is processing interrupts."]
         #[inline(always)]
-        pub fn set_cpu_irq_active_0(&mut self, val: bool) {
+        pub const fn set_cpu_irq_active_0(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
         }
         #[doc = "Kernel C0 interrupt pending flag register, which is used to query kernel C1 for unhandled interrupts."]
+        #[must_use]
         #[inline(always)]
         pub const fn cpu_irq_pend_0(&self) -> bool {
             let val = (self.0 >> 9usize) & 0x01;
@@ -696,10 +711,11 @@ pub mod regs {
         }
         #[doc = "Kernel C0 interrupt pending flag register, which is used to query kernel C1 for unhandled interrupts."]
         #[inline(always)]
-        pub fn set_cpu_irq_pend_0(&mut self, val: bool) {
+        pub const fn set_cpu_irq_pend_0(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
         }
         #[doc = "The kernel C0 global interrupt enable register is used to. query whether the kernel C0 global interrupt is enabled."]
+        #[must_use]
         #[inline(always)]
         pub const fn cpu_globl_ie_0(&self) -> bool {
             let val = (self.0 >> 11usize) & 0x01;
@@ -707,10 +723,11 @@ pub mod regs {
         }
         #[doc = "The kernel C0 global interrupt enable register is used to. query whether the kernel C0 global interrupt is enabled."]
         #[inline(always)]
-        pub fn set_cpu_globl_ie_0(&mut self, val: bool) {
+        pub const fn set_cpu_globl_ie_0(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
         }
         #[doc = "Kernel C0 debug mode register, which is used to query whether kernel C0 is in debug mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn cpu_dbg_mode_0(&self) -> bool {
             let val = (self.0 >> 12usize) & 0x01;
@@ -718,10 +735,11 @@ pub mod regs {
         }
         #[doc = "Kernel C0 debug mode register, which is used to query whether kernel C0 is in debug mode."]
         #[inline(always)]
-        pub fn set_cpu_dbg_mode_0(&mut self, val: bool) {
+        pub const fn set_cpu_dbg_mode_0(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
         }
         #[doc = "The kernel C0 lock status register is used to query whether kernel C0 is in the locked state."]
+        #[must_use]
         #[inline(always)]
         pub const fn cpu_lock_up_0(&self) -> bool {
             let val = (self.0 >> 13usize) & 0x01;
@@ -729,10 +747,11 @@ pub mod regs {
         }
         #[doc = "The kernel C0 lock status register is used to query whether kernel C0 is in the locked state."]
         #[inline(always)]
-        pub fn set_cpu_lock_up_0(&mut self, val: bool) {
+        pub const fn set_cpu_lock_up_0(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
         }
         #[doc = "The kernel C0 status register is used to obtain the running state of kernel C0."]
+        #[must_use]
         #[inline(always)]
         pub const fn cpu_ex_state_0(&self) -> u8 {
             let val = (self.0 >> 14usize) & 0x03;
@@ -740,7 +759,7 @@ pub mod regs {
         }
         #[doc = "The kernel C0 status register is used to obtain the running state of kernel C0."]
         #[inline(always)]
-        pub fn set_cpu_ex_state_0(&mut self, val: u8) {
+        pub const fn set_cpu_ex_state_0(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 14usize)) | (((val as u32) & 0x03) << 14usize);
         }
     }
@@ -750,12 +769,26 @@ pub mod regs {
             Cstar0(0)
         }
     }
+    impl core::fmt::Debug for Cstar0 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Cstar0")
+                .field("cpu_nest_sta_0", &self.cpu_nest_sta_0())
+                .field("cpu_irq_active_0", &self.cpu_irq_active_0())
+                .field("cpu_irq_pend_0", &self.cpu_irq_pend_0())
+                .field("cpu_globl_ie_0", &self.cpu_globl_ie_0())
+                .field("cpu_dbg_mode_0", &self.cpu_dbg_mode_0())
+                .field("cpu_lock_up_0", &self.cpu_lock_up_0())
+                .field("cpu_ex_state_0", &self.cpu_ex_state_0())
+                .finish()
+        }
+    }
     #[doc = "PFIC kernel status register 1."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Cstar1(pub u32);
     impl Cstar1 {
         #[doc = "The nested status register of kernel C1 interrupts is used to. query the nested state of kernel C1 interrupts. nest_sta bits from the INEST_CTLR register of the CSR register."]
+        #[must_use]
         #[inline(always)]
         pub const fn cpu_nest_sta_1(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0xff;
@@ -763,10 +796,11 @@ pub mod regs {
         }
         #[doc = "The nested status register of kernel C1 interrupts is used to. query the nested state of kernel C1 interrupts. nest_sta bits from the INEST_CTLR register of the CSR register."]
         #[inline(always)]
-        pub fn set_cpu_nest_sta_1(&mut self, val: u8) {
+        pub const fn set_cpu_nest_sta_1(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
         }
         #[doc = "Kernel C1 interrupt active flag register,. which is used to query whether kernel C1 is processing interrupts."]
+        #[must_use]
         #[inline(always)]
         pub const fn cpu_irq_active_1(&self) -> bool {
             let val = (self.0 >> 8usize) & 0x01;
@@ -774,10 +808,11 @@ pub mod regs {
         }
         #[doc = "Kernel C1 interrupt active flag register,. which is used to query whether kernel C1 is processing interrupts."]
         #[inline(always)]
-        pub fn set_cpu_irq_active_1(&mut self, val: bool) {
+        pub const fn set_cpu_irq_active_1(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
         }
         #[doc = "Kernel C1 interrupt pending flag register, which is used to query kernel C1 for unhandled interrupts."]
+        #[must_use]
         #[inline(always)]
         pub const fn cpu_irq_pend_1(&self) -> bool {
             let val = (self.0 >> 9usize) & 0x01;
@@ -785,10 +820,11 @@ pub mod regs {
         }
         #[doc = "Kernel C1 interrupt pending flag register, which is used to query kernel C1 for unhandled interrupts."]
         #[inline(always)]
-        pub fn set_cpu_irq_pend_1(&mut self, val: bool) {
+        pub const fn set_cpu_irq_pend_1(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
         }
         #[doc = "The kernel C1 global interrupt enable register is used to. query whether the kernel C1 global interrupt is enabled."]
+        #[must_use]
         #[inline(always)]
         pub const fn cpu_globl_ie_1(&self) -> bool {
             let val = (self.0 >> 11usize) & 0x01;
@@ -796,10 +832,11 @@ pub mod regs {
         }
         #[doc = "The kernel C1 global interrupt enable register is used to. query whether the kernel C1 global interrupt is enabled."]
         #[inline(always)]
-        pub fn set_cpu_globl_ie_1(&mut self, val: bool) {
+        pub const fn set_cpu_globl_ie_1(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
         }
         #[doc = "Kernel C1 debug mode register, which is used to query whether kernel C1 is in debug mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn cpu_dbg_mode_1(&self) -> bool {
             let val = (self.0 >> 12usize) & 0x01;
@@ -807,10 +844,11 @@ pub mod regs {
         }
         #[doc = "Kernel C1 debug mode register, which is used to query whether kernel C1 is in debug mode."]
         #[inline(always)]
-        pub fn set_cpu_dbg_mode_1(&mut self, val: bool) {
+        pub const fn set_cpu_dbg_mode_1(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
         }
         #[doc = "The kernel C1 lock status register is used to query whether kernel C1 is in the locked state."]
+        #[must_use]
         #[inline(always)]
         pub const fn cpu_lock_up_1(&self) -> bool {
             let val = (self.0 >> 13usize) & 0x01;
@@ -818,10 +856,11 @@ pub mod regs {
         }
         #[doc = "The kernel C1 lock status register is used to query whether kernel C1 is in the locked state."]
         #[inline(always)]
-        pub fn set_cpu_lock_up_1(&mut self, val: bool) {
+        pub const fn set_cpu_lock_up_1(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
         }
         #[doc = "The kernel C1 status register is used to obtain the running state of kernel C1."]
+        #[must_use]
         #[inline(always)]
         pub const fn cpu_ex_state_1(&self) -> u8 {
             let val = (self.0 >> 14usize) & 0x03;
@@ -829,7 +868,7 @@ pub mod regs {
         }
         #[doc = "The kernel C1 status register is used to obtain the running state of kernel C1."]
         #[inline(always)]
-        pub fn set_cpu_ex_state_1(&mut self, val: u8) {
+        pub const fn set_cpu_ex_state_1(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 14usize)) | (((val as u32) & 0x03) << 14usize);
         }
     }
@@ -839,12 +878,26 @@ pub mod regs {
             Cstar1(0)
         }
     }
+    impl core::fmt::Debug for Cstar1 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Cstar1")
+                .field("cpu_nest_sta_1", &self.cpu_nest_sta_1())
+                .field("cpu_irq_active_1", &self.cpu_irq_active_1())
+                .field("cpu_irq_pend_1", &self.cpu_irq_pend_1())
+                .field("cpu_globl_ie_1", &self.cpu_globl_ie_1())
+                .field("cpu_dbg_mode_1", &self.cpu_dbg_mode_1())
+                .field("cpu_lock_up_1", &self.cpu_lock_up_1())
+                .field("cpu_ex_state_1", &self.cpu_ex_state_1())
+                .finish()
+        }
+    }
     #[doc = "PFIC Event Enable Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Eenr(pub u32);
     impl Eenr {
         #[doc = "31-0 Event wake-up enabled."]
+        #[must_use]
         #[inline(always)]
         pub const fn eventen(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0x7fff_ffff;
@@ -852,7 +905,7 @@ pub mod regs {
         }
         #[doc = "31-0 Event wake-up enabled."]
         #[inline(always)]
-        pub fn set_eventen(&mut self, val: u32) {
+        pub const fn set_eventen(&mut self, val: u32) {
             self.0 = (self.0 & !(0x7fff_ffff << 0usize)) | (((val as u32) & 0x7fff_ffff) << 0usize);
         }
     }
@@ -862,12 +915,20 @@ pub mod regs {
             Eenr(0)
         }
     }
+    impl core::fmt::Debug for Eenr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Eenr")
+                .field("eventen", &self.eventen())
+                .finish()
+        }
+    }
     #[doc = "PFIC Event Suspend Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Epr(pub u32);
     impl Epr {
         #[doc = "7-0 Event Pending Status, Not Clearable."]
+        #[must_use]
         #[inline(always)]
         pub const fn event_pend7_0(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0xff;
@@ -875,10 +936,11 @@ pub mod regs {
         }
         #[doc = "7-0 Event Pending Status, Not Clearable."]
         #[inline(always)]
-        pub fn set_event_pend7_0(&mut self, val: u8) {
+        pub const fn set_event_pend7_0(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
         }
         #[doc = "31-8 event is suspended, write 1 to clear zero."]
+        #[must_use]
         #[inline(always)]
         pub const fn event_pend31_8(&self) -> u32 {
             let val = (self.0 >> 8usize) & 0x00ff_ffff;
@@ -886,7 +948,7 @@ pub mod regs {
         }
         #[doc = "31-8 event is suspended, write 1 to clear zero."]
         #[inline(always)]
-        pub fn set_event_pend31_8(&mut self, val: u32) {
+        pub const fn set_event_pend31_8(&mut self, val: u32) {
             self.0 = (self.0 & !(0x00ff_ffff << 8usize)) | (((val as u32) & 0x00ff_ffff) << 8usize);
         }
     }
@@ -896,12 +958,21 @@ pub mod regs {
             Epr(0)
         }
     }
+    impl core::fmt::Debug for Epr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Epr")
+                .field("event_pend7_0", &self.event_pend7_0())
+                .field("event_pend31_8", &self.event_pend31_8())
+                .finish()
+        }
+    }
     #[doc = "PFIC Event Wake Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ewupr(pub u32);
     impl Ewupr {
         #[doc = "31-0 Event Wake Register."]
+        #[must_use]
         #[inline(always)]
         pub const fn event_wup(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -909,7 +980,7 @@ pub mod regs {
         }
         #[doc = "31-0 Event Wake Register."]
         #[inline(always)]
-        pub fn set_event_wup(&mut self, val: u32) {
+        pub const fn set_event_wup(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -919,12 +990,20 @@ pub mod regs {
             Ewupr(0)
         }
     }
+    impl core::fmt::Debug for Ewupr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ewupr")
+                .field("event_wup", &self.event_wup())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Global Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Gisr(pub u32);
     impl Gisr {
         #[doc = "interrupt nesting."]
+        #[must_use]
         #[inline(always)]
         pub const fn neststa(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0xff;
@@ -932,10 +1011,11 @@ pub mod regs {
         }
         #[doc = "interrupt nesting."]
         #[inline(always)]
-        pub fn set_neststa(&mut self, val: u8) {
+        pub const fn set_neststa(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
         }
         #[doc = "interrupt execution."]
+        #[must_use]
         #[inline(always)]
         pub const fn gactsta(&self) -> bool {
             let val = (self.0 >> 8usize) & 0x01;
@@ -943,10 +1023,11 @@ pub mod regs {
         }
         #[doc = "interrupt execution."]
         #[inline(always)]
-        pub fn set_gactsta(&mut self, val: bool) {
+        pub const fn set_gactsta(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
         }
         #[doc = "interrupt pending."]
+        #[must_use]
         #[inline(always)]
         pub const fn gpendsta(&self) -> bool {
             let val = (self.0 >> 9usize) & 0x01;
@@ -954,10 +1035,11 @@ pub mod regs {
         }
         #[doc = "interrupt pending."]
         #[inline(always)]
-        pub fn set_gpendsta(&mut self, val: bool) {
+        pub const fn set_gpendsta(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
         }
         #[doc = "global interrupt enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn globl_ie(&self) -> bool {
             let val = (self.0 >> 11usize) & 0x01;
@@ -965,10 +1047,11 @@ pub mod regs {
         }
         #[doc = "global interrupt enable."]
         #[inline(always)]
-        pub fn set_globl_ie(&mut self, val: bool) {
+        pub const fn set_globl_ie(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
         }
         #[doc = "debug mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn dbg_mode(&self) -> bool {
             let val = (self.0 >> 12usize) & 0x01;
@@ -976,10 +1059,11 @@ pub mod regs {
         }
         #[doc = "debug mode."]
         #[inline(always)]
-        pub fn set_dbg_mode(&mut self, val: bool) {
+        pub const fn set_dbg_mode(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
         }
         #[doc = "lock-out state."]
+        #[must_use]
         #[inline(always)]
         pub const fn lock_up(&self) -> bool {
             let val = (self.0 >> 13usize) & 0x01;
@@ -987,10 +1071,11 @@ pub mod regs {
         }
         #[doc = "lock-out state."]
         #[inline(always)]
-        pub fn set_lock_up(&mut self, val: bool) {
+        pub const fn set_lock_up(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
         }
         #[doc = "The kernel status register, which is used to obtain the running state of the kernel."]
+        #[must_use]
         #[inline(always)]
         pub const fn ex_state(&self) -> u8 {
             let val = (self.0 >> 14usize) & 0x03;
@@ -998,7 +1083,7 @@ pub mod regs {
         }
         #[doc = "The kernel status register, which is used to obtain the running state of the kernel."]
         #[inline(always)]
-        pub fn set_ex_state(&mut self, val: u8) {
+        pub const fn set_ex_state(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 14usize)) | (((val as u32) & 0x03) << 14usize);
         }
     }
@@ -1008,12 +1093,26 @@ pub mod regs {
             Gisr(0)
         }
     }
+    impl core::fmt::Debug for Gisr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Gisr")
+                .field("neststa", &self.neststa())
+                .field("gactsta", &self.gactsta())
+                .field("gpendsta", &self.gpendsta())
+                .field("globl_ie", &self.globl_ie())
+                .field("dbg_mode", &self.dbg_mode())
+                .field("lock_up", &self.lock_up())
+                .field("ex_state", &self.ex_state())
+                .finish()
+        }
+    }
     #[doc = "Interrupt ACTIVE Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Iactr1(pub u32);
     impl Iactr1 {
         #[doc = "IACTS."]
+        #[must_use]
         #[inline(always)]
         pub const fn iacts2_3(&self) -> u8 {
             let val = (self.0 >> 2usize) & 0x03;
@@ -1021,10 +1120,11 @@ pub mod regs {
         }
         #[doc = "IACTS."]
         #[inline(always)]
-        pub fn set_iacts2_3(&mut self, val: u8) {
+        pub const fn set_iacts2_3(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 2usize)) | (((val as u32) & 0x03) << 2usize);
         }
         #[doc = "IACTS."]
+        #[must_use]
         #[inline(always)]
         pub const fn iacts5(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -1032,10 +1132,11 @@ pub mod regs {
         }
         #[doc = "IACTS."]
         #[inline(always)]
-        pub fn set_iacts5(&mut self, val: bool) {
+        pub const fn set_iacts5(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
         #[doc = "IACTS."]
+        #[must_use]
         #[inline(always)]
         pub const fn iacts8_9(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x03;
@@ -1043,10 +1144,11 @@ pub mod regs {
         }
         #[doc = "IACTS."]
         #[inline(always)]
-        pub fn set_iacts8_9(&mut self, val: u8) {
+        pub const fn set_iacts8_9(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u32) & 0x03) << 8usize);
         }
         #[doc = "IACTS."]
+        #[must_use]
         #[inline(always)]
         pub const fn iacts12_31(&self) -> u32 {
             let val = (self.0 >> 12usize) & 0x000f_ffff;
@@ -1054,7 +1156,7 @@ pub mod regs {
         }
         #[doc = "IACTS."]
         #[inline(always)]
-        pub fn set_iacts12_31(&mut self, val: u32) {
+        pub const fn set_iacts12_31(&mut self, val: u32) {
             self.0 =
                 (self.0 & !(0x000f_ffff << 12usize)) | (((val as u32) & 0x000f_ffff) << 12usize);
         }
@@ -1065,12 +1167,23 @@ pub mod regs {
             Iactr1(0)
         }
     }
+    impl core::fmt::Debug for Iactr1 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Iactr1")
+                .field("iacts2_3", &self.iacts2_3())
+                .field("iacts5", &self.iacts5())
+                .field("iacts8_9", &self.iacts8_9())
+                .field("iacts12_31", &self.iacts12_31())
+                .finish()
+        }
+    }
     #[doc = "Interrupt ACTIVE Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Iactr2(pub u32);
     impl Iactr2 {
         #[doc = "IACTS."]
+        #[must_use]
         #[inline(always)]
         pub const fn iacts(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1078,7 +1191,7 @@ pub mod regs {
         }
         #[doc = "IACTS."]
         #[inline(always)]
-        pub fn set_iacts(&mut self, val: u32) {
+        pub const fn set_iacts(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1088,12 +1201,20 @@ pub mod regs {
             Iactr2(0)
         }
     }
+    impl core::fmt::Debug for Iactr2 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Iactr2")
+                .field("iacts", &self.iacts())
+                .finish()
+        }
+    }
     #[doc = "Interrupt ACTIVE Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Iactr3(pub u32);
     impl Iactr3 {
         #[doc = "IACTS."]
+        #[must_use]
         #[inline(always)]
         pub const fn iacts(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1101,7 +1222,7 @@ pub mod regs {
         }
         #[doc = "IACTS."]
         #[inline(always)]
-        pub fn set_iacts(&mut self, val: u32) {
+        pub const fn set_iacts(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1111,12 +1232,20 @@ pub mod regs {
             Iactr3(0)
         }
     }
+    impl core::fmt::Debug for Iactr3 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Iactr3")
+                .field("iacts", &self.iacts())
+                .finish()
+        }
+    }
     #[doc = "Interrupt ACTIVE Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Iactr4(pub u32);
     impl Iactr4 {
         #[doc = "IACTS."]
+        #[must_use]
         #[inline(always)]
         pub const fn iacts(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1124,7 +1253,7 @@ pub mod regs {
         }
         #[doc = "IACTS."]
         #[inline(always)]
-        pub fn set_iacts(&mut self, val: u32) {
+        pub const fn set_iacts(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1134,12 +1263,20 @@ pub mod regs {
             Iactr4(0)
         }
     }
+    impl core::fmt::Debug for Iactr4 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Iactr4")
+                .field("iacts", &self.iacts())
+                .finish()
+        }
+    }
     #[doc = "Interrupt ACTIVE Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Iactr5(pub u32);
     impl Iactr5 {
         #[doc = "IACTS."]
+        #[must_use]
         #[inline(always)]
         pub const fn iacts(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0x000f_ffff;
@@ -1147,7 +1284,7 @@ pub mod regs {
         }
         #[doc = "IACTS."]
         #[inline(always)]
-        pub fn set_iacts(&mut self, val: u32) {
+        pub const fn set_iacts(&mut self, val: u32) {
             self.0 = (self.0 & !(0x000f_ffff << 0usize)) | (((val as u32) & 0x000f_ffff) << 0usize);
         }
     }
@@ -1157,12 +1294,20 @@ pub mod regs {
             Iactr5(0)
         }
     }
+    impl core::fmt::Debug for Iactr5 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Iactr5")
+                .field("iacts", &self.iacts())
+                .finish()
+        }
+    }
     #[doc = "interrupts authority register 1."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Iautr1(pub u32);
     impl Iautr1 {
         #[doc = "interrupt allocates all registers. and is used to query whether the interrupt responds to each kernel allocation."]
+        #[must_use]
         #[inline(always)]
         pub const fn iaut(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1170,7 +1315,7 @@ pub mod regs {
         }
         #[doc = "interrupt allocates all registers. and is used to query whether the interrupt responds to each kernel allocation."]
         #[inline(always)]
-        pub fn set_iaut(&mut self, val: u32) {
+        pub const fn set_iaut(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1180,12 +1325,20 @@ pub mod regs {
             Iautr1(0)
         }
     }
+    impl core::fmt::Debug for Iautr1 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Iautr1")
+                .field("iaut", &self.iaut())
+                .finish()
+        }
+    }
     #[doc = "interrupts authority register 2."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Iautr2(pub u32);
     impl Iautr2 {
         #[doc = "interrupt allocates all registers. and is used to query whether the interrupt responds to each kernel allocation."]
+        #[must_use]
         #[inline(always)]
         pub const fn iaut(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1193,7 +1346,7 @@ pub mod regs {
         }
         #[doc = "interrupt allocates all registers. and is used to query whether the interrupt responds to each kernel allocation."]
         #[inline(always)]
-        pub fn set_iaut(&mut self, val: u32) {
+        pub const fn set_iaut(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1203,12 +1356,20 @@ pub mod regs {
             Iautr2(0)
         }
     }
+    impl core::fmt::Debug for Iautr2 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Iautr2")
+                .field("iaut", &self.iaut())
+                .finish()
+        }
+    }
     #[doc = "interrupts authority register 3."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Iautr3(pub u32);
     impl Iautr3 {
         #[doc = "interrupt allocates all registers. and is used to query whether the interrupt responds to each kernel allocation."]
+        #[must_use]
         #[inline(always)]
         pub const fn iaut(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1216,7 +1377,7 @@ pub mod regs {
         }
         #[doc = "interrupt allocates all registers. and is used to query whether the interrupt responds to each kernel allocation."]
         #[inline(always)]
-        pub fn set_iaut(&mut self, val: u32) {
+        pub const fn set_iaut(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1226,12 +1387,20 @@ pub mod regs {
             Iautr3(0)
         }
     }
+    impl core::fmt::Debug for Iautr3 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Iautr3")
+                .field("iaut", &self.iaut())
+                .finish()
+        }
+    }
     #[doc = "interrupts authority register 4."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Iautr4(pub u32);
     impl Iautr4 {
         #[doc = "interrupt allocates all registers. and is used to query whether the interrupt responds to each kernel allocation."]
+        #[must_use]
         #[inline(always)]
         pub const fn iaut(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1239,7 +1408,7 @@ pub mod regs {
         }
         #[doc = "interrupt allocates all registers. and is used to query whether the interrupt responds to each kernel allocation."]
         #[inline(always)]
-        pub fn set_iaut(&mut self, val: u32) {
+        pub const fn set_iaut(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1249,12 +1418,20 @@ pub mod regs {
             Iautr4(0)
         }
     }
+    impl core::fmt::Debug for Iautr4 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Iautr4")
+                .field("iaut", &self.iaut())
+                .finish()
+        }
+    }
     #[doc = "interrupts authority register 5."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Iautr5(pub u32);
     impl Iautr5 {
         #[doc = "interrupt allocates all registers. and is used to query whether the interrupt responds to each kernel allocation."]
+        #[must_use]
         #[inline(always)]
         pub const fn iaut(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1262,7 +1439,7 @@ pub mod regs {
         }
         #[doc = "interrupt allocates all registers. and is used to query whether the interrupt responds to each kernel allocation."]
         #[inline(always)]
-        pub fn set_iaut(&mut self, val: u32) {
+        pub const fn set_iaut(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1272,12 +1449,20 @@ pub mod regs {
             Iautr5(0)
         }
     }
+    impl core::fmt::Debug for Iautr5 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Iautr5")
+                .field("iaut", &self.iaut())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Setting Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ienr1(pub u32);
     impl Ienr1 {
         #[doc = "INTEN12_31."]
+        #[must_use]
         #[inline(always)]
         pub const fn inten12_31(&self) -> u32 {
             let val = (self.0 >> 12usize) & 0x000f_ffff;
@@ -1285,7 +1470,7 @@ pub mod regs {
         }
         #[doc = "INTEN12_31."]
         #[inline(always)]
-        pub fn set_inten12_31(&mut self, val: u32) {
+        pub const fn set_inten12_31(&mut self, val: u32) {
             self.0 =
                 (self.0 & !(0x000f_ffff << 12usize)) | (((val as u32) & 0x000f_ffff) << 12usize);
         }
@@ -1296,12 +1481,20 @@ pub mod regs {
             Ienr1(0)
         }
     }
+    impl core::fmt::Debug for Ienr1 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ienr1")
+                .field("inten12_31", &self.inten12_31())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Setting Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ienr2(pub u32);
     impl Ienr2 {
         #[doc = "INTEN."]
+        #[must_use]
         #[inline(always)]
         pub const fn inten(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1309,7 +1502,7 @@ pub mod regs {
         }
         #[doc = "INTEN."]
         #[inline(always)]
-        pub fn set_inten(&mut self, val: u32) {
+        pub const fn set_inten(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1319,12 +1512,20 @@ pub mod regs {
             Ienr2(0)
         }
     }
+    impl core::fmt::Debug for Ienr2 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ienr2")
+                .field("inten", &self.inten())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Setting Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ienr3(pub u32);
     impl Ienr3 {
         #[doc = "INTEN."]
+        #[must_use]
         #[inline(always)]
         pub const fn inten(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1332,7 +1533,7 @@ pub mod regs {
         }
         #[doc = "INTEN."]
         #[inline(always)]
-        pub fn set_inten(&mut self, val: u32) {
+        pub const fn set_inten(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1342,12 +1543,20 @@ pub mod regs {
             Ienr3(0)
         }
     }
+    impl core::fmt::Debug for Ienr3 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ienr3")
+                .field("inten", &self.inten())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Setting Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ienr4(pub u32);
     impl Ienr4 {
         #[doc = "INTEN."]
+        #[must_use]
         #[inline(always)]
         pub const fn inten(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1355,7 +1564,7 @@ pub mod regs {
         }
         #[doc = "INTEN."]
         #[inline(always)]
-        pub fn set_inten(&mut self, val: u32) {
+        pub const fn set_inten(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1365,12 +1574,20 @@ pub mod regs {
             Ienr4(0)
         }
     }
+    impl core::fmt::Debug for Ienr4 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ienr4")
+                .field("inten", &self.inten())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Setting Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ienr5(pub u32);
     impl Ienr5 {
         #[doc = "INTEN."]
+        #[must_use]
         #[inline(always)]
         pub const fn inten(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0x000f_ffff;
@@ -1378,7 +1595,7 @@ pub mod regs {
         }
         #[doc = "INTEN."]
         #[inline(always)]
-        pub fn set_inten(&mut self, val: u32) {
+        pub const fn set_inten(&mut self, val: u32) {
             self.0 = (self.0 & !(0x000f_ffff << 0usize)) | (((val as u32) & 0x000f_ffff) << 0usize);
         }
     }
@@ -1388,12 +1605,20 @@ pub mod regs {
             Ienr5(0)
         }
     }
+    impl core::fmt::Debug for Ienr5 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ienr5")
+                .field("inten", &self.inten())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Pending Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ipr1(pub u32);
     impl Ipr1 {
         #[doc = "PENDSTA."]
+        #[must_use]
         #[inline(always)]
         pub const fn pendsta2_3(&self) -> u8 {
             let val = (self.0 >> 2usize) & 0x03;
@@ -1401,10 +1626,11 @@ pub mod regs {
         }
         #[doc = "PENDSTA."]
         #[inline(always)]
-        pub fn set_pendsta2_3(&mut self, val: u8) {
+        pub const fn set_pendsta2_3(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 2usize)) | (((val as u32) & 0x03) << 2usize);
         }
         #[doc = "PENDSTA."]
+        #[must_use]
         #[inline(always)]
         pub const fn pendsta5(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -1412,10 +1638,11 @@ pub mod regs {
         }
         #[doc = "PENDSTA."]
         #[inline(always)]
-        pub fn set_pendsta5(&mut self, val: bool) {
+        pub const fn set_pendsta5(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
         #[doc = "PENDSTA."]
+        #[must_use]
         #[inline(always)]
         pub const fn intensta8_9(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x03;
@@ -1423,10 +1650,11 @@ pub mod regs {
         }
         #[doc = "PENDSTA."]
         #[inline(always)]
-        pub fn set_intensta8_9(&mut self, val: u8) {
+        pub const fn set_intensta8_9(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u32) & 0x03) << 8usize);
         }
         #[doc = "PENDSTA."]
+        #[must_use]
         #[inline(always)]
         pub const fn intensta12_31(&self) -> u32 {
             let val = (self.0 >> 12usize) & 0x000f_ffff;
@@ -1434,7 +1662,7 @@ pub mod regs {
         }
         #[doc = "PENDSTA."]
         #[inline(always)]
-        pub fn set_intensta12_31(&mut self, val: u32) {
+        pub const fn set_intensta12_31(&mut self, val: u32) {
             self.0 =
                 (self.0 & !(0x000f_ffff << 12usize)) | (((val as u32) & 0x000f_ffff) << 12usize);
         }
@@ -1445,12 +1673,23 @@ pub mod regs {
             Ipr1(0)
         }
     }
+    impl core::fmt::Debug for Ipr1 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ipr1")
+                .field("pendsta2_3", &self.pendsta2_3())
+                .field("pendsta5", &self.pendsta5())
+                .field("intensta8_9", &self.intensta8_9())
+                .field("intensta12_31", &self.intensta12_31())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Pending Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ipr2(pub u32);
     impl Ipr2 {
         #[doc = "PENDSTA."]
+        #[must_use]
         #[inline(always)]
         pub const fn pendsta(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1458,7 +1697,7 @@ pub mod regs {
         }
         #[doc = "PENDSTA."]
         #[inline(always)]
-        pub fn set_pendsta(&mut self, val: u32) {
+        pub const fn set_pendsta(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1468,12 +1707,20 @@ pub mod regs {
             Ipr2(0)
         }
     }
+    impl core::fmt::Debug for Ipr2 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ipr2")
+                .field("pendsta", &self.pendsta())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Pending Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ipr3(pub u32);
     impl Ipr3 {
         #[doc = "PENDSTA."]
+        #[must_use]
         #[inline(always)]
         pub const fn pendsta(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1481,7 +1728,7 @@ pub mod regs {
         }
         #[doc = "PENDSTA."]
         #[inline(always)]
-        pub fn set_pendsta(&mut self, val: u32) {
+        pub const fn set_pendsta(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1491,12 +1738,20 @@ pub mod regs {
             Ipr3(0)
         }
     }
+    impl core::fmt::Debug for Ipr3 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ipr3")
+                .field("pendsta", &self.pendsta())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Pending Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ipr4(pub u32);
     impl Ipr4 {
         #[doc = "PENDSTA."]
+        #[must_use]
         #[inline(always)]
         pub const fn pendsta(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1504,7 +1759,7 @@ pub mod regs {
         }
         #[doc = "PENDSTA."]
         #[inline(always)]
-        pub fn set_pendsta(&mut self, val: u32) {
+        pub const fn set_pendsta(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1514,12 +1769,20 @@ pub mod regs {
             Ipr4(0)
         }
     }
+    impl core::fmt::Debug for Ipr4 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ipr4")
+                .field("pendsta", &self.pendsta())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Pending Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ipr5(pub u32);
     impl Ipr5 {
         #[doc = "PENDSTA."]
+        #[must_use]
         #[inline(always)]
         pub const fn pendsta(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0x000f_ffff;
@@ -1527,7 +1790,7 @@ pub mod regs {
         }
         #[doc = "PENDSTA."]
         #[inline(always)]
-        pub fn set_pendsta(&mut self, val: u32) {
+        pub const fn set_pendsta(&mut self, val: u32) {
             self.0 = (self.0 & !(0x000f_ffff << 0usize)) | (((val as u32) & 0x000f_ffff) << 0usize);
         }
     }
@@ -1537,12 +1800,20 @@ pub mod regs {
             Ipr5(0)
         }
     }
+    impl core::fmt::Debug for Ipr5 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ipr5")
+                .field("pendsta", &self.pendsta())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Pending Clear Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Iprr1(pub u32);
     impl Iprr1 {
         #[doc = "PENDRESET."]
+        #[must_use]
         #[inline(always)]
         pub const fn pendrst2_3(&self) -> u8 {
             let val = (self.0 >> 2usize) & 0x03;
@@ -1550,10 +1821,11 @@ pub mod regs {
         }
         #[doc = "PENDRESET."]
         #[inline(always)]
-        pub fn set_pendrst2_3(&mut self, val: u8) {
+        pub const fn set_pendrst2_3(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 2usize)) | (((val as u32) & 0x03) << 2usize);
         }
         #[doc = "PENDRESET."]
+        #[must_use]
         #[inline(always)]
         pub const fn pendrst5(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -1561,10 +1833,11 @@ pub mod regs {
         }
         #[doc = "PENDRESET."]
         #[inline(always)]
-        pub fn set_pendrst5(&mut self, val: bool) {
+        pub const fn set_pendrst5(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
         #[doc = "PENDRESET."]
+        #[must_use]
         #[inline(always)]
         pub const fn pendrst8(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x03;
@@ -1572,10 +1845,11 @@ pub mod regs {
         }
         #[doc = "PENDRESET."]
         #[inline(always)]
-        pub fn set_pendrst8(&mut self, val: u8) {
+        pub const fn set_pendrst8(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u32) & 0x03) << 8usize);
         }
         #[doc = "PENDRESET."]
+        #[must_use]
         #[inline(always)]
         pub const fn pendrst12_31(&self) -> u32 {
             let val = (self.0 >> 12usize) & 0x000f_ffff;
@@ -1583,7 +1857,7 @@ pub mod regs {
         }
         #[doc = "PENDRESET."]
         #[inline(always)]
-        pub fn set_pendrst12_31(&mut self, val: u32) {
+        pub const fn set_pendrst12_31(&mut self, val: u32) {
             self.0 =
                 (self.0 & !(0x000f_ffff << 12usize)) | (((val as u32) & 0x000f_ffff) << 12usize);
         }
@@ -1594,12 +1868,23 @@ pub mod regs {
             Iprr1(0)
         }
     }
+    impl core::fmt::Debug for Iprr1 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Iprr1")
+                .field("pendrst2_3", &self.pendrst2_3())
+                .field("pendrst5", &self.pendrst5())
+                .field("pendrst8", &self.pendrst8())
+                .field("pendrst12_31", &self.pendrst12_31())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Pending Clear Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Iprr2(pub u32);
     impl Iprr2 {
         #[doc = "PENDRESET."]
+        #[must_use]
         #[inline(always)]
         pub const fn pendrst(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1607,7 +1892,7 @@ pub mod regs {
         }
         #[doc = "PENDRESET."]
         #[inline(always)]
-        pub fn set_pendrst(&mut self, val: u32) {
+        pub const fn set_pendrst(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1617,12 +1902,20 @@ pub mod regs {
             Iprr2(0)
         }
     }
+    impl core::fmt::Debug for Iprr2 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Iprr2")
+                .field("pendrst", &self.pendrst())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Pending Clear Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Iprr3(pub u32);
     impl Iprr3 {
         #[doc = "PENDRESET."]
+        #[must_use]
         #[inline(always)]
         pub const fn pendrst(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1630,7 +1923,7 @@ pub mod regs {
         }
         #[doc = "PENDRESET."]
         #[inline(always)]
-        pub fn set_pendrst(&mut self, val: u32) {
+        pub const fn set_pendrst(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1640,12 +1933,20 @@ pub mod regs {
             Iprr3(0)
         }
     }
+    impl core::fmt::Debug for Iprr3 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Iprr3")
+                .field("pendrst", &self.pendrst())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Pending Clear Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Iprr4(pub u32);
     impl Iprr4 {
         #[doc = "PENDRESET."]
+        #[must_use]
         #[inline(always)]
         pub const fn pendrst(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1653,7 +1954,7 @@ pub mod regs {
         }
         #[doc = "PENDRESET."]
         #[inline(always)]
-        pub fn set_pendrst(&mut self, val: u32) {
+        pub const fn set_pendrst(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1663,12 +1964,20 @@ pub mod regs {
             Iprr4(0)
         }
     }
+    impl core::fmt::Debug for Iprr4 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Iprr4")
+                .field("pendrst", &self.pendrst())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Pending Clear Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Iprr5(pub u32);
     impl Iprr5 {
         #[doc = "PENDRESET."]
+        #[must_use]
         #[inline(always)]
         pub const fn pendrst(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0x000f_ffff;
@@ -1676,7 +1985,7 @@ pub mod regs {
         }
         #[doc = "PENDRESET."]
         #[inline(always)]
-        pub fn set_pendrst(&mut self, val: u32) {
+        pub const fn set_pendrst(&mut self, val: u32) {
             self.0 = (self.0 & !(0x000f_ffff << 0usize)) | (((val as u32) & 0x000f_ffff) << 0usize);
         }
     }
@@ -1686,12 +1995,20 @@ pub mod regs {
             Iprr5(0)
         }
     }
+    impl core::fmt::Debug for Iprr5 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Iprr5")
+                .field("pendrst", &self.pendrst())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Pending Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ipsr1(pub u32);
     impl Ipsr1 {
         #[doc = "PENDSET."]
+        #[must_use]
         #[inline(always)]
         pub const fn pendset2_3(&self) -> u8 {
             let val = (self.0 >> 2usize) & 0x03;
@@ -1699,10 +2016,11 @@ pub mod regs {
         }
         #[doc = "PENDSET."]
         #[inline(always)]
-        pub fn set_pendset2_3(&mut self, val: u8) {
+        pub const fn set_pendset2_3(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 2usize)) | (((val as u32) & 0x03) << 2usize);
         }
         #[doc = "PENDSET."]
+        #[must_use]
         #[inline(always)]
         pub const fn pendset5(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -1710,10 +2028,11 @@ pub mod regs {
         }
         #[doc = "PENDSET."]
         #[inline(always)]
-        pub fn set_pendset5(&mut self, val: bool) {
+        pub const fn set_pendset5(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
         #[doc = "PENDSET."]
+        #[must_use]
         #[inline(always)]
         pub const fn pendset8_9(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x03;
@@ -1721,10 +2040,11 @@ pub mod regs {
         }
         #[doc = "PENDSET."]
         #[inline(always)]
-        pub fn set_pendset8_9(&mut self, val: u8) {
+        pub const fn set_pendset8_9(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u32) & 0x03) << 8usize);
         }
         #[doc = "PENDSET."]
+        #[must_use]
         #[inline(always)]
         pub const fn pendset12_31(&self) -> u32 {
             let val = (self.0 >> 12usize) & 0x000f_ffff;
@@ -1732,7 +2052,7 @@ pub mod regs {
         }
         #[doc = "PENDSET."]
         #[inline(always)]
-        pub fn set_pendset12_31(&mut self, val: u32) {
+        pub const fn set_pendset12_31(&mut self, val: u32) {
             self.0 =
                 (self.0 & !(0x000f_ffff << 12usize)) | (((val as u32) & 0x000f_ffff) << 12usize);
         }
@@ -1743,12 +2063,23 @@ pub mod regs {
             Ipsr1(0)
         }
     }
+    impl core::fmt::Debug for Ipsr1 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ipsr1")
+                .field("pendset2_3", &self.pendset2_3())
+                .field("pendset5", &self.pendset5())
+                .field("pendset8_9", &self.pendset8_9())
+                .field("pendset12_31", &self.pendset12_31())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Pending Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ipsr2(pub u32);
     impl Ipsr2 {
         #[doc = "PENDSET."]
+        #[must_use]
         #[inline(always)]
         pub const fn pendset(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1756,7 +2087,7 @@ pub mod regs {
         }
         #[doc = "PENDSET."]
         #[inline(always)]
-        pub fn set_pendset(&mut self, val: u32) {
+        pub const fn set_pendset(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1766,12 +2097,20 @@ pub mod regs {
             Ipsr2(0)
         }
     }
+    impl core::fmt::Debug for Ipsr2 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ipsr2")
+                .field("pendset", &self.pendset())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Pending Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ipsr3(pub u32);
     impl Ipsr3 {
         #[doc = "PENDSET."]
+        #[must_use]
         #[inline(always)]
         pub const fn pendset(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1779,7 +2118,7 @@ pub mod regs {
         }
         #[doc = "PENDSET."]
         #[inline(always)]
-        pub fn set_pendset(&mut self, val: u32) {
+        pub const fn set_pendset(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1789,12 +2128,20 @@ pub mod regs {
             Ipsr3(0)
         }
     }
+    impl core::fmt::Debug for Ipsr3 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ipsr3")
+                .field("pendset", &self.pendset())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Pending Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ipsr4(pub u32);
     impl Ipsr4 {
         #[doc = "PENDSET."]
+        #[must_use]
         #[inline(always)]
         pub const fn pendset(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1802,7 +2149,7 @@ pub mod regs {
         }
         #[doc = "PENDSET."]
         #[inline(always)]
-        pub fn set_pendset(&mut self, val: u32) {
+        pub const fn set_pendset(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1812,12 +2159,20 @@ pub mod regs {
             Ipsr4(0)
         }
     }
+    impl core::fmt::Debug for Ipsr4 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ipsr4")
+                .field("pendset", &self.pendset())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Pending Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ipsr5(pub u32);
     impl Ipsr5 {
         #[doc = "PENDSET."]
+        #[must_use]
         #[inline(always)]
         pub const fn pendset(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0x000f_ffff;
@@ -1825,7 +2180,7 @@ pub mod regs {
         }
         #[doc = "PENDSET."]
         #[inline(always)]
-        pub fn set_pendset(&mut self, val: u32) {
+        pub const fn set_pendset(&mut self, val: u32) {
             self.0 = (self.0 & !(0x000f_ffff << 0usize)) | (((val as u32) & 0x000f_ffff) << 0usize);
         }
     }
@@ -1835,12 +2190,20 @@ pub mod regs {
             Ipsr5(0)
         }
     }
+    impl core::fmt::Debug for Ipsr5 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ipsr5")
+                .field("pendset", &self.pendset())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Clear Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Irer1(pub u32);
     impl Irer1 {
         #[doc = "INTRSET12_31."]
+        #[must_use]
         #[inline(always)]
         pub const fn intrset12_31(&self) -> u32 {
             let val = (self.0 >> 12usize) & 0x000f_ffff;
@@ -1848,7 +2211,7 @@ pub mod regs {
         }
         #[doc = "INTRSET12_31."]
         #[inline(always)]
-        pub fn set_intrset12_31(&mut self, val: u32) {
+        pub const fn set_intrset12_31(&mut self, val: u32) {
             self.0 =
                 (self.0 & !(0x000f_ffff << 12usize)) | (((val as u32) & 0x000f_ffff) << 12usize);
         }
@@ -1859,12 +2222,20 @@ pub mod regs {
             Irer1(0)
         }
     }
+    impl core::fmt::Debug for Irer1 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Irer1")
+                .field("intrset12_31", &self.intrset12_31())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Clear Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Irer2(pub u32);
     impl Irer2 {
         #[doc = "INTRSET."]
+        #[must_use]
         #[inline(always)]
         pub const fn intrset(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1872,7 +2243,7 @@ pub mod regs {
         }
         #[doc = "INTRSET."]
         #[inline(always)]
-        pub fn set_intrset(&mut self, val: u32) {
+        pub const fn set_intrset(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1882,12 +2253,20 @@ pub mod regs {
             Irer2(0)
         }
     }
+    impl core::fmt::Debug for Irer2 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Irer2")
+                .field("intrset", &self.intrset())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Clear Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Irer3(pub u32);
     impl Irer3 {
         #[doc = "INTRSET."]
+        #[must_use]
         #[inline(always)]
         pub const fn intrset(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1895,7 +2274,7 @@ pub mod regs {
         }
         #[doc = "INTRSET."]
         #[inline(always)]
-        pub fn set_intrset(&mut self, val: u32) {
+        pub const fn set_intrset(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1905,12 +2284,20 @@ pub mod regs {
             Irer3(0)
         }
     }
+    impl core::fmt::Debug for Irer3 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Irer3")
+                .field("intrset", &self.intrset())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Clear Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Irer4(pub u32);
     impl Irer4 {
         #[doc = "INTRSET."]
+        #[must_use]
         #[inline(always)]
         pub const fn intrset(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -1918,7 +2305,7 @@ pub mod regs {
         }
         #[doc = "INTRSET."]
         #[inline(always)]
-        pub fn set_intrset(&mut self, val: u32) {
+        pub const fn set_intrset(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -1928,12 +2315,20 @@ pub mod regs {
             Irer4(0)
         }
     }
+    impl core::fmt::Debug for Irer4 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Irer4")
+                .field("intrset", &self.intrset())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Clear Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Irer5(pub u32);
     impl Irer5 {
         #[doc = "INTRSET."]
+        #[must_use]
         #[inline(always)]
         pub const fn intrset(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0x000f_ffff;
@@ -1941,7 +2336,7 @@ pub mod regs {
         }
         #[doc = "INTRSET."]
         #[inline(always)]
-        pub fn set_intrset(&mut self, val: u32) {
+        pub const fn set_intrset(&mut self, val: u32) {
             self.0 = (self.0 & !(0x000f_ffff << 0usize)) | (((val as u32) & 0x000f_ffff) << 0usize);
         }
     }
@@ -1951,12 +2346,20 @@ pub mod regs {
             Irer5(0)
         }
     }
+    impl core::fmt::Debug for Irer5 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Irer5")
+                .field("intrset", &self.intrset())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Status Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Isr1(pub u32);
     impl Isr1 {
         #[doc = "Interrupt ID Status."]
+        #[must_use]
         #[inline(always)]
         pub const fn intensta2_3(&self) -> u8 {
             let val = (self.0 >> 2usize) & 0x03;
@@ -1964,10 +2367,11 @@ pub mod regs {
         }
         #[doc = "Interrupt ID Status."]
         #[inline(always)]
-        pub fn set_intensta2_3(&mut self, val: u8) {
+        pub const fn set_intensta2_3(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 2usize)) | (((val as u32) & 0x03) << 2usize);
         }
         #[doc = "Interrupt ID Status."]
+        #[must_use]
         #[inline(always)]
         pub const fn intensta5(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -1975,10 +2379,11 @@ pub mod regs {
         }
         #[doc = "Interrupt ID Status."]
         #[inline(always)]
-        pub fn set_intensta5(&mut self, val: bool) {
+        pub const fn set_intensta5(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
         #[doc = "Interrupt ID Status."]
+        #[must_use]
         #[inline(always)]
         pub const fn intensta8_9(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x03;
@@ -1986,10 +2391,11 @@ pub mod regs {
         }
         #[doc = "Interrupt ID Status."]
         #[inline(always)]
-        pub fn set_intensta8_9(&mut self, val: u8) {
+        pub const fn set_intensta8_9(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u32) & 0x03) << 8usize);
         }
         #[doc = "Interrupt ID Status."]
+        #[must_use]
         #[inline(always)]
         pub const fn intensta12_31(&self) -> u32 {
             let val = (self.0 >> 12usize) & 0x000f_ffff;
@@ -1997,7 +2403,7 @@ pub mod regs {
         }
         #[doc = "Interrupt ID Status."]
         #[inline(always)]
-        pub fn set_intensta12_31(&mut self, val: u32) {
+        pub const fn set_intensta12_31(&mut self, val: u32) {
             self.0 =
                 (self.0 & !(0x000f_ffff << 12usize)) | (((val as u32) & 0x000f_ffff) << 12usize);
         }
@@ -2008,12 +2414,23 @@ pub mod regs {
             Isr1(0)
         }
     }
+    impl core::fmt::Debug for Isr1 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Isr1")
+                .field("intensta2_3", &self.intensta2_3())
+                .field("intensta5", &self.intensta5())
+                .field("intensta8_9", &self.intensta8_9())
+                .field("intensta12_31", &self.intensta12_31())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Status Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Isr2(pub u32);
     impl Isr2 {
         #[doc = "Interrupt ID Status."]
+        #[must_use]
         #[inline(always)]
         pub const fn intensta(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -2021,7 +2438,7 @@ pub mod regs {
         }
         #[doc = "Interrupt ID Status."]
         #[inline(always)]
-        pub fn set_intensta(&mut self, val: u32) {
+        pub const fn set_intensta(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -2031,12 +2448,20 @@ pub mod regs {
             Isr2(0)
         }
     }
+    impl core::fmt::Debug for Isr2 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Isr2")
+                .field("intensta", &self.intensta())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Status Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Isr3(pub u32);
     impl Isr3 {
         #[doc = "Interrupt ID Status."]
+        #[must_use]
         #[inline(always)]
         pub const fn intensta(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -2044,7 +2469,7 @@ pub mod regs {
         }
         #[doc = "Interrupt ID Status."]
         #[inline(always)]
-        pub fn set_intensta(&mut self, val: u32) {
+        pub const fn set_intensta(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -2054,12 +2479,20 @@ pub mod regs {
             Isr3(0)
         }
     }
+    impl core::fmt::Debug for Isr3 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Isr3")
+                .field("intensta", &self.intensta())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Status Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Isr4(pub u32);
     impl Isr4 {
         #[doc = "Interrupt ID Status."]
+        #[must_use]
         #[inline(always)]
         pub const fn intensta(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -2067,7 +2500,7 @@ pub mod regs {
         }
         #[doc = "Interrupt ID Status."]
         #[inline(always)]
-        pub fn set_intensta(&mut self, val: u32) {
+        pub const fn set_intensta(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -2077,12 +2510,20 @@ pub mod regs {
             Isr4(0)
         }
     }
+    impl core::fmt::Debug for Isr4 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Isr4")
+                .field("intensta", &self.intensta())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Status Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Isr5(pub u32);
     impl Isr5 {
         #[doc = "Interrupt ID Status."]
+        #[must_use]
         #[inline(always)]
         pub const fn intensta(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0x000f_ffff;
@@ -2090,7 +2531,7 @@ pub mod regs {
         }
         #[doc = "Interrupt ID Status."]
         #[inline(always)]
-        pub fn set_intensta(&mut self, val: u32) {
+        pub const fn set_intensta(&mut self, val: u32) {
             self.0 = (self.0 & !(0x000f_ffff << 0usize)) | (((val as u32) & 0x000f_ffff) << 0usize);
         }
     }
@@ -2100,12 +2541,20 @@ pub mod regs {
             Isr5(0)
         }
     }
+    impl core::fmt::Debug for Isr5 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Isr5")
+                .field("intensta", &self.intensta())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Priority Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ithresdr(pub u32);
     impl Ithresdr {
         #[doc = "THRESHOLD."]
+        #[must_use]
         #[inline(always)]
         pub const fn threshold(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0xff;
@@ -2113,7 +2562,7 @@ pub mod regs {
         }
         #[doc = "THRESHOLD."]
         #[inline(always)]
-        pub fn set_threshold(&mut self, val: u8) {
+        pub const fn set_threshold(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
         }
     }
@@ -2123,12 +2572,20 @@ pub mod regs {
             Ithresdr(0)
         }
     }
+    impl core::fmt::Debug for Ithresdr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ithresdr")
+                .field("threshold", &self.threshold())
+                .finish()
+        }
+    }
     #[doc = "System Control Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Sctlr(pub u32);
     impl Sctlr {
         #[doc = "system leaves the state after an interruption."]
+        #[must_use]
         #[inline(always)]
         pub const fn sleeponexit(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -2136,10 +2593,11 @@ pub mod regs {
         }
         #[doc = "system leaves the state after an interruption."]
         #[inline(always)]
-        pub fn set_sleeponexit(&mut self, val: bool) {
+        pub const fn set_sleeponexit(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
         #[doc = "low power mode selection."]
+        #[must_use]
         #[inline(always)]
         pub const fn sleepdeep(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -2147,10 +2605,11 @@ pub mod regs {
         }
         #[doc = "low power mode selection."]
         #[inline(always)]
-        pub fn set_sleepdeep(&mut self, val: bool) {
+        pub const fn set_sleepdeep(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
         #[doc = "Treat WFI as WFE."]
+        #[must_use]
         #[inline(always)]
         pub const fn wfitowfe(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -2158,10 +2617,11 @@ pub mod regs {
         }
         #[doc = "Treat WFI as WFE."]
         #[inline(always)]
-        pub fn set_wfitowfe(&mut self, val: bool) {
+        pub const fn set_wfitowfe(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
         }
         #[doc = "Send-event-on-pend. When set, any pended interrupt (even masked) wakes the core from WFE."]
+        #[must_use]
         #[inline(always)]
         pub const fn sevonpend(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -2169,10 +2629,11 @@ pub mod regs {
         }
         #[doc = "Send-event-on-pend. When set, any pended interrupt (even masked) wakes the core from WFE."]
         #[inline(always)]
-        pub fn set_sevonpend(&mut self, val: bool) {
+        pub const fn set_sevonpend(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
         #[doc = "Send a one-shot event. Used to wake the other hart from WFE (paired with PFIC_WAKEIPx for dual-core boot)."]
+        #[must_use]
         #[inline(always)]
         pub const fn sendevent(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -2180,10 +2641,11 @@ pub mod regs {
         }
         #[doc = "Send a one-shot event. Used to wake the other hart from WFE (paired with PFIC_WAKEIPx for dual-core boot)."]
         #[inline(always)]
-        pub fn set_sendevent(&mut self, val: bool) {
+        pub const fn set_sendevent(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
         #[doc = "Hart ID of the core reading this register. 0 = hart 0 (V3F on CH32H417), 1 = hart 1 (V5F). Reserved upper bits read as 0."]
+        #[must_use]
         #[inline(always)]
         pub const fn hart_id(&self) -> u8 {
             let val = (self.0 >> 16usize) & 0xff;
@@ -2191,10 +2653,11 @@ pub mod regs {
         }
         #[doc = "Hart ID of the core reading this register. 0 = hart 0 (V3F on CH32H417), 1 = hart 1 (V5F). Reserved upper bits read as 0."]
         #[inline(always)]
-        pub fn set_hart_id(&mut self, val: u8) {
+        pub const fn set_hart_id(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
         }
         #[doc = "System reset."]
+        #[must_use]
         #[inline(always)]
         pub const fn sysrst(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
@@ -2202,7 +2665,7 @@ pub mod regs {
         }
         #[doc = "System reset."]
         #[inline(always)]
-        pub fn set_sysrst(&mut self, val: bool) {
+        pub const fn set_sysrst(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
@@ -2212,12 +2675,26 @@ pub mod regs {
             Sctlr(0)
         }
     }
+    impl core::fmt::Debug for Sctlr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Sctlr")
+                .field("sleeponexit", &self.sleeponexit())
+                .field("sleepdeep", &self.sleepdeep())
+                .field("wfitowfe", &self.wfitowfe())
+                .field("sevonpend", &self.sevonpend())
+                .field("sendevent", &self.sendevent())
+                .field("hart_id", &self.hart_id())
+                .field("sysrst", &self.sysrst())
+                .finish()
+        }
+    }
     #[doc = "Interrupt 0 address Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Vtfaddrr0(pub u32);
     impl Vtfaddrr0 {
         #[doc = "VTF0EN."]
+        #[must_use]
         #[inline(always)]
         pub const fn vtf0en(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -2225,10 +2702,11 @@ pub mod regs {
         }
         #[doc = "VTF0EN."]
         #[inline(always)]
-        pub fn set_vtf0en(&mut self, val: bool) {
+        pub const fn set_vtf0en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "ADDR0."]
+        #[must_use]
         #[inline(always)]
         pub const fn addr0(&self) -> u32 {
             let val = (self.0 >> 1usize) & 0x7fff_ffff;
@@ -2236,7 +2714,7 @@ pub mod regs {
         }
         #[doc = "ADDR0."]
         #[inline(always)]
-        pub fn set_addr0(&mut self, val: u32) {
+        pub const fn set_addr0(&mut self, val: u32) {
             self.0 = (self.0 & !(0x7fff_ffff << 1usize)) | (((val as u32) & 0x7fff_ffff) << 1usize);
         }
     }
@@ -2246,12 +2724,21 @@ pub mod regs {
             Vtfaddrr0(0)
         }
     }
+    impl core::fmt::Debug for Vtfaddrr0 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Vtfaddrr0")
+                .field("vtf0en", &self.vtf0en())
+                .field("addr0", &self.addr0())
+                .finish()
+        }
+    }
     #[doc = "Interrupt 1 address Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Vtfaddrr1(pub u32);
     impl Vtfaddrr1 {
         #[doc = "VTF1EN."]
+        #[must_use]
         #[inline(always)]
         pub const fn vtf1en(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -2259,10 +2746,11 @@ pub mod regs {
         }
         #[doc = "VTF1EN."]
         #[inline(always)]
-        pub fn set_vtf1en(&mut self, val: bool) {
+        pub const fn set_vtf1en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "ADDR1."]
+        #[must_use]
         #[inline(always)]
         pub const fn addr1(&self) -> u32 {
             let val = (self.0 >> 1usize) & 0x7fff_ffff;
@@ -2270,7 +2758,7 @@ pub mod regs {
         }
         #[doc = "ADDR1."]
         #[inline(always)]
-        pub fn set_addr1(&mut self, val: u32) {
+        pub const fn set_addr1(&mut self, val: u32) {
             self.0 = (self.0 & !(0x7fff_ffff << 1usize)) | (((val as u32) & 0x7fff_ffff) << 1usize);
         }
     }
@@ -2280,12 +2768,21 @@ pub mod regs {
             Vtfaddrr1(0)
         }
     }
+    impl core::fmt::Debug for Vtfaddrr1 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Vtfaddrr1")
+                .field("vtf1en", &self.vtf1en())
+                .field("addr1", &self.addr1())
+                .finish()
+        }
+    }
     #[doc = "Interrupt 2 address Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Vtfaddrr2(pub u32);
     impl Vtfaddrr2 {
         #[doc = "VTF2EN."]
+        #[must_use]
         #[inline(always)]
         pub const fn vtf2en(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -2293,10 +2790,11 @@ pub mod regs {
         }
         #[doc = "VTF2EN."]
         #[inline(always)]
-        pub fn set_vtf2en(&mut self, val: bool) {
+        pub const fn set_vtf2en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "ADDR2."]
+        #[must_use]
         #[inline(always)]
         pub const fn addr2(&self) -> u32 {
             let val = (self.0 >> 1usize) & 0x7fff_ffff;
@@ -2304,7 +2802,7 @@ pub mod regs {
         }
         #[doc = "ADDR2."]
         #[inline(always)]
-        pub fn set_addr2(&mut self, val: u32) {
+        pub const fn set_addr2(&mut self, val: u32) {
             self.0 = (self.0 & !(0x7fff_ffff << 1usize)) | (((val as u32) & 0x7fff_ffff) << 1usize);
         }
     }
@@ -2314,12 +2812,21 @@ pub mod regs {
             Vtfaddrr2(0)
         }
     }
+    impl core::fmt::Debug for Vtfaddrr2 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Vtfaddrr2")
+                .field("vtf2en", &self.vtf2en())
+                .field("addr2", &self.addr2())
+                .finish()
+        }
+    }
     #[doc = "Interrupt 3 address Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Vtfaddrr3(pub u32);
     impl Vtfaddrr3 {
         #[doc = "VTF3EN."]
+        #[must_use]
         #[inline(always)]
         pub const fn vtf3en(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -2327,10 +2834,11 @@ pub mod regs {
         }
         #[doc = "VTF3EN."]
         #[inline(always)]
-        pub fn set_vtf3en(&mut self, val: bool) {
+        pub const fn set_vtf3en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "ADDR3."]
+        #[must_use]
         #[inline(always)]
         pub const fn addr3(&self) -> u32 {
             let val = (self.0 >> 1usize) & 0x7fff_ffff;
@@ -2338,7 +2846,7 @@ pub mod regs {
         }
         #[doc = "ADDR3."]
         #[inline(always)]
-        pub fn set_addr3(&mut self, val: u32) {
+        pub const fn set_addr3(&mut self, val: u32) {
             self.0 = (self.0 & !(0x7fff_ffff << 1usize)) | (((val as u32) & 0x7fff_ffff) << 1usize);
         }
     }
@@ -2348,12 +2856,21 @@ pub mod regs {
             Vtfaddrr3(0)
         }
     }
+    impl core::fmt::Debug for Vtfaddrr3 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Vtfaddrr3")
+                .field("vtf3en", &self.vtf3en())
+                .field("addr3", &self.addr3())
+                .finish()
+        }
+    }
     #[doc = "ID Config Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Vtfidr(pub u32);
     impl Vtfidr {
         #[doc = "VTFID0."]
+        #[must_use]
         #[inline(always)]
         pub const fn vtfid0(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0xff;
@@ -2361,10 +2878,11 @@ pub mod regs {
         }
         #[doc = "VTFID0."]
         #[inline(always)]
-        pub fn set_vtfid0(&mut self, val: u8) {
+        pub const fn set_vtfid0(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
         }
         #[doc = "VTFID1."]
+        #[must_use]
         #[inline(always)]
         pub const fn vtfid1(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0xff;
@@ -2372,10 +2890,11 @@ pub mod regs {
         }
         #[doc = "VTFID1."]
         #[inline(always)]
-        pub fn set_vtfid1(&mut self, val: u8) {
+        pub const fn set_vtfid1(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
         }
         #[doc = "VTFID2."]
+        #[must_use]
         #[inline(always)]
         pub const fn vtfid2(&self) -> u8 {
             let val = (self.0 >> 16usize) & 0xff;
@@ -2383,10 +2902,11 @@ pub mod regs {
         }
         #[doc = "VTFID2."]
         #[inline(always)]
-        pub fn set_vtfid2(&mut self, val: u8) {
+        pub const fn set_vtfid2(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
         }
         #[doc = "VTFID3."]
+        #[must_use]
         #[inline(always)]
         pub const fn vtfid3(&self) -> u8 {
             let val = (self.0 >> 24usize) & 0xff;
@@ -2394,7 +2914,7 @@ pub mod regs {
         }
         #[doc = "VTFID3."]
         #[inline(always)]
-        pub fn set_vtfid3(&mut self, val: u8) {
+        pub const fn set_vtfid3(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 24usize)) | (((val as u32) & 0xff) << 24usize);
         }
     }
@@ -2404,12 +2924,23 @@ pub mod regs {
             Vtfidr(0)
         }
     }
+    impl core::fmt::Debug for Vtfidr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Vtfidr")
+                .field("vtfid0", &self.vtfid0())
+                .field("vtfid1", &self.vtfid1())
+                .field("vtfid2", &self.vtfid2())
+                .field("vtfid3", &self.vtfid3())
+                .finish()
+        }
+    }
     #[doc = "PFIC wake-up instruction pointer register 0."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Wakeip0(pub u32);
     impl Wakeip0 {
         #[doc = "Kernel C0 Deep Sleep (Locked) Cancellation Register."]
+        #[must_use]
         #[inline(always)]
         pub const fn shutdown0(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -2417,10 +2948,11 @@ pub mod regs {
         }
         #[doc = "Kernel C0 Deep Sleep (Locked) Cancellation Register."]
         #[inline(always)]
-        pub fn set_shutdown0(&mut self, val: bool) {
+        pub const fn set_shutdown0(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "The PC address register on kernel C0 wake-up,. which is used to reload the PC value after power-on wake-up and reset wake-up."]
+        #[must_use]
         #[inline(always)]
         pub const fn ip_reload0(&self) -> u32 {
             let val = (self.0 >> 1usize) & 0x7fff_ffff;
@@ -2428,7 +2960,7 @@ pub mod regs {
         }
         #[doc = "The PC address register on kernel C0 wake-up,. which is used to reload the PC value after power-on wake-up and reset wake-up."]
         #[inline(always)]
-        pub fn set_ip_reload0(&mut self, val: u32) {
+        pub const fn set_ip_reload0(&mut self, val: u32) {
             self.0 = (self.0 & !(0x7fff_ffff << 1usize)) | (((val as u32) & 0x7fff_ffff) << 1usize);
         }
     }
@@ -2438,12 +2970,21 @@ pub mod regs {
             Wakeip0(0)
         }
     }
+    impl core::fmt::Debug for Wakeip0 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Wakeip0")
+                .field("shutdown0", &self.shutdown0())
+                .field("ip_reload0", &self.ip_reload0())
+                .finish()
+        }
+    }
     #[doc = "PFIC wake-up instruction pointer register 1."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Wakeip1(pub u32);
     impl Wakeip1 {
         #[doc = "Kernel C1 Deep Sleep (Locked) Cancellation Register."]
+        #[must_use]
         #[inline(always)]
         pub const fn shutdown1(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -2451,10 +2992,11 @@ pub mod regs {
         }
         #[doc = "Kernel C1 Deep Sleep (Locked) Cancellation Register."]
         #[inline(always)]
-        pub fn set_shutdown1(&mut self, val: bool) {
+        pub const fn set_shutdown1(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "The PC address register on kernel C1 wake-up,. which is used to reload the PC value after power-on wake-up and reset wake-up."]
+        #[must_use]
         #[inline(always)]
         pub const fn ip_reload1(&self) -> u32 {
             let val = (self.0 >> 1usize) & 0x7fff_ffff;
@@ -2462,7 +3004,7 @@ pub mod regs {
         }
         #[doc = "The PC address register on kernel C1 wake-up,. which is used to reload the PC value after power-on wake-up and reset wake-up."]
         #[inline(always)]
-        pub fn set_ip_reload1(&mut self, val: u32) {
+        pub const fn set_ip_reload1(&mut self, val: u32) {
             self.0 = (self.0 & !(0x7fff_ffff << 1usize)) | (((val as u32) & 0x7fff_ffff) << 1usize);
         }
     }
@@ -2470,6 +3012,14 @@ pub mod regs {
         #[inline(always)]
         fn default() -> Wakeip1 {
             Wakeip1(0)
+        }
+    }
+    impl core::fmt::Debug for Wakeip1 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Wakeip1")
+                .field("shutdown1", &self.shutdown1())
+                .field("ip_reload1", &self.ip_reload1())
+                .finish()
         }
     }
 }

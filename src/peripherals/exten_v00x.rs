@@ -22,7 +22,7 @@ impl Exten {
     #[doc = "extended control register."]
     #[inline(always)]
     pub const fn ctr(self) -> crate::common::Reg<regs::Ctr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
 }
 pub mod regs {
@@ -32,6 +32,7 @@ pub mod regs {
     pub struct Ctr(pub u32);
     impl Ctr {
         #[doc = "LOCKUP monitor enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn lkupen(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
@@ -39,10 +40,11 @@ pub mod regs {
         }
         #[doc = "LOCKUP monitor enable."]
         #[inline(always)]
-        pub fn set_lkupen(&mut self, val: bool) {
+        pub const fn set_lkupen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
         }
         #[doc = "LOCKUP reset flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn lkuprst(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -50,10 +52,11 @@ pub mod regs {
         }
         #[doc = "LOCKUP reset flag."]
         #[inline(always)]
-        pub fn set_lkuprst(&mut self, val: bool) {
+        pub const fn set_lkuprst(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
         #[doc = "TIM2 channel 4 DMA remap."]
+        #[must_use]
         #[inline(always)]
         pub const fn tim2_dma_remap(&self) -> bool {
             let val = (self.0 >> 16usize) & 0x01;
@@ -61,7 +64,7 @@ pub mod regs {
         }
         #[doc = "TIM2 channel 4 DMA remap."]
         #[inline(always)]
-        pub fn set_tim2_dma_remap(&mut self, val: bool) {
+        pub const fn set_tim2_dma_remap(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
         }
     }
@@ -69,6 +72,15 @@ pub mod regs {
         #[inline(always)]
         fn default() -> Ctr {
             Ctr(0)
+        }
+    }
+    impl core::fmt::Debug for Ctr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ctr")
+                .field("lkupen", &self.lkupen())
+                .field("lkuprst", &self.lkuprst())
+                .field("tim2_dma_remap", &self.tim2_dma_remap())
+                .finish()
         }
     }
 }

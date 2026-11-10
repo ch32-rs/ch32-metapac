@@ -22,52 +22,52 @@ impl Usb {
     #[doc = "USB base control."]
     #[inline(always)]
     pub const fn ctrl(self) -> crate::common::Reg<regs::Ctrl, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "USB interrupt enable."]
     #[inline(always)]
     pub const fn int_en(self) -> crate::common::Reg<regs::IntEn, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x02usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x02usize) as _) }
     }
     #[doc = "USB device address."]
     #[inline(always)]
     pub const fn dev_ad(self) -> crate::common::Reg<regs::DevAd, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x03usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x03usize) as _) }
     }
     #[doc = "FRAME_NO."]
     #[inline(always)]
     pub const fn frame_no(self) -> crate::common::Reg<regs::FrameNo, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "indicate USB suspend status."]
     #[inline(always)]
     pub const fn suspend(self) -> crate::common::Reg<regs::Suspend, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x06usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x06usize) as _) }
     }
     #[doc = "USB current speed type."]
     #[inline(always)]
     pub const fn speed_type(self) -> crate::common::Reg<regs::SpeedType, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
     #[doc = "USB miscellaneous status."]
     #[inline(always)]
     pub const fn mis_st(self) -> crate::common::Reg<regs::MisSt, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x09usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x09usize) as _) }
     }
     #[doc = "USB interrupt flag."]
     #[inline(always)]
     pub const fn int_fg(self) -> crate::common::Reg<regs::IntFg, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0ausize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0ausize) as _) }
     }
     #[doc = "USB interrupt status."]
     #[inline(always)]
     pub const fn int_st(self) -> crate::common::Reg<regs::IntSt, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0busize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0busize) as _) }
     }
     #[doc = "USB receiving length."]
     #[inline(always)]
     pub const fn rx_len(self) -> crate::common::Reg<u16, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
     }
 }
 #[doc = "USB device endpoint register block"]
@@ -89,96 +89,96 @@ impl Usbd {
     #[doc = "USB base control."]
     #[inline(always)]
     pub const fn ctrl(self) -> crate::common::Reg<regs::Ctrl, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "USB interrupt enable."]
     #[inline(always)]
     pub const fn int_en(self) -> crate::common::Reg<regs::IntEn, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x02usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x02usize) as _) }
     }
     #[doc = "USB device address."]
     #[inline(always)]
     pub const fn dev_ad(self) -> crate::common::Reg<regs::DevAd, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x03usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x03usize) as _) }
     }
     #[doc = "FRAME_NO."]
     #[inline(always)]
     pub const fn frame_no(self) -> crate::common::Reg<regs::FrameNo, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "indicate USB suspend status."]
     #[inline(always)]
     pub const fn suspend(self) -> crate::common::Reg<regs::Suspend, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x06usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x06usize) as _) }
     }
     #[doc = "USB current speed type."]
     #[inline(always)]
     pub const fn speed_type(self) -> crate::common::Reg<regs::SpeedType, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
     #[doc = "USB miscellaneous status."]
     #[inline(always)]
     pub const fn mis_st(self) -> crate::common::Reg<regs::MisSt, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x09usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x09usize) as _) }
     }
     #[doc = "USB interrupt flag."]
     #[inline(always)]
     pub const fn int_fg(self) -> crate::common::Reg<regs::IntFg, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0ausize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0ausize) as _) }
     }
     #[doc = "USB interrupt status."]
     #[inline(always)]
     pub const fn int_st(self) -> crate::common::Reg<regs::IntSt, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0busize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0busize) as _) }
     }
     #[doc = "USB receiving length."]
     #[inline(always)]
     pub const fn rx_len(self) -> crate::common::Reg<u16, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
     }
     #[doc = "USB endpoint configuration."]
     #[inline(always)]
     pub const fn ep_config(self) -> crate::common::Reg<regs::EpConfig, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize) as _) }
     }
     #[doc = "Endpoint type configuration register"]
     #[inline(always)]
     pub const fn ep_type(self) -> crate::common::Reg<regs::EpType, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x14usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x14usize) as _) }
     }
     #[doc = "USB endpoint buffer mode."]
     #[inline(always)]
     pub const fn ep_buf_mod(self) -> crate::common::Reg<regs::EpBufMod, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x18usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x18usize) as _) }
     }
     #[doc = "endpoint 0 DMA buffer address."]
     #[inline(always)]
     pub const fn ep0_dma(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x1cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1cusize) as _) }
     }
     #[doc = "endpoint n (n=1-15) DMA RX buffer address."]
     #[inline(always)]
     pub const fn ep_rx_dma(self, n: usize) -> crate::common::Reg<u32, crate::common::RW> {
         assert!(n < 15usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x20usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x20usize + n * 4usize) as _) }
     }
     #[doc = "endpoint n (n=1-15) DMA TX buffer address."]
     #[inline(always)]
     pub const fn ep_tx_dma(self, n: usize) -> crate::common::Reg<u32, crate::common::RW> {
         assert!(n < 15usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x5cusize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x5cusize + n * 4usize) as _) }
     }
     #[doc = "endpoint n (n=0-15) max acceptable length."]
     #[inline(always)]
     pub const fn ep_max_len(self, n: usize) -> crate::common::Reg<regs::EpLen, crate::common::RW> {
         assert!(n < 16usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x98usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x98usize + n * 4usize) as _) }
     }
     #[doc = "endpoint n (n=0-15) send length."]
     #[inline(always)]
     pub const fn ep_t_len(self, n: usize) -> crate::common::Reg<regs::EpLen, crate::common::RW> {
         assert!(n < 16usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xd8usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0xd8usize + n * 4usize) as _) }
     }
     #[doc = "endpoint n (n=0-15) send control."]
     #[inline(always)]
@@ -187,7 +187,7 @@ impl Usbd {
         n: usize,
     ) -> crate::common::Reg<regs::EpTxCtrl, crate::common::RW> {
         assert!(n < 16usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xdausize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0xdausize + n * 4usize) as _) }
     }
     #[doc = "endpoint n (n=0-15) receive control."]
     #[inline(always)]
@@ -196,7 +196,7 @@ impl Usbd {
         n: usize,
     ) -> crate::common::Reg<regs::EpRxCtrl, crate::common::RW> {
         assert!(n < 16usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xdbusize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0xdbusize + n * 4usize) as _) }
     }
 }
 #[doc = "USB host register block"]
@@ -218,102 +218,102 @@ impl Usbh {
     #[doc = "USB HOST control."]
     #[inline(always)]
     pub const fn ctrl(self) -> crate::common::Reg<regs::UhCtrl, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x01usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x01usize) as _) }
     }
     #[doc = "USB interrupt enable."]
     #[inline(always)]
     pub const fn int_en(self) -> crate::common::Reg<regs::IntEn, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x02usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x02usize) as _) }
     }
     #[doc = "USB device address."]
     #[inline(always)]
     pub const fn dev_ad(self) -> crate::common::Reg<regs::DevAd, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x03usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x03usize) as _) }
     }
     #[doc = "FRAME_NO."]
     #[inline(always)]
     pub const fn frame_no(self) -> crate::common::Reg<regs::FrameNo, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "indicate USB suspend status."]
     #[inline(always)]
     pub const fn suspend(self) -> crate::common::Reg<regs::Suspend, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x06usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x06usize) as _) }
     }
     #[doc = "USB current speed type."]
     #[inline(always)]
     pub const fn speed_type(self) -> crate::common::Reg<regs::SpeedType, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
     #[doc = "USB miscellaneous status."]
     #[inline(always)]
     pub const fn mis_st(self) -> crate::common::Reg<regs::MisSt, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x09usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x09usize) as _) }
     }
     #[doc = "USB interrupt flag."]
     #[inline(always)]
     pub const fn int_fg(self) -> crate::common::Reg<regs::IntFg, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0ausize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0ausize) as _) }
     }
     #[doc = "USB interrupt status."]
     #[inline(always)]
     pub const fn int_st(self) -> crate::common::Reg<regs::IntSt, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0busize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0busize) as _) }
     }
     #[doc = "USB receiving length."]
     #[inline(always)]
     pub const fn rx_len(self) -> crate::common::Reg<u16, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
     }
     #[doc = "USB endpoint configuration."]
     #[inline(always)]
     pub const fn config(self) -> crate::common::Reg<regs::UhConfig, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize) as _) }
     }
     #[doc = "USB endpoint type."]
     #[inline(always)]
     pub const fn ep_type(self) -> crate::common::Reg<regs::UhEpType, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x14usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x14usize) as _) }
     }
     #[doc = "USB host receive buffer start address"]
     #[inline(always)]
     pub const fn rx_dma(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x24usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x24usize) as _) }
     }
     #[doc = "USB host transmit buffer start address"]
     #[inline(always)]
     pub const fn tx_dma(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x64usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x64usize) as _) }
     }
     #[doc = "USB host receive maximum length packet register"]
     #[inline(always)]
     pub const fn rx_max_len(self) -> crate::common::Reg<regs::EpLen, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xa0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0xa0usize) as _) }
     }
     #[doc = "USB host token setup register"]
     #[inline(always)]
     pub const fn ep_pid(self) -> crate::common::Reg<regs::UhEpPid, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xe0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0xe0usize) as _) }
     }
     #[doc = "USB host receive control register"]
     #[inline(always)]
     pub const fn rx_ctrl(self) -> crate::common::Reg<regs::UhRxCtrl, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xe3usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0xe3usize) as _) }
     }
     #[doc = "USB host transmit length register"]
     #[inline(always)]
     pub const fn tx_len(self) -> crate::common::Reg<regs::EpLen, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xe4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0xe4usize) as _) }
     }
     #[doc = "USB host transmit control register"]
     #[inline(always)]
     pub const fn tx_ctrl(self) -> crate::common::Reg<regs::UhTxCtrl, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xe6usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0xe6usize) as _) }
     }
     #[doc = "USB host transmit data of the SPLIT packet"]
     #[inline(always)]
     pub const fn split_data(self) -> crate::common::Reg<regs::UhSplitData, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xe8usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0xe8usize) as _) }
     }
 }
 pub mod regs {
@@ -323,6 +323,7 @@ pub mod regs {
     pub struct Ctrl(pub u8);
     impl Ctrl {
         #[doc = "DMA enable and DMA interrupt enable for USB."]
+        #[must_use]
         #[inline(always)]
         pub const fn dma_en(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -330,10 +331,11 @@ pub mod regs {
         }
         #[doc = "DMA enable and DMA interrupt enable for USB."]
         #[inline(always)]
-        pub fn set_dma_en(&mut self, val: bool) {
+        pub const fn set_dma_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u8) & 0x01) << 0usize);
         }
         #[doc = "force clear FIFO and count of USB."]
+        #[must_use]
         #[inline(always)]
         pub const fn clr_all(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -341,10 +343,11 @@ pub mod regs {
         }
         #[doc = "force clear FIFO and count of USB."]
         #[inline(always)]
-        pub fn set_clr_all(&mut self, val: bool) {
+        pub const fn set_clr_all(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u8) & 0x01) << 1usize);
         }
         #[doc = "force reset USB SIE, need software clear."]
+        #[must_use]
         #[inline(always)]
         pub const fn reset_sie(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -352,10 +355,11 @@ pub mod regs {
         }
         #[doc = "force reset USB SIE, need software clear."]
         #[inline(always)]
-        pub fn set_reset_sie(&mut self, val: bool) {
+        pub const fn set_reset_sie(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u8) & 0x01) << 2usize);
         }
         #[doc = "enable automatic responding busy for device mode or automatic pause for host mode during interrupt flag UIF_TRANSFER valid."]
+        #[must_use]
         #[inline(always)]
         pub const fn int_busy(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -363,10 +367,11 @@ pub mod regs {
         }
         #[doc = "enable automatic responding busy for device mode or automatic pause for host mode during interrupt flag UIF_TRANSFER valid."]
         #[inline(always)]
-        pub fn set_int_busy(&mut self, val: bool) {
+        pub const fn set_int_busy(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u8) & 0x01) << 3usize);
         }
         #[doc = "USB device enable and internal pullup resistance enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn dev_pu_en(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -374,10 +379,11 @@ pub mod regs {
         }
         #[doc = "USB device enable and internal pullup resistance enable."]
         #[inline(always)]
-        pub fn set_dev_pu_en(&mut self, val: bool) {
+        pub const fn set_dev_pu_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u8) & 0x01) << 4usize);
         }
         #[doc = "enable USB low speed: 00=full speed, 01=high speed, 10 =low speed."]
+        #[must_use]
         #[inline(always)]
         pub const fn speed_type(&self) -> super::vals::SpeedType {
             let val = (self.0 >> 5usize) & 0x03;
@@ -385,10 +391,11 @@ pub mod regs {
         }
         #[doc = "enable USB low speed: 00=full speed, 01=high speed, 10 =low speed."]
         #[inline(always)]
-        pub fn set_speed_type(&mut self, val: super::vals::SpeedType) {
+        pub const fn set_speed_type(&mut self, val: super::vals::SpeedType) {
             self.0 = (self.0 & !(0x03 << 5usize)) | (((val.to_bits() as u8) & 0x03) << 5usize);
         }
         #[doc = "enable USB host mode: 0=device mode, 1=host mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn host_mode(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -396,7 +403,7 @@ pub mod regs {
         }
         #[doc = "enable USB host mode: 0=device mode, 1=host mode."]
         #[inline(always)]
-        pub fn set_host_mode(&mut self, val: bool) {
+        pub const fn set_host_mode(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u8) & 0x01) << 7usize);
         }
     }
@@ -406,12 +413,26 @@ pub mod regs {
             Ctrl(0)
         }
     }
+    impl core::fmt::Debug for Ctrl {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ctrl")
+                .field("dma_en", &self.dma_en())
+                .field("clr_all", &self.clr_all())
+                .field("reset_sie", &self.reset_sie())
+                .field("int_busy", &self.int_busy())
+                .field("dev_pu_en", &self.dev_pu_en())
+                .field("speed_type", &self.speed_type())
+                .field("host_mode", &self.host_mode())
+                .finish()
+        }
+    }
     #[doc = "USB device address."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct DevAd(pub u8);
     impl DevAd {
         #[doc = "USB device address."]
+        #[must_use]
         #[inline(always)]
         pub const fn addr(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x7f;
@@ -419,7 +440,7 @@ pub mod regs {
         }
         #[doc = "USB device address."]
         #[inline(always)]
-        pub fn set_addr(&mut self, val: u8) {
+        pub const fn set_addr(&mut self, val: u8) {
             self.0 = (self.0 & !(0x7f << 0usize)) | (((val as u8) & 0x7f) << 0usize);
         }
     }
@@ -429,12 +450,18 @@ pub mod regs {
             DevAd(0)
         }
     }
+    impl core::fmt::Debug for DevAd {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("DevAd").field("addr", &self.addr()).finish()
+        }
+    }
     #[doc = "USB endpoint buffer mode."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct EpBufMod(pub u32);
     impl EpBufMod {
         #[doc = "buffer mode of USB endpoint."]
+        #[must_use]
         #[inline(always)]
         pub const fn buf_mod(&self, n: usize) -> bool {
             assert!(n < 16usize);
@@ -444,12 +471,13 @@ pub mod regs {
         }
         #[doc = "buffer mode of USB endpoint."]
         #[inline(always)]
-        pub fn set_buf_mod(&mut self, n: usize, val: bool) {
+        pub const fn set_buf_mod(&mut self, n: usize, val: bool) {
             assert!(n < 16usize);
             let offs = 0usize + n * 1usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "buffer mode of USB endpoint."]
+        #[must_use]
         #[inline(always)]
         pub const fn iso_buf_mod(&self, n: usize) -> bool {
             assert!(n < 16usize);
@@ -459,7 +487,7 @@ pub mod regs {
         }
         #[doc = "buffer mode of USB endpoint."]
         #[inline(always)]
-        pub fn set_iso_buf_mod(&mut self, n: usize, val: bool) {
+        pub const fn set_iso_buf_mod(&mut self, n: usize, val: bool) {
             assert!(n < 16usize);
             let offs = 16usize + n * 1usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
@@ -471,12 +499,51 @@ pub mod regs {
             EpBufMod(0)
         }
     }
+    impl core::fmt::Debug for EpBufMod {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("EpBufMod")
+                .field("buf_mod[0]", &self.buf_mod(0usize))
+                .field("buf_mod[1]", &self.buf_mod(1usize))
+                .field("buf_mod[2]", &self.buf_mod(2usize))
+                .field("buf_mod[3]", &self.buf_mod(3usize))
+                .field("buf_mod[4]", &self.buf_mod(4usize))
+                .field("buf_mod[5]", &self.buf_mod(5usize))
+                .field("buf_mod[6]", &self.buf_mod(6usize))
+                .field("buf_mod[7]", &self.buf_mod(7usize))
+                .field("buf_mod[8]", &self.buf_mod(8usize))
+                .field("buf_mod[9]", &self.buf_mod(9usize))
+                .field("buf_mod[10]", &self.buf_mod(10usize))
+                .field("buf_mod[11]", &self.buf_mod(11usize))
+                .field("buf_mod[12]", &self.buf_mod(12usize))
+                .field("buf_mod[13]", &self.buf_mod(13usize))
+                .field("buf_mod[14]", &self.buf_mod(14usize))
+                .field("buf_mod[15]", &self.buf_mod(15usize))
+                .field("iso_buf_mod[0]", &self.iso_buf_mod(0usize))
+                .field("iso_buf_mod[1]", &self.iso_buf_mod(1usize))
+                .field("iso_buf_mod[2]", &self.iso_buf_mod(2usize))
+                .field("iso_buf_mod[3]", &self.iso_buf_mod(3usize))
+                .field("iso_buf_mod[4]", &self.iso_buf_mod(4usize))
+                .field("iso_buf_mod[5]", &self.iso_buf_mod(5usize))
+                .field("iso_buf_mod[6]", &self.iso_buf_mod(6usize))
+                .field("iso_buf_mod[7]", &self.iso_buf_mod(7usize))
+                .field("iso_buf_mod[8]", &self.iso_buf_mod(8usize))
+                .field("iso_buf_mod[9]", &self.iso_buf_mod(9usize))
+                .field("iso_buf_mod[10]", &self.iso_buf_mod(10usize))
+                .field("iso_buf_mod[11]", &self.iso_buf_mod(11usize))
+                .field("iso_buf_mod[12]", &self.iso_buf_mod(12usize))
+                .field("iso_buf_mod[13]", &self.iso_buf_mod(13usize))
+                .field("iso_buf_mod[14]", &self.iso_buf_mod(14usize))
+                .field("iso_buf_mod[15]", &self.iso_buf_mod(15usize))
+                .finish()
+        }
+    }
     #[doc = "USB endpoint configuration register (R32_UEP_CONFIG)"]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct EpConfig(pub u32);
     impl EpConfig {
         #[doc = "Endpoint 1 to 15 transmit enable"]
+        #[must_use]
         #[inline(always)]
         pub const fn t_en(&self, n: usize) -> bool {
             assert!(n < 15usize);
@@ -486,12 +553,13 @@ pub mod regs {
         }
         #[doc = "Endpoint 1 to 15 transmit enable"]
         #[inline(always)]
-        pub fn set_t_en(&mut self, n: usize, val: bool) {
+        pub const fn set_t_en(&mut self, n: usize, val: bool) {
             assert!(n < 15usize);
             let offs = 1usize + n * 1usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "Endpoint 1 to 15 receive enable"]
+        #[must_use]
         #[inline(always)]
         pub const fn r_en(&self, n: usize) -> bool {
             assert!(n < 15usize);
@@ -501,7 +569,7 @@ pub mod regs {
         }
         #[doc = "Endpoint 1 to 15 receive enable"]
         #[inline(always)]
-        pub fn set_r_en(&mut self, n: usize, val: bool) {
+        pub const fn set_r_en(&mut self, n: usize, val: bool) {
             assert!(n < 15usize);
             let offs = 17usize + n * 1usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
@@ -513,12 +581,49 @@ pub mod regs {
             EpConfig(0)
         }
     }
+    impl core::fmt::Debug for EpConfig {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("EpConfig")
+                .field("t_en[0]", &self.t_en(0usize))
+                .field("t_en[1]", &self.t_en(1usize))
+                .field("t_en[2]", &self.t_en(2usize))
+                .field("t_en[3]", &self.t_en(3usize))
+                .field("t_en[4]", &self.t_en(4usize))
+                .field("t_en[5]", &self.t_en(5usize))
+                .field("t_en[6]", &self.t_en(6usize))
+                .field("t_en[7]", &self.t_en(7usize))
+                .field("t_en[8]", &self.t_en(8usize))
+                .field("t_en[9]", &self.t_en(9usize))
+                .field("t_en[10]", &self.t_en(10usize))
+                .field("t_en[11]", &self.t_en(11usize))
+                .field("t_en[12]", &self.t_en(12usize))
+                .field("t_en[13]", &self.t_en(13usize))
+                .field("t_en[14]", &self.t_en(14usize))
+                .field("r_en[0]", &self.r_en(0usize))
+                .field("r_en[1]", &self.r_en(1usize))
+                .field("r_en[2]", &self.r_en(2usize))
+                .field("r_en[3]", &self.r_en(3usize))
+                .field("r_en[4]", &self.r_en(4usize))
+                .field("r_en[5]", &self.r_en(5usize))
+                .field("r_en[6]", &self.r_en(6usize))
+                .field("r_en[7]", &self.r_en(7usize))
+                .field("r_en[8]", &self.r_en(8usize))
+                .field("r_en[9]", &self.r_en(9usize))
+                .field("r_en[10]", &self.r_en(10usize))
+                .field("r_en[11]", &self.r_en(11usize))
+                .field("r_en[12]", &self.r_en(12usize))
+                .field("r_en[13]", &self.r_en(13usize))
+                .field("r_en[14]", &self.r_en(14usize))
+                .finish()
+        }
+    }
     #[doc = "endpoint n acceptable length."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct EpLen(pub u16);
     impl EpLen {
         #[doc = "endpoint n acceptable length."]
+        #[must_use]
         #[inline(always)]
         pub const fn len(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0x07ff;
@@ -526,7 +631,7 @@ pub mod regs {
         }
         #[doc = "endpoint n acceptable length."]
         #[inline(always)]
-        pub fn set_len(&mut self, val: u16) {
+        pub const fn set_len(&mut self, val: u16) {
             self.0 = (self.0 & !(0x07ff << 0usize)) | (((val as u16) & 0x07ff) << 0usize);
         }
     }
@@ -536,12 +641,18 @@ pub mod regs {
             EpLen(0)
         }
     }
+    impl core::fmt::Debug for EpLen {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("EpLen").field("len", &self.len()).finish()
+        }
+    }
     #[doc = "endpoint n receive control."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct EpRxCtrl(pub u8);
     impl EpRxCtrl {
         #[doc = "MASK_UEP_R_RES"]
+        #[must_use]
         #[inline(always)]
         pub const fn mask_uep_r_res(&self) -> super::vals::EpRxResponse {
             let val = (self.0 >> 0usize) & 0x03;
@@ -549,10 +660,11 @@ pub mod regs {
         }
         #[doc = "MASK_UEP_R_RES"]
         #[inline(always)]
-        pub fn set_mask_uep_r_res(&mut self, val: super::vals::EpRxResponse) {
+        pub const fn set_mask_uep_r_res(&mut self, val: super::vals::EpRxResponse) {
             self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u8) & 0x03) << 0usize);
         }
         #[doc = "MASK_UEP_R_TOG"]
+        #[must_use]
         #[inline(always)]
         pub const fn mask_uep_r_tog(&self) -> super::vals::EpTog {
             let val = (self.0 >> 3usize) & 0x03;
@@ -560,10 +672,11 @@ pub mod regs {
         }
         #[doc = "MASK_UEP_R_TOG"]
         #[inline(always)]
-        pub fn set_mask_uep_r_tog(&mut self, val: super::vals::EpTog) {
+        pub const fn set_mask_uep_r_tog(&mut self, val: super::vals::EpTog) {
             self.0 = (self.0 & !(0x03 << 3usize)) | (((val.to_bits() as u8) & 0x03) << 3usize);
         }
         #[doc = "endpoint n synchronous trigger bit automatic filp enables the control bit."]
+        #[must_use]
         #[inline(always)]
         pub const fn r_tog_auto(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -571,7 +684,7 @@ pub mod regs {
         }
         #[doc = "endpoint n synchronous trigger bit automatic filp enables the control bit."]
         #[inline(always)]
-        pub fn set_r_tog_auto(&mut self, val: bool) {
+        pub const fn set_r_tog_auto(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u8) & 0x01) << 5usize);
         }
     }
@@ -581,12 +694,22 @@ pub mod regs {
             EpRxCtrl(0)
         }
     }
+    impl core::fmt::Debug for EpRxCtrl {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("EpRxCtrl")
+                .field("mask_uep_r_res", &self.mask_uep_r_res())
+                .field("mask_uep_r_tog", &self.mask_uep_r_tog())
+                .field("r_tog_auto", &self.r_tog_auto())
+                .finish()
+        }
+    }
     #[doc = "endpoint n send control."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct EpTxCtrl(pub u8);
     impl EpTxCtrl {
         #[doc = "MASK_UEP_T_RES"]
+        #[must_use]
         #[inline(always)]
         pub const fn mask_uep_t_res(&self) -> super::vals::EpTxResponse {
             let val = (self.0 >> 0usize) & 0x03;
@@ -594,10 +717,11 @@ pub mod regs {
         }
         #[doc = "MASK_UEP_T_RES"]
         #[inline(always)]
-        pub fn set_mask_uep_t_res(&mut self, val: super::vals::EpTxResponse) {
+        pub const fn set_mask_uep_t_res(&mut self, val: super::vals::EpTxResponse) {
             self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u8) & 0x03) << 0usize);
         }
         #[doc = "MASK_UEP_T_TOG"]
+        #[must_use]
         #[inline(always)]
         pub const fn mask_uep_t_tog(&self) -> super::vals::EpTog {
             let val = (self.0 >> 3usize) & 0x03;
@@ -605,10 +729,11 @@ pub mod regs {
         }
         #[doc = "MASK_UEP_T_TOG"]
         #[inline(always)]
-        pub fn set_mask_uep_t_tog(&mut self, val: super::vals::EpTog) {
+        pub const fn set_mask_uep_t_tog(&mut self, val: super::vals::EpTog) {
             self.0 = (self.0 & !(0x03 << 3usize)) | (((val.to_bits() as u8) & 0x03) << 3usize);
         }
         #[doc = "endpoint n synchronous trigger bit automatic filp enables the control bit."]
+        #[must_use]
         #[inline(always)]
         pub const fn t_tog_auto(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -616,7 +741,7 @@ pub mod regs {
         }
         #[doc = "endpoint n synchronous trigger bit automatic filp enables the control bit."]
         #[inline(always)]
-        pub fn set_t_tog_auto(&mut self, val: bool) {
+        pub const fn set_t_tog_auto(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u8) & 0x01) << 5usize);
         }
     }
@@ -626,12 +751,22 @@ pub mod regs {
             EpTxCtrl(0)
         }
     }
+    impl core::fmt::Debug for EpTxCtrl {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("EpTxCtrl")
+                .field("mask_uep_t_res", &self.mask_uep_t_res())
+                .field("mask_uep_t_tog", &self.mask_uep_t_tog())
+                .field("t_tog_auto", &self.t_tog_auto())
+                .finish()
+        }
+    }
     #[doc = "USB endpoint type control register (R32_UEP_TYPE)"]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct EpType(pub u32);
     impl EpType {
         #[doc = "Endpoint 1 to 15 transmit type, 1 means synchronous transmission"]
+        #[must_use]
         #[inline(always)]
         pub const fn t_type(&self, n: usize) -> super::vals::EndpointType {
             assert!(n < 15usize);
@@ -641,12 +776,13 @@ pub mod regs {
         }
         #[doc = "Endpoint 1 to 15 transmit type, 1 means synchronous transmission"]
         #[inline(always)]
-        pub fn set_t_type(&mut self, n: usize, val: super::vals::EndpointType) {
+        pub const fn set_t_type(&mut self, n: usize, val: super::vals::EndpointType) {
             assert!(n < 15usize);
             let offs = 1usize + n * 1usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val.to_bits() as u32) & 0x01) << offs);
         }
         #[doc = "Endpoint 1 to 15 receive type, 1 means synchronous transmission"]
+        #[must_use]
         #[inline(always)]
         pub const fn r_type(&self, n: usize) -> super::vals::EndpointType {
             assert!(n < 15usize);
@@ -656,7 +792,7 @@ pub mod regs {
         }
         #[doc = "Endpoint 1 to 15 receive type, 1 means synchronous transmission"]
         #[inline(always)]
-        pub fn set_r_type(&mut self, n: usize, val: super::vals::EndpointType) {
+        pub const fn set_r_type(&mut self, n: usize, val: super::vals::EndpointType) {
             assert!(n < 15usize);
             let offs = 17usize + n * 1usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val.to_bits() as u32) & 0x01) << offs);
@@ -668,12 +804,49 @@ pub mod regs {
             EpType(0)
         }
     }
+    impl core::fmt::Debug for EpType {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("EpType")
+                .field("t_type[0]", &self.t_type(0usize))
+                .field("t_type[1]", &self.t_type(1usize))
+                .field("t_type[2]", &self.t_type(2usize))
+                .field("t_type[3]", &self.t_type(3usize))
+                .field("t_type[4]", &self.t_type(4usize))
+                .field("t_type[5]", &self.t_type(5usize))
+                .field("t_type[6]", &self.t_type(6usize))
+                .field("t_type[7]", &self.t_type(7usize))
+                .field("t_type[8]", &self.t_type(8usize))
+                .field("t_type[9]", &self.t_type(9usize))
+                .field("t_type[10]", &self.t_type(10usize))
+                .field("t_type[11]", &self.t_type(11usize))
+                .field("t_type[12]", &self.t_type(12usize))
+                .field("t_type[13]", &self.t_type(13usize))
+                .field("t_type[14]", &self.t_type(14usize))
+                .field("r_type[0]", &self.r_type(0usize))
+                .field("r_type[1]", &self.r_type(1usize))
+                .field("r_type[2]", &self.r_type(2usize))
+                .field("r_type[3]", &self.r_type(3usize))
+                .field("r_type[4]", &self.r_type(4usize))
+                .field("r_type[5]", &self.r_type(5usize))
+                .field("r_type[6]", &self.r_type(6usize))
+                .field("r_type[7]", &self.r_type(7usize))
+                .field("r_type[8]", &self.r_type(8usize))
+                .field("r_type[9]", &self.r_type(9usize))
+                .field("r_type[10]", &self.r_type(10usize))
+                .field("r_type[11]", &self.r_type(11usize))
+                .field("r_type[12]", &self.r_type(12usize))
+                .field("r_type[13]", &self.r_type(13usize))
+                .field("r_type[14]", &self.r_type(14usize))
+                .finish()
+        }
+    }
     #[doc = "FRAME_NO."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct FrameNo(pub u16);
     impl FrameNo {
         #[doc = "FRAME_NO."]
+        #[must_use]
         #[inline(always)]
         pub const fn frame_no(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0xffff;
@@ -681,7 +854,7 @@ pub mod regs {
         }
         #[doc = "FRAME_NO."]
         #[inline(always)]
-        pub fn set_frame_no(&mut self, val: u16) {
+        pub const fn set_frame_no(&mut self, val: u16) {
             self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u16) & 0xffff) << 0usize);
         }
     }
@@ -691,12 +864,20 @@ pub mod regs {
             FrameNo(0)
         }
     }
+    impl core::fmt::Debug for FrameNo {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("FrameNo")
+                .field("frame_no", &self.frame_no())
+                .finish()
+        }
+    }
     #[doc = "USB interrupt enable."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct IntEn(pub u8);
     impl IntEn {
         #[doc = "enable interrupt for USB bus reset event for USB device mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn bus_rst(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -704,10 +885,11 @@ pub mod regs {
         }
         #[doc = "enable interrupt for USB bus reset event for USB device mode."]
         #[inline(always)]
-        pub fn set_bus_rst(&mut self, val: bool) {
+        pub const fn set_bus_rst(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u8) & 0x01) << 0usize);
         }
         #[doc = "enable interrupt for USB device detected event for USB host mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn detect(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -715,10 +897,11 @@ pub mod regs {
         }
         #[doc = "enable interrupt for USB device detected event for USB host mode."]
         #[inline(always)]
-        pub fn set_detect(&mut self, val: bool) {
+        pub const fn set_detect(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u8) & 0x01) << 0usize);
         }
         #[doc = "enable interrupt for USB transfer completion."]
+        #[must_use]
         #[inline(always)]
         pub const fn transfer(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -726,10 +909,11 @@ pub mod regs {
         }
         #[doc = "enable interrupt for USB transfer completion."]
         #[inline(always)]
-        pub fn set_transfer(&mut self, val: bool) {
+        pub const fn set_transfer(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u8) & 0x01) << 1usize);
         }
         #[doc = "enable interrupt for USB suspend or resume event."]
+        #[must_use]
         #[inline(always)]
         pub const fn suspend(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -737,10 +921,11 @@ pub mod regs {
         }
         #[doc = "enable interrupt for USB suspend or resume event."]
         #[inline(always)]
-        pub fn set_suspend(&mut self, val: bool) {
+        pub const fn set_suspend(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u8) & 0x01) << 2usize);
         }
         #[doc = "indicate host SOF timer action status for USB host."]
+        #[must_use]
         #[inline(always)]
         pub const fn sof_act(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -748,10 +933,11 @@ pub mod regs {
         }
         #[doc = "indicate host SOF timer action status for USB host."]
         #[inline(always)]
-        pub fn set_sof_act(&mut self, val: bool) {
+        pub const fn set_sof_act(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u8) & 0x01) << 3usize);
         }
         #[doc = "enable interrupt for FIFO overflow."]
+        #[must_use]
         #[inline(always)]
         pub const fn fifo_ov(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -759,10 +945,11 @@ pub mod regs {
         }
         #[doc = "enable interrupt for FIFO overflow."]
         #[inline(always)]
-        pub fn set_fifo_ov(&mut self, val: bool) {
+        pub const fn set_fifo_ov(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u8) & 0x01) << 4usize);
         }
         #[doc = "indicate host SETUP timer action status for USB host."]
+        #[must_use]
         #[inline(always)]
         pub const fn setup_act(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -770,10 +957,11 @@ pub mod regs {
         }
         #[doc = "indicate host SETUP timer action status for USB host."]
         #[inline(always)]
-        pub fn set_setup_act(&mut self, val: bool) {
+        pub const fn set_setup_act(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u8) & 0x01) << 5usize);
         }
         #[doc = "enable interrupt for NAK responded for USB device mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn iso_act(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
@@ -781,10 +969,11 @@ pub mod regs {
         }
         #[doc = "enable interrupt for NAK responded for USB device mode."]
         #[inline(always)]
-        pub fn set_iso_act(&mut self, val: bool) {
+        pub const fn set_iso_act(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u8) & 0x01) << 6usize);
         }
         #[doc = "enable interrupt for NAK responded for USB device mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn dev_nak(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -792,7 +981,7 @@ pub mod regs {
         }
         #[doc = "enable interrupt for NAK responded for USB device mode."]
         #[inline(always)]
-        pub fn set_dev_nak(&mut self, val: bool) {
+        pub const fn set_dev_nak(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u8) & 0x01) << 7usize);
         }
     }
@@ -802,12 +991,28 @@ pub mod regs {
             IntEn(0)
         }
     }
+    impl core::fmt::Debug for IntEn {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("IntEn")
+                .field("bus_rst", &self.bus_rst())
+                .field("detect", &self.detect())
+                .field("transfer", &self.transfer())
+                .field("suspend", &self.suspend())
+                .field("sof_act", &self.sof_act())
+                .field("fifo_ov", &self.fifo_ov())
+                .field("setup_act", &self.setup_act())
+                .field("iso_act", &self.iso_act())
+                .field("dev_nak", &self.dev_nak())
+                .finish()
+        }
+    }
     #[doc = "USB interrupt flag."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct IntFg(pub u8);
     impl IntFg {
         #[doc = "in USB device mode, USB bus reset event interrupt flag, write 1 to clear."]
+        #[must_use]
         #[inline(always)]
         pub const fn bus_rst(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -815,10 +1020,11 @@ pub mod regs {
         }
         #[doc = "in USB device mode, USB bus reset event interrupt flag, write 1 to clear."]
         #[inline(always)]
-        pub fn set_bus_rst(&mut self, val: bool) {
+        pub const fn set_bus_rst(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u8) & 0x01) << 0usize);
         }
         #[doc = "in USB host mode, USB device connect or disconnect event interrupt flag, write 1 to clear."]
+        #[must_use]
         #[inline(always)]
         pub const fn detect(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -826,10 +1032,11 @@ pub mod regs {
         }
         #[doc = "in USB host mode, USB device connect or disconnect event interrupt flag, write 1 to clear."]
         #[inline(always)]
-        pub fn set_detect(&mut self, val: bool) {
+        pub const fn set_detect(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u8) & 0x01) << 0usize);
         }
         #[doc = "USB transfer completion interrupt flag, direct bit address clear or write 1 to clear."]
+        #[must_use]
         #[inline(always)]
         pub const fn transfer(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -837,10 +1044,11 @@ pub mod regs {
         }
         #[doc = "USB transfer completion interrupt flag, direct bit address clear or write 1 to clear."]
         #[inline(always)]
-        pub fn set_transfer(&mut self, val: bool) {
+        pub const fn set_transfer(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u8) & 0x01) << 1usize);
         }
         #[doc = "USB suspend or resume event interrupt flag, direct bit address clear or write 1 to clear."]
+        #[must_use]
         #[inline(always)]
         pub const fn suspend(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -848,10 +1056,11 @@ pub mod regs {
         }
         #[doc = "USB suspend or resume event interrupt flag, direct bit address clear or write 1 to clear."]
         #[inline(always)]
-        pub fn set_suspend(&mut self, val: bool) {
+        pub const fn set_suspend(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u8) & 0x01) << 2usize);
         }
         #[doc = "host SOF timer interrupt flag for USB host, direct bit address clear or write 1 to clear."]
+        #[must_use]
         #[inline(always)]
         pub const fn hst_sof(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -859,10 +1068,11 @@ pub mod regs {
         }
         #[doc = "host SOF timer interrupt flag for USB host, direct bit address clear or write 1 to clear."]
         #[inline(always)]
-        pub fn set_hst_sof(&mut self, val: bool) {
+        pub const fn set_hst_sof(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u8) & 0x01) << 3usize);
         }
         #[doc = "FIFO overflow interrupt flag for USB, direct bit address clear or write 1 to clear."]
+        #[must_use]
         #[inline(always)]
         pub const fn fifo_ov(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -870,10 +1080,11 @@ pub mod regs {
         }
         #[doc = "FIFO overflow interrupt flag for USB, direct bit address clear or write 1 to clear."]
         #[inline(always)]
-        pub fn set_fifo_ov(&mut self, val: bool) {
+        pub const fn set_fifo_ov(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u8) & 0x01) << 4usize);
         }
         #[doc = "SETUP transaction completion interrupt flag, write 1 to clear."]
+        #[must_use]
         #[inline(always)]
         pub const fn setup_act(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -881,10 +1092,11 @@ pub mod regs {
         }
         #[doc = "SETUP transaction completion interrupt flag, write 1 to clear."]
         #[inline(always)]
-        pub fn set_setup_act(&mut self, val: bool) {
+        pub const fn set_setup_act(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u8) & 0x01) << 5usize);
         }
         #[doc = "isochronous transmission starts to send/receive data interrupt flag, write 1 to clear."]
+        #[must_use]
         #[inline(always)]
         pub const fn iso_act(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
@@ -892,10 +1104,11 @@ pub mod regs {
         }
         #[doc = "isochronous transmission starts to send/receive data interrupt flag, write 1 to clear."]
         #[inline(always)]
-        pub fn set_iso_act(&mut self, val: bool) {
+        pub const fn set_iso_act(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u8) & 0x01) << 6usize);
         }
         #[doc = "RO, indicate current USB transfer is NAK received."]
+        #[must_use]
         #[inline(always)]
         pub const fn is_nak(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -903,7 +1116,7 @@ pub mod regs {
         }
         #[doc = "RO, indicate current USB transfer is NAK received."]
         #[inline(always)]
-        pub fn set_is_nak(&mut self, val: bool) {
+        pub const fn set_is_nak(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u8) & 0x01) << 7usize);
         }
     }
@@ -913,12 +1126,28 @@ pub mod regs {
             IntFg(0)
         }
     }
+    impl core::fmt::Debug for IntFg {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("IntFg")
+                .field("bus_rst", &self.bus_rst())
+                .field("detect", &self.detect())
+                .field("transfer", &self.transfer())
+                .field("suspend", &self.suspend())
+                .field("hst_sof", &self.hst_sof())
+                .field("fifo_ov", &self.fifo_ov())
+                .field("setup_act", &self.setup_act())
+                .field("iso_act", &self.iso_act())
+                .field("is_nak", &self.is_nak())
+                .finish()
+        }
+    }
     #[doc = "USB interrupt status."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct IntSt(pub u8);
     impl IntSt {
         #[doc = "RO, bit mask of current transfer endpoint number for USB device mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn endp(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x0f;
@@ -926,10 +1155,11 @@ pub mod regs {
         }
         #[doc = "RO, bit mask of current transfer endpoint number for USB device mode."]
         #[inline(always)]
-        pub fn set_endp(&mut self, val: u8) {
+        pub const fn set_endp(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u8) & 0x0f) << 0usize);
         }
         #[doc = "RO, bit mask of current transfer handshake response for USB host mode: 0000=no response, time out from device, others=handshake response PID received."]
+        #[must_use]
         #[inline(always)]
         pub const fn h_res(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x0f;
@@ -937,10 +1167,11 @@ pub mod regs {
         }
         #[doc = "RO, bit mask of current transfer handshake response for USB host mode: 0000=no response, time out from device, others=handshake response PID received."]
         #[inline(always)]
-        pub fn set_h_res(&mut self, val: u8) {
+        pub const fn set_h_res(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u8) & 0x0f) << 0usize);
         }
         #[doc = "RO, bit mask of current token PID code received for USB device mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn token(&self) -> super::vals::UsbToken {
             let val = (self.0 >> 4usize) & 0x03;
@@ -948,10 +1179,11 @@ pub mod regs {
         }
         #[doc = "RO, bit mask of current token PID code received for USB device mode."]
         #[inline(always)]
-        pub fn set_token(&mut self, val: super::vals::UsbToken) {
+        pub const fn set_token(&mut self, val: super::vals::UsbToken) {
             self.0 = (self.0 & !(0x03 << 4usize)) | (((val.to_bits() as u8) & 0x03) << 4usize);
         }
         #[doc = "RO, indicate current USB transfer toggle is OK."]
+        #[must_use]
         #[inline(always)]
         pub const fn tog_ok(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
@@ -959,10 +1191,11 @@ pub mod regs {
         }
         #[doc = "RO, indicate current USB transfer toggle is OK."]
         #[inline(always)]
-        pub fn set_tog_ok(&mut self, val: bool) {
+        pub const fn set_tog_ok(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u8) & 0x01) << 6usize);
         }
         #[doc = "RO, indicate current USB transfer is NAK received for USB device mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn is_nak(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -970,7 +1203,7 @@ pub mod regs {
         }
         #[doc = "RO, indicate current USB transfer is NAK received for USB device mode."]
         #[inline(always)]
-        pub fn set_is_nak(&mut self, val: bool) {
+        pub const fn set_is_nak(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u8) & 0x01) << 7usize);
         }
     }
@@ -980,12 +1213,24 @@ pub mod regs {
             IntSt(0)
         }
     }
+    impl core::fmt::Debug for IntSt {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("IntSt")
+                .field("endp", &self.endp())
+                .field("h_res", &self.h_res())
+                .field("token", &self.token())
+                .field("tog_ok", &self.tog_ok())
+                .field("is_nak", &self.is_nak())
+                .finish()
+        }
+    }
     #[doc = "USB miscellaneous status."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct MisSt(pub u8);
     impl MisSt {
         #[doc = "RO, in USB host mode, SPLIT packet transmit enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn split_can(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -993,10 +1238,11 @@ pub mod regs {
         }
         #[doc = "RO, in USB host mode, SPLIT packet transmit enable."]
         #[inline(always)]
-        pub fn set_split_can(&mut self, val: bool) {
+        pub const fn set_split_can(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u8) & 0x01) << 0usize);
         }
         #[doc = "RO, USB device attach status for the port in USB host mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn dev_attach(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -1004,10 +1250,11 @@ pub mod regs {
         }
         #[doc = "RO, USB device attach status for the port in USB host mode."]
         #[inline(always)]
-        pub fn set_dev_attach(&mut self, val: bool) {
+        pub const fn set_dev_attach(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u8) & 0x01) << 1usize);
         }
         #[doc = "RO, indicate USB suspend status."]
+        #[must_use]
         #[inline(always)]
         pub const fn suspend(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -1015,10 +1262,11 @@ pub mod regs {
         }
         #[doc = "RO, indicate USB suspend status."]
         #[inline(always)]
-        pub fn set_suspend(&mut self, val: bool) {
+        pub const fn set_suspend(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u8) & 0x01) << 2usize);
         }
         #[doc = "RO, indicate USB bus reset status."]
+        #[must_use]
         #[inline(always)]
         pub const fn bus_reset(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -1026,10 +1274,11 @@ pub mod regs {
         }
         #[doc = "RO, indicate USB bus reset status."]
         #[inline(always)]
-        pub fn set_bus_reset(&mut self, val: bool) {
+        pub const fn set_bus_reset(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u8) & 0x01) << 3usize);
         }
         #[doc = "RO, indicate USB receiving FIFO ready status (not empty)."]
+        #[must_use]
         #[inline(always)]
         pub const fn r_fifo_rdy(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -1037,10 +1286,11 @@ pub mod regs {
         }
         #[doc = "RO, indicate USB receiving FIFO ready status (not empty)."]
         #[inline(always)]
-        pub fn set_r_fifo_rdy(&mut self, val: bool) {
+        pub const fn set_r_fifo_rdy(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u8) & 0x01) << 4usize);
         }
         #[doc = "RO, indicate USB SIE free status."]
+        #[must_use]
         #[inline(always)]
         pub const fn sie_free(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -1048,10 +1298,11 @@ pub mod regs {
         }
         #[doc = "RO, indicate USB SIE free status."]
         #[inline(always)]
-        pub fn set_sie_free(&mut self, val: bool) {
+        pub const fn set_sie_free(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u8) & 0x01) << 5usize);
         }
         #[doc = "RO, indicate host SOF timer action status for USB host."]
+        #[must_use]
         #[inline(always)]
         pub const fn sof_act(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
@@ -1059,10 +1310,11 @@ pub mod regs {
         }
         #[doc = "RO, indicate host SOF timer action status for USB host."]
         #[inline(always)]
-        pub fn set_sof_act(&mut self, val: bool) {
+        pub const fn set_sof_act(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u8) & 0x01) << 6usize);
         }
         #[doc = "RO, indicate host SOF timer presage status."]
+        #[must_use]
         #[inline(always)]
         pub const fn sof_pres(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -1070,7 +1322,7 @@ pub mod regs {
         }
         #[doc = "RO, indicate host SOF timer presage status."]
         #[inline(always)]
-        pub fn set_sof_pres(&mut self, val: bool) {
+        pub const fn set_sof_pres(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u8) & 0x01) << 7usize);
         }
     }
@@ -1080,12 +1332,27 @@ pub mod regs {
             MisSt(0)
         }
     }
+    impl core::fmt::Debug for MisSt {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("MisSt")
+                .field("split_can", &self.split_can())
+                .field("dev_attach", &self.dev_attach())
+                .field("suspend", &self.suspend())
+                .field("bus_reset", &self.bus_reset())
+                .field("r_fifo_rdy", &self.r_fifo_rdy())
+                .field("sie_free", &self.sie_free())
+                .field("sof_act", &self.sof_act())
+                .field("sof_pres", &self.sof_pres())
+                .finish()
+        }
+    }
     #[doc = "USB current speed type."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct SpeedType(pub u8);
     impl SpeedType {
         #[doc = "in host mode, it indicates the speed type of the currently connected device; in device mode, it indicates the speed type of the current device."]
+        #[must_use]
         #[inline(always)]
         pub const fn speed_type(&self) -> super::vals::SpeedType {
             let val = (self.0 >> 0usize) & 0x03;
@@ -1093,7 +1360,7 @@ pub mod regs {
         }
         #[doc = "in host mode, it indicates the speed type of the currently connected device; in device mode, it indicates the speed type of the current device."]
         #[inline(always)]
-        pub fn set_speed_type(&mut self, val: super::vals::SpeedType) {
+        pub const fn set_speed_type(&mut self, val: super::vals::SpeedType) {
             self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u8) & 0x03) << 0usize);
         }
     }
@@ -1103,12 +1370,20 @@ pub mod regs {
             SpeedType(0)
         }
     }
+    impl core::fmt::Debug for SpeedType {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("SpeedType")
+                .field("speed_type", &self.speed_type())
+                .finish()
+        }
+    }
     #[doc = "indicate USB suspend status."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Suspend(pub u8);
     impl Suspend {
         #[doc = "SYS_MOD."]
+        #[must_use]
         #[inline(always)]
         pub const fn sys_mod(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x03;
@@ -1116,10 +1391,11 @@ pub mod regs {
         }
         #[doc = "SYS_MOD."]
         #[inline(always)]
-        pub fn set_sys_mod(&mut self, val: u8) {
+        pub const fn set_sys_mod(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u8) & 0x03) << 0usize);
         }
         #[doc = "remote resume."]
+        #[must_use]
         #[inline(always)]
         pub const fn wakeup(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -1127,10 +1403,11 @@ pub mod regs {
         }
         #[doc = "remote resume."]
         #[inline(always)]
-        pub fn set_wakeup(&mut self, val: bool) {
+        pub const fn set_wakeup(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u8) & 0x01) << 2usize);
         }
         #[doc = "LINESTATE."]
+        #[must_use]
         #[inline(always)]
         pub const fn linestate(&self) -> u8 {
             let val = (self.0 >> 4usize) & 0x03;
@@ -1138,7 +1415,7 @@ pub mod regs {
         }
         #[doc = "LINESTATE."]
         #[inline(always)]
-        pub fn set_linestate(&mut self, val: u8) {
+        pub const fn set_linestate(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 4usize)) | (((val as u8) & 0x03) << 4usize);
         }
     }
@@ -1148,12 +1425,22 @@ pub mod regs {
             Suspend(0)
         }
     }
+    impl core::fmt::Debug for Suspend {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Suspend")
+                .field("sys_mod", &self.sys_mod())
+                .field("wakeup", &self.wakeup())
+                .field("linestate", &self.linestate())
+                .finish()
+        }
+    }
     #[doc = "USB endpoint configuration."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct UhConfig(pub u32);
     impl UhConfig {
         #[doc = "host TX enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn h_tx_en(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -1161,10 +1448,11 @@ pub mod regs {
         }
         #[doc = "host TX enable."]
         #[inline(always)]
-        pub fn set_h_tx_en(&mut self, val: bool) {
+        pub const fn set_h_tx_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
         }
         #[doc = "host RX enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn h_rx_en(&self) -> bool {
             let val = (self.0 >> 18usize) & 0x01;
@@ -1172,7 +1460,7 @@ pub mod regs {
         }
         #[doc = "host RX enable."]
         #[inline(always)]
-        pub fn set_h_rx_en(&mut self, val: bool) {
+        pub const fn set_h_rx_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
         }
     }
@@ -1182,12 +1470,21 @@ pub mod regs {
             UhConfig(0)
         }
     }
+    impl core::fmt::Debug for UhConfig {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("UhConfig")
+                .field("h_tx_en", &self.h_tx_en())
+                .field("h_rx_en", &self.h_rx_en())
+                .finish()
+        }
+    }
     #[doc = "USB HOST control."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct UhCtrl(pub u8);
     impl UhCtrl {
         #[doc = "USB host bus reset status."]
+        #[must_use]
         #[inline(always)]
         pub const fn tx_bus_reset(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -1195,10 +1492,11 @@ pub mod regs {
         }
         #[doc = "USB host bus reset status."]
         #[inline(always)]
-        pub fn set_tx_bus_reset(&mut self, val: bool) {
+        pub const fn set_tx_bus_reset(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u8) & 0x01) << 0usize);
         }
         #[doc = "the host sends hang sigal."]
+        #[must_use]
         #[inline(always)]
         pub const fn tx_bus_suspend(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -1206,10 +1504,11 @@ pub mod regs {
         }
         #[doc = "the host sends hang sigal."]
         #[inline(always)]
-        pub fn set_tx_bus_suspend(&mut self, val: bool) {
+        pub const fn set_tx_bus_suspend(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u8) & 0x01) << 1usize);
         }
         #[doc = "host wake up device."]
+        #[must_use]
         #[inline(always)]
         pub const fn tx_bus_resume(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -1217,10 +1516,11 @@ pub mod regs {
         }
         #[doc = "host wake up device."]
         #[inline(always)]
-        pub fn set_tx_bus_resume(&mut self, val: bool) {
+        pub const fn set_tx_bus_resume(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u8) & 0x01) << 2usize);
         }
         #[doc = "the remoke wake-up."]
+        #[must_use]
         #[inline(always)]
         pub const fn remote_wkup(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -1228,10 +1528,11 @@ pub mod regs {
         }
         #[doc = "the remoke wake-up."]
         #[inline(always)]
-        pub fn set_remote_wkup(&mut self, val: bool) {
+        pub const fn set_remote_wkup(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u8) & 0x01) << 3usize);
         }
         #[doc = "USB-PHY thesuspended state the internal USB-PLL is turned off."]
+        #[must_use]
         #[inline(always)]
         pub const fn phy_suspendm(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -1239,10 +1540,11 @@ pub mod regs {
         }
         #[doc = "USB-PHY thesuspended state the internal USB-PLL is turned off."]
         #[inline(always)]
-        pub fn set_phy_suspendm(&mut self, val: bool) {
+        pub const fn set_phy_suspendm(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u8) & 0x01) << 4usize);
         }
         #[doc = "the bus is idle."]
+        #[must_use]
         #[inline(always)]
         pub const fn sof_free(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
@@ -1250,10 +1552,11 @@ pub mod regs {
         }
         #[doc = "the bus is idle."]
         #[inline(always)]
-        pub fn set_sof_free(&mut self, val: bool) {
+        pub const fn set_sof_free(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u8) & 0x01) << 6usize);
         }
         #[doc = "automatically generate the SOF packet enabling control bit."]
+        #[must_use]
         #[inline(always)]
         pub const fn sof_en(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -1261,7 +1564,7 @@ pub mod regs {
         }
         #[doc = "automatically generate the SOF packet enabling control bit."]
         #[inline(always)]
-        pub fn set_sof_en(&mut self, val: bool) {
+        pub const fn set_sof_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u8) & 0x01) << 7usize);
         }
     }
@@ -1271,12 +1574,26 @@ pub mod regs {
             UhCtrl(0)
         }
     }
+    impl core::fmt::Debug for UhCtrl {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("UhCtrl")
+                .field("tx_bus_reset", &self.tx_bus_reset())
+                .field("tx_bus_suspend", &self.tx_bus_suspend())
+                .field("tx_bus_resume", &self.tx_bus_resume())
+                .field("remote_wkup", &self.remote_wkup())
+                .field("phy_suspendm", &self.phy_suspendm())
+                .field("sof_free", &self.sof_free())
+                .field("sof_en", &self.sof_en())
+                .finish()
+        }
+    }
     #[doc = "host token setup register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct UhEpPid(pub u16);
     impl UhEpPid {
         #[doc = "set the endpoint number of the target device."]
+        #[must_use]
         #[inline(always)]
         pub const fn endp(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x0f;
@@ -1284,10 +1601,11 @@ pub mod regs {
         }
         #[doc = "set the endpoint number of the target device."]
         #[inline(always)]
-        pub fn set_endp(&mut self, val: u8) {
+        pub const fn set_endp(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u16) & 0x0f) << 0usize);
         }
         #[doc = "set the token PID of this usb transaction."]
+        #[must_use]
         #[inline(always)]
         pub const fn token(&self) -> u8 {
             let val = (self.0 >> 4usize) & 0x0f;
@@ -1295,7 +1613,7 @@ pub mod regs {
         }
         #[doc = "set the token PID of this usb transaction."]
         #[inline(always)]
-        pub fn set_token(&mut self, val: u8) {
+        pub const fn set_token(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 4usize)) | (((val as u16) & 0x0f) << 4usize);
         }
     }
@@ -1305,12 +1623,21 @@ pub mod regs {
             UhEpPid(0)
         }
     }
+    impl core::fmt::Debug for UhEpPid {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("UhEpPid")
+                .field("endp", &self.endp())
+                .field("token", &self.token())
+                .finish()
+        }
+    }
     #[doc = "USB endpoint type."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct UhEpType(pub u32);
     impl UhEpType {
         #[doc = "host TX type."]
+        #[must_use]
         #[inline(always)]
         pub const fn h_tx_type(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -1318,10 +1645,11 @@ pub mod regs {
         }
         #[doc = "host TX type."]
         #[inline(always)]
-        pub fn set_h_tx_type(&mut self, val: bool) {
+        pub const fn set_h_tx_type(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
         }
         #[doc = "host RX type."]
+        #[must_use]
         #[inline(always)]
         pub const fn h_rx_type(&self) -> bool {
             let val = (self.0 >> 18usize) & 0x01;
@@ -1329,7 +1657,7 @@ pub mod regs {
         }
         #[doc = "host RX type."]
         #[inline(always)]
-        pub fn set_h_rx_type(&mut self, val: bool) {
+        pub const fn set_h_rx_type(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
         }
     }
@@ -1339,12 +1667,21 @@ pub mod regs {
             UhEpType(0)
         }
     }
+    impl core::fmt::Debug for UhEpType {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("UhEpType")
+                .field("h_tx_type", &self.h_tx_type())
+                .field("h_rx_type", &self.h_rx_type())
+                .finish()
+        }
+    }
     #[doc = "USB host receive control register"]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct UhRxCtrl(pub u8);
     impl UhRxCtrl {
         #[doc = "host control of the accept response to IN transactions."]
+        #[must_use]
         #[inline(always)]
         pub const fn r_res(&self) -> super::vals::HostRxResponse {
             let val = (self.0 >> 0usize) & 0x03;
@@ -1352,10 +1689,11 @@ pub mod regs {
         }
         #[doc = "host control of the accept response to IN transactions."]
         #[inline(always)]
-        pub fn set_r_res(&mut self, val: super::vals::HostRxResponse) {
+        pub const fn set_r_res(&mut self, val: super::vals::HostRxResponse) {
             self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u8) & 0x03) << 0usize);
         }
         #[doc = "H_R_RES_NO"]
+        #[must_use]
         #[inline(always)]
         pub const fn r_res_no(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -1363,10 +1701,11 @@ pub mod regs {
         }
         #[doc = "H_R_RES_NO"]
         #[inline(always)]
-        pub fn set_r_res_no(&mut self, val: bool) {
+        pub const fn set_r_res_no(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u8) & 0x01) << 2usize);
         }
         #[doc = "host synchronous trigger bit for the accept to prepare."]
+        #[must_use]
         #[inline(always)]
         pub const fn r_tog(&self) -> super::vals::Tog {
             let val = (self.0 >> 3usize) & 0x03;
@@ -1374,10 +1713,11 @@ pub mod regs {
         }
         #[doc = "host synchronous trigger bit for the accept to prepare."]
         #[inline(always)]
-        pub fn set_r_tog(&mut self, val: super::vals::Tog) {
+        pub const fn set_r_tog(&mut self, val: super::vals::Tog) {
             self.0 = (self.0 & !(0x03 << 3usize)) | (((val.to_bits() as u8) & 0x03) << 3usize);
         }
         #[doc = "host synchronization trigger bit auto toggle enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn r_auto_tog(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -1385,10 +1725,11 @@ pub mod regs {
         }
         #[doc = "host synchronization trigger bit auto toggle enable."]
         #[inline(always)]
-        pub fn set_r_auto_tog(&mut self, val: bool) {
+        pub const fn set_r_auto_tog(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u8) & 0x01) << 5usize);
         }
         #[doc = "expect data packet (IN)"]
+        #[must_use]
         #[inline(always)]
         pub const fn r_data_no(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
@@ -1396,7 +1737,7 @@ pub mod regs {
         }
         #[doc = "expect data packet (IN)"]
         #[inline(always)]
-        pub fn set_r_data_no(&mut self, val: bool) {
+        pub const fn set_r_data_no(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u8) & 0x01) << 6usize);
         }
     }
@@ -1406,12 +1747,24 @@ pub mod regs {
             UhRxCtrl(0)
         }
     }
+    impl core::fmt::Debug for UhRxCtrl {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("UhRxCtrl")
+                .field("r_res", &self.r_res())
+                .field("r_res_no", &self.r_res_no())
+                .field("r_tog", &self.r_tog())
+                .field("r_auto_tog", &self.r_auto_tog())
+                .field("r_data_no", &self.r_data_no())
+                .finish()
+        }
+    }
     #[doc = "data content of the split packet sent by the host."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct UhSplitData(pub u16);
     impl UhSplitData {
         #[doc = "data content of the split packet sent by the host."]
+        #[must_use]
         #[inline(always)]
         pub const fn split_data(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0x0fff;
@@ -1419,7 +1772,7 @@ pub mod regs {
         }
         #[doc = "data content of the split packet sent by the host."]
         #[inline(always)]
-        pub fn set_split_data(&mut self, val: u16) {
+        pub const fn set_split_data(&mut self, val: u16) {
             self.0 = (self.0 & !(0x0fff << 0usize)) | (((val as u16) & 0x0fff) << 0usize);
         }
     }
@@ -1429,12 +1782,20 @@ pub mod regs {
             UhSplitData(0)
         }
     }
+    impl core::fmt::Debug for UhSplitData {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("UhSplitData")
+                .field("split_data", &self.split_data())
+                .finish()
+        }
+    }
     #[doc = "USB host transmit control register"]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct UhTxCtrl(pub u8);
     impl UhTxCtrl {
         #[doc = "USB host transmitter response control bits to SETUP/OUT transactions"]
+        #[must_use]
         #[inline(always)]
         pub const fn t_res(&self) -> super::vals::HostTxResponse {
             let val = (self.0 >> 0usize) & 0x03;
@@ -1442,10 +1803,11 @@ pub mod regs {
         }
         #[doc = "USB host transmitter response control bits to SETUP/OUT transactions"]
         #[inline(always)]
-        pub fn set_t_res(&mut self, val: super::vals::HostTxResponse) {
+        pub const fn set_t_res(&mut self, val: super::vals::HostTxResponse) {
             self.0 = (self.0 & !(0x03 << 0usize)) | (((val.to_bits() as u8) & 0x03) << 0usize);
         }
         #[doc = "expect a response after sending data successfully."]
+        #[must_use]
         #[inline(always)]
         pub const fn t_res_no(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -1453,10 +1815,11 @@ pub mod regs {
         }
         #[doc = "expect a response after sending data successfully."]
         #[inline(always)]
-        pub fn set_t_res_no(&mut self, val: bool) {
+        pub const fn set_t_res_no(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u8) & 0x01) << 2usize);
         }
         #[doc = "sync trigger bit prepared by USB host transmitter (handling SETUP/OUT transactions)"]
+        #[must_use]
         #[inline(always)]
         pub const fn t_tog(&self) -> super::vals::Tog {
             let val = (self.0 >> 3usize) & 0x03;
@@ -1464,10 +1827,11 @@ pub mod regs {
         }
         #[doc = "sync trigger bit prepared by USB host transmitter (handling SETUP/OUT transactions)"]
         #[inline(always)]
-        pub fn set_t_tog(&mut self, val: super::vals::Tog) {
+        pub const fn set_t_tog(&mut self, val: super::vals::Tog) {
             self.0 = (self.0 & !(0x03 << 3usize)) | (((val.to_bits() as u8) & 0x03) << 3usize);
         }
         #[doc = "host synchronization trigger bit auto toggle enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn t_auto_tog(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -1475,10 +1839,11 @@ pub mod regs {
         }
         #[doc = "host synchronization trigger bit auto toggle enable."]
         #[inline(always)]
-        pub fn set_t_auto_tog(&mut self, val: bool) {
+        pub const fn set_t_auto_tog(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u8) & 0x01) << 5usize);
         }
         #[doc = "send data packets (OUT/SETUP)."]
+        #[must_use]
         #[inline(always)]
         pub const fn t_data_no(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
@@ -1486,7 +1851,7 @@ pub mod regs {
         }
         #[doc = "send data packets (OUT/SETUP)."]
         #[inline(always)]
-        pub fn set_t_data_no(&mut self, val: bool) {
+        pub const fn set_t_data_no(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u8) & 0x01) << 6usize);
         }
     }
@@ -1496,10 +1861,21 @@ pub mod regs {
             UhTxCtrl(0)
         }
     }
+    impl core::fmt::Debug for UhTxCtrl {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("UhTxCtrl")
+                .field("t_res", &self.t_res())
+                .field("t_res_no", &self.t_res_no())
+                .field("t_tog", &self.t_tog())
+                .field("t_auto_tog", &self.t_auto_tog())
+                .field("t_data_no", &self.t_data_no())
+                .finish()
+        }
+    }
 }
 pub mod vals {
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     pub enum EndpointType {
         #[doc = "Non Isochronous (Interrupt/Bulk)"]
         NISO = 0x0,
@@ -1529,7 +1905,7 @@ pub mod vals {
         }
     }
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     pub enum EpRxResponse {
         #[doc = "Respond with ACK"]
         ACK = 0x0,
@@ -1563,7 +1939,7 @@ pub mod vals {
         }
     }
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     pub enum EpTog {
         DATA0 = 0x0,
         DATA1 = 0x01,
@@ -1593,7 +1969,7 @@ pub mod vals {
         }
     }
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     pub enum EpTxResponse {
         #[doc = "Respond with DATA0/DATA1 and expect ACK"]
         ACK = 0x0,
@@ -1626,7 +2002,7 @@ pub mod vals {
         }
     }
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     pub enum HostRxResponse {
         #[doc = "Respond with ACK"]
         ACK = 0x0,
@@ -1657,7 +2033,7 @@ pub mod vals {
         }
     }
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     pub enum HostTxResponse {
         #[doc = "Expect ACK"]
         ACK = 0x0,
@@ -1691,7 +2067,7 @@ pub mod vals {
         }
     }
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     pub enum SpeedType {
         #[doc = "USB Full Speed (12Mbps)"]
         FULLSPEED = 0x0,
@@ -1724,7 +2100,7 @@ pub mod vals {
         }
     }
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     pub enum Tog {
         DATA0 = 0x0,
         DATA1 = 0x01,
@@ -1754,7 +2130,7 @@ pub mod vals {
         }
     }
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     pub enum UsbToken {
         #[doc = "OUT Packet"]
         OUT = 0x0,

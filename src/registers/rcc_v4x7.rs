@@ -1542,6 +1542,21 @@ pub(crate) static REGISTERS: IR = IR {
         bit_size: 4,
         variants: &[
             EnumVariant {
+                name: "ETH_PLL_DIV8",
+                description: Some("ETH_PLL clock divided by 8."),
+                value: 8,
+            },
+            EnumVariant {
+                name: "HSE",
+                description: Some("HSE selected."),
+                value: 6,
+            },
+            EnumVariant {
+                name: "HSI",
+                description: Some("HSI selected."),
+                value: 5,
+            },
+            EnumVariant {
                 name: "NO_CLK",
                 description: Some("No clock."),
                 value: 0,
@@ -1552,24 +1567,9 @@ pub(crate) static REGISTERS: IR = IR {
                 value: 4,
             },
             EnumVariant {
-                name: "HSI",
-                description: Some("HSI selected."),
-                value: 5,
-            },
-            EnumVariant {
-                name: "HSE",
-                description: Some("HSE selected."),
-                value: 6,
-            },
-            EnumVariant {
                 name: "UTMI",
                 description: Some("UTMI clock selected."),
                 value: 7,
-            },
-            EnumVariant {
-                name: "ETH_PLL_DIV8",
-                description: Some("ETH_PLL clock divided by 8."),
-                value: 8,
             },
             EnumVariant {
                 name: "XT1",

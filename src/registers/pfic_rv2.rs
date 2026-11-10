@@ -1137,6 +1137,11 @@ pub(crate) static REGISTERS: IR = IR {
         bit_size: 16,
         variants: &[
             EnumVariant {
+                name: "KEY1",
+                description: Some("HWSTK and NEST key."),
+                value: 64005,
+            },
+            EnumVariant {
                 name: "KEY2",
                 description: Some("NMI and EXC key."),
                 value: 48303,
@@ -1145,11 +1150,6 @@ pub(crate) static REGISTERS: IR = IR {
                 name: "KEY3",
                 description: Some("System Reset key."),
                 value: 48879,
-            },
-            EnumVariant {
-                name: "KEY1",
-                description: Some("HWSTK and NEST key."),
-                value: 64005,
             },
         ],
     }],

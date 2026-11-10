@@ -285,14 +285,14 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "FROMPERIPHERAL",
-                    description: Some("Read from peripheral"),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "FROMMEMORY",
                     description: Some("Read from memory"),
                     value: 1,
+                },
+                EnumVariant {
+                    name: "FROMPERIPHERAL",
+                    description: Some("Read from peripheral"),
+                    value: 0,
                 },
             ],
         },
@@ -302,6 +302,11 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
+                    name: "HIGH",
+                    description: Some("High priority"),
+                    value: 2,
+                },
+                EnumVariant {
                     name: "LOW",
                     description: Some("Low priority"),
                     value: 0,
@@ -310,11 +315,6 @@ pub(crate) static REGISTERS: IR = IR {
                     name: "MEDIUM",
                     description: Some("Medium priority"),
                     value: 1,
-                },
-                EnumVariant {
-                    name: "HIGH",
-                    description: Some("High priority"),
-                    value: 2,
                 },
                 EnumVariant {
                     name: "VERYHIGH",
@@ -329,11 +329,6 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
-                    name: "BITS8",
-                    description: Some("8-bit size"),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "BITS16",
                     description: Some("16-bit size"),
                     value: 1,
@@ -342,6 +337,11 @@ pub(crate) static REGISTERS: IR = IR {
                     name: "BITS32",
                     description: Some("32-bit size"),
                     value: 2,
+                },
+                EnumVariant {
+                    name: "BITS8",
+                    description: Some("8-bit size"),
+                    value: 0,
                 },
             ],
         },

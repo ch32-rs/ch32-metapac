@@ -22,17 +22,17 @@ impl Crc {
     #[doc = "Data register."]
     #[inline(always)]
     pub const fn datar(self) -> crate::common::Reg<regs::Datar, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "Independent Data register."]
     #[inline(always)]
     pub const fn idatar(self) -> crate::common::Reg<regs::Idatar, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "Control register."]
     #[inline(always)]
     pub const fn ctlr(self) -> crate::common::Reg<regs::Ctlr, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
 }
 pub mod regs {
@@ -42,6 +42,7 @@ pub mod regs {
     pub struct Ctlr(pub u32);
     impl Ctlr {
         #[doc = "Reset bit."]
+        #[must_use]
         #[inline(always)]
         pub const fn reset(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -49,7 +50,7 @@ pub mod regs {
         }
         #[doc = "Reset bit."]
         #[inline(always)]
-        pub fn set_reset(&mut self, val: bool) {
+        pub const fn set_reset(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
     }
@@ -59,12 +60,20 @@ pub mod regs {
             Ctlr(0)
         }
     }
+    impl core::fmt::Debug for Ctlr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ctlr")
+                .field("reset", &self.reset())
+                .finish()
+        }
+    }
     #[doc = "Data register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Datar(pub u32);
     impl Datar {
         #[doc = "Data Register."]
+        #[must_use]
         #[inline(always)]
         pub const fn dr(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -72,7 +81,7 @@ pub mod regs {
         }
         #[doc = "Data Register."]
         #[inline(always)]
-        pub fn set_dr(&mut self, val: u32) {
+        pub const fn set_dr(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -82,12 +91,18 @@ pub mod regs {
             Datar(0)
         }
     }
+    impl core::fmt::Debug for Datar {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Datar").field("dr", &self.dr()).finish()
+        }
+    }
     #[doc = "Independent Data register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Idatar(pub u8);
     impl Idatar {
         #[doc = "Independent Data register."]
+        #[must_use]
         #[inline(always)]
         pub const fn idr(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0xff;
@@ -95,7 +110,7 @@ pub mod regs {
         }
         #[doc = "Independent Data register."]
         #[inline(always)]
-        pub fn set_idr(&mut self, val: u8) {
+        pub const fn set_idr(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 0usize)) | (((val as u8) & 0xff) << 0usize);
         }
     }
@@ -103,6 +118,11 @@ pub mod regs {
         #[inline(always)]
         fn default() -> Idatar {
             Idatar(0)
+        }
+    }
+    impl core::fmt::Debug for Idatar {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Idatar").field("idr", &self.idr()).finish()
         }
     }
 }

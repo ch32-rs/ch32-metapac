@@ -1573,11 +1573,6 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 3,
             variants: &[
                 EnumVariant {
-                    name: "CLOCK_8MHZ",
-                    description: None,
-                    value: 0,
-                },
-                EnumVariant {
                     name: "CLOCK_12MHZ",
                     description: None,
                     value: 1,
@@ -1602,6 +1597,11 @@ pub(crate) static REGISTERS: IR = IR {
                     description: None,
                     value: 5,
                 },
+                EnumVariant {
+                    name: "CLOCK_8MHZ",
+                    description: None,
+                    value: 0,
+                },
             ],
         },
         Enum {
@@ -1611,6 +1611,20 @@ pub(crate) static REGISTERS: IR = IR {
             ),
             bit_size: 3,
             variants: &[
+                EnumVariant {
+                    name: "EXTI11",
+                    description: Some(
+                        "External interrupt line 11.",
+                    ),
+                    value: 6,
+                },
+                EnumVariant {
+                    name: "SWSTART",
+                    description: Some(
+                        "Software start.",
+                    ),
+                    value: 7,
+                },
                 EnumVariant {
                     name: "TIM1_CC1",
                     description: Some(
@@ -1653,20 +1667,6 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     value: 5,
                 },
-                EnumVariant {
-                    name: "EXTI11",
-                    description: Some(
-                        "External interrupt line 11.",
-                    ),
-                    value: 6,
-                },
-                EnumVariant {
-                    name: "SWSTART",
-                    description: Some(
-                        "Software start.",
-                    ),
-                    value: 7,
-                },
             ],
         },
         Enum {
@@ -1677,11 +1677,18 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 3,
             variants: &[
                 EnumVariant {
-                    name: "TIM1_TRGO",
+                    name: "EXTI15",
                     description: Some(
-                        "Timer 1 TRGO event.",
+                        "External interrupt line 15.",
                     ),
-                    value: 0,
+                    value: 6,
+                },
+                EnumVariant {
+                    name: "JSWSTART",
+                    description: Some(
+                        "Software start.",
+                    ),
+                    value: 7,
                 },
                 EnumVariant {
                     name: "TIM1_CC4",
@@ -1691,11 +1698,11 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 1,
                 },
                 EnumVariant {
-                    name: "TIM2_TRGO",
+                    name: "TIM1_TRGO",
                     description: Some(
-                        "Timer 2 TRGO event.",
+                        "Timer 1 TRGO event.",
                     ),
-                    value: 2,
+                    value: 0,
                 },
                 EnumVariant {
                     name: "TIM2_CC1",
@@ -1703,6 +1710,13 @@ pub(crate) static REGISTERS: IR = IR {
                         "Timer 2 capture compare 1.",
                     ),
                     value: 3,
+                },
+                EnumVariant {
+                    name: "TIM2_TRGO",
+                    description: Some(
+                        "Timer 2 TRGO event.",
+                    ),
+                    value: 2,
                 },
                 EnumVariant {
                     name: "TIM3_CC4",
@@ -1718,20 +1732,6 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     value: 5,
                 },
-                EnumVariant {
-                    name: "EXTI15",
-                    description: Some(
-                        "External interrupt line 15.",
-                    ),
-                    value: 6,
-                },
-                EnumVariant {
-                    name: "JSWSTART",
-                    description: Some(
-                        "Software start.",
-                    ),
-                    value: 7,
-                },
             ],
         },
         Enum {
@@ -1742,6 +1742,13 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 3,
             variants: &[
                 EnumVariant {
+                    name: "CYCLES13_5",
+                    description: Some(
+                        "13.5 cycles",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
                     name: "CYCLES1_5",
                     description: Some(
                         "1.5 cycles",
@@ -1749,18 +1756,11 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 0,
                 },
                 EnumVariant {
-                    name: "CYCLES7_5",
+                    name: "CYCLES239_5",
                     description: Some(
-                        "7.5 cycles",
+                        "239.5 cycles",
                     ),
-                    value: 1,
-                },
-                EnumVariant {
-                    name: "CYCLES13_5",
-                    description: Some(
-                        "13.5 cycles",
-                    ),
-                    value: 2,
+                    value: 7,
                 },
                 EnumVariant {
                     name: "CYCLES28_5",
@@ -1791,11 +1791,11 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 6,
                 },
                 EnumVariant {
-                    name: "CYCLES239_5",
+                    name: "CYCLES7_5",
                     description: Some(
-                        "239.5 cycles",
+                        "7.5 cycles",
                     ),
-                    value: 7,
+                    value: 1,
                 },
             ],
         },
@@ -1807,14 +1807,14 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "PERIOD_500US",
-                    description: None,
-                    value: 0,
-                },
-                EnumVariant {
                     name: "PERIOD_1MS",
                     description: None,
                     value: 1,
+                },
+                EnumVariant {
+                    name: "PERIOD_500US",
+                    description: None,
+                    value: 0,
                 },
             ],
         },

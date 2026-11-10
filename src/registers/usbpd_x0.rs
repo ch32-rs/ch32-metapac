@@ -566,14 +566,14 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 0,
                 },
                 EnumVariant {
-                    name: "UA330",
-                    description: Some("330uA."),
-                    value: 1,
-                },
-                EnumVariant {
                     name: "UA180",
                     description: Some("180uA."),
                     value: 2,
+                },
+                EnumVariant {
+                    name: "UA330",
+                    description: Some("330uA."),
+                    value: 1,
                 },
                 EnumVariant {
                     name: "UA80",

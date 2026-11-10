@@ -22,22 +22,22 @@ impl Esig {
     #[doc = "Flash capacity register."]
     #[inline(always)]
     pub const fn flacap(self) -> crate::common::Reg<regs::Flacap, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "UID register."]
     #[inline(always)]
     pub const fn uniid1(self) -> crate::common::Reg<regs::Uniid1, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
     #[doc = "UID register."]
     #[inline(always)]
     pub const fn uniid2(self) -> crate::common::Reg<regs::Uniid2, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
     }
     #[doc = "Div register."]
     #[inline(always)]
     pub const fn uniid3(self) -> crate::common::Reg<regs::Uniid3, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize) as _) }
     }
 }
 pub mod regs {
@@ -47,6 +47,7 @@ pub mod regs {
     pub struct Flacap(pub u16);
     impl Flacap {
         #[doc = "F_SIZE/kByte."]
+        #[must_use]
         #[inline(always)]
         pub const fn f_size(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0xffff;
@@ -54,7 +55,7 @@ pub mod regs {
         }
         #[doc = "F_SIZE/kByte."]
         #[inline(always)]
-        pub fn set_f_size(&mut self, val: u16) {
+        pub const fn set_f_size(&mut self, val: u16) {
             self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u16) & 0xffff) << 0usize);
         }
     }
@@ -64,12 +65,20 @@ pub mod regs {
             Flacap(0)
         }
     }
+    impl core::fmt::Debug for Flacap {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Flacap")
+                .field("f_size", &self.f_size())
+                .finish()
+        }
+    }
     #[doc = "UID register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Uniid1(pub u32);
     impl Uniid1 {
         #[doc = "U_ID value."]
+        #[must_use]
         #[inline(always)]
         pub const fn u_id(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -77,7 +86,7 @@ pub mod regs {
         }
         #[doc = "U_ID value."]
         #[inline(always)]
-        pub fn set_u_id(&mut self, val: u32) {
+        pub const fn set_u_id(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -87,12 +96,20 @@ pub mod regs {
             Uniid1(0)
         }
     }
+    impl core::fmt::Debug for Uniid1 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Uniid1")
+                .field("u_id", &self.u_id())
+                .finish()
+        }
+    }
     #[doc = "UID register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Uniid2(pub u32);
     impl Uniid2 {
         #[doc = "U_ID value."]
+        #[must_use]
         #[inline(always)]
         pub const fn u_id(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -100,7 +117,7 @@ pub mod regs {
         }
         #[doc = "U_ID value."]
         #[inline(always)]
-        pub fn set_u_id(&mut self, val: u32) {
+        pub const fn set_u_id(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -110,12 +127,20 @@ pub mod regs {
             Uniid2(0)
         }
     }
+    impl core::fmt::Debug for Uniid2 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Uniid2")
+                .field("u_id", &self.u_id())
+                .finish()
+        }
+    }
     #[doc = "Div register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Uniid3(pub u32);
     impl Uniid3 {
         #[doc = "U_ID value."]
+        #[must_use]
         #[inline(always)]
         pub const fn u_id(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -123,7 +148,7 @@ pub mod regs {
         }
         #[doc = "U_ID value."]
         #[inline(always)]
-        pub fn set_u_id(&mut self, val: u32) {
+        pub const fn set_u_id(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -131,6 +156,13 @@ pub mod regs {
         #[inline(always)]
         fn default() -> Uniid3 {
             Uniid3(0)
+        }
+    }
+    impl core::fmt::Debug for Uniid3 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Uniid3")
+                .field("u_id", &self.u_id())
+                .finish()
         }
     }
 }

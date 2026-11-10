@@ -23,7 +23,7 @@ impl Dmamux {
     #[inline(always)]
     pub const fn cfgr(self, n: usize) -> crate::common::Reg<regs::Cfgr, crate::common::RW> {
         assert!(n < 4usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize + n * 4usize) as _) }
     }
 }
 pub mod regs {
@@ -33,6 +33,7 @@ pub mod regs {
     pub struct Cfgr(pub u32);
     impl Cfgr {
         #[doc = "DMA request multiplexer input source for the channel (peripheral request ID, see RM table for assignments)."]
+        #[must_use]
         #[inline(always)]
         pub const fn channel_mux(&self, n: usize) -> u8 {
             assert!(n < 4usize);
@@ -42,7 +43,7 @@ pub mod regs {
         }
         #[doc = "DMA request multiplexer input source for the channel (peripheral request ID, see RM table for assignments)."]
         #[inline(always)]
-        pub fn set_channel_mux(&mut self, n: usize, val: u8) {
+        pub const fn set_channel_mux(&mut self, n: usize, val: u8) {
             assert!(n < 4usize);
             let offs = 0usize + n * 8usize;
             self.0 = (self.0 & !(0x7f << offs)) | (((val as u32) & 0x7f) << offs);
@@ -52,6 +53,16 @@ pub mod regs {
         #[inline(always)]
         fn default() -> Cfgr {
             Cfgr(0)
+        }
+    }
+    impl core::fmt::Debug for Cfgr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Cfgr")
+                .field("channel_mux[0]", &self.channel_mux(0usize))
+                .field("channel_mux[1]", &self.channel_mux(1usize))
+                .field("channel_mux[2]", &self.channel_mux(2usize))
+                .field("channel_mux[3]", &self.channel_mux(3usize))
+                .finish()
         }
     }
 }

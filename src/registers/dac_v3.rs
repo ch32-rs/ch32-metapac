@@ -291,24 +291,14 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 3,
             variants: &[
                 EnumVariant {
-                    name: "TIM6_TRGO",
-                    description: Some("TIM6 TRGO event."),
-                    value: 0,
+                    name: "EXTI9",
+                    description: Some("External line 9."),
+                    value: 6,
                 },
                 EnumVariant {
-                    name: "TIM8_TRGO",
-                    description: Some("TIM8 TRGO event."),
-                    value: 1,
-                },
-                EnumVariant {
-                    name: "TIM7_TRGO",
-                    description: Some("TIM7 TRGO event."),
-                    value: 2,
-                },
-                EnumVariant {
-                    name: "TIM5_TRGO",
-                    description: Some("TIM5 TRGO event."),
-                    value: 3,
+                    name: "SOFTWARE",
+                    description: Some("Software trigger."),
+                    value: 7,
                 },
                 EnumVariant {
                     name: "TIM2_TRGO",
@@ -321,14 +311,24 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 5,
                 },
                 EnumVariant {
-                    name: "EXTI9",
-                    description: Some("External line 9."),
-                    value: 6,
+                    name: "TIM5_TRGO",
+                    description: Some("TIM5 TRGO event."),
+                    value: 3,
                 },
                 EnumVariant {
-                    name: "SOFTWARE",
-                    description: Some("Software trigger."),
-                    value: 7,
+                    name: "TIM6_TRGO",
+                    description: Some("TIM6 TRGO event."),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "TIM7_TRGO",
+                    description: Some("TIM7 TRGO event."),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "TIM8_TRGO",
+                    description: Some("TIM8 TRGO event."),
+                    value: 1,
                 },
             ],
         },

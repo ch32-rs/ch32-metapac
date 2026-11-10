@@ -95,64 +95,9 @@ pub(crate) static REGISTERS: IR = IR {
                 value: 0,
             },
             EnumVariant {
-                name: "DIV2",
-                description: Some("DIV2."),
-                value: 2,
-            },
-            EnumVariant {
-                name: "DIV4",
-                description: Some("DIV4."),
-                value: 3,
-            },
-            EnumVariant {
-                name: "DIV8",
-                description: Some("DIV8."),
-                value: 4,
-            },
-            EnumVariant {
-                name: "DIV16",
-                description: Some("DIV16."),
-                value: 5,
-            },
-            EnumVariant {
-                name: "DIV32",
-                description: Some("DIV32."),
-                value: 6,
-            },
-            EnumVariant {
-                name: "DIV64",
-                description: Some("DIV64."),
-                value: 7,
-            },
-            EnumVariant {
-                name: "DIV128",
-                description: Some("DIV128."),
-                value: 8,
-            },
-            EnumVariant {
-                name: "DIV256",
-                description: Some("DIV256."),
-                value: 9,
-            },
-            EnumVariant {
-                name: "DIV512",
-                description: Some("DIV512."),
-                value: 10,
-            },
-            EnumVariant {
                 name: "DIV1024",
                 description: Some("DIV1024."),
                 value: 11,
-            },
-            EnumVariant {
-                name: "DIV2048",
-                description: Some("DIV2048."),
-                value: 12,
-            },
-            EnumVariant {
-                name: "DIV4096",
-                description: Some("DIV4096."),
-                value: 13,
             },
             EnumVariant {
                 name: "DIV10240",
@@ -160,9 +105,64 @@ pub(crate) static REGISTERS: IR = IR {
                 value: 14,
             },
             EnumVariant {
+                name: "DIV128",
+                description: Some("DIV128."),
+                value: 8,
+            },
+            EnumVariant {
+                name: "DIV16",
+                description: Some("DIV16."),
+                value: 5,
+            },
+            EnumVariant {
+                name: "DIV2",
+                description: Some("DIV2."),
+                value: 2,
+            },
+            EnumVariant {
+                name: "DIV2048",
+                description: Some("DIV2048."),
+                value: 12,
+            },
+            EnumVariant {
+                name: "DIV256",
+                description: Some("DIV256."),
+                value: 9,
+            },
+            EnumVariant {
+                name: "DIV32",
+                description: Some("DIV32."),
+                value: 6,
+            },
+            EnumVariant {
+                name: "DIV4",
+                description: Some("DIV4."),
+                value: 3,
+            },
+            EnumVariant {
+                name: "DIV4096",
+                description: Some("DIV4096."),
+                value: 13,
+            },
+            EnumVariant {
+                name: "DIV512",
+                description: Some("DIV512."),
+                value: 10,
+            },
+            EnumVariant {
                 name: "DIV61440",
                 description: Some("DIV61440."),
                 value: 15,
+            },
+            EnumVariant {
+                name: "DIV64",
+                description: Some("DIV64."),
+                value: 7,
+            },
+            EnumVariant {
+                name: "DIV8",
+                description: Some("DIV8."),
+                value: 4,
             },
         ],
     }],

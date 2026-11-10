@@ -22,23 +22,23 @@ impl Afio {
     #[doc = "Event Control Register (AFIO_ECR)."]
     #[inline(always)]
     pub const fn ecr(self) -> crate::common::Reg<regs::Ecr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "AF remap and debug I/O configuration register (AFIO_PCFR1)."]
     #[inline(always)]
     pub const fn pcfr1(self) -> crate::common::Reg<regs::Pcfr1, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "External interrupt configuration registers (AFIO_EXTICRs)."]
     #[inline(always)]
     pub const fn exticr(self, n: usize) -> crate::common::Reg<regs::Exticr, crate::common::RW> {
         assert!(n < 4usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize + n * 4usize) as _) }
     }
     #[doc = "AF remap and debug I/O configuration register (AFIO_PCFR2)."]
     #[inline(always)]
     pub const fn pcfr2(self) -> crate::common::Reg<regs::Pcfr2, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x1cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1cusize) as _) }
     }
 }
 pub mod regs {
@@ -48,6 +48,7 @@ pub mod regs {
     pub struct Ecr(pub u32);
     impl Ecr {
         #[doc = "Pin selection."]
+        #[must_use]
         #[inline(always)]
         pub const fn pin(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x0f;
@@ -55,10 +56,11 @@ pub mod regs {
         }
         #[doc = "Pin selection."]
         #[inline(always)]
-        pub fn set_pin(&mut self, val: u8) {
+        pub const fn set_pin(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
         }
         #[doc = "Port selection."]
+        #[must_use]
         #[inline(always)]
         pub const fn port(&self) -> u8 {
             let val = (self.0 >> 4usize) & 0x07;
@@ -66,10 +68,11 @@ pub mod regs {
         }
         #[doc = "Port selection."]
         #[inline(always)]
-        pub fn set_port(&mut self, val: u8) {
+        pub const fn set_port(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 4usize)) | (((val as u32) & 0x07) << 4usize);
         }
         #[doc = "Event Output Enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn evoe(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -77,7 +80,7 @@ pub mod regs {
         }
         #[doc = "Event Output Enable."]
         #[inline(always)]
-        pub fn set_evoe(&mut self, val: bool) {
+        pub const fn set_evoe(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
     }
@@ -87,12 +90,22 @@ pub mod regs {
             Ecr(0)
         }
     }
+    impl core::fmt::Debug for Ecr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ecr")
+                .field("pin", &self.pin())
+                .field("port", &self.port())
+                .field("evoe", &self.evoe())
+                .finish()
+        }
+    }
     #[doc = "External interrupt configuration register (AFIO_EXTICRx)."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Exticr(pub u32);
     impl Exticr {
         #[doc = "EXTI configuration."]
+        #[must_use]
         #[inline(always)]
         pub const fn exti(&self, n: usize) -> u8 {
             assert!(n < 4usize);
@@ -102,7 +115,7 @@ pub mod regs {
         }
         #[doc = "EXTI configuration."]
         #[inline(always)]
-        pub fn set_exti(&mut self, n: usize, val: u8) {
+        pub const fn set_exti(&mut self, n: usize, val: u8) {
             assert!(n < 4usize);
             let offs = 0usize + n * 4usize;
             self.0 = (self.0 & !(0x0f << offs)) | (((val as u32) & 0x0f) << offs);
@@ -114,12 +127,23 @@ pub mod regs {
             Exticr(0)
         }
     }
+    impl core::fmt::Debug for Exticr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Exticr")
+                .field("exti[0]", &self.exti(0usize))
+                .field("exti[1]", &self.exti(1usize))
+                .field("exti[2]", &self.exti(2usize))
+                .field("exti[3]", &self.exti(3usize))
+                .finish()
+        }
+    }
     #[doc = "AF remap and debug I/O configuration register (AFIO_PCFR1)."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Pcfr1(pub u32);
     impl Pcfr1 {
         #[doc = "SPI1 remapping."]
+        #[must_use]
         #[inline(always)]
         pub const fn spi1_rm(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -127,10 +151,11 @@ pub mod regs {
         }
         #[doc = "SPI1 remapping."]
         #[inline(always)]
-        pub fn set_spi1_rm(&mut self, val: bool) {
+        pub const fn set_spi1_rm(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "I2C1 remapping."]
+        #[must_use]
         #[inline(always)]
         pub const fn i2c1_rm(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -138,10 +163,11 @@ pub mod regs {
         }
         #[doc = "I2C1 remapping."]
         #[inline(always)]
-        pub fn set_i2c1_rm(&mut self, val: bool) {
+        pub const fn set_i2c1_rm(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
         #[doc = "USART1 remapping."]
+        #[must_use]
         #[inline(always)]
         pub const fn usart1_rm(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -149,10 +175,11 @@ pub mod regs {
         }
         #[doc = "USART1 remapping."]
         #[inline(always)]
-        pub fn set_usart1_rm(&mut self, val: bool) {
+        pub const fn set_usart1_rm(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
         #[doc = "USART2 remapping."]
+        #[must_use]
         #[inline(always)]
         pub const fn usart2_rm(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -160,10 +187,11 @@ pub mod regs {
         }
         #[doc = "USART2 remapping."]
         #[inline(always)]
-        pub fn set_usart2_rm(&mut self, val: bool) {
+        pub const fn set_usart2_rm(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
         }
         #[doc = "USART3 remapping."]
+        #[must_use]
         #[inline(always)]
         pub const fn usart3_rm(&self) -> u8 {
             let val = (self.0 >> 4usize) & 0x03;
@@ -171,10 +199,11 @@ pub mod regs {
         }
         #[doc = "USART3 remapping."]
         #[inline(always)]
-        pub fn set_usart3_rm(&mut self, val: u8) {
+        pub const fn set_usart3_rm(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 4usize)) | (((val as u32) & 0x03) << 4usize);
         }
         #[doc = "TIM1 remapping."]
+        #[must_use]
         #[inline(always)]
         pub const fn tim1_rm(&self) -> u8 {
             let val = (self.0 >> 6usize) & 0x03;
@@ -182,10 +211,11 @@ pub mod regs {
         }
         #[doc = "TIM1 remapping."]
         #[inline(always)]
-        pub fn set_tim1_rm(&mut self, val: u8) {
+        pub const fn set_tim1_rm(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 6usize)) | (((val as u32) & 0x03) << 6usize);
         }
         #[doc = "TIM2 remapping."]
+        #[must_use]
         #[inline(always)]
         pub const fn tim2_rm(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x03;
@@ -193,10 +223,11 @@ pub mod regs {
         }
         #[doc = "TIM2 remapping."]
         #[inline(always)]
-        pub fn set_tim2_rm(&mut self, val: u8) {
+        pub const fn set_tim2_rm(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u32) & 0x03) << 8usize);
         }
         #[doc = "TIM3 remapping."]
+        #[must_use]
         #[inline(always)]
         pub const fn tim3_rm(&self) -> u8 {
             let val = (self.0 >> 10usize) & 0x03;
@@ -204,10 +235,11 @@ pub mod regs {
         }
         #[doc = "TIM3 remapping."]
         #[inline(always)]
-        pub fn set_tim3_rm(&mut self, val: u8) {
+        pub const fn set_tim3_rm(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 10usize)) | (((val as u32) & 0x03) << 10usize);
         }
         #[doc = "TIM4 remapping."]
+        #[must_use]
         #[inline(always)]
         pub const fn tim4_rm(&self) -> bool {
             let val = (self.0 >> 12usize) & 0x01;
@@ -215,10 +247,11 @@ pub mod regs {
         }
         #[doc = "TIM4 remapping."]
         #[inline(always)]
-        pub fn set_tim4_rm(&mut self, val: bool) {
+        pub const fn set_tim4_rm(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
         }
         #[doc = "CAN1 remapping."]
+        #[must_use]
         #[inline(always)]
         pub const fn can1_rm(&self) -> u8 {
             let val = (self.0 >> 13usize) & 0x03;
@@ -226,10 +259,11 @@ pub mod regs {
         }
         #[doc = "CAN1 remapping."]
         #[inline(always)]
-        pub fn set_can1_rm(&mut self, val: u8) {
+        pub const fn set_can1_rm(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 13usize)) | (((val as u32) & 0x03) << 13usize);
         }
         #[doc = "Port D0/Port D1 mapping on OSCIN/OSCOUT."]
+        #[must_use]
         #[inline(always)]
         pub const fn pd01_rm(&self) -> bool {
             let val = (self.0 >> 15usize) & 0x01;
@@ -237,10 +271,11 @@ pub mod regs {
         }
         #[doc = "Port D0/Port D1 mapping on OSCIN/OSCOUT."]
         #[inline(always)]
-        pub fn set_pd01_rm(&mut self, val: bool) {
+        pub const fn set_pd01_rm(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
         }
         #[doc = "TIM5 channel4 internal remap."]
+        #[must_use]
         #[inline(always)]
         pub const fn tim5ch4_rm(&self) -> bool {
             let val = (self.0 >> 16usize) & 0x01;
@@ -248,10 +283,11 @@ pub mod regs {
         }
         #[doc = "TIM5 channel4 internal remap."]
         #[inline(always)]
-        pub fn set_tim5ch4_rm(&mut self, val: bool) {
+        pub const fn set_tim5ch4_rm(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
         }
         #[doc = "ADC 1 External trigger injected conversion remapping."]
+        #[must_use]
         #[inline(always)]
         pub const fn adc1_etrginj_rm(&self) -> bool {
             let val = (self.0 >> 17usize) & 0x01;
@@ -259,10 +295,11 @@ pub mod regs {
         }
         #[doc = "ADC 1 External trigger injected conversion remapping."]
         #[inline(always)]
-        pub fn set_adc1_etrginj_rm(&mut self, val: bool) {
+        pub const fn set_adc1_etrginj_rm(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
         }
         #[doc = "ADC 1 external trigger regular conversion remapping."]
+        #[must_use]
         #[inline(always)]
         pub const fn adc1_etrgreg_rm(&self) -> bool {
             let val = (self.0 >> 18usize) & 0x01;
@@ -270,10 +307,11 @@ pub mod regs {
         }
         #[doc = "ADC 1 external trigger regular conversion remapping."]
         #[inline(always)]
-        pub fn set_adc1_etrgreg_rm(&mut self, val: bool) {
+        pub const fn set_adc1_etrgreg_rm(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 18usize)) | (((val as u32) & 0x01) << 18usize);
         }
         #[doc = "ADC 2 External trigger injected conversion remapping."]
+        #[must_use]
         #[inline(always)]
         pub const fn adc2_etrginj_rm(&self) -> bool {
             let val = (self.0 >> 19usize) & 0x01;
@@ -281,10 +319,11 @@ pub mod regs {
         }
         #[doc = "ADC 2 External trigger injected conversion remapping."]
         #[inline(always)]
-        pub fn set_adc2_etrginj_rm(&mut self, val: bool) {
+        pub const fn set_adc2_etrginj_rm(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 19usize)) | (((val as u32) & 0x01) << 19usize);
         }
         #[doc = "ADC 2 external trigger regular conversion remapping."]
+        #[must_use]
         #[inline(always)]
         pub const fn adc2_etrgreg_rm(&self) -> bool {
             let val = (self.0 >> 20usize) & 0x01;
@@ -292,10 +331,11 @@ pub mod regs {
         }
         #[doc = "ADC 2 external trigger regular conversion remapping."]
         #[inline(always)]
-        pub fn set_adc2_etrgreg_rm(&mut self, val: bool) {
+        pub const fn set_adc2_etrgreg_rm(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
         }
         #[doc = "Ethernet remapping."]
+        #[must_use]
         #[inline(always)]
         pub const fn eth_rm(&self) -> bool {
             let val = (self.0 >> 21usize) & 0x01;
@@ -303,10 +343,11 @@ pub mod regs {
         }
         #[doc = "Ethernet remapping."]
         #[inline(always)]
-        pub fn set_eth_rm(&mut self, val: bool) {
+        pub const fn set_eth_rm(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
         }
         #[doc = "CAN2 remapping."]
+        #[must_use]
         #[inline(always)]
         pub const fn can2_rm(&self) -> bool {
             let val = (self.0 >> 22usize) & 0x01;
@@ -314,10 +355,11 @@ pub mod regs {
         }
         #[doc = "CAN2 remapping."]
         #[inline(always)]
-        pub fn set_can2_rm(&mut self, val: bool) {
+        pub const fn set_can2_rm(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 22usize)) | (((val as u32) & 0x01) << 22usize);
         }
         #[doc = "MII_RMII_SEL."]
+        #[must_use]
         #[inline(always)]
         pub const fn mii_rmii_sel(&self) -> bool {
             let val = (self.0 >> 23usize) & 0x01;
@@ -325,10 +367,11 @@ pub mod regs {
         }
         #[doc = "MII_RMII_SEL."]
         #[inline(always)]
-        pub fn set_mii_rmii_sel(&mut self, val: bool) {
+        pub const fn set_mii_rmii_sel(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 23usize)) | (((val as u32) & 0x01) << 23usize);
         }
         #[doc = "Serial wire JTAG configuration."]
+        #[must_use]
         #[inline(always)]
         pub const fn swcfg(&self) -> u8 {
             let val = (self.0 >> 24usize) & 0x07;
@@ -336,10 +379,11 @@ pub mod regs {
         }
         #[doc = "Serial wire JTAG configuration."]
         #[inline(always)]
-        pub fn set_swcfg(&mut self, val: u8) {
+        pub const fn set_swcfg(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 24usize)) | (((val as u32) & 0x07) << 24usize);
         }
         #[doc = "SPI3 remapping."]
+        #[must_use]
         #[inline(always)]
         pub const fn spi3_rm(&self) -> bool {
             let val = (self.0 >> 28usize) & 0x01;
@@ -347,10 +391,11 @@ pub mod regs {
         }
         #[doc = "SPI3 remapping."]
         #[inline(always)]
-        pub fn set_spi3_rm(&mut self, val: bool) {
+        pub const fn set_spi3_rm(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 28usize)) | (((val as u32) & 0x01) << 28usize);
         }
         #[doc = "TIM2 internally triggers 1 remapping."]
+        #[must_use]
         #[inline(always)]
         pub const fn tim2itra_rm(&self) -> bool {
             let val = (self.0 >> 29usize) & 0x01;
@@ -358,10 +403,11 @@ pub mod regs {
         }
         #[doc = "TIM2 internally triggers 1 remapping."]
         #[inline(always)]
-        pub fn set_tim2itra_rm(&mut self, val: bool) {
+        pub const fn set_tim2itra_rm(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 29usize)) | (((val as u32) & 0x01) << 29usize);
         }
         #[doc = "Ethernet PTP_PPS remapping."]
+        #[must_use]
         #[inline(always)]
         pub const fn ptp_ppsp_rm(&self) -> bool {
             let val = (self.0 >> 30usize) & 0x01;
@@ -369,7 +415,7 @@ pub mod regs {
         }
         #[doc = "Ethernet PTP_PPS remapping."]
         #[inline(always)]
-        pub fn set_ptp_ppsp_rm(&mut self, val: bool) {
+        pub const fn set_ptp_ppsp_rm(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 30usize)) | (((val as u32) & 0x01) << 30usize);
         }
     }
@@ -379,12 +425,42 @@ pub mod regs {
             Pcfr1(0)
         }
     }
+    impl core::fmt::Debug for Pcfr1 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Pcfr1")
+                .field("spi1_rm", &self.spi1_rm())
+                .field("i2c1_rm", &self.i2c1_rm())
+                .field("usart1_rm", &self.usart1_rm())
+                .field("usart2_rm", &self.usart2_rm())
+                .field("usart3_rm", &self.usart3_rm())
+                .field("tim1_rm", &self.tim1_rm())
+                .field("tim2_rm", &self.tim2_rm())
+                .field("tim3_rm", &self.tim3_rm())
+                .field("tim4_rm", &self.tim4_rm())
+                .field("can1_rm", &self.can1_rm())
+                .field("pd01_rm", &self.pd01_rm())
+                .field("tim5ch4_rm", &self.tim5ch4_rm())
+                .field("adc1_etrginj_rm", &self.adc1_etrginj_rm())
+                .field("adc1_etrgreg_rm", &self.adc1_etrgreg_rm())
+                .field("adc2_etrginj_rm", &self.adc2_etrginj_rm())
+                .field("adc2_etrgreg_rm", &self.adc2_etrgreg_rm())
+                .field("eth_rm", &self.eth_rm())
+                .field("can2_rm", &self.can2_rm())
+                .field("mii_rmii_sel", &self.mii_rmii_sel())
+                .field("swcfg", &self.swcfg())
+                .field("spi3_rm", &self.spi3_rm())
+                .field("tim2itra_rm", &self.tim2itra_rm())
+                .field("ptp_ppsp_rm", &self.ptp_ppsp_rm())
+                .finish()
+        }
+    }
     #[doc = "AF remap and debug I/O configuration register (AFIO_PCFR2)."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Pcfr2(pub u32);
     impl Pcfr2 {
         #[doc = "TIM8 remapping."]
+        #[must_use]
         #[inline(always)]
         pub const fn tim8_rm(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -392,10 +468,11 @@ pub mod regs {
         }
         #[doc = "TIM8 remapping."]
         #[inline(always)]
-        pub fn set_tim8_rm(&mut self, val: bool) {
+        pub const fn set_tim8_rm(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
         #[doc = "TIM9 remapping."]
+        #[must_use]
         #[inline(always)]
         pub const fn tim9_rm(&self) -> u8 {
             let val = (self.0 >> 3usize) & 0x03;
@@ -403,10 +480,11 @@ pub mod regs {
         }
         #[doc = "TIM9 remapping."]
         #[inline(always)]
-        pub fn set_tim9_rm(&mut self, val: u8) {
+        pub const fn set_tim9_rm(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 3usize)) | (((val as u32) & 0x03) << 3usize);
         }
         #[doc = "TIM10 remapping."]
+        #[must_use]
         #[inline(always)]
         pub const fn tim10_rm(&self) -> u8 {
             let val = (self.0 >> 5usize) & 0x03;
@@ -414,10 +492,11 @@ pub mod regs {
         }
         #[doc = "TIM10 remapping."]
         #[inline(always)]
-        pub fn set_tim10_rm(&mut self, val: u8) {
+        pub const fn set_tim10_rm(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 5usize)) | (((val as u32) & 0x03) << 5usize);
         }
         #[doc = "FSMC_NADV."]
+        #[must_use]
         #[inline(always)]
         pub const fn fsmc_nadv(&self) -> bool {
             let val = (self.0 >> 10usize) & 0x01;
@@ -425,10 +504,11 @@ pub mod regs {
         }
         #[doc = "FSMC_NADV."]
         #[inline(always)]
-        pub fn set_fsmc_nadv(&mut self, val: bool) {
+        pub const fn set_fsmc_nadv(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
         }
         #[doc = "USART4 remapping."]
+        #[must_use]
         #[inline(always)]
         pub const fn usart4_rm(&self) -> u8 {
             let val = (self.0 >> 16usize) & 0x03;
@@ -436,10 +516,11 @@ pub mod regs {
         }
         #[doc = "USART4 remapping."]
         #[inline(always)]
-        pub fn set_usart4_rm(&mut self, val: u8) {
+        pub const fn set_usart4_rm(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 16usize)) | (((val as u32) & 0x03) << 16usize);
         }
         #[doc = "USART5 remapping."]
+        #[must_use]
         #[inline(always)]
         pub const fn usart5_rm(&self) -> u8 {
             let val = (self.0 >> 18usize) & 0x03;
@@ -447,10 +528,11 @@ pub mod regs {
         }
         #[doc = "USART5 remapping."]
         #[inline(always)]
-        pub fn set_usart5_rm(&mut self, val: u8) {
+        pub const fn set_usart5_rm(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 18usize)) | (((val as u32) & 0x03) << 18usize);
         }
         #[doc = "USART6 remapping."]
+        #[must_use]
         #[inline(always)]
         pub const fn usart6_rm(&self) -> u8 {
             let val = (self.0 >> 20usize) & 0x03;
@@ -458,10 +540,11 @@ pub mod regs {
         }
         #[doc = "USART6 remapping."]
         #[inline(always)]
-        pub fn set_usart6_rm(&mut self, val: u8) {
+        pub const fn set_usart6_rm(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 20usize)) | (((val as u32) & 0x03) << 20usize);
         }
         #[doc = "USART7 remapping."]
+        #[must_use]
         #[inline(always)]
         pub const fn usart7_rm(&self) -> u8 {
             let val = (self.0 >> 22usize) & 0x03;
@@ -469,10 +552,11 @@ pub mod regs {
         }
         #[doc = "USART7 remapping."]
         #[inline(always)]
-        pub fn set_usart7_rm(&mut self, val: u8) {
+        pub const fn set_usart7_rm(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 22usize)) | (((val as u32) & 0x03) << 22usize);
         }
         #[doc = "USART8 remapping."]
+        #[must_use]
         #[inline(always)]
         pub const fn usart8_rm(&self) -> u8 {
             let val = (self.0 >> 24usize) & 0x03;
@@ -480,10 +564,11 @@ pub mod regs {
         }
         #[doc = "USART8 remapping."]
         #[inline(always)]
-        pub fn set_usart8_rm(&mut self, val: u8) {
+        pub const fn set_usart8_rm(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 24usize)) | (((val as u32) & 0x03) << 24usize);
         }
         #[doc = "USART1 remapping."]
+        #[must_use]
         #[inline(always)]
         pub const fn usart1_rm2(&self) -> bool {
             let val = (self.0 >> 26usize) & 0x01;
@@ -491,7 +576,7 @@ pub mod regs {
         }
         #[doc = "USART1 remapping."]
         #[inline(always)]
-        pub fn set_usart1_rm2(&mut self, val: bool) {
+        pub const fn set_usart1_rm2(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 26usize)) | (((val as u32) & 0x01) << 26usize);
         }
     }
@@ -499,6 +584,22 @@ pub mod regs {
         #[inline(always)]
         fn default() -> Pcfr2 {
             Pcfr2(0)
+        }
+    }
+    impl core::fmt::Debug for Pcfr2 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Pcfr2")
+                .field("tim8_rm", &self.tim8_rm())
+                .field("tim9_rm", &self.tim9_rm())
+                .field("tim10_rm", &self.tim10_rm())
+                .field("fsmc_nadv", &self.fsmc_nadv())
+                .field("usart4_rm", &self.usart4_rm())
+                .field("usart5_rm", &self.usart5_rm())
+                .field("usart6_rm", &self.usart6_rm())
+                .field("usart7_rm", &self.usart7_rm())
+                .field("usart8_rm", &self.usart8_rm())
+                .field("usart1_rm2", &self.usart1_rm2())
+                .finish()
         }
     }
 }

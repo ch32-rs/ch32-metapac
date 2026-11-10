@@ -22,7 +22,7 @@ impl Extend {
     #[doc = "EXTEND register."]
     #[inline(always)]
     pub const fn ctr(self) -> crate::common::Reg<regs::Ctr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
 }
 pub mod regs {
@@ -32,6 +32,7 @@ pub mod regs {
     pub struct Ctr(pub u32);
     impl Ctr {
         #[doc = "USBD Lowspeed Enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn usbdls(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -39,10 +40,11 @@ pub mod regs {
         }
         #[doc = "USBD Lowspeed Enable."]
         #[inline(always)]
-        pub fn set_usbdls(&mut self, val: bool) {
+        pub const fn set_usbdls(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "USBD pullup Enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn usbdpu(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -50,10 +52,11 @@ pub mod regs {
         }
         #[doc = "USBD pullup Enable."]
         #[inline(always)]
-        pub fn set_usbdpu(&mut self, val: bool) {
+        pub const fn set_usbdpu(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
         #[doc = "USBHD IO(PB6/PB7) Enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn usbhdio(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -61,10 +64,11 @@ pub mod regs {
         }
         #[doc = "USBHD IO(PB6/PB7) Enable."]
         #[inline(always)]
-        pub fn set_usbhdio(&mut self, val: bool) {
+        pub const fn set_usbhdio(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
         #[doc = "USB 5V Enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn usb5vsel(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -72,10 +76,11 @@ pub mod regs {
         }
         #[doc = "USB 5V Enable."]
         #[inline(always)]
-        pub fn set_usb5vsel(&mut self, val: bool) {
+        pub const fn set_usb5vsel(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
         }
         #[doc = "Whether HSI is divided."]
+        #[must_use]
         #[inline(always)]
         pub const fn hsipre(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -83,10 +88,11 @@ pub mod regs {
         }
         #[doc = "Whether HSI is divided."]
         #[inline(always)]
-        pub fn set_hsipre(&mut self, val: bool) {
+        pub const fn set_hsipre(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
         #[doc = "LOCKUP."]
+        #[must_use]
         #[inline(always)]
         pub const fn lkupen(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
@@ -94,10 +100,11 @@ pub mod regs {
         }
         #[doc = "LOCKUP."]
         #[inline(always)]
-        pub fn set_lkupen(&mut self, val: bool) {
+        pub const fn set_lkupen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
         }
         #[doc = "LOCKUP RESET."]
+        #[must_use]
         #[inline(always)]
         pub const fn lkupreset(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -105,10 +112,11 @@ pub mod regs {
         }
         #[doc = "LOCKUP RESET."]
         #[inline(always)]
-        pub fn set_lkupreset(&mut self, val: bool) {
+        pub const fn set_lkupreset(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
         #[doc = "ULLDOTRIM."]
+        #[must_use]
         #[inline(always)]
         pub const fn ulldotrim(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x03;
@@ -116,10 +124,11 @@ pub mod regs {
         }
         #[doc = "ULLDOTRIM."]
         #[inline(always)]
-        pub fn set_ulldotrim(&mut self, val: u8) {
+        pub const fn set_ulldotrim(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u32) & 0x03) << 8usize);
         }
         #[doc = "LDOTRIM."]
+        #[must_use]
         #[inline(always)]
         pub const fn ldotrim(&self) -> bool {
             let val = (self.0 >> 10usize) & 0x01;
@@ -127,7 +136,7 @@ pub mod regs {
         }
         #[doc = "LDOTRIM."]
         #[inline(always)]
-        pub fn set_ldotrim(&mut self, val: bool) {
+        pub const fn set_ldotrim(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
         }
     }
@@ -135,6 +144,21 @@ pub mod regs {
         #[inline(always)]
         fn default() -> Ctr {
             Ctr(0)
+        }
+    }
+    impl core::fmt::Debug for Ctr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ctr")
+                .field("usbdls", &self.usbdls())
+                .field("usbdpu", &self.usbdpu())
+                .field("usbhdio", &self.usbhdio())
+                .field("usb5vsel", &self.usb5vsel())
+                .field("hsipre", &self.hsipre())
+                .field("lkupen", &self.lkupen())
+                .field("lkupreset", &self.lkupreset())
+                .field("ulldotrim", &self.ulldotrim())
+                .field("ldotrim", &self.ldotrim())
+                .finish()
         }
     }
 }

@@ -22,108 +22,108 @@ impl BleRfend {
     #[doc = "Calibration trigger/path bits (TX_tune_trigger bit0, TX_cal_mode bit4, TXF_enable bit8, RX_filter_mode bit12, RX_ADC_config bit16)."]
     #[inline(always)]
     pub const fn cal_trig(self) -> crate::common::Reg<regs::CalTrig, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "TX/RX path enable (RX_ADC bit16, TX cal bit17, TX/RX PLL pre-enable bits\\[20:21\\])."]
     #[inline(always)]
     pub const fn path_en(self) -> crate::common::Reg<regs::PathEn, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
     #[doc = "RFEND control + reset (reset sequence writes 0x1101 → 0 → 0x1101; RX_filter_strobe bit4, ADC_ref_strobe bit8)."]
     #[inline(always)]
     pub const fn ctrl(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
     }
     #[doc = "RFEND CFG0 (default 0x480, hw-confirmed)."]
     #[inline(always)]
     pub const fn cfg0(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x28usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x28usize) as _) }
     }
     #[doc = "PLL/VCO config (post_cal_enable bit4, channel-lock release bit1)."]
     #[inline(always)]
     pub const fn pll_vco(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x2cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x2cusize) as _) }
     }
     #[doc = "PLL loop filter config (bits\\[3:0\\]/\\[7:4\\]/\\[10:8\\]/\\[22:20\\]/\\[30:28\\])."]
     #[inline(always)]
     pub const fn loop_filter(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x30usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x30usize) as _) }
     }
     #[doc = "PLL enable (bits\\[25:19\\]
 cleared, bit20 set, bit31 set)."]
     #[inline(always)]
     pub const fn cfg4(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x38usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x38usize) as _) }
     }
     #[doc = "CFG5 + frequency code (bits\\[15:12\\]=8, bits\\[26:24\\], bits\\[31:30\\]; freq_code at bits\\[15:8\\]
 BF00=2401MHz, D300=2440MHz, E700=2480MHz; nCO2440 bits\\[5:0\\], nGA2440 bits\\[30:24\\])."]
     #[inline(always)]
     pub const fn cfg5_freq(self) -> crate::common::Reg<regs::Cfg5Freq, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x3cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x3cusize) as _) }
     }
     #[doc = "PLL integer/frac divider (int_div bits\\[24:20\\], frac_div bits\\[13:0\\])."]
     #[inline(always)]
     pub const fn pll_div(self) -> crate::common::Reg<regs::PllDiv, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x44usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x44usize) as _) }
     }
     #[doc = "Analog RF0 config (RF analog enable bit31, bits\\[3:0\\]=9, bits\\[26:24\\]=0b100, bit29)."]
     #[inline(always)]
     pub const fn rf0(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x48usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x48usize) as _) }
     }
     #[doc = "Analog RF1 bias (bits\\[2:0\\]=3, bits\\[6:4\\]=3, bits\\[10:8\\]=3, bit24=0, bit25=1)."]
     #[inline(always)]
     pub const fn rf1(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x4cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x4cusize) as _) }
     }
     #[doc = "Analog RF2 (bit14 = 1)."]
     #[inline(always)]
     pub const fn rf2(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x50usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x50usize) as _) }
     }
     #[doc = "Analog RF2b (bits\\[3:0\\]=12, bit7=1, bit12=0)."]
     #[inline(always)]
     pub const fn rf2b(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x54usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x54usize) as _) }
     }
     #[doc = "RX ADC reference enable (bit16)."]
     #[inline(always)]
     pub const fn adc_ref(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x58usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x58usize) as _) }
     }
     #[doc = "PLL tune result (CO bits\\[5:0\\], tune_done bit25, tune_active bit26). Reading also latches GA into CO_RESULT2."]
     #[inline(always)]
     pub const fn tune_result(self) -> crate::common::Reg<regs::TuneResult, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x90usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x90usize) as _) }
     }
     #[doc = "GA result (bits\\[16:10\\], latched by TUNE_RESULT read)."]
     #[inline(always)]
     pub const fn ga_result(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x94usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x94usize) as _) }
     }
     #[doc = "RX filter calibration result (bits\\[4:0\\]) + done bit8."]
     #[inline(always)]
     pub const fn rx_filter_result(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x9cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x9cusize) as _) }
     }
     #[doc = "CO calibration table 1 — nibble-packed `delta_low * (39-ch)/39` for ch0..ch39 (5×u32)."]
     #[inline(always)]
     pub const fn co_table1(self, n: usize) -> crate::common::Reg<u32, crate::common::RW> {
         assert!(n < 5usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xa0usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0xa0usize + n * 4usize) as _) }
     }
     #[doc = "CO calibration table 2 — nibble-packed `delta_high * (ch+1)/40` for ch0..ch39 (5×u32)."]
     #[inline(always)]
     pub const fn co_table2(self, n: usize) -> crate::common::Reg<u32, crate::common::RW> {
         assert!(n < 5usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xb4usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0xb4usize + n * 4usize) as _) }
     }
     #[doc = "GA calibration table + CO2 overflow guard (3×u32 covering nibbles for ch40..41 + GA1\\[0..9\\]
 + GA2\\[0..9\\])."]
     #[inline(always)]
     pub const fn ga_table(self, n: usize) -> crate::common::Reg<u32, crate::common::RW> {
         assert!(n < 3usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xc8usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0xc8usize + n * 4usize) as _) }
     }
 }
 pub mod regs {
@@ -133,6 +133,7 @@ pub mod regs {
     pub struct CalTrig(pub u32);
     impl CalTrig {
         #[doc = "TX tune trigger pulse for PLL measurement."]
+        #[must_use]
         #[inline(always)]
         pub const fn tx_tune_trigger(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -140,10 +141,11 @@ pub mod regs {
         }
         #[doc = "TX tune trigger pulse for PLL measurement."]
         #[inline(always)]
-        pub fn set_tx_tune_trigger(&mut self, val: bool) {
+        pub const fn set_tx_tune_trigger(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "TX calibration mode (set during cal, cleared post)."]
+        #[must_use]
         #[inline(always)]
         pub const fn tx_cal_mode(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -151,10 +153,11 @@ pub mod regs {
         }
         #[doc = "TX calibration mode (set during cal, cleared post)."]
         #[inline(always)]
-        pub fn set_tx_cal_mode(&mut self, val: bool) {
+        pub const fn set_tx_cal_mode(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
         #[doc = "TX filter enable (set in RFEND_TXFtune; cleared post-cal Bug"]
+        #[must_use]
         #[inline(always)]
         pub const fn txf_enable(&self) -> bool {
             let val = (self.0 >> 8usize) & 0x01;
@@ -162,10 +165,11 @@ pub mod regs {
         }
         #[doc = "TX filter enable (set in RFEND_TXFtune; cleared post-cal Bug"]
         #[inline(always)]
-        pub fn set_txf_enable(&mut self, val: bool) {
+        pub const fn set_txf_enable(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
         }
         #[doc = "RX filter calibration mode (cleared post Bug"]
+        #[must_use]
         #[inline(always)]
         pub const fn rx_filter_mode(&self) -> bool {
             let val = (self.0 >> 12usize) & 0x01;
@@ -173,10 +177,11 @@ pub mod regs {
         }
         #[doc = "RX filter calibration mode (cleared post Bug"]
         #[inline(always)]
-        pub fn set_rx_filter_mode(&mut self, val: bool) {
+        pub const fn set_rx_filter_mode(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
         }
         #[doc = "RX ADC config (cleared then set in RFEND_RXAdc)."]
+        #[must_use]
         #[inline(always)]
         pub const fn rx_adc_config(&self) -> bool {
             let val = (self.0 >> 16usize) & 0x01;
@@ -184,7 +189,7 @@ pub mod regs {
         }
         #[doc = "RX ADC config (cleared then set in RFEND_RXAdc)."]
         #[inline(always)]
-        pub fn set_rx_adc_config(&mut self, val: bool) {
+        pub const fn set_rx_adc_config(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
         }
     }
@@ -194,12 +199,24 @@ pub mod regs {
             CalTrig(0)
         }
     }
+    impl core::fmt::Debug for CalTrig {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("CalTrig")
+                .field("tx_tune_trigger", &self.tx_tune_trigger())
+                .field("tx_cal_mode", &self.tx_cal_mode())
+                .field("txf_enable", &self.txf_enable())
+                .field("rx_filter_mode", &self.rx_filter_mode())
+                .field("rx_adc_config", &self.rx_adc_config())
+                .finish()
+        }
+    }
     #[doc = "CFG5 + frequency-code register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Cfg5Freq(pub u32);
     impl Cfg5Freq {
         #[doc = "Stored CO anchor for default-channel comp (bits\\[5:0\\])."]
+        #[must_use]
         #[inline(always)]
         pub const fn nco2440(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x3f;
@@ -207,11 +224,12 @@ pub mod regs {
         }
         #[doc = "Stored CO anchor for default-channel comp (bits\\[5:0\\])."]
         #[inline(always)]
-        pub fn set_nco2440(&mut self, val: u8) {
+        pub const fn set_nco2440(&mut self, val: u8) {
             self.0 = (self.0 & !(0x3f << 0usize)) | (((val as u32) & 0x3f) << 0usize);
         }
         #[doc = "Frequency code bits\\[15:8\\]
 (BF=2401MHz, D3=2440MHz, E7=2480MHz)."]
+        #[must_use]
         #[inline(always)]
         pub const fn freq_code(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0xff;
@@ -220,10 +238,11 @@ pub mod regs {
         #[doc = "Frequency code bits\\[15:8\\]
 (BF=2401MHz, D3=2440MHz, E7=2480MHz)."]
         #[inline(always)]
-        pub fn set_freq_code(&mut self, val: u8) {
+        pub const fn set_freq_code(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
         }
         #[doc = "Stored GA anchor for default-channel comp (bits\\[30:24\\])."]
+        #[must_use]
         #[inline(always)]
         pub const fn nga2440(&self) -> u8 {
             let val = (self.0 >> 24usize) & 0x7f;
@@ -231,7 +250,7 @@ pub mod regs {
         }
         #[doc = "Stored GA anchor for default-channel comp (bits\\[30:24\\])."]
         #[inline(always)]
-        pub fn set_nga2440(&mut self, val: u8) {
+        pub const fn set_nga2440(&mut self, val: u8) {
             self.0 = (self.0 & !(0x7f << 24usize)) | (((val as u32) & 0x7f) << 24usize);
         }
     }
@@ -241,12 +260,22 @@ pub mod regs {
             Cfg5Freq(0)
         }
     }
+    impl core::fmt::Debug for Cfg5Freq {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Cfg5Freq")
+                .field("nco2440", &self.nco2440())
+                .field("freq_code", &self.freq_code())
+                .field("nga2440", &self.nga2440())
+                .finish()
+        }
+    }
     #[doc = "RFEND TX/RX path enable mask (pre-init = 0x00330000 enables bits 16/17/20/21)."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PathEn(pub u32);
     impl PathEn {
         #[doc = "RX ADC path enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn rx_adc_path(&self) -> bool {
             let val = (self.0 >> 16usize) & 0x01;
@@ -254,10 +283,11 @@ pub mod regs {
         }
         #[doc = "RX ADC path enable."]
         #[inline(always)]
-        pub fn set_rx_adc_path(&mut self, val: bool) {
+        pub const fn set_rx_adc_path(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 16usize)) | (((val as u32) & 0x01) << 16usize);
         }
         #[doc = "TX calibration path enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn tx_cal_path(&self) -> bool {
             let val = (self.0 >> 17usize) & 0x01;
@@ -265,10 +295,11 @@ pub mod regs {
         }
         #[doc = "TX calibration path enable."]
         #[inline(always)]
-        pub fn set_tx_cal_path(&mut self, val: bool) {
+        pub const fn set_tx_cal_path(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 17usize)) | (((val as u32) & 0x01) << 17usize);
         }
         #[doc = "TX PLL pre-enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn tx_pll_pre(&self) -> bool {
             let val = (self.0 >> 20usize) & 0x01;
@@ -276,10 +307,11 @@ pub mod regs {
         }
         #[doc = "TX PLL pre-enable."]
         #[inline(always)]
-        pub fn set_tx_pll_pre(&mut self, val: bool) {
+        pub const fn set_tx_pll_pre(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 20usize)) | (((val as u32) & 0x01) << 20usize);
         }
         #[doc = "RX filter path enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn rx_filter_path(&self) -> bool {
             let val = (self.0 >> 21usize) & 0x01;
@@ -287,7 +319,7 @@ pub mod regs {
         }
         #[doc = "RX filter path enable."]
         #[inline(always)]
-        pub fn set_rx_filter_path(&mut self, val: bool) {
+        pub const fn set_rx_filter_path(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 21usize)) | (((val as u32) & 0x01) << 21usize);
         }
     }
@@ -297,12 +329,23 @@ pub mod regs {
             PathEn(0)
         }
     }
+    impl core::fmt::Debug for PathEn {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PathEn")
+                .field("rx_adc_path", &self.rx_adc_path())
+                .field("tx_cal_path", &self.tx_cal_path())
+                .field("tx_pll_pre", &self.tx_pll_pre())
+                .field("rx_filter_path", &self.rx_filter_path())
+                .finish()
+        }
+    }
     #[doc = "PLL channel divider (programmed by listener.set_channel_freq)."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct PllDiv(pub u32);
     impl PllDiv {
         #[doc = "Fractional divider (`((freq_khz % 64000) << 10) / 250` masked to 14 bits)."]
+        #[must_use]
         #[inline(always)]
         pub const fn frac_div(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0x3fff;
@@ -310,10 +353,11 @@ pub mod regs {
         }
         #[doc = "Fractional divider (`((freq_khz % 64000) << 10) / 250` masked to 14 bits)."]
         #[inline(always)]
-        pub fn set_frac_div(&mut self, val: u16) {
+        pub const fn set_frac_div(&mut self, val: u16) {
             self.0 = (self.0 & !(0x3fff << 0usize)) | (((val as u32) & 0x3fff) << 0usize);
         }
         #[doc = "Integer divider (`freq_khz / 64000` masked to 5 bits)."]
+        #[must_use]
         #[inline(always)]
         pub const fn int_div(&self) -> u8 {
             let val = (self.0 >> 20usize) & 0x1f;
@@ -321,7 +365,7 @@ pub mod regs {
         }
         #[doc = "Integer divider (`freq_khz / 64000` masked to 5 bits)."]
         #[inline(always)]
-        pub fn set_int_div(&mut self, val: u8) {
+        pub const fn set_int_div(&mut self, val: u8) {
             self.0 = (self.0 & !(0x1f << 20usize)) | (((val as u32) & 0x1f) << 20usize);
         }
     }
@@ -331,12 +375,21 @@ pub mod regs {
             PllDiv(0)
         }
     }
+    impl core::fmt::Debug for PllDiv {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PllDiv")
+                .field("frac_div", &self.frac_div())
+                .field("int_div", &self.int_div())
+                .finish()
+        }
+    }
     #[doc = "PLL tune result (CO, tune_done, tune_active)."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct TuneResult(pub u32);
     impl TuneResult {
         #[doc = "CO calibration result (read after PLL lock)."]
+        #[must_use]
         #[inline(always)]
         pub const fn co(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x3f;
@@ -344,10 +397,11 @@ pub mod regs {
         }
         #[doc = "CO calibration result (read after PLL lock)."]
         #[inline(always)]
-        pub fn set_co(&mut self, val: u8) {
+        pub const fn set_co(&mut self, val: u8) {
             self.0 = (self.0 & !(0x3f << 0usize)) | (((val as u32) & 0x3f) << 0usize);
         }
         #[doc = "Tune done flag — second-check by RFEND_WaitTune."]
+        #[must_use]
         #[inline(always)]
         pub const fn tune_done(&self) -> bool {
             let val = (self.0 >> 25usize) & 0x01;
@@ -355,10 +409,11 @@ pub mod regs {
         }
         #[doc = "Tune done flag — second-check by RFEND_WaitTune."]
         #[inline(always)]
-        pub fn set_tune_done(&mut self, val: bool) {
+        pub const fn set_tune_done(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 25usize)) | (((val as u32) & 0x01) << 25usize);
         }
         #[doc = "Tune active flag — set first; double-check semantic."]
+        #[must_use]
         #[inline(always)]
         pub const fn tune_active(&self) -> bool {
             let val = (self.0 >> 26usize) & 0x01;
@@ -366,7 +421,7 @@ pub mod regs {
         }
         #[doc = "Tune active flag — set first; double-check semantic."]
         #[inline(always)]
-        pub fn set_tune_active(&mut self, val: bool) {
+        pub const fn set_tune_active(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 26usize)) | (((val as u32) & 0x01) << 26usize);
         }
     }
@@ -374,6 +429,15 @@ pub mod regs {
         #[inline(always)]
         fn default() -> TuneResult {
             TuneResult(0)
+        }
+    }
+    impl core::fmt::Debug for TuneResult {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("TuneResult")
+                .field("co", &self.co())
+                .field("tune_done", &self.tune_done())
+                .field("tune_active", &self.tune_active())
+                .finish()
         }
     }
 }

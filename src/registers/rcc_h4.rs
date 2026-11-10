@@ -3872,18 +3872,18 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "SYSCLK",
-                    description: Some(
-                        "SYSCLK selected.",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "PLL_CLK",
                     description: Some(
                         "PLL_CLK selected.",
                     ),
                     value: 1,
+                },
+                EnumVariant {
+                    name: "SYSCLK",
+                    description: Some(
+                        "SYSCLK selected.",
+                    ),
+                    value: 0,
                 },
             ],
         },
@@ -3895,20 +3895,6 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
-                    name: "PLL_CLK",
-                    description: Some(
-                        "PLL_CLK selected.",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
-                    name: "USBSS_PLL",
-                    description: Some(
-                        "USBSS_PLL selected.",
-                    ),
-                    value: 1,
-                },
-                EnumVariant {
                     name: "ETH_PLL_DIV4",
                     description: Some(
                         "ETH_PLL divided by 4 selected.",
@@ -3916,11 +3902,25 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 2,
                 },
                 EnumVariant {
+                    name: "PLL_CLK",
+                    description: Some(
+                        "PLL_CLK selected.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
                     name: "SERDES_PLL_DIV8",
                     description: Some(
                         "SERDES_PLL divided by 8 selected.",
                     ),
                     value: 3,
+                },
+                EnumVariant {
+                    name: "USBSS_PLL",
+                    description: Some(
+                        "USBSS_PLL selected.",
+                    ),
+                    value: 1,
                 },
             ],
         },
@@ -3969,25 +3969,11 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 0,
                 },
                 EnumVariant {
-                    name: "DIV2",
+                    name: "DIV128",
                     description: Some(
-                        "SYS_CLK divided by 2.",
+                        "SYS_CLK divided by 128.",
                     ),
-                    value: 8,
-                },
-                EnumVariant {
-                    name: "DIV4",
-                    description: Some(
-                        "SYS_CLK divided by 4.",
-                    ),
-                    value: 9,
-                },
-                EnumVariant {
-                    name: "DIV8",
-                    description: Some(
-                        "SYS_CLK divided by 8.",
-                    ),
-                    value: 10,
+                    value: 13,
                 },
                 EnumVariant {
                     name: "DIV16",
@@ -3997,18 +3983,11 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 11,
                 },
                 EnumVariant {
-                    name: "DIV64",
+                    name: "DIV2",
                     description: Some(
-                        "SYS_CLK divided by 64.",
+                        "SYS_CLK divided by 2.",
                     ),
-                    value: 12,
-                },
-                EnumVariant {
-                    name: "DIV128",
-                    description: Some(
-                        "SYS_CLK divided by 128.",
-                    ),
-                    value: 13,
+                    value: 8,
                 },
                 EnumVariant {
                     name: "DIV256",
@@ -4018,11 +3997,32 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 14,
                 },
                 EnumVariant {
+                    name: "DIV4",
+                    description: Some(
+                        "SYS_CLK divided by 4.",
+                    ),
+                    value: 9,
+                },
+                EnumVariant {
                     name: "DIV512",
                     description: Some(
                         "SYS_CLK divided by 512.",
                     ),
                     value: 15,
+                },
+                EnumVariant {
+                    name: "DIV64",
+                    description: Some(
+                        "SYS_CLK divided by 64.",
+                    ),
+                    value: 12,
+                },
+                EnumVariant {
+                    name: "DIV8",
+                    description: Some(
+                        "SYS_CLK divided by 8.",
+                    ),
+                    value: 10,
                 },
             ],
         },
@@ -4033,6 +4033,13 @@ pub(crate) static REGISTERS: IR = IR {
             ),
             bit_size: 2,
             variants: &[
+                EnumVariant {
+                    name: "ETH_PLL",
+                    description: Some(
+                        "ETH_PLL (500 MHz) selected.",
+                    ),
+                    value: 3,
+                },
                 EnumVariant {
                     name: "PLL_CLK",
                     description: Some(
@@ -4054,13 +4061,6 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     value: 2,
                 },
-                EnumVariant {
-                    name: "ETH_PLL",
-                    description: Some(
-                        "ETH_PLL (500 MHz) selected.",
-                    ),
-                    value: 3,
-                },
             ],
         },
         Enum {
@@ -4070,6 +4070,13 @@ pub(crate) static REGISTERS: IR = IR {
             ),
             bit_size: 2,
             variants: &[
+                EnumVariant {
+                    name: "ETH_PLL",
+                    description: Some(
+                        "ETH_PLL selected.",
+                    ),
+                    value: 2,
+                },
                 EnumVariant {
                     name: "PLL_CLK",
                     description: Some(
@@ -4083,13 +4090,6 @@ pub(crate) static REGISTERS: IR = IR {
                         "SERDES_PLL divided by 2 selected.",
                     ),
                     value: 1,
-                },
-                EnumVariant {
-                    name: "ETH_PLL",
-                    description: Some(
-                        "ETH_PLL selected.",
-                    ),
-                    value: 2,
                 },
                 EnumVariant {
                     name: "USBHS_PLL",
@@ -4108,25 +4108,11 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 4,
             variants: &[
                 EnumVariant {
-                    name: "NO_CLK",
+                    name: "ETH_PLL_DIV8",
                     description: Some(
-                        "No clock output (encoded values 0000-0011).",
+                        "ETH_PLL divided by 8 output.",
                     ),
-                    value: 0,
-                },
-                EnumVariant {
-                    name: "SYSCLK",
-                    description: Some(
-                        "SYSCLK output.",
-                    ),
-                    value: 4,
-                },
-                EnumVariant {
-                    name: "HSI",
-                    description: Some(
-                        "HSI (25 MHz internal RC) output.",
-                    ),
-                    value: 5,
+                    value: 10,
                 },
                 EnumVariant {
                     name: "HSE",
@@ -4136,6 +4122,20 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 6,
                 },
                 EnumVariant {
+                    name: "HSI",
+                    description: Some(
+                        "HSI (25 MHz internal RC) output.",
+                    ),
+                    value: 5,
+                },
+                EnumVariant {
+                    name: "NO_CLK",
+                    description: Some(
+                        "No clock output (encoded values 0000-0011).",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
                     name: "PLL_DIV2",
                     description: Some(
                         "PLL clock divided by 2 output.",
@@ -4143,11 +4143,18 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 7,
                 },
                 EnumVariant {
-                    name: "UTMI",
+                    name: "SERDES_PLL_DIV16",
                     description: Some(
-                        "UTMI clock output.",
+                        "SERDES_PLL divided by 16 output.",
                     ),
-                    value: 8,
+                    value: 11,
+                },
+                EnumVariant {
+                    name: "SYSCLK",
+                    description: Some(
+                        "SYSCLK output.",
+                    ),
+                    value: 4,
                 },
                 EnumVariant {
                     name: "USBSS_PLL_DIV2",
@@ -4157,18 +4164,11 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 9,
                 },
                 EnumVariant {
-                    name: "ETH_PLL_DIV8",
+                    name: "UTMI",
                     description: Some(
-                        "ETH_PLL divided by 8 output.",
+                        "UTMI clock output.",
                     ),
-                    value: 10,
-                },
-                EnumVariant {
-                    name: "SERDES_PLL_DIV16",
-                    description: Some(
-                        "SERDES_PLL divided by 16 output.",
-                    ),
-                    value: 11,
+                    value: 8,
                 },
             ],
         },
@@ -4179,55 +4179,6 @@ pub(crate) static REGISTERS: IR = IR {
             ),
             bit_size: 5,
             variants: &[
-                EnumVariant {
-                    name: "MUL4",
-                    description: Some(
-                        "PLL x 4.",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
-                    name: "MUL6",
-                    description: Some(
-                        "PLL x 6.",
-                    ),
-                    value: 1,
-                },
-                EnumVariant {
-                    name: "MUL7",
-                    description: Some(
-                        "PLL x 7.",
-                    ),
-                    value: 2,
-                },
-                EnumVariant {
-                    name: "MUL8",
-                    description: Some(
-                        "PLL x 8.",
-                    ),
-                    value: 3,
-                },
-                EnumVariant {
-                    name: "MUL8_5",
-                    description: Some(
-                        "PLL x 8.5.",
-                    ),
-                    value: 4,
-                },
-                EnumVariant {
-                    name: "MUL9",
-                    description: Some(
-                        "PLL x 9.",
-                    ),
-                    value: 5,
-                },
-                EnumVariant {
-                    name: "MUL9_5",
-                    description: Some(
-                        "PLL x 9.5.",
-                    ),
-                    value: 6,
-                },
                 EnumVariant {
                     name: "MUL10",
                     description: Some(
@@ -4390,6 +4341,13 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 29,
                 },
                 EnumVariant {
+                    name: "MUL4",
+                    description: Some(
+                        "PLL x 4.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
                     name: "MUL40",
                     description: Some(
                         "PLL x 40.",
@@ -4403,6 +4361,48 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     value: 31,
                 },
+                EnumVariant {
+                    name: "MUL6",
+                    description: Some(
+                        "PLL x 6.",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "MUL7",
+                    description: Some(
+                        "PLL x 7.",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "MUL8",
+                    description: Some(
+                        "PLL x 8.",
+                    ),
+                    value: 3,
+                },
+                EnumVariant {
+                    name: "MUL8_5",
+                    description: Some(
+                        "PLL x 8.5.",
+                    ),
+                    value: 4,
+                },
+                EnumVariant {
+                    name: "MUL9",
+                    description: Some(
+                        "PLL x 9.",
+                    ),
+                    value: 5,
+                },
+                EnumVariant {
+                    name: "MUL9_5",
+                    description: Some(
+                        "PLL x 9.5.",
+                    ),
+                    value: 6,
+                },
             ],
         },
         Enum {
@@ -4413,11 +4413,11 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 3,
             variants: &[
                 EnumVariant {
-                    name: "HSI",
+                    name: "ETH_PLL",
                     description: Some(
-                        "HSI selected as PLL input.",
+                        "ETH_PLL (500 MHz) selected as PLL input.",
                     ),
-                    value: 0,
+                    value: 5,
                 },
                 EnumVariant {
                     name: "HSE",
@@ -4427,25 +4427,11 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 1,
                 },
                 EnumVariant {
-                    name: "USBHS_PLL",
+                    name: "HSI",
                     description: Some(
-                        "USBHS_PLL (480 MHz) selected as PLL input.",
+                        "HSI selected as PLL input.",
                     ),
-                    value: 4,
-                },
-                EnumVariant {
-                    name: "ETH_PLL",
-                    description: Some(
-                        "ETH_PLL (500 MHz) selected as PLL input.",
-                    ),
-                    value: 5,
-                },
-                EnumVariant {
-                    name: "USBSS_PLL",
-                    description: Some(
-                        "USBSS_PLL (125 MHz) selected as PLL input.",
-                    ),
-                    value: 6,
+                    value: 0,
                 },
                 EnumVariant {
                     name: "SERDES_PLL_DIV2",
@@ -4453,6 +4439,20 @@ pub(crate) static REGISTERS: IR = IR {
                         "SERDES_PLL divided by 2 selected as PLL input.",
                     ),
                     value: 7,
+                },
+                EnumVariant {
+                    name: "USBHS_PLL",
+                    description: Some(
+                        "USBHS_PLL (480 MHz) selected as PLL input.",
+                    ),
+                    value: 4,
+                },
+                EnumVariant {
+                    name: "USBSS_PLL",
+                    description: Some(
+                        "USBSS_PLL (125 MHz) selected as PLL input.",
+                    ),
+                    value: 6,
                 },
             ],
         },
@@ -4469,6 +4469,13 @@ pub(crate) static REGISTERS: IR = IR {
                         "HCLK not divided.",
                     ),
                     value: 0,
+                },
+                EnumVariant {
+                    name: "DIV16",
+                    description: Some(
+                        "HCLK divided by 16.",
+                    ),
+                    value: 7,
                 },
                 EnumVariant {
                     name: "DIV2",
@@ -4491,13 +4498,6 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     value: 6,
                 },
-                EnumVariant {
-                    name: "DIV16",
-                    description: Some(
-                        "HCLK divided by 16.",
-                    ),
-                    value: 7,
-                },
             ],
         },
         Enum {
@@ -4508,11 +4508,11 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
-                    name: "NO_CLK",
+                    name: "HSE_DIV512",
                     description: Some(
-                        "No clock.",
+                        "HSE oscillator divided by 512 selected as RTC clock.",
                     ),
-                    value: 0,
+                    value: 3,
                 },
                 EnumVariant {
                     name: "LSE",
@@ -4529,11 +4529,11 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 2,
                 },
                 EnumVariant {
-                    name: "HSE_DIV512",
+                    name: "NO_CLK",
                     description: Some(
-                        "HSE oscillator divided by 512 selected as RTC clock.",
+                        "No clock.",
                     ),
-                    value: 3,
+                    value: 0,
                 },
             ],
         },
@@ -4666,18 +4666,18 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
-                    name: "HSI",
-                    description: Some(
-                        "HSI selected as system clock.",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "HSE",
                     description: Some(
                         "HSE selected as system clock.",
                     ),
                     value: 1,
+                },
+                EnumVariant {
+                    name: "HSI",
+                    description: Some(
+                        "HSI selected as system clock.",
+                    ),
+                    value: 0,
                 },
                 EnumVariant {
                     name: "PLL",
@@ -4696,20 +4696,6 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 3,
             variants: &[
                 EnumVariant {
-                    name: "PLL_CLK",
-                    description: Some(
-                        "PLL_CLK (covers any encoding 0xx).",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
-                    name: "USBHS_PLL",
-                    description: Some(
-                        "USBHS_PLL (480 MHz).",
-                    ),
-                    value: 4,
-                },
-                EnumVariant {
                     name: "ETH_PLL",
                     description: Some(
                         "ETH_PLL (500 MHz).",
@@ -4717,11 +4703,25 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 5,
                 },
                 EnumVariant {
+                    name: "PLL_CLK",
+                    description: Some(
+                        "PLL_CLK (covers any encoding 0xx).",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
                     name: "SERDES_PLL_DIV2",
                     description: Some(
                         "SERDES_PLL divided by 2.",
                     ),
                     value: 6,
+                },
+                EnumVariant {
+                    name: "USBHS_PLL",
+                    description: Some(
+                        "USBHS_PLL (480 MHz).",
+                    ),
+                    value: 4,
                 },
                 EnumVariant {
                     name: "USBSS_PLL",
@@ -4740,11 +4740,11 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
-                    name: "SYSCLK",
+                    name: "ETH_PLL",
                     description: Some(
-                        "SYSCLK selected.",
+                        "ETH_PLL (500 MHz) selected.",
                     ),
-                    value: 0,
+                    value: 3,
                 },
                 EnumVariant {
                     name: "PLL_CLK",
@@ -4754,18 +4754,18 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 1,
                 },
                 EnumVariant {
+                    name: "SYSCLK",
+                    description: Some(
+                        "SYSCLK selected.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
                     name: "USBHS_PLL",
                     description: Some(
                         "USBHS_PLL (480 MHz) selected.",
                     ),
                     value: 2,
-                },
-                EnumVariant {
-                    name: "ETH_PLL",
-                    description: Some(
-                        "ETH_PLL (500 MHz) selected.",
-                    ),
-                    value: 3,
                 },
             ],
         },
@@ -4784,48 +4784,6 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 0,
                 },
                 EnumVariant {
-                    name: "DIV2",
-                    description: Some(
-                        "Divide by 2.",
-                    ),
-                    value: 1,
-                },
-                EnumVariant {
-                    name: "DIV3",
-                    description: Some(
-                        "Divide by 3.",
-                    ),
-                    value: 2,
-                },
-                EnumVariant {
-                    name: "DIV4",
-                    description: Some(
-                        "Divide by 4.",
-                    ),
-                    value: 3,
-                },
-                EnumVariant {
-                    name: "DIV5",
-                    description: Some(
-                        "Divide by 5.",
-                    ),
-                    value: 4,
-                },
-                EnumVariant {
-                    name: "DIV6",
-                    description: Some(
-                        "Divide by 6.",
-                    ),
-                    value: 5,
-                },
-                EnumVariant {
-                    name: "DIV8",
-                    description: Some(
-                        "Divide by 8.",
-                    ),
-                    value: 6,
-                },
-                EnumVariant {
                     name: "DIV10",
                     description: Some(
                         "Divide by 10.",
@@ -4840,11 +4798,25 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 8,
                 },
                 EnumVariant {
+                    name: "DIV2",
+                    description: Some(
+                        "Divide by 2.",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
                     name: "DIV2_5",
                     description: Some(
                         "Divide by 2.5.",
                     ),
                     value: 9,
+                },
+                EnumVariant {
+                    name: "DIV3",
+                    description: Some(
+                        "Divide by 3.",
+                    ),
+                    value: 2,
                 },
                 EnumVariant {
                     name: "DIV3_5",
@@ -4854,6 +4826,13 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 10,
                 },
                 EnumVariant {
+                    name: "DIV4",
+                    description: Some(
+                        "Divide by 4.",
+                    ),
+                    value: 3,
+                },
+                EnumVariant {
                     name: "DIV4_5",
                     description: Some(
                         "Divide by 4.5.",
@@ -4861,11 +4840,25 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 11,
                 },
                 EnumVariant {
+                    name: "DIV5",
+                    description: Some(
+                        "Divide by 5.",
+                    ),
+                    value: 4,
+                },
+                EnumVariant {
                     name: "DIV5_5",
                     description: Some(
                         "Divide by 5.5.",
                     ),
                     value: 12,
+                },
+                EnumVariant {
+                    name: "DIV6",
+                    description: Some(
+                        "Divide by 6.",
+                    ),
+                    value: 5,
                 },
                 EnumVariant {
                     name: "DIV6_5",
@@ -4880,6 +4873,13 @@ pub(crate) static REGISTERS: IR = IR {
                         "Divide by 7.5.",
                     ),
                     value: 14,
+                },
+                EnumVariant {
+                    name: "DIV8",
+                    description: Some(
+                        "Divide by 8.",
+                    ),
+                    value: 6,
                 },
                 EnumVariant {
                     name: "DIV9_5",
@@ -4921,13 +4921,6 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
-                    name: "F25MHZ",
-                    description: Some(
-                        "25 MHz.",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "F20MHZ",
                     description: Some(
                         "20 MHz.",
@@ -4940,6 +4933,13 @@ pub(crate) static REGISTERS: IR = IR {
                         "24 MHz.",
                     ),
                     value: 2,
+                },
+                EnumVariant {
+                    name: "F25MHZ",
+                    description: Some(
+                        "25 MHz.",
+                    ),
+                    value: 0,
                 },
                 EnumVariant {
                     name: "F32MHZ",
@@ -4958,6 +4958,13 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
+                    name: "ETHCLK_20M",
+                    description: Some(
+                        "ETHCLK_20M selected as USBHS_PLL input.",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
                     name: "HSE",
                     description: Some(
                         "HSE selected as USBHS_PLL input.",
@@ -4970,13 +4977,6 @@ pub(crate) static REGISTERS: IR = IR {
                         "HSI selected as USBHS_PLL input.",
                     ),
                     value: 1,
-                },
-                EnumVariant {
-                    name: "ETHCLK_20M",
-                    description: Some(
-                        "ETHCLK_20M selected as USBHS_PLL input.",
-                    ),
-                    value: 2,
                 },
                 EnumVariant {
                     name: "SYS_PLL_DIV",

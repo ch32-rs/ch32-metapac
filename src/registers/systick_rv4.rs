@@ -182,14 +182,14 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "UPCOUNT",
-                    description: Some("Upcount."),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "DOWNCOUNT",
                     description: Some("Downcount."),
                     value: 1,
+                },
+                EnumVariant {
+                    name: "UPCOUNT",
+                    description: Some("Upcount."),
+                    value: 0,
                 },
             ],
         },
@@ -199,14 +199,14 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "HCLK_DIV8",
-                    description: Some("HCLK/8."),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "HCLK",
                     description: Some("HCLK."),
                     value: 1,
+                },
+                EnumVariant {
+                    name: "HCLK_DIV8",
+                    description: Some("HCLK/8."),
+                    value: 0,
                 },
             ],
         },

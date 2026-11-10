@@ -22,22 +22,22 @@ impl Ch {
     #[doc = "DMA channel configuration register."]
     #[inline(always)]
     pub const fn cfgr(self) -> crate::common::Reg<regs::Cfgr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "DMA channel number of data register."]
     #[inline(always)]
     pub const fn cntr(self) -> crate::common::Reg<regs::Cntr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "DMA channel peripheral address register."]
     #[inline(always)]
     pub const fn paddr(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
     #[doc = "DMA channel memory address register."]
     #[inline(always)]
     pub const fn maddr(self) -> crate::common::Reg<u32, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
     }
 }
 #[doc = "DMA1 controller (13 channels)."]
@@ -59,34 +59,34 @@ impl Dma {
     #[doc = "DMA1 interrupt status register."]
     #[inline(always)]
     pub const fn intfr(self) -> crate::common::Reg<regs::Intfr, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "DMA1 interrupt flag clear register."]
     #[inline(always)]
     pub const fn intfcr(self) -> crate::common::Reg<regs::Intfr, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "Channel cluster: CFGR, CNTR, PADDR and MADDR registers."]
     #[inline(always)]
     pub const fn ch(self, n: usize) -> Ch {
         assert!(n < 7usize);
-        unsafe { Ch::from_ptr(self.ptr.add(0x08usize + n * 20usize) as _) }
+        unsafe { Ch::from_ptr(self.ptr.wrapping_add(0x08usize + n * 20usize) as _) }
     }
     #[doc = "Channel cluster: CFGR, CNTR, PADDR and MADDR registers."]
     #[inline(always)]
     pub const fn ech(self, n: usize) -> Ch {
         assert!(n < 6usize);
-        unsafe { Ch::from_ptr(self.ptr.add(0x90usize + n * 16usize) as _) }
+        unsafe { Ch::from_ptr(self.ptr.wrapping_add(0x90usize + n * 16usize) as _) }
     }
     #[doc = "DMA1 extended interrupt status register."]
     #[inline(always)]
     pub const fn extem_intfr(self) -> crate::common::Reg<regs::ExtemIntfr, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xf0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0xf0usize) as _) }
     }
     #[doc = "DMA1 extended interrupt flag clear register."]
     #[inline(always)]
     pub const fn extem_intfcr(self) -> crate::common::Reg<regs::ExtemIntfr, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xf4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0xf4usize) as _) }
     }
 }
 #[doc = "DMA2 controller (11 channels)."]
@@ -108,34 +108,34 @@ impl Dma2 {
     #[doc = "DMA2 interrupt status register."]
     #[inline(always)]
     pub const fn intfr(self) -> crate::common::Reg<regs::Intfr, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "DMA2 interrupt flag clear register."]
     #[inline(always)]
     pub const fn intfcr(self) -> crate::common::Reg<regs::Intfr, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "Channel cluster: CFGR, CNTR, PADDR and MADDR registers."]
     #[inline(always)]
     pub const fn ch(self, n: usize) -> Ch {
         assert!(n < 7usize);
-        unsafe { Ch::from_ptr(self.ptr.add(0x08usize + n * 20usize) as _) }
+        unsafe { Ch::from_ptr(self.ptr.wrapping_add(0x08usize + n * 20usize) as _) }
     }
     #[doc = "Channel cluster: CFGR, CNTR, PADDR and MADDR registers."]
     #[inline(always)]
     pub const fn ech(self, n: usize) -> Ch {
         assert!(n < 4usize);
-        unsafe { Ch::from_ptr(self.ptr.add(0x90usize + n * 16usize) as _) }
+        unsafe { Ch::from_ptr(self.ptr.wrapping_add(0x90usize + n * 16usize) as _) }
     }
     #[doc = "DMA2 extended interrupt status register."]
     #[inline(always)]
     pub const fn extem_intfr(self) -> crate::common::Reg<regs::ExtemIntfr, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xd0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0xd0usize) as _) }
     }
     #[doc = "DMA2 extended interrupt flag clear register."]
     #[inline(always)]
     pub const fn extem_intfcr(self) -> crate::common::Reg<regs::ExtemIntfr, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0xd4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0xd4usize) as _) }
     }
 }
 pub mod regs {
@@ -145,6 +145,7 @@ pub mod regs {
     pub struct Cfgr(pub u32);
     impl Cfgr {
         #[doc = "Channel enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn en(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -152,10 +153,11 @@ pub mod regs {
         }
         #[doc = "Channel enable."]
         #[inline(always)]
-        pub fn set_en(&mut self, val: bool) {
+        pub const fn set_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "Transfer complete interrupt enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn tcie(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -163,10 +165,11 @@ pub mod regs {
         }
         #[doc = "Transfer complete interrupt enable."]
         #[inline(always)]
-        pub fn set_tcie(&mut self, val: bool) {
+        pub const fn set_tcie(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
         #[doc = "Half transfer interrupt enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn htie(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -174,10 +177,11 @@ pub mod regs {
         }
         #[doc = "Half transfer interrupt enable."]
         #[inline(always)]
-        pub fn set_htie(&mut self, val: bool) {
+        pub const fn set_htie(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
         #[doc = "Transfer error interrupt enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn teie(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -185,10 +189,11 @@ pub mod regs {
         }
         #[doc = "Transfer error interrupt enable."]
         #[inline(always)]
-        pub fn set_teie(&mut self, val: bool) {
+        pub const fn set_teie(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
         }
         #[doc = "Data transfer direction."]
+        #[must_use]
         #[inline(always)]
         pub const fn dir(&self) -> super::vals::Dir {
             let val = (self.0 >> 4usize) & 0x01;
@@ -196,10 +201,11 @@ pub mod regs {
         }
         #[doc = "Data transfer direction."]
         #[inline(always)]
-        pub fn set_dir(&mut self, val: super::vals::Dir) {
+        pub const fn set_dir(&mut self, val: super::vals::Dir) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val.to_bits() as u32) & 0x01) << 4usize);
         }
         #[doc = "Circular mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn circ(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -207,10 +213,11 @@ pub mod regs {
         }
         #[doc = "Circular mode."]
         #[inline(always)]
-        pub fn set_circ(&mut self, val: bool) {
+        pub const fn set_circ(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
         #[doc = "Peripheral increment mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn pinc(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
@@ -218,10 +225,11 @@ pub mod regs {
         }
         #[doc = "Peripheral increment mode."]
         #[inline(always)]
-        pub fn set_pinc(&mut self, val: bool) {
+        pub const fn set_pinc(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
         }
         #[doc = "Memory increment mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn minc(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -229,10 +237,11 @@ pub mod regs {
         }
         #[doc = "Memory increment mode."]
         #[inline(always)]
-        pub fn set_minc(&mut self, val: bool) {
+        pub const fn set_minc(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
         #[doc = "Peripheral size."]
+        #[must_use]
         #[inline(always)]
         pub const fn psize(&self) -> super::vals::Size {
             let val = (self.0 >> 8usize) & 0x03;
@@ -240,10 +249,11 @@ pub mod regs {
         }
         #[doc = "Peripheral size."]
         #[inline(always)]
-        pub fn set_psize(&mut self, val: super::vals::Size) {
+        pub const fn set_psize(&mut self, val: super::vals::Size) {
             self.0 = (self.0 & !(0x03 << 8usize)) | (((val.to_bits() as u32) & 0x03) << 8usize);
         }
         #[doc = "Memory size."]
+        #[must_use]
         #[inline(always)]
         pub const fn msize(&self) -> super::vals::Size {
             let val = (self.0 >> 10usize) & 0x03;
@@ -251,10 +261,11 @@ pub mod regs {
         }
         #[doc = "Memory size."]
         #[inline(always)]
-        pub fn set_msize(&mut self, val: super::vals::Size) {
+        pub const fn set_msize(&mut self, val: super::vals::Size) {
             self.0 = (self.0 & !(0x03 << 10usize)) | (((val.to_bits() as u32) & 0x03) << 10usize);
         }
         #[doc = "Channel priority level."]
+        #[must_use]
         #[inline(always)]
         pub const fn pl(&self) -> super::vals::Pl {
             let val = (self.0 >> 12usize) & 0x03;
@@ -262,10 +273,11 @@ pub mod regs {
         }
         #[doc = "Channel priority level."]
         #[inline(always)]
-        pub fn set_pl(&mut self, val: super::vals::Pl) {
+        pub const fn set_pl(&mut self, val: super::vals::Pl) {
             self.0 = (self.0 & !(0x03 << 12usize)) | (((val.to_bits() as u32) & 0x03) << 12usize);
         }
         #[doc = "Memory to memory mode enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn mem2mem(&self) -> bool {
             let val = (self.0 >> 14usize) & 0x01;
@@ -273,7 +285,7 @@ pub mod regs {
         }
         #[doc = "Memory to memory mode enable."]
         #[inline(always)]
-        pub fn set_mem2mem(&mut self, val: bool) {
+        pub const fn set_mem2mem(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
         }
     }
@@ -283,12 +295,31 @@ pub mod regs {
             Cfgr(0)
         }
     }
+    impl core::fmt::Debug for Cfgr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Cfgr")
+                .field("en", &self.en())
+                .field("tcie", &self.tcie())
+                .field("htie", &self.htie())
+                .field("teie", &self.teie())
+                .field("dir", &self.dir())
+                .field("circ", &self.circ())
+                .field("pinc", &self.pinc())
+                .field("minc", &self.minc())
+                .field("psize", &self.psize())
+                .field("msize", &self.msize())
+                .field("pl", &self.pl())
+                .field("mem2mem", &self.mem2mem())
+                .finish()
+        }
+    }
     #[doc = "DMA channel number of data register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Cntr(pub u32);
     impl Cntr {
         #[doc = "Number of data to transfer."]
+        #[must_use]
         #[inline(always)]
         pub const fn ndt(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0xffff;
@@ -296,7 +327,7 @@ pub mod regs {
         }
         #[doc = "Number of data to transfer."]
         #[inline(always)]
-        pub fn set_ndt(&mut self, val: u16) {
+        pub const fn set_ndt(&mut self, val: u16) {
             self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
         }
     }
@@ -306,12 +337,18 @@ pub mod regs {
             Cntr(0)
         }
     }
+    impl core::fmt::Debug for Cntr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Cntr").field("ndt", &self.ndt()).finish()
+        }
+    }
     #[doc = "DMA extended interrupt status register, channels 8..13. Index 0 is channel 8."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct ExtemIntfr(pub u32);
     impl ExtemIntfr {
         #[doc = "Channel global interrupt flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn gif(&self, n: usize) -> bool {
             assert!(n < 6usize);
@@ -321,12 +358,13 @@ pub mod regs {
         }
         #[doc = "Channel global interrupt flag."]
         #[inline(always)]
-        pub fn set_gif(&mut self, n: usize, val: bool) {
+        pub const fn set_gif(&mut self, n: usize, val: bool) {
             assert!(n < 6usize);
             let offs = 0usize + n * 4usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "Channel transfer complete flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn tcif(&self, n: usize) -> bool {
             assert!(n < 6usize);
@@ -336,12 +374,13 @@ pub mod regs {
         }
         #[doc = "Channel transfer complete flag."]
         #[inline(always)]
-        pub fn set_tcif(&mut self, n: usize, val: bool) {
+        pub const fn set_tcif(&mut self, n: usize, val: bool) {
             assert!(n < 6usize);
             let offs = 1usize + n * 4usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "Channel half transfer complete flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn htif(&self, n: usize) -> bool {
             assert!(n < 6usize);
@@ -351,12 +390,13 @@ pub mod regs {
         }
         #[doc = "Channel half transfer complete flag."]
         #[inline(always)]
-        pub fn set_htif(&mut self, n: usize, val: bool) {
+        pub const fn set_htif(&mut self, n: usize, val: bool) {
             assert!(n < 6usize);
             let offs = 2usize + n * 4usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "Channel transfer error flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn teif(&self, n: usize) -> bool {
             assert!(n < 6usize);
@@ -366,7 +406,7 @@ pub mod regs {
         }
         #[doc = "Channel transfer error flag."]
         #[inline(always)]
-        pub fn set_teif(&mut self, n: usize, val: bool) {
+        pub const fn set_teif(&mut self, n: usize, val: bool) {
             assert!(n < 6usize);
             let offs = 3usize + n * 4usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
@@ -378,12 +418,43 @@ pub mod regs {
             ExtemIntfr(0)
         }
     }
+    impl core::fmt::Debug for ExtemIntfr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("ExtemIntfr")
+                .field("gif[0]", &self.gif(0usize))
+                .field("gif[1]", &self.gif(1usize))
+                .field("gif[2]", &self.gif(2usize))
+                .field("gif[3]", &self.gif(3usize))
+                .field("gif[4]", &self.gif(4usize))
+                .field("gif[5]", &self.gif(5usize))
+                .field("tcif[0]", &self.tcif(0usize))
+                .field("tcif[1]", &self.tcif(1usize))
+                .field("tcif[2]", &self.tcif(2usize))
+                .field("tcif[3]", &self.tcif(3usize))
+                .field("tcif[4]", &self.tcif(4usize))
+                .field("tcif[5]", &self.tcif(5usize))
+                .field("htif[0]", &self.htif(0usize))
+                .field("htif[1]", &self.htif(1usize))
+                .field("htif[2]", &self.htif(2usize))
+                .field("htif[3]", &self.htif(3usize))
+                .field("htif[4]", &self.htif(4usize))
+                .field("htif[5]", &self.htif(5usize))
+                .field("teif[0]", &self.teif(0usize))
+                .field("teif[1]", &self.teif(1usize))
+                .field("teif[2]", &self.teif(2usize))
+                .field("teif[3]", &self.teif(3usize))
+                .field("teif[4]", &self.teif(4usize))
+                .field("teif[5]", &self.teif(5usize))
+                .finish()
+        }
+    }
     #[doc = "DMA interrupt status register, channels 1..7. Index 0 is channel 1."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Intfr(pub u32);
     impl Intfr {
         #[doc = "Channel global interrupt flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn gif(&self, n: usize) -> bool {
             assert!(n < 7usize);
@@ -393,12 +464,13 @@ pub mod regs {
         }
         #[doc = "Channel global interrupt flag."]
         #[inline(always)]
-        pub fn set_gif(&mut self, n: usize, val: bool) {
+        pub const fn set_gif(&mut self, n: usize, val: bool) {
             assert!(n < 7usize);
             let offs = 0usize + n * 4usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "Channel transfer complete flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn tcif(&self, n: usize) -> bool {
             assert!(n < 7usize);
@@ -408,12 +480,13 @@ pub mod regs {
         }
         #[doc = "Channel transfer complete flag."]
         #[inline(always)]
-        pub fn set_tcif(&mut self, n: usize, val: bool) {
+        pub const fn set_tcif(&mut self, n: usize, val: bool) {
             assert!(n < 7usize);
             let offs = 1usize + n * 4usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "Channel half transfer complete flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn htif(&self, n: usize) -> bool {
             assert!(n < 7usize);
@@ -423,12 +496,13 @@ pub mod regs {
         }
         #[doc = "Channel half transfer complete flag."]
         #[inline(always)]
-        pub fn set_htif(&mut self, n: usize, val: bool) {
+        pub const fn set_htif(&mut self, n: usize, val: bool) {
             assert!(n < 7usize);
             let offs = 2usize + n * 4usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "Channel transfer error flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn teif(&self, n: usize) -> bool {
             assert!(n < 7usize);
@@ -438,7 +512,7 @@ pub mod regs {
         }
         #[doc = "Channel transfer error flag."]
         #[inline(always)]
-        pub fn set_teif(&mut self, n: usize, val: bool) {
+        pub const fn set_teif(&mut self, n: usize, val: bool) {
             assert!(n < 7usize);
             let offs = 3usize + n * 4usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
@@ -450,10 +524,44 @@ pub mod regs {
             Intfr(0)
         }
     }
+    impl core::fmt::Debug for Intfr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Intfr")
+                .field("gif[0]", &self.gif(0usize))
+                .field("gif[1]", &self.gif(1usize))
+                .field("gif[2]", &self.gif(2usize))
+                .field("gif[3]", &self.gif(3usize))
+                .field("gif[4]", &self.gif(4usize))
+                .field("gif[5]", &self.gif(5usize))
+                .field("gif[6]", &self.gif(6usize))
+                .field("tcif[0]", &self.tcif(0usize))
+                .field("tcif[1]", &self.tcif(1usize))
+                .field("tcif[2]", &self.tcif(2usize))
+                .field("tcif[3]", &self.tcif(3usize))
+                .field("tcif[4]", &self.tcif(4usize))
+                .field("tcif[5]", &self.tcif(5usize))
+                .field("tcif[6]", &self.tcif(6usize))
+                .field("htif[0]", &self.htif(0usize))
+                .field("htif[1]", &self.htif(1usize))
+                .field("htif[2]", &self.htif(2usize))
+                .field("htif[3]", &self.htif(3usize))
+                .field("htif[4]", &self.htif(4usize))
+                .field("htif[5]", &self.htif(5usize))
+                .field("htif[6]", &self.htif(6usize))
+                .field("teif[0]", &self.teif(0usize))
+                .field("teif[1]", &self.teif(1usize))
+                .field("teif[2]", &self.teif(2usize))
+                .field("teif[3]", &self.teif(3usize))
+                .field("teif[4]", &self.teif(4usize))
+                .field("teif[5]", &self.teif(5usize))
+                .field("teif[6]", &self.teif(6usize))
+                .finish()
+        }
+    }
 }
 pub mod vals {
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     pub enum Dir {
         #[doc = "Read from peripheral."]
         FROMPERIPHERAL = 0x0,
@@ -483,7 +591,7 @@ pub mod vals {
         }
     }
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     pub enum Pl {
         #[doc = "Low priority."]
         LOW = 0x0,
@@ -517,7 +625,7 @@ pub mod vals {
         }
     }
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     pub enum Size {
         #[doc = "8-bit size."]
         BITS8 = 0x0,

@@ -1852,7 +1852,7 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 16,
             fields: &[
                 Field {
-                    name: "uepn_r_iso_en",
+                    name: "uep_r_iso_en",
                     description: Some(
                         "down endpoint(OUT) synchronization mode enabled.",
                     ),
@@ -1861,8 +1861,15 @@ pub(crate) static REGISTERS: IR = IR {
                             offset: 1,
                         },
                     ),
-                    bit_size: 7,
-                    array: None,
+                    bit_size: 1,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 7,
+                                stride: 1,
+                            },
+                        ),
+                    ),
                     enumm: None,
                 },
             ],
@@ -2162,7 +2169,7 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 16,
             fields: &[
                 Field {
-                    name: "uepn_t_iso_en",
+                    name: "uep_t_iso_en",
                     description: Some(
                         "upload endpoint(IN) synchronization mode enabled.",
                     ),
@@ -2171,8 +2178,15 @@ pub(crate) static REGISTERS: IR = IR {
                             offset: 1,
                         },
                     ),
-                    bit_size: 7,
-                    array: None,
+                    bit_size: 1,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 7,
+                                stride: 1,
+                            },
+                        ),
+                    ),
                     enumm: None,
                 },
             ],

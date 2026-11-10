@@ -4650,7 +4650,7 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 16,
             fields: &[
                 Field {
-                    name: "epx_rx_fc",
+                    name: "ep_rx_fc",
                     description: Some(
                         "The flow control status of the host to receiving endpoints 1-15.",
                     ),
@@ -4659,8 +4659,15 @@ pub(crate) static REGISTERS: IR = IR {
                             offset: 1,
                         },
                     ),
-                    bit_size: 15,
-                    array: None,
+                    bit_size: 1,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 15,
+                                stride: 1,
+                            },
+                        ),
+                    ),
                     enumm: None,
                 },
             ],
@@ -4806,7 +4813,7 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 16,
             fields: &[
                 Field {
-                    name: "epx_tx_fc",
+                    name: "ep_tx_fc",
                     description: Some(
                         "The flow control status of the host to send endpoints 1-15.",
                     ),
@@ -4815,8 +4822,15 @@ pub(crate) static REGISTERS: IR = IR {
                             offset: 1,
                         },
                     ),
-                    bit_size: 15,
-                    array: None,
+                    bit_size: 1,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 15,
+                                stride: 1,
+                            },
+                        ),
+                    ),
                     enumm: None,
                 },
             ],

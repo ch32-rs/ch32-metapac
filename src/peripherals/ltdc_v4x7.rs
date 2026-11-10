@@ -22,117 +22,117 @@ impl Ltdc {
     #[doc = "Synchronization Size Configuration Register."]
     #[inline(always)]
     pub const fn sscr(self) -> crate::common::Reg<regs::Sscr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "Back Porch Configuration Register."]
     #[inline(always)]
     pub const fn bpcr(self) -> crate::common::Reg<regs::Bpcr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "Active Width Configuration Register."]
     #[inline(always)]
     pub const fn awcr(self) -> crate::common::Reg<regs::Awcr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
     #[doc = "Total Width Configuration Register."]
     #[inline(always)]
     pub const fn twcr(self) -> crate::common::Reg<regs::Twcr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
     }
     #[doc = "Global Control Register."]
     #[inline(always)]
     pub const fn gcr(self) -> crate::common::Reg<regs::Gcr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize) as _) }
     }
     #[doc = "Shadow Reload Configuration Register."]
     #[inline(always)]
     pub const fn srcr(self) -> crate::common::Reg<regs::Srcr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x14usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x14usize) as _) }
     }
     #[doc = "Background Color Configuration Register."]
     #[inline(always)]
     pub const fn bccr(self) -> crate::common::Reg<regs::Bccr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x18usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x18usize) as _) }
     }
     #[doc = "Interrupt Enable Register."]
     #[inline(always)]
     pub const fn ier(self) -> crate::common::Reg<regs::Ier, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x1cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1cusize) as _) }
     }
     #[doc = "Interrupt Status Register."]
     #[inline(always)]
     pub const fn isr(self) -> crate::common::Reg<regs::Isr, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x20usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x20usize) as _) }
     }
     #[doc = "Interrupt Clear Register."]
     #[inline(always)]
     pub const fn icr(self) -> crate::common::Reg<regs::Icr, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x24usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x24usize) as _) }
     }
     #[doc = "Line Interrupt Position Configuration Register."]
     #[inline(always)]
     pub const fn lipcr(self) -> crate::common::Reg<regs::Lipcr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x28usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x28usize) as _) }
     }
     #[doc = "Current Position Status Register."]
     #[inline(always)]
     pub const fn cpsr(self) -> crate::common::Reg<regs::Cpsr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x2cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x2cusize) as _) }
     }
     #[doc = "Current Display Status Register."]
     #[inline(always)]
     pub const fn cdsr(self) -> crate::common::Reg<regs::Cdsr, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x30usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x30usize) as _) }
     }
     #[doc = "Layerx Control Register."]
     #[inline(always)]
     pub const fn l1cr(self) -> crate::common::Reg<regs::L1cr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x34usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x34usize) as _) }
     }
     #[doc = "Layerx Window Horizontal Position Configuration Register."]
     #[inline(always)]
     pub const fn lwhpcr(self) -> crate::common::Reg<regs::Lwhpcr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x38usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x38usize) as _) }
     }
     #[doc = "Layerx Window Vertical Position Configuration Register."]
     #[inline(always)]
     pub const fn lwvpcr(self) -> crate::common::Reg<regs::Lwvpcr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x3cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x3cusize) as _) }
     }
     #[doc = "Layerx Color Keying Configuration Register."]
     #[inline(always)]
     pub const fn lckcr(self) -> crate::common::Reg<regs::Lckcr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x40usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x40usize) as _) }
     }
     #[doc = "Layerx Pixel Format Configuration Register."]
     #[inline(always)]
     pub const fn lpfcr(self) -> crate::common::Reg<regs::Lpfcr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x44usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x44usize) as _) }
     }
     #[doc = "Layerx Default Color Configuration Register."]
     #[inline(always)]
     pub const fn ldccr(self) -> crate::common::Reg<regs::Ldccr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x4cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x4cusize) as _) }
     }
     #[doc = "Layerx Color Frame Buffer Address Register."]
     #[inline(always)]
     pub const fn lcfbar(self) -> crate::common::Reg<regs::Lcfbar, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x54usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x54usize) as _) }
     }
     #[doc = "Layerx Color Frame Buffer Length Register."]
     #[inline(always)]
     pub const fn lcfblr(self) -> crate::common::Reg<regs::Lcfblr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x58usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x58usize) as _) }
     }
     #[doc = "Layerx ColorFrame Buffer Line Number Register."]
     #[inline(always)]
     pub const fn lcfblnr(self) -> crate::common::Reg<regs::Lcfblnr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x5cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x5cusize) as _) }
     }
     #[doc = "Layerx CLUT Write Register."]
     #[inline(always)]
     pub const fn lclutwr(self) -> crate::common::Reg<regs::Lclutwr, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x60usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x60usize) as _) }
     }
 }
 pub mod regs {
@@ -142,6 +142,7 @@ pub mod regs {
     pub struct Awcr(pub u32);
     impl Awcr {
         #[doc = "Accumulated Active Height (in units of horizontal scan line)."]
+        #[must_use]
         #[inline(always)]
         pub const fn aah(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0x07ff;
@@ -149,10 +150,11 @@ pub mod regs {
         }
         #[doc = "Accumulated Active Height (in units of horizontal scan line)."]
         #[inline(always)]
-        pub fn set_aah(&mut self, val: u16) {
+        pub const fn set_aah(&mut self, val: u16) {
             self.0 = (self.0 & !(0x07ff << 0usize)) | (((val as u32) & 0x07ff) << 0usize);
         }
         #[doc = "Accumulated Active Width (in units of pixel clock period)."]
+        #[must_use]
         #[inline(always)]
         pub const fn aaw(&self) -> u16 {
             let val = (self.0 >> 16usize) & 0x0fff;
@@ -160,7 +162,7 @@ pub mod regs {
         }
         #[doc = "Accumulated Active Width (in units of pixel clock period)."]
         #[inline(always)]
-        pub fn set_aaw(&mut self, val: u16) {
+        pub const fn set_aaw(&mut self, val: u16) {
             self.0 = (self.0 & !(0x0fff << 16usize)) | (((val as u32) & 0x0fff) << 16usize);
         }
     }
@@ -170,12 +172,21 @@ pub mod regs {
             Awcr(0)
         }
     }
+    impl core::fmt::Debug for Awcr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Awcr")
+                .field("aah", &self.aah())
+                .field("aaw", &self.aaw())
+                .finish()
+        }
+    }
     #[doc = "Background Color Configuration Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Bccr(pub u32);
     impl Bccr {
         #[doc = "Background Color Blue value."]
+        #[must_use]
         #[inline(always)]
         pub const fn bcblue(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0xff;
@@ -183,10 +194,11 @@ pub mod regs {
         }
         #[doc = "Background Color Blue value."]
         #[inline(always)]
-        pub fn set_bcblue(&mut self, val: u8) {
+        pub const fn set_bcblue(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
         }
         #[doc = "Background Color Green value."]
+        #[must_use]
         #[inline(always)]
         pub const fn bcgreen(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0xff;
@@ -194,10 +206,11 @@ pub mod regs {
         }
         #[doc = "Background Color Green value."]
         #[inline(always)]
-        pub fn set_bcgreen(&mut self, val: u8) {
+        pub const fn set_bcgreen(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
         }
         #[doc = "Background Color Red value."]
+        #[must_use]
         #[inline(always)]
         pub const fn bcred(&self) -> u8 {
             let val = (self.0 >> 16usize) & 0xff;
@@ -205,7 +218,7 @@ pub mod regs {
         }
         #[doc = "Background Color Red value."]
         #[inline(always)]
-        pub fn set_bcred(&mut self, val: u8) {
+        pub const fn set_bcred(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
         }
     }
@@ -215,12 +228,22 @@ pub mod regs {
             Bccr(0)
         }
     }
+    impl core::fmt::Debug for Bccr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Bccr")
+                .field("bcblue", &self.bcblue())
+                .field("bcgreen", &self.bcgreen())
+                .field("bcred", &self.bcred())
+                .finish()
+        }
+    }
     #[doc = "Back Porch Configuration Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Bpcr(pub u32);
     impl Bpcr {
         #[doc = "Accumulated Vertical back porch (in units of horizontal scan line)."]
+        #[must_use]
         #[inline(always)]
         pub const fn avbp(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0x07ff;
@@ -228,10 +251,11 @@ pub mod regs {
         }
         #[doc = "Accumulated Vertical back porch (in units of horizontal scan line)."]
         #[inline(always)]
-        pub fn set_avbp(&mut self, val: u16) {
+        pub const fn set_avbp(&mut self, val: u16) {
             self.0 = (self.0 & !(0x07ff << 0usize)) | (((val as u32) & 0x07ff) << 0usize);
         }
         #[doc = "Accumulated Horizontal back porch (in units of pixel clock period)."]
+        #[must_use]
         #[inline(always)]
         pub const fn ahbp(&self) -> u16 {
             let val = (self.0 >> 16usize) & 0x0fff;
@@ -239,7 +263,7 @@ pub mod regs {
         }
         #[doc = "Accumulated Horizontal back porch (in units of pixel clock period)."]
         #[inline(always)]
-        pub fn set_ahbp(&mut self, val: u16) {
+        pub const fn set_ahbp(&mut self, val: u16) {
             self.0 = (self.0 & !(0x0fff << 16usize)) | (((val as u32) & 0x0fff) << 16usize);
         }
     }
@@ -249,12 +273,21 @@ pub mod regs {
             Bpcr(0)
         }
     }
+    impl core::fmt::Debug for Bpcr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Bpcr")
+                .field("avbp", &self.avbp())
+                .field("ahbp", &self.ahbp())
+                .finish()
+        }
+    }
     #[doc = "Current Display Status Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Cdsr(pub u32);
     impl Cdsr {
         #[doc = "Vertical Data Enable display Status."]
+        #[must_use]
         #[inline(always)]
         pub const fn vdes(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -262,10 +295,11 @@ pub mod regs {
         }
         #[doc = "Vertical Data Enable display Status."]
         #[inline(always)]
-        pub fn set_vdes(&mut self, val: bool) {
+        pub const fn set_vdes(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "Horizontal Data Enable display Status."]
+        #[must_use]
         #[inline(always)]
         pub const fn hdes(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -273,10 +307,11 @@ pub mod regs {
         }
         #[doc = "Horizontal Data Enable display Status."]
         #[inline(always)]
-        pub fn set_hdes(&mut self, val: bool) {
+        pub const fn set_hdes(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
         #[doc = "Vertical Synchronization display Status."]
+        #[must_use]
         #[inline(always)]
         pub const fn vsyncs(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -284,10 +319,11 @@ pub mod regs {
         }
         #[doc = "Vertical Synchronization display Status."]
         #[inline(always)]
-        pub fn set_vsyncs(&mut self, val: bool) {
+        pub const fn set_vsyncs(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
         #[doc = "Horizontal Synchronization display Status."]
+        #[must_use]
         #[inline(always)]
         pub const fn hsyncs(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -295,7 +331,7 @@ pub mod regs {
         }
         #[doc = "Horizontal Synchronization display Status."]
         #[inline(always)]
-        pub fn set_hsyncs(&mut self, val: bool) {
+        pub const fn set_hsyncs(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
         }
     }
@@ -305,12 +341,23 @@ pub mod regs {
             Cdsr(0)
         }
     }
+    impl core::fmt::Debug for Cdsr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Cdsr")
+                .field("vdes", &self.vdes())
+                .field("hdes", &self.hdes())
+                .field("vsyncs", &self.vsyncs())
+                .field("hsyncs", &self.hsyncs())
+                .finish()
+        }
+    }
     #[doc = "Current Position Status Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Cpsr(pub u32);
     impl Cpsr {
         #[doc = "Current Y Position."]
+        #[must_use]
         #[inline(always)]
         pub const fn cypos(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0xffff;
@@ -318,10 +365,11 @@ pub mod regs {
         }
         #[doc = "Current Y Position."]
         #[inline(always)]
-        pub fn set_cypos(&mut self, val: u16) {
+        pub const fn set_cypos(&mut self, val: u16) {
             self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
         }
         #[doc = "Current X Position."]
+        #[must_use]
         #[inline(always)]
         pub const fn cxpos(&self) -> u16 {
             let val = (self.0 >> 16usize) & 0xffff;
@@ -329,7 +377,7 @@ pub mod regs {
         }
         #[doc = "Current X Position."]
         #[inline(always)]
-        pub fn set_cxpos(&mut self, val: u16) {
+        pub const fn set_cxpos(&mut self, val: u16) {
             self.0 = (self.0 & !(0xffff << 16usize)) | (((val as u32) & 0xffff) << 16usize);
         }
     }
@@ -339,12 +387,21 @@ pub mod regs {
             Cpsr(0)
         }
     }
+    impl core::fmt::Debug for Cpsr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Cpsr")
+                .field("cypos", &self.cypos())
+                .field("cxpos", &self.cxpos())
+                .finish()
+        }
+    }
     #[doc = "Global Control Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Gcr(pub u32);
     impl Gcr {
         #[doc = "LCD-TFT controller enable bit."]
+        #[must_use]
         #[inline(always)]
         pub const fn ltdcen(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -352,10 +409,11 @@ pub mod regs {
         }
         #[doc = "LCD-TFT controller enable bit."]
         #[inline(always)]
-        pub fn set_ltdcen(&mut self, val: bool) {
+        pub const fn set_ltdcen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "Pixel Clock Polarity."]
+        #[must_use]
         #[inline(always)]
         pub const fn pcpol(&self) -> bool {
             let val = (self.0 >> 28usize) & 0x01;
@@ -363,10 +421,11 @@ pub mod regs {
         }
         #[doc = "Pixel Clock Polarity."]
         #[inline(always)]
-        pub fn set_pcpol(&mut self, val: bool) {
+        pub const fn set_pcpol(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 28usize)) | (((val as u32) & 0x01) << 28usize);
         }
         #[doc = "Data Enable Polarity."]
+        #[must_use]
         #[inline(always)]
         pub const fn depol(&self) -> bool {
             let val = (self.0 >> 29usize) & 0x01;
@@ -374,10 +433,11 @@ pub mod regs {
         }
         #[doc = "Data Enable Polarity."]
         #[inline(always)]
-        pub fn set_depol(&mut self, val: bool) {
+        pub const fn set_depol(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 29usize)) | (((val as u32) & 0x01) << 29usize);
         }
         #[doc = "Vertical Synchronization Polarity."]
+        #[must_use]
         #[inline(always)]
         pub const fn vspol(&self) -> bool {
             let val = (self.0 >> 30usize) & 0x01;
@@ -385,10 +445,11 @@ pub mod regs {
         }
         #[doc = "Vertical Synchronization Polarity."]
         #[inline(always)]
-        pub fn set_vspol(&mut self, val: bool) {
+        pub const fn set_vspol(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 30usize)) | (((val as u32) & 0x01) << 30usize);
         }
         #[doc = "Horizontal Synchronization Polarity."]
+        #[must_use]
         #[inline(always)]
         pub const fn hspol(&self) -> bool {
             let val = (self.0 >> 31usize) & 0x01;
@@ -396,7 +457,7 @@ pub mod regs {
         }
         #[doc = "Horizontal Synchronization Polarity."]
         #[inline(always)]
-        pub fn set_hspol(&mut self, val: bool) {
+        pub const fn set_hspol(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 31usize)) | (((val as u32) & 0x01) << 31usize);
         }
     }
@@ -406,12 +467,24 @@ pub mod regs {
             Gcr(0)
         }
     }
+    impl core::fmt::Debug for Gcr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Gcr")
+                .field("ltdcen", &self.ltdcen())
+                .field("pcpol", &self.pcpol())
+                .field("depol", &self.depol())
+                .field("vspol", &self.vspol())
+                .field("hspol", &self.hspol())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Clear Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Icr(pub u32);
     impl Icr {
         #[doc = "Clears the Line Interrupt Flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn clif(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -419,10 +492,11 @@ pub mod regs {
         }
         #[doc = "Clears the Line Interrupt Flag."]
         #[inline(always)]
-        pub fn set_clif(&mut self, val: bool) {
+        pub const fn set_clif(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "Clears the FIFO Underrun Interrupt flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn cfuif(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -430,10 +504,11 @@ pub mod regs {
         }
         #[doc = "Clears the FIFO Underrun Interrupt flag."]
         #[inline(always)]
-        pub fn set_cfuif(&mut self, val: bool) {
+        pub const fn set_cfuif(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
         #[doc = "Clears Register Reload Interrupt Flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn crrif(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -441,7 +516,7 @@ pub mod regs {
         }
         #[doc = "Clears Register Reload Interrupt Flag."]
         #[inline(always)]
-        pub fn set_crrif(&mut self, val: bool) {
+        pub const fn set_crrif(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
         }
     }
@@ -451,12 +526,22 @@ pub mod regs {
             Icr(0)
         }
     }
+    impl core::fmt::Debug for Icr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Icr")
+                .field("clif", &self.clif())
+                .field("cfuif", &self.cfuif())
+                .field("crrif", &self.crrif())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Enable Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ier(pub u32);
     impl Ier {
         #[doc = "Line Interrupt Enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn lie(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -464,10 +549,11 @@ pub mod regs {
         }
         #[doc = "Line Interrupt Enable."]
         #[inline(always)]
-        pub fn set_lie(&mut self, val: bool) {
+        pub const fn set_lie(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "FIFO Underrun Interrupt Enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn fuie(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -475,10 +561,11 @@ pub mod regs {
         }
         #[doc = "FIFO Underrun Interrupt Enable."]
         #[inline(always)]
-        pub fn set_fuie(&mut self, val: bool) {
+        pub const fn set_fuie(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
         #[doc = "Register Reload interrupt enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn rrie(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -486,7 +573,7 @@ pub mod regs {
         }
         #[doc = "Register Reload interrupt enable."]
         #[inline(always)]
-        pub fn set_rrie(&mut self, val: bool) {
+        pub const fn set_rrie(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
         }
     }
@@ -496,12 +583,22 @@ pub mod regs {
             Ier(0)
         }
     }
+    impl core::fmt::Debug for Ier {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ier")
+                .field("lie", &self.lie())
+                .field("fuie", &self.fuie())
+                .field("rrie", &self.rrie())
+                .finish()
+        }
+    }
     #[doc = "Interrupt Status Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Isr(pub u32);
     impl Isr {
         #[doc = "Line Interrupt flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn lif(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -509,10 +606,11 @@ pub mod regs {
         }
         #[doc = "Line Interrupt flag."]
         #[inline(always)]
-        pub fn set_lif(&mut self, val: bool) {
+        pub const fn set_lif(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "FIFO Underrun Interrupt flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn fuif(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -520,10 +618,11 @@ pub mod regs {
         }
         #[doc = "FIFO Underrun Interrupt flag."]
         #[inline(always)]
-        pub fn set_fuif(&mut self, val: bool) {
+        pub const fn set_fuif(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
         #[doc = "Register Reload Interrupt Flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn rrif(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -531,7 +630,7 @@ pub mod regs {
         }
         #[doc = "Register Reload Interrupt Flag."]
         #[inline(always)]
-        pub fn set_rrif(&mut self, val: bool) {
+        pub const fn set_rrif(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
         }
     }
@@ -541,12 +640,22 @@ pub mod regs {
             Isr(0)
         }
     }
+    impl core::fmt::Debug for Isr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Isr")
+                .field("lif", &self.lif())
+                .field("fuif", &self.fuif())
+                .field("rrif", &self.rrif())
+                .finish()
+        }
+    }
     #[doc = "Layerx Control Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct L1cr(pub u32);
     impl L1cr {
         #[doc = "Layer Enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn len(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -554,10 +663,11 @@ pub mod regs {
         }
         #[doc = "Layer Enable."]
         #[inline(always)]
-        pub fn set_len(&mut self, val: bool) {
+        pub const fn set_len(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "Color Keying Enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn colken(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -565,10 +675,11 @@ pub mod regs {
         }
         #[doc = "Color Keying Enable."]
         #[inline(always)]
-        pub fn set_colken(&mut self, val: bool) {
+        pub const fn set_colken(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
         #[doc = "Color Look-Up Table Enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn cluten(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -576,7 +687,7 @@ pub mod regs {
         }
         #[doc = "Color Look-Up Table Enable."]
         #[inline(always)]
-        pub fn set_cluten(&mut self, val: bool) {
+        pub const fn set_cluten(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
     }
@@ -586,12 +697,22 @@ pub mod regs {
             L1cr(0)
         }
     }
+    impl core::fmt::Debug for L1cr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("L1cr")
+                .field("len", &self.len())
+                .field("colken", &self.colken())
+                .field("cluten", &self.cluten())
+                .finish()
+        }
+    }
     #[doc = "Layerx Color Frame Buffer Address Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Lcfbar(pub u32);
     impl Lcfbar {
         #[doc = "Color Frame Buffer Start Address."]
+        #[must_use]
         #[inline(always)]
         pub const fn cfbadd(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -599,7 +720,7 @@ pub mod regs {
         }
         #[doc = "Color Frame Buffer Start Address."]
         #[inline(always)]
-        pub fn set_cfbadd(&mut self, val: u32) {
+        pub const fn set_cfbadd(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -609,12 +730,20 @@ pub mod regs {
             Lcfbar(0)
         }
     }
+    impl core::fmt::Debug for Lcfbar {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Lcfbar")
+                .field("cfbadd", &self.cfbadd())
+                .finish()
+        }
+    }
     #[doc = "Layerx ColorFrame Buffer Line Number Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Lcfblnr(pub u32);
     impl Lcfblnr {
         #[doc = "Frame Buffer Line Number."]
+        #[must_use]
         #[inline(always)]
         pub const fn cfblnbr(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0x07ff;
@@ -622,7 +751,7 @@ pub mod regs {
         }
         #[doc = "Frame Buffer Line Number."]
         #[inline(always)]
-        pub fn set_cfblnbr(&mut self, val: u16) {
+        pub const fn set_cfblnbr(&mut self, val: u16) {
             self.0 = (self.0 & !(0x07ff << 0usize)) | (((val as u32) & 0x07ff) << 0usize);
         }
     }
@@ -632,12 +761,20 @@ pub mod regs {
             Lcfblnr(0)
         }
     }
+    impl core::fmt::Debug for Lcfblnr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Lcfblnr")
+                .field("cfblnbr", &self.cfblnbr())
+                .finish()
+        }
+    }
     #[doc = "Layerx Color Frame Buffer Length Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Lcfblr(pub u32);
     impl Lcfblr {
         #[doc = "Color Frame Buffer Line Length."]
+        #[must_use]
         #[inline(always)]
         pub const fn cfbll(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0x1fff;
@@ -645,10 +782,11 @@ pub mod regs {
         }
         #[doc = "Color Frame Buffer Line Length."]
         #[inline(always)]
-        pub fn set_cfbll(&mut self, val: u16) {
+        pub const fn set_cfbll(&mut self, val: u16) {
             self.0 = (self.0 & !(0x1fff << 0usize)) | (((val as u32) & 0x1fff) << 0usize);
         }
         #[doc = "Color Frame Buffer Pitch in bytes."]
+        #[must_use]
         #[inline(always)]
         pub const fn cfbp(&self) -> u16 {
             let val = (self.0 >> 16usize) & 0x1fff;
@@ -656,7 +794,7 @@ pub mod regs {
         }
         #[doc = "Color Frame Buffer Pitch in bytes."]
         #[inline(always)]
-        pub fn set_cfbp(&mut self, val: u16) {
+        pub const fn set_cfbp(&mut self, val: u16) {
             self.0 = (self.0 & !(0x1fff << 16usize)) | (((val as u32) & 0x1fff) << 16usize);
         }
     }
@@ -666,12 +804,21 @@ pub mod regs {
             Lcfblr(0)
         }
     }
+    impl core::fmt::Debug for Lcfblr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Lcfblr")
+                .field("cfbll", &self.cfbll())
+                .field("cfbp", &self.cfbp())
+                .finish()
+        }
+    }
     #[doc = "Layerx Color Keying Configuration Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Lckcr(pub u32);
     impl Lckcr {
         #[doc = "Color Key Blue value."]
+        #[must_use]
         #[inline(always)]
         pub const fn ckblue(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0xff;
@@ -679,10 +826,11 @@ pub mod regs {
         }
         #[doc = "Color Key Blue value."]
         #[inline(always)]
-        pub fn set_ckblue(&mut self, val: u8) {
+        pub const fn set_ckblue(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
         }
         #[doc = "Color Key Green value."]
+        #[must_use]
         #[inline(always)]
         pub const fn ckgreen(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0xff;
@@ -690,10 +838,11 @@ pub mod regs {
         }
         #[doc = "Color Key Green value."]
         #[inline(always)]
-        pub fn set_ckgreen(&mut self, val: u8) {
+        pub const fn set_ckgreen(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
         }
         #[doc = "Color Key Red value."]
+        #[must_use]
         #[inline(always)]
         pub const fn ckred(&self) -> u8 {
             let val = (self.0 >> 16usize) & 0xff;
@@ -701,7 +850,7 @@ pub mod regs {
         }
         #[doc = "Color Key Red value."]
         #[inline(always)]
-        pub fn set_ckred(&mut self, val: u8) {
+        pub const fn set_ckred(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
         }
     }
@@ -711,12 +860,22 @@ pub mod regs {
             Lckcr(0)
         }
     }
+    impl core::fmt::Debug for Lckcr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Lckcr")
+                .field("ckblue", &self.ckblue())
+                .field("ckgreen", &self.ckgreen())
+                .field("ckred", &self.ckred())
+                .finish()
+        }
+    }
     #[doc = "Layerx CLUT Write Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Lclutwr(pub u32);
     impl Lclutwr {
         #[doc = "Blue value."]
+        #[must_use]
         #[inline(always)]
         pub const fn blue(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0xff;
@@ -724,10 +883,11 @@ pub mod regs {
         }
         #[doc = "Blue value."]
         #[inline(always)]
-        pub fn set_blue(&mut self, val: u8) {
+        pub const fn set_blue(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
         }
         #[doc = "Green value."]
+        #[must_use]
         #[inline(always)]
         pub const fn green(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0xff;
@@ -735,10 +895,11 @@ pub mod regs {
         }
         #[doc = "Green value."]
         #[inline(always)]
-        pub fn set_green(&mut self, val: u8) {
+        pub const fn set_green(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
         }
         #[doc = "Red value."]
+        #[must_use]
         #[inline(always)]
         pub const fn red(&self) -> u8 {
             let val = (self.0 >> 16usize) & 0xff;
@@ -746,10 +907,11 @@ pub mod regs {
         }
         #[doc = "Red value."]
         #[inline(always)]
-        pub fn set_red(&mut self, val: u8) {
+        pub const fn set_red(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
         }
         #[doc = "CLUT Address."]
+        #[must_use]
         #[inline(always)]
         pub const fn clutadd(&self) -> u8 {
             let val = (self.0 >> 24usize) & 0xff;
@@ -757,7 +919,7 @@ pub mod regs {
         }
         #[doc = "CLUT Address."]
         #[inline(always)]
-        pub fn set_clutadd(&mut self, val: u8) {
+        pub const fn set_clutadd(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 24usize)) | (((val as u32) & 0xff) << 24usize);
         }
     }
@@ -767,12 +929,23 @@ pub mod regs {
             Lclutwr(0)
         }
     }
+    impl core::fmt::Debug for Lclutwr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Lclutwr")
+                .field("blue", &self.blue())
+                .field("green", &self.green())
+                .field("red", &self.red())
+                .field("clutadd", &self.clutadd())
+                .finish()
+        }
+    }
     #[doc = "Layerx Default Color Configuration Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ldccr(pub u32);
     impl Ldccr {
         #[doc = "Default Color Blue."]
+        #[must_use]
         #[inline(always)]
         pub const fn dcblue(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0xff;
@@ -780,10 +953,11 @@ pub mod regs {
         }
         #[doc = "Default Color Blue."]
         #[inline(always)]
-        pub fn set_dcblue(&mut self, val: u8) {
+        pub const fn set_dcblue(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
         }
         #[doc = "Default Color Green."]
+        #[must_use]
         #[inline(always)]
         pub const fn dcgreen(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0xff;
@@ -791,10 +965,11 @@ pub mod regs {
         }
         #[doc = "Default Color Green."]
         #[inline(always)]
-        pub fn set_dcgreen(&mut self, val: u8) {
+        pub const fn set_dcgreen(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 8usize)) | (((val as u32) & 0xff) << 8usize);
         }
         #[doc = "Default Color Red."]
+        #[must_use]
         #[inline(always)]
         pub const fn dcred(&self) -> u8 {
             let val = (self.0 >> 16usize) & 0xff;
@@ -802,7 +977,7 @@ pub mod regs {
         }
         #[doc = "Default Color Red."]
         #[inline(always)]
-        pub fn set_dcred(&mut self, val: u8) {
+        pub const fn set_dcred(&mut self, val: u8) {
             self.0 = (self.0 & !(0xff << 16usize)) | (((val as u32) & 0xff) << 16usize);
         }
     }
@@ -812,12 +987,22 @@ pub mod regs {
             Ldccr(0)
         }
     }
+    impl core::fmt::Debug for Ldccr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ldccr")
+                .field("dcblue", &self.dcblue())
+                .field("dcgreen", &self.dcgreen())
+                .field("dcred", &self.dcred())
+                .finish()
+        }
+    }
     #[doc = "Line Interrupt Position Configuration Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Lipcr(pub u32);
     impl Lipcr {
         #[doc = "Line Interrupt Position."]
+        #[must_use]
         #[inline(always)]
         pub const fn lipos(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0x07ff;
@@ -825,7 +1010,7 @@ pub mod regs {
         }
         #[doc = "Line Interrupt Position."]
         #[inline(always)]
-        pub fn set_lipos(&mut self, val: u16) {
+        pub const fn set_lipos(&mut self, val: u16) {
             self.0 = (self.0 & !(0x07ff << 0usize)) | (((val as u32) & 0x07ff) << 0usize);
         }
     }
@@ -835,12 +1020,20 @@ pub mod regs {
             Lipcr(0)
         }
     }
+    impl core::fmt::Debug for Lipcr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Lipcr")
+                .field("lipos", &self.lipos())
+                .finish()
+        }
+    }
     #[doc = "Layerx Pixel Format Configuration Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Lpfcr(pub u32);
     impl Lpfcr {
         #[doc = "Pixel Format."]
+        #[must_use]
         #[inline(always)]
         pub const fn pf(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x07;
@@ -848,7 +1041,7 @@ pub mod regs {
         }
         #[doc = "Pixel Format."]
         #[inline(always)]
-        pub fn set_pf(&mut self, val: u8) {
+        pub const fn set_pf(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u32) & 0x07) << 0usize);
         }
     }
@@ -858,12 +1051,18 @@ pub mod regs {
             Lpfcr(0)
         }
     }
+    impl core::fmt::Debug for Lpfcr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Lpfcr").field("pf", &self.pf()).finish()
+        }
+    }
     #[doc = "Layerx Window Horizontal Position Configuration Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Lwhpcr(pub u32);
     impl Lwhpcr {
         #[doc = "Window Horizontal Start Position."]
+        #[must_use]
         #[inline(always)]
         pub const fn whstpos(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0x0fff;
@@ -871,10 +1070,11 @@ pub mod regs {
         }
         #[doc = "Window Horizontal Start Position."]
         #[inline(always)]
-        pub fn set_whstpos(&mut self, val: u16) {
+        pub const fn set_whstpos(&mut self, val: u16) {
             self.0 = (self.0 & !(0x0fff << 0usize)) | (((val as u32) & 0x0fff) << 0usize);
         }
         #[doc = "Window Horizontal Stop Position."]
+        #[must_use]
         #[inline(always)]
         pub const fn whsppos(&self) -> u16 {
             let val = (self.0 >> 16usize) & 0x0fff;
@@ -882,7 +1082,7 @@ pub mod regs {
         }
         #[doc = "Window Horizontal Stop Position."]
         #[inline(always)]
-        pub fn set_whsppos(&mut self, val: u16) {
+        pub const fn set_whsppos(&mut self, val: u16) {
             self.0 = (self.0 & !(0x0fff << 16usize)) | (((val as u32) & 0x0fff) << 16usize);
         }
     }
@@ -892,12 +1092,21 @@ pub mod regs {
             Lwhpcr(0)
         }
     }
+    impl core::fmt::Debug for Lwhpcr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Lwhpcr")
+                .field("whstpos", &self.whstpos())
+                .field("whsppos", &self.whsppos())
+                .finish()
+        }
+    }
     #[doc = "Layerx Window Vertical Position Configuration Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Lwvpcr(pub u32);
     impl Lwvpcr {
         #[doc = "Window Vertical Start Position."]
+        #[must_use]
         #[inline(always)]
         pub const fn wvstpos(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0x07ff;
@@ -905,10 +1114,11 @@ pub mod regs {
         }
         #[doc = "Window Vertical Start Position."]
         #[inline(always)]
-        pub fn set_wvstpos(&mut self, val: u16) {
+        pub const fn set_wvstpos(&mut self, val: u16) {
             self.0 = (self.0 & !(0x07ff << 0usize)) | (((val as u32) & 0x07ff) << 0usize);
         }
         #[doc = "Window Vertical Stop Position."]
+        #[must_use]
         #[inline(always)]
         pub const fn wvsppos(&self) -> u16 {
             let val = (self.0 >> 16usize) & 0x07ff;
@@ -916,7 +1126,7 @@ pub mod regs {
         }
         #[doc = "Window Vertical Stop Position."]
         #[inline(always)]
-        pub fn set_wvsppos(&mut self, val: u16) {
+        pub const fn set_wvsppos(&mut self, val: u16) {
             self.0 = (self.0 & !(0x07ff << 16usize)) | (((val as u32) & 0x07ff) << 16usize);
         }
     }
@@ -926,12 +1136,21 @@ pub mod regs {
             Lwvpcr(0)
         }
     }
+    impl core::fmt::Debug for Lwvpcr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Lwvpcr")
+                .field("wvstpos", &self.wvstpos())
+                .field("wvsppos", &self.wvsppos())
+                .finish()
+        }
+    }
     #[doc = "Shadow Reload Configuration Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Srcr(pub u32);
     impl Srcr {
         #[doc = "Immediate Reload."]
+        #[must_use]
         #[inline(always)]
         pub const fn imr(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -939,10 +1158,11 @@ pub mod regs {
         }
         #[doc = "Immediate Reload."]
         #[inline(always)]
-        pub fn set_imr(&mut self, val: bool) {
+        pub const fn set_imr(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "Vertical Blanking Reload."]
+        #[must_use]
         #[inline(always)]
         pub const fn vbr(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -950,7 +1170,7 @@ pub mod regs {
         }
         #[doc = "Vertical Blanking Reload."]
         #[inline(always)]
-        pub fn set_vbr(&mut self, val: bool) {
+        pub const fn set_vbr(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
     }
@@ -960,12 +1180,21 @@ pub mod regs {
             Srcr(0)
         }
     }
+    impl core::fmt::Debug for Srcr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Srcr")
+                .field("imr", &self.imr())
+                .field("vbr", &self.vbr())
+                .finish()
+        }
+    }
     #[doc = "Synchronization Size Configuration Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Sscr(pub u32);
     impl Sscr {
         #[doc = "Vertical Synchronization Height (in units of horizontal scan line)."]
+        #[must_use]
         #[inline(always)]
         pub const fn vsh(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0x07ff;
@@ -973,10 +1202,11 @@ pub mod regs {
         }
         #[doc = "Vertical Synchronization Height (in units of horizontal scan line)."]
         #[inline(always)]
-        pub fn set_vsh(&mut self, val: u16) {
+        pub const fn set_vsh(&mut self, val: u16) {
             self.0 = (self.0 & !(0x07ff << 0usize)) | (((val as u32) & 0x07ff) << 0usize);
         }
         #[doc = "Horizontal Synchronization Width (in units of pixel clock period)."]
+        #[must_use]
         #[inline(always)]
         pub const fn hsw(&self) -> u16 {
             let val = (self.0 >> 16usize) & 0x0fff;
@@ -984,7 +1214,7 @@ pub mod regs {
         }
         #[doc = "Horizontal Synchronization Width (in units of pixel clock period)."]
         #[inline(always)]
-        pub fn set_hsw(&mut self, val: u16) {
+        pub const fn set_hsw(&mut self, val: u16) {
             self.0 = (self.0 & !(0x0fff << 16usize)) | (((val as u32) & 0x0fff) << 16usize);
         }
     }
@@ -994,12 +1224,21 @@ pub mod regs {
             Sscr(0)
         }
     }
+    impl core::fmt::Debug for Sscr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Sscr")
+                .field("vsh", &self.vsh())
+                .field("hsw", &self.hsw())
+                .finish()
+        }
+    }
     #[doc = "Total Width Configuration Register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Twcr(pub u32);
     impl Twcr {
         #[doc = "Total Height (in units of horizontal scan line)."]
+        #[must_use]
         #[inline(always)]
         pub const fn totalh(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0x07ff;
@@ -1007,10 +1246,11 @@ pub mod regs {
         }
         #[doc = "Total Height (in units of horizontal scan line)."]
         #[inline(always)]
-        pub fn set_totalh(&mut self, val: u16) {
+        pub const fn set_totalh(&mut self, val: u16) {
             self.0 = (self.0 & !(0x07ff << 0usize)) | (((val as u32) & 0x07ff) << 0usize);
         }
         #[doc = "Total Width (in units of pixel clock period)."]
+        #[must_use]
         #[inline(always)]
         pub const fn totalw(&self) -> u16 {
             let val = (self.0 >> 16usize) & 0x0fff;
@@ -1018,7 +1258,7 @@ pub mod regs {
         }
         #[doc = "Total Width (in units of pixel clock period)."]
         #[inline(always)]
-        pub fn set_totalw(&mut self, val: u16) {
+        pub const fn set_totalw(&mut self, val: u16) {
             self.0 = (self.0 & !(0x0fff << 16usize)) | (((val as u32) & 0x0fff) << 16usize);
         }
     }
@@ -1026,6 +1266,14 @@ pub mod regs {
         #[inline(always)]
         fn default() -> Twcr {
             Twcr(0)
+        }
+    }
+    impl core::fmt::Debug for Twcr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Twcr")
+                .field("totalh", &self.totalh())
+                .field("totalw", &self.totalw())
+                .finish()
         }
     }
 }

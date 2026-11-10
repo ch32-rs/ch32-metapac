@@ -198,6 +198,11 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
+                    name: "AF_OPEN_DRAIN_OUT",
+                    description: Some("Alternate function output push-pull"),
+                    value: 3,
+                },
+                EnumVariant {
                     name: "ANALOG_IN__PUSH_PULL_OUT",
                     description: Some("Analog input / push-pull output."),
                     value: 0,
@@ -211,11 +216,6 @@ pub(crate) static REGISTERS: IR = IR {
                     name: "PULL_IN__AF_PUSH_PULL_OUT",
                     description: Some("Input with pull-up / AF pull-down."),
                     value: 2,
-                },
-                EnumVariant {
-                    name: "AF_OPEN_DRAIN_OUT",
-                    description: Some("Alternate function output push-pull"),
-                    value: 3,
                 },
             ],
         },

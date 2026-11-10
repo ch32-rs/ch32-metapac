@@ -883,18 +883,18 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "RESET",
-                    description: Some(
-                        "Reset the chip on entering the mode.",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "NO_RESET",
                     description: Some(
                         "Keep running on entering the mode.",
                     ),
                     value: 1,
+                },
+                EnumVariant {
+                    name: "RESET",
+                    description: Some(
+                        "Reset the chip on entering the mode.",
+                    ),
+                    value: 0,
                 },
             ],
         },
@@ -906,18 +906,18 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
-                    name: "NRST",
-                    description: Some(
-                        "Enable the external reset pin in its NRST function.",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "GPIO",
                     description: Some(
                         "Disable NRST and use the pin as a general-purpose I/O (PA21/PC3/PB7 depending on package).",
                     ),
                     value: 3,
+                },
+                EnumVariant {
+                    name: "NRST",
+                    description: Some(
+                        "Enable the external reset pin in its NRST function.",
+                    ),
+                    value: 0,
                 },
             ],
         },

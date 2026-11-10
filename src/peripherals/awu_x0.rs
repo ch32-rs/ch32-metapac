@@ -22,17 +22,17 @@ impl Awu {
     #[doc = "Status Control register."]
     #[inline(always)]
     pub const fn csr(self) -> crate::common::Reg<regs::Csr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "AWU Window register."]
     #[inline(always)]
     pub const fn wr(self) -> crate::common::Reg<regs::Wr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "PSC."]
     #[inline(always)]
     pub const fn psc(self) -> crate::common::Reg<regs::Psc, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
 }
 pub mod regs {
@@ -42,6 +42,7 @@ pub mod regs {
     pub struct Csr(pub u16);
     impl Csr {
         #[doc = "AWU Enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn en(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -49,7 +50,7 @@ pub mod regs {
         }
         #[doc = "AWU Enable."]
         #[inline(always)]
-        pub fn set_en(&mut self, val: bool) {
+        pub const fn set_en(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u16) & 0x01) << 1usize);
         }
     }
@@ -59,12 +60,18 @@ pub mod regs {
             Csr(0)
         }
     }
+    impl core::fmt::Debug for Csr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Csr").field("en", &self.en()).finish()
+        }
+    }
     #[doc = "PSC."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Psc(pub u16);
     impl Psc {
         #[doc = "AWU_TBR value."]
+        #[must_use]
         #[inline(always)]
         pub const fn tbr(&self) -> super::vals::Prescaler {
             let val = (self.0 >> 0usize) & 0x0f;
@@ -72,7 +79,7 @@ pub mod regs {
         }
         #[doc = "AWU_TBR value."]
         #[inline(always)]
-        pub fn set_tbr(&mut self, val: super::vals::Prescaler) {
+        pub const fn set_tbr(&mut self, val: super::vals::Prescaler) {
             self.0 = (self.0 & !(0x0f << 0usize)) | (((val.to_bits() as u16) & 0x0f) << 0usize);
         }
     }
@@ -82,12 +89,18 @@ pub mod regs {
             Psc(0)
         }
     }
+    impl core::fmt::Debug for Psc {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Psc").field("tbr", &self.tbr()).finish()
+        }
+    }
     #[doc = "AWU Window register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Wr(pub u16);
     impl Wr {
         #[doc = "AWU_APR value."]
+        #[must_use]
         #[inline(always)]
         pub const fn apr(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x3f;
@@ -95,7 +108,7 @@ pub mod regs {
         }
         #[doc = "AWU_APR value."]
         #[inline(always)]
-        pub fn set_apr(&mut self, val: u8) {
+        pub const fn set_apr(&mut self, val: u8) {
             self.0 = (self.0 & !(0x3f << 0usize)) | (((val as u16) & 0x3f) << 0usize);
         }
     }
@@ -105,10 +118,15 @@ pub mod regs {
             Wr(0)
         }
     }
+    impl core::fmt::Debug for Wr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Wr").field("apr", &self.apr()).finish()
+        }
+    }
 }
 pub mod vals {
     #[repr(u8)]
-    #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     pub enum Prescaler {
         #[doc = "DIV1."]
         DIV1 = 0x0,

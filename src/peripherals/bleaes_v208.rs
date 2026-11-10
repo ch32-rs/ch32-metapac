@@ -22,7 +22,7 @@ impl BleAes {
     #[doc = "AES op status (bit0 + bit1; cleared sequentially from the BB IRQ path)."]
     #[inline(always)]
     pub const fn statr(self) -> crate::common::Reg<regs::Statr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
 }
 pub mod regs {
@@ -32,6 +32,7 @@ pub mod regs {
     pub struct Statr(pub u32);
     impl Statr {
         #[doc = "AES op cleanup phase 2 (cleared after PHASE1)."]
+        #[must_use]
         #[inline(always)]
         pub const fn phase2(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -39,10 +40,11 @@ pub mod regs {
         }
         #[doc = "AES op cleanup phase 2 (cleared after PHASE1)."]
         #[inline(always)]
-        pub fn set_phase2(&mut self, val: bool) {
+        pub const fn set_phase2(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "AES op cleanup phase 1 (cleared first if set)."]
+        #[must_use]
         #[inline(always)]
         pub const fn phase1(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -50,7 +52,7 @@ pub mod regs {
         }
         #[doc = "AES op cleanup phase 1 (cleared first if set)."]
         #[inline(always)]
-        pub fn set_phase1(&mut self, val: bool) {
+        pub const fn set_phase1(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
     }
@@ -58,6 +60,14 @@ pub mod regs {
         #[inline(always)]
         fn default() -> Statr {
             Statr(0)
+        }
+    }
+    impl core::fmt::Debug for Statr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Statr")
+                .field("phase2", &self.phase2())
+                .field("phase1", &self.phase1())
+                .finish()
         }
     }
 }

@@ -22,43 +22,43 @@ impl Ipc {
     #[doc = "IPC control register. Per-channel TX/RX core ID routing, interrupt enables, auto-update mode and configuration lock."]
     #[inline(always)]
     pub const fn ctlr(self) -> crate::common::Reg<regs::Ctlr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "Per-channel interrupt status (read-only summary; bits set when channel state matches the configured trigger)."]
     #[inline(always)]
     pub const fn isr(self) -> crate::common::Reg<regs::Channels, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "Per-channel interrupt mask status (read-only; bit set means channel is currently raising an interrupt request to its routed core)."]
     #[inline(always)]
     pub const fn ism(self) -> crate::common::Reg<regs::Channels, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
     #[doc = "Per-channel status-bit interrupt enable. Each enabled bit produces TX or RX interrupts based on the value in STS."]
     #[inline(always)]
     pub const fn ena(self) -> crate::common::Reg<regs::Channels, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize) as _) }
     }
     #[doc = "Per-channel status register. Bit value 1 may raise an RX interrupt; bit value 0 may raise a TX interrupt (subject to ENA / IER configuration)."]
     #[inline(always)]
     pub const fn sts(self) -> crate::common::Reg<regs::Channels, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x14usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x14usize) as _) }
     }
     #[doc = "Per-channel status set register. Writing 1 sets the corresponding bit in STS (and in ENA when AUTOEN is on)."]
     #[inline(always)]
     pub const fn set(self) -> crate::common::Reg<regs::Channels, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x18usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x18usize) as _) }
     }
     #[doc = "Per-channel status clear register. Writing 1 clears the corresponding bit in STS."]
     #[inline(always)]
     pub const fn clr(self) -> crate::common::Reg<regs::Channels, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x1cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1cusize) as _) }
     }
     #[doc = "32-bit inline message slot. Four slots are available to carry short messages without touching shared SRAM."]
     #[inline(always)]
     pub const fn msg(self, n: usize) -> crate::common::Reg<regs::Msg, crate::common::RW> {
         assert!(n < 4usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x20usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x20usize + n * 4usize) as _) }
     }
 }
 pub mod regs {
@@ -68,6 +68,7 @@ pub mod regs {
     pub struct Channels(pub u32);
     impl Channels {
         #[doc = "Channel byte. Each of the 8 bits is an independent status / enable / set / clear flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn ch(&self, n: usize) -> u8 {
             assert!(n < 4usize);
@@ -77,7 +78,7 @@ pub mod regs {
         }
         #[doc = "Channel byte. Each of the 8 bits is an independent status / enable / set / clear flag."]
         #[inline(always)]
-        pub fn set_ch(&mut self, n: usize, val: u8) {
+        pub const fn set_ch(&mut self, n: usize, val: u8) {
             assert!(n < 4usize);
             let offs = 0usize + n * 8usize;
             self.0 = (self.0 & !(0xff << offs)) | (((val as u32) & 0xff) << offs);
@@ -89,12 +90,23 @@ pub mod regs {
             Channels(0)
         }
     }
+    impl core::fmt::Debug for Channels {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Channels")
+                .field("ch[0]", &self.ch(0usize))
+                .field("ch[1]", &self.ch(1usize))
+                .field("ch[2]", &self.ch(2usize))
+                .field("ch[3]", &self.ch(3usize))
+                .finish()
+        }
+    }
     #[doc = "IPC control register. Each of the four channels occupies 8 bits (channel n at bits 8n..8n+7)."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ctlr(pub u32);
     impl Ctlr {
         #[doc = "Sender core ID. 0=route TX interrupt to hart 0 (V3F), 1=route to hart 1 (V5F)."]
+        #[must_use]
         #[inline(always)]
         pub const fn tx_cid(&self, n: usize) -> bool {
             assert!(n < 4usize);
@@ -104,12 +116,13 @@ pub mod regs {
         }
         #[doc = "Sender core ID. 0=route TX interrupt to hart 0 (V3F), 1=route to hart 1 (V5F)."]
         #[inline(always)]
-        pub fn set_tx_cid(&mut self, n: usize, val: bool) {
+        pub const fn set_tx_cid(&mut self, n: usize, val: bool) {
             assert!(n < 4usize);
             let offs = 0usize + n * 8usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "Receiver core ID. 0=route RX interrupt to hart 0, 1=route to hart 1."]
+        #[must_use]
         #[inline(always)]
         pub const fn rx_cid(&self, n: usize) -> bool {
             assert!(n < 4usize);
@@ -119,12 +132,13 @@ pub mod regs {
         }
         #[doc = "Receiver core ID. 0=route RX interrupt to hart 0, 1=route to hart 1."]
         #[inline(always)]
-        pub fn set_rx_cid(&mut self, n: usize, val: bool) {
+        pub const fn set_rx_cid(&mut self, n: usize, val: bool) {
             assert!(n < 4usize);
             let offs = 2usize + n * 8usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "TX interrupt enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn tx_ier(&self, n: usize) -> bool {
             assert!(n < 4usize);
@@ -134,12 +148,13 @@ pub mod regs {
         }
         #[doc = "TX interrupt enable."]
         #[inline(always)]
-        pub fn set_tx_ier(&mut self, n: usize, val: bool) {
+        pub const fn set_tx_ier(&mut self, n: usize, val: bool) {
             assert!(n < 4usize);
             let offs = 4usize + n * 8usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "RX interrupt enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn rx_ier(&self, n: usize) -> bool {
             assert!(n < 4usize);
@@ -149,12 +164,13 @@ pub mod regs {
         }
         #[doc = "RX interrupt enable."]
         #[inline(always)]
-        pub fn set_rx_ier(&mut self, n: usize, val: bool) {
+        pub const fn set_rx_ier(&mut self, n: usize, val: bool) {
             assert!(n < 4usize);
             let offs = 5usize + n * 8usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "Status-bit auto-update. When set, writing to STS / SET also updates ENA to the same value so the interrupt fires immediately."]
+        #[must_use]
         #[inline(always)]
         pub const fn autoen(&self, n: usize) -> bool {
             assert!(n < 4usize);
@@ -164,12 +180,13 @@ pub mod regs {
         }
         #[doc = "Status-bit auto-update. When set, writing to STS / SET also updates ENA to the same value so the interrupt fires immediately."]
         #[inline(always)]
-        pub fn set_autoen(&mut self, n: usize, val: bool) {
+        pub const fn set_autoen(&mut self, n: usize, val: bool) {
             assert!(n < 4usize);
             let offs = 6usize + n * 8usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "Channel configuration lock. Write 1 to freeze the channel's other control bits until reset."]
+        #[must_use]
         #[inline(always)]
         pub const fn lock(&self, n: usize) -> bool {
             assert!(n < 4usize);
@@ -179,7 +196,7 @@ pub mod regs {
         }
         #[doc = "Channel configuration lock. Write 1 to freeze the channel's other control bits until reset."]
         #[inline(always)]
-        pub fn set_lock(&mut self, n: usize, val: bool) {
+        pub const fn set_lock(&mut self, n: usize, val: bool) {
             assert!(n < 4usize);
             let offs = 7usize + n * 8usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
@@ -191,12 +208,43 @@ pub mod regs {
             Ctlr(0)
         }
     }
+    impl core::fmt::Debug for Ctlr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ctlr")
+                .field("tx_cid[0]", &self.tx_cid(0usize))
+                .field("tx_cid[1]", &self.tx_cid(1usize))
+                .field("tx_cid[2]", &self.tx_cid(2usize))
+                .field("tx_cid[3]", &self.tx_cid(3usize))
+                .field("rx_cid[0]", &self.rx_cid(0usize))
+                .field("rx_cid[1]", &self.rx_cid(1usize))
+                .field("rx_cid[2]", &self.rx_cid(2usize))
+                .field("rx_cid[3]", &self.rx_cid(3usize))
+                .field("tx_ier[0]", &self.tx_ier(0usize))
+                .field("tx_ier[1]", &self.tx_ier(1usize))
+                .field("tx_ier[2]", &self.tx_ier(2usize))
+                .field("tx_ier[3]", &self.tx_ier(3usize))
+                .field("rx_ier[0]", &self.rx_ier(0usize))
+                .field("rx_ier[1]", &self.rx_ier(1usize))
+                .field("rx_ier[2]", &self.rx_ier(2usize))
+                .field("rx_ier[3]", &self.rx_ier(3usize))
+                .field("autoen[0]", &self.autoen(0usize))
+                .field("autoen[1]", &self.autoen(1usize))
+                .field("autoen[2]", &self.autoen(2usize))
+                .field("autoen[3]", &self.autoen(3usize))
+                .field("lock[0]", &self.lock(0usize))
+                .field("lock[1]", &self.lock(1usize))
+                .field("lock[2]", &self.lock(2usize))
+                .field("lock[3]", &self.lock(3usize))
+                .finish()
+        }
+    }
     #[doc = "32-bit inline message register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Msg(pub u32);
     impl Msg {
         #[doc = "32-bit message value."]
+        #[must_use]
         #[inline(always)]
         pub const fn data(&self) -> u32 {
             let val = (self.0 >> 0usize) & 0xffff_ffff;
@@ -204,7 +252,7 @@ pub mod regs {
         }
         #[doc = "32-bit message value."]
         #[inline(always)]
-        pub fn set_data(&mut self, val: u32) {
+        pub const fn set_data(&mut self, val: u32) {
             self.0 = (self.0 & !(0xffff_ffff << 0usize)) | (((val as u32) & 0xffff_ffff) << 0usize);
         }
     }
@@ -212,6 +260,11 @@ pub mod regs {
         #[inline(always)]
         fn default() -> Msg {
             Msg(0)
+        }
+    }
+    impl core::fmt::Debug for Msg {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Msg").field("data", &self.data()).finish()
         }
     }
 }

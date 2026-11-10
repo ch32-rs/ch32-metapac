@@ -2356,18 +2356,18 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
-                    name: "TI4",
-                    description: Some(
-                        "CCx channel is configured as input, normal mapping: ICx mapped to TIx",
-                    ),
-                    value: 1,
-                },
-                EnumVariant {
                     name: "TI3",
                     description: Some(
                         "CCx channel is configured as input, alternate mapping (switches 1 with 2, 3 with 4)",
                     ),
                     value: 2,
+                },
+                EnumVariant {
+                    name: "TI4",
+                    description: Some(
+                        "CCx channel is configured as input, normal mapping: ICx mapped to TIx",
+                    ),
+                    value: 1,
                 },
                 EnumVariant {
                     name: "TRC",
@@ -2428,13 +2428,6 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
-                    name: "EDGEALIGNED",
-                    description: Some(
-                        "The counter counts up or down depending on the direction bit",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "CENTERALIGNED1",
                     description: Some(
                         "The counter counts up and down alternatively. Output compare interrupt flags are set only when the counter is counting down.",
@@ -2455,6 +2448,13 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     value: 3,
                 },
+                EnumVariant {
+                    name: "EDGEALIGNED",
+                    description: Some(
+                        "The counter counts up or down depending on the direction bit",
+                    ),
+                    value: 0,
+                },
             ],
         },
         Enum {
@@ -2463,18 +2463,18 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "UP",
-                    description: Some(
-                        "Counter used as upcounter",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "DOWN",
                     description: Some(
                         "Counter used as downcounter",
                     ),
                     value: 1,
+                },
+                EnumVariant {
+                    name: "UP",
+                    description: Some(
+                        "Counter used as upcounter",
+                    ),
+                    value: 0,
                 },
             ],
         },
@@ -2521,13 +2521,6 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 4,
             variants: &[
                 EnumVariant {
-                    name: "NOFILTER",
-                    description: Some(
-                        "No filter, sampling is done at fDTS",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "FCK_INT_N2",
                     description: Some(
                         "fSAMPLING=fCK_INT, N=2",
@@ -2549,6 +2542,27 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 3,
                 },
                 EnumVariant {
+                    name: "FDTS_DIV16_N5",
+                    description: Some(
+                        "fSAMPLING=fDTS/16, N=5",
+                    ),
+                    value: 10,
+                },
+                EnumVariant {
+                    name: "FDTS_DIV16_N6",
+                    description: Some(
+                        "fSAMPLING=fDTS/16, N=6",
+                    ),
+                    value: 11,
+                },
+                EnumVariant {
+                    name: "FDTS_DIV16_N8",
+                    description: Some(
+                        "fSAMPLING=fDTS/16, N=8",
+                    ),
+                    value: 12,
+                },
+                EnumVariant {
                     name: "FDTS_DIV2_N6",
                     description: Some(
                         "fSAMPLING=fDTS/2, N=6",
@@ -2561,6 +2575,27 @@ pub(crate) static REGISTERS: IR = IR {
                         "fSAMPLING=fDTS/2, N=8",
                     ),
                     value: 5,
+                },
+                EnumVariant {
+                    name: "FDTS_DIV32_N5",
+                    description: Some(
+                        "fSAMPLING=fDTS/32, N=5",
+                    ),
+                    value: 13,
+                },
+                EnumVariant {
+                    name: "FDTS_DIV32_N6",
+                    description: Some(
+                        "fSAMPLING=fDTS/32, N=6",
+                    ),
+                    value: 14,
+                },
+                EnumVariant {
+                    name: "FDTS_DIV32_N8",
+                    description: Some(
+                        "fSAMPLING=fDTS/32, N=8",
+                    ),
+                    value: 15,
                 },
                 EnumVariant {
                     name: "FDTS_DIV4_N6",
@@ -2591,46 +2626,11 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 9,
                 },
                 EnumVariant {
-                    name: "FDTS_DIV16_N5",
+                    name: "NOFILTER",
                     description: Some(
-                        "fSAMPLING=fDTS/16, N=5",
+                        "No filter, sampling is done at fDTS",
                     ),
-                    value: 10,
-                },
-                EnumVariant {
-                    name: "FDTS_DIV16_N6",
-                    description: Some(
-                        "fSAMPLING=fDTS/16, N=6",
-                    ),
-                    value: 11,
-                },
-                EnumVariant {
-                    name: "FDTS_DIV16_N8",
-                    description: Some(
-                        "fSAMPLING=fDTS/16, N=8",
-                    ),
-                    value: 12,
-                },
-                EnumVariant {
-                    name: "FDTS_DIV32_N5",
-                    description: Some(
-                        "fSAMPLING=fDTS/32, N=5",
-                    ),
-                    value: 13,
-                },
-                EnumVariant {
-                    name: "FDTS_DIV32_N6",
-                    description: Some(
-                        "fSAMPLING=fDTS/32, N=6",
-                    ),
-                    value: 14,
-                },
-                EnumVariant {
-                    name: "FDTS_DIV32_N8",
-                    description: Some(
-                        "fSAMPLING=fDTS/32, N=8",
-                    ),
-                    value: 15,
+                    value: 0,
                 },
             ],
         },
@@ -2641,34 +2641,6 @@ pub(crate) static REGISTERS: IR = IR {
             ),
             bit_size: 3,
             variants: &[
-                EnumVariant {
-                    name: "RESET",
-                    description: Some(
-                        "Reset",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
-                    name: "ENABLE",
-                    description: Some(
-                        "Enable",
-                    ),
-                    value: 1,
-                },
-                EnumVariant {
-                    name: "UPDATE",
-                    description: Some(
-                        "Update",
-                    ),
-                    value: 2,
-                },
-                EnumVariant {
-                    name: "COMPARE_PULSE",
-                    description: Some(
-                        "Compare Pulse",
-                    ),
-                    value: 3,
-                },
                 EnumVariant {
                     name: "COMPARE_OC1REF",
                     description: Some(
@@ -2697,6 +2669,34 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     value: 7,
                 },
+                EnumVariant {
+                    name: "COMPARE_PULSE",
+                    description: Some(
+                        "Compare Pulse",
+                    ),
+                    value: 3,
+                },
+                EnumVariant {
+                    name: "ENABLE",
+                    description: Some(
+                        "Enable",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "RESET",
+                    description: Some(
+                        "Reset",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "UPDATE",
+                    description: Some(
+                        "Update",
+                    ),
+                    value: 2,
+                },
             ],
         },
         Enum {
@@ -2705,13 +2705,6 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 3,
             variants: &[
                 EnumVariant {
-                    name: "FROZEN",
-                    description: Some(
-                        "The comparison between the output compare register TIMx_CCRy and the counter TIMx_CNT has no effect on the outputs",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "ACTIVEONMATCH",
                     description: Some(
                         "Set channel to active level on match. OCyREF signal is forced high when the counter matches the capture/compare register",
@@ -2719,18 +2712,11 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 1,
                 },
                 EnumVariant {
-                    name: "INACTIVEONMATCH",
+                    name: "FORCEACTIVE",
                     description: Some(
-                        "Set channel to inactive level on match. OCyREF signal is forced low when the counter matches the capture/compare register",
+                        "OCyREF is forced high",
                     ),
-                    value: 2,
-                },
-                EnumVariant {
-                    name: "TOGGLE",
-                    description: Some(
-                        "OCyREF toggles when TIMx_CNT=TIMx_CCRy",
-                    ),
-                    value: 3,
+                    value: 5,
                 },
                 EnumVariant {
                     name: "FORCEINACTIVE",
@@ -2740,11 +2726,18 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 4,
                 },
                 EnumVariant {
-                    name: "FORCEACTIVE",
+                    name: "FROZEN",
                     description: Some(
-                        "OCyREF is forced high",
+                        "The comparison between the output compare register TIMx_CCRy and the counter TIMx_CNT has no effect on the outputs",
                     ),
-                    value: 5,
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "INACTIVEONMATCH",
+                    description: Some(
+                        "Set channel to inactive level on match. OCyREF signal is forced low when the counter matches the capture/compare register",
+                    ),
+                    value: 2,
                 },
                 EnumVariant {
                     name: "PWMMODE1",
@@ -2759,6 +2752,13 @@ pub(crate) static REGISTERS: IR = IR {
                         "Inversely to PwmMode1",
                     ),
                     value: 7,
+                },
+                EnumVariant {
+                    name: "TOGGLE",
+                    description: Some(
+                        "OCyREF toggles when TIMx_CNT=TIMx_CCRy",
+                    ),
+                    value: 3,
                 },
             ],
         },

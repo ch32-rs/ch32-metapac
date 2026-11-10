@@ -22,12 +22,12 @@ impl Opa {
     #[doc = "OPA control register."]
     #[inline(always)]
     pub const fn ctlr(self) -> crate::common::Reg<regs::Ctlr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "OPA control register 2 (Configuration Extended Control Register 2 / EXTEN_CTR2). Per-OPA high-speed mode enable."]
     #[inline(always)]
     pub const fn ctr2(self) -> crate::common::Reg<regs::Ctr2, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
 }
 pub mod regs {
@@ -37,6 +37,7 @@ pub mod regs {
     pub struct Ctlr(pub u32);
     impl Ctlr {
         #[doc = "OPA1 enable. 0=disable, 1=enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn en1(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -44,10 +45,11 @@ pub mod regs {
         }
         #[doc = "OPA1 enable. 0=disable, 1=enable."]
         #[inline(always)]
-        pub fn set_en1(&mut self, val: bool) {
+        pub const fn set_en1(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "OPA1 output channel selection. 0=OPA1_OUT0, 1=OPA1_OUT1."]
+        #[must_use]
         #[inline(always)]
         pub const fn mode1(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -55,10 +57,11 @@ pub mod regs {
         }
         #[doc = "OPA1 output channel selection. 0=OPA1_OUT0, 1=OPA1_OUT1."]
         #[inline(always)]
-        pub fn set_mode1(&mut self, val: bool) {
+        pub const fn set_mode1(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
         #[doc = "OPA1 negative input selection. 0=CHN0, 1=CHN1."]
+        #[must_use]
         #[inline(always)]
         pub const fn nsel1(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -66,10 +69,11 @@ pub mod regs {
         }
         #[doc = "OPA1 negative input selection. 0=CHN0, 1=CHN1."]
         #[inline(always)]
-        pub fn set_nsel1(&mut self, val: bool) {
+        pub const fn set_nsel1(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
         #[doc = "OPA1 positive input selection. 0=CHP0, 1=CHP1."]
+        #[must_use]
         #[inline(always)]
         pub const fn psel1(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -77,10 +81,11 @@ pub mod regs {
         }
         #[doc = "OPA1 positive input selection. 0=CHP0, 1=CHP1."]
         #[inline(always)]
-        pub fn set_psel1(&mut self, val: bool) {
+        pub const fn set_psel1(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
         }
         #[doc = "OPA2 enable. 0=disable, 1=enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn en2(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -88,10 +93,11 @@ pub mod regs {
         }
         #[doc = "OPA2 enable. 0=disable, 1=enable."]
         #[inline(always)]
-        pub fn set_en2(&mut self, val: bool) {
+        pub const fn set_en2(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
         #[doc = "OPA2 output channel selection. 0=OPA2_OUT0, 1=OPA2_OUT1."]
+        #[must_use]
         #[inline(always)]
         pub const fn mode2(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -99,10 +105,11 @@ pub mod regs {
         }
         #[doc = "OPA2 output channel selection. 0=OPA2_OUT0, 1=OPA2_OUT1."]
         #[inline(always)]
-        pub fn set_mode2(&mut self, val: bool) {
+        pub const fn set_mode2(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
         #[doc = "OPA2 negative input selection. 0=CHN0, 1=CHN1."]
+        #[must_use]
         #[inline(always)]
         pub const fn nsel2(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
@@ -110,10 +117,11 @@ pub mod regs {
         }
         #[doc = "OPA2 negative input selection. 0=CHN0, 1=CHN1."]
         #[inline(always)]
-        pub fn set_nsel2(&mut self, val: bool) {
+        pub const fn set_nsel2(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
         }
         #[doc = "OPA2 positive input selection. 0=CHP0, 1=CHP1."]
+        #[must_use]
         #[inline(always)]
         pub const fn psel2(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -121,10 +129,11 @@ pub mod regs {
         }
         #[doc = "OPA2 positive input selection. 0=CHP0, 1=CHP1."]
         #[inline(always)]
-        pub fn set_psel2(&mut self, val: bool) {
+        pub const fn set_psel2(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
         #[doc = "OPA3 enable. Only present on D8/D8C variants. 0=disable, 1=enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn en3(&self) -> bool {
             let val = (self.0 >> 8usize) & 0x01;
@@ -132,10 +141,11 @@ pub mod regs {
         }
         #[doc = "OPA3 enable. Only present on D8/D8C variants. 0=disable, 1=enable."]
         #[inline(always)]
-        pub fn set_en3(&mut self, val: bool) {
+        pub const fn set_en3(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
         }
         #[doc = "OPA3 output channel selection. Only present on D8/D8C variants. 0=OPA3_OUT0, 1=OPA3_OUT1."]
+        #[must_use]
         #[inline(always)]
         pub const fn mode3(&self) -> bool {
             let val = (self.0 >> 9usize) & 0x01;
@@ -143,10 +153,11 @@ pub mod regs {
         }
         #[doc = "OPA3 output channel selection. Only present on D8/D8C variants. 0=OPA3_OUT0, 1=OPA3_OUT1."]
         #[inline(always)]
-        pub fn set_mode3(&mut self, val: bool) {
+        pub const fn set_mode3(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
         }
         #[doc = "OPA3 negative input selection. Only present on D8/D8C variants. 0=CHN0, 1=CHN1."]
+        #[must_use]
         #[inline(always)]
         pub const fn nsel3(&self) -> bool {
             let val = (self.0 >> 10usize) & 0x01;
@@ -154,10 +165,11 @@ pub mod regs {
         }
         #[doc = "OPA3 negative input selection. Only present on D8/D8C variants. 0=CHN0, 1=CHN1."]
         #[inline(always)]
-        pub fn set_nsel3(&mut self, val: bool) {
+        pub const fn set_nsel3(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
         }
         #[doc = "OPA3 positive input selection. Only present on D8/D8C variants. 0=CHP0, 1=CHP1."]
+        #[must_use]
         #[inline(always)]
         pub const fn psel3(&self) -> bool {
             let val = (self.0 >> 11usize) & 0x01;
@@ -165,10 +177,11 @@ pub mod regs {
         }
         #[doc = "OPA3 positive input selection. Only present on D8/D8C variants. 0=CHP0, 1=CHP1."]
         #[inline(always)]
-        pub fn set_psel3(&mut self, val: bool) {
+        pub const fn set_psel3(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
         }
         #[doc = "OPA4 enable. Only present on D8/D8C variants. 0=disable, 1=enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn en4(&self) -> bool {
             let val = (self.0 >> 12usize) & 0x01;
@@ -176,10 +189,11 @@ pub mod regs {
         }
         #[doc = "OPA4 enable. Only present on D8/D8C variants. 0=disable, 1=enable."]
         #[inline(always)]
-        pub fn set_en4(&mut self, val: bool) {
+        pub const fn set_en4(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
         }
         #[doc = "OPA4 output channel selection. Only present on D8/D8C variants. 0=OPA4_OUT0, 1=OPA4_OUT1."]
+        #[must_use]
         #[inline(always)]
         pub const fn mode4(&self) -> bool {
             let val = (self.0 >> 13usize) & 0x01;
@@ -187,10 +201,11 @@ pub mod regs {
         }
         #[doc = "OPA4 output channel selection. Only present on D8/D8C variants. 0=OPA4_OUT0, 1=OPA4_OUT1."]
         #[inline(always)]
-        pub fn set_mode4(&mut self, val: bool) {
+        pub const fn set_mode4(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
         }
         #[doc = "OPA4 negative input selection. Only present on D8/D8C variants. 0=CHN0, 1=CHN1."]
+        #[must_use]
         #[inline(always)]
         pub const fn nsel4(&self) -> bool {
             let val = (self.0 >> 14usize) & 0x01;
@@ -198,10 +213,11 @@ pub mod regs {
         }
         #[doc = "OPA4 negative input selection. Only present on D8/D8C variants. 0=CHN0, 1=CHN1."]
         #[inline(always)]
-        pub fn set_nsel4(&mut self, val: bool) {
+        pub const fn set_nsel4(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
         }
         #[doc = "OPA4 positive input selection. Only present on D8/D8C variants. 0=CHP0, 1=CHP1."]
+        #[must_use]
         #[inline(always)]
         pub const fn psel4(&self) -> bool {
             let val = (self.0 >> 15usize) & 0x01;
@@ -209,7 +225,7 @@ pub mod regs {
         }
         #[doc = "OPA4 positive input selection. Only present on D8/D8C variants. 0=CHP0, 1=CHP1."]
         #[inline(always)]
-        pub fn set_psel4(&mut self, val: bool) {
+        pub const fn set_psel4(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
         }
     }
@@ -219,12 +235,35 @@ pub mod regs {
             Ctlr(0)
         }
     }
+    impl core::fmt::Debug for Ctlr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ctlr")
+                .field("en1", &self.en1())
+                .field("mode1", &self.mode1())
+                .field("nsel1", &self.nsel1())
+                .field("psel1", &self.psel1())
+                .field("en2", &self.en2())
+                .field("mode2", &self.mode2())
+                .field("nsel2", &self.nsel2())
+                .field("psel2", &self.psel2())
+                .field("en3", &self.en3())
+                .field("mode3", &self.mode3())
+                .field("nsel3", &self.nsel3())
+                .field("psel3", &self.psel3())
+                .field("en4", &self.en4())
+                .field("mode4", &self.mode4())
+                .field("nsel4", &self.nsel4())
+                .field("psel4", &self.psel4())
+                .finish()
+        }
+    }
     #[doc = "OPA control register 2 (Configuration Extended Control Register 2 / EXTEN_CTR2). Each OPA has a 1-bit high-speed mode enable."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ctr2(pub u32);
     impl Ctr2 {
         #[doc = "OPA1 high-speed mode enable. 0=disable (low-power mode), 1=enable (high-speed mode, higher bandwidth/slew rate)."]
+        #[must_use]
         #[inline(always)]
         pub const fn hsmd1(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -232,10 +271,11 @@ pub mod regs {
         }
         #[doc = "OPA1 high-speed mode enable. 0=disable (low-power mode), 1=enable (high-speed mode, higher bandwidth/slew rate)."]
         #[inline(always)]
-        pub fn set_hsmd1(&mut self, val: bool) {
+        pub const fn set_hsmd1(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "OPA2 high-speed mode enable. 0=disable (low-power mode), 1=enable (high-speed mode, higher bandwidth/slew rate)."]
+        #[must_use]
         #[inline(always)]
         pub const fn hsmd2(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -243,10 +283,11 @@ pub mod regs {
         }
         #[doc = "OPA2 high-speed mode enable. 0=disable (low-power mode), 1=enable (high-speed mode, higher bandwidth/slew rate)."]
         #[inline(always)]
-        pub fn set_hsmd2(&mut self, val: bool) {
+        pub const fn set_hsmd2(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
         #[doc = "OPA3 high-speed mode enable. Only present on D8/D8C variants. 0=disable (low-power mode), 1=enable (high-speed mode, higher bandwidth/slew rate)."]
+        #[must_use]
         #[inline(always)]
         pub const fn hsmd3(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -254,10 +295,11 @@ pub mod regs {
         }
         #[doc = "OPA3 high-speed mode enable. Only present on D8/D8C variants. 0=disable (low-power mode), 1=enable (high-speed mode, higher bandwidth/slew rate)."]
         #[inline(always)]
-        pub fn set_hsmd3(&mut self, val: bool) {
+        pub const fn set_hsmd3(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
         #[doc = "OPA4 high-speed mode enable. Only present on D8/D8C variants. 0=disable (low-power mode), 1=enable (high-speed mode, higher bandwidth/slew rate)."]
+        #[must_use]
         #[inline(always)]
         pub const fn hsmd4(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
@@ -265,7 +307,7 @@ pub mod regs {
         }
         #[doc = "OPA4 high-speed mode enable. Only present on D8/D8C variants. 0=disable (low-power mode), 1=enable (high-speed mode, higher bandwidth/slew rate)."]
         #[inline(always)]
-        pub fn set_hsmd4(&mut self, val: bool) {
+        pub const fn set_hsmd4(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
         }
     }
@@ -273,6 +315,16 @@ pub mod regs {
         #[inline(always)]
         fn default() -> Ctr2 {
             Ctr2(0)
+        }
+    }
+    impl core::fmt::Debug for Ctr2 {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ctr2")
+                .field("hsmd1", &self.hsmd1())
+                .field("hsmd2", &self.hsmd2())
+                .field("hsmd3", &self.hsmd3())
+                .field("hsmd4", &self.hsmd4())
+                .finish()
         }
     }
 }

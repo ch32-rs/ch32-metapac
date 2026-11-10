@@ -577,14 +577,14 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "RAW",
-                    description: Some("Raw data capture mode."),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "JPEG",
                     description: Some("JPEG data capture mode."),
                     value: 1,
+                },
+                EnumVariant {
+                    name: "RAW",
+                    description: Some("Raw data capture mode."),
+                    value: 0,
                 },
             ],
         },
@@ -616,11 +616,6 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
-                    name: "_8BIT",
-                    description: Some("8-bit data mode."),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "_10BIT",
                     description: Some("10-bit data mode."),
                     value: 1,
@@ -629,6 +624,11 @@ pub(crate) static REGISTERS: IR = IR {
                     name: "_12BIT",
                     description: Some("12-bit data mode."),
                     value: 2,
+                },
+                EnumVariant {
+                    name: "_8BIT",
+                    description: Some("8-bit data mode."),
+                    value: 0,
                 },
             ],
         },
@@ -655,14 +655,14 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "RISING_EDGE",
-                    description: Some("PCLK rising edge."),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "FALLING_EDGE",
                     description: Some("PCLK falling edge."),
                     value: 1,
+                },
+                EnumVariant {
+                    name: "RISING_EDGE",
+                    description: Some("PCLK rising edge."),
+                    value: 0,
                 },
             ],
         },
@@ -672,14 +672,14 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "ACTIVE_LOW",
-                    description: Some("VSYNC active low."),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "ACTIVE_HIGH",
                     description: Some("VSYNC active high."),
                     value: 1,
+                },
+                EnumVariant {
+                    name: "ACTIVE_LOW",
+                    description: Some("VSYNC active low."),
+                    value: 0,
                 },
             ],
         },

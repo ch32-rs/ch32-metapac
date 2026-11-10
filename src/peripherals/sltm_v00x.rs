@@ -22,28 +22,28 @@ impl Sltm {
     #[doc = "control register."]
     #[inline(always)]
     pub const fn ctlr(self) -> crate::common::Reg<regs::Ctlr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "DMA/compare preload enable register."]
     #[inline(always)]
     pub const fn dmaintenr(self) -> crate::common::Reg<regs::Dmaintenr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "counter."]
     #[inline(always)]
     pub const fn cnt(self) -> crate::common::Reg<u16, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
     #[doc = "auto-reload register."]
     #[inline(always)]
     pub const fn atrlr(self) -> crate::common::Reg<u16, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
     }
     #[doc = "compare register 1."]
     #[inline(always)]
     pub const fn chcvr(self, n: usize) -> crate::common::Reg<u16, crate::common::RW> {
         assert!(n < 4usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize + n * 4usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize + n * 4usize) as _) }
     }
 }
 pub mod regs {
@@ -53,6 +53,7 @@ pub mod regs {
     pub struct Ctlr(pub u32);
     impl Ctlr {
         #[doc = "Counter enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn cen(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -60,10 +61,11 @@ pub mod regs {
         }
         #[doc = "Counter enable."]
         #[inline(always)]
-        pub fn set_cen(&mut self, val: bool) {
+        pub const fn set_cen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "Update disable."]
+        #[must_use]
         #[inline(always)]
         pub const fn udis(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -71,10 +73,11 @@ pub mod regs {
         }
         #[doc = "Update disable."]
         #[inline(always)]
-        pub fn set_udis(&mut self, val: bool) {
+        pub const fn set_udis(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
         #[doc = "Direction."]
+        #[must_use]
         #[inline(always)]
         pub const fn dir(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -82,10 +85,11 @@ pub mod regs {
         }
         #[doc = "Direction."]
         #[inline(always)]
-        pub fn set_dir(&mut self, val: bool) {
+        pub const fn set_dir(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
         #[doc = "Center-aligned mode selection."]
+        #[must_use]
         #[inline(always)]
         pub const fn cms(&self) -> u8 {
             let val = (self.0 >> 5usize) & 0x03;
@@ -93,10 +97,11 @@ pub mod regs {
         }
         #[doc = "Center-aligned mode selection."]
         #[inline(always)]
-        pub fn set_cms(&mut self, val: u8) {
+        pub const fn set_cms(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 5usize)) | (((val as u32) & 0x03) << 5usize);
         }
         #[doc = "Auto-reload preload enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn arpe(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -104,10 +109,11 @@ pub mod regs {
         }
         #[doc = "Auto-reload preload enable."]
         #[inline(always)]
-        pub fn set_arpe(&mut self, val: bool) {
+        pub const fn set_arpe(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
         #[doc = "Slave mode selection."]
+        #[must_use]
         #[inline(always)]
         pub const fn sms(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x07;
@@ -115,7 +121,7 @@ pub mod regs {
         }
         #[doc = "Slave mode selection."]
         #[inline(always)]
-        pub fn set_sms(&mut self, val: u8) {
+        pub const fn set_sms(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 8usize)) | (((val as u32) & 0x07) << 8usize);
         }
     }
@@ -125,12 +131,25 @@ pub mod regs {
             Ctlr(0)
         }
     }
+    impl core::fmt::Debug for Ctlr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ctlr")
+                .field("cen", &self.cen())
+                .field("udis", &self.udis())
+                .field("dir", &self.dir())
+                .field("cms", &self.cms())
+                .field("arpe", &self.arpe())
+                .field("sms", &self.sms())
+                .finish()
+        }
+    }
     #[doc = "DMA/compare preload enable register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Dmaintenr(pub u32);
     impl Dmaintenr {
         #[doc = "Output compare x preload enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn ocpe(&self, n: usize) -> bool {
             assert!(n < 4usize);
@@ -140,12 +159,13 @@ pub mod regs {
         }
         #[doc = "Output compare x preload enable."]
         #[inline(always)]
-        pub fn set_ocpe(&mut self, n: usize, val: bool) {
+        pub const fn set_ocpe(&mut self, n: usize, val: bool) {
             assert!(n < 4usize);
             let offs = 0usize + n * 1usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u32) & 0x01) << offs);
         }
         #[doc = "Capture/compare 3 DMA request enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn cc3de(&self) -> bool {
             let val = (self.0 >> 11usize) & 0x01;
@@ -153,10 +173,11 @@ pub mod regs {
         }
         #[doc = "Capture/compare 3 DMA request enable."]
         #[inline(always)]
-        pub fn set_cc3de(&mut self, val: bool) {
+        pub const fn set_cc3de(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
         }
         #[doc = "Capture/compare 4 DMA request enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn cc4de(&self) -> bool {
             let val = (self.0 >> 12usize) & 0x01;
@@ -164,7 +185,7 @@ pub mod regs {
         }
         #[doc = "Capture/compare 4 DMA request enable."]
         #[inline(always)]
-        pub fn set_cc4de(&mut self, val: bool) {
+        pub const fn set_cc4de(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
         }
     }
@@ -172,6 +193,18 @@ pub mod regs {
         #[inline(always)]
         fn default() -> Dmaintenr {
             Dmaintenr(0)
+        }
+    }
+    impl core::fmt::Debug for Dmaintenr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Dmaintenr")
+                .field("ocpe[0]", &self.ocpe(0usize))
+                .field("ocpe[1]", &self.ocpe(1usize))
+                .field("ocpe[2]", &self.ocpe(2usize))
+                .field("ocpe[3]", &self.ocpe(3usize))
+                .field("cc3de", &self.cc3de())
+                .field("cc4de", &self.cc4de())
+                .finish()
         }
     }
 }

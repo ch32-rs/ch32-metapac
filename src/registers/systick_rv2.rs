@@ -143,14 +143,14 @@ pub(crate) static REGISTERS: IR = IR {
         bit_size: 1,
         variants: &[
             EnumVariant {
-                name: "HCLK_DIV8",
-                description: Some("HCLK/8."),
-                value: 0,
-            },
-            EnumVariant {
                 name: "HCLK",
                 description: Some("HCLK."),
                 value: 1,
+            },
+            EnumVariant {
+                name: "HCLK_DIV8",
+                description: Some("HCLK/8."),
+                value: 0,
             },
         ],
     }],

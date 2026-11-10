@@ -766,9 +766,14 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 3,
             variants: &[
                 EnumVariant {
-                    name: "TIM1_TRGO",
-                    description: Some("Timer 1 TRGO event."),
-                    value: 0,
+                    name: "PD3_PC2",
+                    description: Some("PD3/PC2 pin."),
+                    value: 6,
+                },
+                EnumVariant {
+                    name: "SWSTART",
+                    description: Some("Software start."),
+                    value: 7,
                 },
                 EnumVariant {
                     name: "TIM1_CC1",
@@ -781,9 +786,9 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 2,
                 },
                 EnumVariant {
-                    name: "TIM2_TRGO",
-                    description: Some("Timer 2 TRGO event."),
-                    value: 3,
+                    name: "TIM1_TRGO",
+                    description: Some("Timer 1 TRGO event."),
+                    value: 0,
                 },
                 EnumVariant {
                     name: "TIM2_CC1",
@@ -796,14 +801,9 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 5,
                 },
                 EnumVariant {
-                    name: "PD3_PC2",
-                    description: Some("PD3/PC2 pin."),
-                    value: 6,
-                },
-                EnumVariant {
-                    name: "SWSTART",
-                    description: Some("Software start."),
-                    value: 7,
+                    name: "TIM2_TRGO",
+                    description: Some("Timer 2 TRGO event."),
+                    value: 3,
                 },
             ],
         },
@@ -812,6 +812,16 @@ pub(crate) static REGISTERS: IR = IR {
             description: Some("External event select for injected group."),
             bit_size: 3,
             variants: &[
+                EnumVariant {
+                    name: "JSWSTART",
+                    description: Some("Software start."),
+                    value: 7,
+                },
+                EnumVariant {
+                    name: "PD1_PA2",
+                    description: Some("PD1/PA2 pin."),
+                    value: 6,
+                },
                 EnumVariant {
                     name: "TIM1_CC3",
                     description: Some("Timer 1 capture compare 3."),
@@ -832,16 +842,6 @@ pub(crate) static REGISTERS: IR = IR {
                     description: Some("Timer 2 capture compare 4."),
                     value: 3,
                 },
-                EnumVariant {
-                    name: "PD1_PA2",
-                    description: Some("PD1/PA2 pin."),
-                    value: 6,
-                },
-                EnumVariant {
-                    name: "JSWSTART",
-                    description: Some("Software start."),
-                    value: 7,
-                },
             ],
         },
         Enum {
@@ -850,19 +850,19 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 3,
             variants: &[
                 EnumVariant {
-                    name: "CYCLES3",
-                    description: Some("3 cycles"),
-                    value: 0,
-                },
-                EnumVariant {
-                    name: "CYCLES9",
-                    description: Some("9 cycles"),
-                    value: 1,
-                },
-                EnumVariant {
                     name: "CYCLES15",
                     description: Some("15 cycles"),
                     value: 2,
+                },
+                EnumVariant {
+                    name: "CYCLES241",
+                    description: Some("241 cycles"),
+                    value: 7,
+                },
+                EnumVariant {
+                    name: "CYCLES3",
+                    description: Some("3 cycles"),
+                    value: 0,
                 },
                 EnumVariant {
                     name: "CYCLES30",
@@ -885,9 +885,9 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 6,
                 },
                 EnumVariant {
-                    name: "CYCLES241",
-                    description: Some("241 cycles"),
-                    value: 7,
+                    name: "CYCLES9",
+                    description: Some("9 cycles"),
+                    value: 1,
                 },
             ],
         },

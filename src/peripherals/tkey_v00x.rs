@@ -22,17 +22,17 @@ impl Tkey {
     #[doc = "charge time configuration register."]
     #[inline(always)]
     pub const fn tkey_chg(self) -> crate::common::Reg<regs::TkeyChg, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x3cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x3cusize) as _) }
     }
     #[doc = "start and discharge time register."]
     #[inline(always)]
     pub const fn tkey_dischg(self) -> crate::common::Reg<regs::TkeyDischg, crate::common::W> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x4cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x4cusize) as _) }
     }
     #[doc = "data register."]
     #[inline(always)]
     pub const fn tkey_dr(self) -> crate::common::Reg<regs::TkeyDr, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x4cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x4cusize) as _) }
     }
 }
 pub mod regs {
@@ -42,6 +42,7 @@ pub mod regs {
     pub struct TkeyChg(pub u32);
     impl TkeyChg {
         #[doc = "Touch key charge time."]
+        #[must_use]
         #[inline(always)]
         pub const fn tkcharge(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0x07ff;
@@ -49,7 +50,7 @@ pub mod regs {
         }
         #[doc = "Touch key charge time."]
         #[inline(always)]
-        pub fn set_tkcharge(&mut self, val: u16) {
+        pub const fn set_tkcharge(&mut self, val: u16) {
             self.0 = (self.0 & !(0x07ff << 0usize)) | (((val as u32) & 0x07ff) << 0usize);
         }
     }
@@ -59,12 +60,20 @@ pub mod regs {
             TkeyChg(0)
         }
     }
+    impl core::fmt::Debug for TkeyChg {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("TkeyChg")
+                .field("tkcharge", &self.tkcharge())
+                .finish()
+        }
+    }
     #[doc = "start and discharge time register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct TkeyDischg(pub u32);
     impl TkeyDischg {
         #[doc = "Touch key start and discharge time."]
+        #[must_use]
         #[inline(always)]
         pub const fn tkact_dcg(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0x07ff;
@@ -72,7 +81,7 @@ pub mod regs {
         }
         #[doc = "Touch key start and discharge time."]
         #[inline(always)]
-        pub fn set_tkact_dcg(&mut self, val: u16) {
+        pub const fn set_tkact_dcg(&mut self, val: u16) {
             self.0 = (self.0 & !(0x07ff << 0usize)) | (((val as u32) & 0x07ff) << 0usize);
         }
     }
@@ -82,12 +91,20 @@ pub mod regs {
             TkeyDischg(0)
         }
     }
+    impl core::fmt::Debug for TkeyDischg {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("TkeyDischg")
+                .field("tkact_dcg", &self.tkact_dcg())
+                .finish()
+        }
+    }
     #[doc = "data register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct TkeyDr(pub u32);
     impl TkeyDr {
         #[doc = "Converted data."]
+        #[must_use]
         #[inline(always)]
         pub const fn data(&self) -> u16 {
             let val = (self.0 >> 0usize) & 0xffff;
@@ -95,7 +112,7 @@ pub mod regs {
         }
         #[doc = "Converted data."]
         #[inline(always)]
-        pub fn set_data(&mut self, val: u16) {
+        pub const fn set_data(&mut self, val: u16) {
             self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
         }
     }
@@ -103,6 +120,13 @@ pub mod regs {
         #[inline(always)]
         fn default() -> TkeyDr {
             TkeyDr(0)
+        }
+    }
+    impl core::fmt::Debug for TkeyDr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("TkeyDr")
+                .field("data", &self.data())
+                .finish()
         }
     }
 }

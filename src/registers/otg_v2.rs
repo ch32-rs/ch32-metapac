@@ -2517,18 +2517,18 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "SINGLE",
-                    description: Some(
-                        "Single Buffer Mode",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "DOUBLE",
                     description: Some(
                         "Double Buffer Mode",
                     ),
                     value: 1,
+                },
+                EnumVariant {
+                    name: "SINGLE",
+                    description: Some(
+                        "Single Buffer Mode",
+                    ),
+                    value: 0,
                 },
             ],
         },
@@ -2545,18 +2545,18 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 0,
                 },
                 EnumVariant {
-                    name: "NONE",
-                    description: Some(
-                        "Timeout / No Response, used for non-EP0 iso/sync transfer",
-                    ),
-                    value: 1,
-                },
-                EnumVariant {
                     name: "NAK",
                     description: Some(
                         "Respond with NAK or Busy",
                     ),
                     value: 2,
+                },
+                EnumVariant {
+                    name: "NONE",
+                    description: Some(
+                        "Timeout / No Response, used for non-EP0 iso/sync transfer",
+                    ),
+                    value: 1,
                 },
                 EnumVariant {
                     name: "STALL",
@@ -2580,18 +2580,18 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 0,
                 },
                 EnumVariant {
-                    name: "NONE",
-                    description: Some(
-                        "Respond with DATA0/DATA1 and not expect ACK",
-                    ),
-                    value: 1,
-                },
-                EnumVariant {
                     name: "NAK",
                     description: Some(
                         "Respond with NAK or Busy",
                     ),
                     value: 2,
+                },
+                EnumVariant {
+                    name: "NONE",
+                    description: Some(
+                        "Respond with DATA0/DATA1 and not expect ACK",
+                    ),
+                    value: 1,
                 },
                 EnumVariant {
                     name: "STALL",
@@ -2608,6 +2608,13 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
+                    name: "IN",
+                    description: Some(
+                        "IN Packet",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
                     name: "OUT",
                     description: Some(
                         "OUT Packet",
@@ -2620,13 +2627,6 @@ pub(crate) static REGISTERS: IR = IR {
                         "Reserved",
                     ),
                     value: 1,
-                },
-                EnumVariant {
-                    name: "IN",
-                    description: Some(
-                        "IN Packet",
-                    ),
-                    value: 2,
                 },
                 EnumVariant {
                     name: "SETUP",

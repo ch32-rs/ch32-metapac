@@ -22,27 +22,27 @@ impl Pwr {
     #[doc = "power control register."]
     #[inline(always)]
     pub const fn ctlr(self) -> crate::common::Reg<regs::Ctlr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "power control/status register."]
     #[inline(always)]
     pub const fn csr(self) -> crate::common::Reg<regs::Csr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "auto-wakeup control/status register."]
     #[inline(always)]
     pub const fn awucsr(self) -> crate::common::Reg<regs::Awucsr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
     #[doc = "auto-wakeup window comparison value register."]
     #[inline(always)]
     pub const fn awuwr(self) -> crate::common::Reg<regs::Awuwr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0cusize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
     }
     #[doc = "auto-wakeup prescaler register."]
     #[inline(always)]
     pub const fn awupsc(self) -> crate::common::Reg<regs::Awupsc, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x10usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize) as _) }
     }
 }
 pub mod regs {
@@ -52,6 +52,7 @@ pub mod regs {
     pub struct Awucsr(pub u32);
     impl Awucsr {
         #[doc = "Auto-wakeup enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn awuen(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -59,7 +60,7 @@ pub mod regs {
         }
         #[doc = "Auto-wakeup enable."]
         #[inline(always)]
-        pub fn set_awuen(&mut self, val: bool) {
+        pub const fn set_awuen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
     }
@@ -69,12 +70,20 @@ pub mod regs {
             Awucsr(0)
         }
     }
+    impl core::fmt::Debug for Awucsr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Awucsr")
+                .field("awuen", &self.awuen())
+                .finish()
+        }
+    }
     #[doc = "auto-wakeup prescaler register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Awupsc(pub u32);
     impl Awupsc {
         #[doc = "Auto-wakeup counter prescaler."]
+        #[must_use]
         #[inline(always)]
         pub const fn awupsc(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x0f;
@@ -82,7 +91,7 @@ pub mod regs {
         }
         #[doc = "Auto-wakeup counter prescaler."]
         #[inline(always)]
-        pub fn set_awupsc(&mut self, val: u8) {
+        pub const fn set_awupsc(&mut self, val: u8) {
             self.0 = (self.0 & !(0x0f << 0usize)) | (((val as u32) & 0x0f) << 0usize);
         }
     }
@@ -92,12 +101,20 @@ pub mod regs {
             Awupsc(0)
         }
     }
+    impl core::fmt::Debug for Awupsc {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Awupsc")
+                .field("awupsc", &self.awupsc())
+                .finish()
+        }
+    }
     #[doc = "auto-wakeup window comparison value register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Awuwr(pub u32);
     impl Awuwr {
         #[doc = "Auto-wakeup window value."]
+        #[must_use]
         #[inline(always)]
         pub const fn awuwr(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x3f;
@@ -105,7 +122,7 @@ pub mod regs {
         }
         #[doc = "Auto-wakeup window value."]
         #[inline(always)]
-        pub fn set_awuwr(&mut self, val: u8) {
+        pub const fn set_awuwr(&mut self, val: u8) {
             self.0 = (self.0 & !(0x3f << 0usize)) | (((val as u32) & 0x3f) << 0usize);
         }
     }
@@ -115,12 +132,20 @@ pub mod regs {
             Awuwr(0)
         }
     }
+    impl core::fmt::Debug for Awuwr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Awuwr")
+                .field("awuwr", &self.awuwr())
+                .finish()
+        }
+    }
     #[doc = "power control/status register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Csr(pub u32);
     impl Csr {
         #[doc = "PVD output flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn pvdo(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
@@ -128,7 +153,7 @@ pub mod regs {
         }
         #[doc = "PVD output flag."]
         #[inline(always)]
-        pub fn set_pvdo(&mut self, val: bool) {
+        pub const fn set_pvdo(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
         }
     }
@@ -138,12 +163,18 @@ pub mod regs {
             Csr(0)
         }
     }
+    impl core::fmt::Debug for Csr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Csr").field("pvdo", &self.pvdo()).finish()
+        }
+    }
     #[doc = "power control register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ctlr(pub u32);
     impl Ctlr {
         #[doc = "Power-down deep sleep selection."]
+        #[must_use]
         #[inline(always)]
         pub const fn pdds(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -151,10 +182,11 @@ pub mod regs {
         }
         #[doc = "Power-down deep sleep selection."]
         #[inline(always)]
-        pub fn set_pdds(&mut self, val: bool) {
+        pub const fn set_pdds(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
         #[doc = "Voltage regulator operating mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn ldo_mode(&self) -> u8 {
             let val = (self.0 >> 2usize) & 0x03;
@@ -162,10 +194,11 @@ pub mod regs {
         }
         #[doc = "Voltage regulator operating mode."]
         #[inline(always)]
-        pub fn set_ldo_mode(&mut self, val: u8) {
+        pub const fn set_ldo_mode(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 2usize)) | (((val as u32) & 0x03) << 2usize);
         }
         #[doc = "Power voltage detector enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn pvde(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
@@ -173,10 +206,11 @@ pub mod regs {
         }
         #[doc = "Power voltage detector enable."]
         #[inline(always)]
-        pub fn set_pvde(&mut self, val: bool) {
+        pub const fn set_pvde(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
         }
         #[doc = "PVD voltage threshold selection."]
+        #[must_use]
         #[inline(always)]
         pub const fn pls(&self) -> u8 {
             let val = (self.0 >> 5usize) & 0x03;
@@ -184,10 +218,11 @@ pub mod regs {
         }
         #[doc = "PVD voltage threshold selection."]
         #[inline(always)]
-        pub fn set_pls(&mut self, val: u8) {
+        pub const fn set_pls(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 5usize)) | (((val as u32) & 0x03) << 5usize);
         }
         #[doc = "Flash low-power mode enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn flash_lp_reg(&self) -> bool {
             let val = (self.0 >> 9usize) & 0x01;
@@ -195,10 +230,11 @@ pub mod regs {
         }
         #[doc = "Flash low-power mode enable."]
         #[inline(always)]
-        pub fn set_flash_lp_reg(&mut self, val: bool) {
+        pub const fn set_flash_lp_reg(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
         }
         #[doc = "Flash low-power configuration."]
+        #[must_use]
         #[inline(always)]
         pub const fn flash_lp(&self) -> u8 {
             let val = (self.0 >> 10usize) & 0x03;
@@ -206,7 +242,7 @@ pub mod regs {
         }
         #[doc = "Flash low-power configuration."]
         #[inline(always)]
-        pub fn set_flash_lp(&mut self, val: u8) {
+        pub const fn set_flash_lp(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 10usize)) | (((val as u32) & 0x03) << 10usize);
         }
     }
@@ -214,6 +250,18 @@ pub mod regs {
         #[inline(always)]
         fn default() -> Ctlr {
             Ctlr(0)
+        }
+    }
+    impl core::fmt::Debug for Ctlr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ctlr")
+                .field("pdds", &self.pdds())
+                .field("ldo_mode", &self.ldo_mode())
+                .field("pvde", &self.pvde())
+                .field("pls", &self.pls())
+                .field("flash_lp_reg", &self.flash_lp_reg())
+                .field("flash_lp", &self.flash_lp())
+                .finish()
         }
     }
 }

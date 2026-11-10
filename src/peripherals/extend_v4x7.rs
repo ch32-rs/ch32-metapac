@@ -22,12 +22,12 @@ impl Extend {
     #[doc = "Extension control register."]
     #[inline(always)]
     pub const fn ctr(self) -> crate::common::Reg<regs::Ctr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "OPA configuration register."]
     #[inline(always)]
     pub const fn opa(self) -> crate::common::Reg<regs::Opa, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
 }
 #[doc = "OPA configuration register block."]
@@ -49,7 +49,7 @@ impl Opa {
     #[doc = "OPA configuration register."]
     #[inline(always)]
     pub const fn ctlr(self) -> crate::common::Reg<regs::Opa, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
 }
 pub mod regs {
@@ -59,6 +59,7 @@ pub mod regs {
     pub struct Ctr(pub u32);
     impl Ctr {
         #[doc = "Lock-up monitoring enable. Resets the system when the core locks up."]
+        #[must_use]
         #[inline(always)]
         pub const fn lkupen(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
@@ -66,10 +67,11 @@ pub mod regs {
         }
         #[doc = "Lock-up monitoring enable. Resets the system when the core locks up."]
         #[inline(always)]
-        pub fn set_lkupen(&mut self, val: bool) {
+        pub const fn set_lkupen(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
         }
         #[doc = "Lock-up reset flag. Write 1 to clear."]
+        #[must_use]
         #[inline(always)]
         pub const fn lkuprst(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -77,10 +79,11 @@ pub mod regs {
         }
         #[doc = "Lock-up reset flag. Write 1 to clear."]
         #[inline(always)]
-        pub fn set_lkuprst(&mut self, val: bool) {
+        pub const fn set_lkuprst(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
         #[doc = "ULLDO voltage trim in low-power mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn ulldotrim(&self) -> u8 {
             let val = (self.0 >> 8usize) & 0x03;
@@ -88,10 +91,11 @@ pub mod regs {
         }
         #[doc = "ULLDO voltage trim in low-power mode."]
         #[inline(always)]
-        pub fn set_ulldotrim(&mut self, val: u8) {
+        pub const fn set_ulldotrim(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u32) & 0x03) << 8usize);
         }
         #[doc = "VDD18 regulation, 0 is 1.8 V and 1 is 1.9 V."]
+        #[must_use]
         #[inline(always)]
         pub const fn ldo18_adj(&self) -> bool {
             let val = (self.0 >> 12usize) & 0x01;
@@ -99,7 +103,7 @@ pub mod regs {
         }
         #[doc = "VDD18 regulation, 0 is 1.8 V and 1 is 1.9 V."]
         #[inline(always)]
-        pub fn set_ldo18_adj(&mut self, val: bool) {
+        pub const fn set_ldo18_adj(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
         }
     }
@@ -109,12 +113,23 @@ pub mod regs {
             Ctr(0)
         }
     }
+    impl core::fmt::Debug for Ctr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ctr")
+                .field("lkupen", &self.lkupen())
+                .field("lkuprst", &self.lkuprst())
+                .field("ulldotrim", &self.ulldotrim())
+                .field("ldo18_adj", &self.ldo18_adj())
+                .finish()
+        }
+    }
     #[doc = "OPA configuration register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Opa(pub u32);
     impl Opa {
         #[doc = "OPA1 enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn en1(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -122,10 +137,11 @@ pub mod regs {
         }
         #[doc = "OPA1 enable."]
         #[inline(always)]
-        pub fn set_en1(&mut self, val: bool) {
+        pub const fn set_en1(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
         #[doc = "OPA1 mode selection."]
+        #[must_use]
         #[inline(always)]
         pub const fn mode1(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
@@ -133,10 +149,11 @@ pub mod regs {
         }
         #[doc = "OPA1 mode selection."]
         #[inline(always)]
-        pub fn set_mode1(&mut self, val: bool) {
+        pub const fn set_mode1(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
         }
         #[doc = "OPA1 negative input and PGA gain selection."]
+        #[must_use]
         #[inline(always)]
         pub const fn nsel1(&self) -> u8 {
             let val = (self.0 >> 2usize) & 0x07;
@@ -144,10 +161,11 @@ pub mod regs {
         }
         #[doc = "OPA1 negative input and PGA gain selection."]
         #[inline(always)]
-        pub fn set_nsel1(&mut self, val: u8) {
+        pub const fn set_nsel1(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 2usize)) | (((val as u32) & 0x07) << 2usize);
         }
         #[doc = "OPA1 positive input selection, 0 is PB12 and 1 is PA6."]
+        #[must_use]
         #[inline(always)]
         pub const fn psel1(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
@@ -155,10 +173,11 @@ pub mod regs {
         }
         #[doc = "OPA1 positive input selection, 0 is PB12 and 1 is PA6."]
         #[inline(always)]
-        pub fn set_psel1(&mut self, val: bool) {
+        pub const fn set_psel1(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
         }
         #[doc = "OPA1 differential PGA mode."]
+        #[must_use]
         #[inline(always)]
         pub const fn pgadif1(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
@@ -166,10 +185,11 @@ pub mod regs {
         }
         #[doc = "OPA1 differential PGA mode."]
         #[inline(always)]
-        pub fn set_pgadif1(&mut self, val: bool) {
+        pub const fn set_pgadif1(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
         }
         #[doc = "OPA1 PGA feedback enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn fb_en1(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -177,10 +197,11 @@ pub mod regs {
         }
         #[doc = "OPA1 PGA feedback enable."]
         #[inline(always)]
-        pub fn set_fb_en1(&mut self, val: bool) {
+        pub const fn set_fb_en1(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
         #[doc = "OPA1 high-speed mode enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn hs1(&self) -> bool {
             let val = (self.0 >> 8usize) & 0x01;
@@ -188,7 +209,7 @@ pub mod regs {
         }
         #[doc = "OPA1 high-speed mode enable."]
         #[inline(always)]
-        pub fn set_hs1(&mut self, val: bool) {
+        pub const fn set_hs1(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
         }
     }
@@ -196,6 +217,19 @@ pub mod regs {
         #[inline(always)]
         fn default() -> Opa {
             Opa(0)
+        }
+    }
+    impl core::fmt::Debug for Opa {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Opa")
+                .field("en1", &self.en1())
+                .field("mode1", &self.mode1())
+                .field("nsel1", &self.nsel1())
+                .field("psel1", &self.psel1())
+                .field("pgadif1", &self.pgadif1())
+                .field("fb_en1", &self.fb_en1())
+                .field("hs1", &self.hs1())
+                .finish()
         }
     }
 }

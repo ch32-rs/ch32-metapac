@@ -790,18 +790,18 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "USER_FLASH",
-                    description: Some(
-                        "Boot from user application flash.",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "SYSTEM_FLASH",
                     description: Some(
                         "Boot from the WCH ISP bootloader in system flash.",
                     ),
                     value: 1,
+                },
+                EnumVariant {
+                    name: "USER_FLASH",
+                    description: Some(
+                        "Boot from user application flash.",
+                    ),
+                    value: 0,
                 },
             ],
         },
@@ -836,18 +836,18 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "RESET",
-                    description: Some(
-                        "Reset the chip on entering the mode.",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "NO_RESET",
                     description: Some(
                         "Keep running on entering the mode.",
                     ),
                     value: 1,
+                },
+                EnumVariant {
+                    name: "RESET",
+                    description: Some(
+                        "Reset the chip on entering the mode.",
+                    ),
+                    value: 0,
                 },
             ],
         },
@@ -859,18 +859,18 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 2,
             variants: &[
                 EnumVariant {
+                    name: "GPIO",
+                    description: Some(
+                        "Disable NRST and use PD7 as a general-purpose I/O.",
+                    ),
+                    value: 3,
+                },
+                EnumVariant {
                     name: "NRST_128US",
                     description: Some(
                         "Enable NRST with a 128us glitch-filter window at power-on.",
                     ),
                     value: 0,
-                },
-                EnumVariant {
-                    name: "NRST_1MS",
-                    description: Some(
-                        "Enable NRST with a 1ms glitch-filter window at power-on.",
-                    ),
-                    value: 1,
                 },
                 EnumVariant {
                     name: "NRST_12MS",
@@ -880,11 +880,11 @@ pub(crate) static REGISTERS: IR = IR {
                     value: 2,
                 },
                 EnumVariant {
-                    name: "GPIO",
+                    name: "NRST_1MS",
                     description: Some(
-                        "Disable NRST and use PD7 as a general-purpose I/O.",
+                        "Enable NRST with a 1ms glitch-filter window at power-on.",
                     ),
-                    value: 3,
+                    value: 1,
                 },
             ],
         },

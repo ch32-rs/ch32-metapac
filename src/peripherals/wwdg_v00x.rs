@@ -22,17 +22,17 @@ impl Wwdg {
     #[doc = "control register."]
     #[inline(always)]
     pub const fn ctlr(self) -> crate::common::Reg<regs::Ctlr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x0usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "configuration register."]
     #[inline(always)]
     pub const fn cfgr(self) -> crate::common::Reg<regs::Cfgr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x04usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "status register."]
     #[inline(always)]
     pub const fn statr(self) -> crate::common::Reg<regs::Statr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.add(0x08usize) as _) }
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
 }
 pub mod regs {
@@ -42,6 +42,7 @@ pub mod regs {
     pub struct Cfgr(pub u32);
     impl Cfgr {
         #[doc = "7-bit window value."]
+        #[must_use]
         #[inline(always)]
         pub const fn w(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x7f;
@@ -49,10 +50,11 @@ pub mod regs {
         }
         #[doc = "7-bit window value."]
         #[inline(always)]
-        pub fn set_w(&mut self, val: u8) {
+        pub const fn set_w(&mut self, val: u8) {
             self.0 = (self.0 & !(0x7f << 0usize)) | (((val as u32) & 0x7f) << 0usize);
         }
         #[doc = "Timer base."]
+        #[must_use]
         #[inline(always)]
         pub const fn wdgtb(&self) -> u8 {
             let val = (self.0 >> 7usize) & 0x03;
@@ -60,10 +62,11 @@ pub mod regs {
         }
         #[doc = "Timer base."]
         #[inline(always)]
-        pub fn set_wdgtb(&mut self, val: u8) {
+        pub const fn set_wdgtb(&mut self, val: u8) {
             self.0 = (self.0 & !(0x03 << 7usize)) | (((val as u32) & 0x03) << 7usize);
         }
         #[doc = "Early wakeup interrupt enable."]
+        #[must_use]
         #[inline(always)]
         pub const fn ewi(&self) -> bool {
             let val = (self.0 >> 9usize) & 0x01;
@@ -71,7 +74,7 @@ pub mod regs {
         }
         #[doc = "Early wakeup interrupt enable."]
         #[inline(always)]
-        pub fn set_ewi(&mut self, val: bool) {
+        pub const fn set_ewi(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
         }
     }
@@ -81,12 +84,22 @@ pub mod regs {
             Cfgr(0)
         }
     }
+    impl core::fmt::Debug for Cfgr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Cfgr")
+                .field("w", &self.w())
+                .field("wdgtb", &self.wdgtb())
+                .field("ewi", &self.ewi())
+                .finish()
+        }
+    }
     #[doc = "control register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Ctlr(pub u32);
     impl Ctlr {
         #[doc = "7-bit counter (MSB to LSB)."]
+        #[must_use]
         #[inline(always)]
         pub const fn t(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x7f;
@@ -94,10 +107,11 @@ pub mod regs {
         }
         #[doc = "7-bit counter (MSB to LSB)."]
         #[inline(always)]
-        pub fn set_t(&mut self, val: u8) {
+        pub const fn set_t(&mut self, val: u8) {
             self.0 = (self.0 & !(0x7f << 0usize)) | (((val as u32) & 0x7f) << 0usize);
         }
         #[doc = "Activation bit."]
+        #[must_use]
         #[inline(always)]
         pub const fn wdga(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
@@ -105,7 +119,7 @@ pub mod regs {
         }
         #[doc = "Activation bit."]
         #[inline(always)]
-        pub fn set_wdga(&mut self, val: bool) {
+        pub const fn set_wdga(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
         }
     }
@@ -115,12 +129,21 @@ pub mod regs {
             Ctlr(0)
         }
     }
+    impl core::fmt::Debug for Ctlr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Ctlr")
+                .field("t", &self.t())
+                .field("wdga", &self.wdga())
+                .finish()
+        }
+    }
     #[doc = "status register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct Statr(pub u32);
     impl Statr {
         #[doc = "Early wakeup interrupt flag."]
+        #[must_use]
         #[inline(always)]
         pub const fn ewif(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
@@ -128,7 +151,7 @@ pub mod regs {
         }
         #[doc = "Early wakeup interrupt flag."]
         #[inline(always)]
-        pub fn set_ewif(&mut self, val: bool) {
+        pub const fn set_ewif(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
         }
     }
@@ -136,6 +159,11 @@ pub mod regs {
         #[inline(always)]
         fn default() -> Statr {
             Statr(0)
+        }
+    }
+    impl core::fmt::Debug for Statr {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Statr").field("ewif", &self.ewif()).finish()
         }
     }
 }

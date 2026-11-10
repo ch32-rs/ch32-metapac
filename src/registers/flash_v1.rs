@@ -818,18 +818,18 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 1,
             variants: &[
                 EnumVariant {
-                    name: "RESET",
-                    description: Some(
-                        "Reset the chip on entering the mode.",
-                    ),
-                    value: 0,
-                },
-                EnumVariant {
                     name: "NO_RESET",
                     description: Some(
                         "Keep running on entering the mode.",
                     ),
                     value: 1,
+                },
+                EnumVariant {
+                    name: "RESET",
+                    description: Some(
+                        "Reset the chip on entering the mode.",
+                    ),
+                    value: 0,
                 },
             ],
         },
