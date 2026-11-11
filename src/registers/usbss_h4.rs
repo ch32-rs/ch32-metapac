@@ -2,6 +2,382 @@ use crate::metadata::ir::*;
 pub(crate) static REGISTERS: IR = IR {
     blocks: &[
         Block {
+            name: "EpRx",
+            extends: None,
+            description: Some(
+                "Receive (OUT) registers of one device endpoint, 1 to 7. USBSS_EP_RX_TypeDef in the EVT header.",
+            ),
+            items: &[
+                BlockItem {
+                    name: "cfg",
+                    description: Some(
+                        "Endpoint n configuration register (R8_UEPn_RX_CFG).",
+                    ),
+                    array: None,
+                    byte_offset: 0x0,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 8,
+                            fieldset: Some(
+                                "EpRxCfg",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "cr",
+                    description: Some(
+                        "Endpoint n control register (R8_UEPn_RX_CR).",
+                    ),
+                    array: None,
+                    byte_offset: 0x1,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 8,
+                            fieldset: Some(
+                                "EpRxCr",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "seq",
+                    description: Some(
+                        "Endpoint n sequence number register (R8_UEPn_RX_SEQ).",
+                    ),
+                    array: None,
+                    byte_offset: 0x2,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 8,
+                            fieldset: Some(
+                                "EpRxSeq",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "st",
+                    description: Some(
+                        "Endpoint n status register (R8_UEPn_RX_ST).",
+                    ),
+                    array: None,
+                    byte_offset: 0x3,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 8,
+                            fieldset: Some(
+                                "EpRxSt",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "chain_cr",
+                    description: Some(
+                        "Endpoint n CHAIN control register (R8_UEPn_RX_CHAIN_CR).",
+                    ),
+                    array: None,
+                    byte_offset: 0x4,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 8,
+                            fieldset: Some(
+                                "EpRxChainCr",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "chain_st",
+                    description: Some(
+                        "Endpoint n CHAIN status register (R8_UEPn_RX_CHAIN_ST).",
+                    ),
+                    array: None,
+                    byte_offset: 0x5,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 8,
+                            fieldset: Some(
+                                "EpRxChainSt",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "chain_len",
+                    description: Some(
+                        "Length of the last packet the CHAIN received (R16_UEPn_RX_CHAIN_LEN).",
+                    ),
+                    array: None,
+                    byte_offset: 0x6,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 16,
+                            fieldset: Some(
+                                "EpRxChainLen",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "chain_max_nump",
+                    description: Some(
+                        "Number of DPPs the CHAIN can receive (R8_UEPn_RX_CHAIN_MAX_NUMP).",
+                    ),
+                    array: None,
+                    byte_offset: 0x8,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 8,
+                            fieldset: None,
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "chain_nump",
+                    description: Some(
+                        "Number of DPPs the CHAIN has received (R8_UEPn_RX_CHAIN_NUMP).",
+                    ),
+                    array: None,
+                    byte_offset: 0x9,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 8,
+                            fieldset: None,
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "dma_ofs",
+                    description: Some(
+                        "Offset of a DPP in the CHAIN, the distance between two packets in the buffer (R16_UEPn_RX_DMA_OFS). Resets to 0x0400.",
+                    ),
+                    array: None,
+                    byte_offset: 0xa,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 16,
+                            fieldset: None,
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "dma",
+                    description: Some(
+                        "Normal mode: DMA start address of the CHAIN. FIFO mode: FIFO start and end addresses (R32_UEPn_RX_DMA).",
+                    ),
+                    array: None,
+                    byte_offset: 0xc,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: None,
+                        },
+                    ),
+                },
+            ],
+        },
+        Block {
+            name: "EpTx",
+            extends: None,
+            description: Some(
+                "Transmit (IN) registers of one device endpoint, 1 to 7. USBSS_EP_TX_TypeDef in the EVT header.",
+            ),
+            items: &[
+                BlockItem {
+                    name: "cfg",
+                    description: Some(
+                        "Endpoint n configuration register (R8_UEPn_TX_CFG).",
+                    ),
+                    array: None,
+                    byte_offset: 0x0,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 8,
+                            fieldset: Some(
+                                "EpTxCfg",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "cr",
+                    description: Some(
+                        "Endpoint n control register (R8_UEPn_TX_CR).",
+                    ),
+                    array: None,
+                    byte_offset: 0x1,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 8,
+                            fieldset: Some(
+                                "EpTxCr",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "seq",
+                    description: Some(
+                        "Endpoint n sequence number register (R8_UEPn_TX_SEQ).",
+                    ),
+                    array: None,
+                    byte_offset: 0x2,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 8,
+                            fieldset: Some(
+                                "EpTxSeq",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "st",
+                    description: Some(
+                        "Endpoint n status register (R8_UEPn_TX_ST).",
+                    ),
+                    array: None,
+                    byte_offset: 0x3,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 8,
+                            fieldset: Some(
+                                "EpTxSt",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "chain_cr",
+                    description: Some(
+                        "Endpoint n CHAIN control register (R8_UEPn_TX_CHAIN_CR).",
+                    ),
+                    array: None,
+                    byte_offset: 0x4,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 8,
+                            fieldset: Some(
+                                "EpTxChainCr",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "chain_st",
+                    description: Some(
+                        "Endpoint n CHAIN status register (R8_UEPn_TX_CHAIN_ST).",
+                    ),
+                    array: None,
+                    byte_offset: 0x5,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 8,
+                            fieldset: Some(
+                                "EpTxChainSt",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "chain_len",
+                    description: Some(
+                        "Length of the last packet the CHAIN sends (R16_UEPn_TX_CHAIN_LEN).",
+                    ),
+                    array: None,
+                    byte_offset: 0x6,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 16,
+                            fieldset: Some(
+                                "EpTxChainLen",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "chain_exp_nump",
+                    description: Some(
+                        "Number of DPPs the CHAIN is to send (R8_UEPn_TX_CHAIN_EXP_NUMP).",
+                    ),
+                    array: None,
+                    byte_offset: 0x8,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 8,
+                            fieldset: None,
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "chain_nump",
+                    description: Some(
+                        "Number of DPPs the CHAIN has sent (R8_UEPn_TX_CHAIN_NUMP).",
+                    ),
+                    array: None,
+                    byte_offset: 0x9,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 8,
+                            fieldset: None,
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "dma_ofs",
+                    description: Some(
+                        "Offset of a DPP in the CHAIN, the distance between two packets in the buffer (R16_UEPn_TX_DMA_OFS). Resets to 0x0400.",
+                    ),
+                    array: None,
+                    byte_offset: 0xa,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 16,
+                            fieldset: None,
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "dma",
+                    description: Some(
+                        "Normal mode: DMA start address of the CHAIN. FIFO mode: FIFO start and end addresses (R32_UEPn_TX_DMA).",
+                    ),
+                    array: None,
+                    byte_offset: 0xc,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: None,
+                        },
+                    ),
+                },
+            ],
+        },
+        Block {
             name: "Usbss",
             extends: None,
             description: Some(
@@ -281,6 +657,21 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
+                    name: "link_tx_route",
+                    description: Some(
+                        "Hub routing for host transactions. The RM register table omits this register; the EVT host header exposes it and the hub host SDK writes the downstream hub port number to reach a device behind a hub, or 0 for the root hub port.",
+                    ),
+                    array: None,
+                    byte_offset: 0x4c,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: None,
+                        },
+                    ),
+                },
+                BlockItem {
                     name: "link_lpm_cr",
                     description: Some(
                         "Link Power Management Registers.",
@@ -315,104 +706,46 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
-                    name: "link_lmp_rx_data0",
+                    name: "link_lmp_rx_data",
                     description: Some(
-                        "LMP receives data 0 register.",
+                        "Header packet of the last LMP received; word n holds bits [32n+31:32n].",
                     ),
-                    array: None,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 3,
+                                stride: 4,
+                            },
+                        ),
+                    ),
                     byte_offset: 0x58,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
-                            fieldset: Some(
-                                "LinkLmpRxData0",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
                 BlockItem {
-                    name: "link_lmp_rx_data1",
+                    name: "link_lmp_tx_data",
                     description: Some(
-                        "LMP receives data 1 register.",
+                        "User-defined header packet to send, such as an LMP; word n holds bits [32n+31:32n].",
                     ),
-                    array: None,
-                    byte_offset: 0x5c,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "LinkLmpRxData1",
-                            ),
-                        },
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 3,
+                                stride: 4,
+                            },
+                        ),
                     ),
-                },
-                BlockItem {
-                    name: "link_lmp_rx_data2",
-                    description: Some(
-                        "LMP receives data 2 register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x60,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "LinkLmpRxData2",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "link_lmp_tx_data0",
-                    description: Some(
-                        "USB Custom HP Data 0 Register.",
-                    ),
-                    array: None,
                     byte_offset: 0x64,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
-                            fieldset: Some(
-                                "LinkLmpTxData0",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "link_lmp_tx_data1",
-                    description: Some(
-                        "USB Custom HP Data 1 Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x68,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "LinkLmpTxData1",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "link_lmp_tx_data2",
-                    description: Some(
-                        "USB Custom HP Data 2 Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x6c,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "LinkLmpTxData2",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
@@ -485,53 +818,24 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
-                    name: "tp_rx_data0",
+                    name: "tp_rx_data",
                     description: Some(
-                        "DEV_NOTIF-TP Data 0 Register.",
+                        "Header packet of the last DEV_NOTIF-TP received; word n holds bits [32n+31:32n].",
                     ),
-                    array: None,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 3,
+                                stride: 4,
+                            },
+                        ),
+                    ),
                     byte_offset: 0xa8,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
-                            fieldset: Some(
-                                "TpRxData0",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "tp_rx_data1",
-                    description: Some(
-                        "DEV_NOTIF-TP Data 1 Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xac,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "TpRxData1",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "tp_rx_data2",
-                    description: Some(
-                        "DEV_NOTIF-TP Data 2 Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xb0,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "TpRxData2",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
@@ -853,6 +1157,21 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
+                    name: "link_tx_route",
+                    description: Some(
+                        "Hub routing for host transactions. The RM register table omits this register; the EVT host header exposes it and the hub host SDK writes the downstream hub port number to reach a device behind a hub, or 0 for the root hub port.",
+                    ),
+                    array: None,
+                    byte_offset: 0x4c,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: None,
+                        },
+                    ),
+                },
+                BlockItem {
                     name: "link_lpm_cr",
                     description: Some(
                         "Link Power Management Registers.",
@@ -887,104 +1206,46 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
-                    name: "link_lmp_rx_data0",
+                    name: "link_lmp_rx_data",
                     description: Some(
-                        "LMP receives data 0 register.",
+                        "Header packet of the last LMP received; word n holds bits [32n+31:32n].",
                     ),
-                    array: None,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 3,
+                                stride: 4,
+                            },
+                        ),
+                    ),
                     byte_offset: 0x58,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
-                            fieldset: Some(
-                                "LinkLmpRxData0",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
                 BlockItem {
-                    name: "link_lmp_rx_data1",
+                    name: "link_lmp_tx_data",
                     description: Some(
-                        "LMP receives data 1 register.",
+                        "User-defined header packet to send, such as an LMP; word n holds bits [32n+31:32n].",
                     ),
-                    array: None,
-                    byte_offset: 0x5c,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "LinkLmpRxData1",
-                            ),
-                        },
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 3,
+                                stride: 4,
+                            },
+                        ),
                     ),
-                },
-                BlockItem {
-                    name: "link_lmp_rx_data2",
-                    description: Some(
-                        "LMP receives data 2 register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x60,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "LinkLmpRxData2",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "link_lmp_tx_data0",
-                    description: Some(
-                        "USB Custom HP Data 0 Register.",
-                    ),
-                    array: None,
                     byte_offset: 0x64,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
-                            fieldset: Some(
-                                "LinkLmpTxData0",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "link_lmp_tx_data1",
-                    description: Some(
-                        "USB Custom HP Data 1 Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x68,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "LinkLmpTxData1",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "link_lmp_tx_data2",
-                    description: Some(
-                        "USB Custom HP Data 2 Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x6c,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "LinkLmpTxData2",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
@@ -1125,9 +1386,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
-                    name: "u3ep0_tx_dma",
+                    name: "uep0_tx_dma",
                     description: Some(
-                        "DMA start address for Endpoint 0 sending.",
+                        "Start address of the endpoint 0 transmit buffer.",
                     ),
                     array: None,
                     byte_offset: 0x8c,
@@ -1135,16 +1396,14 @@ pub(crate) static REGISTERS: IR = IR {
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
-                            fieldset: Some(
-                                "U3ep0TxDma",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
                 BlockItem {
-                    name: "u3ep0_rx_dma",
+                    name: "uep0_rx_dma",
                     description: Some(
-                        "DMA start address for Endpoint 0 receiving.",
+                        "Start address of the endpoint 0 receive buffer.",
                     ),
                     array: None,
                     byte_offset: 0x90,
@@ -1152,9 +1411,7 @@ pub(crate) static REGISTERS: IR = IR {
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
-                            fieldset: Some(
-                                "U3ep0RxDma",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
@@ -1169,9 +1426,7 @@ pub(crate) static REGISTERS: IR = IR {
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
-                            fieldset: Some(
-                                "Uep0TxDmaOfs",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
@@ -1186,2678 +1441,69 @@ pub(crate) static REGISTERS: IR = IR {
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
-                            fieldset: Some(
-                                "Uep0RxDmaOfs",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
                 BlockItem {
-                    name: "tp_rx_data0",
+                    name: "tp_rx_data",
                     description: Some(
-                        "DEV_NOTIF-TP Data 0 Register.",
+                        "Header packet of the last DEV_NOTIF-TP received; word n holds bits [32n+31:32n].",
                     ),
-                    array: None,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 3,
+                                stride: 4,
+                            },
+                        ),
+                    ),
                     byte_offset: 0xa8,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
-                            fieldset: Some(
-                                "TpRxData0",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
                 BlockItem {
-                    name: "tp_rx_data1",
+                    name: "ep_tx",
                     description: Some(
-                        "DEV_NOTIF-TP Data 1 Register.",
+                        "Transmit (IN) registers of endpoints 1 to 7. Index 0 is endpoint 1.",
                     ),
-                    array: None,
-                    byte_offset: 0xac,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "TpRxData1",
-                            ),
-                        },
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 7,
+                                stride: 32,
+                            },
+                        ),
                     ),
-                },
-                BlockItem {
-                    name: "tp_rx_data2",
-                    description: Some(
-                        "DEV_NOTIF-TP Data 2 Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xb0,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "TpRxData2",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep1_tx_cfg",
-                    description: Some(
-                        "Endpoint 1 Configuration Register.",
-                    ),
-                    array: None,
                     byte_offset: 0xc0,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep1TxCfg",
-                            ),
+                    inner: BlockItemInner::Block(
+                        BlockItemBlock {
+                            block: "EpTx",
                         },
                     ),
                 },
                 BlockItem {
-                    name: "uep1_tx_cr",
+                    name: "ep_rx",
                     description: Some(
-                        "Endpoint 1 control register.",
+                        "Receive (OUT) registers of endpoints 1 to 7. Index 0 is endpoint 1.",
                     ),
-                    array: None,
-                    byte_offset: 0xc1,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep1TxCr",
-                            ),
-                        },
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 7,
+                                stride: 32,
+                            },
+                        ),
                     ),
-                },
-                BlockItem {
-                    name: "uep1_tx_seq",
-                    description: Some(
-                        "Endpoint 1 Serial Number Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xc2,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep1TxSeq",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep1_tx_st",
-                    description: Some(
-                        "Endpoint 1 status register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xc3,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep1TxSt",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep1_tx_chain_cr",
-                    description: Some(
-                        "Endpoint 1 CHAIN control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xc4,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep1TxChainCr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep1_tx_chain_st",
-                    description: Some(
-                        "Endpoint 1 CHAIN state register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xc5,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep1TxChainSt",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep1_tx_chain_len",
-                    description: Some(
-                        "Endpoint 1 CHAIN sends the last packet length.",
-                    ),
-                    array: None,
-                    byte_offset: 0xc6,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep1TxChainLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep1_tx_chain_exp_nump",
-                    description: Some(
-                        "Number of NUMPs expected to be sent by endpoint 1.",
-                    ),
-                    array: None,
-                    byte_offset: 0xc8,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep1TxChainExpNump",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep1_tx_chain_nump",
-                    description: Some(
-                        "Number of NUMPs has been sent by endpoint n.",
-                    ),
-                    array: None,
-                    byte_offset: 0xc9,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep1TxChainNump",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep1_tx_dma_ofs",
-                    description: Some(
-                        "DMA offset length for endpoint 1.",
-                    ),
-                    array: None,
-                    byte_offset: 0xca,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep1TxDmaOfs",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep1_tx_dma",
-                    description: Some(
-                        "DMA start address for endpoint 1.",
-                    ),
-                    array: None,
-                    byte_offset: 0xcc,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep1TxDma",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep1_rx_cfg",
-                    description: Some(
-                        "Endpoint 1 Configuration Register.",
-                    ),
-                    array: None,
                     byte_offset: 0xd0,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep1RxCfg",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep1_rx_cr",
-                    description: Some(
-                        "Endpoint 1 control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xd1,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep1RxCr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep1_rx_seq",
-                    description: Some(
-                        "Endpoint 1 Serial Number Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xd2,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep1RxSeq",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep1_rx_st",
-                    description: Some(
-                        "Endpoint 1 status register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xd3,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep1RxSt",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep1_rx_chain_cr",
-                    description: Some(
-                        "Endpoint 1 CHAIN control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xd4,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep1RxChainCr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep1_rx_chain_st",
-                    description: Some(
-                        "Endpoint 1 CHAIN state register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xd5,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep1RxChainSt",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep1_rx_chain_len",
-                    description: Some(
-                        "Endpoint 1 CHAIN sends the last packet length.",
-                    ),
-                    array: None,
-                    byte_offset: 0xd6,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep1RxChainLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep1_rx_chain_max_nump",
-                    description: Some(
-                        "Number of NUMPs that Endpoint 1 can receive.",
-                    ),
-                    array: None,
-                    byte_offset: 0xd8,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep1RxChainMaxNump",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep1_rx_chain_nump",
-                    description: Some(
-                        "Number of NUMPs has been received by endpoint 1.",
-                    ),
-                    array: None,
-                    byte_offset: 0xd9,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep1RxChainNump",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep1_rx_dma_ofs",
-                    description: Some(
-                        "DMA offset length for endpoint 1.",
-                    ),
-                    array: None,
-                    byte_offset: 0xda,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep1RxDmaOfs",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep1_rx_dma",
-                    description: Some(
-                        "DMA start address for endpoint 1.",
-                    ),
-                    array: None,
-                    byte_offset: 0xdc,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep1RxDma",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_tx_cfg",
-                    description: Some(
-                        "Endpoint 2 Configuration Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xe0,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep2TxCfg",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_tx_cr",
-                    description: Some(
-                        "Endpoint 2 control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xe1,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep2TxCr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_tx_seq",
-                    description: Some(
-                        "Endpoint 2 Serial Number Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xe2,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep2TxSeq",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_tx_st",
-                    description: Some(
-                        "Endpoint 2 status register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xe3,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep2TxSt",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_tx_chain_cr",
-                    description: Some(
-                        "Endpoint 2 CHAIN control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xe4,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep2TxChainCr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_tx_chain_st",
-                    description: Some(
-                        "Endpoint 2 CHAIN state register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xe5,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep2TxChainSt",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_tx_chain_len",
-                    description: Some(
-                        "Endpoint 2 CHAIN sends the last packet length.",
-                    ),
-                    array: None,
-                    byte_offset: 0xe6,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep2TxChainLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_tx_chain_exp_nump",
-                    description: Some(
-                        "Number of NUMPs expected to be sent by endpoint 2.",
-                    ),
-                    array: None,
-                    byte_offset: 0xe8,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep2TxChainExpNump",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_tx_chain_nump",
-                    description: Some(
-                        "Number of NUMPs has been sent by endpoint 2.",
-                    ),
-                    array: None,
-                    byte_offset: 0xe9,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep2TxChainNump",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_tx_dma_ofs",
-                    description: Some(
-                        "DMA offset length for endpoint 2.",
-                    ),
-                    array: None,
-                    byte_offset: 0xea,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep2TxDmaOfs",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_tx_dma",
-                    description: Some(
-                        "DMA start address for endpoint 2.",
-                    ),
-                    array: None,
-                    byte_offset: 0xec,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep2TxDma",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_rx_cfg",
-                    description: Some(
-                        "Endpoint 2 Configuration Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xf0,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep2RxCfg",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_rx_cr",
-                    description: Some(
-                        "Endpoint 2 control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xf1,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep2RxCr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_rx_seq",
-                    description: Some(
-                        "Endpoint 2 Serial Number Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xf2,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep2RxSeq",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_rx_st",
-                    description: Some(
-                        "Endpoint 2 status register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xf3,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep2RxSt",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_rx_chain_cr",
-                    description: Some(
-                        "Endpoint 2 CHAIN control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xf4,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep2RxChainCr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_rx_chain_st",
-                    description: Some(
-                        "Endpoint 2 CHAIN state register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xf5,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep2RxChainSt",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_rx_chain_len",
-                    description: Some(
-                        "Endpoint 2 CHAIN sends the last packet length.",
-                    ),
-                    array: None,
-                    byte_offset: 0xf6,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep2RxChainLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_rx_chain_max_nump",
-                    description: Some(
-                        "Number of NUMPs that Endpoint 2 can receive.",
-                    ),
-                    array: None,
-                    byte_offset: 0xf8,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep2RxChainMaxNump",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_rx_chain_nump",
-                    description: Some(
-                        "Number of NUMPs has been received by endpoint 2.",
-                    ),
-                    array: None,
-                    byte_offset: 0xf9,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep2RxChainNump",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_rx_dma_ofs",
-                    description: Some(
-                        "DMA offset length for Endpoint 2.",
-                    ),
-                    array: None,
-                    byte_offset: 0xfa,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep2RxDmaOfs",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep2_rx_dma",
-                    description: Some(
-                        "DMA start address for Endpoint 2.",
-                    ),
-                    array: None,
-                    byte_offset: 0xfc,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep2RxDma",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_tx_cfg",
-                    description: Some(
-                        "Endpoint 3 Configuration Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x100,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep3TxCfg",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_tx_cr",
-                    description: Some(
-                        "Endpoint 3 control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x101,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep3TxCr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_tx_seq",
-                    description: Some(
-                        "Endpoint 3 Serial Number Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x102,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep3TxSeq",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_tx_st",
-                    description: Some(
-                        "Endpoint 3 status register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x103,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep3TxSt",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_tx_chain_cr",
-                    description: Some(
-                        "Endpoint 3 CHAIN control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x104,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep3TxChainCr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_tx_chain_st",
-                    description: Some(
-                        "Endpoint 3 CHAIN state register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x105,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep3TxChainSt",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_tx_chain_len",
-                    description: Some(
-                        "Endpoint 3 CHAIN sends the last packet length.",
-                    ),
-                    array: None,
-                    byte_offset: 0x106,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep3TxChainLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_tx_chain_exp_nump",
-                    description: Some(
-                        "Number of NUMPs expected to be sent by endpoint 3.",
-                    ),
-                    array: None,
-                    byte_offset: 0x108,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep3TxChainExpNump",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_tx_chain_nump",
-                    description: Some(
-                        "Number of NUMPs has been sent by endpoint 3.",
-                    ),
-                    array: None,
-                    byte_offset: 0x109,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep3TxChainNump",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_tx_dma_ofs",
-                    description: Some(
-                        "DMA offset length for endpoint 3.",
-                    ),
-                    array: None,
-                    byte_offset: 0x10a,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep3TxDmaOfs",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_tx_dma",
-                    description: Some(
-                        "DMA start address for endpoint 3.",
-                    ),
-                    array: None,
-                    byte_offset: 0x10c,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep3TxDma",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_rx_cfg",
-                    description: Some(
-                        "Endpoint 3 Configuration Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x110,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep3RxCfg",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_rx_cr",
-                    description: Some(
-                        "Endpoint 3 control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x111,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep3RxCr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_rx_seq",
-                    description: Some(
-                        "Endpoint 3 Serial Number Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x112,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep3RxSeq",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_rx_st",
-                    description: Some(
-                        "Endpoint 3 status register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x113,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep3RxSt",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_rx_chain_cr",
-                    description: Some(
-                        "Endpoint 3 CHAIN control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x114,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep3RxChainCr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_rx_chain_st",
-                    description: Some(
-                        "Endpoint 3 CHAIN state register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x115,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep3RxChainSt",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_rx_chain_len",
-                    description: Some(
-                        "Endpoint 3 CHAIN sends the last packet length.",
-                    ),
-                    array: None,
-                    byte_offset: 0x116,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep3RxChainLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_rx_chain_max_nump",
-                    description: Some(
-                        "Number of NUMPs that Endpoint 3 can receive.",
-                    ),
-                    array: None,
-                    byte_offset: 0x118,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep3RxChainMaxNump",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_rx_chain_nump",
-                    description: Some(
-                        "Number of NUMPs has been received by Endpoint 3.",
-                    ),
-                    array: None,
-                    byte_offset: 0x119,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep3RxChainNump",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_rx_dma_ofs",
-                    description: Some(
-                        "DMA offset length for Endpoint 3.",
-                    ),
-                    array: None,
-                    byte_offset: 0x11a,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep3RxDmaOfs",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep3_rx_dma",
-                    description: Some(
-                        "DMA start address for Endpoint 3.",
-                    ),
-                    array: None,
-                    byte_offset: 0x11c,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep3RxDma",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_tx_cfg",
-                    description: Some(
-                        "Endpoint 4 Configuration Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x120,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep4TxCfg",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_tx_cr",
-                    description: Some(
-                        "Endpoint 4 control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x121,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep4TxCr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_tx_seq",
-                    description: Some(
-                        "Endpoint 4 Serial Number Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x122,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep4TxSeq",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_tx_st",
-                    description: Some(
-                        "Endpoint 4 status register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x123,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep4TxSt",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_tx_chain_cr",
-                    description: Some(
-                        "Endpoint 4 CHAIN control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x124,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep4TxChainCr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_tx_chain_st",
-                    description: Some(
-                        "Endpoint 4 CHAIN state register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x125,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep4TxChainSt",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_tx_chain_len",
-                    description: Some(
-                        "Endpoint 4 CHAIN sends the last packet length.",
-                    ),
-                    array: None,
-                    byte_offset: 0x126,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep4TxChainLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_tx_chain_exp_nump",
-                    description: Some(
-                        "Number of NUMPs expected to be sent by Endpoint 4.",
-                    ),
-                    array: None,
-                    byte_offset: 0x128,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep4TxChainExpNump",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_tx_chain_nump",
-                    description: Some(
-                        "Number of NUMPs has been sent by Endpoint 4.",
-                    ),
-                    array: None,
-                    byte_offset: 0x129,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep4TxChainNump",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_tx_dma_ofs",
-                    description: Some(
-                        "DMA offset length for Endpoint 4.",
-                    ),
-                    array: None,
-                    byte_offset: 0x12a,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep4TxDmaOfs",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_tx_dma",
-                    description: Some(
-                        "DMA start address for Endpoint 4.",
-                    ),
-                    array: None,
-                    byte_offset: 0x12c,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep4TxDma",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_rx_cfg",
-                    description: Some(
-                        "Endpoint 4 Configuration Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x130,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep4RxCfg",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_rx_cr",
-                    description: Some(
-                        "Endpoint 4 control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x131,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep4RxCr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_rx_seq",
-                    description: Some(
-                        "Endpoint 4 Serial Number Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x132,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep4RxSeq",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_rx_st",
-                    description: Some(
-                        "Endpoint 4 status register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x133,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep4RxSt",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_rx_chain_cr",
-                    description: Some(
-                        "Endpoint 4 CHAIN control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x134,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep4RxChainCr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_rx_chain_st",
-                    description: Some(
-                        "Endpoint 4 CHAIN state register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x135,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep4RxChainSt",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_rx_chain_len",
-                    description: Some(
-                        "Endpoint 4 CHAIN sends the last packet length.",
-                    ),
-                    array: None,
-                    byte_offset: 0x136,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep4RxChainLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_rx_chain_max_nump",
-                    description: Some(
-                        "Number of NUMPs that Endpoint 4 can receive.",
-                    ),
-                    array: None,
-                    byte_offset: 0x138,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep4RxChainMaxNump",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_rx_chain_nump",
-                    description: Some(
-                        "Number of NUMPs has been received by Endpoint 4.",
-                    ),
-                    array: None,
-                    byte_offset: 0x139,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep4RxChainNump",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_rx_dma_ofs",
-                    description: Some(
-                        "DMA offset length for Endpoint 4.",
-                    ),
-                    array: None,
-                    byte_offset: 0x13a,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep4RxDmaOfs",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep4_rx_dma",
-                    description: Some(
-                        "DMA start address for Endpoint 4.",
-                    ),
-                    array: None,
-                    byte_offset: 0x13c,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep4RxDma",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_tx_cfg",
-                    description: Some(
-                        "Endpoint 5 Configuration Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x140,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep5TxCfg",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_tx_cr",
-                    description: Some(
-                        "Endpoint 5 control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x141,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep5TxCr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_tx_seq",
-                    description: Some(
-                        "Endpoint 5 Serial Number Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x142,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep5TxSeq",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_tx_st",
-                    description: Some(
-                        "Endpoint 5 status register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x143,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep5TxSt",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_tx_chain_cr",
-                    description: Some(
-                        "Endpoint 5 CHAIN control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x144,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep5TxChainCr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_tx_chain_st",
-                    description: Some(
-                        "Endpoint 5 CHAIN state register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x145,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep5TxChainSt",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_tx_chain_len",
-                    description: Some(
-                        "Endpoint 5 CHAIN sends the last packet length.",
-                    ),
-                    array: None,
-                    byte_offset: 0x146,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep5TxChainLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_tx_chain_exp_nump",
-                    description: Some(
-                        "Number of NUMPs expected to be sent by Endpoint 5.",
-                    ),
-                    array: None,
-                    byte_offset: 0x148,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep5TxChainExpNump",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_tx_chain_nump",
-                    description: Some(
-                        "Number of NUMPs has been sent by Endpoint 5.",
-                    ),
-                    array: None,
-                    byte_offset: 0x149,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep5TxChainNump",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_tx_dma_ofs",
-                    description: Some(
-                        "DMA offset length for Endpoint 5.",
-                    ),
-                    array: None,
-                    byte_offset: 0x14a,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep5TxDmaOfs",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_tx_dma",
-                    description: Some(
-                        "DMA start address for Endpoint 5.",
-                    ),
-                    array: None,
-                    byte_offset: 0x14c,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep5TxDma",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_rx_cfg",
-                    description: Some(
-                        "Endpoint 5 Configuration Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x150,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep5RxCfg",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_rx_cr",
-                    description: Some(
-                        "Endpoint 5 control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x151,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep5RxCr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_rx_seq",
-                    description: Some(
-                        "Endpoint 5 Serial Number Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x152,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep5RxSeq",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_rx_st",
-                    description: Some(
-                        "Endpoint 5 status register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x153,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep5RxSt",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_rx_chain_cr",
-                    description: Some(
-                        "Endpoint 5 CHAIN control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x154,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep5RxChainCr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_rx_chain_st",
-                    description: Some(
-                        "Endpoint 5 CHAIN state register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x155,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep5RxChainSt",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_rx_chain_len",
-                    description: Some(
-                        "Endpoint 5 CHAIN sends the last packet length.",
-                    ),
-                    array: None,
-                    byte_offset: 0x156,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep5RxChainLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_rx_chain_max_nump",
-                    description: Some(
-                        "Number of NUMPs that Endpoint 5 can receive.",
-                    ),
-                    array: None,
-                    byte_offset: 0x158,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep5RxChainMaxNump",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_rx_chain_nump",
-                    description: Some(
-                        "Number of NUMPs has been received by Endpoint 5.",
-                    ),
-                    array: None,
-                    byte_offset: 0x159,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep5RxChainNump",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_rx_dma_ofs",
-                    description: Some(
-                        "DMA offset length for Endpoint 5.",
-                    ),
-                    array: None,
-                    byte_offset: 0x15a,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep5RxDmaOfs",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep5_rx_dma",
-                    description: Some(
-                        "DMA start address for Endpoint 5.",
-                    ),
-                    array: None,
-                    byte_offset: 0x15c,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep5RxDma",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_tx_cfg",
-                    description: Some(
-                        "Endpoint 6 Configuration Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x160,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep6TxCfg",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_tx_cr",
-                    description: Some(
-                        "Endpoint 6 control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x161,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep6TxCr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_tx_seq",
-                    description: Some(
-                        "Endpoint 6 Serial Number Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x162,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep6TxSeq",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_tx_st",
-                    description: Some(
-                        "Endpoint 6 status register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x163,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep6TxSt",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_tx_chain_cr",
-                    description: Some(
-                        "Endpoint 6 CHAIN control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x164,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep6TxChainCr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_tx_chain_st",
-                    description: Some(
-                        "Endpoint 6 CHAIN state register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x165,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep6TxChainSt",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_tx_chain_len",
-                    description: Some(
-                        "Endpoint 6 CHAIN sends the last packet length.",
-                    ),
-                    array: None,
-                    byte_offset: 0x166,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep6TxChainLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_tx_chain_exp_nump",
-                    description: Some(
-                        "Number of NUMPs expected to be sent by Endpoint 6.",
-                    ),
-                    array: None,
-                    byte_offset: 0x168,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep6TxChainExpNump",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_tx_chain_nump",
-                    description: Some(
-                        "Number of NUMPs has been sent by Endpoint 6.",
-                    ),
-                    array: None,
-                    byte_offset: 0x169,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep6TxChainNump",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_tx_dma_ofs",
-                    description: Some(
-                        "DMA offset length for Endpoint 6.",
-                    ),
-                    array: None,
-                    byte_offset: 0x16a,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep6TxDmaOfs",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_tx_dma",
-                    description: Some(
-                        "DMA start address for Endpoint 6.",
-                    ),
-                    array: None,
-                    byte_offset: 0x16c,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep6TxDma",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_rx_cfg",
-                    description: Some(
-                        "Endpoint 6 Configuration Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x170,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep6RxCfg",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_rx_cr",
-                    description: Some(
-                        "Endpoint 6 control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x171,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep6RxCr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_rx_seq",
-                    description: Some(
-                        "Endpoint 6 Serial Number Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x172,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep6RxSeq",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_rx_st",
-                    description: Some(
-                        "Endpoint 6 status register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x173,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep6RxSt",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_rx_chain_cr",
-                    description: Some(
-                        "Endpoint 6 CHAIN control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x174,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep6RxChainCr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_rx_chain_st",
-                    description: Some(
-                        "Endpoint 6 CHAIN state register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x175,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep6RxChainSt",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_rx_chain_len",
-                    description: Some(
-                        "Endpoint 6 CHAIN sends the last packet length.",
-                    ),
-                    array: None,
-                    byte_offset: 0x176,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep6RxChainLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_rx_chain_max_nump",
-                    description: Some(
-                        "Number of NUMPs that Endpoint 6 can receive.",
-                    ),
-                    array: None,
-                    byte_offset: 0x178,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep6RxChainMaxNump",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_rx_chain_nump",
-                    description: Some(
-                        "Number of NUMPs has been received by Endpoint 6.",
-                    ),
-                    array: None,
-                    byte_offset: 0x179,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep6RxChainNump",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_rx_dma_ofs",
-                    description: Some(
-                        "DMA offset length for Endpoint 6.",
-                    ),
-                    array: None,
-                    byte_offset: 0x17a,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep6RxDmaOfs",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep6_rx_dma",
-                    description: Some(
-                        "DMA start address for Endpoint 6.",
-                    ),
-                    array: None,
-                    byte_offset: 0x17c,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep6RxDma",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_tx_cfg",
-                    description: Some(
-                        "Endpoint 7 Configuration Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x180,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep7TxCfg",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_tx_cr",
-                    description: Some(
-                        "Endpoint 7 control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x181,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep7TxCr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_tx_seq",
-                    description: Some(
-                        "Endpoint 7 Serial Number Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x182,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep7TxSeq",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_tx_st",
-                    description: Some(
-                        "Endpoint 7 status register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x183,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep7TxSt",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_tx_chain_cr",
-                    description: Some(
-                        "Endpoint 7 CHAIN control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x184,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep7TxChainCr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_tx_chain_st",
-                    description: Some(
-                        "Endpoint 7 CHAIN state register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x185,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep7TxChainSt",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_tx_chain_len",
-                    description: Some(
-                        "Endpoint 7 CHAIN sends the last packet length.",
-                    ),
-                    array: None,
-                    byte_offset: 0x186,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep7TxChainLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_tx_chain_exp_nump",
-                    description: Some(
-                        "Number of NUMPs expected to be sent by Endpoint 7.",
-                    ),
-                    array: None,
-                    byte_offset: 0x188,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep7TxChainExpNump",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_tx_chain_nump",
-                    description: Some(
-                        "Number of NUMPs has been sent by Endpoint 7.",
-                    ),
-                    array: None,
-                    byte_offset: 0x189,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep7TxChainNump",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_tx_dma_ofs",
-                    description: Some(
-                        "DMA offset length for Endpoint 7.",
-                    ),
-                    array: None,
-                    byte_offset: 0x18a,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep7TxDmaOfs",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_tx_dma",
-                    description: Some(
-                        "DMA start address for Endpoint 7.",
-                    ),
-                    array: None,
-                    byte_offset: 0x18c,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep7TxDma",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_rx_cfg",
-                    description: Some(
-                        "Endpoint 7 Configuration Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x190,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep7RxCfg",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_rx_cr",
-                    description: Some(
-                        "Endpoint 7 control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x191,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep7RxCr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_rx_seq",
-                    description: Some(
-                        "Endpoint 7 Serial Number Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x192,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep7RxSeq",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_rx_st",
-                    description: Some(
-                        "Endpoint 7 status register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x193,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep7RxSt",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_rx_chain_cr",
-                    description: Some(
-                        "Endpoint 7 CHAIN control register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x194,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep7RxChainCr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_rx_chain_st",
-                    description: Some(
-                        "Endpoint 7 CHAIN state register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x195,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep7RxChainSt",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_rx_chain_len",
-                    description: Some(
-                        "Endpoint 7 CHAIN sends the last packet length.",
-                    ),
-                    array: None,
-                    byte_offset: 0x196,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep7RxChainLen",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_rx_chain_max_nump",
-                    description: Some(
-                        "Number of NUMPs that Endpoint 7 can receive.",
-                    ),
-                    array: None,
-                    byte_offset: 0x198,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep7RxChainMaxNump",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_rx_chain_nump",
-                    description: Some(
-                        "Number of NUMPs has been received by Endpoint 7.",
-                    ),
-                    array: None,
-                    byte_offset: 0x199,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 8,
-                            fieldset: Some(
-                                "Uep7RxChainNump",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_rx_dma_ofs",
-                    description: Some(
-                        "DMA offset length for Endpoint 7.",
-                    ),
-                    array: None,
-                    byte_offset: 0x19a,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 16,
-                            fieldset: Some(
-                                "Uep7RxDmaOfs",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "uep7_rx_dma",
-                    description: Some(
-                        "DMA start address for Endpoint 7.",
-                    ),
-                    array: None,
-                    byte_offset: 0x19c,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Uep7RxDma",
-                            ),
+                    inner: BlockItemInner::Block(
+                        BlockItemBlock {
+                            block: "EpRx",
                         },
                     ),
                 },
@@ -4179,6 +1825,21 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
+                    name: "link_tx_route",
+                    description: Some(
+                        "Hub routing for host transactions. The RM register table omits this register; the EVT host header exposes it and the hub host SDK writes the downstream hub port number to reach a device behind a hub, or 0 for the root hub port.",
+                    ),
+                    array: None,
+                    byte_offset: 0x4c,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 32,
+                            fieldset: None,
+                        },
+                    ),
+                },
+                BlockItem {
                     name: "link_lpm_cr",
                     description: Some(
                         "Link Power Management Registers.",
@@ -4213,104 +1874,46 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
-                    name: "link_lmp_rx_data0",
+                    name: "link_lmp_rx_data",
                     description: Some(
-                        "LMP receives data 0 register.",
+                        "Header packet of the last LMP received; word n holds bits [32n+31:32n].",
                     ),
-                    array: None,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 3,
+                                stride: 4,
+                            },
+                        ),
+                    ),
                     byte_offset: 0x58,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
-                            fieldset: Some(
-                                "LinkLmpRxData0",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
                 BlockItem {
-                    name: "link_lmp_rx_data1",
+                    name: "link_lmp_tx_data",
                     description: Some(
-                        "LMP receives data 1 register.",
+                        "User-defined header packet to send, such as an LMP; word n holds bits [32n+31:32n].",
                     ),
-                    array: None,
-                    byte_offset: 0x5c,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "LinkLmpRxData1",
-                            ),
-                        },
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 3,
+                                stride: 4,
+                            },
+                        ),
                     ),
-                },
-                BlockItem {
-                    name: "link_lmp_rx_data2",
-                    description: Some(
-                        "LMP receives data 2 register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x60,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "LinkLmpRxData2",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "link_lmp_tx_data0",
-                    description: Some(
-                        "USB Custom HP Data 0 Register.",
-                    ),
-                    array: None,
                     byte_offset: 0x64,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
-                            fieldset: Some(
-                                "LinkLmpTxData0",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "link_lmp_tx_data1",
-                    description: Some(
-                        "USB Custom HP Data 1 Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x68,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "LinkLmpTxData1",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "link_lmp_tx_data2",
-                    description: Some(
-                        "USB Custom HP Data 2 Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x6c,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "LinkLmpTxData2",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
@@ -4378,6 +1981,40 @@ pub(crate) static REGISTERS: IR = IR {
                             bit_size: 32,
                             fieldset: Some(
                                 "ItpAdj",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "uep_tx_en",
+                    description: Some(
+                        "Endpoint Transmit Enable Register. The RM lists it only among the device registers; the EVT host header exposes it and the host SDK sets bit 1.",
+                    ),
+                    array: None,
+                    byte_offset: 0x80,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 16,
+                            fieldset: Some(
+                                "UepTxEn",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
+                    name: "uep_rx_en",
+                    description: Some(
+                        "Endpoint Receive Enable Register. The RM lists it only among the device registers; the EVT host header exposes it and the host SDK sets bit 1.",
+                    ),
+                    array: None,
+                    byte_offset: 0x82,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 16,
+                            fieldset: Some(
+                                "UepRxEn",
                             ),
                         },
                     ),
@@ -4485,6 +2122,23 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
+                    name: "host_tx_nump",
+                    description: Some(
+                        "The host transmits the NUMP register.",
+                    ),
+                    array: None,
+                    byte_offset: 0x9c,
+                    inner: BlockItemInner::Register(
+                        Register {
+                            access: Access::ReadWrite,
+                            bit_size: 16,
+                            fieldset: Some(
+                                "HostTxNump",
+                            ),
+                        },
+                    ),
+                },
+                BlockItem {
                     name: "host_rx_nump",
                     description: Some(
                         "The host receives the NUMP register.",
@@ -4553,53 +2207,24 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
-                    name: "tp_rx_data0",
+                    name: "tp_rx_data",
                     description: Some(
-                        "DEV_NOTIF-TP Data 0 Register.",
+                        "Header packet of the last DEV_NOTIF-TP received; word n holds bits [32n+31:32n].",
                     ),
-                    array: None,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 3,
+                                stride: 4,
+                            },
+                        ),
+                    ),
                     byte_offset: 0xa8,
                     inner: BlockItemInner::Register(
                         Register {
                             access: Access::ReadWrite,
                             bit_size: 32,
-                            fieldset: Some(
-                                "TpRxData0",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "tp_rx_data1",
-                    description: Some(
-                        "DEV_NOTIF-TP Data 1 Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xac,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "TpRxData1",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "tp_rx_data2",
-                    description: Some(
-                        "DEV_NOTIF-TP Data 2 Register.",
-                    ),
-                    array: None,
-                    byte_offset: 0xb0,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "TpRxData2",
-                            ),
+                            fieldset: None,
                         },
                     ),
                 },
@@ -4641,6 +2266,958 @@ pub(crate) static REGISTERS: IR = IR {
         },
     ],
     fieldsets: &[
+        FieldSet {
+            name: "EpRxCfg",
+            extends: None,
+            description: Some(
+                "Endpoint n receive configuration register.",
+            ),
+            bit_size: 8,
+            fields: &[
+                Field {
+                    name: "iso_mode",
+                    description: Some(
+                        "A value of 1 indicates that the current endpoint is a synchronous endpoint.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "seq_auto",
+                    description: Some(
+                        "1: software cannot write SEQ_NUM, hardware maintains it. 0: software may write SEQ_NUM.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 1,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "erdy_auto",
+                    description: Some(
+                        "ERDY automatic mode, the hardware sends ERDY without software control. The RM recommends clearing this bit on a synchronous endpoint.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 2,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "nrdy_mode",
+                    description: Some(
+                        "After a short packet or a DPH with PP=0, clear every CHAIN_EN, so that later DPHs get NRDY until software configures a CHAIN again. RB_EP_RX_NRDY_MODE in the RM; the EVT header still calls it USBSS_EP_RX_EOB_MODE.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 3,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "tout_mode",
+                    description: Some(
+                        "After a burst packet with PP=1 that is not a short packet, raise the TOUT_IF interrupt when no DPH follows within the timeout.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 4,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "fifo_cfg",
+                    description: Some(
+                        "Access offset address 0xC~0xF, and the operation object.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 5,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "fifo_mode",
+                    description: Some(
+                        "If the bit is 1, the current endpoint uses FIFO mode,. and the start and end addresses of the FIFO should be configured before the bit is 1.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 6,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "chain_auto",
+                    description: Some(
+                        "CHAIN automatically switches modes, and this mode is recommended.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 7,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "EpRxChainCr",
+            extends: None,
+            description: Some(
+                "Endpoint n receive CHAIN control register.",
+            ),
+            bit_size: 8,
+            fields: &[
+                Field {
+                    name: "ret_sel",
+                    description: Some(
+                        "When the FORCE_RET is valid, this bit indicates the returned CHAIN status and configuration.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 2,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "force_ret",
+                    description: Some(
+                        "This bit effectively forces the return of the selected CHAIN state machine configuration.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 2,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "cur_cfg",
+                    description: Some(
+                        "The chain serial number of the current configuration.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 4,
+                        },
+                    ),
+                    bit_size: 2,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "cur_use",
+                    description: Some(
+                        "The CHAIN serial number currently in use.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 6,
+                        },
+                    ),
+                    bit_size: 2,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "EpRxChainLen",
+            extends: None,
+            description: Some(
+                "Endpoint n CHAIN receive packet length.",
+            ),
+            bit_size: 16,
+            fields: &[
+                Field {
+                    name: "len",
+                    description: Some(
+                        "The length of the last packet received by the CHAIN.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 11,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "EpRxChainSt",
+            extends: None,
+            description: Some(
+                "Endpoint n receive CHAIN status register.",
+            ),
+            bit_size: 8,
+            fields: &[
+                Field {
+                    name: "chain_no",
+                    description: Some(
+                        "The serial number of the CHAIN that is currently interrupting.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 2,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "dph_pp",
+                    description: Some(
+                        "The status of the PP bits in the currently received DPH.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 2,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "nump_empty",
+                    description: Some(
+                        "IF THE NUMP IN THE CHAIN IS 0, THE POSITION IS 1.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 3,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "iso_pkt_err",
+                    description: Some(
+                        "Synchronous OUT endpoints only. The DPP just received has a CRC32 error.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 4,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "lpf_flag",
+                    description: Some(
+                        "Synchronous OUT endpoints only. LPF bit of the DPH just received.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 5,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "chain_if",
+                    description: Some(
+                        "This bit is only written, and 1 is written to release the current CHAIN_IF.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 6,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "chain_en",
+                    description: Some(
+                        "The currently used CHAIN enables the automatic hardware setting of 1 after the UEP_CHAIN_NUMP register is configured,. and the CHAIN is automatically cleared to zero after the transmission is completed.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 7,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "EpRxCr",
+            extends: None,
+            description: Some(
+                "Endpoint n receive control register.",
+            ),
+            bit_size: 8,
+            fields: &[
+                Field {
+                    name: "erdy_nump",
+                    description: Some(
+                        "The nump field of ERDY-TP is sent by the hardware,. and the value is generally set to the number of supported bursts.  For example, if you support 16 bursts, the value of this field is 16.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 5,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "chain_clr",
+                    description: Some(
+                        "Write 1 clears all CHAIN configuration values and statuses.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 5,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "clr",
+                    description: Some(
+                        "Write 1 clears all configuration values and status of the endpoint, except for UEP_CFG.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 6,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "halt",
+                    description: Some(
+                        "Endpoint Stop, High Validity, Endpoint Stop Answering STALL to DPH.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 7,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "EpRxSeq",
+            extends: None,
+            description: Some(
+                "Endpoint n receive sequence number register.",
+            ),
+            bit_size: 8,
+            fields: &[
+                Field {
+                    name: "seq_num",
+                    description: Some(
+                        "The current serial number of the endpoint,. writable in non-SEQ_AUTO mode,  read-only in SEQ_AUTO mode.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 5,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "EpRxSt",
+            extends: None,
+            description: Some(
+                "Endpoint n receive status register.",
+            ),
+            bit_size: 8,
+            fields: &[
+                Field {
+                    name: "chain_en",
+                    description: Some(
+                        "The CHAIN enabled state, which corresponds to 4 independent CHAINS.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 4,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "chain_res",
+                    description: Some(
+                        "CHAIN response state, corresponding to 4 separate CHAINS.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 4,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "erdy_req",
+                    description: Some(
+                        "Indicates that the ERDY is currently being sent;. Writing 1 to that bit will send ERDY, which is used in non-ERDY_AUTO mode.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 5,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "fc_st",
+                    description: Some(
+                        "The endpoint is in the current throttling state, and write 1 is cleared to zero.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 6,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "int_flag",
+                    description: Some(
+                        "The current break flag for the endpoint, the bit is read-only,. and all CHAIN_IF are 0 if the bit is 0, otherwise it is 1.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 7,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "EpTxCfg",
+            extends: None,
+            description: Some(
+                "Endpoint n transmit configuration register.",
+            ),
+            bit_size: 8,
+            fields: &[
+                Field {
+                    name: "iso_mode",
+                    description: Some(
+                        "A value of 1 indicates that the current endpoint is a synchronous endpoint.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "seq_auto",
+                    description: Some(
+                        "1: software cannot write SEQ_NUM, hardware maintains it. 0: software may write SEQ_NUM.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 1,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "erdy_auto",
+                    description: Some(
+                        "ERDY automatic mode, the hardware sends ERDY without software control. The RM recommends clearing this bit on a synchronous endpoint.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 2,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "eob_mode",
+                    description: Some(
+                        "If a short packet is sent, EOB/LPF=0 in ACK-TP;If a short packet is sent, EOB/LPF=1 in ACK-TP.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 3,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "fifo_cfg",
+                    description: Some(
+                        "Access offset address 0xC~0xF, and the operation object.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 5,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "fifo_mode",
+                    description: Some(
+                        "If the bit is 1, the current endpoint uses FIFO mode,. and the start and end addresses of the FIFO should be configured before the bit is 1.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 6,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "chain_auto",
+                    description: Some(
+                        "CHAIN automatically switches modes, and this mode is recommended.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 7,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "EpTxChainCr",
+            extends: None,
+            description: Some(
+                "Endpoint n transmit CHAIN control register.",
+            ),
+            bit_size: 8,
+            fields: &[
+                Field {
+                    name: "ret_sel",
+                    description: Some(
+                        "When the FORCE_RET is valid, this bit indicates the returned CHAIN status and configuration.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 2,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "force_ret",
+                    description: Some(
+                        "This bit effectively forces the return of the selected CHAIN state machine configuration.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 2,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "cur_cfg",
+                    description: Some(
+                        "The chain serial number of the current configuration.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 4,
+                        },
+                    ),
+                    bit_size: 2,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "cur_use",
+                    description: Some(
+                        "The CHAIN serial number currently in use.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 6,
+                        },
+                    ),
+                    bit_size: 2,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "EpTxChainLen",
+            extends: None,
+            description: Some(
+                "Endpoint n CHAIN transmit packet length.",
+            ),
+            bit_size: 16,
+            fields: &[
+                Field {
+                    name: "len",
+                    description: Some(
+                        "The length of the last packet sent by the CHAIN.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 11,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "EpTxChainSt",
+            extends: None,
+            description: Some(
+                "Endpoint n transmit CHAIN status register.",
+            ),
+            bit_size: 8,
+            fields: &[
+                Field {
+                    name: "chain_no",
+                    description: Some(
+                        "The serial number of the CHAIN that is currently interrupting.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 2,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "dph_pp",
+                    description: Some(
+                        "The status of the PP bits in the currently received DPH.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 2,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "nump_empty",
+                    description: Some(
+                        "IF THE NUMP IN THE CHAIN IS 0, THE POSITION IS 1.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 3,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "eob_lpf",
+                    description: Some(
+                        "EOB/LPF bits in the last packet of DPH in the current CHAIN.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 5,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "chain_if",
+                    description: Some(
+                        "This bit is only written, and 1 is written to release the current CHAIN_IF.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 6,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "chain_en",
+                    description: Some(
+                        "The currently used CHAIN enables the automatic hardware setting of 1 after the UEP_CHAIN_NUMP register is configured,. and the CHAIN is automatically cleared to zero after the transmission is completed.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 7,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "EpTxCr",
+            extends: None,
+            description: Some(
+                "Endpoint n transmit control register.",
+            ),
+            bit_size: 8,
+            fields: &[
+                Field {
+                    name: "erdy_nump",
+                    description: Some(
+                        "The nump field of ERDY-TP is sent by the hardware,. and the value is generally set to the number of supported bursts.  For example, if you support 16 bursts, the value of this field is 16.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 5,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "chain_clr",
+                    description: Some(
+                        "Write 1 clears all CHAIN configuration values and statuses.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 5,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "clr",
+                    description: Some(
+                        "Write 1 clears all configuration values and status of the endpoint, except for UEP_CFG.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 6,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "halt",
+                    description: Some(
+                        "Endpoint Stop, High Validity, Endpoint Stop Answering STALL to DPH.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 7,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "EpTxSeq",
+            extends: None,
+            description: Some(
+                "Endpoint n transmit sequence number register.",
+            ),
+            bit_size: 8,
+            fields: &[
+                Field {
+                    name: "seq_num",
+                    description: Some(
+                        "The current serial number of the endpoint,. writable in non-SEQ_AUTO mode,  read-only in SEQ_AUTO mode.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 5,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "EpTxSt",
+            extends: None,
+            description: Some(
+                "Endpoint n transmit status register.",
+            ),
+            bit_size: 8,
+            fields: &[
+                Field {
+                    name: "chain_en",
+                    description: Some(
+                        "The CHAIN enabled state, which corresponds to 4 independent CHAINS.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 4,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "chain_res",
+                    description: Some(
+                        "CHAIN response state, corresponding to 4 separate CHAINS.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 4,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "erdy_req",
+                    description: Some(
+                        "Indicates that the ERDY is currently being sent;. Writing 1 to that bit will send ERDY, which is used in non-ERDY_AUTO mode.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 5,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "fc_st",
+                    description: Some(
+                        "The endpoint is in the current throttling state, and write 1 is cleared to zero.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 6,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "int_flag",
+                    description: Some(
+                        "The current break flag for the endpoint, the bit is read-only,. and all CHAIN_IF are 0 if the bit is 0, otherwise it is 1.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 7,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+            ],
+        },
         FieldSet {
             name: "HostRxFcStatus",
             extends: None,
@@ -4831,6 +3408,30 @@ pub(crate) static REGISTERS: IR = IR {
                             },
                         ),
                     ),
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "HostTxNump",
+            extends: None,
+            description: Some(
+                "The host transmits the NUMP register.",
+            ),
+            bit_size: 16,
+            fields: &[
+                Field {
+                    name: "uh_tx_nump",
+                    description: Some(
+                        "The number of packets that the host expects to send; the hardware subtracts 1 for each packet it sends.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 8,
+                    array: None,
                     enumm: None,
                 },
             ],
@@ -5034,7 +3635,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "link_tx_deemph",
                     description: Some(
-                        "Transmitter de-emphasis control.",
+                        "Transmitter de-emphasis control, -3.5 dB after reset. The RM allows only -6.0 dB and -3.5 dB in normal operation; the device SDK writes the reserved value 3.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -5043,7 +3644,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "TxDeemph",
+                    ),
                 },
                 Field {
                     name: "link_cp78_sel",
@@ -5088,7 +3691,7 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "link_lookback_act",
+                    name: "link_loopback_act",
                     description: Some(
                         "It is used in LOOPBACK mode for the LOOPBACK master to control the pattern transmission (the LOOPBACK slave keeps 0),. and the ACT is a high-level signal that lasts for a period of time.",
                     ),
@@ -5132,7 +3735,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "link_u2_allow",
                     description: Some(
-                        "High validity, after receiving the LGO_U2, the response LXU allows to enter the U2 state,. otherwise after receiving the LGO_U2, the response LXU refuses to enter the U2 state.",
+                        "High validity, after receiving the LGO_U2, the response LAU allows to enter the U2 state,. otherwise after receiving the LGO_U2, the response LXU refuses to enter the U2 state.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -5140,6 +3743,20 @@ pub(crate) static REGISTERS: IR = IR {
                         },
                     ),
                     bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "link_skp_mode",
+                    description: Some(
+                        "SKP discard control for descrambling. 0: a byte pair is not descrambled when its low byte is SKP; 1 or 3: when both of its bytes are SKP; 2: when either of its bytes is SKP.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 18,
+                        },
+                    ),
+                    bit_size: 2,
                     array: None,
                     enumm: None,
                 },
@@ -5160,11 +3777,39 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "link_tout_mode",
                     description: Some(
-                        "SPEC configure.",
+                        "Link timer values. 1: USB 3.2 (PM_LC_TIMER 4 us, PM_ENTRY_TIMER 8 us, PENDING_HP_TIMER 10 us); 0: USB 3.0 (3 us, 6 us, 3 us).",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
                             offset: 21,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "link_force_polling",
+                    description: Some(
+                        "Not in the RM, which marks bits 30:22 reserved. Defined by the EVT header; the SDK examples do not use it.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 22,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "link_force_rxterm",
+                    description: Some(
+                        "Not in the RM, which marks bits 30:22 reserved. Defined by the EVT header; the SDK examples do not use it.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 23,
                         },
                     ),
                     bit_size: 1,
@@ -5198,7 +3843,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "link_pd_mode",
                     description: Some(
-                        "Configure the current power mode of the PHY, corresponding to PO/P1/P2/P3 in the PIPE.",
+                        "Configure the current power mode of the PHY, corresponding to P0/P1/P2/P3 in the PIPE. P3 after reset.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -5207,7 +3852,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "PdMode",
+                    ),
                 },
                 Field {
                     name: "link_go_disabled",
@@ -5668,6 +4315,20 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
+                    name: "link_ie_rx_set_fc",
+                    description: Some(
+                        "EVT header name for bit 17, which the RM documents as LINK_IE_HPBUF_FULL. The device SDK enables it on chip revision 3 and later only.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 17,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
                     name: "link_ie_compliance",
                     description: Some(
                         "The link enters the compliance test,. and the interrupt is enabled by the compatibility test or the physical layer conformance test.",
@@ -5876,7 +4537,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "link_if_inactive",
                     description: Some(
-                        "LINK ENTERS THE SS.ACTIVE STATE INTERRUPT FLAG.",
+                        "LINK ENTERS THE SS.INACTIVE STATE INTERRUPT FLAG.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -6072,7 +4733,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "link_if_hpbuf_empty",
                     description: Some(
-                        "he device receives the HOT RESET interrupt flag.",
+                        "Header Packet buffer empty interrupt flag.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -6087,6 +4748,20 @@ pub(crate) static REGISTERS: IR = IR {
                     name: "link_if_hpbuf_full",
                     description: Some(
                         "Header Packet buffer full interrupt flag.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 17,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "link_if_rx_set_fc",
+                    description: Some(
+                        "EVT header name for bit 17, which the RM documents as LINK_IF_HPBUF_FULL. On chip revision 3 and later the device SDK takes it as a received Set Link Function LMP and then reads FORCE_PM in LINK_LMP_PORT_CAP.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -6254,7 +4929,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "link_if_state_chg",
                     description: Some(
-                        "link_reset reset to 0.",
+                        "Link state machine change flag. Write 1 to clear; LINK_RESET also clears it.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -6352,6 +5027,20 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
+                    name: "force_pm",
+                    description: Some(
+                        "Force_LinkPM_Accept of the received Set Link Function LMP. Not in the RM, where bit 29 is part of LINK_SPEED. Defined by the EVT header; the device SDK reads it after LINK_IF_RX_SET_FC on chip revision 3 and later.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 29,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
                     name: "link_lmp_tx_cap_vld",
                     description: Some(
                         "PORT Capability configuration completion flag.",
@@ -6368,7 +5057,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "link_lmp_rx_cap_vld",
                     description: Some(
-                        "A valid PORT_CAP-LMP is received, and the protocol stipulates that. the two LINK parties exchange PORT_CAP-LMP within 20 years after entering the U0 state.",
+                        "A valid PORT_CAP-LMP is received, and the protocol stipulates that. the two LINK parties exchange PORT_CAP-LMP within 20 microseconds after entering the U0 state.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -6376,150 +5065,6 @@ pub(crate) static REGISTERS: IR = IR {
                         },
                     ),
                     bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "LinkLmpRxData0",
-            extends: None,
-            description: Some(
-                "LMP receives data 0 register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "link_lmp_rx_data0",
-                    description: Some(
-                        "Once the LMP is received, the HP data is stored in this register [31:0].",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "LinkLmpRxData1",
-            extends: None,
-            description: Some(
-                "LMP receives data 1 register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "link_lmp_rx_data1",
-                    description: Some(
-                        "Once the LMP is received, the HP data is stored in this register [63:32].",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "LinkLmpRxData2",
-            extends: None,
-            description: Some(
-                "LMP receives data 2 register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "link_lmp_rx_data1",
-                    description: Some(
-                        "Once the LMP is received, the HP data is stored in this register [95:64].",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "LinkLmpTxData0",
-            extends: None,
-            description: Some(
-                "USB Custom HP Data 0 Register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "link_lmp_tx_data0",
-                    description: Some(
-                        "The data of the user-defined HP is sent [31:0].",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "LinkLmpTxData1",
-            extends: None,
-            description: Some(
-                "USB Custom HP Data 1 Register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "link_lmp_tx_data1",
-                    description: Some(
-                        "The data of the user-defined HP is sent [63:32].",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "LinkLmpTxData2",
-            extends: None,
-            description: Some(
-                "USB Custom HP Data 2 Register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "link_lmp_tx_data2",
-                    description: Some(
-                        "The data of the user-defined HP is sent [95:64].",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
                     array: None,
                     enumm: None,
                 },
@@ -6700,7 +5245,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "link_pd_mode_mask",
                     description: Some(
-                        "Link Power Status.",
+                        "Current power mode of the PHY.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -6709,7 +5254,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "PdMode",
+                    ),
                 },
                 Field {
                     name: "link_txeq",
@@ -6728,7 +5275,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "link_state",
                     description: Some(
-                        "Link Status.",
+                        "Link state. DISABLED after reset.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -6737,7 +5284,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 4,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "LinkState",
+                    ),
                 },
                 Field {
                     name: "link_rx_ux_exit_req",
@@ -7380,126 +5929,6 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
-            name: "TpRxData0",
-            extends: None,
-            description: Some(
-                "DEV_NOTIF-TP Data 0 Register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "usb3_notif_data0",
-                    description: Some(
-                        "After the DEV_NOTIF-TP is received, the HP data is stored in this register.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "TpRxData1",
-            extends: None,
-            description: Some(
-                "DEV_NOTIF-TP Data 1 Register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "usb3_notif_data1",
-                    description: Some(
-                        "After the DEV_NOTIF-TP is received, the HP data is stored in this register.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "TpRxData2",
-            extends: None,
-            description: Some(
-                "DEV_NOTIF-TP Data 2 Register.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "usb3_notif_data2",
-                    description: Some(
-                        "After the DEV_NOTIF-TP is received, the HP data is stored in this register.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "U3ep0RxDma",
-            extends: None,
-            description: Some(
-                "DMA start address for endpoint 0 receiving.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "u3ep0_rx_dma",
-                    description: Some(
-                        "The start address of the endpoint 0 receiving buffer.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "U3ep0TxDma",
-            extends: None,
-            description: Some(
-                "DMA start address for endpoint 0 sending.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "u3ep0_tx_dma",
-                    description: Some(
-                        "The start address of the endpoint 0 sending buffer.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
             name: "Uep0RxCtrl",
             extends: None,
             description: Some(
@@ -7538,7 +5967,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "ep0_rx_res",
                     description: Some(
-                        "Response to DPH.",
+                        "Response to DPH. Cleared by hardware when the OUT transaction completes. A SETUP packet is always answered with ACK-TP.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -7547,7 +5976,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "Ep0RxRes",
+                    ),
                 },
                 Field {
                     name: "ep0_rx_erdy",
@@ -7594,30 +6025,6 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
-            name: "Uep0RxDmaOfs",
-            extends: None,
-            description: Some(
-                "Endpoint 0 receive DMA offset.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "dma_ofs",
-                    description: Some(
-                        "DMA offset value.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
             name: "Uep0TxCtrl",
             extends: None,
             description: Some(
@@ -7656,7 +6063,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "ep0_tx_res",
                     description: Some(
-                        "Response to ACK-TP.",
+                        "Response to an ACK-TP with a non-zero NumP. Cleared by hardware when the IN transaction completes.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -7665,7 +6072,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 2,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "Ep0TxRes",
+                    ),
                 },
                 Field {
                     name: "ep0_tx_erdy",
@@ -7726,7940 +6135,6 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
-            name: "Uep0TxDmaOfs",
-            extends: None,
-            description: Some(
-                "Endpoint 0 transmit DMA offset.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "dma_ofs",
-                    description: Some(
-                        "DMA offset value.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1RxCfg",
-            extends: None,
-            description: Some(
-                "Endpoint 1 Configuration Register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_iso_mode",
-                    description: Some(
-                        "A value of 1 indicates that the current endpoint is a synchronous endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_seq_auto",
-                    description: Some(
-                        "1: It is forbidden to write R16_EPn_ST->EP_SEQ_NUM software;. 0: allows the software to write R16_EPn_ST->EP_SEQ_NUM.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 1,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_erdy_auto",
-                    description: Some(
-                        "ERDY automatic mode, the hardware will send ERDY,. no software control required; It is recommended that the synchronization endpoint zero out this bit.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_eob_mode",
-                    description: Some(
-                        "This bit is 1, and when a short packet or DP(PP=0) is received,. clearing all CHAIN_EN will result in an NRDY response to the subsequent DPH;  Software reconfiguration required.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_tout_mode",
-                    description: Some(
-                        "This bit is 1, and when a continuous burst packet is received,. PP=1 and not a short packet is not received, and DPH is not received after the timeout, resulting in TOUT_IF interrupt.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_fifo_cfg",
-                    description: Some(
-                        "Access offset address 0xC~0xF, and the operation object.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_fifo_mode",
-                    description: Some(
-                        "If the bit is 1, the current endpoint uses FIFO mode,. and the start and end addresses of the FIFO should be configured before the bit is 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_auto",
-                    description: Some(
-                        "CHAIN automatically switches modes, and this mode is recommended.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1RxChainCr",
-            extends: None,
-            description: Some(
-                "Endpoint 1 CHAIN control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_ret_sel",
-                    description: Some(
-                        "When the FORCE_RET is valid, this bit indicates the returned CHAIN status and configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_force_ret",
-                    description: Some(
-                        "This bit effectively forces the return of the selected CHAIN state machine configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_cur_cfg",
-                    description: Some(
-                        "The chain serial number of the current configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_cur_use",
-                    description: Some(
-                        "The CHAIN serial number currently in use.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1RxChainLen",
-            extends: None,
-            description: Some(
-                "Endpoint 1 CHAIN sends the last packet length.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "ep_rx_chain_rx_len",
-                    description: Some(
-                        "The length of the currently completed CHAIN to the last packet.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 11,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1RxChainMaxNump",
-            extends: None,
-            description: Some(
-                "Number of NUMPs that Endpoint 1 can receive.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "rx_chain_max_nump",
-                    description: Some(
-                        "The number of DPP packets that can be received by the CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1RxChainNump",
-            extends: None,
-            description: Some(
-                "Number of NUMPs has been received by endpoint 1.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_nump",
-                    description: Some(
-                        "The number of DPP packets that has received.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1RxChainSt",
-            extends: None,
-            description: Some(
-                "Endpoint 1 CHAIN state register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_chain_no",
-                    description: Some(
-                        "The serial number of the CHAIN that is currently interrupting.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_dph_pp",
-                    description: Some(
-                        "The status of the PP bits in the currently received DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_nump_empty",
-                    description: Some(
-                        "IF THE NUMP IN THE CHAIN IS 0, THE POSITION IS 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_lpf_flag",
-                    description: Some(
-                        "Only the synchronous downhaul endpoint is used to currently receive the LPF status in the DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_if",
-                    description: Some(
-                        "This bit is only written, and 1 is written to release the current CHAIN_IF.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_en",
-                    description: Some(
-                        "The currently used CHAIN enables the automatic hardware setting of 1 after the UEP_CHAIN_NUMP register is configured,. and the CHAIN is automatically cleared to zero after the transmission is completed.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1RxCr",
-            extends: None,
-            description: Some(
-                "Endpoint 1 control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_erdy_nump",
-                    description: Some(
-                        "The nump field of ERDY-TP is sent by the hardware,. and the value is generally set to the number of supported bursts.  For example, if you support 16 bursts, the value of this field is 16.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_clr",
-                    description: Some(
-                        "Write 1 clears all CHAIN configuration values and statuses.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_clr",
-                    description: Some(
-                        "Write 1 clears all configuration values and status of the endpoint, except for UEP_CFG.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_halt",
-                    description: Some(
-                        "Endpoint Stop, High Validity, Endpoint Stop Answering STALL to DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1RxDma",
-            extends: None,
-            description: Some(
-                "DMA start address for endpoint 1.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "chain_rx_dma",
-                    description: Some(
-                        "Normal mode:The DMA start address of the CHAIN to receive data.. FIFO mode:16~23 bits of the FIFO start address in SRAM;The FIFO end address is 16~23 bits of the mapped address in SRAM.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1RxDmaOfs",
-            extends: None,
-            description: Some(
-                "DMA offset length for endpoint 1.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "chain_dma_ofs",
-                    description: Some(
-                        "The offset address of the DPP in that CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1RxSeq",
-            extends: None,
-            description: Some(
-                "Endpoint 1 Serial Number Register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_seq_num",
-                    description: Some(
-                        "The current serial number of the endpoint,. writable in non-SEQ_AUTO mode,  read-only in SEQ_AUTO mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1RxSt",
-            extends: None,
-            description: Some(
-                "Endpoint 1 status register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "er_rx_chain_en",
-                    description: Some(
-                        "The CHAIN enabled state, which corresponds to 4 independent CHAINS.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 4,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_res",
-                    description: Some(
-                        "CHAIN response state, corresponding to 4 separate CHAINS.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_erdy_req",
-                    description: Some(
-                        "Indicates that the ERDY is currently being sent;. Writing 1 to that bit will send ERDY, which is used in non-ERDY_AUTO mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_fc_st",
-                    description: Some(
-                        "The endpoint is in the current throttling state, and write 1 is cleared to zero.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_int_flag",
-                    description: Some(
-                        "The current break flag for the endpoint, the bit is read-only,. and all CHAIN_IF are 0 if the bit is 0, otherwise it is 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1TxCfg",
-            extends: None,
-            description: Some(
-                "Endpoint 1 Configuration Register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_tx_iso_mode",
-                    description: Some(
-                        "A value of 1 indicates that the current endpoint is a synchronous endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_seq_auto",
-                    description: Some(
-                        "1: It is forbidden to write R16_EPn_ST->EP_SEQ_NUM software;. 0: allows the software to write R16_EPn_ST->EP_SEQ_NUM.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 1,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_erdy_auto",
-                    description: Some(
-                        "ERDY automatic mode, the hardware will send ERDY,. no software control required; It is recommended that the synchronization endpoint zero out this bit.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_eob_mode",
-                    description: Some(
-                        "If a short packet is sent, EOB/LPF=0 in ACK-TP;If a short packet is sent, EOB/LPF=1 in ACK-TP.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_fifo_cfg",
-                    description: Some(
-                        "Access offset address 0xC~0xF, and the operation object.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_fifo_mode",
-                    description: Some(
-                        "If the bit is 1, the current endpoint uses FIFO mode,. and the start and end addresses of the FIFO should be configured before the bit is 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_chain_auto",
-                    description: Some(
-                        "CHAIN automatically switches modes, and this mode is recommended.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1TxChainCr",
-            extends: None,
-            description: Some(
-                "Endpoint 1 CHAIN control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_ret_sel",
-                    description: Some(
-                        "When the FORCE_RET is valid, this bit indicates the returned CHAIN status and configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_force_ret",
-                    description: Some(
-                        "This bit effectively forces the return of the selected CHAIN state machine configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_cur_cfg",
-                    description: Some(
-                        "The chain serial number of the current configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_cur_use",
-                    description: Some(
-                        "The CHAIN serial number currently in use.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1TxChainExpNump",
-            extends: None,
-            description: Some(
-                "Number of NUMPs expected to be sent by endpoint 1.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_exp_nump",
-                    description: Some(
-                        "The number of DPP packets that can be sent by the currently completed CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1TxChainLen",
-            extends: None,
-            description: Some(
-                "Endpoint 1 CHAIN sends the last packet length.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "chain_tx_len",
-                    description: Some(
-                        "The length of the last packet sent by the CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 11,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1TxChainNump",
-            extends: None,
-            description: Some(
-                "Number of NUMPs has been sent by endpoint n.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_nump",
-                    description: Some(
-                        "The number of DPP packets that have been transmitted.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1TxChainSt",
-            extends: None,
-            description: Some(
-                "Endpoint 1 CHAIN state register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_no",
-                    description: Some(
-                        "The serial number of the CHAIN that is currently interrupting.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_dph_pp",
-                    description: Some(
-                        "The status of the PP bits in the currently received DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_nump_empty",
-                    description: Some(
-                        "IF THE NUMP IN THE CHAIN IS 0, THE POSITION IS 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_eob_lpf",
-                    description: Some(
-                        "EOB/LPF bits in the last packet of DPH in the current CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_chain_if",
-                    description: Some(
-                        "This bit is only written, and 1 is written to release the current CHAIN_IF.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_chain_en",
-                    description: Some(
-                        "The currently used CHAIN enables the automatic hardware setting of 1 after the UEP_CHAIN_NUMP register is configured,. and the CHAIN is automatically cleared to zero after the transmission is completed.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1TxCr",
-            extends: None,
-            description: Some(
-                "Endpoint 1 control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_tx_erdy_nump",
-                    description: Some(
-                        "The nump field of ERDY-TP is sent by the hardware,. and the value is generally set to the number of supported bursts.  For example, if you support 16 bursts, the value of this field is 16.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_chain_clr",
-                    description: Some(
-                        "Write 1 clears all CHAIN configuration values and statuses.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_clr",
-                    description: Some(
-                        "Write 1 clears all configuration values and status of the endpoint, except for UEP_CFG.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_halt",
-                    description: Some(
-                        "Endpoint Stop, High Validity, Endpoint Stop Answering STALL to DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1TxDma",
-            extends: None,
-            description: Some(
-                "DMA start address for endpoint 1.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "chain_tx_dma",
-                    description: Some(
-                        "Normal mode:The DMA start address of the CHAIN to send data.. FIFO mode:16~23 bits of the FIFO start address in SRAM;The FIFO end address is 16~23 bits of the mapped address in SRAM.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1TxDmaOfs",
-            extends: None,
-            description: Some(
-                "DMA offset length for endpoint 1.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "chain_tx_dma_ofs",
-                    description: Some(
-                        "The offset address of the DPP in that CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1TxSeq",
-            extends: None,
-            description: Some(
-                "Endpoint 1 Serial Number Register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_ep_seq_num",
-                    description: Some(
-                        "The current serial number of the endpoint,. writable in non-SEQ_AUTO mode,  read-only in SEQ_AUTO mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep1TxSt",
-            extends: None,
-            description: Some(
-                "Endpoint 1 status register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_en",
-                    description: Some(
-                        "The CHAIN enabled state, which corresponds to 4 independent CHAINS.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 4,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_chain_res",
-                    description: Some(
-                        "CHAIN response state, corresponding to 4 separate CHAINS.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_ep_erdy_req",
-                    description: Some(
-                        "Indicates that the ERDY is currently being sent;. Writing 1 to that bit will send ERDY, which is used in non-ERDY_AUTO mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_ep_fc_st",
-                    description: Some(
-                        "The endpoint is in the current throttling state, and write 1 is cleared to zero.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_ep_int_flag",
-                    description: Some(
-                        "The current break flag for the endpoint, the bit is read-only,. and all CHAIN_IF are 0 if the bit is 0, otherwise it is 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2RxCfg",
-            extends: None,
-            description: Some(
-                "Endpoint 2 Configuration Register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_iso_mode",
-                    description: Some(
-                        "A value of 1 indicates that the current endpoint is a synchronous endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_seq_auto",
-                    description: Some(
-                        "1: It is forbidden to write R16_EPn_ST->EP_SEQ_NUM software;. 0: allows the software to write R16_EPn_ST->EP_SEQ_NUM.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 1,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_erdy_auto",
-                    description: Some(
-                        "ERDY automatic mode, the hardware will send ERDY,. no software control required; It is recommended that the synchronization endpoint zero out this bit.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_eob_mode",
-                    description: Some(
-                        "This bit is 1, and when a short packet or DP(PP=0) is received,. clearing all CHAIN_EN will result in an NRDY response to the subsequent DPH;  Software reconfiguration required.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_tout_mode",
-                    description: Some(
-                        "This bit is 1, and when a continuous burst packet is received,. PP=1 and not a short packet is not received, and DPH is not received after the timeout, resulting in TOUT_IF interrupt.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_fifo_cfg",
-                    description: Some(
-                        "Access offset address 0xC~0xF, and the operation object.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_fifo_mode",
-                    description: Some(
-                        "If the bit is 1, the current endpoint uses FIFO mode,. and the start and end addresses of the FIFO should be configured before the bit is 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_auto",
-                    description: Some(
-                        "CHAIN automatically switches modes, and this mode is recommended.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2RxChainCr",
-            extends: None,
-            description: Some(
-                "Endpoint 2 CHAIN control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_ret_sel",
-                    description: Some(
-                        "When the FORCE_RET is valid, this bit indicates the returned CHAIN status and configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_force_ret",
-                    description: Some(
-                        "This bit effectively forces the return of the selected CHAIN state machine configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_cur_cfg",
-                    description: Some(
-                        "The chain serial number of the current configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_cur_use",
-                    description: Some(
-                        "The CHAIN serial number currently in use.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2RxChainLen",
-            extends: None,
-            description: Some(
-                "Endpoint 2 CHAIN sends the last packet length.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "ep_rx_chain_rx_len",
-                    description: Some(
-                        "The length of the currently completed CHAIN to the last packet.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 11,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2RxChainMaxNump",
-            extends: None,
-            description: Some(
-                "Number of NUMPs that Endpoint 2 can receive.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "rx_chain_max_nump",
-                    description: Some(
-                        "The number of DPP packets that can be received by the CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2RxChainNump",
-            extends: None,
-            description: Some(
-                "Number of NUMPs has been received by endpoint 2.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_nump",
-                    description: Some(
-                        "The number of DPP packets that has received.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2RxChainSt",
-            extends: None,
-            description: Some(
-                "Endpoint 2 CHAIN state register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_chain_no",
-                    description: Some(
-                        "The serial number of the CHAIN that is currently interrupting.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_dph_pp",
-                    description: Some(
-                        "The status of the PP bits in the currently received DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_nump_empty",
-                    description: Some(
-                        "IF THE NUMP IN THE CHAIN IS 0, THE POSITION IS 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_lpf_flag",
-                    description: Some(
-                        "Only the synchronous downhaul endpoint is used to currently receive the LPF status in the DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_if",
-                    description: Some(
-                        "This bit is only written, and 1 is written to release the current CHAIN_IF.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_en",
-                    description: Some(
-                        "The currently used CHAIN enables the automatic hardware setting of 1 after the UEP_CHAIN_NUMP register is configured,. and the CHAIN is automatically cleared to zero after the transmission is completed.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2RxCr",
-            extends: None,
-            description: Some(
-                "Endpoint 2 control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_erdy_nump",
-                    description: Some(
-                        "The nump field of ERDY-TP is sent by the hardware,. and the value is generally set to the number of supported bursts.  For example, if you support 16 bursts, the value of this field is 16.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_clr",
-                    description: Some(
-                        "Write 1 clears all CHAIN configuration values and statuses.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_clr",
-                    description: Some(
-                        "Write 1 clears all configuration values and status of the endpoint, except for UEP_CFG.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_halt",
-                    description: Some(
-                        "Endpoint Stop, High Validity, Endpoint Stop Answering STALL to DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2RxDma",
-            extends: None,
-            description: Some(
-                "DMA start address for Endpoint 2.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "chain_rx_dma",
-                    description: Some(
-                        "Normal mode:The DMA start address of the CHAIN to receive data.. FIFO mode:16~23 bits of the FIFO start address in SRAM;The FIFO end address is 16~23 bits of the mapped address in SRAM.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2RxDmaOfs",
-            extends: None,
-            description: Some(
-                "DMA offset length for Endpoint 2.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "chain_dma_ofs",
-                    description: Some(
-                        "The offset address of the DPP in that CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2RxSeq",
-            extends: None,
-            description: Some(
-                "Endpoint 2 Serial Number Register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_seq_num",
-                    description: Some(
-                        "The current serial number of the endpoint,. writable in non-SEQ_AUTO mode,  read-only in SEQ_AUTO mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2RxSt",
-            extends: None,
-            description: Some(
-                "Endpoint 2 status register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "er_rx_chain_en",
-                    description: Some(
-                        "The CHAIN enabled state, which corresponds to 4 independent CHAINS.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 4,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_res",
-                    description: Some(
-                        "CHAIN response state, corresponding to 4 separate CHAINS.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_erdy_req",
-                    description: Some(
-                        "Indicates that the ERDY is currently being sent;. Writing 1 to that bit will send ERDY, which is used in non-ERDY_AUTO mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_fc_st",
-                    description: Some(
-                        "The endpoint is in the current throttling state, and write 1 is cleared to zero.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_int_flag",
-                    description: Some(
-                        "The current break flag for the endpoint, the bit is read-only,. and all CHAIN_IF are 0 if the bit is 0, otherwise it is 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2TxCfg",
-            extends: None,
-            description: Some(
-                "Endpoint 2 Configuration Register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_tx_iso_mode",
-                    description: Some(
-                        "A value of 1 indicates that the current endpoint is a synchronous endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_seq_auto",
-                    description: Some(
-                        "1: It is forbidden to write R16_EPn_ST->EP_SEQ_NUM software;. 0: allows the software to write R16_EPn_ST->EP_SEQ_NUM.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 1,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_erdy_auto",
-                    description: Some(
-                        "ERDY automatic mode, the hardware will send ERDY,. no software control required; It is recommended that the synchronization endpoint zero out this bit.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_eob_mode",
-                    description: Some(
-                        "If a short packet is sent, EOB/LPF=0 in ACK-TP;If a short packet is sent, EOB/LPF=1 in ACK-TP.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_fifo_cfg",
-                    description: Some(
-                        "Access offset address 0xC~0xF, and the operation object.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_fifo_mode",
-                    description: Some(
-                        "If the bit is 1, the current endpoint uses FIFO mode,. and the start and end addresses of the FIFO should be configured before the bit is 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_chain_auto",
-                    description: Some(
-                        "CHAIN automatically switches modes, and this mode is recommended.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2TxChainCr",
-            extends: None,
-            description: Some(
-                "Endpoint 2 CHAIN control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_ret_sel",
-                    description: Some(
-                        "When the FORCE_RET is valid, this bit indicates the returned CHAIN status and configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_force_ret",
-                    description: Some(
-                        "This bit effectively forces the return of the selected CHAIN state machine configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_cur_cfg",
-                    description: Some(
-                        "The chain serial number of the current configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_cur_use",
-                    description: Some(
-                        "The CHAIN serial number currently in use.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2TxChainExpNump",
-            extends: None,
-            description: Some(
-                "Number of NUMPs expected to be sent by endpoint 2.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_exp_nump",
-                    description: Some(
-                        "The number of DPP packets that can be sent by the currently completed CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2TxChainLen",
-            extends: None,
-            description: Some(
-                "Endpoint 2 CHAIN sends the last packet length.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "chain_tx_len",
-                    description: Some(
-                        "The length of the last packet sent by the CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 11,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2TxChainNump",
-            extends: None,
-            description: Some(
-                "Number of NUMPs has been sent by endpoint 2.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_nump",
-                    description: Some(
-                        "The number of DPP packets that have been transmitted.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2TxChainSt",
-            extends: None,
-            description: Some(
-                "Endpoint 2 CHAIN state register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_no",
-                    description: Some(
-                        "The serial number of the CHAIN that is currently interrupting.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_dph_pp",
-                    description: Some(
-                        "The status of the PP bits in the currently received DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_nump_empty",
-                    description: Some(
-                        "IF THE NUMP IN THE CHAIN IS 0, THE POSITION IS 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_eob_lpf",
-                    description: Some(
-                        "EOB/LPF bits in the last packet of DPH in the current CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_chain_if",
-                    description: Some(
-                        "This bit is only written, and 1 is written to release the current CHAIN_IF.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_chain_en",
-                    description: Some(
-                        "The currently used CHAIN enables the automatic hardware setting of 1 after the UEP_CHAIN_NUMP register is configured,. and the CHAIN is automatically cleared to zero after the transmission is completed.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2TxCr",
-            extends: None,
-            description: Some(
-                "Endpoint 2 control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_tx_erdy_nump",
-                    description: Some(
-                        "The nump field of ERDY-TP is sent by the hardware,. and the value is generally set to the number of supported bursts.  For example, if you support 16 bursts, the value of this field is 16.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_chain_clr",
-                    description: Some(
-                        "Write 1 clears all CHAIN configuration values and statuses.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_clr",
-                    description: Some(
-                        "Write 1 clears all configuration values and status of the endpoint, except for UEP_CFG.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_halt",
-                    description: Some(
-                        "Endpoint Stop, High Validity, Endpoint Stop Answering STALL to DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2TxDma",
-            extends: None,
-            description: Some(
-                "DMA start address for endpoint 2.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "chain_tx_dma",
-                    description: Some(
-                        "Normal mode:The DMA start address of the CHAIN to send data.. FIFO mode:16~23 bits of the FIFO start address in SRAM;The FIFO end address is 16~23 bits of the mapped address in SRAM.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2TxDmaOfs",
-            extends: None,
-            description: Some(
-                "DMA offset length for endpoint 2.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "chain_tx_dma_ofs",
-                    description: Some(
-                        "The offset address of the DPP in that CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2TxSeq",
-            extends: None,
-            description: Some(
-                "Endpoint 2 Serial Number Register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_ep_seq_num",
-                    description: Some(
-                        "The current serial number of the endpoint,. writable in non-SEQ_AUTO mode,  read-only in SEQ_AUTO mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep2TxSt",
-            extends: None,
-            description: Some(
-                "Endpoint 2 status register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_en",
-                    description: Some(
-                        "The CHAIN enabled state, which corresponds to 4 independent CHAINS.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 4,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_chain_res",
-                    description: Some(
-                        "CHAIN response state, corresponding to 4 separate CHAINS.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_ep_erdy_req",
-                    description: Some(
-                        "Indicates that the ERDY is currently being sent;. Writing 1 to that bit will send ERDY, which is used in non-ERDY_AUTO mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_ep_fc_st",
-                    description: Some(
-                        "The endpoint is in the current throttling state, and write 1 is cleared to zero.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_ep_int_flag",
-                    description: Some(
-                        "The current break flag for the endpoint, the bit is read-only,. and all CHAIN_IF are 0 if the bit is 0, otherwise it is 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3RxCfg",
-            extends: None,
-            description: Some(
-                "Endpoint 3 Configuration Register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_iso_mode",
-                    description: Some(
-                        "A value of 1 indicates that the current endpoint is a synchronous endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_seq_auto",
-                    description: Some(
-                        "1: It is forbidden to write R16_EPn_ST->EP_SEQ_NUM software;. 0: allows the software to write R16_EPn_ST->EP_SEQ_NUM.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 1,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_erdy_auto",
-                    description: Some(
-                        "ERDY automatic mode, the hardware will send ERDY,. no software control required; It is recommended that the synchronization endpoint zero out this bit.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_eob_mode",
-                    description: Some(
-                        "This bit is 1, and when a short packet or DP(PP=0) is received,. clearing all CHAIN_EN will result in an NRDY response to the subsequent DPH;  Software reconfiguration required.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_tout_mode",
-                    description: Some(
-                        "This bit is 1, and when a continuous burst packet is received,. PP=1 and not a short packet is not received, and DPH is not received after the timeout, resulting in TOUT_IF interrupt.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_fifo_cfg",
-                    description: Some(
-                        "Access offset address 0xC~0xF, and the operation object.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_fifo_mode",
-                    description: Some(
-                        "If the bit is 1, the current endpoint uses FIFO mode,. and the start and end addresses of the FIFO should be configured before the bit is 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_auto",
-                    description: Some(
-                        "CHAIN automatically switches modes, and this mode is recommended.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3RxChainCr",
-            extends: None,
-            description: Some(
-                "Endpoint 3 CHAIN control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_ret_sel",
-                    description: Some(
-                        "When the FORCE_RET is valid, this bit indicates the returned CHAIN status and configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_force_ret",
-                    description: Some(
-                        "This bit effectively forces the return of the selected CHAIN state machine configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_cur_cfg",
-                    description: Some(
-                        "The chain serial number of the current configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_cur_use",
-                    description: Some(
-                        "The CHAIN serial number currently in use.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3RxChainLen",
-            extends: None,
-            description: Some(
-                "Endpoint 3 CHAIN sends the last packet length.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "ep_rx_chain_rx_len",
-                    description: Some(
-                        "The length of the currently completed CHAIN to the last packet.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 11,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3RxChainMaxNump",
-            extends: None,
-            description: Some(
-                "Number of NUMPs that Endpoint 3 can receive.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "rx_chain_max_nump",
-                    description: Some(
-                        "The number of DPP packets that can be received by the CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3RxChainNump",
-            extends: None,
-            description: Some(
-                "Number of NUMPs has been received by Endpoint 3.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_nump",
-                    description: Some(
-                        "The number of DPP packets that has received.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3RxChainSt",
-            extends: None,
-            description: Some(
-                "Endpoint 3 CHAIN state register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_chain_no",
-                    description: Some(
-                        "The serial number of the CHAIN that is currently interrupting.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_dph_pp",
-                    description: Some(
-                        "The status of the PP bits in the currently received DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_nump_empty",
-                    description: Some(
-                        "IF THE NUMP IN THE CHAIN IS 0, THE POSITION IS 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_lpf_flag",
-                    description: Some(
-                        "Only the synchronous downhaul endpoint is used to currently receive the LPF status in the DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_if",
-                    description: Some(
-                        "This bit is only written, and 1 is written to release the current CHAIN_IF.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_en",
-                    description: Some(
-                        "The currently used CHAIN enables the automatic hardware setting of 1 after the UEP_CHAIN_NUMP register is configured,. and the CHAIN is automatically cleared to zero after the transmission is completed.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3RxCr",
-            extends: None,
-            description: Some(
-                "Endpoint 3 control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_erdy_nump",
-                    description: Some(
-                        "The nump field of ERDY-TP is sent by the hardware,. and the value is generally set to the number of supported bursts.  For example, if you support 16 bursts, the value of this field is 16.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_clr",
-                    description: Some(
-                        "Write 1 clears all CHAIN configuration values and statuses.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_clr",
-                    description: Some(
-                        "Write 1 clears all configuration values and status of the endpoint, except for UEP_CFG.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_halt",
-                    description: Some(
-                        "Endpoint Stop, High Validity, Endpoint Stop Answering STALL to DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3RxDma",
-            extends: None,
-            description: Some(
-                "DMA start address for Endpoint 3.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "chain_rx_dma",
-                    description: Some(
-                        "Normal mode:The DMA start address of the CHAIN to receive data.. FIFO mode:16~23 bits of the FIFO start address in SRAM;The FIFO end address is 16~23 bits of the mapped address in SRAM.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3RxDmaOfs",
-            extends: None,
-            description: Some(
-                "DMA offset length for Endpoint 3.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "chain_dma_ofs",
-                    description: Some(
-                        "The offset address of the DPP in that CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3RxSeq",
-            extends: None,
-            description: Some(
-                "Endpoint 3 Serial Number Register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_seq_num",
-                    description: Some(
-                        "The current serial number of the endpoint,. writable in non-SEQ_AUTO mode,  read-only in SEQ_AUTO mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3RxSt",
-            extends: None,
-            description: Some(
-                "Endpoint 3 status register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "er_rx_chain_en",
-                    description: Some(
-                        "The CHAIN enabled state, which corresponds to 4 independent CHAINS.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 4,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_res",
-                    description: Some(
-                        "CHAIN response state, corresponding to 4 separate CHAINS.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_erdy_req",
-                    description: Some(
-                        "Indicates that the ERDY is currently being sent;. Writing 1 to that bit will send ERDY, which is used in non-ERDY_AUTO mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_fc_st",
-                    description: Some(
-                        "The endpoint is in the current throttling state, and write 1 is cleared to zero.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_int_flag",
-                    description: Some(
-                        "The current break flag for the endpoint, the bit is read-only,. and all CHAIN_IF are 0 if the bit is 0, otherwise it is 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3TxCfg",
-            extends: None,
-            description: Some(
-                "Endpoint 3 Configuration Register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_tx_iso_mode",
-                    description: Some(
-                        "A value of 1 indicates that the current endpoint is a synchronous endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_seq_auto",
-                    description: Some(
-                        "1: It is forbidden to write R16_EPn_ST->EP_SEQ_NUM software;. 0: allows the software to write R16_EPn_ST->EP_SEQ_NUM.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 1,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_erdy_auto",
-                    description: Some(
-                        "ERDY automatic mode, the hardware will send ERDY,. no software control required; It is recommended that the synchronization endpoint zero out this bit.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_eob_mode",
-                    description: Some(
-                        "If a short packet is sent, EOB/LPF=0 in ACK-TP;If a short packet is sent, EOB/LPF=1 in ACK-TP.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_fifo_cfg",
-                    description: Some(
-                        "Access offset address 0xC~0xF, and the operation object.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_fifo_mode",
-                    description: Some(
-                        "If the bit is 1, the current endpoint uses FIFO mode,. and the start and end addresses of the FIFO should be configured before the bit is 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_chain_auto",
-                    description: Some(
-                        "CHAIN automatically switches modes, and this mode is recommended.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3TxChainCr",
-            extends: None,
-            description: Some(
-                "Endpoint 3 CHAIN control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_ret_sel",
-                    description: Some(
-                        "When the FORCE_RET is valid, this bit indicates the returned CHAIN status and configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_force_ret",
-                    description: Some(
-                        "This bit effectively forces the return of the selected CHAIN state machine configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_cur_cfg",
-                    description: Some(
-                        "The chain serial number of the current configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_cur_use",
-                    description: Some(
-                        "The CHAIN serial number currently in use.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3TxChainExpNump",
-            extends: None,
-            description: Some(
-                "Number of NUMPs expected to be sent by endpoint 3.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_exp_nump",
-                    description: Some(
-                        "The number of DPP packets that can be sent by the currently completed CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3TxChainLen",
-            extends: None,
-            description: Some(
-                "Endpoint 3 CHAIN sends the last packet length.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "chain_tx_len",
-                    description: Some(
-                        "The length of the last packet sent by the CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 11,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3TxChainNump",
-            extends: None,
-            description: Some(
-                "Number of NUMPs has been sent by endpoint 3.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_nump",
-                    description: Some(
-                        "The number of DPP packets that have been transmitted.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3TxChainSt",
-            extends: None,
-            description: Some(
-                "Endpoint 3 CHAIN state register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_no",
-                    description: Some(
-                        "The serial number of the CHAIN that is currently interrupting.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_dph_pp",
-                    description: Some(
-                        "The status of the PP bits in the currently received DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_nump_empty",
-                    description: Some(
-                        "IF THE NUMP IN THE CHAIN IS 0, THE POSITION IS 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_eob_lpf",
-                    description: Some(
-                        "EOB/LPF bits in the last packet of DPH in the current CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_chain_if",
-                    description: Some(
-                        "This bit is only written, and 1 is written to release the current CHAIN_IF.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_chain_en",
-                    description: Some(
-                        "The currently used CHAIN enables the automatic hardware setting of 1 after the UEP_CHAIN_NUMP register is configured,. and the CHAIN is automatically cleared to zero after the transmission is completed.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3TxCr",
-            extends: None,
-            description: Some(
-                "Endpoint 3 control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_tx_erdy_nump",
-                    description: Some(
-                        "The nump field of ERDY-TP is sent by the hardware,. and the value is generally set to the number of supported bursts.  For example, if you support 16 bursts, the value of this field is 16.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_chain_clr",
-                    description: Some(
-                        "Write 1 clears all CHAIN configuration values and statuses.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_clr",
-                    description: Some(
-                        "Write 1 clears all configuration values and status of the endpoint, except for UEP_CFG.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_halt",
-                    description: Some(
-                        "Endpoint Stop, High Validity, Endpoint Stop Answering STALL to DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3TxDma",
-            extends: None,
-            description: Some(
-                "DMA start address for endpoint 3.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "chain_tx_dma",
-                    description: Some(
-                        "Normal mode:The DMA start address of the CHAIN to send data.. FIFO mode:16~23 bits of the FIFO start address in SRAM;The FIFO end address is 16~23 bits of the mapped address in SRAM.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3TxDmaOfs",
-            extends: None,
-            description: Some(
-                "DMA offset length for endpoint 3.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "chain_tx_dma_ofs",
-                    description: Some(
-                        "The offset address of the DPP in that CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3TxSeq",
-            extends: None,
-            description: Some(
-                "Endpoint 3 Serial Number Register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_ep_seq_num",
-                    description: Some(
-                        "The current serial number of the endpoint,. writable in non-SEQ_AUTO mode,  read-only in SEQ_AUTO mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep3TxSt",
-            extends: None,
-            description: Some(
-                "Endpoint 3 status register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_en",
-                    description: Some(
-                        "The CHAIN enabled state, which corresponds to 4 independent CHAINS.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 4,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_chain_res",
-                    description: Some(
-                        "CHAIN response state, corresponding to 4 separate CHAINS.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_ep_erdy_req",
-                    description: Some(
-                        "Indicates that the ERDY is currently being sent;. Writing 1 to that bit will send ERDY, which is used in non-ERDY_AUTO mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_ep_fc_st",
-                    description: Some(
-                        "The endpoint is in the current throttling state, and write 1 is cleared to zero.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_ep_int_flag",
-                    description: Some(
-                        "The current break flag for the endpoint, the bit is read-only,. and all CHAIN_IF are 0 if the bit is 0, otherwise it is 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4RxCfg",
-            extends: None,
-            description: Some(
-                "Endpoint 4 Configuration Register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_iso_mode",
-                    description: Some(
-                        "A value of 1 indicates that the current endpoint is a synchronous endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_seq_auto",
-                    description: Some(
-                        "1: It is forbidden to write R16_EPn_ST->EP_SEQ_NUM software;. 0: allows the software to write R16_EPn_ST->EP_SEQ_NUM.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 1,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_erdy_auto",
-                    description: Some(
-                        "ERDY automatic mode, the hardware will send ERDY,. no software control required; It is recommended that the synchronization endpoint zero out this bit.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_eob_mode",
-                    description: Some(
-                        "This bit is 1, and when a short packet or DP(PP=0) is received,. clearing all CHAIN_EN will result in an NRDY response to the subsequent DPH;  Software reconfiguration required.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_tout_mode",
-                    description: Some(
-                        "This bit is 1, and when a continuous burst packet is received,. PP=1 and not a short packet is not received, and DPH is not received after the timeout, resulting in TOUT_IF interrupt.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_fifo_cfg",
-                    description: Some(
-                        "Access offset address 0xC~0xF, and the operation object.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_fifo_mode",
-                    description: Some(
-                        "If the bit is 1, the current endpoint uses FIFO mode,. and the start and end addresses of the FIFO should be configured before the bit is 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_auto",
-                    description: Some(
-                        "CHAIN automatically switches modes, and this mode is recommended.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4RxChainCr",
-            extends: None,
-            description: Some(
-                "Endpoint 4 CHAIN control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_ret_sel",
-                    description: Some(
-                        "When the FORCE_RET is valid, this bit indicates the returned CHAIN status and configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_force_ret",
-                    description: Some(
-                        "This bit effectively forces the return of the selected CHAIN state machine configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_cur_cfg",
-                    description: Some(
-                        "The chain serial number of the current configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_cur_use",
-                    description: Some(
-                        "The CHAIN serial number currently in use.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4RxChainLen",
-            extends: None,
-            description: Some(
-                "Endpoint 4 CHAIN sends the last packet length.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "ep_rx_chain_rx_len",
-                    description: Some(
-                        "The length of the currently completed CHAIN to the last packet.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 11,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4RxChainMaxNump",
-            extends: None,
-            description: Some(
-                "Number of NUMPs that Endpoint 4 can receive.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "rx_chain_max_nump",
-                    description: Some(
-                        "The number of DPP packets that can be received by the CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4RxChainNump",
-            extends: None,
-            description: Some(
-                "Number of NUMPs has been received by Endpoint 4.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_nump",
-                    description: Some(
-                        "The number of DPP packets that has received.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4RxChainSt",
-            extends: None,
-            description: Some(
-                "Endpoint 4 CHAIN state register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_chain_no",
-                    description: Some(
-                        "The serial number of the CHAIN that is currently interrupting.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_dph_pp",
-                    description: Some(
-                        "The status of the PP bits in the currently received DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_nump_empty",
-                    description: Some(
-                        "IF THE NUMP IN THE CHAIN IS 0, THE POSITION IS 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_lpf_flag",
-                    description: Some(
-                        "Only the synchronous downhaul endpoint is used to currently receive the LPF status in the DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_if",
-                    description: Some(
-                        "This bit is only written, and 1 is written to release the current CHAIN_IF.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_en",
-                    description: Some(
-                        "The currently used CHAIN enables the automatic hardware setting of 1 after the UEP_CHAIN_NUMP register is configured,. and the CHAIN is automatically cleared to zero after the transmission is completed.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4RxCr",
-            extends: None,
-            description: Some(
-                "Endpoint 4 control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_erdy_nump",
-                    description: Some(
-                        "The nump field of ERDY-TP is sent by the hardware,. and the value is generally set to the number of supported bursts.  For example, if you support 16 bursts, the value of this field is 16.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_clr",
-                    description: Some(
-                        "Write 1 clears all CHAIN configuration values and statuses.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_clr",
-                    description: Some(
-                        "Write 1 clears all configuration values and status of the endpoint, except for UEP_CFG.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_halt",
-                    description: Some(
-                        "Endpoint Stop, High Validity, Endpoint Stop Answering STALL to DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4RxDma",
-            extends: None,
-            description: Some(
-                "DMA start address for Endpoint 4.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "chain_rx_dma",
-                    description: Some(
-                        "Normal mode:The DMA start address of the CHAIN to receive data.. FIFO mode:16~23 bits of the FIFO start address in SRAM;The FIFO end address is 16~23 bits of the mapped address in SRAM.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4RxDmaOfs",
-            extends: None,
-            description: Some(
-                "DMA offset length for Endpoint 4.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "chain_dma_ofs",
-                    description: Some(
-                        "The offset address of the DPP in that CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4RxSeq",
-            extends: None,
-            description: Some(
-                "Endpoint 4 Serial Number Register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_seq_num",
-                    description: Some(
-                        "The current serial number of the endpoint,. writable in non-SEQ_AUTO mode,  read-only in SEQ_AUTO mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4RxSt",
-            extends: None,
-            description: Some(
-                "Endpoint 4 status register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "er_rx_chain_en",
-                    description: Some(
-                        "The CHAIN enabled state, which corresponds to 4 independent CHAINS.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 4,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_res",
-                    description: Some(
-                        "CHAIN response state, corresponding to 4 separate CHAINS.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_erdy_req",
-                    description: Some(
-                        "Indicates that the ERDY is currently being sent;. Writing 1 to that bit will send ERDY, which is used in non-ERDY_AUTO mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_fc_st",
-                    description: Some(
-                        "The endpoint is in the current throttling state, and write 1 is cleared to zero.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_int_flag",
-                    description: Some(
-                        "The current break flag for the endpoint, the bit is read-only,. and all CHAIN_IF are 0 if the bit is 0, otherwise it is 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4TxCfg",
-            extends: None,
-            description: Some(
-                "Endpoint 4 Configuration Register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_tx_iso_mode",
-                    description: Some(
-                        "A value of 1 indicates that the current endpoint is a synchronous endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_seq_auto",
-                    description: Some(
-                        "1: It is forbidden to write R16_EPn_ST->EP_SEQ_NUM software;. 0: allows the software to write R16_EPn_ST->EP_SEQ_NUM.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 1,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_erdy_auto",
-                    description: Some(
-                        "ERDY automatic mode, the hardware will send ERDY,. no software control required; It is recommended that the synchronization endpoint zero out this bit.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_eob_mode",
-                    description: Some(
-                        "If a short packet is sent, EOB/LPF=0 in ACK-TP;If a short packet is sent, EOB/LPF=1 in ACK-TP.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_fifo_cfg",
-                    description: Some(
-                        "Access offset address 0xC~0xF, and the operation object.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_fifo_mode",
-                    description: Some(
-                        "If the bit is 1, the current endpoint uses FIFO mode,. and the start and end addresses of the FIFO should be configured before the bit is 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_chain_auto",
-                    description: Some(
-                        "CHAIN automatically switches modes, and this mode is recommended.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4TxChainCr",
-            extends: None,
-            description: Some(
-                "Endpoint 4 CHAIN control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_ret_sel",
-                    description: Some(
-                        "When the FORCE_RET is valid, this bit indicates the returned CHAIN status and configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_force_ret",
-                    description: Some(
-                        "This bit effectively forces the return of the selected CHAIN state machine configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_cur_cfg",
-                    description: Some(
-                        "The chain serial number of the current configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_cur_use",
-                    description: Some(
-                        "The CHAIN serial number currently in use.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4TxChainExpNump",
-            extends: None,
-            description: Some(
-                "Number of NUMPs expected to be sent by Endpoint 4.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_exp_nump",
-                    description: Some(
-                        "The number of DPP packets that can be sent by the currently completed CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4TxChainLen",
-            extends: None,
-            description: Some(
-                "Endpoint 4 CHAIN sends the last packet length.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "chain_tx_len",
-                    description: Some(
-                        "The length of the last packet sent by the CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 11,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4TxChainNump",
-            extends: None,
-            description: Some(
-                "Number of NUMPs has been sent by Endpoint 4.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_nump",
-                    description: Some(
-                        "The number of DPP packets that have been transmitted.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4TxChainSt",
-            extends: None,
-            description: Some(
-                "Endpoint 4 CHAIN state register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_no",
-                    description: Some(
-                        "The serial number of the CHAIN that is currently interrupting.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_dph_pp",
-                    description: Some(
-                        "The status of the PP bits in the currently received DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_nump_empty",
-                    description: Some(
-                        "IF THE NUMP IN THE CHAIN IS 0, THE POSITION IS 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_eob_lpf",
-                    description: Some(
-                        "EOB/LPF bits in the last packet of DPH in the current CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_chain_if",
-                    description: Some(
-                        "This bit is only written, and 1 is written to release the current CHAIN_IF.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_chain_en",
-                    description: Some(
-                        "The currently used CHAIN enables the automatic hardware setting of 1 after the UEP_CHAIN_NUMP register is configured,. and the CHAIN is automatically cleared to zero after the transmission is completed.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4TxCr",
-            extends: None,
-            description: Some(
-                "Endpoint 4 control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_tx_erdy_nump",
-                    description: Some(
-                        "The nump field of ERDY-TP is sent by the hardware,. and the value is generally set to the number of supported bursts.  For example, if you support 16 bursts, the value of this field is 16.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_chain_clr",
-                    description: Some(
-                        "Write 1 clears all CHAIN configuration values and statuses.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_clr",
-                    description: Some(
-                        "Write 1 clears all configuration values and status of the endpoint, except for UEP_CFG.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_halt",
-                    description: Some(
-                        "Endpoint Stop, High Validity, Endpoint Stop Answering STALL to DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4TxDma",
-            extends: None,
-            description: Some(
-                "DMA start address for Endpoint 4.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "chain_tx_dma",
-                    description: Some(
-                        "Normal mode:The DMA start address of the CHAIN to send data.. FIFO mode:16~23 bits of the FIFO start address in SRAM;The FIFO end address is 16~23 bits of the mapped address in SRAM.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4TxDmaOfs",
-            extends: None,
-            description: Some(
-                "DMA offset length for Endpoint 4.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "chain_tx_dma_ofs",
-                    description: Some(
-                        "The offset address of the DPP in that CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4TxSeq",
-            extends: None,
-            description: Some(
-                "Endpoint 4 Serial Number Register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_ep_seq_num",
-                    description: Some(
-                        "The current serial number of the endpoint,. writable in non-SEQ_AUTO mode,  read-only in SEQ_AUTO mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep4TxSt",
-            extends: None,
-            description: Some(
-                "Endpoint 4 status register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_en",
-                    description: Some(
-                        "The CHAIN enabled state, which corresponds to 4 independent CHAINS.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 4,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_chain_res",
-                    description: Some(
-                        "CHAIN response state, corresponding to 4 separate CHAINS.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_ep_erdy_req",
-                    description: Some(
-                        "Indicates that the ERDY is currently being sent;. Writing 1 to that bit will send ERDY, which is used in non-ERDY_AUTO mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_ep_fc_st",
-                    description: Some(
-                        "The endpoint is in the current throttling state, and write 1 is cleared to zero.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_ep_int_flag",
-                    description: Some(
-                        "The current break flag for the endpoint, the bit is read-only,. and all CHAIN_IF are 0 if the bit is 0, otherwise it is 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5RxCfg",
-            extends: None,
-            description: Some(
-                "Endpoint 5 Configuration Register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_iso_mode",
-                    description: Some(
-                        "A value of 1 indicates that the current endpoint is a synchronous endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_seq_auto",
-                    description: Some(
-                        "1: It is forbidden to write R16_EPn_ST->EP_SEQ_NUM software;. 0: allows the software to write R16_EPn_ST->EP_SEQ_NUM.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 1,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_erdy_auto",
-                    description: Some(
-                        "ERDY automatic mode, the hardware will send ERDY,. no software control required; It is recommended that the synchronization endpoint zero out this bit.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_eob_mode",
-                    description: Some(
-                        "This bit is 1, and when a short packet or DP(PP=0) is received,. clearing all CHAIN_EN will result in an NRDY response to the subsequent DPH;  Software reconfiguration required.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_tout_mode",
-                    description: Some(
-                        "This bit is 1, and when a continuous burst packet is received,. PP=1 and not a short packet is not received, and DPH is not received after the timeout, resulting in TOUT_IF interrupt.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_fifo_cfg",
-                    description: Some(
-                        "Access offset address 0xC~0xF, and the operation object.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_fifo_mode",
-                    description: Some(
-                        "If the bit is 1, the current endpoint uses FIFO mode,. and the start and end addresses of the FIFO should be configured before the bit is 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_auto",
-                    description: Some(
-                        "CHAIN automatically switches modes, and this mode is recommended.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5RxChainCr",
-            extends: None,
-            description: Some(
-                "Endpoint 5 CHAIN control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_ret_sel",
-                    description: Some(
-                        "When the FORCE_RET is valid, this bit indicates the returned CHAIN status and configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_force_ret",
-                    description: Some(
-                        "This bit effectively forces the return of the selected CHAIN state machine configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_cur_cfg",
-                    description: Some(
-                        "The chain serial number of the current configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_cur_use",
-                    description: Some(
-                        "The CHAIN serial number currently in use.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5RxChainLen",
-            extends: None,
-            description: Some(
-                "Endpoint 5 CHAIN sends the last packet length.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "ep_rx_chain_rx_len",
-                    description: Some(
-                        "The length of the currently completed CHAIN to the last packet.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 11,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5RxChainMaxNump",
-            extends: None,
-            description: Some(
-                "Number of NUMPs that Endpoint 5 can receive.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "rx_chain_max_nump",
-                    description: Some(
-                        "The number of DPP packets that can be received by the CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5RxChainNump",
-            extends: None,
-            description: Some(
-                "Number of NUMPs has been received by Endpoint 5.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_nump",
-                    description: Some(
-                        "The number of DPP packets that has received.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5RxChainSt",
-            extends: None,
-            description: Some(
-                "Endpoint 5 CHAIN state register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_chain_no",
-                    description: Some(
-                        "The serial number of the CHAIN that is currently interrupting.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_dph_pp",
-                    description: Some(
-                        "The status of the PP bits in the currently received DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_nump_empty",
-                    description: Some(
-                        "IF THE NUMP IN THE CHAIN IS 0, THE POSITION IS 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_lpf_flag",
-                    description: Some(
-                        "Only the synchronous downhaul endpoint is used to currently receive the LPF status in the DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_if",
-                    description: Some(
-                        "This bit is only written, and 1 is written to release the current CHAIN_IF.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_en",
-                    description: Some(
-                        "The currently used CHAIN enables the automatic hardware setting of 1 after the UEP_CHAIN_NUMP register is configured,. and the CHAIN is automatically cleared to zero after the transmission is completed.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5RxCr",
-            extends: None,
-            description: Some(
-                "Endpoint 5 control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_erdy_nump",
-                    description: Some(
-                        "The nump field of ERDY-TP is sent by the hardware,. and the value is generally set to the number of supported bursts.  For example, if you support 16 bursts, the value of this field is 16.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_clr",
-                    description: Some(
-                        "Write 1 clears all CHAIN configuration values and statuses.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_clr",
-                    description: Some(
-                        "Write 1 clears all configuration values and status of the endpoint, except for UEP_CFG.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_halt",
-                    description: Some(
-                        "Endpoint Stop, High Validity, Endpoint Stop Answering STALL to DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5RxDma",
-            extends: None,
-            description: Some(
-                "DMA start address for Endpoint 5.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "chain_rx_dma",
-                    description: Some(
-                        "Normal mode:The DMA start address of the CHAIN to receive data.. FIFO mode:16~23 bits of the FIFO start address in SRAM;The FIFO end address is 16~23 bits of the mapped address in SRAM.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5RxDmaOfs",
-            extends: None,
-            description: Some(
-                "DMA offset length for Endpoint 5.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "chain_dma_ofs",
-                    description: Some(
-                        "The offset address of the DPP in that CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5RxSeq",
-            extends: None,
-            description: Some(
-                "Endpoint 5 Serial Number Register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_seq_num",
-                    description: Some(
-                        "The current serial number of the endpoint,. writable in non-SEQ_AUTO mode,  read-only in SEQ_AUTO mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5RxSt",
-            extends: None,
-            description: Some(
-                "Endpoint 5 status register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "er_rx_chain_en",
-                    description: Some(
-                        "The CHAIN enabled state, which corresponds to 4 independent CHAINS.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 4,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_res",
-                    description: Some(
-                        "CHAIN response state, corresponding to 4 separate CHAINS.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_erdy_req",
-                    description: Some(
-                        "Indicates that the ERDY is currently being sent;. Writing 1 to that bit will send ERDY, which is used in non-ERDY_AUTO mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_fc_st",
-                    description: Some(
-                        "The endpoint is in the current throttling state, and write 1 is cleared to zero.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_int_flag",
-                    description: Some(
-                        "The current break flag for the endpoint, the bit is read-only,. and all CHAIN_IF are 0 if the bit is 0, otherwise it is 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5TxCfg",
-            extends: None,
-            description: Some(
-                "Endpoint 5 Configuration Register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_tx_iso_mode",
-                    description: Some(
-                        "A value of 1 indicates that the current endpoint is a synchronous endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_seq_auto",
-                    description: Some(
-                        "1: It is forbidden to write R16_EPn_ST->EP_SEQ_NUM software;. 0: allows the software to write R16_EPn_ST->EP_SEQ_NUM.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 1,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_erdy_auto",
-                    description: Some(
-                        "ERDY automatic mode, the hardware will send ERDY,. no software control required; It is recommended that the synchronization endpoint zero out this bit.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_eob_mode",
-                    description: Some(
-                        "If a short packet is sent, EOB/LPF=0 in ACK-TP;If a short packet is sent, EOB/LPF=1 in ACK-TP.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_fifo_cfg",
-                    description: Some(
-                        "Access offset address 0xC~0xF, and the operation object.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_fifo_mode",
-                    description: Some(
-                        "If the bit is 1, the current endpoint uses FIFO mode,. and the start and end addresses of the FIFO should be configured before the bit is 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_chain_auto",
-                    description: Some(
-                        "CHAIN automatically switches modes, and this mode is recommended.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5TxChainCr",
-            extends: None,
-            description: Some(
-                "Endpoint 5 CHAIN control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_ret_sel",
-                    description: Some(
-                        "When the FORCE_RET is valid, this bit indicates the returned CHAIN status and configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_force_ret",
-                    description: Some(
-                        "This bit effectively forces the return of the selected CHAIN state machine configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_cur_cfg",
-                    description: Some(
-                        "The chain serial number of the current configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_cur_use",
-                    description: Some(
-                        "The CHAIN serial number currently in use.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5TxChainExpNump",
-            extends: None,
-            description: Some(
-                "Number of NUMPs expected to be sent by Endpoint 5.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_exp_nump",
-                    description: Some(
-                        "The number of DPP packets that can be sent by the currently completed CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5TxChainLen",
-            extends: None,
-            description: Some(
-                "Endpoint 5 CHAIN sends the last packet length.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "chain_tx_len",
-                    description: Some(
-                        "The length of the last packet sent by the CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 11,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5TxChainNump",
-            extends: None,
-            description: Some(
-                "Number of NUMPs has been sent by Endpoint 5.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_nump",
-                    description: Some(
-                        "The number of DPP packets that have been transmitted.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5TxChainSt",
-            extends: None,
-            description: Some(
-                "Endpoint 5 CHAIN state register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_no",
-                    description: Some(
-                        "The serial number of the CHAIN that is currently interrupting.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_dph_pp",
-                    description: Some(
-                        "The status of the PP bits in the currently received DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_nump_empty",
-                    description: Some(
-                        "IF THE NUMP IN THE CHAIN IS 0, THE POSITION IS 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_eob_lpf",
-                    description: Some(
-                        "EOB/LPF bits in the last packet of DPH in the current CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_chain_if",
-                    description: Some(
-                        "This bit is only written, and 1 is written to release the current CHAIN_IF.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_chain_en",
-                    description: Some(
-                        "The currently used CHAIN enables the automatic hardware setting of 1 after the UEP_CHAIN_NUMP register is configured,. and the CHAIN is automatically cleared to zero after the transmission is completed.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5TxCr",
-            extends: None,
-            description: Some(
-                "Endpoint 5 control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_tx_erdy_nump",
-                    description: Some(
-                        "The nump field of ERDY-TP is sent by the hardware,. and the value is generally set to the number of supported bursts.  For example, if you support 16 bursts, the value of this field is 16.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_chain_clr",
-                    description: Some(
-                        "Write 1 clears all CHAIN configuration values and statuses.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_clr",
-                    description: Some(
-                        "Write 1 clears all configuration values and status of the endpoint, except for UEP_CFG.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_halt",
-                    description: Some(
-                        "Endpoint Stop, High Validity, Endpoint Stop Answering STALL to DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5TxDma",
-            extends: None,
-            description: Some(
-                "DMA start address for Endpoint 5.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "chain_tx_dma",
-                    description: Some(
-                        "Normal mode:The DMA start address of the CHAIN to send data.. FIFO mode:16~23 bits of the FIFO start address in SRAM;The FIFO end address is 16~23 bits of the mapped address in SRAM.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5TxDmaOfs",
-            extends: None,
-            description: Some(
-                "DMA offset length for Endpoint 5.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "chain_tx_dma_ofs",
-                    description: Some(
-                        "The offset address of the DPP in that CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5TxSeq",
-            extends: None,
-            description: Some(
-                "Endpoint 5 Serial Number Register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_ep_seq_num",
-                    description: Some(
-                        "The current serial number of the endpoint,. writable in non-SEQ_AUTO mode,  read-only in SEQ_AUTO mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep5TxSt",
-            extends: None,
-            description: Some(
-                "Endpoint 5 status register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_en",
-                    description: Some(
-                        "The CHAIN enabled state, which corresponds to 4 independent CHAINS.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 4,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_chain_res",
-                    description: Some(
-                        "CHAIN response state, corresponding to 4 separate CHAINS.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_ep_erdy_req",
-                    description: Some(
-                        "Indicates that the ERDY is currently being sent;. Writing 1 to that bit will send ERDY, which is used in non-ERDY_AUTO mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_ep_fc_st",
-                    description: Some(
-                        "The endpoint is in the current throttling state, and write 1 is cleared to zero.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_ep_int_flag",
-                    description: Some(
-                        "The current break flag for the endpoint, the bit is read-only,. and all CHAIN_IF are 0 if the bit is 0, otherwise it is 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6RxCfg",
-            extends: None,
-            description: Some(
-                "Endpoint 6 Configuration Register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_iso_mode",
-                    description: Some(
-                        "A value of 1 indicates that the current endpoint is a synchronous endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_seq_auto",
-                    description: Some(
-                        "1: It is forbidden to write R16_EPn_ST->EP_SEQ_NUM software;. 0: allows the software to write R16_EPn_ST->EP_SEQ_NUM.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 1,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_erdy_auto",
-                    description: Some(
-                        "ERDY automatic mode, the hardware will send ERDY,. no software control required; It is recommended that the synchronization endpoint zero out this bit.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_eob_mode",
-                    description: Some(
-                        "This bit is 1, and when a short packet or DP(PP=0) is received,. clearing all CHAIN_EN will result in an NRDY response to the subsequent DPH;  Software reconfiguration required.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_tout_mode",
-                    description: Some(
-                        "This bit is 1, and when a continuous burst packet is received,. PP=1 and not a short packet is not received, and DPH is not received after the timeout, resulting in TOUT_IF interrupt.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_fifo_cfg",
-                    description: Some(
-                        "Access offset address 0xC~0xF, and the operation object.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_fifo_mode",
-                    description: Some(
-                        "If the bit is 1, the current endpoint uses FIFO mode,. and the start and end addresses of the FIFO should be configured before the bit is 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_auto",
-                    description: Some(
-                        "CHAIN automatically switches modes, and this mode is recommended.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6RxChainCr",
-            extends: None,
-            description: Some(
-                "Endpoint 6 CHAIN control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_ret_sel",
-                    description: Some(
-                        "When the FORCE_RET is valid, this bit indicates the returned CHAIN status and configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_force_ret",
-                    description: Some(
-                        "This bit effectively forces the return of the selected CHAIN state machine configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_cur_cfg",
-                    description: Some(
-                        "The chain serial number of the current configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_cur_use",
-                    description: Some(
-                        "The CHAIN serial number currently in use.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6RxChainLen",
-            extends: None,
-            description: Some(
-                "Endpoint 6 CHAIN sends the last packet length.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "ep_rx_chain_rx_len",
-                    description: Some(
-                        "The length of the currently completed CHAIN to the last packet.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 11,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6RxChainMaxNump",
-            extends: None,
-            description: Some(
-                "Number of NUMPs that Endpoint 6 can receive.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "rx_chain_max_nump",
-                    description: Some(
-                        "The number of DPP packets that can be received by the CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6RxChainNump",
-            extends: None,
-            description: Some(
-                "Number of NUMPs has been received by Endpoint 6.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_nump",
-                    description: Some(
-                        "The number of DPP packets that has received.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6RxChainSt",
-            extends: None,
-            description: Some(
-                "Endpoint 6 CHAIN state register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_chain_no",
-                    description: Some(
-                        "The serial number of the CHAIN that is currently interrupting.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_dph_pp",
-                    description: Some(
-                        "The status of the PP bits in the currently received DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_nump_empty",
-                    description: Some(
-                        "IF THE NUMP IN THE CHAIN IS 0, THE POSITION IS 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_lpf_flag",
-                    description: Some(
-                        "Only the synchronous downhaul endpoint is used to currently receive the LPF status in the DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_if",
-                    description: Some(
-                        "This bit is only written, and 1 is written to release the current CHAIN_IF.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_en",
-                    description: Some(
-                        "The currently used CHAIN enables the automatic hardware setting of 1 after the UEP_CHAIN_NUMP register is configured,. and the CHAIN is automatically cleared to zero after the transmission is completed.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6RxCr",
-            extends: None,
-            description: Some(
-                "Endpoint 6 control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_erdy_nump",
-                    description: Some(
-                        "The nump field of ERDY-TP is sent by the hardware,. and the value is generally set to the number of supported bursts.  For example, if you support 16 bursts, the value of this field is 16.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_clr",
-                    description: Some(
-                        "Write 1 clears all CHAIN configuration values and statuses.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_clr",
-                    description: Some(
-                        "Write 1 clears all configuration values and status of the endpoint, except for UEP_CFG.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_halt",
-                    description: Some(
-                        "Endpoint Stop, High Validity, Endpoint Stop Answering STALL to DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6RxDma",
-            extends: None,
-            description: Some(
-                "DMA start address for Endpoint 6.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "chain_rx_dma",
-                    description: Some(
-                        "Normal mode:The DMA start address of the CHAIN to receive data.. FIFO mode:16~23 bits of the FIFO start address in SRAM;The FIFO end address is 16~23 bits of the mapped address in SRAM.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6RxDmaOfs",
-            extends: None,
-            description: Some(
-                "DMA offset length for Endpoint 6.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "chain_dma_ofs",
-                    description: Some(
-                        "The offset address of the DPP in that CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6RxSeq",
-            extends: None,
-            description: Some(
-                "Endpoint 6 Serial Number Register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_seq_num",
-                    description: Some(
-                        "The current serial number of the endpoint,. writable in non-SEQ_AUTO mode,  read-only in SEQ_AUTO mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6RxSt",
-            extends: None,
-            description: Some(
-                "Endpoint 6 status register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "er_rx_chain_en",
-                    description: Some(
-                        "The CHAIN enabled state, which corresponds to 4 independent CHAINS.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 4,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_res",
-                    description: Some(
-                        "CHAIN response state, corresponding to 4 separate CHAINS.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_erdy_req",
-                    description: Some(
-                        "Indicates that the ERDY is currently being sent;. Writing 1 to that bit will send ERDY, which is used in non-ERDY_AUTO mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_fc_st",
-                    description: Some(
-                        "The endpoint is in the current throttling state, and write 1 is cleared to zero.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_int_flag",
-                    description: Some(
-                        "The current break flag for the endpoint, the bit is read-only,. and all CHAIN_IF are 0 if the bit is 0, otherwise it is 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6TxCfg",
-            extends: None,
-            description: Some(
-                "Endpoint 6 Configuration Register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_tx_iso_mode",
-                    description: Some(
-                        "A value of 1 indicates that the current endpoint is a synchronous endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_seq_auto",
-                    description: Some(
-                        "1: It is forbidden to write R16_EPn_ST->EP_SEQ_NUM software;. 0: allows the software to write R16_EPn_ST->EP_SEQ_NUM.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 1,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_erdy_auto",
-                    description: Some(
-                        "ERDY automatic mode, the hardware will send ERDY,. no software control required; It is recommended that the synchronization endpoint zero out this bit.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_eob_mode",
-                    description: Some(
-                        "If a short packet is sent, EOB/LPF=0 in ACK-TP;If a short packet is sent, EOB/LPF=1 in ACK-TP.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_fifo_cfg",
-                    description: Some(
-                        "Access offset address 0xC~0xF, and the operation object.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_fifo_mode",
-                    description: Some(
-                        "If the bit is 1, the current endpoint uses FIFO mode,. and the start and end addresses of the FIFO should be configured before the bit is 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_chain_auto",
-                    description: Some(
-                        "CHAIN automatically switches modes, and this mode is recommended.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6TxChainCr",
-            extends: None,
-            description: Some(
-                "Endpoint 6 CHAIN control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_ret_sel",
-                    description: Some(
-                        "When the FORCE_RET is valid, this bit indicates the returned CHAIN status and configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_force_ret",
-                    description: Some(
-                        "This bit effectively forces the return of the selected CHAIN state machine configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_cur_cfg",
-                    description: Some(
-                        "The chain serial number of the current configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_cur_use",
-                    description: Some(
-                        "The CHAIN serial number currently in use.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6TxChainExpNump",
-            extends: None,
-            description: Some(
-                "Number of NUMPs expected to be sent by Endpoint 6.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_exp_nump",
-                    description: Some(
-                        "The number of DPP packets that can be sent by the currently completed CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6TxChainLen",
-            extends: None,
-            description: Some(
-                "Endpoint 6 CHAIN sends the last packet length.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "chain_tx_len",
-                    description: Some(
-                        "The length of the last packet sent by the CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 11,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6TxChainNump",
-            extends: None,
-            description: Some(
-                "Number of NUMPs has been sent by Endpoint 6.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_nump",
-                    description: Some(
-                        "The number of DPP packets that have been transmitted.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6TxChainSt",
-            extends: None,
-            description: Some(
-                "Endpoint 6 CHAIN state register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_no",
-                    description: Some(
-                        "The serial number of the CHAIN that is currently interrupting.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_dph_pp",
-                    description: Some(
-                        "The status of the PP bits in the currently received DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_nump_empty",
-                    description: Some(
-                        "IF THE NUMP IN THE CHAIN IS 0, THE POSITION IS 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_eob_lpf",
-                    description: Some(
-                        "EOB/LPF bits in the last packet of DPH in the current CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_chain_if",
-                    description: Some(
-                        "This bit is only written, and 1 is written to release the current CHAIN_IF.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_chain_en",
-                    description: Some(
-                        "The currently used CHAIN enables the automatic hardware setting of 1 after the UEP_CHAIN_NUMP register is configured,. and the CHAIN is automatically cleared to zero after the transmission is completed.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6TxCr",
-            extends: None,
-            description: Some(
-                "Endpoint 6 control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_tx_erdy_nump",
-                    description: Some(
-                        "The nump field of ERDY-TP is sent by the hardware,. and the value is generally set to the number of supported bursts.  For example, if you support 16 bursts, the value of this field is 16.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_chain_clr",
-                    description: Some(
-                        "Write 1 clears all CHAIN configuration values and statuses.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_clr",
-                    description: Some(
-                        "Write 1 clears all configuration values and status of the endpoint, except for UEP_CFG.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_halt",
-                    description: Some(
-                        "Endpoint Stop, High Validity, Endpoint Stop Answering STALL to DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6TxDma",
-            extends: None,
-            description: Some(
-                "DMA start address for Endpoint 6.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "chain_tx_dma",
-                    description: Some(
-                        "Normal mode:The DMA start address of the CHAIN to send data.. FIFO mode:16~23 bits of the FIFO start address in SRAM;The FIFO end address is 16~23 bits of the mapped address in SRAM.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6TxDmaOfs",
-            extends: None,
-            description: Some(
-                "DMA offset length for Endpoint 6.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "chain_tx_dma_ofs",
-                    description: Some(
-                        "The offset address of the DPP in that CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6TxSeq",
-            extends: None,
-            description: Some(
-                "Endpoint 6 Serial Number Register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_ep_seq_num",
-                    description: Some(
-                        "The current serial number of the endpoint,. writable in non-SEQ_AUTO mode,  read-only in SEQ_AUTO mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep6TxSt",
-            extends: None,
-            description: Some(
-                "Endpoint 6 status register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_en",
-                    description: Some(
-                        "The CHAIN enabled state, which corresponds to 4 independent CHAINS.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 4,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_chain_res",
-                    description: Some(
-                        "CHAIN response state, corresponding to 4 separate CHAINS.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_ep_erdy_req",
-                    description: Some(
-                        "Indicates that the ERDY is currently being sent;. Writing 1 to that bit will send ERDY, which is used in non-ERDY_AUTO mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_ep_fc_st",
-                    description: Some(
-                        "The endpoint is in the current throttling state, and write 1 is cleared to zero.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_ep_int_flag",
-                    description: Some(
-                        "The current break flag for the endpoint, the bit is read-only,. and all CHAIN_IF are 0 if the bit is 0, otherwise it is 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7RxCfg",
-            extends: None,
-            description: Some(
-                "Endpoint 7 Configuration Register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_iso_mode",
-                    description: Some(
-                        "A value of 1 indicates that the current endpoint is a synchronous endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_seq_auto",
-                    description: Some(
-                        "1: It is forbidden to write R16_EPn_ST->EP_SEQ_NUM software;. 0: allows the software to write R16_EPn_ST->EP_SEQ_NUM.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 1,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_erdy_auto",
-                    description: Some(
-                        "ERDY automatic mode, the hardware will send ERDY,. no software control required; It is recommended that the synchronization endpoint zero out this bit.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_eob_mode",
-                    description: Some(
-                        "This bit is 1, and when a short packet or DP(PP=0) is received,. clearing all CHAIN_EN will result in an NRDY response to the subsequent DPH;  Software reconfiguration required.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_tout_mode",
-                    description: Some(
-                        "This bit is 1, and when a continuous burst packet is received,. PP=1 and not a short packet is not received, and DPH is not received after the timeout, resulting in TOUT_IF interrupt.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_fifo_cfg",
-                    description: Some(
-                        "Access offset address 0xC~0xF, and the operation object.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_fifo_mode",
-                    description: Some(
-                        "If the bit is 1, the current endpoint uses FIFO mode,. and the start and end addresses of the FIFO should be configured before the bit is 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_auto",
-                    description: Some(
-                        "CHAIN automatically switches modes, and this mode is recommended.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7RxChainCr",
-            extends: None,
-            description: Some(
-                "Endpoint 7 CHAIN control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_ret_sel",
-                    description: Some(
-                        "When the FORCE_RET is valid, this bit indicates the returned CHAIN status and configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_force_ret",
-                    description: Some(
-                        "This bit effectively forces the return of the selected CHAIN state machine configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_cur_cfg",
-                    description: Some(
-                        "The chain serial number of the current configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_cur_use",
-                    description: Some(
-                        "The CHAIN serial number currently in use.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7RxChainLen",
-            extends: None,
-            description: Some(
-                "Endpoint 7 CHAIN sends the last packet length.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "ep_rx_chain_rx_len",
-                    description: Some(
-                        "The length of the currently completed CHAIN to the last packet.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 11,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7RxChainMaxNump",
-            extends: None,
-            description: Some(
-                "Number of NUMPs that Endpoint 7 can receive.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "rx_chain_max_nump",
-                    description: Some(
-                        "The number of DPP packets that can be received by the CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7RxChainNump",
-            extends: None,
-            description: Some(
-                "Number of NUMPs has been received by Endpoint 7.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_nump",
-                    description: Some(
-                        "The number of DPP packets that has received.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7RxChainSt",
-            extends: None,
-            description: Some(
-                "Endpoint 7 CHAIN state register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_chain_no",
-                    description: Some(
-                        "The serial number of the CHAIN that is currently interrupting.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_dph_pp",
-                    description: Some(
-                        "The status of the PP bits in the currently received DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_nump_empty",
-                    description: Some(
-                        "IF THE NUMP IN THE CHAIN IS 0, THE POSITION IS 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_lpf_flag",
-                    description: Some(
-                        "Only the synchronous downhaul endpoint is used to currently receive the LPF status in the DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_if",
-                    description: Some(
-                        "This bit is only written, and 1 is written to release the current CHAIN_IF.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_en",
-                    description: Some(
-                        "The currently used CHAIN enables the automatic hardware setting of 1 after the UEP_CHAIN_NUMP register is configured,. and the CHAIN is automatically cleared to zero after the transmission is completed.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7RxCr",
-            extends: None,
-            description: Some(
-                "Endpoint 7 control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_erdy_nump",
-                    description: Some(
-                        "The nump field of ERDY-TP is sent by the hardware,. and the value is generally set to the number of supported bursts.  For example, if you support 16 bursts, the value of this field is 16.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_clr",
-                    description: Some(
-                        "Write 1 clears all CHAIN configuration values and statuses.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_clr",
-                    description: Some(
-                        "Write 1 clears all configuration values and status of the endpoint, except for UEP_CFG.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_halt",
-                    description: Some(
-                        "Endpoint Stop, High Validity, Endpoint Stop Answering STALL to DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7RxDma",
-            extends: None,
-            description: Some(
-                "DMA start address for Endpoint 7.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "chain_rx_dma",
-                    description: Some(
-                        "Normal mode:The DMA start address of the CHAIN to receive data.. FIFO mode:16~23 bits of the FIFO start address in SRAM;The FIFO end address is 16~23 bits of the mapped address in SRAM.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7RxDmaOfs",
-            extends: None,
-            description: Some(
-                "DMA offset length for Endpoint 7.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "chain_dma_ofs",
-                    description: Some(
-                        "The offset address of the DPP in that CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7RxSeq",
-            extends: None,
-            description: Some(
-                "Endpoint 7 Serial Number Register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_rx_seq_num",
-                    description: Some(
-                        "The current serial number of the endpoint,. writable in non-SEQ_AUTO mode,  read-only in SEQ_AUTO mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7RxSt",
-            extends: None,
-            description: Some(
-                "Endpoint 7 status register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "er_rx_chain_en",
-                    description: Some(
-                        "The CHAIN enabled state, which corresponds to 4 independent CHAINS.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 4,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_chain_res",
-                    description: Some(
-                        "CHAIN response state, corresponding to 4 separate CHAINS.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_erdy_req",
-                    description: Some(
-                        "Indicates that the ERDY is currently being sent;. Writing 1 to that bit will send ERDY, which is used in non-ERDY_AUTO mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_fc_st",
-                    description: Some(
-                        "The endpoint is in the current throttling state, and write 1 is cleared to zero.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_rx_int_flag",
-                    description: Some(
-                        "The current break flag for the endpoint, the bit is read-only,. and all CHAIN_IF are 0 if the bit is 0, otherwise it is 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7TxCfg",
-            extends: None,
-            description: Some(
-                "Endpoint 7 Configuration Register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_tx_iso_mode",
-                    description: Some(
-                        "A value of 1 indicates that the current endpoint is a synchronous endpoint.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_seq_auto",
-                    description: Some(
-                        "1: It is forbidden to write R16_EPn_ST->EP_SEQ_NUM software;. 0: allows the software to write R16_EPn_ST->EP_SEQ_NUM.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 1,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_erdy_auto",
-                    description: Some(
-                        "ERDY automatic mode, the hardware will send ERDY,. no software control required; It is recommended that the synchronization endpoint zero out this bit.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_eob_mode",
-                    description: Some(
-                        "If a short packet is sent, EOB/LPF=0 in ACK-TP;If a short packet is sent, EOB/LPF=1 in ACK-TP.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_fifo_cfg",
-                    description: Some(
-                        "Access offset address 0xC~0xF, and the operation object.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_fifo_mode",
-                    description: Some(
-                        "If the bit is 1, the current endpoint uses FIFO mode,. and the start and end addresses of the FIFO should be configured before the bit is 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_chain_auto",
-                    description: Some(
-                        "CHAIN automatically switches modes, and this mode is recommended.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7TxChainCr",
-            extends: None,
-            description: Some(
-                "Endpoint 7 CHAIN control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_ret_sel",
-                    description: Some(
-                        "When the FORCE_RET is valid, this bit indicates the returned CHAIN status and configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_force_ret",
-                    description: Some(
-                        "This bit effectively forces the return of the selected CHAIN state machine configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_cur_cfg",
-                    description: Some(
-                        "The chain serial number of the current configuration.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_cur_use",
-                    description: Some(
-                        "The CHAIN serial number currently in use.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7TxChainExpNump",
-            extends: None,
-            description: Some(
-                "Number of NUMPs expected to be sent by Endpoint 7.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_exp_nump",
-                    description: Some(
-                        "The number of DPP packets that can be sent by the currently completed CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7TxChainLen",
-            extends: None,
-            description: Some(
-                "Endpoint 7 CHAIN sends the last packet length.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "chain_tx_len",
-                    description: Some(
-                        "The length of the last packet sent by the CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 11,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7TxChainNump",
-            extends: None,
-            description: Some(
-                "Number of NUMPs has been sent by Endpoint 7.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_nump",
-                    description: Some(
-                        "The number of DPP packets that have been transmitted.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 8,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7TxChainSt",
-            extends: None,
-            description: Some(
-                "Endpoint 7 CHAIN state register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_no",
-                    description: Some(
-                        "The serial number of the CHAIN that is currently interrupting.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 2,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_dph_pp",
-                    description: Some(
-                        "The status of the PP bits in the currently received DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_nump_empty",
-                    description: Some(
-                        "IF THE NUMP IN THE CHAIN IS 0, THE POSITION IS 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_eob_lpf",
-                    description: Some(
-                        "EOB/LPF bits in the last packet of DPH in the current CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_chain_if",
-                    description: Some(
-                        "This bit is only written, and 1 is written to release the current CHAIN_IF.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_chain_en",
-                    description: Some(
-                        "The currently used CHAIN enables the automatic hardware setting of 1 after the UEP_CHAIN_NUMP register is configured,. and the CHAIN is automatically cleared to zero after the transmission is completed.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7TxCr",
-            extends: None,
-            description: Some(
-                "Endpoint 7 control register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "ep_tx_erdy_nump",
-                    description: Some(
-                        "The nump field of ERDY-TP is sent by the hardware,. and the value is generally set to the number of supported bursts.  For example, if you support 16 bursts, the value of this field is 16.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_chain_clr",
-                    description: Some(
-                        "Write 1 clears all CHAIN configuration values and statuses.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_clr",
-                    description: Some(
-                        "Write 1 clears all configuration values and status of the endpoint, except for UEP_CFG.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ep_tx_halt",
-                    description: Some(
-                        "Endpoint Stop, High Validity, Endpoint Stop Answering STALL to DPH.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7TxDma",
-            extends: None,
-            description: Some(
-                "DMA start address for Endpoint 7.",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "chain_tx_dma",
-                    description: Some(
-                        "Normal mode:The DMA start address of the CHAIN to send data.. FIFO mode:16~23 bits of the FIFO start address in SRAM;The FIFO end address is 16~23 bits of the mapped address in SRAM.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 32,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7TxDmaOfs",
-            extends: None,
-            description: Some(
-                "DMA offset length for Endpoint 7.",
-            ),
-            bit_size: 16,
-            fields: &[
-                Field {
-                    name: "chain_tx_dma_ofs",
-                    description: Some(
-                        "The offset address of the DPP in that CHAIN.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 16,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7TxSeq",
-            extends: None,
-            description: Some(
-                "Endpoint 7 Serial Number Register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_ep_seq_num",
-                    description: Some(
-                        "The current serial number of the endpoint,. writable in non-SEQ_AUTO mode,  read-only in SEQ_AUTO mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 5,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep7TxSt",
-            extends: None,
-            description: Some(
-                "Endpoint 7 status register.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "tx_chain_en",
-                    description: Some(
-                        "The CHAIN enabled state, which corresponds to 4 independent CHAINS.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 4,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_chain_res",
-                    description: Some(
-                        "CHAIN response state, corresponding to 4 separate CHAINS.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_ep_erdy_req",
-                    description: Some(
-                        "Indicates that the ERDY is currently being sent;. Writing 1 to that bit will send ERDY, which is used in non-ERDY_AUTO mode.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 5,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_ep_fc_st",
-                    description: Some(
-                        "The endpoint is in the current throttling state, and write 1 is cleared to zero.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tx_ep_int_flag",
-                    description: Some(
-                        "The current break flag for the endpoint, the bit is read-only,. and all CHAIN_IF are 0 if the bit is 0, otherwise it is 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
             name: "UepRxEn",
             extends: None,
             description: Some(
@@ -15670,15 +6145,22 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "ep_rx_en",
                     description: Some(
-                        "Endpoints 1~15 downpass enabled.",
+                        "Endpoints 1~15 downpass enabled. Index 0 is endpoint 1.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
                             offset: 1,
                         },
                     ),
-                    bit_size: 15,
-                    array: None,
+                    bit_size: 1,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 15,
+                                stride: 1,
+                            },
+                        ),
+                    ),
                     enumm: None,
                 },
             ],
@@ -15694,15 +6176,22 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "ep_tx_en",
                     description: Some(
-                        "Endpoints 1~15 upload enabled.",
+                        "Endpoints 1~15 upload enabled. Index 0 is endpoint 1.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
                             offset: 1,
                         },
                     ),
-                    bit_size: 15,
-                    array: None,
+                    bit_size: 1,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 15,
+                                stride: 1,
+                            },
+                        ),
+                    ),
                     enumm: None,
                 },
             ],
@@ -16100,7 +6589,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "dma_mode",
                     description: Some(
-                        "When DPH is transmitted in bursts, the next packet of data status.",
+                        "1: do not prefetch the next packet of a burst into the FIFO; 0: prefetch it (reset value), which shortens the gap between the DPHs of a burst.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -16112,9 +6601,23 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
+                    name: "dir_abort",
+                    description: Some(
+                        "Not in the RM, which marks bit 4 reserved. Defined by the EVT header; the SDK examples do not use it.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 4,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
                     name: "setup_flow",
                     description: Some(
-                        "SETUP transaction throttling.",
+                        "SETUP flow control. 1: the control endpoint enters flow control when a SETUP transaction arrives; 0: it does not.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -16156,7 +6659,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "reg_hp_pend",
                     description: Some(
-                        "Packet Pending control bit for sending TP/DP packets.",
+                        "Packet Pending bit of the TPs and DPs sent. In a burst, bit 0 is the PP of the last packet and bit 1 the PP of the others; otherwise only bit 0 is used.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -16170,11 +6673,25 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "tx_erdy_mode",
                     description: Some(
-                        "Use in device mode.",
+                        "Device mode. 1: no ERDY-TP is inserted between two DPHs; 0: an ERDY-TP may be inserted between two DPHs.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
                             offset: 14,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "chain_conflict",
+                    description: Some(
+                        "Not in the RM, which marks bit 15 reserved. Defined by the EVT header; the SDK examples do not use it.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 15,
                         },
                     ),
                     bit_size: 1,
@@ -16310,7 +6827,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "dev_addr",
                     description: Some(
-                        "Host Mode.",
+                        "Host mode: address of the device being accessed. Device mode: address of this device.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -16324,5 +6841,226 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
     ],
-    enums: &[],
+    enums: &[
+        Enum {
+            name: "Ep0RxRes",
+            description: Some(
+                "Endpoint 0 response to a DPH. The value 3 is invalid (no response).",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "ACK",
+                    description: Some(
+                        "ACK-TP.",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "NRDY",
+                    description: Some(
+                        "NRDY-TP.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "STALL",
+                    description: Some(
+                        "STALL-TP.",
+                    ),
+                    value: 2,
+                },
+            ],
+        },
+        Enum {
+            name: "Ep0TxRes",
+            description: Some(
+                "Endpoint 0 response to an ACK-TP. The value 3 is invalid (no response).",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "DPH",
+                    description: Some(
+                        "Data packet.",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "NRDY",
+                    description: Some(
+                        "NRDY-TP.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "STALL",
+                    description: Some(
+                        "STALL-TP.",
+                    ),
+                    value: 2,
+                },
+            ],
+        },
+        Enum {
+            name: "LinkState",
+            description: Some(
+                "Link state (LTSSM). Other values are reserved.",
+            ),
+            bit_size: 4,
+            variants: &[
+                EnumVariant {
+                    name: "COMPLIANCE",
+                    description: Some(
+                        "Compliance Mode.",
+                    ),
+                    value: 10,
+                },
+                EnumVariant {
+                    name: "DISABLED",
+                    description: Some(
+                        "SS.Disabled.",
+                    ),
+                    value: 4,
+                },
+                EnumVariant {
+                    name: "HOTRST",
+                    description: Some(
+                        "Hot Reset.",
+                    ),
+                    value: 9,
+                },
+                EnumVariant {
+                    name: "INACTIVE",
+                    description: Some(
+                        "SS.Inactive.",
+                    ),
+                    value: 6,
+                },
+                EnumVariant {
+                    name: "LOOPBACK",
+                    description: Some(
+                        "Loopback.",
+                    ),
+                    value: 11,
+                },
+                EnumVariant {
+                    name: "POLLING",
+                    description: Some(
+                        "Polling.",
+                    ),
+                    value: 7,
+                },
+                EnumVariant {
+                    name: "RECOVERY",
+                    description: Some(
+                        "Recovery.",
+                    ),
+                    value: 8,
+                },
+                EnumVariant {
+                    name: "RXDET",
+                    description: Some(
+                        "Rx.Detect.",
+                    ),
+                    value: 5,
+                },
+                EnumVariant {
+                    name: "U0",
+                    description: Some(
+                        "U0.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "U1",
+                    description: Some(
+                        "U1.",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "U2",
+                    description: Some(
+                        "U2.",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "U3",
+                    description: Some(
+                        "U3.",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+        Enum {
+            name: "PdMode",
+            description: Some(
+                "PHY power mode, P0 to P3 of the PIPE.",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "P0",
+                    description: Some(
+                        "Normal operation.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "P1",
+                    description: Some(
+                        "Low power. Both ends of the port send PING.LFPS periodically to keep the connection.",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "P2",
+                    description: Some(
+                        "Lower power than P1, with a longer exit time.",
+                    ),
+                    value: 2,
+                },
+                EnumVariant {
+                    name: "P3",
+                    description: Some(
+                        "Lowest power, the 125 MHz PHY clock is off.",
+                    ),
+                    value: 3,
+                },
+            ],
+        },
+        Enum {
+            name: "TxDeemph",
+            description: Some(
+                "Transmitter de-emphasis, TxDeemph of the PIPE. The value 3 is reserved.",
+            ),
+            bit_size: 2,
+            variants: &[
+                EnumVariant {
+                    name: "DB3_5",
+                    description: Some(
+                        "-3.5 dB.",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "DB6",
+                    description: Some(
+                        "-6.0 dB.",
+                    ),
+                    value: 0,
+                },
+                EnumVariant {
+                    name: "NONE",
+                    description: Some(
+                        "No de-emphasis.",
+                    ),
+                    value: 2,
+                },
+            ],
+        },
+    ],
 };
