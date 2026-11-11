@@ -344,7 +344,7 @@ pub mod regs {
     #[doc = "auto-reload register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct AdtmAtrlr(pub u32);
+    pub struct AdtmAtrlr(pub u16);
     impl AdtmAtrlr {
         #[doc = "Auto-reload value."]
         #[must_use]
@@ -356,7 +356,7 @@ pub mod regs {
         #[doc = "Auto-reload value."]
         #[inline(always)]
         pub const fn set_arr(&mut self, val: u16) {
-            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
+            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u16) & 0xffff) << 0usize);
         }
     }
     impl Default for AdtmAtrlr {
@@ -375,7 +375,7 @@ pub mod regs {
     #[doc = "capture/compare enable register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct AdtmCcer(pub u32);
+    pub struct AdtmCcer(pub u16);
     impl AdtmCcer {
         #[doc = "Capture/Compare 1 output enable."]
         #[must_use]
@@ -387,7 +387,7 @@ pub mod regs {
         #[doc = "Capture/Compare 1 output enable."]
         #[inline(always)]
         pub const fn set_cc1e(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
+            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u16) & 0x01) << 0usize);
         }
         #[doc = "Capture/Compare 1 output Polarity."]
         #[must_use]
@@ -399,7 +399,7 @@ pub mod regs {
         #[doc = "Capture/Compare 1 output Polarity."]
         #[inline(always)]
         pub const fn set_cc1p(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
+            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u16) & 0x01) << 1usize);
         }
         #[doc = "Capture/Compare 1 complementary output enable."]
         #[must_use]
@@ -411,7 +411,7 @@ pub mod regs {
         #[doc = "Capture/Compare 1 complementary output enable."]
         #[inline(always)]
         pub const fn set_cc1ne(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
+            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u16) & 0x01) << 2usize);
         }
         #[doc = "Capture/Compare 1 output Polarity."]
         #[must_use]
@@ -423,7 +423,7 @@ pub mod regs {
         #[doc = "Capture/Compare 1 output Polarity."]
         #[inline(always)]
         pub const fn set_cc1np(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
+            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u16) & 0x01) << 3usize);
         }
         #[doc = "Capture/Compare 2 output enable."]
         #[must_use]
@@ -435,7 +435,7 @@ pub mod regs {
         #[doc = "Capture/Compare 2 output enable."]
         #[inline(always)]
         pub const fn set_cc2e(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
+            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u16) & 0x01) << 4usize);
         }
         #[doc = "Capture/Compare 2 output Polarity."]
         #[must_use]
@@ -447,7 +447,7 @@ pub mod regs {
         #[doc = "Capture/Compare 2 output Polarity."]
         #[inline(always)]
         pub const fn set_cc2p(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
+            self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u16) & 0x01) << 5usize);
         }
         #[doc = "Capture/Compare 2 complementary output enable."]
         #[must_use]
@@ -459,7 +459,7 @@ pub mod regs {
         #[doc = "Capture/Compare 2 complementary output enable."]
         #[inline(always)]
         pub const fn set_cc2ne(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
+            self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u16) & 0x01) << 6usize);
         }
         #[doc = "Capture/Compare 2 output Polarity."]
         #[must_use]
@@ -471,7 +471,7 @@ pub mod regs {
         #[doc = "Capture/Compare 2 output Polarity."]
         #[inline(always)]
         pub const fn set_cc2np(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
+            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u16) & 0x01) << 7usize);
         }
         #[doc = "Capture/Compare 3 output enable."]
         #[must_use]
@@ -483,7 +483,7 @@ pub mod regs {
         #[doc = "Capture/Compare 3 output enable."]
         #[inline(always)]
         pub const fn set_cc3e(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
+            self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u16) & 0x01) << 8usize);
         }
         #[doc = "Capture/Compare 3 output Polarity."]
         #[must_use]
@@ -495,7 +495,7 @@ pub mod regs {
         #[doc = "Capture/Compare 3 output Polarity."]
         #[inline(always)]
         pub const fn set_cc3p(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
+            self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u16) & 0x01) << 9usize);
         }
         #[doc = "Capture/Compare 3 complementary output enable."]
         #[must_use]
@@ -507,7 +507,7 @@ pub mod regs {
         #[doc = "Capture/Compare 3 complementary output enable."]
         #[inline(always)]
         pub const fn set_cc3ne(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
+            self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u16) & 0x01) << 10usize);
         }
         #[doc = "Capture/Compare 3 output Polarity."]
         #[must_use]
@@ -519,7 +519,7 @@ pub mod regs {
         #[doc = "Capture/Compare 3 output Polarity."]
         #[inline(always)]
         pub const fn set_cc3np(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
+            self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u16) & 0x01) << 11usize);
         }
         #[doc = "Capture/Compare 4 output enable."]
         #[must_use]
@@ -531,7 +531,7 @@ pub mod regs {
         #[doc = "Capture/Compare 4 output enable."]
         #[inline(always)]
         pub const fn set_cc4e(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
+            self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u16) & 0x01) << 12usize);
         }
         #[doc = "Capture/Compare 3 output Polarity."]
         #[must_use]
@@ -543,7 +543,7 @@ pub mod regs {
         #[doc = "Capture/Compare 3 output Polarity."]
         #[inline(always)]
         pub const fn set_cc4p(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
+            self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u16) & 0x01) << 13usize);
         }
     }
     impl Default for AdtmCcer {
@@ -671,7 +671,7 @@ pub mod regs {
     #[doc = "counter."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct AdtmCnt(pub u32);
+    pub struct AdtmCnt(pub u16);
     impl AdtmCnt {
         #[doc = "counter value."]
         #[must_use]
@@ -683,7 +683,7 @@ pub mod regs {
         #[doc = "counter value."]
         #[inline(always)]
         pub const fn set_cnt(&mut self, val: u16) {
-            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
+            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u16) & 0xffff) << 0usize);
         }
     }
     impl Default for AdtmCnt {
@@ -700,7 +700,7 @@ pub mod regs {
     #[doc = "control register 1."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct AdtmCtlr1(pub u32);
+    pub struct AdtmCtlr1(pub u16);
     impl AdtmCtlr1 {
         #[doc = "Counter enable."]
         #[must_use]
@@ -712,7 +712,7 @@ pub mod regs {
         #[doc = "Counter enable."]
         #[inline(always)]
         pub const fn set_cen(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
+            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u16) & 0x01) << 0usize);
         }
         #[doc = "Update disable."]
         #[must_use]
@@ -724,7 +724,7 @@ pub mod regs {
         #[doc = "Update disable."]
         #[inline(always)]
         pub const fn set_udis(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
+            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u16) & 0x01) << 1usize);
         }
         #[doc = "Update request source."]
         #[must_use]
@@ -736,7 +736,7 @@ pub mod regs {
         #[doc = "Update request source."]
         #[inline(always)]
         pub const fn set_urs(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
+            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u16) & 0x01) << 2usize);
         }
         #[doc = "One-pulse mode."]
         #[must_use]
@@ -748,7 +748,7 @@ pub mod regs {
         #[doc = "One-pulse mode."]
         #[inline(always)]
         pub const fn set_opm(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
+            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u16) & 0x01) << 3usize);
         }
         #[doc = "Direction."]
         #[must_use]
@@ -760,7 +760,7 @@ pub mod regs {
         #[doc = "Direction."]
         #[inline(always)]
         pub const fn set_dir(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
+            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u16) & 0x01) << 4usize);
         }
         #[doc = "Center-aligned mode selection."]
         #[must_use]
@@ -772,7 +772,7 @@ pub mod regs {
         #[doc = "Center-aligned mode selection."]
         #[inline(always)]
         pub const fn set_cms(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 5usize)) | (((val as u32) & 0x03) << 5usize);
+            self.0 = (self.0 & !(0x03 << 5usize)) | (((val as u16) & 0x03) << 5usize);
         }
         #[doc = "Auto-reload preload enable."]
         #[must_use]
@@ -784,7 +784,7 @@ pub mod regs {
         #[doc = "Auto-reload preload enable."]
         #[inline(always)]
         pub const fn set_arpe(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
+            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u16) & 0x01) << 7usize);
         }
         #[doc = "Clock division."]
         #[must_use]
@@ -796,7 +796,7 @@ pub mod regs {
         #[doc = "Clock division."]
         #[inline(always)]
         pub const fn set_ckd(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u32) & 0x03) << 8usize);
+            self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u16) & 0x03) << 8usize);
         }
         #[doc = "Upon deactivation of the counter,the status of the output pin remains unchanged."]
         #[must_use]
@@ -808,7 +808,7 @@ pub mod regs {
         #[doc = "Upon deactivation of the counter,the status of the output pin remains unchanged."]
         #[inline(always)]
         pub const fn set_oe_mode(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
+            self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u16) & 0x01) << 13usize);
         }
         #[doc = "Capture the value mode configuration."]
         #[must_use]
@@ -820,7 +820,7 @@ pub mod regs {
         #[doc = "Capture the value mode configuration."]
         #[inline(always)]
         pub const fn set_capov(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
+            self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u16) & 0x01) << 14usize);
         }
         #[doc = "Directive function enable."]
         #[must_use]
@@ -832,7 +832,7 @@ pub mod regs {
         #[doc = "Directive function enable."]
         #[inline(always)]
         pub const fn set_caplvl(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
+            self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u16) & 0x01) << 15usize);
         }
     }
     impl Default for AdtmCtlr1 {
@@ -861,7 +861,7 @@ pub mod regs {
     #[doc = "control register 2."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct AdtmCtlr2(pub u32);
+    pub struct AdtmCtlr2(pub u16);
     impl AdtmCtlr2 {
         #[doc = "Capture/compare preloaded control."]
         #[must_use]
@@ -873,7 +873,7 @@ pub mod regs {
         #[doc = "Capture/compare preloaded control."]
         #[inline(always)]
         pub const fn set_ccpc(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
+            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u16) & 0x01) << 0usize);
         }
         #[doc = "Capture/compare control update selection."]
         #[must_use]
@@ -885,7 +885,7 @@ pub mod regs {
         #[doc = "Capture/compare control update selection."]
         #[inline(always)]
         pub const fn set_ccus(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
+            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u16) & 0x01) << 2usize);
         }
         #[doc = "Capture/compare DMA selection."]
         #[must_use]
@@ -897,7 +897,7 @@ pub mod regs {
         #[doc = "Capture/compare DMA selection."]
         #[inline(always)]
         pub const fn set_ccds(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
+            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u16) & 0x01) << 3usize);
         }
         #[doc = "Master mode selection."]
         #[must_use]
@@ -909,7 +909,7 @@ pub mod regs {
         #[doc = "Master mode selection."]
         #[inline(always)]
         pub const fn set_mms(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x07 << 4usize)) | (((val as u32) & 0x07) << 4usize);
+            self.0 = (self.0 & !(0x07 << 4usize)) | (((val as u16) & 0x07) << 4usize);
         }
         #[doc = "TI1 selection."]
         #[must_use]
@@ -921,7 +921,7 @@ pub mod regs {
         #[doc = "TI1 selection."]
         #[inline(always)]
         pub const fn set_ti1s(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
+            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u16) & 0x01) << 7usize);
         }
         #[doc = "Output Idle state 1."]
         #[must_use]
@@ -933,7 +933,7 @@ pub mod regs {
         #[doc = "Output Idle state 1."]
         #[inline(always)]
         pub const fn set_ois1(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
+            self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u16) & 0x01) << 8usize);
         }
         #[doc = "Output Idle state 1."]
         #[must_use]
@@ -945,7 +945,7 @@ pub mod regs {
         #[doc = "Output Idle state 1."]
         #[inline(always)]
         pub const fn set_ois1n(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
+            self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u16) & 0x01) << 9usize);
         }
         #[doc = "Output Idle state 2."]
         #[must_use]
@@ -957,7 +957,7 @@ pub mod regs {
         #[doc = "Output Idle state 2."]
         #[inline(always)]
         pub const fn set_ois2(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
+            self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u16) & 0x01) << 10usize);
         }
         #[doc = "Output Idle state 2."]
         #[must_use]
@@ -969,7 +969,7 @@ pub mod regs {
         #[doc = "Output Idle state 2."]
         #[inline(always)]
         pub const fn set_ois2n(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
+            self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u16) & 0x01) << 11usize);
         }
         #[doc = "Output Idle state 3."]
         #[must_use]
@@ -981,7 +981,7 @@ pub mod regs {
         #[doc = "Output Idle state 3."]
         #[inline(always)]
         pub const fn set_ois3(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
+            self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u16) & 0x01) << 12usize);
         }
         #[doc = "Output Idle state 3."]
         #[must_use]
@@ -993,7 +993,7 @@ pub mod regs {
         #[doc = "Output Idle state 3."]
         #[inline(always)]
         pub const fn set_ois3n(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
+            self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u16) & 0x01) << 13usize);
         }
         #[doc = "Output Idle state 4."]
         #[must_use]
@@ -1005,7 +1005,7 @@ pub mod regs {
         #[doc = "Output Idle state 4."]
         #[inline(always)]
         pub const fn set_ois4(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
+            self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u16) & 0x01) << 14usize);
         }
     }
     impl Default for AdtmCtlr2 {
@@ -1066,7 +1066,7 @@ pub mod regs {
     #[doc = "DMA/Interrupt enable register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct AdtmDmaintenr(pub u32);
+    pub struct AdtmDmaintenr(pub u16);
     impl AdtmDmaintenr {
         #[doc = "Update interrupt enable."]
         #[must_use]
@@ -1078,7 +1078,7 @@ pub mod regs {
         #[doc = "Update interrupt enable."]
         #[inline(always)]
         pub const fn set_uie(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
+            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u16) & 0x01) << 0usize);
         }
         #[doc = "Capture/Compare 1 interrupt enable."]
         #[must_use]
@@ -1090,7 +1090,7 @@ pub mod regs {
         #[doc = "Capture/Compare 1 interrupt enable."]
         #[inline(always)]
         pub const fn set_cc1ie(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
+            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u16) & 0x01) << 1usize);
         }
         #[doc = "Capture/Compare 2 interrupt enable."]
         #[must_use]
@@ -1102,7 +1102,7 @@ pub mod regs {
         #[doc = "Capture/Compare 2 interrupt enable."]
         #[inline(always)]
         pub const fn set_cc2ie(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
+            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u16) & 0x01) << 2usize);
         }
         #[doc = "Capture/Compare 3 interrupt enable."]
         #[must_use]
@@ -1114,7 +1114,7 @@ pub mod regs {
         #[doc = "Capture/Compare 3 interrupt enable."]
         #[inline(always)]
         pub const fn set_cc3ie(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
+            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u16) & 0x01) << 3usize);
         }
         #[doc = "Capture/Compare 4 interrupt enable."]
         #[must_use]
@@ -1126,7 +1126,7 @@ pub mod regs {
         #[doc = "Capture/Compare 4 interrupt enable."]
         #[inline(always)]
         pub const fn set_cc4ie(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
+            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u16) & 0x01) << 4usize);
         }
         #[doc = "COM interrupt enable."]
         #[must_use]
@@ -1138,7 +1138,7 @@ pub mod regs {
         #[doc = "COM interrupt enable."]
         #[inline(always)]
         pub const fn set_comie(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
+            self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u16) & 0x01) << 5usize);
         }
         #[doc = "Trigger interrupt enable."]
         #[must_use]
@@ -1150,7 +1150,7 @@ pub mod regs {
         #[doc = "Trigger interrupt enable."]
         #[inline(always)]
         pub const fn set_tie(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
+            self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u16) & 0x01) << 6usize);
         }
         #[doc = "Break interrupt enable."]
         #[must_use]
@@ -1162,7 +1162,7 @@ pub mod regs {
         #[doc = "Break interrupt enable."]
         #[inline(always)]
         pub const fn set_bie(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
+            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u16) & 0x01) << 7usize);
         }
         #[doc = "Update DMA request enable."]
         #[must_use]
@@ -1174,7 +1174,7 @@ pub mod regs {
         #[doc = "Update DMA request enable."]
         #[inline(always)]
         pub const fn set_ude(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u32) & 0x01) << 8usize);
+            self.0 = (self.0 & !(0x01 << 8usize)) | (((val as u16) & 0x01) << 8usize);
         }
         #[doc = "Capture/Compare 1 DMA request enable."]
         #[must_use]
@@ -1186,7 +1186,7 @@ pub mod regs {
         #[doc = "Capture/Compare 1 DMA request enable."]
         #[inline(always)]
         pub const fn set_cc1de(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
+            self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u16) & 0x01) << 9usize);
         }
         #[doc = "Capture/Compare 2 DMA request enable."]
         #[must_use]
@@ -1198,7 +1198,7 @@ pub mod regs {
         #[doc = "Capture/Compare 2 DMA request enable."]
         #[inline(always)]
         pub const fn set_cc2de(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
+            self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u16) & 0x01) << 10usize);
         }
         #[doc = "Capture/Compare 3 DMA request enable."]
         #[must_use]
@@ -1210,7 +1210,7 @@ pub mod regs {
         #[doc = "Capture/Compare 3 DMA request enable."]
         #[inline(always)]
         pub const fn set_cc3de(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
+            self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u16) & 0x01) << 11usize);
         }
         #[doc = "Capture/Compare 4 DMA request enable."]
         #[must_use]
@@ -1222,7 +1222,7 @@ pub mod regs {
         #[doc = "Capture/Compare 4 DMA request enable."]
         #[inline(always)]
         pub const fn set_cc4de(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
+            self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u16) & 0x01) << 12usize);
         }
         #[doc = "COM DMA request enable."]
         #[must_use]
@@ -1234,7 +1234,7 @@ pub mod regs {
         #[doc = "COM DMA request enable."]
         #[inline(always)]
         pub const fn set_comde(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
+            self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u16) & 0x01) << 13usize);
         }
         #[doc = "Trigger DMA request enable."]
         #[must_use]
@@ -1246,7 +1246,7 @@ pub mod regs {
         #[doc = "Trigger DMA request enable."]
         #[inline(always)]
         pub const fn set_tde(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
+            self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u16) & 0x01) << 14usize);
         }
     }
     impl Default for AdtmDmaintenr {
@@ -1279,7 +1279,7 @@ pub mod regs {
     #[doc = "status register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct AdtmIntfr(pub u32);
+    pub struct AdtmIntfr(pub u16);
     impl AdtmIntfr {
         #[doc = "Update interrupt flag."]
         #[must_use]
@@ -1291,7 +1291,7 @@ pub mod regs {
         #[doc = "Update interrupt flag."]
         #[inline(always)]
         pub const fn set_uif(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
+            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u16) & 0x01) << 0usize);
         }
         #[doc = "Capture/compare 1 interrupt flag."]
         #[must_use]
@@ -1303,7 +1303,7 @@ pub mod regs {
         #[doc = "Capture/compare 1 interrupt flag."]
         #[inline(always)]
         pub const fn set_cc1if(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
+            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u16) & 0x01) << 1usize);
         }
         #[doc = "Capture/Compare 2 interrupt flag."]
         #[must_use]
@@ -1315,7 +1315,7 @@ pub mod regs {
         #[doc = "Capture/Compare 2 interrupt flag."]
         #[inline(always)]
         pub const fn set_cc2if(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
+            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u16) & 0x01) << 2usize);
         }
         #[doc = "Capture/Compare 3 interrupt flag."]
         #[must_use]
@@ -1327,7 +1327,7 @@ pub mod regs {
         #[doc = "Capture/Compare 3 interrupt flag."]
         #[inline(always)]
         pub const fn set_cc3if(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
+            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u16) & 0x01) << 3usize);
         }
         #[doc = "Capture/Compare 4 interrupt flag."]
         #[must_use]
@@ -1339,7 +1339,7 @@ pub mod regs {
         #[doc = "Capture/Compare 4 interrupt flag."]
         #[inline(always)]
         pub const fn set_cc4if(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
+            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u16) & 0x01) << 4usize);
         }
         #[doc = "COM interrupt flag."]
         #[must_use]
@@ -1351,7 +1351,7 @@ pub mod regs {
         #[doc = "COM interrupt flag."]
         #[inline(always)]
         pub const fn set_comif(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
+            self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u16) & 0x01) << 5usize);
         }
         #[doc = "Trigger interrupt flag."]
         #[must_use]
@@ -1363,7 +1363,7 @@ pub mod regs {
         #[doc = "Trigger interrupt flag."]
         #[inline(always)]
         pub const fn set_tif(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
+            self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u16) & 0x01) << 6usize);
         }
         #[doc = "Break interrupt flag."]
         #[must_use]
@@ -1375,7 +1375,7 @@ pub mod regs {
         #[doc = "Break interrupt flag."]
         #[inline(always)]
         pub const fn set_bif(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
+            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u16) & 0x01) << 7usize);
         }
         #[doc = "Capture/Compare 1 overcapture flag."]
         #[must_use]
@@ -1387,7 +1387,7 @@ pub mod regs {
         #[doc = "Capture/Compare 1 overcapture flag."]
         #[inline(always)]
         pub const fn set_cc1of(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u32) & 0x01) << 9usize);
+            self.0 = (self.0 & !(0x01 << 9usize)) | (((val as u16) & 0x01) << 9usize);
         }
         #[doc = "Capture/compare 2 overcapture flag."]
         #[must_use]
@@ -1399,7 +1399,7 @@ pub mod regs {
         #[doc = "Capture/compare 2 overcapture flag."]
         #[inline(always)]
         pub const fn set_cc2of(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
+            self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u16) & 0x01) << 10usize);
         }
         #[doc = "Capture/Compare 3 overcapture flag."]
         #[must_use]
@@ -1411,7 +1411,7 @@ pub mod regs {
         #[doc = "Capture/Compare 3 overcapture flag."]
         #[inline(always)]
         pub const fn set_cc3of(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
+            self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u16) & 0x01) << 11usize);
         }
         #[doc = "Capture/Compare 4 overcapture flag."]
         #[must_use]
@@ -1423,7 +1423,7 @@ pub mod regs {
         #[doc = "Capture/Compare 4 overcapture flag."]
         #[inline(always)]
         pub const fn set_cc4of(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
+            self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u16) & 0x01) << 12usize);
         }
     }
     impl Default for AdtmIntfr {
@@ -1453,7 +1453,7 @@ pub mod regs {
     #[doc = "event generation register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct AdtmSwevgr(pub u32);
+    pub struct AdtmSwevgr(pub u16);
     impl AdtmSwevgr {
         #[doc = "Update generation."]
         #[must_use]
@@ -1465,7 +1465,7 @@ pub mod regs {
         #[doc = "Update generation."]
         #[inline(always)]
         pub const fn set_ug(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
+            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u16) & 0x01) << 0usize);
         }
         #[doc = "Capture/compare 1 generation."]
         #[must_use]
@@ -1477,7 +1477,7 @@ pub mod regs {
         #[doc = "Capture/compare 1 generation."]
         #[inline(always)]
         pub const fn set_cc1g(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
+            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u16) & 0x01) << 1usize);
         }
         #[doc = "Capture/compare 2 generation."]
         #[must_use]
@@ -1489,7 +1489,7 @@ pub mod regs {
         #[doc = "Capture/compare 2 generation."]
         #[inline(always)]
         pub const fn set_cc2g(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
+            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u16) & 0x01) << 2usize);
         }
         #[doc = "Capture/compare 3 generation."]
         #[must_use]
@@ -1501,7 +1501,7 @@ pub mod regs {
         #[doc = "Capture/compare 3 generation."]
         #[inline(always)]
         pub const fn set_cc3g(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
+            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u16) & 0x01) << 3usize);
         }
         #[doc = "Capture/compare 4 generation."]
         #[must_use]
@@ -1513,7 +1513,7 @@ pub mod regs {
         #[doc = "Capture/compare 4 generation."]
         #[inline(always)]
         pub const fn set_cc4g(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
+            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u16) & 0x01) << 4usize);
         }
         #[doc = "Capture/Compare control update generation."]
         #[must_use]
@@ -1525,7 +1525,7 @@ pub mod regs {
         #[doc = "Capture/Compare control update generation."]
         #[inline(always)]
         pub const fn set_comg(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
+            self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u16) & 0x01) << 5usize);
         }
         #[doc = "Trigger generation."]
         #[must_use]
@@ -1537,7 +1537,7 @@ pub mod regs {
         #[doc = "Trigger generation."]
         #[inline(always)]
         pub const fn set_tg(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
+            self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u16) & 0x01) << 6usize);
         }
         #[doc = "Break generation."]
         #[must_use]
@@ -1549,7 +1549,7 @@ pub mod regs {
         #[doc = "Break generation."]
         #[inline(always)]
         pub const fn set_bg(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
+            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u16) & 0x01) << 7usize);
         }
     }
     impl Default for AdtmSwevgr {
@@ -1575,7 +1575,7 @@ pub mod regs {
     #[doc = "break and dead-time register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Bdtr(pub u32);
+    pub struct Bdtr(pub u16);
     impl Bdtr {
         #[doc = "Dead-time generator setup."]
         #[must_use]
@@ -1587,7 +1587,7 @@ pub mod regs {
         #[doc = "Dead-time generator setup."]
         #[inline(always)]
         pub const fn set_dtg(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
+            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u16) & 0xff) << 0usize);
         }
         #[doc = "Lock configuration."]
         #[must_use]
@@ -1599,7 +1599,7 @@ pub mod regs {
         #[doc = "Lock configuration."]
         #[inline(always)]
         pub const fn set_lock(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u32) & 0x03) << 8usize);
+            self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u16) & 0x03) << 8usize);
         }
         #[doc = "Off-state selection for Idle mode."]
         #[must_use]
@@ -1611,7 +1611,7 @@ pub mod regs {
         #[doc = "Off-state selection for Idle mode."]
         #[inline(always)]
         pub const fn set_ossi(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
+            self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u16) & 0x01) << 10usize);
         }
         #[doc = "Off-state selection for Run mode."]
         #[must_use]
@@ -1623,7 +1623,7 @@ pub mod regs {
         #[doc = "Off-state selection for Run mode."]
         #[inline(always)]
         pub const fn set_ossr(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
+            self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u16) & 0x01) << 11usize);
         }
         #[doc = "Break enable."]
         #[must_use]
@@ -1635,7 +1635,7 @@ pub mod regs {
         #[doc = "Break enable."]
         #[inline(always)]
         pub const fn set_bke(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u32) & 0x01) << 12usize);
+            self.0 = (self.0 & !(0x01 << 12usize)) | (((val as u16) & 0x01) << 12usize);
         }
         #[doc = "Break polarity."]
         #[must_use]
@@ -1647,7 +1647,7 @@ pub mod regs {
         #[doc = "Break polarity."]
         #[inline(always)]
         pub const fn set_bkp(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u32) & 0x01) << 13usize);
+            self.0 = (self.0 & !(0x01 << 13usize)) | (((val as u16) & 0x01) << 13usize);
         }
         #[doc = "Automatic output enable."]
         #[must_use]
@@ -1659,7 +1659,7 @@ pub mod regs {
         #[doc = "Automatic output enable."]
         #[inline(always)]
         pub const fn set_aoe(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
+            self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u16) & 0x01) << 14usize);
         }
         #[doc = "Main output enable."]
         #[must_use]
@@ -1671,7 +1671,7 @@ pub mod regs {
         #[doc = "Main output enable."]
         #[inline(always)]
         pub const fn set_moe(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
+            self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u16) & 0x01) << 15usize);
         }
     }
     impl Default for Bdtr {
@@ -1697,7 +1697,7 @@ pub mod regs {
     #[doc = "capture/compare mode register (output mode)."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Chctlr1Output(pub u32);
+    pub struct Chctlr1Output(pub u16);
     impl Chctlr1Output {
         #[doc = "Capture/Compare 1 selection."]
         #[must_use]
@@ -1709,7 +1709,7 @@ pub mod regs {
         #[doc = "Capture/Compare 1 selection."]
         #[inline(always)]
         pub const fn set_cc1s(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u32) & 0x03) << 0usize);
+            self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u16) & 0x03) << 0usize);
         }
         #[doc = "Output Compare 1 fast enable."]
         #[must_use]
@@ -1721,7 +1721,7 @@ pub mod regs {
         #[doc = "Output Compare 1 fast enable."]
         #[inline(always)]
         pub const fn set_oc1fe(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
+            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u16) & 0x01) << 2usize);
         }
         #[doc = "Output Compare 1 preload enable."]
         #[must_use]
@@ -1733,7 +1733,7 @@ pub mod regs {
         #[doc = "Output Compare 1 preload enable."]
         #[inline(always)]
         pub const fn set_oc1pe(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
+            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u16) & 0x01) << 3usize);
         }
         #[doc = "Output Compare 1 mode."]
         #[must_use]
@@ -1745,7 +1745,7 @@ pub mod regs {
         #[doc = "Output Compare 1 mode."]
         #[inline(always)]
         pub const fn set_oc1m(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x07 << 4usize)) | (((val as u32) & 0x07) << 4usize);
+            self.0 = (self.0 & !(0x07 << 4usize)) | (((val as u16) & 0x07) << 4usize);
         }
         #[doc = "Output Compare 1 clear enable."]
         #[must_use]
@@ -1757,7 +1757,7 @@ pub mod regs {
         #[doc = "Output Compare 1 clear enable."]
         #[inline(always)]
         pub const fn set_oc1ce(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
+            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u16) & 0x01) << 7usize);
         }
         #[doc = "Capture/Compare 2 selection."]
         #[must_use]
@@ -1769,7 +1769,7 @@ pub mod regs {
         #[doc = "Capture/Compare 2 selection."]
         #[inline(always)]
         pub const fn set_cc2s(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u32) & 0x03) << 8usize);
+            self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u16) & 0x03) << 8usize);
         }
         #[doc = "Output Compare 2 fast enable."]
         #[must_use]
@@ -1781,7 +1781,7 @@ pub mod regs {
         #[doc = "Output Compare 2 fast enable."]
         #[inline(always)]
         pub const fn set_oc2fe(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
+            self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u16) & 0x01) << 10usize);
         }
         #[doc = "Output Compare 2 preload enable."]
         #[must_use]
@@ -1793,7 +1793,7 @@ pub mod regs {
         #[doc = "Output Compare 2 preload enable."]
         #[inline(always)]
         pub const fn set_oc2pe(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
+            self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u16) & 0x01) << 11usize);
         }
         #[doc = "Output Compare 2 mode."]
         #[must_use]
@@ -1805,7 +1805,7 @@ pub mod regs {
         #[doc = "Output Compare 2 mode."]
         #[inline(always)]
         pub const fn set_oc2m(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x07 << 12usize)) | (((val as u32) & 0x07) << 12usize);
+            self.0 = (self.0 & !(0x07 << 12usize)) | (((val as u16) & 0x07) << 12usize);
         }
         #[doc = "Output Compare 2 clear enable."]
         #[must_use]
@@ -1817,7 +1817,7 @@ pub mod regs {
         #[doc = "Output Compare 2 clear enable."]
         #[inline(always)]
         pub const fn set_oc2ce(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
+            self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u16) & 0x01) << 15usize);
         }
     }
     impl Default for Chctlr1Output {
@@ -1845,7 +1845,7 @@ pub mod regs {
     #[doc = "capture/compare mode register 2 (input mode)."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Chctlr2Input(pub u32);
+    pub struct Chctlr2Input(pub u16);
     impl Chctlr2Input {
         #[doc = "Capture/compare 3 selection."]
         #[must_use]
@@ -1857,7 +1857,7 @@ pub mod regs {
         #[doc = "Capture/compare 3 selection."]
         #[inline(always)]
         pub const fn set_cc3s(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u32) & 0x03) << 0usize);
+            self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u16) & 0x03) << 0usize);
         }
         #[doc = "Input capture 3 prescaler."]
         #[must_use]
@@ -1869,7 +1869,7 @@ pub mod regs {
         #[doc = "Input capture 3 prescaler."]
         #[inline(always)]
         pub const fn set_ic3psc(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 2usize)) | (((val as u32) & 0x03) << 2usize);
+            self.0 = (self.0 & !(0x03 << 2usize)) | (((val as u16) & 0x03) << 2usize);
         }
         #[doc = "Input capture 3 filter."]
         #[must_use]
@@ -1881,7 +1881,7 @@ pub mod regs {
         #[doc = "Input capture 3 filter."]
         #[inline(always)]
         pub const fn set_ic3f(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x0f << 4usize)) | (((val as u32) & 0x0f) << 4usize);
+            self.0 = (self.0 & !(0x0f << 4usize)) | (((val as u16) & 0x0f) << 4usize);
         }
         #[doc = "Capture/Compare 4 selection."]
         #[must_use]
@@ -1893,7 +1893,7 @@ pub mod regs {
         #[doc = "Capture/Compare 4 selection."]
         #[inline(always)]
         pub const fn set_cc4s(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u32) & 0x03) << 8usize);
+            self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u16) & 0x03) << 8usize);
         }
         #[doc = "Input capture 4 prescaler."]
         #[must_use]
@@ -1905,7 +1905,7 @@ pub mod regs {
         #[doc = "Input capture 4 prescaler."]
         #[inline(always)]
         pub const fn set_ic4psc(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 10usize)) | (((val as u32) & 0x03) << 10usize);
+            self.0 = (self.0 & !(0x03 << 10usize)) | (((val as u16) & 0x03) << 10usize);
         }
         #[doc = "Input capture 4 filter."]
         #[must_use]
@@ -1917,7 +1917,7 @@ pub mod regs {
         #[doc = "Input capture 4 filter."]
         #[inline(always)]
         pub const fn set_ic4f(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x0f << 12usize)) | (((val as u32) & 0x0f) << 12usize);
+            self.0 = (self.0 & !(0x0f << 12usize)) | (((val as u16) & 0x0f) << 12usize);
         }
     }
     impl Default for Chctlr2Input {
@@ -1941,7 +1941,7 @@ pub mod regs {
     #[doc = "capture/compare mode register (output mode)."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Chctlr2Output(pub u32);
+    pub struct Chctlr2Output(pub u16);
     impl Chctlr2Output {
         #[doc = "Capture/Compare 3 selection."]
         #[must_use]
@@ -1953,7 +1953,7 @@ pub mod regs {
         #[doc = "Capture/Compare 3 selection."]
         #[inline(always)]
         pub const fn set_cc3s(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u32) & 0x03) << 0usize);
+            self.0 = (self.0 & !(0x03 << 0usize)) | (((val as u16) & 0x03) << 0usize);
         }
         #[doc = "Output compare 3 fast enable."]
         #[must_use]
@@ -1965,7 +1965,7 @@ pub mod regs {
         #[doc = "Output compare 3 fast enable."]
         #[inline(always)]
         pub const fn set_oc3fe(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
+            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u16) & 0x01) << 2usize);
         }
         #[doc = "Output compare 3 preload enable."]
         #[must_use]
@@ -1977,7 +1977,7 @@ pub mod regs {
         #[doc = "Output compare 3 preload enable."]
         #[inline(always)]
         pub const fn set_oc3pe(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
+            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u16) & 0x01) << 3usize);
         }
         #[doc = "Output compare 3 mode."]
         #[must_use]
@@ -1989,7 +1989,7 @@ pub mod regs {
         #[doc = "Output compare 3 mode."]
         #[inline(always)]
         pub const fn set_oc3m(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x07 << 4usize)) | (((val as u32) & 0x07) << 4usize);
+            self.0 = (self.0 & !(0x07 << 4usize)) | (((val as u16) & 0x07) << 4usize);
         }
         #[doc = "Output compare 3 clear enable."]
         #[must_use]
@@ -2001,7 +2001,7 @@ pub mod regs {
         #[doc = "Output compare 3 clear enable."]
         #[inline(always)]
         pub const fn set_oc3ce(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
+            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u16) & 0x01) << 7usize);
         }
         #[doc = "Capture/Compare 4 selection."]
         #[must_use]
@@ -2013,7 +2013,7 @@ pub mod regs {
         #[doc = "Capture/Compare 4 selection."]
         #[inline(always)]
         pub const fn set_cc4s(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u32) & 0x03) << 8usize);
+            self.0 = (self.0 & !(0x03 << 8usize)) | (((val as u16) & 0x03) << 8usize);
         }
         #[doc = "Output compare 4 fast enable."]
         #[must_use]
@@ -2025,7 +2025,7 @@ pub mod regs {
         #[doc = "Output compare 4 fast enable."]
         #[inline(always)]
         pub const fn set_oc4fe(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u32) & 0x01) << 10usize);
+            self.0 = (self.0 & !(0x01 << 10usize)) | (((val as u16) & 0x01) << 10usize);
         }
         #[doc = "Output compare 4 preload enable."]
         #[must_use]
@@ -2037,7 +2037,7 @@ pub mod regs {
         #[doc = "Output compare 4 preload enable."]
         #[inline(always)]
         pub const fn set_oc4pe(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u32) & 0x01) << 11usize);
+            self.0 = (self.0 & !(0x01 << 11usize)) | (((val as u16) & 0x01) << 11usize);
         }
         #[doc = "Output compare 4 mode."]
         #[must_use]
@@ -2049,7 +2049,7 @@ pub mod regs {
         #[doc = "Output compare 4 mode."]
         #[inline(always)]
         pub const fn set_oc4m(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x07 << 12usize)) | (((val as u32) & 0x07) << 12usize);
+            self.0 = (self.0 & !(0x07 << 12usize)) | (((val as u16) & 0x07) << 12usize);
         }
         #[doc = "Output compare 4 clear enable."]
         #[must_use]
@@ -2061,7 +2061,7 @@ pub mod regs {
         #[doc = "Output compare 4 clear enable."]
         #[inline(always)]
         pub const fn set_oc4ce(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
+            self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u16) & 0x01) << 15usize);
         }
     }
     impl Default for Chctlr2Output {
@@ -2133,7 +2133,7 @@ pub mod regs {
     #[doc = "DMA control register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Dmacfgr(pub u32);
+    pub struct Dmacfgr(pub u16);
     impl Dmacfgr {
         #[doc = "DMA base address."]
         #[must_use]
@@ -2145,7 +2145,7 @@ pub mod regs {
         #[doc = "DMA base address."]
         #[inline(always)]
         pub const fn set_dba(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x1f << 0usize)) | (((val as u32) & 0x1f) << 0usize);
+            self.0 = (self.0 & !(0x1f << 0usize)) | (((val as u16) & 0x1f) << 0usize);
         }
         #[doc = "DMA burst length."]
         #[must_use]
@@ -2157,7 +2157,7 @@ pub mod regs {
         #[doc = "DMA burst length."]
         #[inline(always)]
         pub const fn set_dbl(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x1f << 8usize)) | (((val as u32) & 0x1f) << 8usize);
+            self.0 = (self.0 & !(0x1f << 8usize)) | (((val as u16) & 0x1f) << 8usize);
         }
     }
     impl Default for Dmacfgr {
@@ -3116,7 +3116,7 @@ pub mod regs {
     #[doc = "auto-reload register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct GptmAtrlr(pub u32);
+    pub struct GptmAtrlr(pub u16);
     impl GptmAtrlr {
         #[doc = "Auto-reload value."]
         #[must_use]
@@ -3128,7 +3128,7 @@ pub mod regs {
         #[doc = "Auto-reload value."]
         #[inline(always)]
         pub const fn set_arr(&mut self, val: u16) {
-            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
+            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u16) & 0xffff) << 0usize);
         }
     }
     impl Default for GptmAtrlr {
@@ -3365,7 +3365,7 @@ pub mod regs {
     #[doc = "counter."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct GptmCnt(pub u32);
+    pub struct GptmCnt(pub u16);
     impl GptmCnt {
         #[doc = "counter value."]
         #[must_use]
@@ -3377,7 +3377,7 @@ pub mod regs {
         #[doc = "counter value."]
         #[inline(always)]
         pub const fn set_cnt(&mut self, val: u16) {
-            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
+            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u16) & 0xffff) << 0usize);
         }
     }
     impl Default for GptmCnt {
@@ -4048,7 +4048,7 @@ pub mod regs {
     #[doc = "prescaler."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Psc(pub u32);
+    pub struct Psc(pub u16);
     impl Psc {
         #[doc = "Prescaler value."]
         #[must_use]
@@ -4060,7 +4060,7 @@ pub mod regs {
         #[doc = "Prescaler value."]
         #[inline(always)]
         pub const fn set_psc(&mut self, val: u16) {
-            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u32) & 0xffff) << 0usize);
+            self.0 = (self.0 & !(0xffff << 0usize)) | (((val as u16) & 0xffff) << 0usize);
         }
     }
     impl Default for Psc {
@@ -4077,7 +4077,7 @@ pub mod regs {
     #[doc = "repetition counter register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Rptcr(pub u32);
+    pub struct Rptcr(pub u16);
     impl Rptcr {
         #[doc = "Repetition counter value."]
         #[must_use]
@@ -4089,7 +4089,7 @@ pub mod regs {
         #[doc = "Repetition counter value."]
         #[inline(always)]
         pub const fn set_rep(&mut self, val: u8) {
-            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u32) & 0xff) << 0usize);
+            self.0 = (self.0 & !(0xff << 0usize)) | (((val as u16) & 0xff) << 0usize);
         }
     }
     impl Default for Rptcr {
@@ -4106,7 +4106,7 @@ pub mod regs {
     #[doc = "slave mode control register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct Smcfgr(pub u32);
+    pub struct Smcfgr(pub u16);
     impl Smcfgr {
         #[doc = "Slave mode selection."]
         #[must_use]
@@ -4118,7 +4118,7 @@ pub mod regs {
         #[doc = "Slave mode selection."]
         #[inline(always)]
         pub const fn set_sms(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u32) & 0x07) << 0usize);
+            self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u16) & 0x07) << 0usize);
         }
         #[doc = "Trigger selection."]
         #[must_use]
@@ -4130,7 +4130,7 @@ pub mod regs {
         #[doc = "Trigger selection."]
         #[inline(always)]
         pub const fn set_ts(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x07 << 4usize)) | (((val as u32) & 0x07) << 4usize);
+            self.0 = (self.0 & !(0x07 << 4usize)) | (((val as u16) & 0x07) << 4usize);
         }
         #[doc = "Master/Slave mode."]
         #[must_use]
@@ -4142,7 +4142,7 @@ pub mod regs {
         #[doc = "Master/Slave mode."]
         #[inline(always)]
         pub const fn set_msm(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
+            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u16) & 0x01) << 7usize);
         }
         #[doc = "External trigger filter."]
         #[must_use]
@@ -4154,7 +4154,7 @@ pub mod regs {
         #[doc = "External trigger filter."]
         #[inline(always)]
         pub const fn set_etf(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x0f << 8usize)) | (((val as u32) & 0x0f) << 8usize);
+            self.0 = (self.0 & !(0x0f << 8usize)) | (((val as u16) & 0x0f) << 8usize);
         }
         #[doc = "External trigger prescaler."]
         #[must_use]
@@ -4166,7 +4166,7 @@ pub mod regs {
         #[doc = "External trigger prescaler."]
         #[inline(always)]
         pub const fn set_etps(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x03 << 12usize)) | (((val as u32) & 0x03) << 12usize);
+            self.0 = (self.0 & !(0x03 << 12usize)) | (((val as u16) & 0x03) << 12usize);
         }
         #[doc = "External clock enable."]
         #[must_use]
@@ -4178,7 +4178,7 @@ pub mod regs {
         #[doc = "External clock enable."]
         #[inline(always)]
         pub const fn set_ece(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u32) & 0x01) << 14usize);
+            self.0 = (self.0 & !(0x01 << 14usize)) | (((val as u16) & 0x01) << 14usize);
         }
         #[doc = "External trigger polarity."]
         #[must_use]
@@ -4190,7 +4190,7 @@ pub mod regs {
         #[doc = "External trigger polarity."]
         #[inline(always)]
         pub const fn set_etp(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u32) & 0x01) << 15usize);
+            self.0 = (self.0 & !(0x01 << 15usize)) | (((val as u16) & 0x01) << 15usize);
         }
     }
     impl Default for Smcfgr {

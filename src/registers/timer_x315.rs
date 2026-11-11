@@ -958,7 +958,7 @@ pub(crate) static REGISTERS: IR = IR {
             description: Some(
                 "auto-reload register.",
             ),
-            bit_size: 32,
+            bit_size: 16,
             fields: &[
                 Field {
                     name: "arr",
@@ -982,7 +982,7 @@ pub(crate) static REGISTERS: IR = IR {
             description: Some(
                 "capture/compare enable register.",
             ),
-            bit_size: 32,
+            bit_size: 16,
             fields: &[
                 Field {
                     name: "cc1e",
@@ -1282,7 +1282,7 @@ pub(crate) static REGISTERS: IR = IR {
             description: Some(
                 "counter.",
             ),
-            bit_size: 32,
+            bit_size: 16,
             fields: &[
                 Field {
                     name: "cnt",
@@ -1306,7 +1306,7 @@ pub(crate) static REGISTERS: IR = IR {
             description: Some(
                 "control register 1.",
             ),
-            bit_size: 32,
+            bit_size: 16,
             fields: &[
                 Field {
                     name: "cen",
@@ -1470,7 +1470,7 @@ pub(crate) static REGISTERS: IR = IR {
             description: Some(
                 "control register 2.",
             ),
-            bit_size: 32,
+            bit_size: 16,
             fields: &[
                 Field {
                     name: "ccpc",
@@ -1672,7 +1672,7 @@ pub(crate) static REGISTERS: IR = IR {
             description: Some(
                 "DMA/Interrupt enable register.",
             ),
-            bit_size: 32,
+            bit_size: 16,
             fields: &[
                 Field {
                     name: "uie",
@@ -1892,7 +1892,7 @@ pub(crate) static REGISTERS: IR = IR {
             description: Some(
                 "status register.",
             ),
-            bit_size: 32,
+            bit_size: 16,
             fields: &[
                 Field {
                     name: "uif",
@@ -2070,7 +2070,7 @@ pub(crate) static REGISTERS: IR = IR {
             description: Some(
                 "event generation register.",
             ),
-            bit_size: 32,
+            bit_size: 16,
             fields: &[
                 Field {
                     name: "ug",
@@ -2192,7 +2192,7 @@ pub(crate) static REGISTERS: IR = IR {
             description: Some(
                 "break and dead-time register.",
             ),
-            bit_size: 32,
+            bit_size: 16,
             fields: &[
                 Field {
                     name: "dtg",
@@ -2314,7 +2314,7 @@ pub(crate) static REGISTERS: IR = IR {
             description: Some(
                 "capture/compare mode register (output mode).",
             ),
-            bit_size: 32,
+            bit_size: 16,
             fields: &[
                 Field {
                     name: "cc1s",
@@ -2464,7 +2464,7 @@ pub(crate) static REGISTERS: IR = IR {
             description: Some(
                 "capture/compare mode register 2 (input mode).",
             ),
-            bit_size: 32,
+            bit_size: 16,
             fields: &[
                 Field {
                     name: "cc3s",
@@ -2558,7 +2558,7 @@ pub(crate) static REGISTERS: IR = IR {
             description: Some(
                 "capture/compare mode register (output mode).",
             ),
-            bit_size: 32,
+            bit_size: 16,
             fields: &[
                 Field {
                     name: "cc3s",
@@ -2746,7 +2746,7 @@ pub(crate) static REGISTERS: IR = IR {
             description: Some(
                 "DMA control register.",
             ),
-            bit_size: 32,
+            bit_size: 16,
             fields: &[
                 Field {
                     name: "dba",
@@ -3692,7 +3692,7 @@ pub(crate) static REGISTERS: IR = IR {
             description: Some(
                 "auto-reload register.",
             ),
-            bit_size: 32,
+            bit_size: 16,
             fields: &[
                 Field {
                     name: "arr",
@@ -3932,7 +3932,7 @@ pub(crate) static REGISTERS: IR = IR {
             description: Some(
                 "counter.",
             ),
-            bit_size: 32,
+            bit_size: 16,
             fields: &[
                 Field {
                     name: "cnt",
@@ -4604,7 +4604,7 @@ pub(crate) static REGISTERS: IR = IR {
             description: Some(
                 "prescaler.",
             ),
-            bit_size: 32,
+            bit_size: 16,
             fields: &[
                 Field {
                     name: "psc",
@@ -4628,7 +4628,7 @@ pub(crate) static REGISTERS: IR = IR {
             description: Some(
                 "repetition counter register.",
             ),
-            bit_size: 32,
+            bit_size: 16,
             fields: &[
                 Field {
                     name: "rep",
@@ -4652,7 +4652,7 @@ pub(crate) static REGISTERS: IR = IR {
             description: Some(
                 "slave mode control register.",
             ),
-            bit_size: 32,
+            bit_size: 16,
             fields: &[
                 Field {
                     name: "sms",
