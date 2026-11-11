@@ -4229,55 +4229,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
     },
     Peripheral {
-        name: "USBHS2",
-        address: 0x40023400,
-        registers: Some(PeripheralRegisters {
-            kind: "usbhs",
-            version: "v4x7",
-            block: "USB",
-            ir: &usbhs::REGISTERS,
-        }),
-        rcc: Some(PeripheralRcc {
-            bus_clock: "HCLK",
-            kernel_clock: Clock("USBHSPLLCLK"),
-            enable: Some(PeripheralRccRegister {
-                register: "HBPCENR",
-                field: "USBHS2EN",
-            }),
-            reset: Some(PeripheralRccRegister {
-                register: "HBRSTR",
-                field: "USBHS2RST",
-            }),
-            stop_mode: StopMode::Stop1,
-        }),
-        remap: None,
-        pins: &[
-            PeripheralPin {
-                pin: "PB7",
-                signal: "DP",
-                remap: None,
-                af: None,
-            },
-            PeripheralPin {
-                pin: "PB6",
-                signal: "DM",
-                remap: None,
-                af: None,
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[
-            PeripheralInterrupt {
-                signal: "GLOBAL",
-                interrupt: "USBHS2",
-            },
-            PeripheralInterrupt {
-                signal: "WAKEUP",
-                interrupt: "USBHS2WAKEUP",
-            },
-        ],
-    },
-    Peripheral {
         name: "DVP",
         address: 0x50050000,
         registers: Some(PeripheralRegisters {
