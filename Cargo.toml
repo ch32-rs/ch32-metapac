@@ -37,6 +37,7 @@ flavors = [
     { regex_feature = "ch32x0.*", target = "riscv32imac-unknown-none-elf" },
     { regex_feature = "ch32l1.*", target = "riscv32imac-unknown-none-elf" },
     { regex_feature = "ch32f1.*", target = "thumbv7m-none-eabi" },
+    { regex_feature = "ch32f2.*", target = "thumbv7m-none-eabi" },
 ]
 
 [dependencies]
@@ -66,7 +67,20 @@ memory-x = []
 # Chip-selection features
 ch32f103c6t6 = []
 ch32f103c8t6 = []
+ch32f103c8u6 = []
 ch32f103r8t6 = []
+ch32f203c6t6 = []
+ch32f203c8t6 = []
+ch32f203c8u6 = []
+ch32f203cbt6 = []
+ch32f203k8t6 = []
+ch32f203rbt6 = []
+ch32f203rct6 = []
+ch32f203vct6 = []
+ch32f205rbt6 = []
+ch32f207vct6 = []
+ch32f208rbt6 = []
+ch32f208wbu6 = []
 ch32h415reu6-qingke-v3f = []
 ch32h415reu6-qingke-v5f = []
 ch32h416rdu6-qingke-v3f = []
