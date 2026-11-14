@@ -4619,6 +4619,97 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
     },
     Peripheral {
+        name: "PIOC",
+        address: 0x40025c00,
+        registers: Some(PeripheralRegisters {
+            kind: "pioc",
+            version: "v205",
+            block: "PIOC",
+            ir: &pioc::REGISTERS,
+        }),
+        rcc: Some(PeripheralRcc {
+            bus_clock: "HCLK",
+            kernel_clock: Clock("HCLK"),
+            enable: Some(PeripheralRccRegister {
+                register: "HBPCENR",
+                field: "PIOCEN",
+            }),
+            reset: Some(PeripheralRccRegister {
+                register: "HBRSTR",
+                field: "PIOCRST",
+            }),
+            stop_mode: StopMode::Stop1,
+        }),
+        remap: None,
+        pins: &[
+            PeripheralPin {
+                pin: "PB8",
+                signal: "IO0",
+                remap: None,
+                af: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC1",
+                signal: "IO0",
+                remap: None,
+                af: Some(7),
+            },
+            PeripheralPin {
+                pin: "PE3",
+                signal: "IO0",
+                remap: None,
+                af: Some(5),
+            },
+            PeripheralPin {
+                pin: "PF12",
+                signal: "IO0",
+                remap: None,
+                af: Some(3),
+            },
+            PeripheralPin {
+                pin: "PB9",
+                signal: "IO1",
+                remap: None,
+                af: Some(7),
+            },
+            PeripheralPin {
+                pin: "PC0",
+                signal: "IO1",
+                remap: None,
+                af: Some(5),
+            },
+            PeripheralPin {
+                pin: "PC2",
+                signal: "IO1",
+                remap: None,
+                af: Some(8),
+            },
+            PeripheralPin {
+                pin: "PE4",
+                signal: "IO1",
+                remap: None,
+                af: Some(4),
+            },
+            PeripheralPin {
+                pin: "PF13",
+                signal: "IO1",
+                remap: None,
+                af: Some(5),
+            },
+            PeripheralPin {
+                pin: "PF14",
+                signal: "IO1",
+                remap: None,
+                af: Some(5),
+            },
+        ],
+        dma_channels: &[],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "PIOC",
+        }],
+    },
+    Peripheral {
         name: "USBHS",
         address: 0x40030000,
         registers: Some(PeripheralRegisters {
@@ -6249,6 +6340,8 @@ pub mod lptim;
 pub mod opa;
 #[path = "../registers/pfic_h4.rs"]
 pub mod pfic;
+#[path = "../registers/pioc_v205.rs"]
+pub mod pioc;
 #[path = "../registers/pwr_h4.rs"]
 pub mod pwr;
 #[path = "../registers/rcc_h4.rs"]
