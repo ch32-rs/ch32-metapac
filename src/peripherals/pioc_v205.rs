@@ -21,92 +21,92 @@ impl Pioc {
     }
     #[doc = "Indirectly addressed data read/write ports."]
     #[inline(always)]
-    pub const fn sfr_indir_port(self) -> crate::common::Reg<u8, crate::common::RW> {
+    pub const fn indir_port(self) -> crate::common::Reg<u8, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
     }
     #[doc = "Indirectly addresses the data read/write port of 2."]
     #[inline(always)]
-    pub const fn rsfr_indir_port2(self) -> crate::common::Reg<u8, crate::common::RW> {
+    pub const fn indir_port2(self) -> crate::common::Reg<u8, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x01usize) as _) }
     }
     #[doc = "Program counters for the low bytes of the PC."]
     #[inline(always)]
-    pub const fn sfr_prg_count(self) -> crate::common::Reg<u8, crate::common::RW> {
+    pub const fn prg_count(self) -> crate::common::Reg<u8, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x02usize) as _) }
     }
     #[doc = "Status registers."]
     #[inline(always)]
-    pub const fn sfr_status_reg(self) -> crate::common::Reg<regs::SfrStatusReg, crate::common::RW> {
+    pub const fn status(self) -> crate::common::Reg<regs::Status, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x03usize) as _) }
     }
     #[doc = "Indirectly addressed address registers."]
     #[inline(always)]
-    pub const fn sfr_indir_addr(self) -> crate::common::Reg<u8, crate::common::R> {
+    pub const fn indir_addr(self) -> crate::common::Reg<u8, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
     }
     #[doc = "The counter register of timer 0."]
     #[inline(always)]
-    pub const fn sfr_tmr0_count(self) -> crate::common::Reg<u8, crate::common::R> {
+    pub const fn tmr0_count(self) -> crate::common::Reg<u8, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x05usize) as _) }
     }
     #[doc = "The control register of the timer."]
     #[inline(always)]
-    pub const fn sfr_timer_ctrl(self) -> crate::common::Reg<u8, crate::common::R> {
+    pub const fn tmr0_ctrl(self) -> crate::common::Reg<regs::Tmr0Ctrl, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x06usize) as _) }
     }
     #[doc = "The initial register of timer 0."]
     #[inline(always)]
-    pub const fn sfr_tmr0_init(self) -> crate::common::Reg<u8, crate::common::R> {
+    pub const fn tmr0_init(self) -> crate::common::Reg<u8, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x07usize) as _) }
     }
     #[doc = "Periodic registers for coded bits."]
     #[inline(always)]
-    pub const fn sfr_bit_cycle(self) -> crate::common::Reg<regs::SfrBitCycle, crate::common::RW> {
+    pub const fn bit_cycle(self) -> crate::common::Reg<regs::BitCycle, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
     #[doc = "Address registers for indirect address 2."]
     #[inline(always)]
-    pub const fn sfr_indir_addr2(self) -> crate::common::Reg<u8, crate::common::R> {
+    pub const fn indir_addr2(self) -> crate::common::Reg<u8, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x09usize) as _) }
     }
     #[doc = "The port direction sets the register."]
     #[inline(always)]
-    pub const fn sfr_port_dir(self) -> crate::common::Reg<regs::SfrPortDir, crate::common::R> {
+    pub const fn port_dir(self) -> crate::common::Reg<regs::PortDir, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0ausize) as _) }
     }
     #[doc = "Port input and output registers."]
     #[inline(always)]
-    pub const fn sfr_port_io(self) -> crate::common::Reg<u8, crate::common::R> {
+    pub const fn port_io(self) -> crate::common::Reg<regs::PortIo, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0busize) as _) }
     }
     #[doc = "Coded bit configuration registers."]
     #[inline(always)]
-    pub const fn sfr_bit_config(self) -> crate::common::Reg<regs::SfrBitConfig, crate::common::R> {
+    pub const fn bit_config(self) -> crate::common::Reg<regs::BitConfig, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
     }
     #[doc = "System configuration registers."]
     #[inline(always)]
-    pub const fn sfr_sys_cfg(self) -> crate::common::Reg<regs::SfrSysCfg, crate::common::RW> {
+    pub const fn sys_cfg(self) -> crate::common::Reg<regs::SysCfg, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1cusize) as _) }
     }
     #[doc = "The eMCU reads and writes and the host reads only the registers."]
     #[inline(always)]
-    pub const fn sfr_ctrl_rd(self) -> crate::common::Reg<u8, crate::common::R> {
+    pub const fn ctrl_rd(self) -> crate::common::Reg<u8, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1dusize) as _) }
     }
     #[doc = "The host reads and writes and the eMCU reads only registers."]
     #[inline(always)]
-    pub const fn sfr_ctrl_wr(self) -> crate::common::Reg<u8, crate::common::RW> {
+    pub const fn ctrl_wr(self) -> crate::common::Reg<u8, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1eusize) as _) }
     }
     #[doc = "Data exchange registers."]
     #[inline(always)]
-    pub const fn sfr_data_exch(self) -> crate::common::Reg<u8, crate::common::RW> {
+    pub const fn data_exch(self) -> crate::common::Reg<u8, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1fusize) as _) }
     }
     #[doc = "PIOC data registers 0-31."]
     #[inline(always)]
-    pub const fn sfr_data_reg(self, n: usize) -> crate::common::Reg<u8, crate::common::RW> {
+    pub const fn data_reg(self, n: usize) -> crate::common::Reg<u8, crate::common::RW> {
         assert!(n < 32usize);
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x20usize + n * 1usize) as _) }
     }
@@ -115,506 +115,724 @@ pub mod regs {
     #[doc = "Coded bit configuration registers."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct SfrBitConfig(pub u32);
-    impl SfrBitConfig {
+    pub struct BitConfig(pub u8);
+    impl BitConfig {
         #[doc = "The periodic timing state of the encoded bits."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_bit_cyc_cnt3(&self) -> bool {
+        pub const fn bit_cyc_cnt3(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
         #[doc = "The periodic timing state of the encoded bits."]
         #[inline(always)]
-        pub const fn set_sb_bit_cyc_cnt3(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
+        pub const fn set_bit_cyc_cnt3(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u8) & 0x01) << 0usize);
         }
         #[doc = "The periodic timing state of the encoded bits."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_bit_cyc_cnt4(&self) -> bool {
+        pub const fn bit_cyc_cnt4(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
             val != 0
         }
         #[doc = "The periodic timing state of the encoded bits."]
         #[inline(always)]
-        pub const fn set_sb_bit_cyc_cnt4(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
+        pub const fn set_bit_cyc_cnt4(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u8) & 0x01) << 1usize);
         }
         #[doc = "The periodic timing state of the encoded bits."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_bit_cyc_cnt5(&self) -> bool {
+        pub const fn bit_cyc_cnt5(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
             val != 0
         }
         #[doc = "The periodic timing state of the encoded bits."]
         #[inline(always)]
-        pub const fn set_sb_bit_cyc_cnt5(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
+        pub const fn set_bit_cyc_cnt5(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u8) & 0x01) << 2usize);
         }
         #[doc = "The periodic timing state of the encoded bits."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_bit_cyc_cnt6(&self) -> bool {
+        pub const fn bit_cyc_cnt6(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
             val != 0
         }
         #[doc = "The periodic timing state of the encoded bits."]
         #[inline(always)]
-        pub const fn set_sb_bit_cyc_cnt6(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
+        pub const fn set_bit_cyc_cnt6(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u8) & 0x01) << 3usize);
         }
         #[doc = "Periodic state of the encoded bits."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_bit_cyc_tail(&self) -> bool {
+        pub const fn bit_cyc_tail(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
             val != 0
         }
         #[doc = "Periodic state of the encoded bits."]
         #[inline(always)]
-        pub const fn set_sb_bit_cyc_tail(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
+        pub const fn set_bit_cyc_tail(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u8) & 0x01) << 4usize);
         }
         #[doc = "Pin input level sampling point selection."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_port_in_edge(&self) -> bool {
+        pub const fn port_in_edge(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
             val != 0
         }
         #[doc = "Pin input level sampling point selection."]
         #[inline(always)]
-        pub const fn set_sb_port_in_edge(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
+        pub const fn set_port_in_edge(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u8) & 0x01) << 5usize);
         }
         #[doc = "How the coded bits are modulated."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_bit_code_mod(&self) -> bool {
+        pub const fn bit_code_mod(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
             val != 0
         }
         #[doc = "How the coded bits are modulated."]
         #[inline(always)]
-        pub const fn set_sb_bit_code_mod(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
+        pub const fn set_bit_code_mod(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u8) & 0x01) << 6usize);
         }
         #[doc = "The transmission of the coded bits is enabled."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_bit_tx_en(&self) -> bool {
+        pub const fn bit_tx_en(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
             val != 0
         }
         #[doc = "The transmission of the coded bits is enabled."]
         #[inline(always)]
-        pub const fn set_sb_bit_tx_en(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
+        pub const fn set_bit_tx_en(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u8) & 0x01) << 7usize);
         }
     }
-    impl Default for SfrBitConfig {
+    impl Default for BitConfig {
         #[inline(always)]
-        fn default() -> SfrBitConfig {
-            SfrBitConfig(0)
+        fn default() -> BitConfig {
+            BitConfig(0)
         }
     }
-    impl core::fmt::Debug for SfrBitConfig {
+    impl core::fmt::Debug for BitConfig {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("SfrBitConfig")
-                .field("sb_bit_cyc_cnt3", &self.sb_bit_cyc_cnt3())
-                .field("sb_bit_cyc_cnt4", &self.sb_bit_cyc_cnt4())
-                .field("sb_bit_cyc_cnt5", &self.sb_bit_cyc_cnt5())
-                .field("sb_bit_cyc_cnt6", &self.sb_bit_cyc_cnt6())
-                .field("sb_bit_cyc_tail", &self.sb_bit_cyc_tail())
-                .field("sb_port_in_edge", &self.sb_port_in_edge())
-                .field("sb_bit_code_mod", &self.sb_bit_code_mod())
-                .field("sb_bit_tx_en", &self.sb_bit_tx_en())
+            f.debug_struct("BitConfig")
+                .field("bit_cyc_cnt3", &self.bit_cyc_cnt3())
+                .field("bit_cyc_cnt4", &self.bit_cyc_cnt4())
+                .field("bit_cyc_cnt5", &self.bit_cyc_cnt5())
+                .field("bit_cyc_cnt6", &self.bit_cyc_cnt6())
+                .field("bit_cyc_tail", &self.bit_cyc_tail())
+                .field("port_in_edge", &self.port_in_edge())
+                .field("bit_code_mod", &self.bit_code_mod())
+                .field("bit_tx_en", &self.bit_tx_en())
                 .finish()
         }
     }
     #[doc = "Periodic registers for coded bits."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct SfrBitCycle(pub u32);
-    impl SfrBitCycle {
+    pub struct BitCycle(pub u8);
+    impl BitCycle {
         #[doc = "Sets the width of the encoded bits in clock cycles, which is the actual number of bits minus 1."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_bit_cycle(&self) -> u8 {
+        pub const fn bit_cycle(&self) -> u8 {
             let val = (self.0 >> 0usize) & 0x7f;
             val as u8
         }
         #[doc = "Sets the width of the encoded bits in clock cycles, which is the actual number of bits minus 1."]
         #[inline(always)]
-        pub const fn set_sb_bit_cycle(&mut self, val: u8) {
-            self.0 = (self.0 & !(0x7f << 0usize)) | (((val as u32) & 0x7f) << 0usize);
+        pub const fn set_bit_cycle(&mut self, val: u8) {
+            self.0 = (self.0 & !(0x7f << 0usize)) | (((val as u8) & 0x7f) << 0usize);
         }
         #[doc = "The raw bit data of the encoded bit to be sent, which is a double-buffered structure."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_bit_tx_o0(&self) -> bool {
+        pub const fn bit_tx_o0(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
             val != 0
         }
         #[doc = "The raw bit data of the encoded bit to be sent, which is a double-buffered structure."]
         #[inline(always)]
-        pub const fn set_sb_bit_tx_o0(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
+        pub const fn set_bit_tx_o0(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u8) & 0x01) << 7usize);
         }
     }
-    impl Default for SfrBitCycle {
+    impl Default for BitCycle {
         #[inline(always)]
-        fn default() -> SfrBitCycle {
-            SfrBitCycle(0)
+        fn default() -> BitCycle {
+            BitCycle(0)
         }
     }
-    impl core::fmt::Debug for SfrBitCycle {
+    impl core::fmt::Debug for BitCycle {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("SfrBitCycle")
-                .field("sb_bit_cycle", &self.sb_bit_cycle())
-                .field("sb_bit_tx_o0", &self.sb_bit_tx_o0())
+            f.debug_struct("BitCycle")
+                .field("bit_cycle", &self.bit_cycle())
+                .field("bit_tx_o0", &self.bit_tx_o0())
                 .finish()
         }
     }
     #[doc = "The port direction sets the register."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct SfrPortDir(pub u32);
-    impl SfrPortDir {
+    pub struct PortDir(pub u8);
+    impl PortDir {
         #[doc = "IO0 Pin Direction Control."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_port_dir0(&self) -> bool {
+        pub const fn port_dir0(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
         #[doc = "IO0 Pin Direction Control."]
         #[inline(always)]
-        pub const fn set_sb_port_dir0(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
+        pub const fn set_port_dir0(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u8) & 0x01) << 0usize);
         }
         #[doc = "IO1 Pin Direction Control."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_port_dir1(&self) -> bool {
+        pub const fn port_dir1(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
             val != 0
         }
         #[doc = "IO1 Pin Direction Control."]
         #[inline(always)]
-        pub const fn set_sb_port_dir1(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
+        pub const fn set_port_dir1(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u8) & 0x01) << 1usize);
         }
         #[doc = "IO0 Pin Pull-Up Enables."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_port_pu0(&self) -> bool {
+        pub const fn port_pu0(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
             val != 0
         }
         #[doc = "IO0 Pin Pull-Up Enables."]
         #[inline(always)]
-        pub const fn set_sb_port_pu0(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
+        pub const fn set_port_pu0(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u8) & 0x01) << 2usize);
         }
         #[doc = "IO1 Pin Pull-Up Enables."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_port_pu1(&self) -> bool {
+        pub const fn port_pu1(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
             val != 0
         }
         #[doc = "IO1 Pin Pull-Up Enables."]
         #[inline(always)]
-        pub const fn set_sb_port_pu1(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
+        pub const fn set_port_pu1(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u8) & 0x01) << 3usize);
         }
         #[doc = "Pin mode control, host side defines the purpose."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_port_mod0(&self) -> bool {
+        pub const fn port_mod0(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
             val != 0
         }
         #[doc = "Pin mode control, host side defines the purpose."]
         #[inline(always)]
-        pub const fn set_sb_port_mod0(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
+        pub const fn set_port_mod0(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u8) & 0x01) << 4usize);
         }
         #[doc = "Pin mode control, host side defines the purpose."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_port_mod1(&self) -> bool {
+        pub const fn port_mod1(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
             val != 0
         }
         #[doc = "Pin mode control, host side defines the purpose."]
         #[inline(always)]
-        pub const fn set_sb_port_mod1(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
+        pub const fn set_port_mod1(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u8) & 0x01) << 5usize);
         }
         #[doc = "Pin mode control, host side defines the purpose."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_port_mod2(&self) -> bool {
+        pub const fn port_mod2(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
             val != 0
         }
         #[doc = "Pin mode control, host side defines the purpose."]
         #[inline(always)]
-        pub const fn set_sb_port_mod2(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
+        pub const fn set_port_mod2(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u8) & 0x01) << 6usize);
         }
         #[doc = "Pin mode control, host side defines the purpose."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_port_mod3(&self) -> bool {
+        pub const fn port_mod3(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
             val != 0
         }
         #[doc = "Pin mode control, host side defines the purpose."]
         #[inline(always)]
-        pub const fn set_sb_port_mod3(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
+        pub const fn set_port_mod3(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u8) & 0x01) << 7usize);
         }
     }
-    impl Default for SfrPortDir {
+    impl Default for PortDir {
         #[inline(always)]
-        fn default() -> SfrPortDir {
-            SfrPortDir(0)
+        fn default() -> PortDir {
+            PortDir(0)
         }
     }
-    impl core::fmt::Debug for SfrPortDir {
+    impl core::fmt::Debug for PortDir {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("SfrPortDir")
-                .field("sb_port_dir0", &self.sb_port_dir0())
-                .field("sb_port_dir1", &self.sb_port_dir1())
-                .field("sb_port_pu0", &self.sb_port_pu0())
-                .field("sb_port_pu1", &self.sb_port_pu1())
-                .field("sb_port_mod0", &self.sb_port_mod0())
-                .field("sb_port_mod1", &self.sb_port_mod1())
-                .field("sb_port_mod2", &self.sb_port_mod2())
-                .field("sb_port_mod3", &self.sb_port_mod3())
+            f.debug_struct("PortDir")
+                .field("port_dir0", &self.port_dir0())
+                .field("port_dir1", &self.port_dir1())
+                .field("port_pu0", &self.port_pu0())
+                .field("port_pu1", &self.port_pu1())
+                .field("port_mod0", &self.port_mod0())
+                .field("port_mod1", &self.port_mod1())
+                .field("port_mod2", &self.port_mod2())
+                .field("port_mod3", &self.port_mod3())
+                .finish()
+        }
+    }
+    #[doc = "Port input and output register."]
+    #[repr(transparent)]
+    #[derive(Copy, Clone, Eq, PartialEq)]
+    pub struct PortIo(pub u8);
+    impl PortIo {
+        #[doc = "IO0 output data; Timer0 output overrides it when enabled."]
+        #[must_use]
+        #[inline(always)]
+        pub const fn port_out0(&self) -> bool {
+            let val = (self.0 >> 0usize) & 0x01;
+            val != 0
+        }
+        #[doc = "IO0 output data; Timer0 output overrides it when enabled."]
+        #[inline(always)]
+        pub const fn set_port_out0(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u8) & 0x01) << 0usize);
+        }
+        #[doc = "IO1 output data."]
+        #[must_use]
+        #[inline(always)]
+        pub const fn port_out1(&self) -> bool {
+            let val = (self.0 >> 1usize) & 0x01;
+            val != 0
+        }
+        #[doc = "IO1 output data."]
+        #[inline(always)]
+        pub const fn set_port_out1(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u8) & 0x01) << 1usize);
+        }
+        #[doc = "IO0 input XOR PORT_OUT0, used for change detection."]
+        #[must_use]
+        #[inline(always)]
+        pub const fn port_xor0(&self) -> bool {
+            let val = (self.0 >> 2usize) & 0x01;
+            val != 0
+        }
+        #[doc = "IO0 input XOR PORT_OUT0, used for change detection."]
+        #[inline(always)]
+        pub const fn set_port_xor0(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u8) & 0x01) << 2usize);
+        }
+        #[doc = "IO1 input XOR PORT_OUT1, used for change detection."]
+        #[must_use]
+        #[inline(always)]
+        pub const fn port_xor1(&self) -> bool {
+            let val = (self.0 >> 3usize) & 0x01;
+            val != 0
+        }
+        #[doc = "IO1 input XOR PORT_OUT1, used for change detection."]
+        #[inline(always)]
+        pub const fn set_port_xor1(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u8) & 0x01) << 3usize);
+        }
+        #[doc = "Resolved IO0 input level."]
+        #[must_use]
+        #[inline(always)]
+        pub const fn port_in0(&self) -> bool {
+            let val = (self.0 >> 4usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Resolved IO0 input level."]
+        #[inline(always)]
+        pub const fn set_port_in0(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u8) & 0x01) << 4usize);
+        }
+        #[doc = "Resolved IO1 input level."]
+        #[must_use]
+        #[inline(always)]
+        pub const fn port_in1(&self) -> bool {
+            let val = (self.0 >> 5usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Resolved IO1 input level."]
+        #[inline(always)]
+        pub const fn set_port_in1(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u8) & 0x01) << 5usize);
+        }
+        #[doc = "Bit decoded from IO0 by the hardware codec."]
+        #[must_use]
+        #[inline(always)]
+        pub const fn bit_rx_i0(&self) -> bool {
+            let val = (self.0 >> 6usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Bit decoded from IO0 by the hardware codec."]
+        #[inline(always)]
+        pub const fn set_bit_rx_i0(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u8) & 0x01) << 6usize);
+        }
+        #[doc = "IO1 input XOR IO0 input."]
+        #[must_use]
+        #[inline(always)]
+        pub const fn port_in_xor(&self) -> bool {
+            let val = (self.0 >> 7usize) & 0x01;
+            val != 0
+        }
+        #[doc = "IO1 input XOR IO0 input."]
+        #[inline(always)]
+        pub const fn set_port_in_xor(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u8) & 0x01) << 7usize);
+        }
+    }
+    impl Default for PortIo {
+        #[inline(always)]
+        fn default() -> PortIo {
+            PortIo(0)
+        }
+    }
+    impl core::fmt::Debug for PortIo {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("PortIo")
+                .field("port_out0", &self.port_out0())
+                .field("port_out1", &self.port_out1())
+                .field("port_xor0", &self.port_xor0())
+                .field("port_xor1", &self.port_xor1())
+                .field("port_in0", &self.port_in0())
+                .field("port_in1", &self.port_in1())
+                .field("bit_rx_i0", &self.bit_rx_i0())
+                .field("port_in_xor", &self.port_in_xor())
                 .finish()
         }
     }
     #[doc = "Status registers."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct SfrStatusReg(pub u32);
-    impl SfrStatusReg {
+    pub struct Status(pub u8);
+    impl Status {
         #[doc = "ALU carry flag, whether the result is carried or produced by displacement."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_flag_c(&self) -> bool {
+        pub const fn flag_c(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
         #[doc = "ALU carry flag, whether the result is carried or produced by displacement."]
         #[inline(always)]
-        pub const fn set_sb_flag_c(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
+        pub const fn set_flag_c(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u8) & 0x01) << 0usize);
         }
         #[doc = "A generic bit variable X, defined and used by the application."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_gp_bit_x(&self) -> bool {
+        pub const fn gp_bit_x(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
             val != 0
         }
         #[doc = "A generic bit variable X, defined and used by the application."]
         #[inline(always)]
-        pub const fn set_sb_gp_bit_x(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
+        pub const fn set_gp_bit_x(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u8) & 0x01) << 1usize);
         }
         #[doc = "ALU zero flag, whether the result is 00H."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_flag_z(&self) -> bool {
+        pub const fn flag_z(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
             val != 0
         }
         #[doc = "ALU zero flag, whether the result is 00H."]
         #[inline(always)]
-        pub const fn set_sb_flag_z(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
+        pub const fn set_flag_z(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u8) & 0x01) << 2usize);
         }
         #[doc = "a generic bit variable Y, defined and used by the application."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_gp_bit_y(&self) -> bool {
+        pub const fn gp_bit_y(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
             val != 0
         }
         #[doc = "a generic bit variable Y, defined and used by the application."]
         #[inline(always)]
-        pub const fn set_sb_gp_bit_y(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
+        pub const fn set_gp_bit_y(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u8) & 0x01) << 3usize);
         }
         #[doc = "Timer Timeout Reset Enabled."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_en_tout_rst(&self) -> bool {
+        pub const fn en_tout_rst(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
             val != 0
         }
         #[doc = "Timer Timeout Reset Enabled."]
         #[inline(always)]
-        pub const fn set_sb_en_tout_rst(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
+        pub const fn set_en_tout_rst(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u8) & 0x01) << 4usize);
         }
         #[doc = "Current stack usage flags."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_stack_used(&self) -> bool {
+        pub const fn stack_used(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
             val != 0
         }
         #[doc = "Current stack usage flags."]
         #[inline(always)]
-        pub const fn set_sb_stack_used(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
+        pub const fn set_stack_used(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u8) & 0x01) << 5usize);
         }
     }
-    impl Default for SfrStatusReg {
+    impl Default for Status {
         #[inline(always)]
-        fn default() -> SfrStatusReg {
-            SfrStatusReg(0)
+        fn default() -> Status {
+            Status(0)
         }
     }
-    impl core::fmt::Debug for SfrStatusReg {
+    impl core::fmt::Debug for Status {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("SfrStatusReg")
-                .field("sb_flag_c", &self.sb_flag_c())
-                .field("sb_gp_bit_x", &self.sb_gp_bit_x())
-                .field("sb_flag_z", &self.sb_flag_z())
-                .field("sb_gp_bit_y", &self.sb_gp_bit_y())
-                .field("sb_en_tout_rst", &self.sb_en_tout_rst())
-                .field("sb_stack_used", &self.sb_stack_used())
+            f.debug_struct("Status")
+                .field("flag_c", &self.flag_c())
+                .field("gp_bit_x", &self.gp_bit_x())
+                .field("flag_z", &self.flag_z())
+                .field("gp_bit_y", &self.gp_bit_y())
+                .field("en_tout_rst", &self.en_tout_rst())
+                .field("stack_used", &self.stack_used())
                 .finish()
         }
     }
     #[doc = "System configuration registers."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct SfrSysCfg(pub u32);
-    impl SfrSysCfg {
+    pub struct SysCfg(pub u8);
+    impl SysCfg {
         #[doc = "Global Clock Control for eMCUs."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_mst_clk_gate(&self) -> bool {
+        pub const fn mst_clk_gate(&self) -> bool {
             let val = (self.0 >> 0usize) & 0x01;
             val != 0
         }
         #[doc = "Global Clock Control for eMCUs."]
         #[inline(always)]
-        pub const fn set_sb_mst_clk_gate(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u32) & 0x01) << 0usize);
+        pub const fn set_mst_clk_gate(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u8) & 0x01) << 0usize);
         }
         #[doc = "Force eMCU Reset."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_mst_reset(&self) -> bool {
+        pub const fn mst_reset(&self) -> bool {
             let val = (self.0 >> 1usize) & 0x01;
             val != 0
         }
         #[doc = "Force eMCU Reset."]
         #[inline(always)]
-        pub const fn set_sb_mst_reset(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u32) & 0x01) << 1usize);
+        pub const fn set_mst_reset(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 1usize)) | (((val as u8) & 0x01) << 1usize);
         }
         #[doc = "Mode and output control switches for IO0 pins."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_mst_io_en0(&self) -> bool {
+        pub const fn mst_io_en0(&self) -> bool {
             let val = (self.0 >> 2usize) & 0x01;
             val != 0
         }
         #[doc = "Mode and output control switches for IO0 pins."]
         #[inline(always)]
-        pub const fn set_sb_mst_io_en0(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u32) & 0x01) << 2usize);
+        pub const fn set_mst_io_en0(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 2usize)) | (((val as u8) & 0x01) << 2usize);
         }
         #[doc = "Mode and output control switches for IO1 pins."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_mst_io_en1(&self) -> bool {
+        pub const fn mst_io_en1(&self) -> bool {
             let val = (self.0 >> 3usize) & 0x01;
             val != 0
         }
         #[doc = "Mode and output control switches for IO1 pins."]
         #[inline(always)]
-        pub const fn set_sb_mst_io_en1(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u32) & 0x01) << 3usize);
+        pub const fn set_mst_io_en1(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u8) & 0x01) << 3usize);
         }
         #[doc = "Configure information bits, software-defined uses."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_mst_cfg_b4(&self) -> bool {
+        pub const fn mst_cfg_b4(&self) -> bool {
             let val = (self.0 >> 4usize) & 0x01;
             val != 0
         }
         #[doc = "Configure information bits, software-defined uses."]
         #[inline(always)]
-        pub const fn set_sb_mst_cfg_b4(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u32) & 0x01) << 4usize);
+        pub const fn set_mst_cfg_b4(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u8) & 0x01) << 4usize);
         }
         #[doc = "SFR_CTRL_WR waiting to read the status bit."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_data_mw_sr(&self) -> bool {
+        pub const fn data_mw_sr(&self) -> bool {
             let val = (self.0 >> 5usize) & 0x01;
             val != 0
         }
         #[doc = "SFR_CTRL_WR waiting to read the status bit."]
         #[inline(always)]
-        pub const fn set_sb_data_mw_sr(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u32) & 0x01) << 5usize);
+        pub const fn set_data_mw_sr(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u8) & 0x01) << 5usize);
         }
         #[doc = "SFR_CTRL_RD wait to read the status bit."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_data_sw_mr(&self) -> bool {
+        pub const fn data_sw_mr(&self) -> bool {
             let val = (self.0 >> 6usize) & 0x01;
             val != 0
         }
         #[doc = "SFR_CTRL_RD wait to read the status bit."]
         #[inline(always)]
-        pub const fn set_sb_data_sw_mr(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u32) & 0x01) << 6usize);
+        pub const fn set_data_sw_mr(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u8) & 0x01) << 6usize);
         }
         #[doc = "Interrupt Request Activation Bits."]
         #[must_use]
         #[inline(always)]
-        pub const fn sb_int_req(&self) -> bool {
+        pub const fn int_req(&self) -> bool {
             let val = (self.0 >> 7usize) & 0x01;
             val != 0
         }
         #[doc = "Interrupt Request Activation Bits."]
         #[inline(always)]
-        pub const fn set_sb_int_req(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u32) & 0x01) << 7usize);
+        pub const fn set_int_req(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u8) & 0x01) << 7usize);
         }
     }
-    impl Default for SfrSysCfg {
+    impl Default for SysCfg {
         #[inline(always)]
-        fn default() -> SfrSysCfg {
-            SfrSysCfg(0)
+        fn default() -> SysCfg {
+            SysCfg(0)
         }
     }
-    impl core::fmt::Debug for SfrSysCfg {
+    impl core::fmt::Debug for SysCfg {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("SfrSysCfg")
-                .field("sb_mst_clk_gate", &self.sb_mst_clk_gate())
-                .field("sb_mst_reset", &self.sb_mst_reset())
-                .field("sb_mst_io_en0", &self.sb_mst_io_en0())
-                .field("sb_mst_io_en1", &self.sb_mst_io_en1())
-                .field("sb_mst_cfg_b4", &self.sb_mst_cfg_b4())
-                .field("sb_data_mw_sr", &self.sb_data_mw_sr())
-                .field("sb_data_sw_mr", &self.sb_data_sw_mr())
-                .field("sb_int_req", &self.sb_int_req())
+            f.debug_struct("SysCfg")
+                .field("mst_clk_gate", &self.mst_clk_gate())
+                .field("mst_reset", &self.mst_reset())
+                .field("mst_io_en0", &self.mst_io_en0())
+                .field("mst_io_en1", &self.mst_io_en1())
+                .field("mst_cfg_b4", &self.mst_cfg_b4())
+                .field("data_mw_sr", &self.data_mw_sr())
+                .field("data_sw_mr", &self.data_sw_mr())
+                .field("int_req", &self.int_req())
+                .finish()
+        }
+    }
+    #[doc = "Timer0 and pin-level control register."]
+    #[repr(transparent)]
+    #[derive(Copy, Clone, Eq, PartialEq)]
+    pub struct Tmr0Ctrl(pub u8);
+    impl Tmr0Ctrl {
+        #[doc = "Timer0 clock divider; 000=/1024, 001=/256, 010=/64, 011=/16, 100=/8, 101=/4, 110=/2, 111=/1."]
+        #[must_use]
+        #[inline(always)]
+        pub const fn tmr0_freq(&self) -> u8 {
+            let val = (self.0 >> 0usize) & 0x07;
+            val as u8
+        }
+        #[doc = "Timer0 clock divider; 000=/1024, 001=/256, 010=/64, 011=/16, 100=/8, 101=/4, 110=/2, 111=/1."]
+        #[inline(always)]
+        pub const fn set_tmr0_freq(&mut self, val: u8) {
+            self.0 = (self.0 & !(0x07 << 0usize)) | (((val as u8) & 0x07) << 0usize);
+        }
+        #[doc = "0=timer, 1=free-running PWM."]
+        #[must_use]
+        #[inline(always)]
+        pub const fn tmr0_mode(&self) -> bool {
+            let val = (self.0 >> 3usize) & 0x01;
+            val != 0
+        }
+        #[doc = "0=timer, 1=free-running PWM."]
+        #[inline(always)]
+        pub const fn set_tmr0_mode(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 3usize)) | (((val as u8) & 0x01) << 3usize);
+        }
+        #[doc = "Host-visible general-purpose bit X; the eMCU sees SB_TMR0_OUT_EN on this bit."]
+        #[must_use]
+        #[inline(always)]
+        pub const fn gp_bit_x(&self) -> bool {
+            let val = (self.0 >> 4usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Host-visible general-purpose bit X; the eMCU sees SB_TMR0_OUT_EN on this bit."]
+        #[inline(always)]
+        pub const fn set_gp_bit_x(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 4usize)) | (((val as u8) & 0x01) << 4usize);
+        }
+        #[doc = "Host-visible general-purpose bit Y; the eMCU sees SB_TMR0_ENABLE on this bit."]
+        #[must_use]
+        #[inline(always)]
+        pub const fn gp_bit_y(&self) -> bool {
+            let val = (self.0 >> 5usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Host-visible general-purpose bit Y; the eMCU sees SB_TMR0_ENABLE on this bit."]
+        #[inline(always)]
+        pub const fn set_gp_bit_y(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 5usize)) | (((val as u8) & 0x01) << 5usize);
+        }
+        #[doc = "IO0 level change can wake or request an interrupt."]
+        #[must_use]
+        #[inline(always)]
+        pub const fn en_level0(&self) -> bool {
+            let val = (self.0 >> 6usize) & 0x01;
+            val != 0
+        }
+        #[doc = "IO0 level change can wake or request an interrupt."]
+        #[inline(always)]
+        pub const fn set_en_level0(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 6usize)) | (((val as u8) & 0x01) << 6usize);
+        }
+        #[doc = "IO1 level change can wake or request an interrupt."]
+        #[must_use]
+        #[inline(always)]
+        pub const fn en_level1(&self) -> bool {
+            let val = (self.0 >> 7usize) & 0x01;
+            val != 0
+        }
+        #[doc = "IO1 level change can wake or request an interrupt."]
+        #[inline(always)]
+        pub const fn set_en_level1(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 7usize)) | (((val as u8) & 0x01) << 7usize);
+        }
+    }
+    impl Default for Tmr0Ctrl {
+        #[inline(always)]
+        fn default() -> Tmr0Ctrl {
+            Tmr0Ctrl(0)
+        }
+    }
+    impl core::fmt::Debug for Tmr0Ctrl {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("Tmr0Ctrl")
+                .field("tmr0_freq", &self.tmr0_freq())
+                .field("tmr0_mode", &self.tmr0_mode())
+                .field("gp_bit_x", &self.gp_bit_x())
+                .field("gp_bit_y", &self.gp_bit_y())
+                .field("en_level0", &self.en_level0())
+                .field("en_level1", &self.en_level1())
                 .finish()
         }
     }
