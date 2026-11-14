@@ -203,272 +203,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
-                    name: "isqr",
+                    name: "tkey_channel",
                     description: Some(
-                        "injected sequence register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x38,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Isqr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "idatar",
-                    description: Some(
-                        "injected data register x.",
-                    ),
-                    array: Some(
-                        Array::Regular(
-                            RegularArray {
-                                len: 4,
-                                stride: 4,
-                            },
-                        ),
-                    ),
-                    byte_offset: 0x3c,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::Read,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Idatar",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "rdatar",
-                    description: Some(
-                        "regular data register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x4c,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::Read,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Rdatar",
-                            ),
-                        },
-                    ),
-                },
-            ],
-        },
-        Block {
-            name: "Tkey",
-            extends: Some(
-                "ADC",
-            ),
-            description: Some(
-                "Touch key",
-            ),
-            items: &[
-                BlockItem {
-                    name: "statr",
-                    description: Some(
-                        "status register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x0,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Statr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "ctlr1",
-                    description: Some(
-                        "control register 1.",
-                    ),
-                    array: None,
-                    byte_offset: 0x4,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Ctlr1",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "ctlr2",
-                    description: Some(
-                        "control register 2.",
-                    ),
-                    array: None,
-                    byte_offset: 0x8,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Ctlr2",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "ctlr",
-                    description: Some(
-                        "TKEY_V control register",
-                    ),
-                    array: None,
-                    byte_offset: 0xc,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "TkCtlr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "samptr1",
-                    description: Some(
-                        "sample time register 1.",
-                    ),
-                    array: None,
-                    byte_offset: 0xc,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Samptr1",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "samptr2",
-                    description: Some(
-                        "sample time register 2.",
-                    ),
-                    array: None,
-                    byte_offset: 0x10,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Samptr2",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "iofr",
-                    description: Some(
-                        "injected channel data offset register x.",
-                    ),
-                    array: Some(
-                        Array::Regular(
-                            RegularArray {
-                                len: 4,
-                                stride: 4,
-                            },
-                        ),
-                    ),
-                    byte_offset: 0x14,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Iofr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "wdhtr",
-                    description: Some(
-                        "watchdog higher threshold register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x24,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Wdhtr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "wdltr",
-                    description: Some(
-                        "watchdog lower threshold register.",
-                    ),
-                    array: None,
-                    byte_offset: 0x28,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Wdltr",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "rsqr1",
-                    description: Some(
-                        "regular sequence register 1.",
-                    ),
-                    array: None,
-                    byte_offset: 0x2c,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Rsqr1",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "rsqr2",
-                    description: Some(
-                        "regular sequence register 2.",
-                    ),
-                    array: None,
-                    byte_offset: 0x30,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Rsqr2",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
-                    name: "channel",
-                    description: Some(
-                        "Touch key channel selection register",
+                        "Touch key channel selection (alias of RSQR3).",
                     ),
                     array: None,
                     byte_offset: 0x34,
@@ -483,23 +220,6 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
-                    name: "rsqr3",
-                    description: Some(
-                        "regular sequence register 3.",
-                    ),
-                    array: None,
-                    byte_offset: 0x34,
-                    inner: BlockItemInner::Register(
-                        Register {
-                            access: Access::ReadWrite,
-                            bit_size: 32,
-                            fieldset: Some(
-                                "Rsqr3",
-                            ),
-                        },
-                    ),
-                },
-                BlockItem {
                     name: "isqr",
                     description: Some(
                         "injected sequence register.",
@@ -558,15 +278,15 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 BlockItem {
-                    name: "sdr",
+                    name: "tkey_sdr",
                     description: Some(
-                        "Status and data register",
+                        "Touch key status and data (alias of RDATAR).",
                     ),
                     array: None,
                     byte_offset: 0x4c,
                     inner: BlockItemInner::Register(
                         Register {
-                            access: Access::ReadWrite,
+                            access: Access::Read,
                             bit_size: 32,
                             fieldset: Some(
                                 "TkSdr",
@@ -781,6 +501,66 @@ pub(crate) static REGISTERS: IR = IR {
                     bit_size: 1,
                     array: None,
                     enumm: None,
+                },
+                Field {
+                    name: "tkien",
+                    description: Some(
+                        "Touch key interrupt enable",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 25,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "tkcps",
+                    description: Some(
+                        "Touch key counter period selection",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 26,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: Some(
+                        "Tkcps",
+                    ),
+                },
+                Field {
+                    name: "tkif",
+                    description: Some(
+                        "Touch key conversion finished flag",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 27,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: None,
+                    enumm: None,
+                },
+                Field {
+                    name: "ccsel",
+                    description: Some(
+                        "Touch key counter time base",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 28,
+                        },
+                    ),
+                    bit_size: 3,
+                    array: None,
+                    enumm: Some(
+                        "Ccsel",
+                    ),
                 },
             ],
         },
@@ -1390,90 +1170,6 @@ pub(crate) static REGISTERS: IR = IR {
                     bit_size: 5,
                     array: None,
                     enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "TkCtlr",
-            extends: None,
-            description: Some(
-                "Touch key control register",
-            ),
-            bit_size: 32,
-            fields: &[
-                Field {
-                    name: "tkenable",
-                    description: Some(
-                        "Touch key module enable",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 24,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tkien",
-                    description: Some(
-                        "Touch key interrupt enable",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 25,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "tkcps",
-                    description: Some(
-                        "Touch key counter period selection",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 26,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: Some(
-                        "Tkcps",
-                    ),
-                },
-                Field {
-                    name: "tkif",
-                    description: Some(
-                        "Touch key conversion finished flag",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 27,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "ccsel",
-                    description: Some(
-                        "Touch key counter time base",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 28,
-                        },
-                    ),
-                    bit_size: 3,
-                    array: None,
-                    enumm: Some(
-                        "Ccsel",
-                    ),
                 },
             ],
         },

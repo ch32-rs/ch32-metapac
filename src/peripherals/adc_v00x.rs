@@ -86,9 +86,19 @@ impl Adc {
         assert!(n < 4usize);
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x3cusize + n * 4usize) as _) }
     }
+    #[doc = "Touch key charge time configuration (write alias of IDATAR1)."]
+    #[inline(always)]
+    pub const fn tkey_chg(self) -> crate::common::Reg<regs::TkeyChg, crate::common::W> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x3cusize) as _) }
+    }
     #[doc = "regular data register."]
     #[inline(always)]
     pub const fn rdatar(self) -> crate::common::Reg<regs::Rdatar, crate::common::R> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x4cusize) as _) }
+    }
+    #[doc = "Touch key start and discharge time; writing starts one conversion (write alias of RDATAR)."]
+    #[inline(always)]
+    pub const fn tkey_dischg(self) -> crate::common::Reg<regs::TkeyDischg, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x4cusize) as _) }
     }
     #[doc = "Control register 3."]
@@ -1106,6 +1116,68 @@ pub mod regs {
                 .field("jeoc", &self.jeoc())
                 .field("jstrt", &self.jstrt())
                 .field("strt", &self.strt())
+                .finish()
+        }
+    }
+    #[doc = "Touch key charge time configuration register."]
+    #[repr(transparent)]
+    #[derive(Copy, Clone, Eq, PartialEq)]
+    pub struct TkeyChg(pub u32);
+    impl TkeyChg {
+        #[doc = "Touch key charge time."]
+        #[must_use]
+        #[inline(always)]
+        pub const fn tkcharge(&self) -> u16 {
+            let val = (self.0 >> 0usize) & 0x07ff;
+            val as u16
+        }
+        #[doc = "Touch key charge time."]
+        #[inline(always)]
+        pub const fn set_tkcharge(&mut self, val: u16) {
+            self.0 = (self.0 & !(0x07ff << 0usize)) | (((val as u32) & 0x07ff) << 0usize);
+        }
+    }
+    impl Default for TkeyChg {
+        #[inline(always)]
+        fn default() -> TkeyChg {
+            TkeyChg(0)
+        }
+    }
+    impl core::fmt::Debug for TkeyChg {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("TkeyChg")
+                .field("tkcharge", &self.tkcharge())
+                .finish()
+        }
+    }
+    #[doc = "Touch key start and discharge time register."]
+    #[repr(transparent)]
+    #[derive(Copy, Clone, Eq, PartialEq)]
+    pub struct TkeyDischg(pub u32);
+    impl TkeyDischg {
+        #[doc = "Touch key start and discharge time."]
+        #[must_use]
+        #[inline(always)]
+        pub const fn tkact_dcg(&self) -> u16 {
+            let val = (self.0 >> 0usize) & 0x07ff;
+            val as u16
+        }
+        #[doc = "Touch key start and discharge time."]
+        #[inline(always)]
+        pub const fn set_tkact_dcg(&mut self, val: u16) {
+            self.0 = (self.0 & !(0x07ff << 0usize)) | (((val as u32) & 0x07ff) << 0usize);
+        }
+    }
+    impl Default for TkeyDischg {
+        #[inline(always)]
+        fn default() -> TkeyDischg {
+            TkeyDischg(0)
+        }
+    }
+    impl core::fmt::Debug for TkeyDischg {
+        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+            f.debug_struct("TkeyDischg")
+                .field("tkact_dcg", &self.tkact_dcg())
                 .finish()
         }
     }

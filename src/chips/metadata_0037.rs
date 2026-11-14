@@ -2447,21 +2447,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }],
     },
     Peripheral {
-        name: "TKEY",
-        address: 0x40012400,
-        registers: Some(PeripheralRegisters {
-            kind: "tkey",
-            version: "v205",
-            block: "TKEY",
-            ir: &tkey::REGISTERS,
-        }),
-        rcc: None,
-        remap: None,
-        pins: &[],
-        dma_channels: &[],
-        interrupts: &[],
-    },
-    Peripheral {
         name: "SPI1",
         address: 0x40013000,
         registers: Some(PeripheralRegisters {
@@ -4155,8 +4140,6 @@ pub mod spi;
 pub mod systick;
 #[path = "../registers/timer_v3b.rs"]
 pub mod timer;
-#[path = "../registers/tkey_v205.rs"]
-pub mod tkey;
 #[path = "../registers/usart_common.rs"]
 pub mod usart;
 #[path = "../registers/usb_v2fs.rs"]

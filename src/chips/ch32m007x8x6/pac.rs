@@ -150,7 +150,6 @@ pub const GPIOB: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0x4001_0c00usize as 
 pub const GPIOC: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0x4001_1000usize as _) };
 pub const GPIOD: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0x4001_1400usize as _) };
 pub const ADC: adc::Adc = unsafe { adc::Adc::from_ptr(0x4001_2400usize as _) };
-pub const TKEY: tkey::Tkey = unsafe { tkey::Tkey::from_ptr(0x4001_2400usize as _) };
 pub const TIM1: timer::Adtm = unsafe { timer::Adtm::from_ptr(0x4001_2c00usize as _) };
 pub const SPI1: spi::Spi = unsafe { spi::Spi::from_ptr(0x4001_3000usize as _) };
 pub const USART1: usart::Usart = unsafe { usart::Usart::from_ptr(0x4001_3800usize as _) };
@@ -201,8 +200,6 @@ pub mod spi;
 pub mod systick;
 #[path = "../../peripherals/timer_v3.rs"]
 pub mod timer;
-#[path = "../../peripherals/tkey_v00x.rs"]
-pub mod tkey;
 #[path = "../../peripherals/usart_common.rs"]
 pub mod usart;
 #[path = "../../peripherals/wwdg_v00x.rs"]

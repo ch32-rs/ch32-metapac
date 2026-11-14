@@ -75,103 +75,9 @@ impl Adc {
     pub const fn rsqr3(self) -> crate::common::Reg<regs::Rsqr3, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x34usize) as _) }
     }
-    #[doc = "injected sequence register."]
+    #[doc = "Touch key channel selection (alias of RSQR3)."]
     #[inline(always)]
-    pub const fn isqr(self) -> crate::common::Reg<regs::Isqr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x38usize) as _) }
-    }
-    #[doc = "injected data register x."]
-    #[inline(always)]
-    pub const fn idatar(self, n: usize) -> crate::common::Reg<regs::Idatar, crate::common::R> {
-        assert!(n < 4usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x3cusize + n * 4usize) as _) }
-    }
-    #[doc = "regular data register."]
-    #[inline(always)]
-    pub const fn rdatar(self) -> crate::common::Reg<regs::Rdatar, crate::common::R> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x4cusize) as _) }
-    }
-}
-#[doc = "Touch key"]
-#[derive(Copy, Clone, Eq, PartialEq)]
-pub struct Tkey {
-    ptr: *mut u8,
-}
-unsafe impl Send for Tkey {}
-unsafe impl Sync for Tkey {}
-impl Tkey {
-    #[inline(always)]
-    pub const unsafe fn from_ptr(ptr: *mut ()) -> Self {
-        Self { ptr: ptr as _ }
-    }
-    #[inline(always)]
-    pub const fn as_ptr(&self) -> *mut () {
-        self.ptr as _
-    }
-    #[doc = "status register."]
-    #[inline(always)]
-    pub const fn statr(self) -> crate::common::Reg<regs::Statr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0usize) as _) }
-    }
-    #[doc = "control register 1."]
-    #[inline(always)]
-    pub const fn ctlr1(self) -> crate::common::Reg<regs::Ctlr1, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x04usize) as _) }
-    }
-    #[doc = "control register 2."]
-    #[inline(always)]
-    pub const fn ctlr2(self) -> crate::common::Reg<regs::Ctlr2, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
-    }
-    #[doc = "TKEY_V control register"]
-    #[inline(always)]
-    pub const fn ctlr(self) -> crate::common::Reg<regs::TkCtlr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
-    }
-    #[doc = "sample time register 1."]
-    #[inline(always)]
-    pub const fn samptr1(self) -> crate::common::Reg<regs::Samptr1, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize) as _) }
-    }
-    #[doc = "sample time register 2."]
-    #[inline(always)]
-    pub const fn samptr2(self) -> crate::common::Reg<regs::Samptr2, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x10usize) as _) }
-    }
-    #[doc = "injected channel data offset register x."]
-    #[inline(always)]
-    pub const fn iofr(self, n: usize) -> crate::common::Reg<regs::Iofr, crate::common::RW> {
-        assert!(n < 4usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x14usize + n * 4usize) as _) }
-    }
-    #[doc = "watchdog higher threshold register."]
-    #[inline(always)]
-    pub const fn wdhtr(self) -> crate::common::Reg<regs::Wdhtr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x24usize) as _) }
-    }
-    #[doc = "watchdog lower threshold register."]
-    #[inline(always)]
-    pub const fn wdltr(self) -> crate::common::Reg<regs::Wdltr, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x28usize) as _) }
-    }
-    #[doc = "regular sequence register 1."]
-    #[inline(always)]
-    pub const fn rsqr1(self) -> crate::common::Reg<regs::Rsqr1, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x2cusize) as _) }
-    }
-    #[doc = "regular sequence register 2."]
-    #[inline(always)]
-    pub const fn rsqr2(self) -> crate::common::Reg<regs::Rsqr2, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x30usize) as _) }
-    }
-    #[doc = "Touch key channel selection register"]
-    #[inline(always)]
-    pub const fn channel(self) -> crate::common::Reg<regs::TkChannel, crate::common::RW> {
-        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x34usize) as _) }
-    }
-    #[doc = "regular sequence register 3."]
-    #[inline(always)]
-    pub const fn rsqr3(self) -> crate::common::Reg<regs::Rsqr3, crate::common::RW> {
+    pub const fn tkey_channel(self) -> crate::common::Reg<regs::TkChannel, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x34usize) as _) }
     }
     #[doc = "injected sequence register."]
@@ -190,9 +96,9 @@ impl Tkey {
     pub const fn rdatar(self) -> crate::common::Reg<regs::Rdatar, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x4cusize) as _) }
     }
-    #[doc = "Status and data register"]
+    #[doc = "Touch key status and data (alias of RDATAR)."]
     #[inline(always)]
-    pub const fn sdr(self) -> crate::common::Reg<regs::TkSdr, crate::common::RW> {
+    pub const fn tkey_sdr(self) -> crate::common::Reg<regs::TkSdr, crate::common::R> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x4cusize) as _) }
     }
 }
@@ -370,6 +276,54 @@ pub mod regs {
         pub const fn set_tkenable(&mut self, val: bool) {
             self.0 = (self.0 & !(0x01 << 24usize)) | (((val as u32) & 0x01) << 24usize);
         }
+        #[doc = "Touch key interrupt enable"]
+        #[must_use]
+        #[inline(always)]
+        pub const fn tkien(&self) -> bool {
+            let val = (self.0 >> 25usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Touch key interrupt enable"]
+        #[inline(always)]
+        pub const fn set_tkien(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 25usize)) | (((val as u32) & 0x01) << 25usize);
+        }
+        #[doc = "Touch key counter period selection"]
+        #[must_use]
+        #[inline(always)]
+        pub const fn tkcps(&self) -> super::vals::Tkcps {
+            let val = (self.0 >> 26usize) & 0x01;
+            super::vals::Tkcps::from_bits(val as u8)
+        }
+        #[doc = "Touch key counter period selection"]
+        #[inline(always)]
+        pub const fn set_tkcps(&mut self, val: super::vals::Tkcps) {
+            self.0 = (self.0 & !(0x01 << 26usize)) | (((val.to_bits() as u32) & 0x01) << 26usize);
+        }
+        #[doc = "Touch key conversion finished flag"]
+        #[must_use]
+        #[inline(always)]
+        pub const fn tkif(&self) -> bool {
+            let val = (self.0 >> 27usize) & 0x01;
+            val != 0
+        }
+        #[doc = "Touch key conversion finished flag"]
+        #[inline(always)]
+        pub const fn set_tkif(&mut self, val: bool) {
+            self.0 = (self.0 & !(0x01 << 27usize)) | (((val as u32) & 0x01) << 27usize);
+        }
+        #[doc = "Touch key counter time base"]
+        #[must_use]
+        #[inline(always)]
+        pub const fn ccsel(&self) -> super::vals::Ccsel {
+            let val = (self.0 >> 28usize) & 0x07;
+            super::vals::Ccsel::from_bits(val as u8)
+        }
+        #[doc = "Touch key counter time base"]
+        #[inline(always)]
+        pub const fn set_ccsel(&mut self, val: super::vals::Ccsel) {
+            self.0 = (self.0 & !(0x07 << 28usize)) | (((val.to_bits() as u32) & 0x07) << 28usize);
+        }
     }
     impl Default for Ctlr1 {
         #[inline(always)]
@@ -394,6 +348,10 @@ pub mod regs {
                 .field("jawden", &self.jawden())
                 .field("awden", &self.awden())
                 .field("tkenable", &self.tkenable())
+                .field("tkien", &self.tkien())
+                .field("tkcps", &self.tkcps())
+                .field("tkif", &self.tkif())
+                .field("ccsel", &self.ccsel())
                 .finish()
         }
     }
@@ -1071,89 +1029,6 @@ pub mod regs {
         fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
             f.debug_struct("TkChannel")
                 .field("chsel", &self.chsel())
-                .finish()
-        }
-    }
-    #[doc = "Touch key control register"]
-    #[repr(transparent)]
-    #[derive(Copy, Clone, Eq, PartialEq)]
-    pub struct TkCtlr(pub u32);
-    impl TkCtlr {
-        #[doc = "Touch key module enable"]
-        #[must_use]
-        #[inline(always)]
-        pub const fn tkenable(&self) -> bool {
-            let val = (self.0 >> 24usize) & 0x01;
-            val != 0
-        }
-        #[doc = "Touch key module enable"]
-        #[inline(always)]
-        pub const fn set_tkenable(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 24usize)) | (((val as u32) & 0x01) << 24usize);
-        }
-        #[doc = "Touch key interrupt enable"]
-        #[must_use]
-        #[inline(always)]
-        pub const fn tkien(&self) -> bool {
-            let val = (self.0 >> 25usize) & 0x01;
-            val != 0
-        }
-        #[doc = "Touch key interrupt enable"]
-        #[inline(always)]
-        pub const fn set_tkien(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 25usize)) | (((val as u32) & 0x01) << 25usize);
-        }
-        #[doc = "Touch key counter period selection"]
-        #[must_use]
-        #[inline(always)]
-        pub const fn tkcps(&self) -> super::vals::Tkcps {
-            let val = (self.0 >> 26usize) & 0x01;
-            super::vals::Tkcps::from_bits(val as u8)
-        }
-        #[doc = "Touch key counter period selection"]
-        #[inline(always)]
-        pub const fn set_tkcps(&mut self, val: super::vals::Tkcps) {
-            self.0 = (self.0 & !(0x01 << 26usize)) | (((val.to_bits() as u32) & 0x01) << 26usize);
-        }
-        #[doc = "Touch key conversion finished flag"]
-        #[must_use]
-        #[inline(always)]
-        pub const fn tkif(&self) -> bool {
-            let val = (self.0 >> 27usize) & 0x01;
-            val != 0
-        }
-        #[doc = "Touch key conversion finished flag"]
-        #[inline(always)]
-        pub const fn set_tkif(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 27usize)) | (((val as u32) & 0x01) << 27usize);
-        }
-        #[doc = "Touch key counter time base"]
-        #[must_use]
-        #[inline(always)]
-        pub const fn ccsel(&self) -> super::vals::Ccsel {
-            let val = (self.0 >> 28usize) & 0x07;
-            super::vals::Ccsel::from_bits(val as u8)
-        }
-        #[doc = "Touch key counter time base"]
-        #[inline(always)]
-        pub const fn set_ccsel(&mut self, val: super::vals::Ccsel) {
-            self.0 = (self.0 & !(0x07 << 28usize)) | (((val.to_bits() as u32) & 0x07) << 28usize);
-        }
-    }
-    impl Default for TkCtlr {
-        #[inline(always)]
-        fn default() -> TkCtlr {
-            TkCtlr(0)
-        }
-    }
-    impl core::fmt::Debug for TkCtlr {
-        fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-            f.debug_struct("TkCtlr")
-                .field("tkenable", &self.tkenable())
-                .field("tkien", &self.tkien())
-                .field("tkcps", &self.tkcps())
-                .field("tkif", &self.tkif())
-                .field("ccsel", &self.ccsel())
                 .finish()
         }
     }

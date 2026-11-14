@@ -86,9 +86,19 @@ impl Adc {
         assert!(n < 4usize);
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x3cusize + n * 4usize) as _) }
     }
+    #[doc = "Touch key charge time offset (write alias of IDATAR1)."]
+    #[inline(always)]
+    pub const fn tkey_chgoffset(self) -> crate::common::Reg<u8, crate::common::W> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x3cusize) as _) }
+    }
     #[doc = "regular data register."]
     #[inline(always)]
     pub const fn rdatar(self) -> crate::common::Reg<regs::Rdatar, crate::common::RW> {
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x4cusize) as _) }
+    }
+    #[doc = "Touch key activate/discharge time; writing starts one TKEY conversion (write alias of RDATAR)."]
+    #[inline(always)]
+    pub const fn tkey_act_dcg(self) -> crate::common::Reg<u8, crate::common::W> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x4cusize) as _) }
     }
 }
