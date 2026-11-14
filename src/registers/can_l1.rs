@@ -41,8 +41,8 @@ pub(crate) static REGISTERS: IR = IR {
                 },
                 BlockItem {
                     name: "rfifo",
-                    description: Some("CAN receive FIFO register."),
-                    array: Some(Array::Regular(RegularArray { len: 2, stride: 32 })),
+                    description: Some("CAN receive FIFO 0 register."),
+                    array: Some(Array::Regular(RegularArray { len: 1, stride: 4 })),
                     byte_offset: 0xc,
                     inner: BlockItemInner::Register(Register {
                         access: Access::ReadWrite,
@@ -162,8 +162,8 @@ pub(crate) static REGISTERS: IR = IR {
                 },
                 BlockItem {
                     name: "rxmir",
-                    description: Some("CAN receive FIFO mailbox identifier register."),
-                    array: Some(Array::Regular(RegularArray { len: 2, stride: 16 })),
+                    description: Some("CAN receive FIFO 0 mailbox identifier register."),
+                    array: Some(Array::Regular(RegularArray { len: 1, stride: 16 })),
                     byte_offset: 0x1b0,
                     inner: BlockItemInner::Register(Register {
                         access: Access::Read,
@@ -174,9 +174,9 @@ pub(crate) static REGISTERS: IR = IR {
                 BlockItem {
                     name: "rxmdtr",
                     description: Some(
-                        "CAN receive FIFO mailbox data length control and time stamp register.",
+                        "CAN receive FIFO 0 mailbox data length control and time stamp register.",
                     ),
-                    array: Some(Array::Regular(RegularArray { len: 2, stride: 16 })),
+                    array: Some(Array::Regular(RegularArray { len: 1, stride: 16 })),
                     byte_offset: 0x1b4,
                     inner: BlockItemInner::Register(Register {
                         access: Access::Read,
@@ -186,8 +186,8 @@ pub(crate) static REGISTERS: IR = IR {
                 },
                 BlockItem {
                     name: "rxmdlr",
-                    description: Some("CAN receive FIFO mailbox data low register."),
-                    array: Some(Array::Regular(RegularArray { len: 2, stride: 16 })),
+                    description: Some("CAN receive FIFO 0 mailbox data low register."),
+                    array: Some(Array::Regular(RegularArray { len: 1, stride: 16 })),
                     byte_offset: 0x1b8,
                     inner: BlockItemInner::Register(Register {
                         access: Access::Read,
@@ -197,8 +197,8 @@ pub(crate) static REGISTERS: IR = IR {
                 },
                 BlockItem {
                     name: "rxmdhr",
-                    description: Some("CAN receive FIFO mailbox data high register."),
-                    array: Some(Array::Regular(RegularArray { len: 2, stride: 16 })),
+                    description: Some("CAN receive FIFO 0 mailbox data high register."),
+                    array: Some(Array::Regular(RegularArray { len: 1, stride: 16 })),
                     byte_offset: 0x1bc,
                     inner: BlockItemInner::Register(Register {
                         access: Access::Read,
@@ -314,8 +314,8 @@ pub(crate) static REGISTERS: IR = IR {
                 },
                 BlockItem {
                     name: "rfifo",
-                    description: Some("CAN receive FIFO register."),
-                    array: Some(Array::Regular(RegularArray { len: 2, stride: 32 })),
+                    description: Some("CAN receive FIFO 0 register."),
+                    array: Some(Array::Regular(RegularArray { len: 1, stride: 4 })),
                     byte_offset: 0xc,
                     inner: BlockItemInner::Register(Register {
                         access: Access::ReadWrite,
@@ -501,8 +501,8 @@ pub(crate) static REGISTERS: IR = IR {
                 },
                 BlockItem {
                     name: "rxmir",
-                    description: Some("CAN receive FIFO mailbox identifier register."),
-                    array: Some(Array::Regular(RegularArray { len: 2, stride: 16 })),
+                    description: Some("CAN receive FIFO 0 mailbox identifier register."),
+                    array: Some(Array::Regular(RegularArray { len: 1, stride: 16 })),
                     byte_offset: 0x1b0,
                     inner: BlockItemInner::Register(Register {
                         access: Access::Read,
@@ -513,9 +513,9 @@ pub(crate) static REGISTERS: IR = IR {
                 BlockItem {
                     name: "rxmdtr",
                     description: Some(
-                        "CAN receive FIFO mailbox data length control and time stamp register.",
+                        "CAN receive FIFO 0 mailbox data length control and time stamp register.",
                     ),
-                    array: Some(Array::Regular(RegularArray { len: 2, stride: 16 })),
+                    array: Some(Array::Regular(RegularArray { len: 1, stride: 16 })),
                     byte_offset: 0x1b4,
                     inner: BlockItemInner::Register(Register {
                         access: Access::Read,
@@ -525,8 +525,8 @@ pub(crate) static REGISTERS: IR = IR {
                 },
                 BlockItem {
                     name: "rxmdlr",
-                    description: Some("CAN receive FIFO mailbox data low register."),
-                    array: Some(Array::Regular(RegularArray { len: 2, stride: 16 })),
+                    description: Some("CAN receive FIFO 0 mailbox data low register."),
+                    array: Some(Array::Regular(RegularArray { len: 1, stride: 16 })),
                     byte_offset: 0x1b8,
                     inner: BlockItemInner::Register(Register {
                         access: Access::Read,
@@ -536,8 +536,8 @@ pub(crate) static REGISTERS: IR = IR {
                 },
                 BlockItem {
                     name: "rxmdhr",
-                    description: Some("CAN receive FIFO mailbox data high register."),
-                    array: Some(Array::Regular(RegularArray { len: 2, stride: 16 })),
+                    description: Some("CAN receive FIFO 0 mailbox data high register."),
+                    array: Some(Array::Regular(RegularArray { len: 1, stride: 16 })),
                     byte_offset: 0x1bc,
                     inner: BlockItemInner::Register(Register {
                         access: Access::Read,

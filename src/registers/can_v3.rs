@@ -41,7 +41,7 @@ pub(crate) static REGISTERS: IR = IR {
             BlockItem {
                 name: "rfifo",
                 description: Some("CAN receive FIFO register."),
-                array: Some(Array::Regular(RegularArray { len: 2, stride: 32 })),
+                array: Some(Array::Regular(RegularArray { len: 2, stride: 4 })),
                 byte_offset: 0xc,
                 inner: BlockItemInner::Register(Register {
                     access: Access::ReadWrite,

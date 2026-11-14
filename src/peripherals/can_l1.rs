@@ -34,11 +34,11 @@ impl Can {
     pub const fn tstatr(self) -> crate::common::Reg<regs::Tstatr, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
-    #[doc = "CAN receive FIFO register."]
+    #[doc = "CAN receive FIFO 0 register."]
     #[inline(always)]
     pub const fn rfifo(self, n: usize) -> crate::common::Reg<regs::Rfifo, crate::common::RW> {
-        assert!(n < 2usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize + n * 32usize) as _) }
+        assert!(n < 1usize);
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize + n * 4usize) as _) }
     }
     #[doc = "CAN interrupt enable register."]
     #[inline(always)]
@@ -102,34 +102,34 @@ impl Can {
             crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x018cusize + n * 16usize) as _)
         }
     }
-    #[doc = "CAN receive FIFO mailbox identifier register."]
+    #[doc = "CAN receive FIFO 0 mailbox identifier register."]
     #[inline(always)]
     pub const fn rxmir(self, n: usize) -> crate::common::Reg<regs::Rxmir, crate::common::R> {
-        assert!(n < 2usize);
+        assert!(n < 1usize);
         unsafe {
             crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x01b0usize + n * 16usize) as _)
         }
     }
-    #[doc = "CAN receive FIFO mailbox data length control and time stamp register."]
+    #[doc = "CAN receive FIFO 0 mailbox data length control and time stamp register."]
     #[inline(always)]
     pub const fn rxmdtr(self, n: usize) -> crate::common::Reg<regs::Rxmdtr, crate::common::R> {
-        assert!(n < 2usize);
+        assert!(n < 1usize);
         unsafe {
             crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x01b4usize + n * 16usize) as _)
         }
     }
-    #[doc = "CAN receive FIFO mailbox data low register."]
+    #[doc = "CAN receive FIFO 0 mailbox data low register."]
     #[inline(always)]
     pub const fn rxmdlr(self, n: usize) -> crate::common::Reg<regs::Rxmdlr, crate::common::R> {
-        assert!(n < 2usize);
+        assert!(n < 1usize);
         unsafe {
             crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x01b8usize + n * 16usize) as _)
         }
     }
-    #[doc = "CAN receive FIFO mailbox data high register."]
+    #[doc = "CAN receive FIFO 0 mailbox data high register."]
     #[inline(always)]
     pub const fn rxmdhr(self, n: usize) -> crate::common::Reg<regs::Rxmdhr, crate::common::R> {
-        assert!(n < 2usize);
+        assert!(n < 1usize);
         unsafe {
             crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x01bcusize + n * 16usize) as _)
         }
@@ -199,11 +199,11 @@ impl Canfd {
     pub const fn tstatr(self) -> crate::common::Reg<regs::Tstatr, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x08usize) as _) }
     }
-    #[doc = "CAN receive FIFO register."]
+    #[doc = "CAN receive FIFO 0 register."]
     #[inline(always)]
     pub const fn rfifo(self, n: usize) -> crate::common::Reg<regs::Rfifo, crate::common::RW> {
-        assert!(n < 2usize);
-        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize + n * 32usize) as _) }
+        assert!(n < 1usize);
+        unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x0cusize + n * 4usize) as _) }
     }
     #[doc = "CAN interrupt enable register."]
     #[inline(always)]
@@ -299,34 +299,34 @@ impl Canfd {
             crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x018cusize + n * 16usize) as _)
         }
     }
-    #[doc = "CAN receive FIFO mailbox identifier register."]
+    #[doc = "CAN receive FIFO 0 mailbox identifier register."]
     #[inline(always)]
     pub const fn rxmir(self, n: usize) -> crate::common::Reg<regs::Rxmir, crate::common::R> {
-        assert!(n < 2usize);
+        assert!(n < 1usize);
         unsafe {
             crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x01b0usize + n * 16usize) as _)
         }
     }
-    #[doc = "CAN receive FIFO mailbox data length control and time stamp register."]
+    #[doc = "CAN receive FIFO 0 mailbox data length control and time stamp register."]
     #[inline(always)]
     pub const fn rxmdtr(self, n: usize) -> crate::common::Reg<regs::Rxmdtr, crate::common::R> {
-        assert!(n < 2usize);
+        assert!(n < 1usize);
         unsafe {
             crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x01b4usize + n * 16usize) as _)
         }
     }
-    #[doc = "CAN receive FIFO mailbox data low register."]
+    #[doc = "CAN receive FIFO 0 mailbox data low register."]
     #[inline(always)]
     pub const fn rxmdlr(self, n: usize) -> crate::common::Reg<regs::Rxmdlr, crate::common::R> {
-        assert!(n < 2usize);
+        assert!(n < 1usize);
         unsafe {
             crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x01b8usize + n * 16usize) as _)
         }
     }
-    #[doc = "CAN receive FIFO mailbox data high register."]
+    #[doc = "CAN receive FIFO 0 mailbox data high register."]
     #[inline(always)]
     pub const fn rxmdhr(self, n: usize) -> crate::common::Reg<regs::Rxmdhr, crate::common::R> {
-        assert!(n < 2usize);
+        assert!(n < 1usize);
         unsafe {
             crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x01bcusize + n * 16usize) as _)
         }
