@@ -409,6 +409,33 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         interrupts: &[],
     },
     Peripheral {
+        name: "PWR",
+        address: 0x40007000,
+        registers: Some(PeripheralRegisters {
+            kind: "pwr",
+            version: "v3",
+            block: "PWR",
+            ir: &pwr::REGISTERS,
+        }),
+        rcc: Some(PeripheralRcc {
+            bus_clock: "PCLK1",
+            kernel_clock: Clock("PCLK1"),
+            enable: Some(PeripheralRccRegister {
+                register: "APB1PCENR",
+                field: "PWREN",
+            }),
+            reset: Some(PeripheralRccRegister {
+                register: "APB1PRSTR",
+                field: "PWRRST",
+            }),
+            stop_mode: StopMode::Stop1,
+        }),
+        remap: None,
+        pins: &[],
+        dma_channels: &[],
+        interrupts: &[],
+    },
+    Peripheral {
         name: "RTC",
         address: 0x40002800,
         registers: Some(PeripheralRegisters {
@@ -2591,6 +2618,33 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         dma_channels: &[],
         interrupts: &[],
     },
+    Peripheral {
+        name: "BKP",
+        address: 0x40006c00,
+        registers: Some(PeripheralRegisters {
+            kind: "bkp",
+            version: "v3",
+            block: "BKP",
+            ir: &bkp::REGISTERS,
+        }),
+        rcc: Some(PeripheralRcc {
+            bus_clock: "PCLK1",
+            kernel_clock: Clock("PCLK1"),
+            enable: Some(PeripheralRccRegister {
+                register: "APB1PCENR",
+                field: "BKPEN",
+            }),
+            reset: Some(PeripheralRccRegister {
+                register: "APB1PRSTR",
+                field: "BKPRST",
+            }),
+            stop_mode: StopMode::Stop1,
+        }),
+        remap: None,
+        pins: &[],
+        dma_channels: &[],
+        interrupts: &[],
+    },
 ];
 pub(crate) static INTERRUPTS: &[Interrupt] = &[
     Interrupt {
@@ -3074,6 +3128,8 @@ pub(crate) static DMA_CHANNELS: &[DmaChannel] = &[
 pub mod adc;
 #[path = "../registers/afio_v3.rs"]
 pub mod afio;
+#[path = "../registers/bkp_v3.rs"]
+pub mod bkp;
 #[path = "../registers/can_v3.rs"]
 pub mod can;
 #[path = "../registers/crc_h4.rs"]
@@ -3098,6 +3154,8 @@ pub mod iwdg;
 pub mod opa;
 #[path = "../registers/pfic_rv4.rs"]
 pub mod pfic;
+#[path = "../registers/pwr_v3.rs"]
+pub mod pwr;
 #[path = "../registers/rcc_v3.rs"]
 pub mod rcc;
 #[path = "../registers/rtc_common.rs"]
