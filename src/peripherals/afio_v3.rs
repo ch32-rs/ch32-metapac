@@ -373,13 +373,13 @@ pub mod regs {
         #[doc = "Serial wire JTAG configuration."]
         #[must_use]
         #[inline(always)]
-        pub const fn swcfg(&self) -> u8 {
+        pub const fn sw_cfg(&self) -> u8 {
             let val = (self.0 >> 24usize) & 0x07;
             val as u8
         }
         #[doc = "Serial wire JTAG configuration."]
         #[inline(always)]
-        pub const fn set_swcfg(&mut self, val: u8) {
+        pub const fn set_sw_cfg(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 24usize)) | (((val as u32) & 0x07) << 24usize);
         }
         #[doc = "SPI3 remapping."]
@@ -447,7 +447,7 @@ pub mod regs {
                 .field("eth_rm", &self.eth_rm())
                 .field("can2_rm", &self.can2_rm())
                 .field("mii_rmii_sel", &self.mii_rmii_sel())
-                .field("swcfg", &self.swcfg())
+                .field("sw_cfg", &self.sw_cfg())
                 .field("spi3_rm", &self.spi3_rm())
                 .field("tim2itra_rm", &self.tim2itra_rm())
                 .field("ptp_ppsp_rm", &self.ptp_ppsp_rm())

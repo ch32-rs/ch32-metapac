@@ -123,7 +123,7 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "swcfg",
+                    name: "sw_cfg",
                     description: Some(
                         "configure the I/O port with the SW function and tracing function.",
                     ),

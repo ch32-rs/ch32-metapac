@@ -147,7 +147,7 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "swcfg",
+                    name: "sw_cfg",
                     description: Some("Serial wire JTAG configuration."),
                     bit_offset: BitOffset::Regular(RegularBitOffset { offset: 24 }),
                     bit_size: 3,

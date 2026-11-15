@@ -189,13 +189,13 @@ pub mod regs {
         #[doc = "configure the I/O port with the SW function and tracing function."]
         #[must_use]
         #[inline(always)]
-        pub const fn swcfg(&self) -> u8 {
+        pub const fn sw_cfg(&self) -> u8 {
             let val = (self.0 >> 24usize) & 0x07;
             val as u8
         }
         #[doc = "configure the I/O port with the SW function and tracing function."]
         #[inline(always)]
-        pub const fn set_swcfg(&mut self, val: u8) {
+        pub const fn set_sw_cfg(&mut self, val: u8) {
             self.0 = (self.0 & !(0x07 << 24usize)) | (((val as u32) & 0x07) << 24usize);
         }
     }
@@ -217,7 +217,7 @@ pub mod regs {
                 .field("adc_etrginj_rm", &self.adc_etrginj_rm())
                 .field("adc_etrgreg_rm", &self.adc_etrgreg_rm())
                 .field("usart2_rm", &self.usart2_rm())
-                .field("swcfg", &self.swcfg())
+                .field("sw_cfg", &self.sw_cfg())
                 .finish()
         }
     }
