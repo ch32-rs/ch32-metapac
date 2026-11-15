@@ -268,6 +268,8 @@ pub const WWDG: wwdg::Wwdg = unsafe { wwdg::Wwdg::from_ptr(0x4000_2c00usize as _
 pub const IWDG: iwdg::Iwdg = unsafe { iwdg::Iwdg::from_ptr(0x4000_3000usize as _) };
 pub const USART2: usart::Usart = unsafe { usart::Usart::from_ptr(0x4000_4400usize as _) };
 pub const I2C1: i2c::I2c = unsafe { i2c::I2c::from_ptr(0x4000_5400usize as _) };
+pub const BKP: bkp::Bkp = unsafe { bkp::Bkp::from_ptr(0x4000_6c00usize as _) };
+pub const PWR: pwr::Pwr = unsafe { pwr::Pwr::from_ptr(0x4000_7000usize as _) };
 pub const AFIO: afio::Afio = unsafe { afio::Afio::from_ptr(0x4001_0000usize as _) };
 pub const EXTI: exti::Exti = unsafe { exti::Exti::from_ptr(0x4001_0400usize as _) };
 pub const GPIOA: gpio::Gpio = unsafe { gpio::Gpio::from_ptr(0x4001_0800usize as _) };
@@ -298,6 +300,8 @@ pub fn GPIO(n: usize) -> gpio::Gpio {
 pub mod adc;
 #[path = "../../peripherals/afio_v3.rs"]
 pub mod afio;
+#[path = "../../peripherals/bkp_v3_d6.rs"]
+pub mod bkp;
 #[path = "../../peripherals/crc_h4.rs"]
 pub mod crc;
 #[path = "../../peripherals/dma_v1.rs"]
@@ -318,6 +322,8 @@ pub mod iwdg;
 pub mod opa;
 #[path = "../../peripherals/pfic_rv4.rs"]
 pub mod pfic;
+#[path = "../../peripherals/pwr_v3.rs"]
+pub mod pwr;
 #[path = "../../peripherals/rcc_v3.rs"]
 pub mod rcc;
 #[path = "../../peripherals/rtc_common.rs"]
