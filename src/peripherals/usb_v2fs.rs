@@ -225,12 +225,12 @@ impl Usbh {
     }
     #[doc = "USB host receiving DMA buffer address."]
     #[inline(always)]
-    pub const fn rx_dma(self) -> crate::common::Reg<u16, crate::common::RW> {
+    pub const fn rx_dma(self) -> crate::common::Reg<u32, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x18usize) as _) }
     }
     #[doc = "USB host transmittal DMA buffer address."]
     #[inline(always)]
-    pub const fn tx_dma(self) -> crate::common::Reg<u16, crate::common::RW> {
+    pub const fn tx_dma(self) -> crate::common::Reg<u32, crate::common::RW> {
         unsafe { crate::common::Reg::from_ptr(self.ptr.wrapping_add(0x1cusize) as _) }
     }
     #[doc = "USB host setup."]
