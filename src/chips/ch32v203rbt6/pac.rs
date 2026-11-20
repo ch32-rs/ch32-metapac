@@ -86,10 +86,10 @@ pub enum Interrupt {
     RTC_ALARM = 57,
     #[doc = "58 - USB_WKUP"]
     USB_WKUP = 58,
-    #[doc = "59 - USBHD"]
-    USBHD = 59,
-    #[doc = "60 - USBHD_WKUP"]
-    USBHD_WKUP = 60,
+    #[doc = "59 - USBFS"]
+    USBFS = 59,
+    #[doc = "60 - USBFS_WKUP"]
+    USBFS_WKUP = 60,
     #[doc = "61 - ETH"]
     ETH = 61,
     #[doc = "62 - ETH_WKUP"]
@@ -108,8 +108,6 @@ pub enum Interrupt {
     OSC32KCAL = 68,
     #[doc = "69 - OSC_WKUP"]
     OSC_WKUP = 69,
-    #[doc = "83 - OTG_FS"]
-    OTG_FS = 83,
 }
 unsafe impl crate::InterruptNumber for Interrupt {
     #[inline(always)]
@@ -163,8 +161,8 @@ mod _vectors {
         fn EXTI15_10();
         fn RTC_ALARM();
         fn USB_WKUP();
-        fn USBHD();
-        fn USBHD_WKUP();
+        fn USBFS();
+        fn USBFS_WKUP();
         fn ETH();
         fn ETH_WKUP();
         fn BB();
@@ -174,7 +172,6 @@ mod _vectors {
         fn DMA1_CHANNEL8();
         fn OSC32KCAL();
         fn OSC_WKUP();
-        fn OTG_FS();
     }
     pub union Vector {
         _handler: unsafe extern "C" fn(),
@@ -182,7 +179,7 @@ mod _vectors {
     }
     #[unsafe(link_section = ".vector_table.external_interrupts")]
     #[unsafe(no_mangle)]
-    pub static __EXTERNAL_INTERRUPTS: [Vector; 68] = [
+    pub static __EXTERNAL_INTERRUPTS: [Vector; 54] = [
         Vector { _handler: WWDG },
         Vector { _handler: PVD },
         Vector { _handler: TAMPER },
@@ -250,9 +247,9 @@ mod _vectors {
             _handler: RTC_ALARM,
         },
         Vector { _handler: USB_WKUP },
-        Vector { _handler: USBHD },
+        Vector { _handler: USBFS },
         Vector {
-            _handler: USBHD_WKUP,
+            _handler: USBFS_WKUP,
         },
         Vector { _handler: ETH },
         Vector { _handler: ETH_WKUP },
@@ -267,20 +264,6 @@ mod _vectors {
             _handler: OSC32KCAL,
         },
         Vector { _handler: OSC_WKUP },
-        Vector { _reserved: 0 },
-        Vector { _reserved: 0 },
-        Vector { _reserved: 0 },
-        Vector { _reserved: 0 },
-        Vector { _reserved: 0 },
-        Vector { _reserved: 0 },
-        Vector { _reserved: 0 },
-        Vector { _reserved: 0 },
-        Vector { _reserved: 0 },
-        Vector { _reserved: 0 },
-        Vector { _reserved: 0 },
-        Vector { _reserved: 0 },
-        Vector { _reserved: 0 },
-        Vector { _handler: OTG_FS },
     ];
 }
 pub const TIM2: timer::Gptm = unsafe { timer::Gptm::from_ptr(0x4000_0000usize as _) };

@@ -2347,23 +2347,29 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         remap: None,
         pins: &[
             PeripheralPin {
-                pin: "PA11",
+                pin: "PB6",
                 signal: "DM",
                 remap: None,
                 af: None,
             },
             PeripheralPin {
-                pin: "PA12",
+                pin: "PB7",
                 signal: "DP",
                 remap: None,
                 af: None,
             },
         ],
         dma_channels: &[],
-        interrupts: &[PeripheralInterrupt {
-            signal: "GLOBAL",
-            interrupt: "OTG_FS",
-        }],
+        interrupts: &[
+            PeripheralInterrupt {
+                signal: "GLOBAL",
+                interrupt: "USBFS",
+            },
+            PeripheralInterrupt {
+                signal: "WAKEUP",
+                interrupt: "USBFS_WKUP",
+            },
+        ],
     },
     Peripheral {
         name: "CAN1",
@@ -2811,11 +2817,11 @@ pub(crate) static INTERRUPTS: &[Interrupt] = &[
         number: 58,
     },
     Interrupt {
-        name: "USBHD",
+        name: "USBFS",
         number: 59,
     },
     Interrupt {
-        name: "USBHD_WKUP",
+        name: "USBFS_WKUP",
         number: 60,
     },
     Interrupt {
@@ -2825,10 +2831,6 @@ pub(crate) static INTERRUPTS: &[Interrupt] = &[
     Interrupt {
         name: "DMA1_CHANNEL8",
         number: 62,
-    },
-    Interrupt {
-        name: "OTG_FS",
-        number: 83,
     },
 ];
 pub(crate) static DMA_CHANNELS: &[DmaChannel] = &[

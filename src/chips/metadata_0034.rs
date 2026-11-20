@@ -2359,11 +2359,11 @@ pub(crate) static INTERRUPTS: &[Interrupt] = &[
         number: 58,
     },
     Interrupt {
-        name: "USBHD",
+        name: "USBFS",
         number: 59,
     },
     Interrupt {
-        name: "USBHD_WKUP",
+        name: "USBFS_WKUP",
         number: 60,
     },
     Interrupt {
@@ -2373,10 +2373,6 @@ pub(crate) static INTERRUPTS: &[Interrupt] = &[
     Interrupt {
         name: "DMA1_CHANNEL8",
         number: 62,
-    },
-    Interrupt {
-        name: "OTG_FS",
-        number: 83,
     },
 ];
 pub(crate) static DMA_CHANNELS: &[DmaChannel] = &[
