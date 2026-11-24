@@ -3625,7 +3625,7 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
                 af: None,
             },
             PeripheralPin {
-                pin: "PB15",
+                pin: "PB14",
                 signal: "D0",
                 remap: None,
                 af: None,
