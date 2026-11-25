@@ -831,7 +831,9 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
-                    enumm: None,
+                    enumm: Some(
+                        "BufMode",
+                    ),
                 },
                 Field {
                     name: "tx_en",
@@ -867,14 +869,14 @@ pub(crate) static REGISTERS: IR = IR {
             name: "UepMod",
             extends: None,
             description: Some(
-                "endpoint a/b mode. lower bits comes first",
+                "mode of the two endpoints a register serves. Index 0 is the first endpoint in the register name (EP4 in UEP4_1_MOD), 1 the second.",
             ),
             bit_size: 8,
             fields: &[
                 Field {
                     name: "buf_mod",
                     description: Some(
-                        "buffer mode of USB endpoint",
+                        "buffer mode of USB endpoint.",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -890,12 +892,14 @@ pub(crate) static REGISTERS: IR = IR {
                             },
                         ),
                     ),
-                    enumm: None,
+                    enumm: Some(
+                        "BufMode",
+                    ),
                 },
                 Field {
                     name: "tx_en",
                     description: Some(
-                        "enable USB endpoint 1 transmittal (IN).",
+                        "enable USB endpoint transmittal (IN).",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -916,7 +920,7 @@ pub(crate) static REGISTERS: IR = IR {
                 Field {
                     name: "rx_en",
                     description: Some(
-                        "enable USB endpoint 4 receiving (OUT).",
+                        "enable USB endpoint receiving (OUT).",
                     ),
                     bit_offset: BitOffset::Regular(
                         RegularBitOffset {
@@ -2026,6 +2030,27 @@ pub(crate) static REGISTERS: IR = IR {
         },
     ],
     enums: &[
+        Enum {
+            name: "BufMode",
+            description: None,
+            bit_size: 1,
+            variants: &[
+                EnumVariant {
+                    name: "DOUBLE",
+                    description: Some(
+                        "Double Buffer Mode",
+                    ),
+                    value: 1,
+                },
+                EnumVariant {
+                    name: "SINGLE",
+                    description: Some(
+                        "Single Buffer Mode",
+                    ),
+                    value: 0,
+                },
+            ],
+        },
         Enum {
             name: "EpRxResponse",
             description: None,

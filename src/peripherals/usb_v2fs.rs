@@ -364,14 +364,14 @@ pub mod regs {
         #[doc = "buffer mode of USB endpoint 7."]
         #[must_use]
         #[inline(always)]
-        pub const fn buf_mod(&self) -> bool {
+        pub const fn buf_mod(&self) -> super::vals::BufMode {
             let val = (self.0 >> 0usize) & 0x01;
-            val != 0
+            super::vals::BufMode::from_bits(val as u8)
         }
         #[doc = "buffer mode of USB endpoint 7."]
         #[inline(always)]
-        pub const fn set_buf_mod(&mut self, val: bool) {
-            self.0 = (self.0 & !(0x01 << 0usize)) | (((val as u8) & 0x01) << 0usize);
+        pub const fn set_buf_mod(&mut self, val: super::vals::BufMode) {
+            self.0 = (self.0 & !(0x01 << 0usize)) | (((val.to_bits() as u8) & 0x01) << 0usize);
         }
         #[doc = "enable USB endpoint 7 transmittal (IN)."]
         #[must_use]
@@ -413,28 +413,28 @@ pub mod regs {
                 .finish()
         }
     }
-    #[doc = "endpoint a/b mode. lower bits comes first"]
+    #[doc = "mode of the two endpoints a register serves. Index 0 is the first endpoint in the register name (EP4 in UEP4_1_MOD), 1 the second."]
     #[repr(transparent)]
     #[derive(Copy, Clone, Eq, PartialEq)]
     pub struct UepMod(pub u8);
     impl UepMod {
-        #[doc = "buffer mode of USB endpoint"]
+        #[doc = "buffer mode of USB endpoint."]
         #[must_use]
         #[inline(always)]
-        pub const fn buf_mod(&self, n: usize) -> bool {
+        pub const fn buf_mod(&self, n: usize) -> super::vals::BufMode {
             assert!(n < 2usize);
             let offs = 0usize + n * 4usize;
             let val = (self.0 >> offs) & 0x01;
-            val != 0
+            super::vals::BufMode::from_bits(val as u8)
         }
-        #[doc = "buffer mode of USB endpoint"]
+        #[doc = "buffer mode of USB endpoint."]
         #[inline(always)]
-        pub const fn set_buf_mod(&mut self, n: usize, val: bool) {
+        pub const fn set_buf_mod(&mut self, n: usize, val: super::vals::BufMode) {
             assert!(n < 2usize);
             let offs = 0usize + n * 4usize;
-            self.0 = (self.0 & !(0x01 << offs)) | (((val as u8) & 0x01) << offs);
+            self.0 = (self.0 & !(0x01 << offs)) | (((val.to_bits() as u8) & 0x01) << offs);
         }
-        #[doc = "enable USB endpoint 1 transmittal (IN)."]
+        #[doc = "enable USB endpoint transmittal (IN)."]
         #[must_use]
         #[inline(always)]
         pub const fn tx_en(&self, n: usize) -> bool {
@@ -443,14 +443,14 @@ pub mod regs {
             let val = (self.0 >> offs) & 0x01;
             val != 0
         }
-        #[doc = "enable USB endpoint 1 transmittal (IN)."]
+        #[doc = "enable USB endpoint transmittal (IN)."]
         #[inline(always)]
         pub const fn set_tx_en(&mut self, n: usize, val: bool) {
             assert!(n < 2usize);
             let offs = 2usize + n * 4usize;
             self.0 = (self.0 & !(0x01 << offs)) | (((val as u8) & 0x01) << offs);
         }
-        #[doc = "enable USB endpoint 4 receiving (OUT)."]
+        #[doc = "enable USB endpoint receiving (OUT)."]
         #[must_use]
         #[inline(always)]
         pub const fn rx_en(&self, n: usize) -> bool {
@@ -459,7 +459,7 @@ pub mod regs {
             let val = (self.0 >> offs) & 0x01;
             val != 0
         }
-        #[doc = "enable USB endpoint 4 receiving (OUT)."]
+        #[doc = "enable USB endpoint receiving (OUT)."]
         #[inline(always)]
         pub const fn set_rx_en(&mut self, n: usize, val: bool) {
             assert!(n < 2usize);
@@ -1630,6 +1630,36 @@ pub mod regs {
     }
 }
 pub mod vals {
+    #[repr(u8)]
+    #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
+    pub enum BufMode {
+        #[doc = "Single Buffer Mode"]
+        SINGLE = 0x0,
+        #[doc = "Double Buffer Mode"]
+        DOUBLE = 0x01,
+    }
+    impl BufMode {
+        #[inline(always)]
+        pub const fn from_bits(val: u8) -> BufMode {
+            unsafe { core::mem::transmute(val & 0x01) }
+        }
+        #[inline(always)]
+        pub const fn to_bits(self) -> u8 {
+            unsafe { core::mem::transmute(self) }
+        }
+    }
+    impl From<u8> for BufMode {
+        #[inline(always)]
+        fn from(val: u8) -> BufMode {
+            BufMode::from_bits(val)
+        }
+    }
+    impl From<BufMode> for u8 {
+        #[inline(always)]
+        fn from(val: BufMode) -> u8 {
+            BufMode::to_bits(val)
+        }
+    }
     #[repr(u8)]
     #[derive(Copy, Clone, Debug, Eq, PartialEq, Ord, PartialOrd)]
     pub enum EpRxResponse {

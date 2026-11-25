@@ -320,7 +320,7 @@ pub(crate) static REGISTERS: IR = IR {
                             access: Access::ReadWrite,
                             bit_size: 8,
                             fieldset: Some(
-                                "Uep41Mod",
+                                "UepMod",
                             ),
                         },
                     ),
@@ -337,7 +337,7 @@ pub(crate) static REGISTERS: IR = IR {
                             access: Access::ReadWrite,
                             bit_size: 8,
                             fieldset: Some(
-                                "Uep23Mod",
+                                "UepMod",
                             ),
                         },
                     ),
@@ -354,7 +354,7 @@ pub(crate) static REGISTERS: IR = IR {
                             access: Access::ReadWrite,
                             bit_size: 8,
                             fieldset: Some(
-                                "Uep56Mod",
+                                "UepMod",
                             ),
                         },
                     ),
@@ -914,300 +914,6 @@ pub(crate) static REGISTERS: IR = IR {
             ],
         },
         FieldSet {
-            name: "Uep23Mod",
-            extends: None,
-            description: Some(
-                "endpoint 2/3 mode.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "uep2_buf_mod",
-                    description: Some(
-                        "buffer mode of USB endpoint 2.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: Some(
-                        "BufMode",
-                    ),
-                },
-                Field {
-                    name: "uep2_tx_en",
-                    description: Some(
-                        "enable USB endpoint 2 transmittal (IN).",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep2_rx_en",
-                    description: Some(
-                        "enable USB endpoint 2 receiving (OUT).",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep3_buf_mod",
-                    description: Some(
-                        "buffer mode of USB endpoint 3.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: Some(
-                        "BufMode",
-                    ),
-                },
-                Field {
-                    name: "uep3_tx_en",
-                    description: Some(
-                        "enable USB endpoint 3 transmittal (IN).",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep3_rx_en",
-                    description: Some(
-                        "enable USB endpoint 3 receiving (OUT).",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep41Mod",
-            extends: None,
-            description: Some(
-                "endpoint 4/1 mode.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "uep4_buf_mod",
-                    description: Some(
-                        "buffer mode of USB endpoint 4.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: Some(
-                        "BufMode",
-                    ),
-                },
-                Field {
-                    name: "uep4_tx_en",
-                    description: Some(
-                        "enable USB endpoint 4 transmittal (IN).",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep4_rx_en",
-                    description: Some(
-                        "enable USB endpoint 4 receiving (OUT).",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep1_buf_mod",
-                    description: Some(
-                        "buffer mode of USB endpoint 1.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: Some(
-                        "BufMode",
-                    ),
-                },
-                Field {
-                    name: "uep1_tx_en",
-                    description: Some(
-                        "enable USB endpoint 1 transmittal (IN).",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep1_rx_en",
-                    description: Some(
-                        "enable USB endpoint 1 receiving (OUT).",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
-            name: "Uep56Mod",
-            extends: None,
-            description: Some(
-                "endpoint 5/6 mode.",
-            ),
-            bit_size: 8,
-            fields: &[
-                Field {
-                    name: "uep5_buf_mod",
-                    description: Some(
-                        "buffer mode of USB endpoint 5.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 0,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: Some(
-                        "BufMode",
-                    ),
-                },
-                Field {
-                    name: "uep5_tx_en",
-                    description: Some(
-                        "enable USB endpoint 5 transmittal (IN).",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 2,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep5_rx_en",
-                    description: Some(
-                        "enable USB endpoint 5 receiving (OUT).",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 3,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep6_buf_mod",
-                    description: Some(
-                        "buffer mode of USB endpoint 6.",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 4,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: Some(
-                        "BufMode",
-                    ),
-                },
-                Field {
-                    name: "uep6_tx_en",
-                    description: Some(
-                        "enable USB endpoint 6 transmittal (IN).",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 6,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-                Field {
-                    name: "uep6_rx_en",
-                    description: Some(
-                        "enable USB endpoint 6 receiving (OUT).",
-                    ),
-                    bit_offset: BitOffset::Regular(
-                        RegularBitOffset {
-                            offset: 7,
-                        },
-                    ),
-                    bit_size: 1,
-                    array: None,
-                    enumm: None,
-                },
-            ],
-        },
-        FieldSet {
             name: "Uep7Mod",
             extends: None,
             description: Some(
@@ -1216,7 +922,7 @@ pub(crate) static REGISTERS: IR = IR {
             bit_size: 8,
             fields: &[
                 Field {
-                    name: "uep7_buf_mod",
+                    name: "buf_mod",
                     description: Some(
                         "buffer mode of USB endpoint 7.",
                     ),
@@ -1232,7 +938,7 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                 },
                 Field {
-                    name: "uep7_tx_en",
+                    name: "tx_en",
                     description: Some(
                         "enable USB endpoint 7 transmittal (IN).",
                     ),
@@ -1246,7 +952,7 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "uep7_rx_en",
+                    name: "rx_en",
                     description: Some(
                         "enable USB endpoint 7 receiving (OUT).",
                     ),
@@ -1257,6 +963,81 @@ pub(crate) static REGISTERS: IR = IR {
                     ),
                     bit_size: 1,
                     array: None,
+                    enumm: None,
+                },
+            ],
+        },
+        FieldSet {
+            name: "UepMod",
+            extends: None,
+            description: Some(
+                "mode of the two endpoints a register serves. Index 0 is the first endpoint in the register name (EP4 in UEP4_1_MOD), 1 the second.",
+            ),
+            bit_size: 8,
+            fields: &[
+                Field {
+                    name: "buf_mod",
+                    description: Some(
+                        "buffer mode of USB endpoint.",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 0,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 2,
+                                stride: 4,
+                            },
+                        ),
+                    ),
+                    enumm: Some(
+                        "BufMode",
+                    ),
+                },
+                Field {
+                    name: "tx_en",
+                    description: Some(
+                        "enable USB endpoint transmittal (IN).",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 2,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 2,
+                                stride: 4,
+                            },
+                        ),
+                    ),
+                    enumm: None,
+                },
+                Field {
+                    name: "rx_en",
+                    description: Some(
+                        "enable USB endpoint receiving (OUT).",
+                    ),
+                    bit_offset: BitOffset::Regular(
+                        RegularBitOffset {
+                            offset: 3,
+                        },
+                    ),
+                    bit_size: 1,
+                    array: Some(
+                        Array::Regular(
+                            RegularArray {
+                                len: 2,
+                                stride: 4,
+                            },
+                        ),
+                    ),
                     enumm: None,
                 },
             ],
@@ -1524,7 +1305,7 @@ pub(crate) static REGISTERS: IR = IR {
                     enumm: None,
                 },
                 Field {
-                    name: "auto_tog",
+                    name: "r_auto_tog",
                     description: Some(
                         "enable automatic toggle after successful transfer completion on endpoint 1/2/3: 0=manual toggle, 1=automatic toggle.",
                     ),
