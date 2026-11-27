@@ -439,7 +439,6 @@ pub const I2C2: i2c::I2c = unsafe { i2c::I2c::from_ptr(0x4000_5800usize as _) };
 pub const CAN2: can::Can = unsafe { can::Can::from_ptr(0x4000_6800usize as _) };
 pub const BKP: bkp::Bkp = unsafe { bkp::Bkp::from_ptr(0x4000_6c00usize as _) };
 pub const PWR: pwr::Pwr = unsafe { pwr::Pwr::from_ptr(0x4000_7000usize as _) };
-pub const DAC: dac::Dac = unsafe { dac::Dac::from_ptr(0x4000_7400usize as _) };
 pub const DAC1: dac::Dac = unsafe { dac::Dac::from_ptr(0x4000_7400usize as _) };
 pub const AFIO: afio::Afio = unsafe { afio::Afio::from_ptr(0x4001_0000usize as _) };
 pub const EXTI: exti::Exti = unsafe { exti::Exti::from_ptr(0x4001_0400usize as _) };

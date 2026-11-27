@@ -4229,55 +4229,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
     },
     Peripheral {
-        name: "USBHS2",
-        address: 0x40023400,
-        registers: Some(PeripheralRegisters {
-            kind: "usbhs",
-            version: "v4x7",
-            block: "USB",
-            ir: &usbhs::REGISTERS,
-        }),
-        rcc: Some(PeripheralRcc {
-            bus_clock: "HCLK",
-            kernel_clock: Clock("USBHSPLLCLK"),
-            enable: Some(PeripheralRccRegister {
-                register: "HBPCENR",
-                field: "USBHS2EN",
-            }),
-            reset: Some(PeripheralRccRegister {
-                register: "HBRSTR",
-                field: "USBHS2RST",
-            }),
-            stop_mode: StopMode::Stop1,
-        }),
-        remap: None,
-        pins: &[
-            PeripheralPin {
-                pin: "PB7",
-                signal: "DP",
-                remap: None,
-                af: None,
-            },
-            PeripheralPin {
-                pin: "PB6",
-                signal: "DM",
-                remap: None,
-                af: None,
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[
-            PeripheralInterrupt {
-                signal: "GLOBAL",
-                interrupt: "USBHS2",
-            },
-            PeripheralInterrupt {
-                signal: "WAKEUP",
-                interrupt: "USBHS2WAKEUP",
-            },
-        ],
-    },
-    Peripheral {
         name: "DVP",
         address: 0x50050000,
         registers: Some(PeripheralRegisters {
@@ -4927,6 +4878,36 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         interrupts: &[PeripheralInterrupt {
             signal: "GLOBAL",
             interrupt: "ARGB",
+        }],
+    },
+    Peripheral {
+        name: "PSRAM",
+        address: 0x40024400,
+        registers: Some(PeripheralRegisters {
+            kind: "psram",
+            version: "v4x7",
+            block: "PSRAM",
+            ir: &psram::REGISTERS,
+        }),
+        rcc: Some(PeripheralRcc {
+            bus_clock: "HCLK",
+            kernel_clock: Clock("HCLK"),
+            enable: Some(PeripheralRccRegister {
+                register: "HBPCENR",
+                field: "PSRAMEN",
+            }),
+            reset: Some(PeripheralRccRegister {
+                register: "HBRSTR",
+                field: "PSRAMRST",
+            }),
+            stop_mode: StopMode::Stop1,
+        }),
+        remap: None,
+        pins: &[],
+        dma_channels: &[],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "PSRAM",
         }],
     },
     Peripheral {
@@ -5707,6 +5688,8 @@ pub mod iwdg;
 pub mod ltdc;
 #[path = "../registers/pfic_v4x7.rs"]
 pub mod pfic;
+#[path = "../registers/psram_v4x7.rs"]
+pub mod psram;
 #[path = "../registers/pwr_v4x7.rs"]
 pub mod pwr;
 #[path = "../registers/rcc_v4x7.rs"]

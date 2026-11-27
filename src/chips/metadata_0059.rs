@@ -1381,6 +1381,46 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
             },
         ],
     },
+    Peripheral {
+        name: "USBSS",
+        address: 0x40038000,
+        registers: Some(PeripheralRegisters {
+            kind: "usbss",
+            version: "x315",
+            block: "USBSS",
+            ir: &usbss::REGISTERS,
+        }),
+        rcc: Some(PeripheralRcc {
+            bus_clock: "HCLK",
+            kernel_clock: Clock("USBSSPLLCLK"),
+            enable: Some(PeripheralRccRegister {
+                register: "HBPCENR",
+                field: "USBSSEN",
+            }),
+            reset: Some(PeripheralRccRegister {
+                register: "HBRSTR",
+                field: "USBSSRST",
+            }),
+            stop_mode: StopMode::Stop1,
+        }),
+        remap: None,
+        pins: &[],
+        dma_channels: &[],
+        interrupts: &[
+            PeripheralInterrupt {
+                signal: "GLOBAL",
+                interrupt: "USBSS",
+            },
+            PeripheralInterrupt {
+                signal: "LINK",
+                interrupt: "USBSS_LINK",
+            },
+            PeripheralInterrupt {
+                signal: "WAKEUP",
+                interrupt: "USBSS_WKUP",
+            },
+        ],
+    },
 ];
 pub(crate) static INTERRUPTS: &[Interrupt] = &[
     Interrupt {
@@ -1705,5 +1745,7 @@ pub mod usart;
 pub mod usbhs;
 #[path = "../registers/usbpd_x315.rs"]
 pub mod usbpd;
+#[path = "../registers/usbss_x315.rs"]
+pub mod usbss;
 #[path = "../registers/wwdg_v00x.rs"]
 pub mod wwdg;

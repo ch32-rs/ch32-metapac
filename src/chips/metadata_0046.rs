@@ -451,46 +451,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         interrupts: &[],
     },
     Peripheral {
-        name: "DAC",
-        address: 0x40007400,
-        registers: Some(PeripheralRegisters {
-            kind: "dac",
-            version: "v3",
-            block: "DAC",
-            ir: &dac::REGISTERS,
-        }),
-        rcc: Some(PeripheralRcc {
-            bus_clock: "PCLK1",
-            kernel_clock: Clock("DAC"),
-            enable: Some(PeripheralRccRegister {
-                register: "APB1PCENR",
-                field: "DACEN",
-            }),
-            reset: Some(PeripheralRccRegister {
-                register: "APB1PRSTR",
-                field: "DACRST",
-            }),
-            stop_mode: StopMode::Stop1,
-        }),
-        remap: None,
-        pins: &[
-            PeripheralPin {
-                pin: "PA4",
-                signal: "OUT0",
-                remap: None,
-                af: None,
-            },
-            PeripheralPin {
-                pin: "PA5",
-                signal: "OUT1",
-                remap: None,
-                af: None,
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[],
-    },
-    Peripheral {
         name: "WWDG",
         address: 0x40002c00,
         registers: Some(PeripheralRegisters {
@@ -3650,6 +3610,58 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         ],
     },
     Peripheral {
+        name: "OTG_FS",
+        address: 0x50000000,
+        registers: Some(PeripheralRegisters {
+            kind: "otg",
+            version: "v2",
+            block: "USB",
+            ir: &otg::REGISTERS,
+        }),
+        rcc: Some(PeripheralRcc {
+            bus_clock: "HCLK",
+            kernel_clock: Clock("HCLK"),
+            enable: Some(PeripheralRccRegister {
+                register: "AHBPCENR",
+                field: "OTG_EN",
+            }),
+            reset: None,
+            stop_mode: StopMode::Stop1,
+        }),
+        remap: None,
+        pins: &[
+            PeripheralPin {
+                pin: "PA11",
+                signal: "DM",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA12",
+                signal: "DP",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA9",
+                signal: "VBUS",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA10",
+                signal: "ID",
+                remap: None,
+                af: None,
+            },
+        ],
+        dma_channels: &[],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "OTG_FS",
+        }],
+    },
+    Peripheral {
         name: "DAC1",
         address: 0x40007400,
         registers: Some(PeripheralRegisters {
@@ -4660,6 +4672,8 @@ pub mod i2c;
 pub mod iwdg;
 #[path = "../registers/opa_v3.rs"]
 pub mod opa;
+#[path = "../registers/otg_v2.rs"]
+pub mod otg;
 #[path = "../registers/pfic_rv4.rs"]
 pub mod pfic;
 #[path = "../registers/pwr_v3.rs"]

@@ -451,46 +451,6 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         interrupts: &[],
     },
     Peripheral {
-        name: "DAC",
-        address: 0x40007400,
-        registers: Some(PeripheralRegisters {
-            kind: "dac",
-            version: "v3",
-            block: "DAC",
-            ir: &dac::REGISTERS,
-        }),
-        rcc: Some(PeripheralRcc {
-            bus_clock: "PCLK1",
-            kernel_clock: Clock("DAC"),
-            enable: Some(PeripheralRccRegister {
-                register: "APB1PCENR",
-                field: "DACEN",
-            }),
-            reset: Some(PeripheralRccRegister {
-                register: "APB1PRSTR",
-                field: "DACRST",
-            }),
-            stop_mode: StopMode::Stop1,
-        }),
-        remap: None,
-        pins: &[
-            PeripheralPin {
-                pin: "PA4",
-                signal: "OUT0",
-                remap: None,
-                af: None,
-            },
-            PeripheralPin {
-                pin: "PA5",
-                signal: "OUT1",
-                remap: None,
-                af: None,
-            },
-        ],
-        dma_channels: &[],
-        interrupts: &[],
-    },
-    Peripheral {
         name: "WWDG",
         address: 0x40002c00,
         registers: Some(PeripheralRegisters {
@@ -4582,6 +4542,127 @@ pub(crate) static PERIPHERALS: &[Peripheral] = &[
         }],
     },
     Peripheral {
+        name: "DVP",
+        address: 0x50050000,
+        registers: Some(PeripheralRegisters {
+            kind: "dvp",
+            version: "v3",
+            block: "DVP",
+            ir: &dvp::REGISTERS,
+        }),
+        rcc: Some(PeripheralRcc {
+            bus_clock: "HCLK",
+            kernel_clock: Clock("HCLK"),
+            enable: Some(PeripheralRccRegister {
+                register: "AHBPCENR",
+                field: "DVP_EN",
+            }),
+            reset: Some(PeripheralRccRegister {
+                register: "AHBRSTR",
+                field: "DVPRST",
+            }),
+            stop_mode: StopMode::Stop1,
+        }),
+        remap: None,
+        pins: &[
+            PeripheralPin {
+                pin: "PA4",
+                signal: "HSYNC",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA5",
+                signal: "VSYNC",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA6",
+                signal: "PCLK",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA9",
+                signal: "D0",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PA10",
+                signal: "D1",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC8",
+                signal: "D2",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC9",
+                signal: "D3",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC11",
+                signal: "D4",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB6",
+                signal: "D5",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB8",
+                signal: "D6",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PB9",
+                signal: "D7",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC10",
+                signal: "D8",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PC12",
+                signal: "D9",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PD6",
+                signal: "D10",
+                remap: None,
+                af: None,
+            },
+            PeripheralPin {
+                pin: "PD2",
+                signal: "D11",
+                remap: None,
+                af: None,
+            },
+        ],
+        dma_channels: &[],
+        interrupts: &[PeripheralInterrupt {
+            signal: "GLOBAL",
+            interrupt: "DVP",
+        }],
+    },
+    Peripheral {
         name: "BKP",
         address: 0x40006c00,
         registers: Some(PeripheralRegisters {
@@ -5101,6 +5182,8 @@ pub mod crc;
 pub mod dac;
 #[path = "../registers/dma_v1.rs"]
 pub mod dma;
+#[path = "../registers/dvp_v3.rs"]
+pub mod dvp;
 #[path = "../registers/emac_v1.rs"]
 pub mod emac;
 #[path = "../registers/extend_v3.rs"]
